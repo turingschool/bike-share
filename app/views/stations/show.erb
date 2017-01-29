@@ -1,0 +1,12 @@
+<h1><%= @station.name %><h1>
+<hr size=10px>
+
+<h2>Info</h2>
+
+<p>Doc Count: <%=@station.doc_count%></p>
+<p>City: <%=@station.city%></p>
+<p>Installation Date: <%=@station.installation_date%></p>
+
+
+<a href='/stations/<%=@station.id%>/edit'>Edit</a><br/>
+<a href='/stations'>Back to All Stations</a>

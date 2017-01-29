@@ -1,18 +1,23 @@
 <h1>Make Changes to This Station</h1>
 <hr>
-
+<br/>
+<br/>
 <form action="/stations/<%= @station.id %>" method="post">
   <input type='hidden' name='_method' value='PUT' />
   <label> Name: </label>
-  <input type='text' name='station[name]' values='<%= @station.name%>'/><br/>
+  <input type='text' name='station[name]' value='<%= @station.name%>'/><br/>
   <label> Doc Count: </label>
-  <input type='text' name='station[doc_count]' values='<%= @station.doc_count%>'/><br/>
+  <input type='text' name='station[doc_count]' value='<%= @station.doc_count%>'/><br/>
   <label> City: </label>
-  <input type='text' name='station[city]' values='<%= @station.city%>'/><br/>
+  <input type='text' name='station[city]' value='<%= @station.city%>'/><br/>
   <label> Installation Date </label>
-  <input type='text' name='station[installation_date]'  values='<%= @station.installation_date %>' /><br/>
+  <input type='text' name='station[installation_date]'  value='<%= @station.installation_date %>' />
+  <br/>
+  <br/>
   <input type='submit' value='Done Editing!'>
 </form>
 
-<form action="/stations/<%= @station.id %>" method="post">
-  <input type='hidden'
+<form action='/stations/<%=@station.id%>' method='POST'
+  <input type='hidden' name='_method' value='DELETE'>
+  <input type='submit' value='Remove Station'/>
+</form>

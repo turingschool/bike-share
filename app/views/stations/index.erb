@@ -1,11 +1,13 @@
 <h1>All Stations<h1>
 <hr size=10px>
-
 <%@stations.each do |station| %>
     <h3><%= station.name %></h3>
     <h3><%= station.doc_count %></h3>
     <h3><%= station.city %></h3>
     <h3><%= station.installation_date %></h3>
 
-    <a href="/stations/<%= station.id %>/edit">Edit</a>
+    <a href="/stations/<%= station.id %>/edit">Edit</a><br/>
+    <hr>
 <%end %>
+
+<label><a href="/stations/new">Add New Station</a></label>

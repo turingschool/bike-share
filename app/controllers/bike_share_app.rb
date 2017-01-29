@@ -32,14 +32,13 @@ class BikeShareApp < Sinatra::Base
   put '/stations/:id' do
     @station = Station.update(params[:id], params[:station])
     redirect "/stations/#{@station.id}"
-
   end
 
-  #delete - one
-  delete '/stations/:id' do
-    #@station = Station.destroy(params[:id])
+  #delete - one from show
+  post '/stations/:id' do
+    @station = Station.destroy(params[:id])
     redirect "/stations"
   end
 
-
+  #delete - one from index?  
 end

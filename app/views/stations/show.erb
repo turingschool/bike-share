@@ -1,7 +1,8 @@
 <h1><%= @station.name %><h1>
 <hr size=10px>
 
-<h2>Info</h2>
+<h3>Info</h3>
+<hr>
 
 <p>Doc Count: <%=@station.doc_count%></p>
 <p>City: <%=@station.city%></p>
@@ -9,4 +10,9 @@
 
 
 <a href='/stations/<%=@station.id%>/edit'>Edit</a><br/>
+<a href="/stations">Remove Station</a><br/>
+<!-- <form action='/stations/<%=@station.id%>' method='POST'
+  <input type='hidden' name='_method' value='DELETE'>
+  <input type='submit' value='Remove Station'/>
+</form><br/> -->
 <a href='/stations'>Back to All Stations</a>

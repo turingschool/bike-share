@@ -1,13 +1,23 @@
 <h1>Input a Condition Report</h1>
 
-<form action="/conditions/" method="post">
-  <label for="">Date:</label>
+<form action="/conditions" method="post">
 
-  <!-- <label for="">Date:</label>
   <label for="">Date:</label>
-  <label for="">Date:</label>
-  <label for="">Date:</label>
-  <label for="">Date:</label>
-   -->
+  <input type="textfield" name="condition[date]">
+  <label for="">Max Temperature:</label>
+  <input type="textfield" name="condition[max_temp]">
+  <label for="">Mean Temperature:</label>
+  <input type="textfield" name="condition[mean_temp]">
+  <label for="">Min Temperature:</label>
+  <input type="textfield" name="condition[min_temp]">
+  <label for="">Mean Humidity:</label>
+  <input type="textfield" name="condition[humidity]">
+  <label for="">Mean Visibility:</label>
+  <input type="textfield" name="condition[visibility]">
+  <label for="">Mean Wind Speed:</label>
+  <input type="textfield" name="condition[wind_speed]">
+  <label for="">Mean Precipitation:</label>
+  <input type="textfield" name="condition[predipitation]">
 
+  <input type="submit" value="Update Condition Report" />
 </form>

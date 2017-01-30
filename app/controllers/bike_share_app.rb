@@ -2,7 +2,7 @@ class BikeShareApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
   set :method_override, true
 
-# trip
+#--------------trip------------------
   get '/trips' do
     @trips = Trip.all
     erb :"trips/index"
@@ -37,6 +37,6 @@ class BikeShareApp < Sinatra::Base
     @trip = Trip.destroy(params[:id])
     redirect "/trips"
   end
-
+#--------------trip------------------
 
 end

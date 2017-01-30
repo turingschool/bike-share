@@ -15,7 +15,9 @@ def import_trip_csv
     zipcode: row["zip_code"]})
   end
 
-  def format_duration
-
+  def format_duration(data)
+    minutes = data / 60
+    hours = (data / 60) / 60
+    days = 
   end
 end

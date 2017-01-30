@@ -1,7 +1,11 @@
-require 'csv'
-
 class Trip < ActiveRecord::Base
-  validates :duration, :start_date, :start_station, :end_date, :end_station, :bike_id, :subscription, :zipcode, presence: true
-
+  validates :duration, presence: true
+  validates :start_date, presence: true
+  validates :start_station, presence: true
+  validates :end_date, presence: true
+  validates :end_station, presence: true
+  validates :bike_id, presence: true
+  validates :subscription, presence: true
+  validates :zipcode, presence: true
 
 end

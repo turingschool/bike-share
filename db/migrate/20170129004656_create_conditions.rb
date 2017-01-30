@@ -1,7 +1,7 @@
 class CreateConditions < ActiveRecord::Migration[5.0]
   def change
 
-    creat_table :conditions do |t|
+    create_table :conditions do |t|
       t.string  :date
       t.string  :max_temperature_f
       t.string  :mean_temperature_f

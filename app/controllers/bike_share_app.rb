@@ -1,4 +1,6 @@
 class BikeShareApp < Sinatra::Base
+  set :root, File.expand_path("..", __dir__)
+  set :method_override, true
 
   #read - all
   get '/stations' do
@@ -18,10 +20,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   #read - one
-  get '/stations/:id' do
-    @station = Station.find(params[:id])
-    erb:"/stations/show"
-  end
 
   #update -one
   get '/stations/:id/edit' do
@@ -34,11 +32,16 @@ class BikeShareApp < Sinatra::Base
     redirect "/stations/#{@station.id}"
   end
 
+  get '/stations/:id' do
+    @station = Station.find(params[:id])
+    erb:"/stations/show"
+  end
+
   #delete - one from show
-  post '/stations/:id' do
+  delete '/stations/:id' do
     @station = Station.destroy(params[:id])
     redirect "/stations"
   end
 
-  #delete - one from index?  
+  #delete - one from index?
 end

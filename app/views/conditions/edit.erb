@@ -1,0 +1,22 @@
+<h1>Create a New Weather Condition</h1>
+
+<form action="/conditions/<%= @condition.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT" />
+  <label for="">Date:</label>
+  <input type="textfield" name="condition[date]" value="<%= @condition.date %>">
+  <label for="">Max Temperature (F):</label>
+  <input type="textfield" name="condition[max_temperature_f]" value="<%= @condition.max_temperature_f %>">
+  <label for="">Mean Temperature (F):</label>
+  <input type="textfield" name="condition[mean_temperature_f]" value="<%= @condition.mean_temperature_f %>">
+  <label for="">Min Temperature (F):</label>
+  <input type="textfield" name="condition[min_temperature_f]" value="<%= @condition.min_temperature_f %>">
+  <label for="">Mean Humidity:</label>
+  <input type="textfield" name="condition[mean_humidity]" value="<%= @condition.mean_humidity %>">
+  <label for="">Mean Visibility (Miles):</label>
+  <input type="textfield" name="condition[mean_visibility_miles]" value="<%= @condition.mean_visibility_miles %>">
+  <label for="">Mean Wind Speed (MPH):</label>
+  <input type="textfield" name="condition[mean_wind_speed_mph]" value="<%= @condition.mean_wind_speed_mph %>">
+  <label for="">Precipitation (Inches):</label>
+  <input type="textfield" name="condition[precipitation_inches]" value="<%= @condition.precipitation_inches %>">
+  <input type="submit" value="Update Condition" />
+</form>

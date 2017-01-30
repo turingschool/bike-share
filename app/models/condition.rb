@@ -1,9 +1,7 @@
 class Condition < ActiveRecord::Base
-
   #relationships with Station
   #relationships with Trips
-
-  #validates days
+  
   validates_presence_of :date,
                         :mean_temperature_f,
                         :min_temperature_f,

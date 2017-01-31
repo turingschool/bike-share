@@ -9,7 +9,7 @@ class Station < ActiveRecord::Base
   end
 
   def self.average_bikes_available_per_station
-    average("dock_count").round(2)
+    average("dock_count").round
   end
 
   def self.most_bikes_available_at_a_station

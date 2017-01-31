@@ -18,8 +18,8 @@ class Station < ActiveRecord::Base
 
   def self.oldest_station
     maximum("installation_date")
-  end
-
+  end 
+  
   def self.minimum_dock_count
     Station.find_by(minimum("dock_count"))
 
@@ -27,5 +27,13 @@ class Station < ActiveRecord::Base
 
   def self.maximum_dock_count
     maximum("dock_count")
+  end
+  
+  def self.most_bikes_available_at_a_station
+    maximum("dock_count")
+  end
+
+  def self.fewest_bikes_available_at_a_station
+    minimum("dock_count")
   end
 end

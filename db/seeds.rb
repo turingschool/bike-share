@@ -4,11 +4,10 @@ require './app/models/station.rb'
 
 def import_station_csv
   CSV.foreach('db/csv/station.csv', :headers=> true) do |row|
-    Trip.create!({
+    Station.create!({
       name: row["name"],
-      doc_count: row["doc_count"],
+      doc_count: row["dock_count"],
       city: row["city"],
       installation_date: row["installation_date"]})
-
   end
 end

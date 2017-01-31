@@ -1,0 +1,20 @@
+<h1>All Stations<h1>
+<hr size=10px>
+<%@stations.each do |station| %>
+    <h3><%= station.name %></h3>
+    <h3><%= station.dock_count %></h3>
+    <h3><%= station.city %></h3>
+    <h3><%= station.installation_date %></h3>
+
+    <a href="/stations/<%=station.id%>">View</a><br/>
+
+    <a href="/stations/<%= station.id %>/edit">Edit</a><br/>
+
+    <form action='/stations/<%=station.id%>' method='POST'>
+      <input type='hidden' name='_method' value='DELETE'>
+      <input type='submit' value='Remove Station'/>
+    </form><br/>
+    <hr>
+<%end %>
+
+<label><a href="/stations/new">Add New Station</a></label>

@@ -12,19 +12,27 @@ class Station < ActiveRecord::Base
     average("dock_count").round(2)
   end
 
-  def self.most_recently_installed_station
-    minimum("installation_date")
-  end
-
-  def self.oldest_station
-    maximum("installation_date")
-  end
-
   def self.most_bikes_available_at_a_station
     maximum("dock_count")
   end
 
   def self.fewest_bikes_available_at_a_station
     minimum("dock_count")
+  end
+
+  def self.minimum_dock_count
+
+  end
+
+  def self.maximum_dock_count
+
+  end
+
+  def self.most_recently_installed_station
+    minimum("installation_date")
+  end
+
+  def self.oldest_station
+    maximum("installation_date")
   end
 end

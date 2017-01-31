@@ -1,10 +1,53 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 class BikeShareApp < Sinatra::Base
+  include WillPaginate::Sinatra::Helpers
   set :root, File.expand_path("..", __dir__)
   set :method_override, true
 
+  get '/conditions' do
+    @conditions = Condition.paginate(:page => params[:page], :per_page => 30)
+    erb :"conditions/index"
+  end
+
+  get '/conditions/new' do
+    erb :"conditions/new"
+  end
+
+  post '/conditions' do
+    @condition = Condition.create(params[:condition])
+    redirect "/conditions/#{@condition.id}"
+  end
+
+  get '/conditions/:id' do
+    @condition = Condition.find(params[:id])
+    erb :"conditions/show"
+  end
+
+  get '/conditions/:id/edit' do
+    @condition = Condition.find(params[:id])
+    erb :"conditions/edit"
+  end
+
+  put '/conditions/:id' do
+    @condition = Condition.update(params[:id], params[:condition])
+    redirect "conditions/#{@condition.id}"
+  end
+
+  delete '/conditions/:id' do
+    @condition = Condition.destroy(params[:id])
+    redirect "conditions"
+  end
+
+  get '/weather-dashboard' do
+    @conditions = Condition.all
+    erb :"conditions/dashboard"
+  end
+
 # trip
   get '/trips' do
-    @trips = Trip.all
+    @trips = Trip.paginate(:page => params[:page], :per_page => 30)
     erb :"trips/index"
   end
 
@@ -38,7 +81,10 @@ class BikeShareApp < Sinatra::Base
     redirect "/trips"
   end
 
-
+  get '/trips-dashboard' do
+    @trips = Trip.all
+    erb:"/trips/dashboard"
+  end
 
   #read - all
   get '/stations' do

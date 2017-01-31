@@ -20,12 +20,12 @@ class Station < ActiveRecord::Base
     minimum("dock_count")
   end
 
-  def self.minimum_dock_count
-
+  def self.minimum_dock_count_name
+    where(dock_count: Station.fewest_bikes_available_at_a_station)
   end
 
-  def self.maximum_dock_count
-
+  def self.maximum_dock_count_name
+    where(dock_count: Station.most_bikes_available_at_a_station)
   end
 
   def self.most_recently_installed_station

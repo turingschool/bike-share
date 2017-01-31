@@ -9,21 +9,21 @@
     <th>Delete</th>
   </tr>
   <div class="conditions">
-  <% @conditions.each do |condition| %>
+  
   <div class="condition">
     <tr>
-      <td><%= condition.date %></td>
+      <td>3/3/2013</td>
       
-      <td><a href="/conditions/<%=condition.id %>">Additional Info</a></td>
-      <td><a href="/conditions/<%=condition.id %>/edit">Edit</a></td>
+      <td><a href="/conditions/2">Additional Info</a></td>
+      <td><a href="/conditions/2/edit">Edit</a></td>
       <td>
-        <form action="/conditions/<%= condition.id %>" method="post">
+        <form action="/conditions/2" method="post">
           <input type="hidden" name="_method" value="DELETE" />
           <input type="submit" value="Delete" />
         </form>
       </td>
     </tr>
   </div>
-  <% end %>
+  
   </div>
 </table>

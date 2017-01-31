@@ -20,12 +20,11 @@ RSpec.describe "User deletes a weather condition" do
                      mean_wind_speed_mph: 3,
                      precipitation_inches: 3)
     visit "/conditions"
-      within("") do
-        click_button('Delete')
-      end
+    find(".conditions").first(".condition").click_button('Delete')
 
     save_and_open_page
     expect(page).not_to have_content("2/2/2012")
+    expect(page).to have_content("3/3/2013")
   end
 
 end

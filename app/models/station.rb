@@ -21,7 +21,8 @@ class Station < ActiveRecord::Base
   end
 
   def self.minimum_dock_count
-    minimum("dock_count")
+    Station.find_by(minimum("dock_count"))
+
   end
 
   def self.maximum_dock_count

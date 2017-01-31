@@ -116,8 +116,4 @@ DEPENDENCIES
   will_paginate (~> 3.1.1)
 
 BUNDLED WITH
-<<<<<<< HEAD
    1.13.6
-=======
-   1.13.7
->>>>>>> fde95732c2f3ffaa838244f74a9cfca0fb789a46

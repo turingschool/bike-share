@@ -133,6 +133,17 @@ class BikeShareApp < Sinatra::Base
 
   get '/station-dashboard' do
     @stations = Station.all
+    @all_stations = Station.total_count_of_stations
+    @average = Station.average_bikes_available_per_station
+    @max_dock_count = Station.most_bikes_available_at_a_station
+    @min_dock_count = Station.fewest_bikes_available_at_a_station
+    @min_dock_name = Station.minimum_dock_count_name
+    @max_dock_name = Station.maximum_dock_count_name
+    @recent = Station.most_recently_installed_station
+    @oldest = Station.oldest_station
+
+
+
     erb:"/stations/dashboard"
   end
 

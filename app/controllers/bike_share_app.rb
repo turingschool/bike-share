@@ -40,6 +40,11 @@ class BikeShareApp < Sinatra::Base
     redirect "conditions"
   end
 
+  get '/weather-dashboard' do
+    @conditions = Condition.all
+    erb :"conditions/dashboard"
+  end
+
 # trip
   get '/trips' do
     @trips = Trip.paginate(:page => params[:page], :per_page => 30)

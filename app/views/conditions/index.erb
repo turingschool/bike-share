@@ -13,7 +13,7 @@
   <div class="condition">
     <tr>
       <td><%= condition.date %></td>
-      
+
       <td><a href="/conditions/<%=condition.id %>">Additional Info</a></td>
       <td><a href="/conditions/<%=condition.id %>/edit">Edit</a></td>
       <td>
@@ -26,4 +26,6 @@
   </div>
   <% end %>
   </div>
+
+  <%= will_paginate @conditions %>
 </table>

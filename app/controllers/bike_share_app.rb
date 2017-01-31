@@ -5,11 +5,9 @@ class BikeShareApp < Sinatra::Base
   include WillPaginate::Sinatra::Helpers
   set :root, File.expand_path("..", __dir__)
   set :method_override, true
-  
+
   get '/conditions' do
-    # @conditions = Condition.find_each(batch_size: 30) do |condition|
-    # end
-    @conditions = Condition.all#add functionality for chunking by 30 days
+    @conditions = Condition.paginate(:page => params[:page], :per_page => 30)
     erb :"conditions/index"
   end
 
@@ -40,7 +38,7 @@ class BikeShareApp < Sinatra::Base
   delete '/conditions/:id' do
     @condition = Condition.destroy(params[:id])
     redirect "conditions"
-
+  end
 
 # trip
   get '/trips' do
@@ -78,7 +76,10 @@ class BikeShareApp < Sinatra::Base
     redirect "/trips"
   end
 
-
+  get '/trips-dashboard' do
+    @trips = Trip.all
+    erb:"/trips/dashboard"
+  end
 
   #read - all
   get '/stations' do
@@ -128,7 +129,6 @@ class BikeShareApp < Sinatra::Base
   get '/station-dashboard' do
     @stations = Station.all
     erb:"/stations/dashboard"
-
   end
 
 end

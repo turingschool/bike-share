@@ -16,3 +16,13 @@
 <p>Mean Wind Speed (MPH): <%= @condition.mean_wind_speed_mph %></p>
 
 <p>Precipitation (Inches): <%= @condition.precipitation_inches %></p>
+
+<tr>    
+  <td><a href="/conditions/<%=@condition.id %>/edit">Edit</a></td>
+  <td>
+    <form action="/conditions/<%=@condition.id %>" method="post">
+      <input type="hidden" name="_method" value="DELETE" />
+      <input type="submit" value="Delete" />
+    </form>
+  </td>
+</tr>

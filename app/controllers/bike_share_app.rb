@@ -44,4 +44,12 @@ class BikeShareApp < Sinatra::Base
   end
 
   #delete - one from index?
+
+  #station-dashboard
+
+  get '/station-dashboard' do
+    @stations = Station.all
+    erb:"/stations/dashboard"
+  end
+
 end

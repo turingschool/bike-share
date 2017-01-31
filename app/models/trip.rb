@@ -7,4 +7,5 @@ class Trip < ActiveRecord::Base
   validates :trip_bike_id, presence: true
   validates :subscription, presence: true
 
+
 end

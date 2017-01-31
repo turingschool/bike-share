@@ -1,10 +1,14 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 class BikeShareApp < Sinatra::Base
+  include WillPaginate::Sinatra::Helpers
   set :root, File.expand_path("..", __dir__)
   set :method_override, true
 
 # trip
   get '/trips' do
-    @trips = Trip.all
+    @trips = Trip.paginate(:page => params[:page], :per_page => 30)
     erb :"trips/index"
   end
 

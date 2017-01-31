@@ -8,18 +8,18 @@
     <th>Edit</th>
     <th>Delete</th>
   </tr>
-  <% @conditions.each do |condition| %>
-    <tr id="delete_me">
-      <td><%= condition.date %></td>
+  
+    <tr>
+      <td>0</td>
       
-      <td><a href="/conditions/<%=condition.id %>">Additional Info</a></td>
-      <td><a href="/conditions/<%=condition.id %>/edit">Edit</a></td>
+      <td><a href="/conditions/1">Additional Info</a></td>
+      <td><a href="/conditions/1/edit">Edit</a></td>
       <td>
-        <form action="/conditions/<%= condition.id %>" method="post">
+        <form action="/conditions/1" method="post">
           <input type="hidden" name="_method" value="DELETE" />
           <input type="submit" value="Delete" />
         </form>
       </td>
     </tr>
-  <% end %>
+  
 </table>

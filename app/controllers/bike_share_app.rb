@@ -1,4 +1,6 @@
 class BikeShareApp < Sinatra::Base
+  set :root, File.expand_path("..", __dir__)
+  set :method_override, true
 
   get '/conditions' do
     # @conditions = Condition.find_each(batch_size: 30) do |condition|

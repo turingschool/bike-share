@@ -83,6 +83,9 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips-dashboard' do
     @trips = Trip.all
+    @average = Trip.average_duration_of_a_ride
+    @longest = Trip.longest_ride
+    @shortest = Trip.shortest_ride
     @subsciber_count = Trip.subscriber_count
     @subscriber_percentage = Trip.subscriber_percentage
     erb:"/trips/dashboard"
@@ -143,9 +146,6 @@ class BikeShareApp < Sinatra::Base
     @max_dock_name = Station.maximum_dock_count_name
     @recent = Station.most_recently_installed_station
     @oldest = Station.oldest_station
-
-
-
     erb:"/stations/dashboard"
   end
 

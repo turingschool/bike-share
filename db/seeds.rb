@@ -6,15 +6,15 @@ require './app/models/bike.rb'
 
 
 CSV.foreach('db/csv/trip.csv', :headers=> true) do |row|
-  bike = Bike.find_or_create_by(csv_bike_id: row["bike_id"])
+  bike = Bike.find_or_create_by(id: row["bike_id"])
 
   Trip.create!({
   duration: row["duration"],
   start_date: row["start_date"],
-  start_station: row["start_station_name"],
+  start_station_id: row["start_station_id"],
   end_date: row["end_date"],
-  end_station: row["end_station_name"],
-  trip_bike_id: bike.csv_bike_id,
+  end_station_id: row["end_station_id"],
+  bike_id: bike.id,
   subscription: row["subscription_type"],
   zipcode: row["zip_code"]})
 end

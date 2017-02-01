@@ -1,4 +1,7 @@
 class Station < ActiveRecord::Base
+
+  belongs_to :trip
+
   validates :name, presence: true
   validates :dock_count, presence: true
   validates :city, presence: true
@@ -35,4 +38,5 @@ class Station < ActiveRecord::Base
   def self.oldest_station
     maximum("installation_date")
   end
+
 end

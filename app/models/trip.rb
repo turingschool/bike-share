@@ -8,4 +8,15 @@ class Trip < ActiveRecord::Base
   validates :subscription, presence: true
 
 
+  def self.subscriber_count
+    where(subscription: "Subscriber").count
+  end
+
+  def self.subscriber_percentage
+    subscriber = Trip.subscriber_count
+    customer = where(subscription: "Customer").count
+
+    total = subscriber/customer
+    #total  = Trip.all.count/subscriber
+  end
 end

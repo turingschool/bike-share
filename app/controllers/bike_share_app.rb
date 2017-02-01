@@ -83,6 +83,8 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips-dashboard' do
     @trips = Trip.all
+    @subsciber_count = Trip.subscriber_count
+    @subscriber_percentage = Trip.subscriber_percentage
     erb:"/trips/dashboard"
   end
 

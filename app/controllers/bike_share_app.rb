@@ -86,6 +86,8 @@ class BikeShareApp < Sinatra::Base
     @average = Trip.average_duration_of_a_ride
     @longest = Trip.longest_ride
     @shortest = Trip.shortest_ride
+    @subsciber_count = Trip.subscriber_count
+    @subscriber_percentage = Trip.subscriber_percentage
     erb:"/trips/dashboard"
   end
 

@@ -35,11 +35,6 @@ class Trip < ActiveRecord::Base
   #
   # end
 
-  def self.subscription_type_count_and_percentage
-    Trip.where(subscription: "Customer").count
-    Trip.where(subscription: "Subscriber").count
-  end
-
   def self.format_time(time)
     a = time.split(":")
     hours = a[0]
@@ -48,5 +43,15 @@ class Trip < ActiveRecord::Base
     "#{hours} hours, #{minutes} minutes and #{seconds} seconds"
   end
 
+  def self.subscriber_count
+    where(subscription: "Subscriber").count
+  end
 
+  def self.subscriber_percentage
+    subscriber = Trip.subscriber_count
+    customer = where(subscription: "Customer").count
+
+    total = subscriber/customer
+    #total  = Trip.all.count/subscriber
+  end
 end

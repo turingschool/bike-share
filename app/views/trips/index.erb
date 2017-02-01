@@ -1,17 +1,27 @@
-<h1>First 30 Trips</h1>
-<hr>
-<div class=""
-<% @trips.each do |trip| %>
-  <h3>Trip ID:<h3>
-  <p><%= trip.id %></p>
-  <a href="/trips/<%= trip.id %>">View Trip</a>
-  <a href="/trips/<%= trip.id %>/edit">Edit Trip</a>
-  <form action="/trips/<%= trip.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete Trip" />
-  </form>
-<% end %>
-<hr>
-<a href="/stations/new">Add New Trip</a>
-<hr>
-<%= will_paginate @trips %>
+<!DOCTYPE html>
+ <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bike-Share</title>
+  </head>
+  <body>
+    <h1>First 30 Trips</h1>
+    <hr>
+    <button type="button"><a href="/stations/new">Add New Trip</a></button>
+    <div class=""
+    <% @trips.each do |trip| %>
+      <h3>Trip ID:<h3>
+      <p><%= trip.id %></p>
+      <button type="button"><a href="/trips/<%= trip.id %>">View Trip</a></button>
+      <button type="button"><a href="/trips/<%= trip.id %>/edit">Edit Trip</a></button>
+      <form action="/trips/<%= trip.id %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete Trip" />
+      </form>
+    <% end %>
+    <hr>
+    <hr>
+    <%= will_paginate @trips %>
+
+  </body>
+ </html>

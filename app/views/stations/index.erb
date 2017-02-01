@@ -1,22 +1,31 @@
-<h1>All Stations<h1>
-<hr>
-<%@stations.each do |station| %>
-    <h3>Name:</h3>
-    <p><%= station.name %></p>
-    <h3>Dock Count:</h3>
-    <p><%= station.dock_count %></p>
-    <h3>City:</h3>
-    <p><%= station.city %></p>
-    <h3>Installation Date:</h3>
-    <p><%= station.installation_date %></p>
-
-    <label><a href="/stations/<%=station.id%>">View</a></label>
-    <a href="/stations/<%= station.id %>/edit">Edit</a>
-    <form action='/stations/<%=station.id%>' method='POST'>
-      <input type='hidden' name='_method' value='DELETE'>
-      <input type='submit' value='Remove Station'/>
-    </form><br/>
+<!DOCTYPE html>
+ <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bike-Share</title>
+  </head>
+  <body>
+    <h1>All Stations<h1>
     <hr>
-<%end %>
+    <button type="button"><a href="/stations/new">Add New Station</a></button>
 
-<a href="/stations/new">Add New Station</a>
+    <%@stations.each do |station| %>
+        <h3>Name:</h3>
+        <p><%= station.name %></p>
+        <h3>Dock Count:</h3>
+        <p><%= station.dock_count %></p>
+        <h3>City:</h3>
+        <p><%= station.city %></p>
+        <h3>Installation Date:</h3>
+        <p><%= station.installation_date %></p>
+
+        <button type="button"><a href="/stations/<%=station.id%>">View</a></button>
+        <button type="button"><a href="/stations/<%= station.id %>/edit">Edit</a></button>
+        <form action='/stations/<%=station.id%>' method='POST'>
+          <input type='hidden' name='_method' value='DELETE'>
+          <input type='submit' value='Remove Station'/>
+        </form>
+        <hr>
+    <%end %>
+  </body>
+ </html>

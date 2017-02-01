@@ -1,26 +1,36 @@
-<h1>Weather Conditions</h1>
-<hr>
-<a href="/conditions/new">Create New Weather Condition</a>
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Additional Info</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-    <% @conditions.each do |condition| %>
+<!DOCTYPE html>
+ <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bike-Share</title>
+  </head>
+  <body>
+    <h1>Weather Conditions</h1>
+    <hr>
+    <button type='button'><a href="/conditions/new">Create New Weather Condition</a></button>
+    <table>
       <tr>
-        <td><%= condition.date %></td>
-        <td><a href="/conditions/<%=condition.id %>">Additional Info</a></td>
-        <td><a href="/conditions/<%=condition.id %>/edit">Edit</a></td>
-        <td>
-          <form action="/conditions/<%= condition.id %>" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
-            <input type="submit" value="Delete" />
-          </form>
-        </td>
+        <th>Date</th>
+        <th>Additional Info</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
-  <% end %>
-</table>
-<hr>
-  <%= will_paginate @conditions %>
+        <% @conditions.each do |condition| %>
+          <tr>
+            <td><%= condition.date %></td>
+            <td><button type='button'><a href="/conditions/<%=condition.id %>">Additional Info</a></button></td>
+            <td><button><a href="/conditions/<%=condition.id %>/edit">Edit</a></button></td>
+            <td>
+              <form action="/conditions/<%= condition.id %>" method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                <input type="submit" value="Delete" />
+              </form>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+    <hr>
+      <%= will_paginate @conditions %>
+
+  </body>
+ </html>

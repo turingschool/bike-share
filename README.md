@@ -104,7 +104,7 @@ You can use ActiveRecord's [validations feature](http://guides.rubyonrails.org/a
 
 **Be sure to have a test for each individual validation.**
 
-Also, be sure to normalize the table(s) that you build to hold this information, and to use restful routes. What's normalization you ask? Check out the homework assignments for Day 4 [here](https://github.com/turingschool/homework/blob/master/module-2-homework.markdown) and this [overview](https://gist.github.com/Carmer/f9e060bf1ac30e3ab7b3). 
+Also, be sure to normalize the table(s) that you build to hold this information, and to use restful routes. What's normalization you ask? Check out the homework assignments for Day 4 [here](https://github.com/turingschool/homework/blob/master/module-2-homework.markdown) and this [overview](https://gist.github.com/Carmer/f9e060bf1ac30e3ab7b3).
 
 **Hint:** Any data that will be repeated in a significant amount of rows in your `stations` table should probably be extracted to its own table.
 
@@ -181,7 +181,7 @@ On the station dashboard add the following information:
 * Number of rides started at this station.
 * Number of rides ended at this station.
 * Most frequent destination station (for rides that began at this station).
-* Most freuqnet origination station (for rides that ended at this station).
+* Most frequent origination station (for rides that ended at this station).
 * Date with the highest number of trips started at this station.
 * Most frequent zip code for users starting trips at this station.
 * Bike ID most frequently starting a trip at this station.

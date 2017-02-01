@@ -1,5 +1,5 @@
 <h1>Weather Conditions</h1>
-
+<hr>
 <a href="/conditions/new">Create New Weather Condition</a>
 <table>
   <tr>
@@ -8,24 +8,19 @@
     <th>Edit</th>
     <th>Delete</th>
   </tr>
-  <div class="conditions">
-  <% @conditions.each do |condition| %>
-  <div class="condition">
-    <tr>
-      <td><%= condition.date %></td>
-
-      <td><a href="/conditions/<%=condition.id %>">Additional Info</a></td>
-      <td><a href="/conditions/<%=condition.id %>/edit">Edit</a></td>
-      <td>
-        <form action="/conditions/<%= condition.id %>" method="post">
-          <input type="hidden" name="_method" value="DELETE" />
-          <input type="submit" value="Delete" />
-        </form>
-      </td>
-    </tr>
-  </div>
+    <% @conditions.each do |condition| %>
+      <tr>
+        <td><%= condition.date %></td>
+        <td><a href="/conditions/<%=condition.id %>">Additional Info</a></td>
+        <td><a href="/conditions/<%=condition.id %>/edit">Edit</a></td>
+        <td>
+          <form action="/conditions/<%= condition.id %>" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            <input type="submit" value="Delete" />
+          </form>
+        </td>
+      </tr>
   <% end %>
-  </div>
-
-  <%= will_paginate @conditions %>
 </table>
+<hr>
+  <%= will_paginate @conditions %>

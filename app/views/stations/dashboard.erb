@@ -1,37 +1,52 @@
 <h1>Station Dashboard</h1>
+<hr>
 
-<h4>Total count of stations: <%=@all_stations%></h4>
+<h3>Total count of stations:</h3>
+<p><%=@all_stations%></p>
 
-<h4>Average bikes available per station (based on docks): <%=@average%></h4>
+<h3>Average bikes available per station (based on docks):</h3>
+<p><%=@average%></p>
 
-<h4>Most bikes available at a station (based on docks): <%=@max_dock_count%></h4>
-<h4>Fewest bikes available at a station (based on docks): <%=@min_dock_count%></h4>
+<h3>Most bikes available at a station (based on docks):</h3>
+<p><%=@max_dock_count%></p>
 
-<h4>Station(s) where the most bikes are available (based on docks): </h4>
+<h3>Fewest bikes available at a station (based on docks):<h3>
+<p><%=@min_dock_count%></p>
 
+<h3>Station(s) where the most bikes are available (based on docks): </h3>
 <% @max_dock_name.each do |station|%>
 <p> <%= station.name %></p>
 <%end%>
-<h4>Station(s) where the fewest bikes are available (based on docks): </h4>
+
+<h3>Station(s) where the fewest bikes are available (based on docks): </h3>
 
 <% @min_dock_name.each do |station|%>
 <p> <%= station.name %></p>
 <%end%>
 
-<h4>Most recently installed station: <%=@recent%></h4>
-<h4>Oldest station: <%=@oldest%></h4>
+<h3>Most recently installed station:</h3>
+<p><%=@recent%></p>
 
-<h4>Most recently installed station: <%= Station.most_recently_installed_station %></h4>
-<h4>Oldest station: <%= Station.oldest_station %></h4>
+<h3>Oldest station:<p>
+<p><%=@oldest%></p>
 
-iteration 6:
-On the station dashboard add the following information:
+<h3>Number of rides started at this station: </h3>
+<p>(replace me with the method)</p>
 
-<h4>Number of rides started at this station: </h4>
-<h4>Number of rides ended at this station: </h4>
-<h4>Most frequent destination station (for rides that began at this station): </h4>
-<h4>Most freuqnet origination station (for rides that ended at this station): </h4>
-<h4>Date with the highest number of trips started at this station: </h4>
-<h4>Most frequent zip code for users starting trips at this station: </h4>
-<h4>Bike ID most frequently starting a trip at this station: </h4>
+<h3>Number of rides ended at this station: </h3>
+<p>(replace me with the method)</p>
 
+<h3>Most frequent destination station (for rides that began at this station): </h3>
+<p>(replace me with the method)</p>
+
+<h3>Most freuqnet origination station (for rides that ended at this station): </h3>
+<p>(replace me with the method)</p>
+
+<h3>Date with the highest number of trips started at this station: </h3>
+<p>(replace me with the method)</p>
+
+<h3>Most frequent zip code for users starting trips at this station: </h3>
+<p>(replace me with the method)</p>
+
+<h3>Bike ID most frequently starting a trip at this station: </h3>
+<p>(replace me with the method)</p>

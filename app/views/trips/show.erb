@@ -1,16 +1,32 @@
 <h1>Trip details</h1>
+<hr>
+  <h3>Duration:<h3>
+  <p><%= @trip.duration %></p>
 
-  <p>Duration: <%= @trip.duration %></p>
-  <p>Start Date: <%= @trip.start_date %></p>
-  <p>End Date: <%= @trip.end_date %></p>
-  <p>Starting Station: <%= @trip.start_station %></p>
-  <p>Ending Station: <%= @trip.end_station %></p>
-  <p>Bike id: <%= @trip.trip_bike_id %></p>
-  <p>Subscriber or Customer: <%= @trip.subscription %></p>
-  <p>Zipcode: <%= @trip.zipcode %></p>
+  <h3>Start Date:</h3>
+  <p><%= @trip.start_date %></p>
+
+  <h3>End Date:</h3>
+  <p><%= @trip.end_date %></p>
+
+  <h3>Starting Station:</h3>
+  <p><%= @trip.start_station_id %></p>
+
+  <h3>Ending Station<h3>
+  <p><%= @trip.end_station_id %></p>
+
+  <h3>Bike id:</h3>
+  <p><%= @trip.bike_id %></p>
+
+  <h3>Subscriber or Customer:</h3>
+  <p><%= @trip.subscription %></p>
+
+  <h3>Zipcode:</h3>
+  <p><%= @trip.zipcode %></p>
 
   <a href="/trips/<%= @trip.id %>/edit">Edit trip</a>
+
   <form action="/trips/<%= @trip.id %>" method="POST">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="delete" />
+    <input type="submit" value="Delete Trip" />
   </form>

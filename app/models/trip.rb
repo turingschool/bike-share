@@ -16,7 +16,7 @@ class Trip < ActiveRecord::Base
 
   def self.find_all_end(id)
     Trip.where(start_station_id: id)
-  end  
+  end
 
   def self.average_duration_of_a_ride
     t = (average("duration").round).to_i
@@ -109,4 +109,5 @@ class Trip < ActiveRecord::Base
     total = subscriber/customer
     #total  = Trip.all.count/subscriber
   end
+
 end

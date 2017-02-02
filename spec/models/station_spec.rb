@@ -1,3 +1,4 @@
+
 require_relative '../spec_helper'
 RSpec.describe Station do
   it "is valid with all attributes" do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170201025850) do
+ActiveRecord::Schema.define(version: 20170202050923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,12 +48,14 @@ ActiveRecord::Schema.define(version: 20170201025850) do
     t.string   "end_date"
     t.string   "subscription"
     t.string   "zipcode"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "start_station_id"
     t.integer  "end_station_id"
     t.integer  "bike_id"
-    t.integer  "conditon_id"
+    t.integer  "condition_id"
+    t.string   "start_station_name"
+    t.string   "end_station_name"
   end
 
 end

@@ -8,7 +8,7 @@ class Station < ActiveRecord::Base
   validates :installation_date, presence: true
 
   def self.total_count_of_stations
-    all.count
+    count
   end
 
   def self.average_bikes_available_per_station

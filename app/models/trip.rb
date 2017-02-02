@@ -1,7 +1,6 @@
 class Trip < ActiveRecord::Base
 
   belongs_to :bike
-  has_many :stations
 
   validates :duration, presence: true
   validates :start_date, presence: true
@@ -10,6 +9,15 @@ class Trip < ActiveRecord::Base
   validates :end_station_id, presence: true
   validates :bike_id, presence: true
   validates :subscription, presence: true
+
+
+  def self.find_all_start(id)
+    Trip.where(start_station_id: id)
+  end
+
+  def self.find_all_end(id)
+    Trip.where(start_station_id: id)
+  end
 
 
 end

@@ -2,7 +2,12 @@
 
 h1{
   font-size: 105%;
-  color: white;
+  color: #FF6600;
+}
+
+h2 {
+  font-size: 175%;
+  color: #FF6600;
 }
 
 
@@ -81,4 +86,5 @@ table {
   padding-right: 80px;
   padding-top: 20px;
   border: 10px solid black;
+  color: black
 }

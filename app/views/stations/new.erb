@@ -7,10 +7,10 @@
     <nav>
     <ul id='container'>
       <li>
-        <a class="active" href='index.html'>Home</a>
+        <a href='/'>Home</a>
       </li>
       <li>
-        <a href='/stations'>Stations</a>
+        <a class="active" href='/stations'>Stations</a>
       </li>
       <li>
         <a href='/conditions'>Weather Conditions</a>
@@ -25,20 +25,29 @@
   </nav>
   </head>
   <body>
-    <h1>Create a New Station</h1>
+    <br/>
+    <br/>
+    <br/>
+    <h1 class='title'>Create a New Station</h1>
+    <br/>
+    <hr>
+    <table>
+    <tr>
+      <td>
+        <form action='/stations' method='post'>
+          <h3>Name:</h3>
+          <p><input type='textfield' name='station[name]'></p>
+          <h3>Dock Count:</h3>
+          <p><input type='textfield' name='station[dock_count]'></p>
+          <h3>City:</h3>
+          <p><input type='textfield' name='station[city]'></p>
+          <h3>Installation Date:</h3>
+          <p><input type='textfield' name='station[installation_date]'></p>
 
-    <form action='/stations' method='post'>
-      <h3>Name:</h3>
-      <p><input type='textfield' name='station[name]'></p>
-      <h3>Dock Count:</h3>
-      <p><input type='textfield' name='station[dock_count]'></p>
-      <h3>City:</h3>
-      <p><input type='textfield' name='station[city]'></p>
-      <h3>Installation Date:</h3>
-      <p><input type='textfield' name='station[installation_date]'></p>
-
-      <input type='submit' value="Create!">
-    </form>
-
+          <input type='submit' value="Create!">
+        </form>
+        </td>
+      </tr>
+    </table>
   </body>
  </html>

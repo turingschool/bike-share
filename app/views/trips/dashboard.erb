@@ -7,7 +7,7 @@
     <nav>
     <ul id='container'>
       <li>
-        <a class="active" href='index.html'>Home</a>
+        <a href='/'>Home</a>
       </li>
       <li>
         <a href='/stations'>Stations</a>
@@ -16,7 +16,7 @@
         <a href='/conditions'>Weather Conditions</a>
       </li>
       <li>
-        <a href='/trips'>Trips</a>
+        <a class="active" href='/trips'>Trips</a>
       </li>
       <li style="float:right">
         <h1>San Francisco Bike Share</h1>
@@ -25,51 +25,60 @@
   </nav>
   </head>
   <body>
-    <h1>Trips Dashboard</h1>
-    <hr>
+    </br></br></br>
 
-    <h5>Average duration of a ride: </h5>
-    <p> <%= @average %></p>
-
-    <h5>Longest ride: </h5>
-    <p><%= @longest %></p>
-
-    <h5>Shortest ride: </h5>
-    <p><%= @shortest %></p>
-
-    <h5>Station with the most rides as a starting place: </h5>
-    <p>(replace me with a method)</p>
-
-    <h5>Station with the most rides as an ending place: </h5>
-    <p>(replace me with a method)</p>
-
-    <h5>Month by Month breakdown of number of rides with subtotals for each year: </h5>
-    <p>(replace me with a method)</p>
-
-    <h5>Most ridden bike with total number of rides for that bike: </h5>
-    <p>(replace me with a method)</p>
-
-    <h5>Least ridden bike with total number of rides for that bike: </h5>
-    <p>(replace me with a method)</p>
-
-    <h5>User subscription type breakout with both count and percentage: </h5>
-    <p>
-    <% @trips.subscription_count_breakdown.each do |subs, total| %>
-      type: <%= subs %> - total amount of users:<%= total  %> percentage: <%= (total * 100 / @trips.total_subscribers).round %><br/>
-      <% end %>
-    </p>
-
-    <h5>Single date with the highest number of trips with a count of those trips: </h5>
-    <p>(replace me with a method)</p>
-
-    <h5>Single date with the lowest number of trips with a count of those trips: </h5>
-    <p>(replace me with a method)</p>
-
-    <h5>Weather on the day with the highest rides</h5>
-    <p>(replace me with a method)</p>
-
-    <h5>Weather on the day with the lowest rides</h5>
-    <p>(replace me with a method)</p>
-
+    <table>
+      <tr>
+        <td>
+        <h2>Trip Dashboard</h2>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h3>Average duration of a ride: </h3>
+          <p> <%= @average %></p>
+        <hr>
+          <h3>Longest ride: </h3>
+          <p><%= @longest %></p>
+        <hr>
+          <h3>Shortest ride: </h3>
+          <p><%= @shortest %></p>
+        <hr>
+          <h3>Station with the most rides as a starting place: </h3>
+          <p>(replace me with a method)</p>
+        <hr>
+          <h3>Station with the most rides as an ending place: </h3>
+          <p>(replace me with a method)</p>
+        <hr>
+          <h3>Month by Month breakdown of number of rides with subtotals for each year: </h3>
+          <p>(replace me with a method)</p>
+        <hr>
+          <h3>Most ridden bike with total number of rides for that bike: </h3>
+          <p>(replace me with a method)</p>
+        <hr>
+          <h3>Least ridden bike with total number of rides for that bike: </h3>
+          <p>(replace me with a method)</p>
+        <hr>
+          <h3>User subscription type breakout with both count and percentage: </h3>
+          <p>
+          <% @trips.subscription_count_breakdown.each do |subs, total| %>
+            type: <%= subs %> - total amount of users:<%= total  %> percentage: <%= (total * 100 / @trips.total_subscribers).round %><br/>
+            <% end %>
+          </p>
+        <hr>
+          <h3>Single date with the highest number of trips with a count of those trips: </h3>
+          <p>(replace me with a method)</p>
+        <hr>
+          <h3>Single date with the lowest number of trips with a count of those trips: </h3>
+          <p>(replace me with a method)</p>
+        <hr>
+          <h3>Weather on the day with the highest rides</h3>
+          <p>(replace me with a method)</p>
+        <hr>
+          <h3>Weather on the day with the lowest rides</h3>
+          <p>(replace me with a method)</p>
+        </td>
+      </tr>
+    </table>
   </body>
  </html>

@@ -7,13 +7,13 @@
     <nav>
     <ul id='container'>
       <li>
-        <a class="active" href='index.html'>Home</a>
+        <a href='/'>Home</a>
       </li>
       <li>
         <a href='/stations'>Stations</a>
       </li>
       <li>
-        <a href='/conditions'>Weather Conditions</a>
+        <a class="active" href='/conditions'>Weather Conditions</a>
       </li>
       <li>
         <a href='/trips'>Trips</a>
@@ -25,41 +25,56 @@
   </nav>
   </head>
   <body>
-    <h1>Weather Conditions</h1>
-    <hr>
-    <h2><%= @condition.date %></h2>
-    <hr>
-    <h5>Temperatures (F)</h5>
+    <br/>
+    <br/>
+    <br/>
+    <h1 class='title'>Weather Conditions</h1>
+    <br/>
+    <table>
+      <tr>
+        <td>
+          <hr>
+          <h2><%= @condition.date %></h2>
+          <hr>
+          <h3>Temperatures (F)</h3>
 
-    <h3>Max Temparature:</h3>
-    <p><%= @condition.max_temperature_f %></p>
+          <h3>Max Temparature:</h3>
+          <p><%= @condition.max_temperature_f %></p>
 
-    <h3>Mean Temparature:</h3>
-    <p><%= @condition.mean_temperature_f %></p>
+          <h3>Mean Temparature:</h3>
+          <p><%= @condition.mean_temperature_f %></p>
 
-    <h3>Min Temparature:</h3>
-    <p><%= @condition.min_temperature_f %></p>
+          <h3>Min Temparature:</h3>
+          <p><%= @condition.min_temperature_f %></p>
 
-    <h3>Mean Humidity:</h3>
-    <p><%= @condition.mean_humidity %></p>
+          <h3>Mean Humidity:</h3>
+          <p><%= @condition.mean_humidity %></p>
 
-    <h3>Mean Visibility (Miles):</h3>
-    <p><%= @condition.mean_visibility_miles %></p>
+          <h3>Mean Visibility (Miles):</h3>
+          <p><%= @condition.mean_visibility_miles %></p>
 
-    <h3>Mean Wind Speed (MPH):</h3>
-    <p><%= @condition.mean_wind_speed_mph %></p>
+          <h3>Mean Wind Speed (MPH):</h3>
+          <p><%= @condition.mean_wind_speed_mph %></p>
 
-    <h3>Precipitation (Inches):</h3>
-    <p><%= @condition.precipitation_inches %></p>
-
-    <form action="/conditions/<%=@condition.id%>/edit">
-      <input type="submit" value="Edit"/>
-    </form>
-
-    <form action="/conditions/<%=@condition.id %>" method="post">
-      <input type="hidden" name="_method" value="DELETE" />
-      <input type="submit" value="Delete" />
-    </form>
-
+          <h3>Precipitation (Inches):</h3>
+          <p><%= @condition.precipitation_inches %></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <form action="/conditions/<%=@condition.id%>/edit">
+          <input type="submit" value="Edit"/>
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <form action="/conditions/<%=@condition.id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE" />
+          <input type="submit" value="Delete" />
+        </form>
+      </td>
+    </tr>
+   </table>
   </body>
  </html>

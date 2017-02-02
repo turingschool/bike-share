@@ -29,12 +29,21 @@
     <br/>
     <br/>
     <h1 class='title'>Weather Conditions</h1>
-    <br>
-    <form class="new_button" action="/conditions/new">
-      <input type="submit" value="Add New Condition Report"/>
-    </form>
+    <br/>
     <hr>
     <table>
+      <tr>
+        <td>
+          <form class="new_button" action="/conditions/new">
+            <input type="submit" value="Add New Condition Report"/>
+          </form>
+        </td>
+        <td>
+          <form class="new_button" action="/weather-dashboard">
+            <input type="submit" value="Weather Dashboard"/>
+          </form>
+        </td>
+      </tr>
       <tr>
         <th>Date</th>
         <th>Info</th>

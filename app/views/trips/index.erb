@@ -4,13 +4,36 @@
     <meta charset="utf-8">
     <title>Bike-Share</title>
     <link rel='stylesheet' href='style.css'/>
+    <nav>
+    <ul id='container'>
+      <li>
+        <a  href='/'>Home</a>
+      </li>
+      <li>
+        <a href='/stations'>Stations</a>
+      </li>
+      <li>
+        <a href='/conditions'>Weather Conditions</a>
+      </li>
+      <li>
+        <a class="active" href='/trips'>Trips</a>
+      </li>
+      <li style="float:right">
+        <h1>San Francisco Bike Share</h1>
+      </li>
+    </ul>
+  </nav>
   </head>
   <body>
-    <h1>First 30 Trips</h1>
-    <hr>
-    <form action="/trips/new">
+    <br/>
+    <br/>
+    <br/>
+    <h1 class='title'>First 30 Trips</h1>
+    <br/>
+    <form class="new_button" action="/trips/new">
       <input type="submit" value="Add New Trip"/>
     </form>
+    <hr>
     <table>
       <tr>
         <th>Trip ID</th>

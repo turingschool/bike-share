@@ -19,13 +19,13 @@
       <p><input type="text" name="trip[end_date]" value="<%= @trip.end_date %>"/></p>
 
       <h3>Starting Station: </h3>
-      <p><input type="text" name="trip[start_station]" value="<%= @trip.start_station_id %>"/></p>
+      <p><input type="text" name="trip[start_station_id]" value="<%= @trip.start_station_id %>"/></p>
 
       <h3>Ending Station: </h3>
-      <p><input type="text" name="trip[end_station]" value="<%= @trip.end_station_id %>"/></p>
+      <p><input type="text" name="trip[end_station_id]" value="<%= @trip.end_station_id %>"/></p>
 
       <h3>Bike id: </h3>
-      <p><input type="text" name="trip[trip_bike_id]" value="<%= @trip.bike_id %>"/></p>
+      <p><input type="text" name="trip[bike_id]" value="<%= @trip.bike_id %>"/></p>
 
       <h3>Subscriber or Customer: </h3>
       <p><input type="text" name="trip[subscription]" value="<%= @trip.subscription %>"/></p>
@@ -35,6 +35,5 @@
 
       <input type='submit' value="Update Trip"/>
     </form>
-
   </body>
  </html>

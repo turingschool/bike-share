@@ -3,25 +3,42 @@
   <head>
     <meta charset="utf-8">
     <title>Bike-Share</title>
+    <link rel='stylesheet' href='style.css'/>
   </head>
   <body>
     <h1>First 30 Trips</h1>
     <hr>
-    <button type="button"><a href="/stations/new">Add New Trip</a></button>
-    <div class=""
-    <% @trips.each do |trip| %>
-      <h3>Trip ID:<h3>
-      <p><%= trip.id %></p>
-      <button type="button"><a href="/trips/<%= trip.id %>">View Trip</a></button>
-      <button type="button"><a href="/trips/<%= trip.id %>/edit">Edit Trip</a></button>
-      <form action="/trips/<%= trip.id %>" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Delete Trip" />
-      </form>
-    <% end %>
-    <hr>
+    <form action="/trips/new">
+      <input type="submit" value="Add New Trip"/>
+    </form>
+    <table>
+      <tr>
+        <th>Trip ID</th>
+        <th>Options</th>
+      </tr>
+        <% @trips.each do |trip| %>
+        <tr>
+          <td><p><%= trip.id %></p></td>
+          <td>
+            <form action="/trips/<%=trip.id%>">
+              <input type="submit" value="View"/>
+            </form>
+          </td>
+          <td>
+            <form action="/trips/<%=trip.id%>/edit">
+              <input type="submit" value="Edit"/>
+            </form>
+          </td>
+          <td>
+            <form action="/trips/<%=trip.id%>" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="Delete Trip" />
+            </form>
+          </td>
+        </tr>
+        <% end %>
+      </table>
     <hr>
     <%= will_paginate @trips %>
-
   </body>
  </html>

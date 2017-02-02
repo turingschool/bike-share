@@ -32,8 +32,9 @@
     <h3>Precipitation (Inches):</h3>
     <p><%= @condition.precipitation_inches %></p>
 
-
-    <button type="button"><a href="/conditions/<%=@condition.id %>/edit">Edit</a></button>
+    <form action="/conditions/<%=@condition.id%>/edit">
+      <input type="submit" value="Edit"/>
+    </form>
 
     <form action="/conditions/<%=@condition.id %>" method="post">
       <input type="hidden" name="_method" value="DELETE" />

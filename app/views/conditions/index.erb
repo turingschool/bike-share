@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+ <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='style.css'/>
+    <title>Bike-Share</title>
+    <nav>
+    <ul id='container'>
+      <li>
+        <a href='/'>Home</a>
+      </li>
+      <li>
+        <a href='/stations'>Stations</a>
+      </li>
+      <li>
+        <a class="active" href='/conditions'>Weather Conditions</a>
+      </li>
+      <li>
+        <a href='/trips'>Trips</a>
+      </li>
+      <li style="float:right">
+        <h1>San Francisco Bike Share</h1>
+      </li>
+    </ul>
+  </nav>
+  </head>
+  <body>
+    <br/>
+    <br/>
+    <br/>
+    <h1 class='title'>Weather Conditions</h1>
+    <br/>
+    <hr>
+    <table>
+      <tr>
+        <td>
+          <form class="new_button" action="/conditions/new">
+            <input type="submit" value="Add New Condition Report"/>
+          </form>
+        </td>
+        <td>
+          <form class="new_button" action="/weather-dashboard">
+            <input type="submit" value="Weather Dashboard"/>
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <th>Date</th>
+        <th>Info</th>
+      </tr>
+        <% @conditions.each do |condition| %>
+          <tr>
+            <td><%= condition.date %></td>
+            <td>
+              <form action="/conditions/<%=condition.id%>">
+                <input type="submit" value="View"/>
+              </form>
+            </td>
+            <td>
+              <form action="/conditions/<%=condition.id%>/edit">
+                <input type="submit" value="Edit"/>
+              </form>
+            </td>
+            <td>
+              <form action="/conditions/<%= condition.id %>" method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                <input type="submit" value="Delete" />
+              </form>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+    <hr>
+      <%= will_paginate @conditions %>
+  </body>
+ </html>

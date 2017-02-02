@@ -1,0 +1,90 @@
+
+
+h1{
+  font-size: 105%;
+  color: #FF6600;
+}
+
+h2 {
+  font-size: 175%;
+  color: #FF6600;
+}
+
+
+body {
+  background-image: url("stations.jpg");
+  background-attachment: fixed;
+  margin: 0;
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #0099FF;
+}
+
+.new_button {
+  float: right;
+}
+
+img {
+  position: absolute;
+}
+
+.words {
+  background-color: #0099FF;
+  color: white;
+}
+
+
+.title {
+  font-size: 50px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+body {
+  color: white;
+  font-weight: bold;
+}
+
+html, body {
+  width: 100%
+}
+
+table {
+  margin: 0 auto;
+  background: grey;
+  padding-bottom: 20px;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 20px;
+  border: 10px solid black;
+  color: black
+}

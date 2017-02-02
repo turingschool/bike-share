@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+ <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bike-Share</title>
+    <link rel='stylesheet' href='style.css'/>
+    <nav>
+    <ul id='container'>
+      <li>
+        <a  href='/'>Home</a>
+      </li>
+      <li>
+        <a href='/stations'>Stations</a>
+      </li>
+      <li>
+        <a href='/conditions'>Weather Conditions</a>
+      </li>
+      <li>
+        <a class="active" href='/trips'>Trips</a>
+      </li>
+      <li style="float:right">
+        <h1>San Francisco Bike Share</h1>
+      </li>
+    </ul>
+  </nav>
+  </head>
+  <body>
+    <br/>
+    <br/>
+    <br/>
+    <h1 class='title'>First 30 Trips</h1>
+    <br/>
+    <hr>
+    <table>
+      <tr>
+        <td>
+          <form class="new_button" action="/trips/new">
+            <input type="submit" value="Add New Trip"/>
+          </form>
+        </td>
+        <td>
+          <form class="new_button" action="/trips-dashboard">
+            <input type="submit" value="Trip Dashboard"/>
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <th>Trip ID</th>
+        <th>Options</th>
+      </tr>
+        <% @trips.each do |trip| %>
+        <tr>
+          <td><p><%= trip.id %></p></td>
+          <td>
+            <form action="/trips/<%=trip.id%>">
+              <input type="submit" value="View"/>
+            </form>
+          </td>
+          <td>
+            <form action="/trips/<%=trip.id%>/edit">
+              <input type="submit" value="Edit"/>
+            </form>
+          </td>
+          <td>
+            <form action="/trips/<%=trip.id%>" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="Delete Trip" />
+            </form>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    <hr>
+    <%= will_paginate @trips %>
+  </body>
+ </html>

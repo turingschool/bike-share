@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+ <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bike-Share</title>
+    <link rel='stylesheet' href='/style.css'/>
+    <nav>
+    <ul id='container'>
+      <li>
+        <a class="active" href='index.html'>Home</a>
+      </li>
+      <li>
+        <a href='/stations'>Stations</a>
+      </li>
+      <li>
+        <a href='/conditions'>Weather Conditions</a>
+      </li>
+      <li>
+        <a href='/trips'>Trips</a>
+      </li>
+      <li style="float:right">
+        <h1>San Francisco Bike Share</h1>
+      </li>
+    </ul>
+  </nav>
+  </head>
+  <body>
+    <h1><%= @station.name %><h1>
+    <hr>
+    <h2>Info</h3>
+    <hr>
+    <h3>Dock Count:</h3>
+    <p><%=@station.dock_count%></p>
+    <h3>City:</h3>
+    <p><%=@station.city%></p>
+    <h3>Installation Date:</h3>
+    <p><%=@station.installation_date%></p>
+
+    <form action="/stations/<%=@station.id%>/edit">
+      <input type="submit" value="Edit"/>
+    </form>
+
+    <form action='/stations/<%=@station.id%>' method='POST'>
+      <input type='hidden' name='_method' value='DELETE'>
+      <input type='submit' value='Remove Station'/>
+    </form>
+
+    <form action="/stations">
+      <input type="submit" value="Back to All Stations"/>
+    </form>
+  </body>
+ </html>

@@ -3,29 +3,42 @@
   <head>
     <meta charset="utf-8">
     <title>Bike-Share</title>
+    <link rel='stylesheet' href='style.css'/>
   </head>
   <body>
     <h1>All Stations<h1>
     <hr>
-    <button type="button"><a href="/stations/new">Add New Station</a></button>
-
-    <%@stations.each do |station| %>
-        <h3>Name:</h3>
-        <p><%= station.name %></p>
-        <h3>Dock Count:</h3>
-        <p><%= station.dock_count %></p>
-        <h3>City:</h3>
-        <p><%= station.city %></p>
-        <h3>Installation Date:</h3>
-        <p><%= station.installation_date %></p>
-
-        <button type="button"><a href="/stations/<%=station.id%>">View</a></button>
-        <button type="button"><a href="/stations/<%= station.id %>/edit">Edit</a></button>
-        <form action='/stations/<%=station.id%>' method='POST'>
-          <input type='hidden' name='_method' value='DELETE'>
-          <input type='submit' value='Remove Station'/>
-        </form>
-        <hr>
-    <%end %>
+    <form action="/stations/new">
+      <input type="submit" value="Add New Station"/>
+    </form>  
+    <table>
+      <tr>
+        <th>Station Name</th>
+        <th>Options</th>
+      </tr>
+        <%@stations.each do |station|%>
+          <tr>
+            <td><p><%= station.name %></p></td>
+            <td>
+              <form action="/stations/<%=station.id%>">
+                <input type="submit" value="View"/>
+              </form>
+            </td>
+            <td>
+              <form action="/stations/<%=station.id%>/edit">
+                <input type="submit" value="Edit"/>
+              </form>
+            </td>
+            <td>
+              <form action='/stations/<%=station.id%>' method='POST'>
+                <input type='hidden' name='_method' value='DELETE'>
+                <input type='submit' value='Remove Station'/>
+              </form>
+            </td>
+          </tr>
+        <%end %>
+      </table>
+    <hr>
+    <%= will_paginate @stations %>
   </body>
  </html>

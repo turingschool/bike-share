@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Bike-Share</title>
+    <link rel='stylesheet' href='style.css'/>
   </head>
   <body>
     <h1>Trip details</h1>
@@ -31,12 +32,17 @@
       <h3>Zipcode:</h3>
       <p><%= @trip.zipcode %></p>
 
-      <button type="button"><a href="/trips/<%= @trip.id %>/edit">Edit trip</a></button>
+      <form action="/trips/<%= @trip.id %>/edit">
+        <input type="submit" value="Edit"/>
+      </form>
 
       <form action="/trips/<%= @trip.id %>" method="POST">
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="Delete Trip" />
       </form>
 
+      <form action="/trips">
+        <input type="submit" value="Back to All Trips"/>
+      </form>
   </body>
  </html>

@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Bike-Share</title>
+    <link rel='stylesheet' href='style.css'/>
   </head>
   <body>
     <h1><%= @station.name %><h1>
@@ -16,13 +17,17 @@
     <h3>Installation Date:</h3>
     <p><%=@station.installation_date%></p>
 
-
-    <button type="button"><a href='/stations/<%=@station.id%>/edit'>Edit</a></button>
+    <form action="/stations/<%=@station.id%>/edit">
+      <input type="submit" value="Edit"/>
+    </form>
 
     <form action='/stations/<%=@station.id%>' method='POST'>
       <input type='hidden' name='_method' value='DELETE'>
       <input type='submit' value='Remove Station'/>
     </form>
-    <button type="button"><a href='/stations'>Back to All Stations</a></button>
+
+    <form action="/stations">
+      <input type="submit" value="Back to All Stations"/>
+    </form>
   </body>
  </html>

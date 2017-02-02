@@ -162,17 +162,22 @@ Add the `trip.csv` file to your `db/csv` directory, and update your `seed.rb` fi
 
 ### Iteration 6
 
-Create a trips dashbord route. When you visit `/trips-dashboard` users should be shown a page with the following information:
+<!-- Create a trips dashbord route. When you visit `/trips-dashboard` users should be shown a page with the following information:
 
 * Average duration of a ride.
+#average("duration").round
 * Longest ride.
+#max("duration")
 * Shortest ride.
+#min("duration")
 * Station with the most rides as a starting place.
+
 * Station with the most rides as an ending place.
+
 * Month by Month breakdown of number of rides with subtotals for each year.
 * Most ridden bike with total number of rides for that bike.
 * Least ridden bike with total number of rides for that bike.
-* User subscription type breakout with both count and percentage.
+* User subscription type breakout with both count and percentage. -->
 * Single date with the highest number of trips with a count of those trips.
 * Single date with the lowest number of trips with a count of those trips.
 

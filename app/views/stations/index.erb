@@ -31,13 +31,22 @@
     <h1 class='title'>All Stations<h1>
     <br/>
     <hr>
-    <form class="new_button" action="/stations/new">
-      <input type="submit" value="Add New Station"/>
-    </form>
     <table>
       <tr>
-        <th>Station Name</th>
-        <th>Options</th>
+        <td>
+          <form class="new_button" action="/stations/new">
+            <input type="submit" value="Add New Station"/>
+          </form>
+        </td>
+        <td>
+          <form class="new_button" action="/station-dashboard">
+            <input type="submit" value="Station Dashboard"/>
+          </form>
+        </td>
+      </tr>
+      <tr>
+          <th>Station Name</th>
+          <th>Options</th>
       </tr>
         <%@stations.each do |station|%>
           <tr>

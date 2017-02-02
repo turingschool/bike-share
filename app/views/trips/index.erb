@@ -30,11 +30,20 @@
     <br/>
     <h1 class='title'>First 30 Trips</h1>
     <br/>
-    <form class="new_button" action="/trips/new">
-      <input type="submit" value="Add New Trip"/>
-    </form>
     <hr>
     <table>
+      <tr>
+        <td>
+          <form class="new_button" action="/trips/new">
+            <input type="submit" value="Add New Trip"/>
+          </form>
+        </td>
+        <td>
+          <form class="new_button" action="/trips-dashboard">
+            <input type="submit" value="Trip Dashboard"/>
+          </form>
+        </td>
+      </tr>
       <tr>
         <th>Trip ID</th>
         <th>Options</th>

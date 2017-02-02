@@ -7,7 +7,7 @@ RSpec.describe "When a user visits the trips dashboard" do
                     end_date: "02/01/2017",
                     subscription: "Customer",
                     zipcode: "80602",
-                    start_station_id: 44 ,
+                    start_station_id: 44,
                     end_station_id: 55,
                     bike_id: 555
                     )
@@ -23,7 +23,7 @@ RSpec.describe "When a user visits the trips dashboard" do
 
     visit '/trips-dashboard'
 
-    expect(page).to have_content("Trips Dashboard")
+    expect(page).to have_content("Trip Dashboard")
   end
 
   it "gets presented with date with the lowest number of trips" do

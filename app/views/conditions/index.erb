@@ -4,13 +4,36 @@
     <meta charset="utf-8">
     <link rel='stylesheet' href='style.css'/>
     <title>Bike-Share</title>
+    <nav>
+    <ul id='container'>
+      <li>
+        <a href='/'>Home</a>
+      </li>
+      <li>
+        <a href='/stations'>Stations</a>
+      </li>
+      <li>
+        <a class="active" href='/conditions'>Weather Conditions</a>
+      </li>
+      <li>
+        <a href='/trips'>Trips</a>
+      </li>
+      <li style="float:right">
+        <h1>San Francisco Bike Share</h1>
+      </li>
+    </ul>
+  </nav>
   </head>
   <body>
-    <h1>Weather Conditions</h1>
-    <hr>
-    <form action="/conditions/new">
+    <br/>
+    <br/>
+    <br/>
+    <h1 class='title'>Weather Conditions</h1>
+    <br>
+    <form class="new_button" action="/conditions/new">
       <input type="submit" value="Add New Condition Report"/>
     </form>
+    <hr>
     <table>
       <tr>
         <th>Date</th>

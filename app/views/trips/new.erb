@@ -1,13 +1,33 @@
-<h1>Add your trip information</h1>
+<!DOCTYPE html>
+ <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bike-Share</title>
+    <link rel='stylesheet' href='style.css'/>
+  </head>
+  <body>
+    <h1>Add your trip information</h1>
+    <hr>
+    <form action="/trips" method="POST">
+      <h3>Duration: </h3>
+      <p><input type="number" name="trip[duration]"/></p>
+      <h3>Start Date: </h3>
+      <p><input type="text" name="trip[start_date]" /></p>
+      <h3>End Date: </h3>
+      <p><input type="text" name="trip[end_date]"/></p>
+      <h3>Starting Station: </h3>
+      <p><input type ="text" name="trip[start_station]" /></p>
+      <h3>Ending Station: </h3>
+      <p><input type="text" name="trip[end_station]" /></p>
+      <h3>Bike id: </h3>
+      <p><input type="text" name="trip[trip_bike_id]" /></p>
+      <h3>Subscriber or Customer: </h3>
+      <p><input type="text" name="trip[subscription]" /></p>
+      <h3>Zipcode: </h3>
+      <p><input type="text" name="trip[zipcode]" /></p>
+      <input type="submit" value="Add Trip" />
+    </form>
 
-<form action="/trips" method="POST">
-  <label>Duration: </label> <input type="number" name="trip[duration]"/></br>
-  <label>Start Date: </label> <input type="text" name="trip[start_date]" /></br>
-  <label>End Date: </label> <input type="text" name="trip[end_date]"/></br>
-  <label>Starting Station: </label> <input type ="text" name="trip[start_station]" /></br>
-  <label>Ending Station: </label> <input type="text" name="trip[end_station]" /></br>
-  <label>Bike id: </label> <input type="text" name="trip[trip_bike_id]" /></br>
-  <label>Subscriber or Customer: </label> <input type="text" name="trip[subscription]" /></br>
-  <label>Zipcode: </label> <input type="text" name="trip[zipcode]" /></br>
-  <input type="submit" name="Submit trip" />
-</form>
+  </body>
+ </html>
+

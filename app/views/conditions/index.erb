@@ -1,31 +1,44 @@
-<h1>Weather Conditions</h1>
-
-<a href="/conditions/new">Create New Weather Condition</a>
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Additional Info</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-  <div class="conditions">
-  <% @conditions.each do |condition| %>
-  <div class="condition">
-    <tr>
-      <td><%= condition.date %></td>
-
-      <td><a href="/conditions/<%=condition.id %>">Additional Info</a></td>
-      <td><a href="/conditions/<%=condition.id %>/edit">Edit</a></td>
-      <td>
-        <form action="/conditions/<%= condition.id %>" method="post">
-          <input type="hidden" name="_method" value="DELETE" />
-          <input type="submit" value="Delete" />
-        </form>
-      </td>
-    </tr>
-  </div>
-  <% end %>
-  </div>
-
-  <%= will_paginate @conditions %>
-</table>
+<!DOCTYPE html>
+ <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='style.css'/>
+    <title>Bike-Share</title>
+  </head>
+  <body>
+    <h1>Weather Conditions</h1>
+    <hr>
+    <form action="/conditions/new">
+      <input type="submit" value="Add New Condition Report"/>
+    </form>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Info</th>
+      </tr>
+        <% @conditions.each do |condition| %>
+          <tr>
+            <td><%= condition.date %></td>
+            <td>
+              <form action="/conditions/<%=condition.id%>">
+                <input type="submit" value="View"/>
+              </form>
+            </td>
+            <td>
+              <form action="/conditions/<%=condition.id%>/edit">
+                <input type="submit" value="Edit"/>
+              </form>
+            </td>
+            <td>
+              <form action="/conditions/<%= condition.id %>" method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                <input type="submit" value="Delete" />
+              </form>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+    <hr>
+      <%= will_paginate @conditions %>
+  </body>
+ </html>

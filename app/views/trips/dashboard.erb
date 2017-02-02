@@ -33,7 +33,11 @@
     <p>(replace me with a method)</p>
 
     <h5>User subscription type breakout with both count and percentage: </h5>
-    <p>(replace me with a method)</p>
+    <p>
+    <% @trips.subscription_count_breakdown.each do |subs, total| %>
+      type: <%= subs %> - total amount of users:<%= total  %> percentage: <%= (total * 100 / @trips.total_subscribers).round %><br/>
+      <% end %>
+    </p>
 
     <h5>Single date with the highest number of trips with a count of those trips: </h5>
     <p>(replace me with a method)</p>
@@ -49,3 +53,4 @@
 
   </body>
  </html>
+

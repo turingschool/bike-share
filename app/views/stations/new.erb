@@ -1,17 +1,24 @@
-<h1>Create a New Station</h1>
-<br/>
-<br/>
-<form action='/stations' method='post'>
-  <label>Name:</form>
-  <input type='textfield' name='station[name]'><br/>
-  <label>Dock Count:</form>
-  <input type='textfield' name='station[dock_count]'><br/>
-  <label>City:</form>
-  <input type='textfield' name='station[city]'><br/>
-  <label>Installation Date:</form>
-  <input type='textfield' name='station[installation_date]'>
-  <br/>
-  <br/>
-  <br/>
-  <input type='submit' value="Create!" >
-</form>
+<!DOCTYPE html>
+ <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bike-Share</title>
+  </head>
+  <body>
+    <h1>Create a New Station</h1>
+
+    <form action='/stations' method='post'>
+      <h3>Name:</h3>
+      <p><input type='textfield' name='station[name]'></p>
+      <h3>Dock Count:</h3>
+      <p><input type='textfield' name='station[dock_count]'></p>
+      <h3>City:</h3>
+      <p><input type='textfield' name='station[city]'></p>
+      <h3>Installation Date:</h3>
+      <p><input type='textfield' name='station[installation_date]'></p>
+
+      <input type='submit' value="Create!">
+    </form>
+
+  </body>
+ </html>

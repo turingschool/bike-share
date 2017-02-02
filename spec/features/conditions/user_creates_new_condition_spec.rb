@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require_relative '../../spec_helper'
 RSpec.describe "User inputs weather conditions for a day" do
   it "saves the user input for weather conditions" do
     visit "/conditions/new"
@@ -11,7 +11,7 @@ RSpec.describe "User inputs weather conditions for a day" do
     fill_in('condition[mean_wind_speed_mph]', with: 55)
     fill_in('condition[precipitation_inches]', with: 55)
     click_button('Create Condition Report')
-    save_and_open_page
+    #save_and_open_page
     expect(page).to have_content("7/29/2013")
     expect(page).to have_content(55)
   end

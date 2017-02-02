@@ -40,7 +40,7 @@ RSpec.describe "When a user visits /trips" do
 
     visit '/trips'
 
-    expect(page).to have_text("Edit trip")
+    expect(page).to have_xpath("//input[@value='Edit']")
   end
 
   it "they see delete button visible" do
@@ -55,7 +55,7 @@ RSpec.describe "When a user visits /trips" do
                 )
 
     visit '/trips'
-    expect(page).to have_xpath("//input[@value='delete']")
+    expect(page).to have_xpath("//input[@value='Delete Trip']")
   end
 
 end

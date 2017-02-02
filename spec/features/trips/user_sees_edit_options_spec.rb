@@ -28,7 +28,7 @@ RSpec.describe "When a user visits /trips/1/edit" do
                     )
     visit "/trips/#{ trip.id }/edit"
 
-    expect(page).to have_xpath("//input[@value='Submit']")
+    expect(page).to have_xpath("//input[@value='Update Trip']")
   end
 
   it "they see form to submit any edits for trip" do

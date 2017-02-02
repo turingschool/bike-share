@@ -18,7 +18,7 @@ RSpec.describe "When a user visits /trips/new" do
     fill_in('trip[bike_id]', with: 335)
     fill_in('trip[subscription]', with: "Subscriber")
     fill_in('trip[zipcode]', with: "80602")
-    click_button('Submit trip')
+    click_button('Add Trip')
 
     expect(page).to have_content("02/01/2017")
     expect(page).to have_content("80602")

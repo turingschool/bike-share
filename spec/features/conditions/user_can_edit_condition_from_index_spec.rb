@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require_relative '../../spec_helper'
 RSpec.describe "User pushes button to edit condition on condition index" do
   it "updates the selected condition" do
     Condition.create(date: "2/2/2012",
@@ -13,7 +13,7 @@ RSpec.describe "User pushes button to edit condition on condition index" do
     click_button('Edit')
     fill_in 'condition[max_temperature_f]', with: 9
     click_button('Update Condition Report')
-    save_and_open_page
+    #save_and_open_page
     expect(page).not_to have_content(8)
     expect(page).to have_content(9)
   end

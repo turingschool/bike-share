@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require_relative '../../spec_helper'
 RSpec.describe "User deletes a weather condition" do
   it "deletes the selected weather condition from conditions index" do
     Condition.create(

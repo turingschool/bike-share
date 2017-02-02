@@ -12,7 +12,7 @@ RSpec.describe "When a user visits /trips/1" do
                     bike_id: 555
                     )
     visit '/trips/1'
-    expect(page).to have_xpath("//input[@value='delete']")
+    expect(page).to have_xpath("//input[@value='Delete Trip']")
   end
 
 

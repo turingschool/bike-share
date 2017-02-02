@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require_relative '../../spec_helper'
 RSpec.describe "User deletes a station" do
   it "deletes the selected station from stations index" do
     Station.create(
@@ -8,7 +8,7 @@ RSpec.describe "User deletes a station" do
                    installation_date: "2/18/2010",
                   )
     visit "/stations"
-    click_button('Delete')
+    click_button('Remove Station')
     #save_and_open_page
     expect(page).not_to have_content("Golden Gate")
   end

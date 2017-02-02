@@ -1,19 +1,33 @@
-<h1><%= @station.name %><h1>
-<hr size=10px>
+<!DOCTYPE html>
+ <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bike-Share</title>
+    <link rel='stylesheet' href='style.css'/>
+  </head>
+  <body>
+    <h1><%= @station.name %><h1>
+    <hr>
+    <h2>Info</h3>
+    <hr>
+    <h3>Dock Count:</h3>
+    <p><%=@station.dock_count%></p>
+    <h3>City:</h3>
+    <p><%=@station.city%></p>
+    <h3>Installation Date:</h3>
+    <p><%=@station.installation_date%></p>
 
-<h3>Info</h3>
-<hr>
+    <form action="/stations/<%=@station.id%>/edit">
+      <input type="submit" value="Edit"/>
+    </form>
 
-<p>Dock Count: <%=@station.dock_count%></p>
-<p>City: <%=@station.city%></p>
-<p>Installation Date: <%=@station.installation_date%></p>
+    <form action='/stations/<%=@station.id%>' method='POST'>
+      <input type='hidden' name='_method' value='DELETE'>
+      <input type='submit' value='Remove Station'/>
+    </form>
 
-
-<a href='/stations/<%=@station.id%>/edit'>Edit</a><br/>
-
-<form action='/stations/<%=@station.id%>' method='POST'>
-  <input type='hidden' name='_method' value='DELETE'>
-  <input type='submit' value='Remove Station'/>
-</form><br/>
-
-<a href='/stations'>Back to All Stations</a>
+    <form action="/stations">
+      <input type="submit" value="Back to All Stations"/>
+    </form>
+  </body>
+ </html>

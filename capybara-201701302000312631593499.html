@@ -1,0 +1,29 @@
+<h1>Weather Conditions</h1>
+
+<a href="/conditions/new">Create New Weather Condition</a>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Additional Info</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <div class="conditions">
+  
+  <div class="condition">
+    <tr>
+      <td>3/3/2013</td>
+      
+      <td><a href="/conditions/2">Additional Info</a></td>
+      <td><a href="/conditions/2/edit">Edit</a></td>
+      <td>
+        <form action="/conditions/2" method="post">
+          <input type="hidden" name="_method" value="DELETE" />
+          <input type="submit" value="Delete" />
+        </form>
+      </td>
+    </tr>
+  </div>
+  
+  </div>
+</table>

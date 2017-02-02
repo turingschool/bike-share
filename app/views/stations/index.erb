@@ -1,20 +1,44 @@
-<h1>All Stations<h1>
-<hr size=10px>
-<%@stations.each do |station| %>
-    <h3><%= station.name %></h3>
-    <h3><%= station.dock_count %></h3>
-    <h3><%= station.city %></h3>
-    <h3><%= station.installation_date %></h3>
-
-    <a href="/stations/<%=station.id%>">View</a><br/>
-
-    <a href="/stations/<%= station.id %>/edit">Edit</a><br/>
-
-    <form action='/stations/<%=station.id%>' method='POST'>
-      <input type='hidden' name='_method' value='DELETE'>
-      <input type='submit' value='Remove Station'/>
-    </form><br/>
+<!DOCTYPE html>
+ <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bike-Share</title>
+    <link rel='stylesheet' href='style.css'/>
+  </head>
+  <body>
+    <h1>All Stations<h1>
     <hr>
-<%end %>
-
-<label><a href="/stations/new">Add New Station</a></label>
+    <form action="/stations/new">
+      <input type="submit" value="Add New Station"/>
+    </form>  
+    <table>
+      <tr>
+        <th>Station Name</th>
+        <th>Options</th>
+      </tr>
+        <%@stations.each do |station|%>
+          <tr>
+            <td><p><%= station.name %></p></td>
+            <td>
+              <form action="/stations/<%=station.id%>">
+                <input type="submit" value="View"/>
+              </form>
+            </td>
+            <td>
+              <form action="/stations/<%=station.id%>/edit">
+                <input type="submit" value="Edit"/>
+              </form>
+            </td>
+            <td>
+              <form action='/stations/<%=station.id%>' method='POST'>
+                <input type='hidden' name='_method' value='DELETE'>
+                <input type='submit' value='Remove Station'/>
+              </form>
+            </td>
+          </tr>
+        <%end %>
+      </table>
+    <hr>
+    <%= will_paginate @stations %>
+  </body>
+ </html>

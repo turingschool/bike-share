@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+ <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bike-Share</title>
+    <link rel='stylesheet' href='style.css'/>
+  </head>
+  <body>
+    <h1>Station Dashboard</h1>
+    <hr>
+
+    <h3>Total count of stations:</h3>
+    <p><%=@all_stations%></p>
+
+    <h3>Average bikes available per station (based on docks):</h3>
+    <p><%=@average%></p>
+
+    <h3>Most bikes available at a station (based on docks):</h3>
+    <p><%=@max_dock_count%></p>
+
+    <h3>Fewest bikes available at a station (based on docks):<h3>
+    <p><%=@min_dock_count%></p>
+
+    <h3>Station(s) where the most bikes are available (based on docks): </h3>
+    <% @max_dock_name.each do |station|%>
+    <p> <%= station.name %></p>
+    <%end%>
+
+    <h3>Station(s) where the fewest bikes are available (based on docks): </h3>
+
+    <% @min_dock_name.each do |station|%>
+    <p> <%= station.name %></p>
+    <%end%>
+
+    <h3>Most recently installed station:</h3>
+    <p><%=@recent%></p>
+
+    <h3>Oldest station:<p>
+    <p><%=@oldest%></p>
+
+    <h3>Number of rides started at this station: </h3>
+    <p>(replace me with the method)</p>
+
+    <h3>Number of rides ended at this station: </h3>
+    <p>(replace me with the method)</p>
+
+    <h3>Most frequent destination station (for rides that began at this station): </h3>
+    <p>(replace me with the method)</p>
+
+    <h3>Most freuqnet origination station (for rides that ended at this station): </h3>
+    <p>(replace me with the method)</p>
+
+    <h3>Date with the highest number of trips started at this station: </h3>
+    <p>(replace me with the method)</p>
+
+    <h3>Most frequent zip code for users starting trips at this station: </h3>
+    <p>(replace me with the method)</p>
+
+    <h3>Bike ID most frequently starting a trip at this station: </h3>
+    <p>(replace me with the method)</p>
+
+  </body>
+ </html>

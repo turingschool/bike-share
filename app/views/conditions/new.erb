@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+ <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bike-Share</title>
+    <link rel='stylesheet' href='style.css'/>
+  </head>
+  <body>
+    <h1>Input a Condition Report</h1>
+    <hr>
+    <form action="/conditions" method="post">
+      <h3>Date:</h3>
+      <p><input type="textfield" name="condition[date]"></p>
+      <h3>Max Temperature:</h3>
+      <p><input type="textfield" name="condition[max_temperature_f]"></p>
+      <h3>Mean Temperature:</h3>
+      <p><input type="textfield" name="condition[mean_temperature_f]"></p>
+      <h3>Min Temperature:</h3>
+      <p><input type="textfield" name="condition[min_temperature_f]"></p>
+      <h3>Mean Humidity:</h3>
+      <p><input type="textfield" name="condition[mean_humidity]"></p>
+      <h3>Mean Visibility:</h3>
+      <p><input type="textfield" name="condition[mean_visibility_miles]"></p>
+      <h3>Mean Wind Speed:</h3>
+      <p><input type="textfield" name="condition[mean_wind_speed_mph]"></p>
+      <h3>Mean Precipitation:</h3>
+      <p><input type="textfield" name="condition[precipitation_inches]"></p>
+      <input type="submit" value="Create Condition Report" />
+    </form>
+
+  </body>
+ </html>

@@ -17,3 +17,10 @@
 </form><br/>
 
 <a href='/stations'>Back to All Stations</a>
+
+
+<!-- <p>Number of rides started at this station: <%= @station.rides_started_at_this_station %></p> NEEDS TABLE MIGRATION FOR PROPER FORMAT -->
+
+<!-- <p>Number of rides ended at this station: <%= @station.rides_started_at_this_station %></p> NEEDS TABLE MIGRATION FOR PROPER FORMAT AND OR PASSING ARGUMENT IF NEEDED-->
+
+<p>Most frequent destination station (for rides that began at this station): <%= @station.most_frequent_destination_station_for_rides_that_began_at_given_station %></p>

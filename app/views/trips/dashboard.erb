@@ -8,7 +8,11 @@
 <h5>Month by Month breakdown of number of rides with subtotals for each year: </h5>
 <h5>Most ridden bike with total number of rides for that bike: </h5>
 <h5>Least ridden bike with total number of rides for that bike: </h5>
-<h5>User subscription type breakout with both count and percentage: </h5>
+<h5>User subscription type breakout with both count and percentage: </h5> <p>
+<% @trips.subscription_count_breakdown.each do |subs, total| %>
+  type: <%= subs %> - total amount of users:<%= total  %> percentage: <%= (total * 100 / @trips.total_subscribers).round %><br/>
+  <% end %>
+</p>
 <h5>Single date with the highest number of trips with a count of those trips: </h5>
 <h5>Single date with the lowest number of trips with a count of those trips: </h5>
 

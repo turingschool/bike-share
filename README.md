@@ -2,7 +2,8 @@
 
 ## Collaborators
 * Seth
-* Stephanie 
+* Jonathan
+* Stephanie
 
 ## Abstract
 

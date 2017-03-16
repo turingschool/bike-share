@@ -4,6 +4,7 @@
 * Seth
 * Jonathan
 * Stephanie
+* Josh
 
 ## Abstract
 

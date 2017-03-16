@@ -2,7 +2,7 @@
 
 ## Collaborators
 * Seth
-
+* Stephanie 
 
 ## Abstract
 

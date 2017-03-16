@@ -2,7 +2,7 @@
 
 ## Collaborators
 * Seth
-
+* Jonathan
 
 ## Abstract
 

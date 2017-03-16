@@ -1,5 +1,9 @@
 # Bike Share
 
+## Collaborators
+* Seth
+* Stephanie 
+
 ## Abstract
 
 In this project you'll use Ruby, Sinatra, and Activerecord to build a site that analyzes bike share usage in San Francisco.
@@ -104,7 +108,7 @@ You can use ActiveRecord's [validations feature](http://guides.rubyonrails.org/a
 
 **Be sure to have a test for each individual validation.**
 
-Also, be sure to normalize the table(s) that you build to hold this information, and to use restful routes. What's normalization you ask? Check out the homework assignments for Day 4 [here](https://github.com/turingschool/homework/blob/master/module-2-homework.markdown) and this [overview](https://gist.github.com/Carmer/f9e060bf1ac30e3ab7b3). 
+Also, be sure to normalize the table(s) that you build to hold this information, and to use restful routes. What's normalization you ask? Check out the homework assignments for Day 4 [here](https://github.com/turingschool/homework/blob/master/module-2-homework.markdown) and this [overview](https://gist.github.com/Carmer/f9e060bf1ac30e3ab7b3).
 
 **Hint:** Any data that will be repeated in a significant amount of rows in your `stations` table should probably be extracted to its own table.
 

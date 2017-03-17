@@ -45,3 +45,7 @@ end
 # and i click "submit"
 # then i expect to be taken to "/horses"
 # and then I expect to see "betty"..etc
+
+# result = Station.specificattribute
+#
+# expect(result).to eq(expectation)

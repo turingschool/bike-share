@@ -1,7 +1,7 @@
 require_relative "../spec_helper"
 
 RSpec.describe "Creating a station" do
-  it "Can enter station attributes" do
+  xit "Can enter station attributes" do
     # As a user
     # when I visit "/stations/new"
     visit "/stations/new"

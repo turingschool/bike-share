@@ -1,4 +1,4 @@
-mclass CreateStations < ActiveRecord::Migration[5.0]
+class CreateStations < ActiveRecord::Migration[5.0]
   def change
     create_table :stations do |t|
       t.text    :name

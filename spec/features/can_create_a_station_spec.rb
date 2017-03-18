@@ -2,6 +2,7 @@ require_relative "../spec_helper"
 
 RSpec.describe "Creating a station" do
   it "Can enter station attributes" do
+
     visit "/stations/new"
     fill_in "station[name]", with: "SuperStation"
     fill_in "station[dock_count]", with: "15"

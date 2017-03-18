@@ -3,7 +3,7 @@ require_relative "../spec_helper"
 RSpec.describe "when a user visits '/stations' " do
   it "they can see all stations" do
     # As a user
-    # When I visti /stations
+    # When I vist /stations
     visit "/stations"
     # I expect to be on /stations page
     expect(current_path).to eq("/stations")

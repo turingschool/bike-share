@@ -10,6 +10,7 @@ group :development, :test do
   gem 'shotgun'
   gem 'tux'
   gem 'rack-test'
+  gem 'pry'
 end
 
 group :test do

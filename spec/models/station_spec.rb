@@ -8,25 +8,25 @@ RSpec.describe Station do
       expect(station).to be_valid
     end
 
-    xit "should be invalid without name" do
+    it "should be invalid without name" do
       station = Station.create(dock_count: "10", city: "Chicago", installation_date: "20160203")
 
       expect(station).to_not be_valid
     end
 
-    xit "should be invalid without dock_count" do
+    it "should be invalid without dock_count" do
       station = Station.create(name: "Navy Pier",city: "Chicago", installation_date: "20160203")
 
-      expect(station).to_not be_vali
+      expect(station).to_not be_valid
     end
 
-    xit "should be invalid without city" do
+    it "should be invalid without city" do
       station = Station.create(name: "Navy Pier", dock_count: "10", installation_date: "20160203")
 
       expect(station).to_not be_valid
     end
 
-    xit "should be invalid without installation_date" do
+    it "should be invalid without installation_date" do
       station = Station.create(name: "Navy Pier", dock_count: "10", city: "Chicago")
 
       expect(station).to_not be_valid

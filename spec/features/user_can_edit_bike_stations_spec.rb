@@ -5,7 +5,7 @@ RSpec.describe "When a user needs to edit/update a bike station" do
 
   it "it populates the fields from our station/edit" do
 
-    station = Station.create(name: 'Turing Station', dock_count: 12, city: 'Denver', installation_date: Date.parse("8/6/2013"))
+    station = Station.create(lat: 37.329732, long: -121.90178200000001, name: 'Turing Station', dock_count: 12, city: 'Denver', installation_date: Date.parse("8/6/2013"))
 
     visit "/stations/#{station.id}"
 

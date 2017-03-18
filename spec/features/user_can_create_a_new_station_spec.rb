@@ -5,14 +5,14 @@ RSpec.describe "When a user visits 'new'" do
 
     Station.create(name: 'Turing Station', dock_count: 12, city: 'Denver', installation_date: Date.parse("8/6/2013"))
 
-    visit '/stations/new'
+  visit '/stations/new'
 
 		fill_in "station[name]", with: "Turing Station"
 		fill_in "station[city]", with: "Denver"
 		fill_in "station[dock_count]", with: 12
 		fill_in "station[installation_date]", with: Date.parse('8/6/2013')
 
-		click_on "Submit" #explore selectors
+	click_on "Submit"
 
 		expect( current_path ).to eq('/stations/2')
 		expect(page).to have_content("Turing Station")

@@ -1,6 +1,5 @@
 require 'pry'
 class BikeShareApp < Sinatra::Base
-
   get '/stations' do
     @stations = Station.all
 
@@ -19,10 +18,21 @@ class BikeShareApp < Sinatra::Base
     redirect "/stations/#{station.id}"
   end
 
+  get '/stations/:id/edit' do
+    @station = Station.find(params[:id])
+
+    erb :"stations/edit"
+  end
+
+  put '/stations/:id' do
+    @station = Station.update(params[:id], params[:station])
+
+    redirect "/stations/#{station.id}"
+  end
+
   get '/stations/:id' do
     @stations = Station.find(params[:id])
 
     erb :"stations/show"
   end
-
 end

@@ -4,7 +4,7 @@ require_relative '../spec_helper'
 RSpec.describe "When a user visits '/show'" do
   it 'they see a single station' do
 
-    Station.create(name: 'Turing Station', dock_count: 12, city: 'Denver', installation_date: Date.parse('8/6/2013'))
+    Station.create(name: 'Turing Station', dock_count: 12, city: 'Denver', installation_date: Date.parse("8/6/2013"))
 
     visit '/stations/1'
 
@@ -12,16 +12,16 @@ RSpec.describe "When a user visits '/show'" do
       expect(page).to have_content('Turing Station')
     end
 
-    within('p') do
+    within('p.dock_count') do
       expect(page).to have_content(12)
     end
 
-    within('p') do
+    within('p.city') do
       expect(page).to have_content('Denver')
     end
 
-    within('p') do
-      expect(page).to have_content('8/6/2013')
+    within('p.installation_date') do
+      expect(page).to have_content(Date.parse('8/6/2013'))
     end
   end
 end

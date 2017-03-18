@@ -2,11 +2,13 @@ require_relative "../spec_helper"
 RSpec.describe Station do
   describe "validations" do
     it "is invalid without a name" do
-      station = Station.new(dock_count: 100, city: "Denver", installation_date: "3/14/2017")
+      city = City.create(name: "Denver")
+      station = city.stations.new(dock_count: 100, installation_date: "3/14/2017")
       expect(station).to_not be_valid
     end
     it "should be valid with a name" do
-      station = Station.new(name: "Turing", dock_count: 100, city: "Denver", installation_date: "3/14/2017")
+      city = City.create(name: "Denver")
+      station = city.stations.new(name: "Turing", dock_count: 100, installation_date: "3/14/2017")
       expect(station).to be_valid
     end
 
@@ -15,25 +17,32 @@ RSpec.describe Station do
       expect(station).to_not be_valid
     end
     it "should be valid with a city" do
-      station = Station.new(name: "Turing", dock_count: 100, city: "Denver", installation_date: "3/14/2017")
+      city = City.create(name: "Denver")
+      station = city.stations.new(name: "Turing", dock_count: 100, installation_date: "3/14/2017")
       expect(station).to be_valid
     end
 
     it "is invalid without a dock count" do
-      station = Station.new(name: "Turing", city: "Denver", installation_date: "3/14/2017")
+      city = City.create(name: "Denver")
+      station = city.stations.new(name: "Turing", installation_date: "3/14/2017")
       expect(station).to_not be_valid
     end
+
     it "should be valid with a dock count" do
-      station = Station.new(name: "Turing", dock_count: 100, city: "Denver", installation_date: "3/14/2017")
+      city = City.create(name: "Denver")
+      station = city.stations.new(name: "Turing", dock_count: 100, installation_date: "3/14/2017")
       expect(station).to be_valid
     end
 
     it "is invalid without an installation date" do
-      station = Station.new(name: "Turing", dock_count: 100, city: "Denver")
+      city = City.create(name: "Denver")
+      station = city.stations.new(name: "Turing", dock_count: 100)
       expect(station).to_not be_valid
     end
+
     it "should be valid with an installation date" do
-      station = Station.new(name: "Turing", dock_count: 100, city: "Denver", installation_date: "3/14/2017")
+      city = City.create(name: "Denver")
+      station = city.stations.new(name: "Turing", dock_count: 100, installation_date: "3/14/2017")
       expect(station).to be_valid
     end
   end

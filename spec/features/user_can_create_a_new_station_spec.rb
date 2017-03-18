@@ -14,8 +14,8 @@ RSpec.describe "When a user visits 'new'" do
 
 		click_on "Submit" #explore selectors
 
-		expect( current_path ).to eq('/stations')
-		expect(page).to have_content("Name: Turing Station")
+		expect( current_path ).to eq('/stations/2')
+		expect(page).to have_content("Turing Station")
 		expect(page).to have_content("Dock Count: 12")
 		expect(page).to have_content("City: Denver")
 		expect(page).to have_content("Installation Date: #{(Date.parse('8/6/2013'))}")

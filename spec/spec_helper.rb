@@ -11,4 +11,6 @@ DatabaseCleaner.strategy = :truncation
 
 RSpec.configure do |c|
   c.include Capybara::DSL
+  c.before(:all) { DatabaseCleaner.clean }
+  c.after(:all) { DatabaseCleaner.clean }
 end

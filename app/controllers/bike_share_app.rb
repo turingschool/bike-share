@@ -12,13 +12,14 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations/new' do
-    @stations = Station.all
     erb :"stations/new"
   end
 
   post '/stations' do
-
-    @stations = Station.create(params[:station])
+    City.create(params[:city])
+    ci = City.find_by(params[:city]).id
+    params[:station][:city_id] = ci
+    Station.create(params[:station])
     redirect "/stations"
   end
 

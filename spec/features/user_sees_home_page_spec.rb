@@ -7,9 +7,13 @@ RSpec.describe "When a user visits '/' " do
     within('h1') do
       expect(page).to have_content('Welcome to Bike Share!!!')
     end
-    
-    within('a') do
+
+    within('a.bike_index') do
       expect(page).to have_content("All Bike Stations")
+    end
+
+    within('a.new_station') do
+      expect(page).to have_content("Create a New Station")
     end
   end
 end

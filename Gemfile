@@ -16,5 +16,6 @@ group :development, :test do
 end
 
 group :test do
+  gem 'nyan-cat-formatter'
   gem 'database_cleaner'
 end

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="application.css">
+    <title>New Station</title>
+  </head>
+  <body>
+    <form action="/stations" method="post">
+      <p> Create a new station</p>
+      Name: <input type="text" name='station[name]'/><br/>
+      Number of Docks: <input type="number" name='station[dock_count]'/><br/>
+      Installation Date: <input type="date" name='station[installation_date]'/><br/>
+      City: <input type="number" name='station[city_id]'/><br/>
+      <input type="submit" value="submit"/>
+    </form>
+  </body> 
+</html>

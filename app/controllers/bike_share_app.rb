@@ -17,6 +17,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations' do
+
     @stations = Station.create(params[:station])
     redirect "/stations"
   end

@@ -13,7 +13,11 @@
     <p>
       Installation Date: <%= @station.installation_date %>
     </p>
+    <p>
+      City: <%= @station.city.name %>
+    </p>
 
+    <button type="button"><a href="/stations/<%= @station.id %>/edit">Edit</a></button>
     <form action="/stations/<%= @station.id %>" method="post">
       <input type="hidden" name="_method" value="DELETE" />
       <input type="submit" value="Delete">

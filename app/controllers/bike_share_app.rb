@@ -25,9 +25,10 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
+    # binding.pry
     @station = Station.update(params[:id], params[:station])
 
-    redirect "/stations/#{station.id}"
+    redirect "/stations/#{@station.id}"
   end
 
   get '/stations/:id' do

@@ -1,6 +1,6 @@
 <h1>Edit <%= @station.name %></h1>
 
-<form action="/stations" method="post">
+<form action="/stations/<%= @station.id %>" method="post">
   <label for="">Name: </label>
   <input type="textfield" name="station[name]" value= '<%=@station.name%>'>
 
@@ -14,4 +14,6 @@
   <input type="date" name="station[installation_date]"value= '<%=@station.installation_date%>'>
 
   <input type="submit" value="Submit"/>
+
+  <input type="hidden" name="_method" value="PUT" />
 </form>

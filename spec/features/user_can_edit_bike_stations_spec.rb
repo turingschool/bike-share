@@ -21,6 +21,7 @@ RSpec.describe "When a user needs to edit/update a bike station" do
 
     click_on "Submit"
 
+    expect(current_path).to eq("/stations/#{station.id}")
     expect(page).to have_content('Beavis Station')
     expect(page).to have_content('Thornton')
     expect(page).to have_content(8)

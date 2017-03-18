@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="application.css">
+    <title>Station Page</title>
+  </head>
+  <body>
+    <h2 class="station-name"><%= @station.name %></h2>
+
+    <p>
+      Bike Capacity: <%= @station.dock_count %><br>
+    </p>
+    <p>
+      Installation Date: <%= @station.installation_date %>
+    </p>
+
+  </body>
+</html>

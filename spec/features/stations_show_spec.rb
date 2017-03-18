@@ -2,6 +2,7 @@ require_relative '../spec_helper'
 
 RSpec.describe "when a user visits /stations/:id" do
   it "they see a single station's info" do
+    City.create(name:"San Jose")
     Station.create(name: "Union Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
     visit '/stations/1'
 
@@ -9,12 +10,13 @@ RSpec.describe "when a user visits /stations/:id" do
       expect(page).to have_content("Union Station")
     end
 
-    #come back to me
       expect(page).to have_content("Bike Capacity: 12")
-      #expect(page).to have_content("Installation Date: Sun, 15 May 2016")
+      expect(page).to have_content("Installation Date: 2016-05-15")
+      expect(page).to have_content("City: San Jose")
   end
 
   it "they can delete that station" do
+    City.create(name:"San Jose")
     Station.create(name: "Union Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
     visit '/stations/1'
     

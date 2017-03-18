@@ -5,6 +5,7 @@ gem 'pg'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'pry'
+gem 'awesome_print', require:'ap'
 
 group :development, :test do
   gem 'shotgun'

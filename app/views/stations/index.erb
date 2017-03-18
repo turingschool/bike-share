@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="application.css">
+    <title>Stations</title>
+  </head>
+  <body>
+    <h1 class="title">All Stations</h1>
+
+    <ul>
+      <% @stations.each do |station| %>
+          <li><%= station.name %></li>
+      <% end%>
+    </ul>
+  </body>
+</html>

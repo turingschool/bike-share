@@ -26,8 +26,21 @@ class Station < ActiveRecord::Base
     dock_counts.max
   end
 
+  def self.list_maker(station_list)
+    if station_list.count == 0
+      "No Stations Available"
+    elsif station_list.count == 1
+      station_list.first.name
+    else
+      output = station_list.reduce("") do |sum, station|
+          sum + station.name + ", "
+      end
+      output[0..-3]
+    end
+  end
+
   def self.stations_with_most_bikes
-    Station.where(dock_count: most_bikes.to_s)
+    list_maker(Station.where(dock_count: most_bikes.to_s))
   end
 
   def self.fewest_bikes
@@ -35,7 +48,7 @@ class Station < ActiveRecord::Base
   end
 
   def self.stations_with_fewest_bikes
-    Station.where(dock_count: fewest_bikes.to_s)
+    list_maker(Station.where(dock_count: fewest_bikes.to_s))
   end
 
   def self.date_converter(string_date)
@@ -55,11 +68,11 @@ class Station < ActiveRecord::Base
   end
 
   def self.newest_stations
-    date_finder(install_dates.max)
+    list_maker(date_finder(install_dates.max))
   end
 
   def self.oldest_stations
-    date_finder(install_dates.min)
+    list_maker(date_finder(install_dates.min))
   end
 
 end

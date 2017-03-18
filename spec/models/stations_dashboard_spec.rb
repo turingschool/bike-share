@@ -30,8 +30,12 @@ RSpec.describe Station do
   end
 
   describe ".stations_with_most_bikes" do
+    it "returns a formatted list" do
+      expect( Station.list_maker([@station1]) ).to eq("LoDo")
+      expect( Station.list_maker([@station1, @station2, @station3]) ).to eq("LoDo, Five Points, Capital Hill")
+    end
     it "returns stations with most bikes availale" do
-      expect( Station.stations_with_most_bikes ).to eq([@station1, @station2])
+      expect( Station.stations_with_most_bikes ).to eq("LoDo, Five Points")
     end
   end
 
@@ -43,7 +47,7 @@ RSpec.describe Station do
 
   describe ".stations_with_fewest_bikes" do
     it "returns stations with fewest bikes available" do
-      expect( Station.stations_with_fewest_bikes ).to eq([@station3])
+      expect( Station.stations_with_fewest_bikes ).to eq(@station3.name)
     end
   end
 
@@ -56,13 +60,13 @@ RSpec.describe Station do
       expect( Station.install_dates.first.class ).to eq(DateTime)
     end
     it "returns newest stations" do
-      expect( Station.newest_stations ).to eq([@station3])
+      expect( Station.newest_stations ).to eq(@station3.name)
     end
   end
 
   describe ".oldest_stations" do
     it "returns oldest stations" do
-      expect( Station.oldest_stations ).to eq([@station1])
+      expect( Station.oldest_stations ).to eq(@station1.name)
     end
   end
 

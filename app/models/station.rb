@@ -5,5 +5,4 @@ class Station < ActiveRecord::Base
   validates :city, presence: true
   validates :installation_date, presence: true
 
-
 end

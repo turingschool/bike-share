@@ -4,6 +4,8 @@ RSpec.describe "When a user visits '/stations'" do
 
   it "they see a list of stations" do
 
+    Station.create(name: 'Turing Station', dock_count: 12, city: 'Denver', installation_date:  Date.parse('8/6/2013'))
+
     visit '/stations'
 
     within("h2.title") do

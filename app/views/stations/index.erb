@@ -1,0 +1,17 @@
+<h1>All Stations</h1>
+
+<div>
+  <% @stations.each do |station| %>
+  <h3><%= station.name %></h3><br>
+  <p>Dock Count: <%= station.dock_count %></p><br>
+  <p>City: <%= station.city %></p><br>
+  <p>Installation Date: <%= station.installation_date %></p><br>
+
+  <a href="/stations/<%= station.id %>/edit">Edit Station</a>
+
+  <form action="/stations/<%= station.id %>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+  </form>
+  <% end %>
+</div>

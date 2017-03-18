@@ -7,8 +7,10 @@ RSpec.describe "When a user needs to edit/update a bike station" do
 
     station = Station.create(name: 'Turing Station', dock_count: 12, city: 'Denver', installation_date: Date.parse("8/6/2013"))
 
-    visit "/stations/#{station.id}/edit"
+    visit "/stations/#{station.id}"
 
+    click_on 'Edit'
+    
     expect(page).to have_selector("input[value= 'Turing Station']")
     expect(page).to have_selector("input[value= 'Denver']")
     expect(page).to have_selector("input[value='12']")

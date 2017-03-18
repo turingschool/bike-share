@@ -29,6 +29,9 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
+    City.create(params[:city])
+    ci = City.find_by(params[:city]).id
+    params[:station][:city_id] = ci
     @station = Station.update(params[:id], params[:station])
 
     redirect "/stations/#{@station.id}"

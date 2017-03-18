@@ -7,6 +7,7 @@ gem 'sinatra-activerecord'
 gem 'awesome_print', require: 'ap'
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'shotgun'
   gem 'tux'
   gem 'capybara'
@@ -15,7 +16,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'database_cleaner'
   gem 'rspec'
   gem 'rspec-core'
 end

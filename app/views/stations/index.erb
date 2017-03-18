@@ -6,6 +6,12 @@
   <p>Dock Count: <%= station.dock_count %></p><br>
   <p>City: <%= station.city %></p><br>
   <p>Installation Date: <%= station.installation_date %></p><br>
+
+  <form action="/stations/<%= station.id %>/edit" method="post">
+    <input type="hidden" name="_method" value="GET">
+    <input type="submit" value="Edit">
+  </form>
+
   <form action="/stations/<%= station.id %>" method="post">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete">

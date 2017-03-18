@@ -7,10 +7,7 @@
   <p>City: <%= station.city %></p><br>
   <p>Installation Date: <%= station.installation_date %></p><br>
 
-  <form action="/stations/<%= station.id %>/edit" method="post">
-    <input type="hidden" name="_method" value="GET">
-    <input type="submit" value="Edit">
-  </form>
+  <a href="/stations/<%= station.id %>/edit"><input type="submit" value="Edit"></a>
 
   <form action="/stations/<%= station.id %>" method="post">
     <input type="hidden" name="_method" value="DELETE">

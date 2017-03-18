@@ -9,11 +9,11 @@
     <div class="mdl-card__supporting-text">
 
       <p>  Dock Count: <%= station.dock_count %> </p>
-      <p>  City: <%= station.city_id %> </p>
+      <p>  City: <%= City.find(station.city_id).name %> </p>
       <p>  Installation Date: <%= station.installation_date %> </p>
     </div>
     <div class="mdl-card__actions mdl-card--border">
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="stations/ <%= ????????  %> ">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="stations/<%= station.id %>">
         View & Edit
       </a>
     </div>

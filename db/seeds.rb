@@ -1,4 +1,5 @@
 require 'csv'
+require 'database_cleaner'
 require './app/models/station.rb'
 require './app/models/city.rb'
 
@@ -22,7 +23,7 @@ contents.each do |row|
   stations.last[:city_id] = cities.find_index(row[:city]) + 1
 end
 
-city.each do |city|
+cities.each do |city|
   puts "Creating city: #{city}"
   City.create(name: city)
 end

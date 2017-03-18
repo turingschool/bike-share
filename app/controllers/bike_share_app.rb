@@ -10,13 +10,21 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations/new' do
+    @station = Station.new
+    @cities = City.all
     erb :"stations/new"
   end
 
   post '/stations' do
-    station = Station.create(params[:station])
-
-    redirect "/stations/#{station.id}"
+    city_name = params[:station][:city]
+    city = City.find_or_create_by(name: city_name)
+    input = {
+      name: params[:station][:name],
+      dock_count: params[:station][:dock_count],
+      installation_date: params[:station][:installation_date]
+    }
+    @station = city.stations.create(input)
+    redirect "/stations/#{@station.id}"
   end
 
   get '/stations/:id' do
@@ -30,9 +38,19 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
-    station = Station.update(params[:id], params[:station])
 
-    redirect "/stations/#{station.id}"
+    city_name = params[:station][:city]
+    city = City.find_or_create_by(name: city_name)
+    input = {
+      name: params[:station][:name],
+      dock_count: params[:station][:dock_count],
+      city_id: city.id.to_s,
+      installation_date: params[:station][:installation_date]
+    }
+    station = Station.find(params[:id]).update(input)
+
+    redirect "/stations/#{params[:id]}"
+
   end
 
   delete '/stations/:id' do

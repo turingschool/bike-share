@@ -20,20 +20,4 @@ stations.each do |row|
                  long: row[:long],
                  installation_date: Date.strptime(row[:installation_date], '%m/%e/%Y')
                  )
-  # puts city.name
-  # puts station.name
   end
-  require "pry"; binding.pry
-
-  # do something with city to convert city to city_id
-  #   City.create()
-
-# Station.create(name: "Navy Pier", dock_count: "10",  installation_date: "20160203", city_id: 2)
-# Station.create(name: "Carl", dock_count: "107", installation_date: "20160204", city_id: 1)
-# Station.create(name: "HelloStation", dock_count: "120",  installation_date: "20160206", city_id: 2)
-# Station.create(name: "DenverStation", dock_count: "420", installation_date: "20160206", city_id: 3)
-#
-#
-# City.create(name: "Denver")
-# City.create(name: "Chicago")
-# City.create(name: "Seaver")

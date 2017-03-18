@@ -4,7 +4,7 @@ RSpec.describe "as a user deletes an existing station from a single station page
   it "they can see existing station data and delete the station record" do
     # as a user
     # when i visit /stations/:id
-    visit "/stations/:id/edit"
+    visit "/stations/:id"
     # and i see my existing station data on screen
     within(".station-info") do
       expect(page).to have_content("Redwood City Station")

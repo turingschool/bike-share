@@ -4,6 +4,8 @@ class BikeShareApp < Sinatra::Base
     erb :"home/index"
   end
 
-
+  get '/stations' do
+    erb :"stations/index"
+  end
 
 end

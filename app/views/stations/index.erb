@@ -9,10 +9,10 @@
 
 <% @stations.each do |station| %>
      <tr class="station-info">
-       <td> <%= station.name %> </td>
-       <td> <%= station.dock_count %> </td>
-       <td> <%= station.city %> </td>
-       <td> <%= station.installation_date %> </td>
+       <td>Name: <%= station.name %> </td>
+       <td>Dock Count: <%= station.dock_count %> </td>
+       <td> <%= station.city %> </td> <!--check on this later-->
+       <td>Installation Date: <%= station.installation_date %> </td>
     </tr>
 <% end %>
 </table>

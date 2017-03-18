@@ -1,14 +1,33 @@
 <h1>Create a New Station</h1>
 
-<form action="/stations" method="post">
-  <label for="">Name:</label>
-  <input type="textfield" name="station[name]" required>
-  <label for="">Dock Count:</label>
-  <input type="textfield" name="station[dock_count]" required>
-  <label for="">City:</label>
-  <input type="textfield" name="city[name]" required>
-  <label for="">Installation Date:</label>
-  <input type="date" name="station[installation_date]" required>
+<form action="/stations" method="post"class="pure-form pure-form-aligned">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="name">Name: </label>
+            <input name="station[name]" type="text" placeholder="Name: " required>
+        </div>
 
-  <input type="submit" value="Submit" />
+        <div class="pure-control-group">
+            <label for="dock_count">Dock Count: </label>
+            <input name="station[dock_count]" type="text" placeholder="Dock Count" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="city">City: </label>
+            <input name="city[name]" type="text" placeholder="Enter City" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="installation_date">Installation Date: </label>
+            <input name="station[installation_date]" type="date" placeholder="MM/DD/YY" required>
+        </div>
+
+        <div class="pure-controls">
+            <label for="cb" class="pure-checkbox"></label>
+           <!--  <input id="cb" type="checkbox"> I've read the terms and conditions
+            </label> -->
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">SUBMIT</button>
+        </div>  
+    </fieldset>
 </form>
+

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="application.css">
+    <title>Edit Station</title>
+  </head>
+  <body>
+    <form action="/stations/<%= @station.id %>" method="post">
+      <p>Edit This Station</p>
+      <input type="hidden" name="_method" value="PUT"/>
+      Name: <input type="text" name='station[name]' value="<%= @station.name %>"/><br/>
+      Number of Docks: <input type="number" name='station[dock_count]' value="<%= @station.dock_count %>"/><br/>
+      Installation Date: <input type="date" name='station[installation_date]' value="<%= @station.installation_date %>"/><br/>
+      City: <input type="number" name='station[city_id]' value="<%= @station.city_id %>"/><br/>
+      <input type="submit" value="submit"/>
+    </form>
+  </body> 
+</html>

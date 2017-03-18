@@ -5,7 +5,7 @@ RSpec.describe "As a user wants to create a station" do
 		time = DateTime.now
 		visit '/stations/new'
 		fill_in "station[name]", with: "Downtown"
-		fill_in "station[city]", with: "Amsterdam"
+		fill_in "city[name]", with: "Amsterdam"
 		fill_in "station[dock_count]", with: 15
 		fill_in "station[installation_date]", with: time
 
@@ -22,7 +22,7 @@ RSpec.describe "As a user wants to create a station" do
   it "they can't submit when name field is empty" do
     time = DateTime.now
     visit '/stations/new'
-    fill_in "station[city]", with: "Amsterdam"
+    fill_in "city[name]", with: "Amsterdam"
     fill_in "station[dock_count]", with: 15
     fill_in "station[installation_date]", with: time
 
@@ -49,7 +49,7 @@ RSpec.describe "As a user wants to create a station" do
     time = DateTime.now
     visit '/stations/new'
     fill_in "station[name]", with: "Amsterdam"
-    fill_in "station[city]", with: "NYC"
+    fill_in "city[name]", with: "NYC"
     fill_in "station[installation_date]", with: time
 
     click_on "Submit"
@@ -62,7 +62,7 @@ RSpec.describe "As a user wants to create a station" do
     time = DateTime.now
     visit '/stations/new'
     fill_in "station[name]", with: "Billy"
-    fill_in "station[city]", with: "Amsterdam"
+    fill_in "city[name]", with: "Amsterdam"
     fill_in "station[dock_count]", with: 15
 
     click_on "Submit"

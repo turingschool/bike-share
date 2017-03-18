@@ -1,0 +1,42 @@
+.mdl-layout__content {
+	background: url('../assets/bike.jpg') center / cover;
+	/*background-color: rgba(0, 0, 0, 0.5);*/
+	/*background: opacity 0.7;*/
+	/*opacity: 0.4;*/
+}
+/*.img {
+  opacity: 0.8;
+}*/
+/*demo-layout-transparent*/
+/*.mdl-layout {
+	opacity: 1.0;
+}*/
+
+.pure-form-aligned {
+	text-align: center;
+	padding: 20px;
+/*	background-color: grey;*/
+	/*opacity: 1.0 !important;*/
+}
+.pure-control-group {
+	font-family: Helvetica;
+	font-weight: bold;
+	font-style: italic;
+	font-size: 24px;
+	color: black;
+}
+
+h1 {
+	top: 50px;
+	text-align: center;
+	font-weight: bold;
+	color: white;
+}
+
+.mdl-button {
+	font-size: 20px;
+}
+
+/*.mdl-mini-footer {
+	text-align: center;
+}*/

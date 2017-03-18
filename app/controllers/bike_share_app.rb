@@ -63,4 +63,10 @@ class BikeShareApp < Sinatra::Base
     @trips = Trip.all
     erb :'trips/index'
   end
+
+  get '/station-dashboard' do
+    @stations = Station
+    erb :"stations/dashboard"
+  end
+
 end

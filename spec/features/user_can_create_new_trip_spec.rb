@@ -19,18 +19,20 @@ RSpec.describe "When a user creates a trip" do
     fill_in 'trip[end_date]', with: "8/29/2013 15:14"
     fill_in 'trip[start_station]', with: 'Turing'
     fill_in 'trip[end_station]', with: 'Galvanize'
-    fill_in 'trip[subscription_type]', with: 'Customer'
-    fill_in 'trip[zip_code]', with: '80017'
+    fill_in 'trip[subscription_type]', with: 'Subscription'
+    # fill_in 'trip[zip_code]', with: '80017'
+    fill_in 'trip[bike_number]', with: '33'
 
     click_on 'Submit'
 
-    expect(current_path).to eq '/trips'
+    expect(current_path).to eq '/trips/3'
     expect(page).to have_content 'Trip ID: 3'
     expect(page).to have_content 'Start Date: 8/29/2013 14:14'
     expect(page).to have_content 'Start Station: Turing'
     expect(page).to have_content 'End Date: 8/29/2013 15:14'
     expect(page).to have_content 'End Station: Galvanize'
-    expect(page).to have_content 'Subscription Type: Customer'
-    expect(page).to have_content 'Zip Code: 80017'
+    expect(page).to have_content 'Subscription Type: Subscription'
+    # expect(page).to have_content 'Zip Code: 80017'
+    expect(page).to have_content 'Bike Number: 33'
   end
 end

@@ -67,9 +67,15 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/trips' do
-    require "pry"; binding.pry
-    start_station = params[:trip][:start_station]
-    Station.find_by(name: start_station)
+
+    start_station = Station.find_by(name: params[:trip][:start_station]).id
+    end_station = Station.find_by(name: params[:trip][:end_station]).id
+    subscription_type = SubscriptionType.find_by(subscription_type: params[:trip][:subscription_type]).id
+    zip_code = ZipCode.find_or_create_by(zip_code: params[:trip][:zip_code]).id
+    bike = Bike.find_by(bike_number: params[:trip][:bike_number]).id
+
+    @trip = Trip.create(duration: params[:trip][:duration], start_date: params[:trip][:start_date], start_station_id: start_station, end_date: params[:trip][:end_date], end_station_id: end_station, subscription_type_id: subscription_type, zip_code_id: zip_code, bike_id: bike)
+
     redirect "/trips/#{@trip.id}"
   end
 

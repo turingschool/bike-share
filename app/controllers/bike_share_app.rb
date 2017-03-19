@@ -66,8 +66,11 @@ class BikeShareApp < Sinatra::Base
     erb :'trips/new'
   end
 
-  post 'trips' do
-
+  post '/trips' do
+    require "pry"; binding.pry
+    start_station = params[:trip][:start_station]
+    Station.find_by(name: start_station)
+    redirect "/trips/#{@trip.id}"
   end
 
   get '/trips/:id' do

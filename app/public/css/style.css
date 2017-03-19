@@ -1,6 +1,10 @@
+
+/* typography */
 h1, h2, h3, p {
   font-family: 'Oswald', sans-serif;
   margin: 0px 40px 10px 40px;
+  letter-spacing: 2px;
+  font-size: 20px;
 }
 
 .each_station {
@@ -25,8 +29,38 @@ a:hover {
   margin: 20px;
 
 }
+/*
+forcing footer to the bottom per
+http://matthewjamestaylor.com/blog/keeping-footers-at-the-bottom-of-the-page
+*/
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
 
-header {
-  background-color: #fafafb;
+#container {
+  min-height: 100%;
+  position: relative;
+}
+
+#header {
+  background: #fafafb;
+  padding: 10px;
+  text-align: center;
+}
+
+#body {
+  padding: 10px;
+  padding-bottom: 60px; /* height of footer */
+}
+
+#footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 60px; /* height of footer */
+  background: #fafafb;
+  text-align: center;
 }

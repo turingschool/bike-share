@@ -1,4 +1,5 @@
 require 'pry'
+
 class BikeShareApp < Sinatra::Base
   get '/stations' do
     @stations = Station.all
@@ -46,5 +47,11 @@ class BikeShareApp < Sinatra::Base
     @station = Station.find(params[:id])
 
     erb :"stations/show"
+  end
+
+  get '/station-dashboard' do
+    @station = Station
+
+    erb :"stations/dashboard"
   end
 end

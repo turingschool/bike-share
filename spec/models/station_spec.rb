@@ -103,7 +103,7 @@ RSpec.describe Station do
                                 city_id: 4,
                                 installation_date: "8/12/12"})
       result = Station.stations_where_the_most_bikes_are_available
-      expect(result).to eq(["PooTown", "San Mateo"])
+      expect(result).to eq("PooTown, San Mateo")
     end
   end
 
@@ -139,7 +139,7 @@ RSpec.describe Station do
                                 city_id: 4,
                                 installation_date: "8/12/12"})
       result = Station.stations_where_the_fewest_bikes_are_available
-      expect(result).to eq(["Burlingame", "San Mateo"])
+      expect(result).to eq("Burlingame, San Mateo")
     end
   end
 
@@ -159,7 +159,7 @@ RSpec.describe Station do
                                 city_id: 4,
                                 installation_date: "8/12/12"})
       result = Station.newest_station
-      expect(result).to eq(["PooTown"])
+      expect(result).to eq("PooTown")
     end
   end
 
@@ -179,7 +179,7 @@ RSpec.describe Station do
                                 city_id: 4,
                                 installation_date: "8/12/12"})
       result = Station.oldest_station
-      expect(result).to eq(["San Mateo"])
+      expect(result).to eq("San Mateo")
     end
   end
 

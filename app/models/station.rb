@@ -22,15 +22,19 @@ class Station < ActiveRecord::Base
     results[1].map do |r|
       r.name
     end.join(', ')
-    binding.pry
   end
 
   def self.fewest_bikes
     minimum(:dock_count)
   end
 
-  def self.stations_by_docks_reverse
-    stations_by_docks.reverse
+  def self.stations_by_least_docks
+    docks = order(:dock_count)
+    derks = docks.group_by {|x| x.dock_count}
+    results = derks.max_by {|x| derks.keys}
+    results[1].map do |r|
+      r.name
+    end.join(', ')
   end
 
   def self.stations_by_install_date

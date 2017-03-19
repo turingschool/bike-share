@@ -7,7 +7,7 @@ RSpec.describe Trip do
     @bike = Bike.create(bike_number: 33)
     @subscription_type = SubscriptionType.create(subscription_type: "Subscription")
     @zip_code = ZipCode.create(zip_code: 80602)
-    @trip1 = Trip.create(duration: 100, start_date: "8/29/2013 14:14", start_station_id: station1.id, end_date: "8/29/2013 20:14", end_station_id: station2.id, bike_id: bike.id, subscription_type_id: subscription_type.id, zip_code_id: zip_code.id)
+    @trip1 = Trip.create(duration: 100, start_date: "8/29/2013 14:14", start_station_id: @station1.id, end_date: "8/29/2013 20:14", end_station_id: @station2.id, bike_id: bike.id, subscription_type_id: subscription_type.id, zip_code_id: zip_code.id)
   end
   
   describe "validations" do

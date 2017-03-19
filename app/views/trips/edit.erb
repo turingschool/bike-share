@@ -1,4 +1,5 @@
 <form action="/trips/<%= @trip.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT" />
   Duration<br>
   <input type='integer'  name='trip[duration]' value="<%= @trip.duration %>"><br>
   Start Date<br>

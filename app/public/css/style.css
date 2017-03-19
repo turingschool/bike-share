@@ -1,0 +1,32 @@
+h1, h2, h3, p {
+  font-family: 'Oswald', sans-serif;
+  margin: 0px 40px 10px 40px;
+}
+
+.each_station {
+  padding-left: 40px;
+  border: 5px;
+  border-color: black;
+}
+
+a {
+  text-decoration: none
+  color: #282c34;
+}
+
+a:hover {
+  color: #4a4e65;
+}
+
+.station_button {
+  border: 2px solid;
+  border-radius: 5px;
+  background-color: #007fe9;
+  margin: 20px;
+
+}
+
+
+header {
+  background-color: #fafafb;
+}

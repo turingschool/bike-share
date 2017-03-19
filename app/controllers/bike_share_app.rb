@@ -7,6 +7,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations' do
+
     @stations = Station.all
     erb :"stations/index"
   end

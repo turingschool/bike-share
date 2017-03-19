@@ -13,8 +13,10 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations' do
-    Station.create(params[:station])
-    # binding.pry
+    city = City.create(name: params[:station][:city])
+    params[:station].delete('city')
+    city.stations.create(params[:station])
+
     redirect "/stations"
   end
 

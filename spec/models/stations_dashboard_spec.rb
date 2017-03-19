@@ -15,9 +15,6 @@ RSpec.describe Station do
   end
 
   describe ".average_bikes_available" do
-    it "returns array of station dock counts" do
-      expect( Station.dock_counts ).to eq([10, 10, 4])
-    end
     it "returns average number of bikes available" do
       expect( Station.average_bikes ).to eq(8)
     end

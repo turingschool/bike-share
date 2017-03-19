@@ -14,19 +14,15 @@ class Station < ActiveRecord::Base
   validates :installation_date, presence: true
 
   def self.total_stations
-    Station.all.count
-  end
-
-  def self.dock_counts
-    Station.all.map(&:dock_count)
+    Station.count
   end
 
   def self.average_bikes
-    dock_counts.reduce(:+) / total_stations
+    Station.average(:dock_count)
   end
 
   def self.most_bikes
-    dock_counts.max
+    Station.maximum(:dock_count)
   end
 
   def self.list_maker(station_list)
@@ -43,15 +39,15 @@ class Station < ActiveRecord::Base
   end
 
   def self.stations_with_most_bikes
-    list_maker(Station.where(dock_count: most_bikes.to_s))
+    list_maker(Station.where(dock_count: most_bikes))
   end
 
   def self.fewest_bikes
-    dock_counts.min
+    Station.minimum(:dock_count)
   end
 
   def self.stations_with_fewest_bikes
-    list_maker(Station.where(dock_count: fewest_bikes.to_s))
+    list_maker(Station.where(dock_count: fewest_bikes))
   end
 
   def self.date_converter(string_date)

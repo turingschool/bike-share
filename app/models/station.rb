@@ -63,4 +63,16 @@ class Station < ActiveRecord::Base
       station.installation_date == self.oldest_date
     end
   end
+
+  def self.newest_date
+    Station.all.max_by do |station|
+      station.installation_date
+    end.installation_date
+  end
+
+  def self.newest_station
+    Station.all.select do |station|
+      station.installation_date == self.newest_date
+    end
+  end
 end

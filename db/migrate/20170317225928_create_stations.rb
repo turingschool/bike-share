@@ -6,6 +6,7 @@ class CreateStations < ActiveRecord::Migration[5.0]
   		t.integer    :dock_count
   		t.date 			 :installation_date
       t.timestamps null: false
+
   	end
   end
 end

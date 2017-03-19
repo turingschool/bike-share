@@ -12,7 +12,7 @@ RSpec.describe "As a user wants to create a station" do
 		click_on "Submit" #explore selectors
 
 		expect( current_path ).to eq('/stations')
-		expect(page).to have_content("Name: Downtown")
+		expect(page).to have_content("Downtown")
 		expect(page).to have_content("Dock Count: 15")
 		expect(page).to have_content("City: Amsterdam")
 		expect(page).to have_content("Installation Date: #{time.to_date.to_s}")

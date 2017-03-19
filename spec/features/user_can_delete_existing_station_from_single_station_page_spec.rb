@@ -2,8 +2,7 @@ require_relative "../spec_helper"
 
 RSpec.describe "as a user deletes an existing station from a single station page" do
   it "they can see existing station data and delete the station record" do
-    Station.create(name: "Japantown", dock_count: 15, city_id: 1, installation_date: "2013-08-05")
-    Station.create(name: "Redwood City Caltrain Station", dock_count: 11, city_id: 2, installation_date: "2013-08-06")
+    station = Station.create(name: "Japantown", dock_count: 15, city_id: 1, installation_date: "2013-08-05")
 
     # as a user
     # when i visit /stations/:id
@@ -21,8 +20,6 @@ RSpec.describe "as a user deletes an existing station from a single station page
     # and I am redirected to the stations list where I will
     expect(current_path).to eq("/stations")
     # see my updated station data
-    within(".all-stations-info") do
-      expect(page).to_not have_content("Japantown")
-    end
+    expect(page).to_not have_content(station.name)
   end
 end

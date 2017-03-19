@@ -100,8 +100,10 @@ RSpec.describe Station do
       expect(station_max_docks).to eq(stations)
     end
 
-    it 'shows the total number of bikes' do
+    it 'shows the fewest number of docks at a station' do
+      min_docks = Station.min_dock_count
 
+      expect(min_docks).to eq(2)
     end
   end
 end

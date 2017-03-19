@@ -35,4 +35,13 @@ class Station < ActiveRecord::Base
       station.dock_count == max_docks
     end
   end
+
+  def self.min_dock_count
+    station = Station.all.min_by do |station|
+      station.dock_count
+    end
+
+    station.dock_count
+  end
+
 end

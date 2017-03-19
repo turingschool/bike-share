@@ -5,43 +5,57 @@ RSpec.describe Station do
   describe 'validations' do
 
     it 'is valid with a name, dock count, city, longitude, latitude and installation date' do
-      station = Station.create(lat: 37.329732, long: -121.90178200000001, name: 'Turing Station', dock_count: 12, city: 'Denver', installation_date:  Date.parse('8/6/2013'))
+      city = City.create(name: 'Denver')
+
+      station = Station.create(lat: 37.329732, long: -121.90178200000001, name: 'Turing Station', dock_count: 12, city_id: city.id, installation_date:  Date.parse('8/6/2013'))
 
       expect(station).to be_valid
     end
 
     it 'is invalid if its missing a latitude' do
-      station = Station.create(long: -121.90178200000001, name: 'Cat Station', dock_count: 12, city: 'Denver', installation_date: Date.parse('8/6/2013'))
+      city = City.create(name: 'Denver')
+
+      station = Station.create(long: -121.90178200000001, name: 'Cat Station', dock_count: 12, city_id: 1, installation_date: Date.parse('8/6/2013'))
 
       expect(station).to_not be_valid
     end
 
     it 'is invalid if its missing a longitude' do
-      station = Station.create(lat: 37.329732, name: 'We\'re cool!', dock_count: 12, city: 'Denver', installation_date: Date.parse('8/6/2013'))
+      city = City.create(name: 'Denver')
+
+      station = Station.create(lat: 37.329732, name: 'We\'re cool!', dock_count: 12, city_id: 1, installation_date: Date.parse('8/6/2013'))
 
       expect(station).to_not be_valid
     end
 
     it 'is invalid if its missing a name' do
-      station = Station.create(lat: 37.329732, long: -121.90178200000001,  dock_count: 12, city: 'Denver', installation_date: Date.parse('8/6/2013'))
+      city = City.create(name: 'Denver')
+
+      station = Station.create(lat: 37.329732, long: -121.90178200000001,  dock_count: 12, city_id: 1, installation_date: Date.parse('8/6/2013'))
 
       expect(station).to_not be_valid
     end
 
     it 'is invalid if its missing a dock count' do
-      station = Station.create(lat: 37.329732, long: -121.90178200000001, name: 'Turing Station', city: 'Denver', installation_date: Date.parse('8/6/2013'))
+      city = City.create(name: 'Denver')
+
+      station = Station.create(lat: 37.329732, long: -121.90178200000001, name: 'Turing Station', city_id: 1, installation_date: Date.parse('8/6/2013'))
 
       expect(station).to_not be_valid
     end
 
     it 'is invalid if its missing a city' do
+      city = City.create(name: 'Denver')
+
       station = Station.create(lat: 37.329732, long: -121.90178200000001, name: 'Turing Station', dock_count: 12, installation_date: Date.parse('8/6/2013'))
 
       expect(station).to_not be_valid
     end
 
     it 'is invalid if its missing a installation date' do
-      station = Station.create(lat: 37.329732, long: -121.90178200000001, name: 'Turing Station', dock_count: 12, city: 'Denver')
+      city = City.create(name: 'Denver')
+
+      station = Station.create(lat: 37.329732, long: -121.90178200000001, name: 'Turing Station', dock_count: 12, city_id: 1)
 
       expect(station).to_not be_valid
     end

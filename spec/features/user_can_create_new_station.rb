@@ -1,7 +1,7 @@
 require_relative "../spec_helper"
 
 RSpec.describe "when a user visits '/stations/new' " do
-  xit "they can create a new station" do
+  it "they can create a new station" do
 
     # As a user
     # When I visit "/stations/new"

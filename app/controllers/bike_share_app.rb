@@ -3,6 +3,7 @@ class BikeShareApp < Sinatra::Base
 
   get "/stations" do
     @stations = Station.all
+    # binding.pry
     erb :"stations/index"
   end
 
@@ -28,18 +29,21 @@ class BikeShareApp < Sinatra::Base
   end
 
   get "/stations/:id/edit" do
-    city_name = params[:station][:city]
-    city = City.find_or_create_by(city: city_name).id
-
     @station = Station.find(params[:id])
     erb :"stations/edit"
   end
 
   put "/stations/:id" do
     city_name = params[:station][:city]
-    city = City.find_or_create_by(city: city_name).id
+    city = City.find_or_create_by(city: city_name)
 
-    @station = Station.update(params[:id], params[:station])
+    input = { name: params[:station][:name],
+              dock_count: params[:station][:dock_count],
+              city: city,
+              installation_date: params[:station][:installation_date]
+              }
+
+    @station = Station.update(params[:id], input)
     redirect "/stations/#{@station.id}"
   end
 
@@ -49,7 +53,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   delete "/stations/:id" do
-    @station = Station.destroy(params[:id])
+    Station.destroy(params[:id])
     redirect "/stations"
   end
 

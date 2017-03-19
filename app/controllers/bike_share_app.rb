@@ -48,6 +48,7 @@ class BikeShareApp < Sinatra::Base
   end
 
 #TRIPS STARTS HERE (ITERATION 4)
+#DATES are not working...
   get '/trips' do
     @trips = Trip.all
     erb :"trips/index"

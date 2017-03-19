@@ -13,14 +13,15 @@ class BikeShareApp < Sinatra::Base
 	end
 
 	post '/stations' do
-    # binding.pry
     city = City.create(params[:city]) #creates if it doesn't exist
 
     city = City.where(name: params[:city][:name]) #finds if it already exists
 
     # binding.pry
-    params[:station][:city_id] = city.ids.first # Refactor to place in model
-		Station.create(params[:station]) 
+
+    params[:station][:city_id] = city.ids.first #Find out where .id method went to? Refactor to place in model
+		Station.create(params[:station])
+
 
     if params["station"].any? {|_, v| (v.empty?) unless v.is_a?(Integer) || v.nil?}
       redirect '/stations/new'

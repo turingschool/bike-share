@@ -18,6 +18,5 @@ RSpec.describe "Creating a station" do
     expect(page).to have_content("City: Denver")
     expect(page).to have_content("Installation Date: 2015-02-03")
 
-    expect(current_path).to eq("/stations")
   end
 end

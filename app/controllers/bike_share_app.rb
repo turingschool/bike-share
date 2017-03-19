@@ -61,7 +61,7 @@ class BikeShareApp < Sinatra::Base
 
 #PROBLEM: LINKS WORK and FORM APPEARS, DOES NOT SAVE NEW ENTRIES
   post '/trips' do
-    @trip = Trip.create(params[:trip])
+    Trip.create(params[:trip])
     redirect "/trips"
   end
 

@@ -44,14 +44,6 @@ RSpec.describe Station do
       expect(station).to_not be_valid
     end
 
-    it 'is invalid if its missing a city' do
-      city = City.create(name: 'Denver')
-
-      station = Station.create(lat: 37.329732, long: -121.90178200000001, name: 'Turing Station', dock_count: 12, installation_date: Date.parse('8/6/2013'))
-
-      expect(station).to_not be_valid
-    end
-
     it 'is invalid if its missing a installation date' do
       city = City.create(name: 'Denver')
 

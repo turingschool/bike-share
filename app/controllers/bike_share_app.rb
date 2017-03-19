@@ -1,6 +1,15 @@
 class BikeShareApp < Sinatra::Base
   set :method_override, true
 
+  get "/" do
+    redirect "/station_dashboard"
+  end
+
+  get "/station_dashboard" do
+    @station = Station.all
+    erb :"stations/station_dashboard"
+  end
+
   get "/stations" do
     @stations = Station.all
     erb :"stations/index"

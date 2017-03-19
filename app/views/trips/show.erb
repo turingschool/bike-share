@@ -1,12 +1,15 @@
-<h1>Create a New Trip</h1>
+<h1>Edit Trip</h1>
 
-<form action="/trips" method="post"class="pure-form pure-form-aligned">
+  <form action="/trips/<%= @trip.id %>" method="post"class="pure-form pure-form-aligned">
+    <input type="hidden" name="_method" value="PUT" />
+
     <fieldset>
 
         <div class="pure-control-group">
-            <label for="start_date">Start Date: </label>
-            <input name="trip[start_date]" type="datetime-local" required>
+        <label for="start_date">Start Date: </label>
+        <input name="trip[start_date]" type="datetime-local" value="<%= Date.strptime(@trip.start_date.to_s, '%Y-%m-%dT%H:%M').to_s%>" required>
         </div>
+        <!--datetime is still invalid, needz fixed!! -->
 
         <div class="pure-control-group">
             <label for="start_station">Start Station: </label>
@@ -54,3 +57,4 @@
         </div>
     </fieldset>
 </form>
+    

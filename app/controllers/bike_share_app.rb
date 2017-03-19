@@ -62,10 +62,6 @@ class BikeShareApp < Sinatra::Base
     erb :'trips/index'
   end
 
-  get '/trips/new' do
-    erb :'trips/new'
-  end
-
   post '/trips' do
 
     start_station = Station.find_by(name: params[:trip][:start_station]).id
@@ -79,9 +75,19 @@ class BikeShareApp < Sinatra::Base
     redirect "/trips/#{@trip.id}"
   end
 
+  get '/trips/new' do
+    erb :'trips/new'
+  end
+
   get '/trips/:id' do
     @trip = Trip.find(params[:id])
     erb :'trips/show'
+  end
+
+  get '/trips/:id/edit' do
+    @trip = Trip.find(params[:id])
+
+    erb :'trips/edit'
   end
 
   get '/station-dashboard' do

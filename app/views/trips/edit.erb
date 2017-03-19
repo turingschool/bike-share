@@ -1,0 +1,19 @@
+<form action="/trips/<%= @trip.id %>" method="post">
+  Duration<br>
+  <input type='integer'  name='trip[duration]' value="<%= @trip.duration %>"><br>
+  Start Date<br>
+  <input type='text'  name='trip[start_date]' value="<%= @trip.start_date %>"><br>
+  Start Station Name<br>
+  <input type='text'  name='trip[start_station]'value="<%= @trip.start_station.name %>"><br>
+  End Date<br>
+  <input type='text'  name='trip[end_date]'value="<%= @trip.end_date %>"><br>
+  End Station Name<br>
+  <input type='text'  name='trip[end_station]'value="<%= @trip.end_station.name %>"><br>
+  Bike Number<br>
+  <input type='integer'  name='trip[bike_number]'value="<%= @trip.bike.bike_number %>"><br>
+  Subscription Type<br>
+  <input type='text'  name='trip[subscription_type]'value="<%= @trip.subscription_type.subscription_type %>"><br>
+  Zip Code<br>
+  <input type='integer'  name='trip[zip_code]'value="<%= @trip.zip_code.zip_code %>"><br>
+  <input type='submit' value='Submit'>
+</form>

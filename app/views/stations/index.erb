@@ -1,19 +1,23 @@
+
 <h1>All Stations</h1>
 
 <a href="/">Return to home</a>
 <a href="/stations/new">Create a New Station</a>
 <div>
+  <div class="each_station">
   <% @stations.each do |station| %>
-  <h3><%= station.name %></h3><br>
-  <p>Dock Count: <%= station.dock_count %></p><br>
-  <p>City: <%= station.city.name %></p><br>
-  <p>Installation Date: <%= station.installation_date %></p><br>
 
-  <a href="/stations/<%= station.id %>/edit">Edit Station</a>
+      <h3><%= station.name %></h3><br>
+      <p>Dock Count: <%= station.dock_count %></p><br>
+      <p>City: <%= station.city.name %></p><br>
+      <p>Installation Date: <%= station.installation_date %></p><br>
 
-  <form action="/stations/<%= station.id %>" method="post">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete">
-  </form>
-  <% end %>
+      <a href="/stations/<%= station.id %>/edit" class="station_button">Edit Station</a>
+
+      <form action="/stations/<%= station.id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input class="station_button" type="submit" value="Delete">
+      </form>
+      <% end %>
+    </div>
 </div>

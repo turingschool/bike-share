@@ -10,8 +10,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations/new' do
-    @station = Station.new
-    @cities = City.all
     erb :"stations/new"
   end
 
@@ -62,6 +60,14 @@ class BikeShareApp < Sinatra::Base
   get '/trips' do
     @trips = Trip.all
     erb :'trips/index'
+  end
+
+  get '/trips/new' do
+    erb :'trips/new'
+  end
+
+  post 'trips' do
+
   end
 
   get '/trips/:id' do

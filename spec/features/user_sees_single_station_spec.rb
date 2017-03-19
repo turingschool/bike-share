@@ -6,7 +6,7 @@ RSpec.describe "When a user visits '/stations/:id' " do
     @station1 = city.stations.create(name: "Turing", dock_count: 100, installation_date: "3/14/2017")
     @station2 = city.stations.create(name: "Galvanize", dock_count: 1, installation_date: "4/01/1972")
   end
-  
+
   it "they see that bike station" do
     visit '/stations/2'
 

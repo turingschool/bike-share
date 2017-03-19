@@ -1,9 +1,10 @@
 require 'csv'
 require_relative '../app/models/city'
 require_relative '../app/models/station'
+require 'database_cleaner'
 
-Station.destroy_all
-City.destroy_all
+DatabaseCleaner.strategy = :truncation
+DatabaseCleaner.clean
 
 stations = (CSV.open'db/csv/station.csv', headers: true, header_converters: :symbol)
 

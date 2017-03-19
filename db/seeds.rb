@@ -1,8 +1,12 @@
-require './app/models/station'
-require './app/models/city'
 require 'csv'
+require_relative '../app/models/city'
+require_relative '../app/models/station'
+require 'database_cleaner'
 
-contents = CSV.open("./csv/station.csv", headers: true, header_converters: symbol)
+DatabaseCleaner.strategy = :truncation
+DatabaseCleaner.clean
+
+contents = CSV.open("./csv/station.csv", headers: true, header_converters: :symbol)
 
 contents.each do |row|
 
@@ -12,7 +16,7 @@ contents.each do |row|
                  dock_count: row[:dock_count],
                  city: row[:city],
                  installation_date: Date.strptime(row[:installation_date]),
-                 city_id: city.id 
+                 city_id: city.id
                  )
 
 end

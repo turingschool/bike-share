@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Trip</title>
+  </head>
+  <body>
+    <h1>Edit Trip</h1>
+
+    <form action="/trips/<%= @trip.id %>" method="post">
+      <input type="hidden" name="_method" value="PUT" />
+      <label for="">Start Date</label>
+      <input type="textfield" name="trip[start_date]" value="<%= @trip.start_date %>"><br>
+      <label for="">Start Station:</label>
+      <input type="textfield" name="trip[start_station_name]" value="<%= @trip.start_station_name %>"><br>
+      <label for="">Duration (in minutes):</label>
+      <input type="textfield" name="trip[duration]" value="<%= @trip.duration %>"><br>
+      <label for="">End Date:</label>
+      <input type="textfield" name="trip[end_date]" value="<%= @trip.end_date %>"><br>
+      <label for="">End Station:</label>
+      <input type="textfield" name="trip[end_station_name]" value="<%= @trip.end_station_name %>"><br>
+      <label for="">Bike ID number:</label>
+      <input type="textfield" name="trip[bike_id]" value="<%= @trip.bike_id %>"><br>
+      <label for="">Subscription Type:</label>
+      <input type="textfield" name="trip[subscription_type]" value=" <%= @trip.subscription_type %>"><br>
+      <label for="">Zipcode:</label>
+      <input type="textfield" name="trip[zip_code]" value="<%= @trip.zip_code %>"><br>
+
+
+      <input type="submit" value="Submit">
+
+    </form>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<h1>All Trips</h1>
+
+<a href="/">Return to home</a>
+<a href="/trips/new">Create a New Trip</a>
+
+<h2>***THIS PAGE SHOULD ONLY SHOW THE FIRST 30 TRIPS***</h2>
+
+<div>
+  <% @trips.each do |trip| %>
+  <h3>Trip from: <%= trip.start_station_name %> on <%= trip.start_date %> to <%= trip.end_station_name%></h3><br>
+  <p>Bike ID: <%= trip.bike_id %></p><br>
+  <p>Trip Duration (in minutes): <%= trip.duration %></p><br>
+  <p>End Date: <%= trip.end_date %></p><br>
+  <p>Subscription Type: <%= trip.subscription_type %></p><br>
+  <p>Zipcode: <%= trip.zip_code %></p><br>
+  <a href="/trips/<%= trip.id %>/edit">Edit Trip</a>
+
+  <form action="/trips/<%= trip.id %>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+  </form>
+  <% end %>
+
+  <h2>LINK TO NEXT 30 TRIPS (and a link to previous 30)</h2>
+</div>

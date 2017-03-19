@@ -47,8 +47,47 @@ class BikeShareApp < Sinatra::Base
     @station = Station.destroy(params[:id])
     redirect '/stations'
   end
-
+  
   get '/station-dashboard' do
     erb :"stations/station-dashboard"
   end
+
+#TRIPS STARTS HERE (ITERATION 4)
+#DATES are not working...
+  get '/trips' do
+    @trips = Trip.all
+    erb :"trips/index"
+  end
+
+  get '/trips/new' do
+    erb :"trips/new"
+  end
+
+#PROBLEM: LINKS WORK and FORM APPEARS, DOES NOT SAVE NEW ENTRIES
+  post '/trips' do
+    Trip.create(params[:trip])
+    redirect "/trips"
+  end
+
+  get '/trips/:id/edit' do
+    @trip = Trip.find(params[:id])
+    erb :'trips/edit'
+  end
+
+  put '/trips/:id' do
+    @trip = Trip.update(params[:id], params[:trip])
+    redirect "/trips/#{@trip.id}"
+  end
+
+  get '/trips/:id' do
+    @trip = Trip.find(params[:id])
+    erb :"trips/show"
+  end
+
+#WORKING :)
+  delete '/trips/:id' do
+    @trip = Trip.destroy(params[:id])
+    redirect '/trips'
+  end
+
 end

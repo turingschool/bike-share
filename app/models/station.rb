@@ -6,4 +6,8 @@ class Station < ActiveRecord::Base
   # this will need to be addressed later:
   validates :city, presence: true
   validates :installation_date, presence: true
+
+  def self.average_bikes
+    average(:dock_count).round
+  end
 end

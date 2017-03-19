@@ -1,5 +1,15 @@
 require './app/models/station.rb'
 require './app/models/city.rb'
+require 'CSV'
 
-city = City.create!(name: 'Denver')
-city.stations.create!(lat: 37.329732, long: -121.90178200000001, name: 'Turing Station', dock_count: 12, installation_date: Date.parse('8/6/2013'))
+ CSV.foreach("./db/csv/station.csv", :headers => true) do |row|
+
+  city_name = row['city']
+
+  city = City.find_or_create_by(name: city_name)
+
+  row.delete("city")
+  row.delete("id")
+  city.stations.create!(row.to_h)
+
+end

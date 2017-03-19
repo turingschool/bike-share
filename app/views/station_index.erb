@@ -1,5 +1,3 @@
-
-
 <% @stations.each do |station| %>
 
   <div class="demo-card-square mdl-card mdl-shadow--2dp">
@@ -13,9 +11,7 @@
       <p>  Installation Date: <%= station.installation_date %> </p>
     </div>
     <div class="mdl-card__actions mdl-card--border">
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="stations/<%= station.id %>">
-        View & Edit
-      </a>
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="stations/<%= station.id %>">View & Edit</a>
     </div>
   </div>
 

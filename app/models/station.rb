@@ -44,4 +44,12 @@ class Station < ActiveRecord::Base
     station.dock_count
   end
 
+  def self.stations_with_fewest_docks
+    min_docks = self.min_dock_count
+
+    Station.all.select do |station|
+      station.dock_count == min_docks
+    end
+  end
+
 end

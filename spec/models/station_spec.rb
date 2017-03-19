@@ -69,8 +69,78 @@ RSpec.describe Station do
       result = Station.average_bikes_per_station
       expect(result).to eq(13)
     end
-
   end
 
+  describe "most bikes available at a station" do
+    it "returns the most bikes available at a station" do
+
+      station = Station.create({name: "PooTown",
+                                dock_count: 15,
+                                city_id: 1,
+                                installation_date: "8/12/13"})
+      station = Station.create({name: "Burlingame",
+                                dock_count: 11,
+                                city_id: 3,
+                                installation_date: "8/12/13"})
+      result = Station.most_bikes_available_at_station
+      expect(result).to eq(15)
+    end
+  end
+
+  describe "stations where the most bikes are available" do
+    it "returns the station(s) name where the most bikes available" do
+
+      station = Station.create({name: "PooTown",
+                                dock_count: 15,
+                                city_id: 1,
+                                installation_date: "8/12/13"})
+      station = Station.create({name: "Burlingame",
+                                dock_count: 11,
+                                city_id: 3,
+                                installation_date: "8/12/13"})
+      station = Station.create({name: "San Mateo",
+                                dock_count: 15,
+                                city_id: 4,
+                                installation_date: "8/12/12"})
+      result = Station.stations_where_the_most_bikes_are_available
+      expect(result).to eq(["PooTown", "San Mateo"])
+    end
+  end
+
+  describe "fewest bikes available at a station" do
+    it "returns the fewest number bikes available at a station" do
+
+      station = Station.create({name: "PooTown",
+                                dock_count: 15,
+                                city_id: 1,
+                                installation_date: "8/12/13"})
+      station = Station.create({name: "Burlingame",
+                                dock_count: 11,
+                                city_id: 3,
+                                installation_date: "8/12/13"})
+      result = Station.fewest_bikes_available_at_station
+      expect(result).to eq(11)
+    end
+  end
+
+  describe "stations where the fewest bikes are available" do
+    it "returns the station(s) name where the fewest bikes available" do
+
+      station = Station.create({name: "PooTown",
+                                dock_count: 15,
+                                city_id: 1,
+                                installation_date: "8/12/13"})
+      station = Station.create({name: "Burlingame",
+                                dock_count: 11,
+                                city_id: 3,
+                                installation_date: "8/12/13"})
+      station = Station.create({name: "San Mateo",
+                                dock_count: 11,
+                                city_id: 4,
+                                installation_date: "8/12/12"})
+      result = Station.stations_where_the_fewest_bikes_are_available
+      expect(result).to eq(["Burlingame", "San Mateo"])
+    end
+  end
 
 end

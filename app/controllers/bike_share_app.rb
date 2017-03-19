@@ -13,19 +13,35 @@ class BikeShareApp < Sinatra::Base
   end
 
   post "/stations" do
-    @station = Station.create(params[:station])
+    city_name = params[:station][:city]
+    city = City.find_or_create_by(city: city_name)
+    # params[:station][:city_id] = @city
+    input = { name: params[:station][:name],
+              dock_count: params[:station][:dock_count],
+              city: city,
+              installation_date: params[:station][:installation_date]
+              }
+
+
+    @station = city.stations.create(input)
     redirect "/stations"
   end
 
   get "/stations/:id/edit" do
+    city_name = params[:station][:city]
+    city = City.find_or_create_by(city: city_name).id
+
     @station = Station.find(params[:id])
     erb :"stations/edit"
   end
 
   put "/stations/:id" do
-   @station = Station.update(params[:id], params[:station])
-   redirect "/stations/#{@station.id}"
- end
+    city_name = params[:station][:city]
+    city = City.find_or_create_by(city: city_name).id
+
+    @station = Station.update(params[:id], params[:station])
+    redirect "/stations/#{@station.id}"
+  end
 
   get "/stations/:id" do
     @station = Station.find(params[:id])

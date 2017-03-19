@@ -6,7 +6,7 @@ RSpec.describe "When a user visits '/' " do
     #when I visit '/'
     visit "/"
     # I expect to see "Welcome to Bike Share!" in an h2
-    within("h2.title") do
+    within("h2") do
       expect(page).to have_content("Welcome to Bike Share!")
     end
     #and i expect to see a link to "Stations"

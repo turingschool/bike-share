@@ -64,4 +64,29 @@ RSpec.describe Station do
       expect(station).to respond_to(:installation_date)
     end
   end
+
+  describe 'dashboard methods' do
+
+    before do
+      city = City.create(name: 'Denver')
+
+      station_1 = city.stations.create!(lat: 37.329732, long: -121.90178200000001, name: 'Turing Station', dock_count: 12, installation_date: Date.parse('8/8/2016'))
+      station_2 = city.stations.create!(lat: 2, long: 1, name: 'Sams Station', dock_count: 2, installation_date: Date.parse('8/8/2016'))
+    end
+
+    it 'shows the total stations' do
+      count = Station.total
+
+      expect(count).to eq(2)
+    end
+
+    it 'shows the average number of docks per station' do
+      average = Station.find_average_docks
+
+      expect(average).to eq(7)
+    end
+    it 'shows the total number of bikes' do
+
+    end
+  end
 end

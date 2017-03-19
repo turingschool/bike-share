@@ -8,4 +8,16 @@ class Station < ActiveRecord::Base
   validates :lat, presence: true
   validates :long, presence: true
 
+  def self.total
+    Station.count
+  end
+
+  def self.find_average_docks
+    docks = Station.all.reduce(0) do |memo, num|
+      memo += num.dock_count
+    end
+
+    docks / Station.count
+  end
+
 end

@@ -8,15 +8,13 @@ require 'Date'
   city_name = row["city"]
   date = row["installation_date"]
 
-
   row['installation_date'] = Date.strptime(date, '%m/%d/%Y')
-
 
   city = City.find_or_create_by(name: city_name)
 
   row.delete("city")
   row.delete("id")
-  city.stations.create!(row.to_h)
 
+  city.stations.create!(row.to_h)
 
 end

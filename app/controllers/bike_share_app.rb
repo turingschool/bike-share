@@ -1,5 +1,7 @@
 class BikeShareApp < Sinatra::Base
 
+  set :method_override, true
+
   get '/' do
     erb :"home/index"
   end
@@ -10,8 +12,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations/new' do
-    @station = Station.new
-    @cities = City.all
     erb :"stations/new"
   end
 
@@ -47,7 +47,7 @@ class BikeShareApp < Sinatra::Base
       city_id: city.id.to_s,
       installation_date: params[:station][:installation_date]
     }
-    station = Station.find(params[:id]).update(input)
+    Station.find(params[:id]).update(input)
 
     redirect "/stations/#{params[:id]}"
 
@@ -62,6 +62,54 @@ class BikeShareApp < Sinatra::Base
   get '/trips' do
     @trips = Trip.all
     erb :'trips/index'
+  end
+
+  post '/trips' do
+
+    start_station = Station.find_by(name: params[:trip][:start_station]).id
+    end_station = Station.find_by(name: params[:trip][:end_station]).id
+    subscription_type = SubscriptionType.find_by(subscription_type: params[:trip][:subscription_type]).id
+    zip_code = ZipCode.find_or_create_by(zip_code: params[:trip][:zip_code]).id
+    bike = Bike.find_by(bike_number: params[:trip][:bike_number]).id
+
+    @trip = Trip.create(duration: params[:trip][:duration], start_date: params[:trip][:start_date], start_station_id: start_station, end_date: params[:trip][:end_date], end_station_id: end_station, subscription_type_id: subscription_type, zip_code_id: zip_code, bike_id: bike)
+
+    redirect "/trips/#{@trip.id}"
+  end
+
+  get '/trips/new' do
+    erb :'trips/new'
+  end
+
+  get '/trips/:id' do
+    @trip = Trip.find(params[:id])
+    erb :'trips/show'
+  end
+
+  put '/trips/:id' do
+    start_station = Station.find_by(name: params[:trip][:start_station]).id
+    end_station = Station.find_by(name: params[:trip][:end_station]).id
+    subscription_type = SubscriptionType.find_by(subscription_type: params[:trip][:subscription_type]).id
+    zip_code = ZipCode.find_or_create_by(zip_code: params[:trip][:zip_code]).id
+    bike = Bike.find_by(bike_number: params[:trip][:bike_number]).id
+
+
+    input = {duration: params[:trip][:duration], start_date: params[:trip][:start_date], start_station_id: start_station, end_date: params[:trip][:end_date], end_station_id: end_station, subscription_type_id: subscription_type, zip_code_id: zip_code, bike_id: bike}
+    Trip.find(params[:id]).update(input)
+
+    redirect "/trips/#{params[:id]}"
+  end
+
+  get '/trips/:id/edit' do
+    @trip = Trip.find(params[:id])
+
+    erb :'trips/edit'
+  end
+
+  delete '/trips/:id' do
+    Trip.destroy(params[:id])
+
+    redirect '/trips'
   end
 
   get '/station-dashboard' do

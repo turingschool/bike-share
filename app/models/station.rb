@@ -52,4 +52,10 @@ class Station < ActiveRecord::Base
     end
   end
 
+  def self.newest_station
+    Station.all.min_by do |station|
+      station.installation_date
+    end
+  end
+
 end

@@ -1,7 +1,8 @@
 require_relative "../spec_helper"
 
 RSpec.describe "when a user visits '/stations' " do
-  xit "they can see all stations" do
+  it "they can see all stations" do
+    Station.create(name: "Japantown", dock_count: 15, city_id: 1, installation_date: "2013-08-05")
     # As a user
     # When I vist /stations
     visit "/stations"
@@ -17,9 +18,9 @@ RSpec.describe "when a user visits '/stations' " do
     # I expect to see content station dock count
     expect(page).to have_content("Dock Count: 15")
     # I expect to see content station city
-    expect(page).to have_content("City: San Jose")
+    # (how the F do we do this with the city table etc)
     # I expect to see content station installation date
-    expect(page).to have_content("Installation Date: 8/05/13")
+    expect(page).to have_content("Installation Date: 2013-08-05")
 
 
   end

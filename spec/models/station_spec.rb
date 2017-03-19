@@ -15,7 +15,7 @@ RSpec.describe Station do
     it 'is invalid if its missing a latitude' do
       city = City.create(name: 'Denver')
 
-      station = Station.create(long: -121.90178200000001, name: 'Cat Station', dock_count: 12, city_id: 1, installation_date: Date.parse('8/6/2013'))
+      station = city.stations.create(long: -121.90178200000001, name: 'Cat Station', dock_count: 12, installation_date: Date.parse('8/6/2013'))
 
       expect(station).to_not be_valid
     end

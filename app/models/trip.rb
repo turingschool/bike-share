@@ -1,5 +1,5 @@
 class Trip < ActiveRecord::Base
-
+  
   validates :duration, presence: true
   validates :start_date, presence: true
   validates :start_station_name, presence: true

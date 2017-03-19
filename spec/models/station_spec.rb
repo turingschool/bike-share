@@ -59,15 +59,16 @@ RSpec.describe Station do
       expect(Station.most_bikes).not_to be_nil
     end
 
-    it "#stations_by_dock should return array" do
+    it "#stations_by_most_docks should return array" do
       City.create(name:"Chicago")
       City.create(name:"Denver")
       station1 = Station.create(name: "Whatever", dock_count: "6", installation_date: "20160203", city_id: 2)
       station2 = Station.create(name: "Navy Pier", dock_count: "10", installation_date: "20160203", city_id: 1)
+      station3 = Station.create(name: "New", dock_count: "10", installation_date: "20160303", city_id: 2)
 
 
-      expect(Station.stations_by_docks).to be_kind_of(Array)
-      expect(Station.stations_by_docks.first.name).to eq("Navy Pier")
+      expect(Station.stations_by_most_docks).to be_kind_of(Station)
+      expect(Station.stations_by_most_docks.first.name).to eq("Navy Pier, New")
     end
 
     it "#fewest_bikes should return 6" do

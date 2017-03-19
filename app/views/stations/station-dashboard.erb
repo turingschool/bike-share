@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Station Dashboard</title>
-  </head>
-  <body>
 
-    <%= Station.count %>
-    <%= Station.average_bikes %>
-  
-  </body>
-</html>
+<body>
+
+  <p>All Station Count: <%= Station.count %></p>
+  <p>Average Bikes (based on docks): <%= Station.average_bikes %></p>
+  <p>Most Bikes (based on docks): <%= Station.most_bikes %></p>
+  <p>Station(s) with most bikes (based on docks): <%= Station.stations_by_docks.name %></p>
+  <p>Fewest bikes (based on docks): <%= Station.fewest_bikes %></p>
+  <p>Station(s) with fewest bikes (based on docks): </p>
+  <p>Newest Station: <%= Station.newest_station %></p>
+  <p>Oldest Station: <%= Station.oldest_station %></p>
+
+
+</body>

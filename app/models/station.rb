@@ -15,11 +15,14 @@ class Station < ActiveRecord::Base
     maximum(:dock_count)
   end
 
-  def self.stations_by_docks
+  def self.stations_by_most_docks
     docks = order(dock_count: :desc)
-    docks.select do |x|
-      x
-    end
+    derks = docks.group_by {|x| x.dock_count}
+    results = derks.max_by {|x| derks.keys}
+    results[1].map do |r|
+      r.name
+    end.join(', ')
+    binding.pry
   end
 
   def self.fewest_bikes

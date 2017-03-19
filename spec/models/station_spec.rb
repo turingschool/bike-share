@@ -72,19 +72,34 @@ RSpec.describe Station do
 
       station_1 = city.stations.create!(lat: 37.329732, long: -121.90178200000001, name: 'Turing Station', dock_count: 12, installation_date: Date.parse('8/8/2016'))
       station_2 = city.stations.create!(lat: 2, long: 1, name: 'Sams Station', dock_count: 2, installation_date: Date.parse('8/8/2016'))
+      station_3 = city.stations.create!(lat: 2, long: 1, name: 'Chris\' Station', dock_count: 12, installation_date: Date.parse('8/8/2016'))
     end
 
     it 'shows the total stations' do
       count = Station.total
 
-      expect(count).to eq(2)
+      expect(count).to eq(3)
     end
 
     it 'shows the average number of docks per station' do
       average = Station.find_average_docks
 
-      expect(average).to eq(7)
+      expect(average).to eq(8)
     end
+
+    it 'shows the highest number of docks at a station' do
+      max_docks = Station.max_dock_count
+
+      expect(max_docks).to eq(12)
+    end
+
+    it 'shows the station(s) with the highest number of docks' do
+      station_max_docks = Station.stations_with_most_docks
+      stations = [Station.find(1), Station.find(3)]
+
+      expect(station_max_docks).to eq(stations)
+    end
+
     it 'shows the total number of bikes' do
 
     end

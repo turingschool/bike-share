@@ -106,6 +106,12 @@ class BikeShareApp < Sinatra::Base
     erb :'trips/edit'
   end
 
+  delete '/trips/:id' do
+    Trip.destroy(params[:id])
+
+    redirect '/trips'
+  end
+
   get '/station-dashboard' do
     @stations = Station
     erb :"stations/dashboard"

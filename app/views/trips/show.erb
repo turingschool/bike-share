@@ -1,0 +1,15 @@
+<h1>Trip</h1>
+<h3>Trip from: <%= @trip.start_station_name %> on <%= @trip.start_date %> to <%= @trip.end_station_name%></h3><br>
+
+<p>Bike ID: <%= @trip.bike_id %></p><br>
+<p>Trip Duration (in minutes): <%= @trip.duration %></p><br>
+<p>End Date: <%= @trip.end_date %></p>
+<p>Subscription Type: <%= @trip.subscription_type %></p>
+<p>Zipcode: <%= @trip.zip_code %></p>
+
+<form action="/trips/<%= @trip.id %>" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete">
+</form>
+
+<a href="/trips">All Trips</a>

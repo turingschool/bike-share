@@ -26,11 +26,13 @@
         <div class="pure-controls">
             <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Submit</button>
         </div>
+        <form action="/stations/<%= @station.id %>" method="post">
+    <input type="hidden" name="_method" value="DELETE" />
+        <div class="pure-controls">
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised  mdl-js-ripple-effect mdl-button--accent">Delete</button>
+        </div>
+</form>
     </fieldset>
 </form>
 
-<form action="/stations/<%= @station.id %>" method="post">
 
-  <input type="hidden" name="_method" value="DELETE" />
-  <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Delete</button>
-</form>

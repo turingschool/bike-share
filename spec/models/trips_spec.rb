@@ -41,10 +41,6 @@ RSpec.describe Trip do
       expect(trip).to_not be_valid
     end
     
-    it "is valid with a duration, start date, end date, end station, bike, subscription type, and zip code" do
-      expect(@trip).to be_valid
-    end
-    
     it "is invalid without a bike" do
       trip = Trip.create(duration: 100, start_date: "8/29/2013 14:14", start_station_id: @station1.id, end_date: "8/29/2013 20:14", end_station_id: @station2.id, subscription_type_id: @subscription_type.id, zip_code_id: @zip_code.id)
 
@@ -61,6 +57,10 @@ RSpec.describe Trip do
       trip = Trip.create(duration: 100, start_date: "8/29/2013 14:14", start_station_id: @station1.id, end_date: "8/29/2013 20:14", end_station_id: @station2.id, bike_id: @bike.id, subscription_type_id: @subscription_type.id)
 
       expect(trip).to_not be_valid
+    end
+    
+    it "is valid with a duration, start date, end date, end station, bike, subscription type, and zip code" do
+      expect(@trip).to be_valid
     end
   end
     

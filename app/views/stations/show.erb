@@ -20,19 +20,19 @@
 
         <div class="pure-control-group">
             <label for="installation_date">Installation Date: </label>
-            <input name="station[installation_date]" value=" <%= Date.strptime(@station.installation_date.to_s, '%Y-%m-%d').to_s%>" required>
+            <input type="date" name="station[installation_date]" value="<%= Date.strptime(@station.installation_date.to_s, '%Y-%m-%d').to_s%>" required>
         </div>
 
         <div class="pure-controls">
             <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Submit</button>
         </div>
-        <form action="/stations/<%= @station.id %>" method="post">
-    <input type="hidden" name="_method" value="DELETE" />
-        <div class="pure-controls">
-            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised  mdl-js-ripple-effect mdl-button--accent">Delete</button>
-        </div>
-</form>
     </fieldset>
 </form>
 
+<form action="/stations/<%= @station.id %>" method="post" class="pure-form pure-form-aligned">
+  <input type="hidden" name="_method" value="DELETE" />
+  <div class="pure-controls">
+    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised  mdl-js-ripple-effect mdl-button--accent">Delete</button>
+  </div>
 
+</form>

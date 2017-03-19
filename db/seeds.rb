@@ -15,7 +15,7 @@ CSV.foreach("db/csv/station.csv", headers: true, header_converters: :symbol) do 
   row.delete(:id)
   row.delete(:lat)
   row.delete(:long)
-  row[:installation_date] = Date.strptime(row[:installation_date], "%m/%d/%y")
+  row[:installation_date] = Date.strptime(row[:installation_date], "%m/%d/%Y")
   #create city, get id, pass in
   City.create(name: row[:city])
   row[:city_id] = City.find_by(name: row[:city]).id

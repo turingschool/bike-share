@@ -28,7 +28,7 @@ RSpec.describe "when a user visits the page to create a new station" do
     # and then I expect to see "Dock Count: 15"
     # and then I expect to see "City: San Jose"
     # and then I expect to see "Installation Date: 8/7/2013"
-    within(".station-info") do
+    within(".all-stations-info") do
       expect(page).to have_content("Name: Japantown")
       expect(page).to have_content("Dock Count: 15")
       # expect(page).to have_content("City: San Jose")

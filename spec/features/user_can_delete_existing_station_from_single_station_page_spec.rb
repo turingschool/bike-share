@@ -1,28 +1,28 @@
 require_relative "../spec_helper"
 
 RSpec.describe "as a user deletes an existing station from a single station page" do
-  xit "they can see existing station data and delete the station record" do
+  it "they can see existing station data and delete the station record" do
+    Station.create(name: "Japantown", dock_count: 15, city_id: 1, installation_date: "2013-08-05")
+    Station.create(name: "Redwood City Caltrain Station", dock_count: 11, city_id: 2, installation_date: "2013-08-06")
+
     # as a user
     # when i visit /stations/:id
-    visit "/stations/:id"
+    visit "/stations/1"
     # and i see my existing station data on screen
     within(".station-info") do
-      expect(page).to have_content("Redwood City Station")
-      expect(page).to have_content("11")
-      expect(page).to have_content("San Mateo")
-      expect(page).to have_content("12/15/13")
+      expect(page).to have_content("Japantown")
+      expect(page).to have_content(15)
+      # expect(page).to have_content("San Mateo")
+      expect(page).to have_content("2013-08-05")
     end
     # and i click on the 'delete station' button
     # then the station is deleted
-    click_on "Delete station"  # or click_button "Delete station" ??
+    click_on "Delete Station"  # or click_button "Delete station" ??
     # and I am redirected to the stations list where I will
     expect(current_path).to eq("/stations")
     # see my updated station data
     within(".all-stations-info") do
-      expect(page).to has_no_content("Redwood City Caltrain Station")
-      expect(page).to has_no_content("25")
-      expect(page).to has_no_content("Redwood City")
-      expect(page).to has_no_content("8/15/13")
+      expect(page).to_not have_content("Japantown")
     end
   end
 end

@@ -8,11 +8,15 @@
   </tr>
 
 <% @stations.each do |station| %>
-     <tr class="station-info">
+     <tr class="all-stations-info">
        <td>Name: <%= station.name %> </td>
        <td>Dock Count: <%= station.dock_count %> </td>
        <td> <%= station.city %> </td> <!--check on this later-->
        <td>Installation Date: <%= station.installation_date %> </td>
+       <td><form action="/stations/<%= station.id %>" method="post">
+         <input type="hidden" name="_method" value="DELETE" />
+         <input type="submit" value="Delete Station" />
+       </form></td>
     </tr>
 <% end %>
 </table>

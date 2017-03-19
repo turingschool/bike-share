@@ -28,6 +28,9 @@ class BikeShareApp < Sinatra::Base
 
   put '/stations/:id' do
     # binding.pry
+    city = Station.find(params[:id]).city
+    city = City.update(city.id, name: params[:station][:city])
+    params[:station].delete('city')
     @station = Station.update(params[:id], params[:station])
 
     redirect "/stations/#{@station.id}"

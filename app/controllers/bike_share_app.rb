@@ -1,9 +1,17 @@
 class BikeShareApp < Sinatra::Base
   set :method_override, true
 
+  get "/" do
+    redirect "/station_dashboard"
+  end
+
+  get "/station_dashboard" do
+    @station = Station.all
+    erb :"stations/station_dashboard"
+  end
+
   get "/stations" do
     @stations = Station.all
-    # binding.pry
     erb :"stations/index"
   end
 
@@ -16,7 +24,7 @@ class BikeShareApp < Sinatra::Base
   post "/stations" do
     city_name = params[:station][:city]
     city = City.find_or_create_by(city: city_name)
-    # params[:station][:city_id] = @city
+
     input = { name: params[:station][:name],
               dock_count: params[:station][:dock_count],
               city: city,

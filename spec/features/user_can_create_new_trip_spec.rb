@@ -3,7 +3,7 @@ require_relative "../spec_helper"
 RSpec.describe "When a user creates a trip" do
   before :each do
     city = City.create(name: "Denver")
-    trip1 = city.stations.create(name: "Turing", dock_count: 100, installation_date: "3/14/2017")
+    station1 = city.stations.create(name: "Turing", dock_count: 100, installation_date: "3/14/2017")
     station2 = city.stations.create(name: "Galvanize", dock_count: 1, installation_date: "4/01/1972")
     bike = Bike.create(bike_number: 33)
     subscription_type = SubscriptionType.create(subscription_type: "Subscription")

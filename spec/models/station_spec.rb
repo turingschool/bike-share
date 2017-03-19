@@ -115,11 +115,16 @@ RSpec.describe Station do
       expect(station_min_docks).to eq(stations)
     end
 
-    it 'shows the most recently installed station' do
-      youngest = Station.newest_station
-      sam = Station.find(2)
+    it 'shows the first installed station' do
+      youngest = Station.oldest_station
+      sam = [Station.find(2)]
 
       expect(youngest).to eq(sam)
+    end
+
+    it 'shows the first installed station' do
+      oldest = Station.oldest_station
+
     end
   end
 end

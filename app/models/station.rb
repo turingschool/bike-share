@@ -10,4 +10,39 @@ class Station < ActiveRecord::Base
   def self.average_bikes
     average(:dock_count).round
   end
+
+  def self.most_bikes
+    maximum(:dock_count)
+  end
+
+  def self.stations_by_docks
+    docks = order(dock_count: :desc)
+    docks.select do |x|
+      x
+    end
+  end
+
+  def self.fewest_bikes
+    minimum(:dock_count)
+  end
+
+  def self.stations_by_docks_reverse
+    stations_by_docks.reverse
+  end
+
+  def self.stations_by_install_date
+    installs = order(installation_date: :desc)
+    installs.select do |x|
+      x
+    end
+  end
+
+  def self.newest_station
+    stations_by_install_date.first
+  end
+
+  def self.oldest_station
+    stations_by_install_date.reverse.first
+
+  end
 end

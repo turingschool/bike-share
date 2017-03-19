@@ -1,3 +1,4 @@
+require 'will_paginate/active_record'
 require 'pry'
 
 class BikeShareApp < Sinatra::Base
@@ -7,8 +8,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations' do
+    @stations = Station.all.paginate(:page => params[:page], :per_page => 5)
 
-    @stations = Station.all
     erb :"stations/index"
   end
 
@@ -47,7 +48,7 @@ class BikeShareApp < Sinatra::Base
     @station = Station.destroy(params[:id])
     redirect '/stations'
   end
-  
+
   get '/station-dashboard' do
     erb :"stations/station-dashboard"
   end

@@ -10,7 +10,7 @@ h1, h2, h3, p, li {
 .each_station {
   padding-left: 40px;
   border: 5px;
-  border-color: black;
+  border-color: grey;
 }
 
 a {
@@ -22,6 +22,7 @@ a:hover {
   color: #4a4e65;
 }
 
+/* station styling */
 .station_button {
   border: 2px solid;
   border-radius: 5px;
@@ -29,6 +30,12 @@ a:hover {
   margin: 20px;
 
 }
+
+.each_station a {
+  text-decoration: none;
+  color: black;
+}
+
 /*
 forcing footer to the bottom per
 http://matthewjamestaylor.com/blog/keeping-footers-at-the-bottom-of-the-page

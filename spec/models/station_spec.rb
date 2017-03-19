@@ -143,4 +143,44 @@ RSpec.describe Station do
     end
   end
 
+  describe "most recently installed stations" do
+    it "returns the station that was most recently installed" do
+
+      station = Station.create({name: "PooTown",
+                                dock_count: 15,
+                                city_id: 1,
+                                installation_date: "8/12/16"})
+      station = Station.create({name: "Burlingame",
+                                dock_count: 11,
+                                city_id: 3,
+                                installation_date: "8/12/13"})
+      station = Station.create({name: "San Mateo",
+                                dock_count: 11,
+                                city_id: 4,
+                                installation_date: "8/12/12"})
+      result = Station.newest_station
+      expect(result).to eq(["PooTown"])
+    end
+  end
+
+  describe "oldest stations" do
+    it "returns the station(s) that were installed earliest" do
+
+      station = Station.create({name: "PooTown",
+                                dock_count: 15,
+                                city_id: 1,
+                                installation_date: "8/12/16"})
+      station = Station.create({name: "Burlingame",
+                                dock_count: 11,
+                                city_id: 3,
+                                installation_date: "8/12/13"})
+      station = Station.create({name: "San Mateo",
+                                dock_count: 11,
+                                city_id: 4,
+                                installation_date: "8/12/12"})
+      result = Station.oldest_station
+      expect(result).to eq(["San Mateo"])
+    end
+  end
+
 end

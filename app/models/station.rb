@@ -32,4 +32,16 @@ class Station < ActiveRecord::Base
     fewest_bikes_station_names.map { |station| station.name }
   end
 
+  def self.newest_station
+    name = Station.where(installation_date: Station.maximum(:installation_date))
+
+    name.map { |station| station.name }
+  end
+
+  def self.oldest_station
+    name = Station.where(installation_date: Station.minimum(:installation_date))
+
+    name.map { |station| station.name }
+  end
+
 end

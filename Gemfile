@@ -6,6 +6,8 @@ gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'awesome_print', require: 'ap'
 
+require 'zlib'
+
 group :development, :test do
   gem 'database_cleaner'
   gem 'shotgun'

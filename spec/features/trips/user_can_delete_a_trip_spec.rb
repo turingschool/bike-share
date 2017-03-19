@@ -1,4 +1,4 @@
-require_relative "../spec_helper"
+require_relative "../../spec_helper"
 
 RSpec.describe "When a user deletes a trip" do
   it "the trip no longer exists" do

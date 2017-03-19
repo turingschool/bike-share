@@ -1,0 +1,38 @@
+<form action="/trips/<%= @trip.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT" />
+  Duration<br>
+  <input type='integer'  name='trip[duration]' value="<%= @trip.duration %>"><br>
+  Start Date<br>
+  <input type='text'  name='trip[start_date]' value="<%= @trip.start_date %>"><br>
+  Start Station Name<br>
+  <select name='trip[start_station]'>
+    <% @stations.each do |station| %>
+      <option value=<%= station.id %> <%= 'selected="selected"' if station.name == @trip.start_station.name %>>
+        <%= station.name %>
+      </option>
+    <% end %>
+  </select><br>
+  End Date<br>
+  <input type='text'  name='trip[end_date]'value="<%= @trip.end_date %>"><br>
+  End Station Name<br>
+  <select name='trip[end_station]'>
+    <% @stations.each do |station| %>
+      <option value=<%= station.id %> <%= 'selected="selected"' if station.name == @trip.end_station.name %>>
+        <%= station.name %>
+      </option>
+    <% end %>
+  </select><br>
+  Bike Number<br>
+  <input type='integer'  name='trip[bike_number]'value="<%= @trip.bike.bike_number %>"><br>
+  Subscription Type<br>
+  <select name='trip[subscription_type]'>
+    <% @subtypes.each do |subtype| %>
+      <option value=<%= subtype.id %> <%= 'selected="selected"' if subtype.subscription_type == @trip.subscription_type.subscription_type %>>
+        <%= subtype.subscription_type %>
+      </option>
+    <% end %>
+  </select><br>
+  Zip Code<br>
+  <input type='integer'  name='trip[zip_code]'value="<%= @trip.zip_code.zip_code unless @trip.zip_code.nil?%>"><br>
+  <input type='submit' value='Submit'>
+</form>

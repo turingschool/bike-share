@@ -47,6 +47,10 @@ class BikeShareApp < Sinatra::Base
     @station = Station.destroy(params[:id])
     redirect '/stations'
   end
+  
+  get '/station-dashboard' do
+    erb :"stations/station-dashboard"
+  end
 
 #TRIPS STARTS HERE (ITERATION 4)
 #DATES are not working...
@@ -85,7 +89,5 @@ class BikeShareApp < Sinatra::Base
     @trip = Trip.destroy(params[:id])
     redirect '/trips'
   end
-
-
 
 end

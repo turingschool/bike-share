@@ -32,5 +32,14 @@ RSpec.describe 'When a user visits /station-dashboard' do
     end
   end
 
+  it 'should display the fewest number of docks available at a station' do
+    expect(page).to have_content('Fewest docks available at a station: 2')
+  end
 
+  it 'should display the names of the stations with the fewest docks' do
+    within('li.least-docks') do
+      expect(page).to have_content("Sam's Station")
+      expect(page).to have_content("Mark's Station")
+    end
+  end
 end

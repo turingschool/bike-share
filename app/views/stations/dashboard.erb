@@ -9,5 +9,11 @@
     <%= station.name %><br>
     <% end %>
   </li>
-  <li></li>
+  <li>Fewest docks available at a station: <%= @station.min_dock_count %></li>
+  <li class="least-docks">
+    <h6>Station(s) with the least docks:</h6>
+    <% @station.stations_with_fewest_docks.each do |station| %>
+    <%= station.name %><br>
+    <% end %>
+  </li>
 </ul>

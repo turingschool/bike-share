@@ -48,4 +48,10 @@ RSpec.describe 'When a user visits /station-dashboard' do
       expect(page).to have_content("Beth's Station")
     end
   end
+
+  it 'should display the oldest stations' do
+    within('li.oldest-installations') do
+      expect(page).to have_content("Sam's Station")
+    end
+  end
 end

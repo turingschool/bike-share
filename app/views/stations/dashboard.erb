@@ -26,5 +26,12 @@
     <% end %>
   </li>
 
+  <li class="oldest-installations">
+    <h6>Oldest station(s)</h6>
+    <% @station.oldest_stations.each do |station| %>
+    <%= station.name %><br>
+    <% end %>
+  </li>
+
 
 </ul>

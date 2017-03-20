@@ -1,0 +1,27 @@
+<h1>All Stations</h1>
+<!--
+<a href="/stations/new">
+  <button type="submit" name="Test">Make New Station</button>
+</a> -->
+
+<a href="/stations/new">
+  <button type="button" name="button">Create New Station</button>
+</a>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Dock Count</th>
+    <th>City</th>
+    <th>Installation Date</th>
+  </tr>
+  <% @stations.each do |station| %>
+    <tr>
+      <td><a href= "stations/<%=station.id%>"><%= station.name %></a></td>
+      <td><%= station.dock_count %></td>
+      <td><%= station.city %></td>
+      <td><%= station.installation_date %></td>
+      </td>
+    </tr>
+  <% end %>
+</table>

@@ -1,5 +1,10 @@
 <h2><%=@station.name%></h2>
 
+<a href="/stations/<%=@station.id%>/edit">
+  <button type="button" name="button">Edit</button>
+</a>
+
+
 <ul>
   <li>City: <%=@station.city %></li>
   <li>Dock Count: <%=@station.dock_count %></li>

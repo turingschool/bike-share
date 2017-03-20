@@ -23,4 +23,11 @@ RSpec.describe "User sees all content" do
     expect(current_path).to eq("/stations/new")
     # expect(page).to have_current_path(expected_path)
   end
+
+  it "they can click on a station name and be redirected to that station" do
+    Station.create(name: "Denver Station", city: "Denver", dock_count: 25, installation_date: "8/6/2013")
+    visit '/stations'
+      click_on('Denver Station')
+      expect(current_path).to eq("/stations/1")
+  end
 end

@@ -3,7 +3,7 @@
   Duration<br>
   <input type='integer'  name='trip[duration]' ><br>
   Start Date<br>
-  <input type='text'  name='trip[start_date]' ><br>
+  <input type='datetime-local'  name='trip[start_date]' ><br>
   Start Station Name<br>
   <select name='trip[start_station]'>
     <% @stations.each do |station| %>
@@ -11,7 +11,7 @@
     <% end %>
   </select><br>
   End Date<br>
-  <input type='text'  name='trip[end_date]'><br>
+  <input type='datetime-local'  name='trip[end_date]'><br>
   End Station Name<br>
   <select name='trip[end_station]'>
     <% @stations.each do |station| %>

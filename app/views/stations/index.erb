@@ -3,8 +3,7 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title>Bootstrap 3 Control Panel</title>
-		<meta name="generator" content="Bootply" />
+		<title>Bike Share Management Application</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<!--[if lt IE 9]>
@@ -27,10 +26,10 @@
 
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
-            <i class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a>
+            Admin <span class="caret"></span></a>
           <ul id="g-account-menu" class="dropdown-menu" role="menu">
             <li><a href="#">My Profile</a></li>
-            <li><a href="#"><i class="glyphicon glyphicon-lock"></i> Logout</a></li>
+            <li><a href="#">Logout</a></li>
           </ul>
         </li>
       </ul>
@@ -46,17 +45,17 @@
   <div class="row">
 	<div class="col-sm-3">
       <!-- left -->
-      <h3><i class="glyphicon glyphicon-briefcase"></i> Toolbox</h3>
+      <h3>Toolbox</h3>
       <hr>
 
       <ul class="nav nav-stacked">
-        <li><a href="http://www.bootply.com/85861" target="ext"><i class="glyphicon glyphicon-flash"></i> Alerts</a></li>
-        <li><a href="http://www.bootply.com/85861" target="ext"><i class="glyphicon glyphicon-link"></i> Links</a></li>
-        <li><a href="http://www.bootply.com/85861" target="ext"><i class="glyphicon glyphicon-list-alt"></i> Reports</a></li>
-        <li><a href="http://www.bootply.com/85861" target="ext"><i class="glyphicon glyphicon-book"></i> Books</a></li>
-        <li><a href="http://www.bootply.com/85861" target="ext"><i class="glyphicon glyphicon-briefcase"></i> Tools</a></li>
-        <li><a href="http://www.bootply.com/85861" target="ext"><i class="glyphicon glyphicon-time"></i> Real-time</a></li>
-        <li><a href="http://www.bootply.com/85861" target="ext"><i class="glyphicon glyphicon-plus"></i> Advanced..</a></li>
+        <li><a href="#" target="ext"><i class="glyphicon glyphicon-flash"></i> Alerts</a></li>
+        <li><a href="#" target="ext"><i class="glyphicon glyphicon-link"></i> Links</a></li>
+        <li><a href="#" target="ext"><i class="glyphicon glyphicon-list-alt"></i> Reports</a></li>
+        <li><a href="#" target="ext"><i class="glyphicon glyphicon-book"></i> Books</a></li>
+        <li><a href="#" target="ext"><i class="glyphicon glyphicon-briefcase"></i> Tools</a></li>
+        <li><a href="#" target="ext"><i class="glyphicon glyphicon-time"></i> Real-time</a></li>
+        <li><a href="#" target="ext"><i class="glyphicon glyphicon-plus"></i> Advanced..</a></li>
       </ul>
 
       <hr>
@@ -65,7 +64,7 @@
     <div class="col-sm-9">
 
       <!-- column 2 -->
-       <h3><i class="glyphicon glyphicon-dashboard"></i> Bootply Dashboard</h3>
+       <h3><i class="glyphicon glyphicon-dashboard"></i> All Stations</h3>
 
        <hr>
 
@@ -77,25 +76,31 @@
               <hr>
 
               <div class="panel panel-default">
-                  <div class="panel-heading"><h4>Processing Status</h4></div>
+                  <div class="panel-heading"><h4>Top stations</h4></div>
                   <div class="panel-body">
 
-                    <small>Complete</small>
+                    <small>Redwood City Caltrain Station :: Bike inventory</small>
                     <div class="progress">
                       <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%">
-                        <span class="sr-only">72% Complete</span>
+                        <span class="sr-only">72% full</span>
+                      </div>
+                    </div>
+                    <small>Japantown Bike Station :: Bike inventory</small>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                        <span class="sr-only">20% Complete</span>
+                      </div>
+                    </div>
+                    <small>In Progress</small>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%">
+                        <span class="sr-only">72% full</span>
                       </div>
                     </div>
                     <small>In Progress</small>
                     <div class="progress">
                       <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
                         <span class="sr-only">20% Complete</span>
-                      </div>
-                    </div>
-                    <small>At Risk</small>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                        <span class="sr-only">80% Complete</span>
                       </div>
                     </div>
 
@@ -117,11 +122,12 @@
 
                 <hr>
 
-				<p>
-                  This is a responsive dashboard-style layout that uses <a href="http://www.getbootstrap.com">Bootstrap 3</a>. You can use this template as a starting point to create something more unique.
+        				<p>
+                  Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet.
+
                 </p>
                 <p>
-                  Visit the Bootstrap Playground at <a href="http://www.bootply.com">Bootply</a> to tweak this layout, or discover 1000's of Bootstrap code examples and snippets.
+                  Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit.
                 </p>
 
                 <hr>
@@ -322,7 +328,7 @@
 <!-- /Main -->
 
 
-<footer class="text-center">This Bootstrap 3 dashboard layout is compliments of <a href="http://www.bootply.com/85861"><strong>Bootply.com</strong></a></footer>
+<footer class="text-center">This web appliction was developed by Team Sauce. <a href="#"><strong>Hire us!</strong></a></footer>
 
 
 <div class="modal" id="addWidgetModal">

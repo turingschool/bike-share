@@ -17,14 +17,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations' do
-    city_name = params[:station][:city]
-    city = City.find_or_create_by(name: city_name)
-    input = {
-      name: params[:station][:name],
-      dock_count: params[:station][:dock_count],
-      installation_date: params[:station][:installation_date]
-    }
-    @station = city.stations.create(input)
+    @station = Station.create_station(params)
     redirect "/stations/#{@station.id}"
   end
 
@@ -39,24 +32,12 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
-
-    city_name = params[:station][:city]
-    city = City.find_or_create_by(name: city_name)
-    input = {
-      name: params[:station][:name],
-      dock_count: params[:station][:dock_count],
-      city_id: city.id.to_s,
-      installation_date: params[:station][:installation_date]
-    }
-    Station.find(params[:id]).update(input)
-
+    Station.update_station(params)
     redirect "/stations/#{params[:id]}"
-
   end
 
   delete '/stations/:id' do
     Station.destroy(params[:id])
-
     redirect '/stations'
   end
 
@@ -66,15 +47,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/trips' do
-    # require "pry"; binding.pry
-    start_station = params[:trip][:start_station]
-    end_station = params[:trip][:end_station]
-    subscription_type = params[:trip][:subscription_type]
-    zip_code = ZipCode.find_or_create_by(zip_code: params[:trip][:zip_code]).id
-    bike = Bike.find_by(bike_number: params[:trip][:bike_number]).id
-
-    @trip = Trip.create(duration: params[:trip][:duration], start_date: params[:trip][:start_date], start_station_id: start_station, end_date: params[:trip][:end_date], end_station_id: end_station, subscription_type_id: subscription_type, zip_code_id: zip_code, bike_id: bike)
-
+    @trip = Trip.create_trip(params)
     redirect "/trips/#{@trip.id}"
   end
 
@@ -90,16 +63,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/trips/:id' do
-    start_station = params[:trip][:start_station]
-    end_station = params[:trip][:end_station]
-    subscription_type = params[:trip][:subscription_type]
-    zip_code = ZipCode.find_or_create_by(zip_code: params[:trip][:zip_code]).id
-    bike = Bike.find_by(bike_number: params[:trip][:bike_number]).id
-
-
-    input = {duration: params[:trip][:duration], start_date: params[:trip][:start_date], start_station_id: start_station, end_date: params[:trip][:end_date], end_station_id: end_station, subscription_type_id: subscription_type, zip_code_id: zip_code, bike_id: bike}
-    Trip.find(params[:id]).update(input)
-
+    Trip.update_trip(params)
     redirect "/trips/#{params[:id]}"
   end
 

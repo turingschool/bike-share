@@ -74,4 +74,22 @@ class Station < ActiveRecord::Base
     list_maker(date_finder(install_dates.min))
   end
 
+  def self.create_station(params)
+    Station.create(
+      name: params[:station][:name],
+      dock_count: params[:station][:dock_count],
+      city: City.find_or_create_by(name: params[:station][:city]),
+      installation_date: params[:station][:installation_date]
+    )
+  end
+
+  def self.update_station(params)
+    Station.find(params[:id]).update(
+      name: params[:station][:name],
+      dock_count: params[:station][:dock_count],
+      city: City.find_or_create_by(name: params[:station][:city]),
+      installation_date: params[:station][:installation_date]
+    )
+  end
+
 end

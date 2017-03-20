@@ -1,10 +1,11 @@
 require_relative "../spec_helper"
+require 'pry'
 
 
 RSpec.describe "User sees all content" do
   it "and has one of the stations and all header names" do
-    visit "/stations"
-      #expect(page).to have_selector('table tr', :minimum <= 71)
+      station = Station.create(name: "Denver Station", city: "Denver", dock_count: 25, installation_date: "8/6/2013")
+      visit "/stations"
       expect(page).to have_content("Name")
       expect(page).to have_content("Dock Count")
       expect(page).to have_content("City")
@@ -12,7 +13,7 @@ RSpec.describe "User sees all content" do
       expect(page).to have_content("Denver Station")
       expect(page).to have_content("25")
       expect(page).to have_content("Denver")
-      expect(page).to have_content("8/6/2013")
+      expect(page).to have_content("2013-06-08")
   end
 
   it "and has a create new station button that links to correct route" do

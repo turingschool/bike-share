@@ -18,9 +18,9 @@ RSpec.describe Station do
         expect(result).to eq(25)
     end
     it "returns installation date" do
-      station = Station.create(name: "Denver Station", city: "Denver", dock_count: 25, installation_date:"Fri, 11 Apr 2014")
+      station = Station.create(name: "Denver Station", city: "Denver", dock_count: 25, installation_date:"8/6/2013")
         result = station.installation_date
-        expect(result).to eq("Fri, 11 Apr 2014")
+        expect(result).to eq (Date.strptime("8/6/2013", '%d/%m/%Y'))
     end
   end
 
@@ -34,7 +34,7 @@ RSpec.describe Station do
       expect(station).to_not be_valid
     end
     it "is invalid without a dock count" do
-      station = Station.new(name: "Denver Station", installation_date:"Fri, 11 Apr 2014")
+      station = Station.new(name: "Denver Station", installation_date: "Fri, 11 Apr 2014")
       expect(station).to_not be_valid
     end
     it "is invalid without a installation date" do

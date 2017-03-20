@@ -1,0 +1,96 @@
+/*
+  ========================================
+  Main Styling
+  ========================================
+*/
+
+body {
+  /*background-color: #DFDCE3;*/
+  background-image: url("/assets/images/old_bike.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+
+/*
+  ========================================
+  Stations Index
+  ========================================
+*/
+
+.page-header {
+  padding-right: 50px;
+  padding-top: 50px;
+  background-color: #4ABDAC;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.page-header h1 {
+  font-size: 80px;
+  color: #414141;
+}
+
+.all-stations {
+  width: 60%;
+}
+
+.panel-heading {
+  background-color: #056571;
+  color: white;
+  /*color: #FFCE00;*/
+}
+
+.stations-panel {
+  font-size: 20px;
+}
+
+.all-stations .table th {
+  font-size: 15px;
+  color: #FF6A5C;
+  text-align: center;
+}
+
+#station-name-header {
+  text-align: left;
+}
+
+#station-id {
+  text-align: center;
+  font-size: 15px;
+  color: #414141;
+}
+
+#edit-button {
+  text-align: center;
+}
+
+.delete-button {
+  text-align: center;
+}
+
+.station-name {
+  transition: all .2s ease-in-out;
+  font-size: 18px;
+}
+
+.station-name:hover {
+  color: #fa5e5b;
+  -webkit-transform: scaleX(1.1);
+  width: 80%;
+}
+
+.all-stations .table tr {
+    -webkit-animation: fadein 3s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

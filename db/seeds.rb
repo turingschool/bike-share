@@ -9,14 +9,20 @@ require 'database_cleaner'
 
 DatabaseCleaner.strategy = :truncation
 DatabaseCleaner.clean
-  @bad_array = []
 
 def clean_station(name)
   if Station.find_by(name: name) != nil
     Station.find_by(name: name).id
   else
-    @bad_array << name
-    1
+    if name == 'Washington at Kearney'
+      Station.find_by(name: 'Washington at Kearny').id
+    elsif name == 'Post at Kearney'
+      Station.find_by(name: 'Post at Kearny').id
+    elsif name == 'Broadway at Main'
+      Station.find_by(name: 'Stanford in Redwood City').id
+    elsif name == 'San Jose Government Center'
+      Station.find_by(name: 'Santa Clara County Civic Center').id
+    end
   end
 end
 
@@ -31,7 +37,7 @@ CSV.foreach "db/csv/station.csv", headers: true, header_converters: :symbol do |
     )
 end
 @count = 0
-CSV.foreach "db/csv/trip.csv", headers: true, header_converters: :symbol do |row|
+CSV.foreach "db/csv/trip_fixture.csv", headers: true, header_converters: :symbol do |row|
     @count += 1
     bike = Bike.find_or_create_by(bike_number: row[:bike_id])
     subscription_type = SubscriptionType.find_or_create_by(subscription_type: row[:subscription_type])
@@ -49,6 +55,5 @@ CSV.foreach "db/csv/trip.csv", headers: true, header_converters: :symbol do |row
       zip_code_id:          zip_code.id,
       subscription_type_id: subscription_type.id
     )
-    p @count
-    p @bad_array
+    p "Creating Trip Number #{@count} with start station #{row[:start_station_name]} "
 end

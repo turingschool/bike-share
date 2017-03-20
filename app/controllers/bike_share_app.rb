@@ -56,7 +56,7 @@ class BikeShareApp < Sinatra::Base
 #TRIPS STARTS HERE (ITERATION 4)
 #DATES are not working...
   get '/trips' do
-    @trips = Trip.all
+    @trips = Trip.all.paginate(:page => params[:page], :per_page => 5)
     erb :"trips/index"
   end
 

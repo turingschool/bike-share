@@ -1,6 +1,11 @@
 require 'pry'
 class BikeShareApp < Sinatra::Base
 
+
+  get '/' do
+    erb :home
+  end
+  
 	get '/stations/new' do
 		#inst var (AR methods)
 		erb :new_station

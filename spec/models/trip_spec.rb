@@ -41,4 +41,20 @@ RSpec.describe Trip do
       expect(trip).to_not be_valid
     end
   end
+
+  describe 'attributes' do
+    it 'should have a duration, start_date, end_date, subscription_type, bike, start_station, end_station, weather' do
+
+    trip = Trip.new
+
+    expect(trip).to respond_to(:duration)
+    expect(trip).to respond_to(:start_date)
+    expect(trip).to respond_to(:end_date)
+    expect(trip).to respond_to(:subscription_type)
+    expect(trip).to respond_to(:bike)
+    expect(trip).to respond_to(:start_station)
+    expect(trip).to respond_to(:end_station)
+    expect(trip).to respond_to(:weather)
+    end
+  end
 end

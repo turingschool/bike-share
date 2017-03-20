@@ -1,0 +1,60 @@
+<h1>Edit Trip</h1>
+
+  <form action="/trips/<%= @trip.id %>" method="post"class="pure-form pure-form-aligned">
+    <input type="hidden" name="_method" value="PUT" />
+
+    <fieldset>
+
+        <div class="pure-control-group">
+        <label for="start_date">Start Date: </label>
+        <input name="trip[start_date]" type="datetime-local" value="<%= Date.strptime(@trip.start_date.to_s, '%Y-%m-%dT%H:%M').to_s%>" required>
+        </div>
+        <!--datetime is still invalid, needz fixed!! -->
+
+        <div class="pure-control-group">
+            <label for="start_station">Start Station: </label>
+            <select name="trip[start_station_id]" required>
+            <% @stations.each do |station| %>
+
+              <option value="<%=station.id%>"><%=station.name%></option><% end %>
+            </select>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="end_date">End Date: </label>
+            <input name="trip[end_date]" type="datetime-local" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="end_station_id">End Station: </label>
+            <select name="trip[end_station_id]" required>
+            <% @stations.each do |station| %>
+            <option value="<%=station.id%>"><%=station.name%></option><% end %>
+            </select>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="bike_id">Bike ID: </label>
+            <input name="trip[bike_id]" type="number" required>
+        </div>
+
+         <div class="pure-control-group">
+            <label for="subscription">Subscription Type: </label>
+            <select name="trip[subscription_type]" required>
+            <option value="Subscriber">Subscriber</option>
+            <option value="Customer">Customer</option>
+            </select>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="zip">Zipcode: </label>
+            <input name="trip[zipcode]" type="text" pattern="[0-9]{5}">
+        </div>
+
+        <div class="pure-controls">
+            <label for="cb" class="pure-checkbox"></label>
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Submit</button>
+        </div>
+    </fieldset>
+</form>
+    

@@ -9,10 +9,6 @@ CSV.foreach("db/csv/station.csv", headers: true, header_converters: :symbol) do 
 
   row = row.to_hash
   puts row
-    # if row[:id] == "22"
-      # binding.pry
-    # end
-  row.delete(:id)
   row.delete(:lat)
   row.delete(:long)
   row[:installation_date] = Date.strptime(row[:installation_date], "%m/%d/%Y")
@@ -24,8 +20,3 @@ CSV.foreach("db/csv/station.csv", headers: true, header_converters: :symbol) do 
   puts Station.all.last.name
   puts Station.all.last.city
 end
-
-
-
-
-""

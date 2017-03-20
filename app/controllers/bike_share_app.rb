@@ -57,4 +57,37 @@ class BikeShareApp < Sinatra::Base
 		erb :"stations/dashboard"
 	end
 
+  get '/trips' do
+    @trips = Trip.all
+    @station = Station
+    erb :"trips/trip_index"
+  end
+
+  get '/trips/new' do
+    @stations = Station.all 
+    # @trips = Trip
+    erb :"trips/new"
+  end
+
+  post '/trips' do
+    params[:trip][:duration] = (((DateTime.strptime(params[:trip][:end_date], "%Y-%m-%dT%l:%M")) - (DateTime.strptime(params[:trip][:start_date], "%Y-%m-%dT%l:%M"))) * 24 * 60 * 60).to_i
+    Trip.create(params[:trip])
+
+    redirect "/trips"
+  end
+
+  get '/trips/:id' do
+    @trip = Trip.find(params[:id])
+    @stations = Station.all
+    # binding.pry
+    erb :"trips/show"
+  end
+
+  # post '/trips' do
+
+
+  # redirect '/trips'
+  # end
+
+
 end

@@ -1,7 +1,7 @@
 require_relative "../spec_helper"
 RSpec.describe SubscriptionType do
   before :each do
-    @subscription_type = SubscriptionType.create(subscription_type: "Subscription")
+    @subscription_type = SubscriptionType.create(subscription_type: "Subscriber")
   end
   
   describe "validations" do

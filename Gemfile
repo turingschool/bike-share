@@ -5,6 +5,7 @@ gem 'pg'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'awesome_print', require: 'ap'
+gem 'nyan-cat-formatter'
 
 require 'zlib'
 

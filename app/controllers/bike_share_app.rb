@@ -11,4 +11,13 @@ class BikeShareApp < Sinatra::Base
     erb :"station/index"
   end
 
+  get '/stations/new' do
+    erb :"station/new"
+  end
+
+  post '/stations' do
+    @station = Station.create(params[:station])
+    redirect '/stations'
+  end
+
 end

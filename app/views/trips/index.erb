@@ -1,5 +1,7 @@
 <h1>All Trips</h1>
 
+<%= will_paginate @trips %>
+
 <% @trips.each do |trip| %>
   <a href="/trips/<%=trip.id%>"><h4>Trip ID: <%= trip.id %></h4></a>
   <p>Duration: <%= trip.duration %></p>

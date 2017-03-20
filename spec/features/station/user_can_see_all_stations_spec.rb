@@ -1,4 +1,4 @@
-require_relative "../spec_helper"
+require_relative "../../spec_helper"
 
 RSpec.describe "when a user visits '/stations' " do
   it "they can see all stations" do

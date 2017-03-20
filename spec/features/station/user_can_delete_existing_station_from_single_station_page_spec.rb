@@ -1,4 +1,4 @@
-require_relative "../spec_helper"
+require_relative "../../spec_helper"
 
 RSpec.describe "as a user deletes an existing station from a single station page" do
   it "they can see existing station data and delete the station record" do

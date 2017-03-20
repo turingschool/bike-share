@@ -33,8 +33,8 @@ RSpec.describe "when a user visits '/trips' " do
   start_station = Station.create(name: "Denver", dock_count: 15, city_id: 1, installation_date: "12/05/1987")
   end_station = Station.create(name: "Boulder", dock_count: 14, city_id: 2, installation_date: "12/05/1987")
 
-  # trip = start_station.trips.create(duration: 123, start_date: "12/05/1987",
-  # start_station_id: 1, end_date: "12/05/1987",
-  # end_station_id: end_station.id, bike_id: 1,
-  # subscription_id: 1, zipcode_id: 1)
+  trip = start_station.trips.create(duration: 123, start_date: "12/05/1987",
+  start_station_id: 1, end_date: "12/05/1987",
+  end_station_id: end_station.id, bike_id: 1,
+  subscription_id: 1, zipcode_id: 1)
 end

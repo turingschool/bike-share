@@ -34,5 +34,11 @@ RSpec.describe Trip do
 
       expect(trip).to_not be_valid
     end
+
+    it 'is invalid if its missing subscription_type' do
+      trip = Trip.create(duration: 22, start_date: start_date, end_date: end_date, bike_id: 1, start_station_id: 1, end_station_id: 2, weather_id: 1)
+
+      expect(trip).to_not be_valid
+    end
   end
 end

@@ -12,6 +12,6 @@ RSpec.describe "As a user tries to create a station" do
       expect(page).to have_content("Denver Station")
       expect(page).to have_content("Denver")
       expect(page).to have_content("49")
-      expect(page).to have_content("8/5/2016")
+      expect(page).to have_content("2016-05-08")
   end
 end

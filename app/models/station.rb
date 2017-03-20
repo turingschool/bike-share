@@ -18,7 +18,7 @@ class Station < ActiveRecord::Base
   end
 
   def self.average_bikes
-    Station.average(:dock_count)
+    Station.average(:dock_count).to_i
   end
 
   def self.most_bikes

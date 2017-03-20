@@ -12,3 +12,5 @@
   <p>Zip Code: <%= trip.zip_code.zip_code unless trip.zip_code.nil?%></p>
   <br>
 <% end %>
+
+<%= will_paginate @trips %>

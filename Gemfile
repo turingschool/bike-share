@@ -6,6 +6,7 @@ gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'awesome_print', require: 'ap'
 gem 'nyan-cat-formatter'
+gem 'will_paginate'
 
 require 'zlib'
 

@@ -7,6 +7,6 @@
 
 <ol>
   <% @weather_conditions.each do |condition| %>
-  <li><a href="/weather_conditions/<%= condition.id %>"><%= station.name %></a></li>
+  <li><a href="/weather_conditions/<%= condition.id %>"><%= condition.date %></a></li>
   <% end %>
 </ol>

@@ -3,7 +3,7 @@
 <ul>
   <li>Total stations: <%= @station.count %></li>
   <li>Average docks per station: <%= @station.find_average_docks %></li>
-  <li></li>
+  <li>Most docks available at a station: <%= @station.max_dock_count %></li>
   <li></li>
   <li></li>
 </ul>

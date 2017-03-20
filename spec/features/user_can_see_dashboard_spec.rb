@@ -21,4 +21,8 @@ RSpec.describe 'When a user visits /station-dashboard' do
     expect(page).to have_content('Average docks per station: 7')
   end
 
+  it 'should display the highest number of docks available at a station' do
+    expect(page).to have_content('Most docks available at a station: 12')
+  end
+
 end

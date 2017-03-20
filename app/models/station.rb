@@ -14,9 +14,9 @@ class Station < ActiveRecord::Base
   def self.max_bikes_available
     maximum(:dock_count)
   end
-  
+
   def self.station_with_most_bikes
-    where(dock_count: self.max_bikes_available)
+    where(dock_count: self.max_bikes_available).map {|station| station.name}.join(", ")
   end
 
   def self.fewest_bikes_available
@@ -24,15 +24,15 @@ class Station < ActiveRecord::Base
   end
 
   def self.station_with_fewest_bikes
-    where(dock_count: self.fewest_bikes_available)
+    where(dock_count: self.fewest_bikes_available).map {|station| station.name}.join(", ")
   end
 
   def self.newest_station
-    find_by(installation_date: maximum(:installation_date))
+    find_by(installation_date: maximum(:installation_date)).name
   end
 
   def self.oldest_station
-    find_by(installation_date: minimum(:installation_date))
+    find_by(installation_date: minimum(:installation_date)).name
   end
-  
+
 end

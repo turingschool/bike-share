@@ -24,17 +24,17 @@ class Trip < ActiveRecord::Base
 #did not consider if there is a tie
   def self.most_start_station
     trips = Trip.all.map do |trip|
-      trip.start_station_name
+      trip.start_station_id
     end
-    trips.group_by(&:itself).values.max_by(&:size).first
+    Station.find(trips.group_by(&:itself).values.max_by(&:size).first).name
   end
 
 #did not consider if there is a tie
   def self.most_end_station
     trips = Trip.all.map do |trip|
-      trip.end_station_name
+      trip.end_station_id
     end
-    trips.group_by(&:itself).values.max_by(&:size).first
+    Station.find(trips.group_by(&:itself).values.max_by(&:size).first).name
   end
 
 end

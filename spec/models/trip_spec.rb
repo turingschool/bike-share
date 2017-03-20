@@ -104,20 +104,16 @@ RSpec.describe Trip do
       trip_1 = Trip.create(duration: 39,
                          start_date: format_date("12/15/2013 14:54"),
                          start_station_id: 4,
-                         start_station_name: "North station",
                          end_date: format_date("12/15/2013 15:56"),
                          bike_id: 6,
-                         end_station_name: "South station",
                          end_station_id: 32,
                          subscription_type: "Subscriber"
                          )
       trip_2 = Trip.create(duration: 45,
                         start_date: format_date("11/15/2013 14:54"),
                         start_station_id: 7,
-                        start_station_name: "East station",
                         end_date: format_date("11/15/2013 15:56"),
                         bike_id: 6,
-                        end_station_name: "South station",
                         end_station_id: 32,
                         subscription_type: "Subscriber"
                         )
@@ -129,20 +125,16 @@ RSpec.describe Trip do
       Trip.create(duration: 39,
                  start_date: format_date("12/15/2013 14:54"),
                  start_station_id: 4,
-                 start_station_name: "North station",
                  end_date: format_date("12/15/2013 15:56"),
                  bike_id: 6,
-                 end_station_name: "South station",
                  end_station_id: 32,
                  subscription_type: "Subscriber"
                  )
       Trip.create(duration: 45,
                   start_date: format_date("11/15/2013 14:54"),
                   start_station_id: 7,
-                  start_station_name: "East station",
                   end_date: format_date("11/15/2013 15:56"),
                   bike_id: 6,
-                  end_station_name: "South station",
                   end_station_id: 32,
                   subscription_type: "Subscriber"
                   )
@@ -153,20 +145,16 @@ RSpec.describe Trip do
       Trip.create(duration: 39,
                  start_date: format_date("12/15/2013 14:54"),
                  start_station_id: 4,
-                 start_station_name: "North station",
                  end_date: format_date("12/15/2013 15:56"),
                  bike_id: 6,
-                 end_station_name: "South station",
                  end_station_id: 32,
                  subscription_type: "Subscriber"
                  )
       Trip.create(duration: 45,
                   start_date: format_date("11/15/2013 14:54"),
                   start_station_id: 7,
-                  start_station_name: "East station",
                   end_date: format_date("11/15/2013 15:56"),
                   bike_id: 6,
-                  end_station_name: "South station",
                   end_station_id: 32,
                   subscription_type: "Subscriber"
                   )
@@ -174,33 +162,29 @@ RSpec.describe Trip do
     end
 
     it "#most_start_station returns a station name" do
+      City.create(name: "Denver")
+      Station.create(id: 7, name: "East station", installation_date: 20150331, dock_count: 45, city_id: 1)
       Trip.create(duration: 39,
                  start_date: format_date("12/15/2013 14:54"),
                  start_station_id: 4,
-                 start_station_name: "North station",
                  end_date: format_date("12/15/2013 15:56"),
                  bike_id: 6,
-                 end_station_name: "South station",
                  end_station_id: 32,
                  subscription_type: "Subscriber"
                  )
       Trip.create(duration: 45,
                   start_date: format_date("11/15/2013 14:54"),
                   start_station_id: 7,
-                  start_station_name: "East station",
                   end_date: format_date("11/15/2013 15:56"),
                   bike_id: 6,
-                  end_station_name: "South station",
                   end_station_id: 32,
                   subscription_type: "Subscriber"
                   )
       Trip.create(duration: 45,
                   start_date: format_date("11/15/2013 14:54"),
                   start_station_id: 7,
-                  start_station_name: "East station",
                   end_date: format_date("11/15/2013 15:56"),
                   bike_id: 6,
-                  end_station_name: "South station",
                   end_station_id: 32,
                   subscription_type: "Subscriber"
                   )
@@ -208,33 +192,29 @@ RSpec.describe Trip do
       expect(Trip.most_start_station).to eq("East station")
     end
     it "#most_end_station returns a station name" do
+      City.create(name: "Denver")
+      Station.create(id: 32, name: "South station", installation_date: 20150331, dock_count: 45, city_id: 1)
       Trip.create(duration: 39,
                  start_date: format_date("12/15/2013 14:54"),
                  start_station_id: 4,
-                 start_station_name: "North station",
                  end_date: format_date("12/15/2013 15:56"),
                  bike_id: 6,
-                 end_station_name: "South station",
                  end_station_id: 32,
                  subscription_type: "Subscriber"
                  )
       Trip.create(duration: 45,
                   start_date: format_date("11/15/2013 14:54"),
                   start_station_id: 7,
-                  start_station_name: "East station",
                   end_date: format_date("11/15/2013 15:56"),
                   bike_id: 6,
-                  end_station_name: "South station",
                   end_station_id: 32,
                   subscription_type: "Subscriber"
                   )
       Trip.create(duration: 45,
                   start_date: format_date("11/15/2013 14:54"),
                   start_station_id: 7,
-                  start_station_name: "East station",
                   end_date: format_date("11/15/2013 15:56"),
                   bike_id: 6,
-                  end_station_name: "East station",
                   end_station_id: 7,
                   subscription_type: "Subscriber"
                   )
@@ -246,30 +226,24 @@ RSpec.describe Trip do
       Trip.create(duration: 39,
                  start_date: format_date("12/15/2013 14:54"),
                  start_station_id: 4,
-                 start_station_name: "North station",
                  end_date: format_date("12/15/2013 15:56"),
                  bike_id: 6,
-                 end_station_name: "South station",
                  end_station_id: 32,
                  subscription_type: "Subscriber"
                  )
       Trip.create(duration: 45,
                   start_date: format_date("11/15/2013 14:54"),
                   start_station_id: 7,
-                  start_station_name: "East station",
                   end_date: format_date("11/15/2013 15:56"),
                   bike_id: 6,
-                  end_station_name: "South station",
                   end_station_id: 32,
                   subscription_type: "Subscriber"
                   )
       Trip.create(duration: 45,
                   start_date: format_date("11/15/2013 14:54"),
                   start_station_id: 7,
-                  start_station_name: "East station",
                   end_date: format_date("11/15/2013 15:56"),
                   bike_id: 6,
-                  end_station_name: "East station",
                   end_station_id: 7,
                   subscription_type: "Subscriber"
                   )

@@ -18,7 +18,7 @@ RSpec.describe "User sees all content" do
 
   it "and has a create new station button that links to correct route" do
     visit "/stations"
-    click_on "Create New Station"
+    page.click_link('', :href => '/stations/new')
     # expected_path = "/stations/new"
     expect(current_path).to eq("/stations/new")
     # expect(page).to have_current_path(expected_path)

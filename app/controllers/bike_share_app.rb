@@ -43,6 +43,13 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
+    city = City.create(params[:city]) #creates if it doesn't exist
+
+    city = City.where(name: params[:city][:name]) #finds if it already exists
+
+    params[:station][:city_id] = city.ids.first #Find out where .id method went to? Refactor to place in model
+
+
     Station.update(params[:id], params[:station])
     redirect '/stations'
   end

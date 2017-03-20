@@ -7,11 +7,11 @@ RSpec.describe "when a user visits /stations/new" do
     fill_in "station[dock_count]", with: 12
     fill_in "station[installation_date]", with: "15/5/16"
     fill_in "station[city_id]", with: 1
-    click_on "submit"
+    click_on "Submit"
 
     expect(current_path).to eq("/stations")
 
-    within("li:first-child") do
+    within("table") do
       expect(page).to have_content("Union Station")
     end
   end

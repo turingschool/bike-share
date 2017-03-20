@@ -6,7 +6,7 @@ RSpec.describe "when a user visits /stations/:id" do
     Station.create(name: "Union Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
     visit '/stations/1'
 
-    within("h2.station-name") do
+    within("h1.station-name") do
       expect(page).to have_content("Union Station")
     end
 
@@ -19,12 +19,12 @@ RSpec.describe "when a user visits /stations/:id" do
     City.create(name:"San Jose")
     Station.create(name: "Union Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
     visit '/stations/1'
-    
+
     click_on "Delete"
 
     expect(current_path).to eq("/stations")
 
-    within("ul") do
+    within("table") do
       expect(page).not_to have_content("Union Station")
     end
   end

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+      <link rel="stylesheet" href="/css/style.css">
+    </head>
+      <div id="container">
+        <body>
+          <!-- #### header #### -->
+          <div id="header">
+            <header>
+              <h3>The Bike Share App</h3>
+
+              <ul class="global_nav">
+                <li><a href="/station-dashboard">Station Dashboard</a></li>
+              </ul>
+            </header>
+          </div>
+
+          <!-- ### embed erb template here ### -->
+          <div id="body">
+
+              <%= yield %>
+          </div>
+
+
+          <!-- #### footer #### -->
+        <div id="footer">
+          <footer>
+            <h3>made with love: Stephanie, Seth, Jonathan, Josh</h3>
+          </footer>
+        </div>
+      </div>
+    </body>
+  </html>

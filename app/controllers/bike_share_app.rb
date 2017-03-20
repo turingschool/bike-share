@@ -7,6 +7,13 @@ class BikeShareApp < Sinatra::Base
     erb :"stations/index"
   end
 
+  get '/weather_conditions' do
+    @weather_conditions = WeatherCondition.all
+
+    erb :"weather_conditions/index"
+  end
+
+
   get '/stations/new' do
     @stations = Station.new
 

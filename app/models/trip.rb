@@ -28,7 +28,7 @@ class Trip < ActiveRecord::Base
     end
     trips.group_by(&:itself).values.max_by(&:size).first
   end
-  
+
 #did not consider if there is a tie
   def self.most_end_station
     trips = Trip.all.map do |trip|

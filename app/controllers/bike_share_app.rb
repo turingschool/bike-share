@@ -6,6 +6,8 @@ require 'will_paginate/active_record'
 
 class BikeShareApp < Sinatra::Base
 	include WillPaginate::Sinatra::Helpers
+
+
 	get '/stations/new' do
 		#inst var (AR methods)
 		erb :new_station
@@ -86,7 +88,7 @@ class BikeShareApp < Sinatra::Base
   get '/trips/:id' do
     @trip = Trip.find(params[:id])
     @stations = Station.all
-    # binding.pry
+    binding.pry
     erb :"trips/show"
   end
 

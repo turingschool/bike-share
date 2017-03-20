@@ -7,7 +7,7 @@
 
         <div class="pure-control-group">
         <label for="start_date">Start Date: </label>
-        <input name="trip[start_date]" type="datetime-local" value="<%= Date.strptime(@trip.start_date.to_s, '%Y-%m-%dT%H:%M:00').to_s%>" required>
+        <input name="trip[start_date]" type="datetime-local" value="<%= Date.strptime(@trip.start_date.to_s, '%Y-%m-%dT%l:%M').to_s%>" required>
         </div>
         <!--datetime is still invalid, needz fixed!! -->
 

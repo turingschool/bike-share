@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="application.css">
+    <title>Stations Dashboard</title>
+  </head>
+  <body>
+    <h1 class="title">Stations Dashboard</h1>
+
+    <ul>
+      <li>Total number of stations: <%= @stations.count %></li>
+      <li>Average bikes available per station: <%= @stations.average_bikes_per_station %></li>
+      <li>Most bikes available at a station: <%= @stations.max_bikes_available %></li>
+      <li>Station(s) where the most bikes are available: <%= @stations.station_with_most_bikes %></li>
+      <li>Fewest bikes available at a station: <%= @stations.fewest_bikes_available %></li>
+      <li>Station(s) where the fewest bikes are available: <%= @stations.station_with_fewest_bikes %></li>
+      <li>Newest station: <%= @stations.newest_station %></li>
+      <li>Oldest station: <%= @stations.oldest_station %></li>
+    </ul>
+  </body>
+</html>

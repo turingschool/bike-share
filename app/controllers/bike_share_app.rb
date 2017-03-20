@@ -64,7 +64,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips/new' do
-    @stations = Station.all 
+    @stations = Station.all
     # @trips = Trip
     erb :"trips/new"
   end

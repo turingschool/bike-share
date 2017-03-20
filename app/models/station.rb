@@ -4,7 +4,7 @@ class Station < ActiveRecord::Base
   belongs_to :city
   has_many :trips
 
-  validates :id, presence: true
+  
 	validates :name, presence: true #uniq?
 	validates :dock_count, presence: true
 	validates :city_id, presence: true

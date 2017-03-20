@@ -1,5 +1,12 @@
 require 'pry'
+require 'will_paginate'
+require 'will_paginate/active_record'
+
+
+
 class BikeShareApp < Sinatra::Base
+	include WillPaginate::Sinatra::Helpers
+
 
 	get '/stations/new' do
 		#inst var (AR methods)
@@ -7,8 +14,9 @@ class BikeShareApp < Sinatra::Base
 	end
 
 	get '/stations' do
-		@stations = Station.all
+		@stations = Station.all.paginate(:page => params[:page], :per_page => 5)
     @cities = City.all
+
 		erb :station_index
 	end
 
@@ -65,6 +73,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips/new' do
     @stations = Station.all
+
     # @trips = Trip
     erb :"trips/new"
   end
@@ -79,8 +88,15 @@ class BikeShareApp < Sinatra::Base
   get '/trips/:id' do
     @trip = Trip.find(params[:id])
     @stations = Station.all
-    # binding.pry
+    binding.pry
     erb :"trips/show"
+  end
+
+	delete '/trips/:id' do
+    # trip = Trip.find(params[:id])
+    Trip.destroy(params[:id])
+    # binding.pry
+    redirect '/trips'
   end
 
   # post '/trips' do

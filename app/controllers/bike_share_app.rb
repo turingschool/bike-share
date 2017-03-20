@@ -47,13 +47,11 @@ class BikeShareApp < Sinatra::Base
     @station = Station.destroy(params[:id])
     redirect '/stations'
   end
-  
+
   get '/station-dashboard' do
     erb :"stations/station-dashboard"
   end
 
-#TRIPS STARTS HERE (ITERATION 4)
-#DATES are not working...
   get '/trips' do
     @trips = Trip.all
     erb :"trips/index"
@@ -63,7 +61,6 @@ class BikeShareApp < Sinatra::Base
     erb :"trips/new"
   end
 
-#PROBLEM: LINKS WORK and FORM APPEARS, DOES NOT SAVE NEW ENTRIES
   post '/trips' do
     Trip.create(params[:trip])
     redirect "/trips"
@@ -84,10 +81,45 @@ class BikeShareApp < Sinatra::Base
     erb :"trips/show"
   end
 
-#WORKING :)
   delete '/trips/:id' do
     @trip = Trip.destroy(params[:id])
     redirect '/trips'
+  end
+
+#ITERATION 7 CONDITIONS STARTS HERE
+
+  get '/conditions' do
+    @conditions = Condition.all
+    erb :"conditions/index"
+  end
+
+  get '/conditions/new' do
+    erb :"conditions/new"
+  end
+
+  post '/conditions' do
+    Condition.create(params[:condition])
+    redirect "/conditions"
+  end
+
+  get '/conditions/:id/edit' do
+    @condition = Condition.find(params[:id])
+    erb :'conditions/edit'
+  end
+
+  put '/conditions/:id' do
+    @condition = Condition.update(params[:id], params[:condition])
+    redirect "/conditions/#{@condition.id}"
+  end
+
+  get '/conditions/:id' do
+    @condition = Condition.find(params[:id])
+    erb :"conditions/show"
+  end
+
+  delete '/conditions/:id' do
+    @condition = Condition.destroy(params[:id])
+    redirect '/conditions'
   end
 
 end

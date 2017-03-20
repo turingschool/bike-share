@@ -10,6 +10,7 @@ require 'database_cleaner'
 DatabaseCleaner.strategy = :truncation
 DatabaseCleaner.clean
 
+@count = 0
 def clean_station(name)
   if Station.find_by(name: name) != nil
     Station.find_by(name: name).id
@@ -36,7 +37,7 @@ CSV.foreach "db/csv/station.csv", headers: true, header_converters: :symbol do |
         installation_date:  row[:installation_date]
     )
 end
-@count = 0
+
 CSV.foreach "db/csv/trip_fixture.csv", headers: true, header_converters: :symbol do |row|
     @count += 1
     bike = Bike.find_or_create_by(bike_number: row[:bike_id])

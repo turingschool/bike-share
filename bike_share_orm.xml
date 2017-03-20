@@ -75,8 +75,7 @@
 <default>NULL</default></row>
 <row name="start_date" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
-<default>NULL</default><relation table="conditions" row="id" />
-</row>
+<default>NULL</default></row>
 <row name="start_station_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="stations" row="id" />
@@ -99,6 +98,10 @@
 <row name="zip_code_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="zip_codes" row="id" />
+</row>
+<row name="condition_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="conditions" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>
@@ -137,7 +140,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="105.19999694824219" y="188" name="conditions">
+<table x="105" y="188" name="conditions">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>

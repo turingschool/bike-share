@@ -1,7 +1,4 @@
 class BikeShareApp < Sinatra::Base
-
-  set :method_override, true
-
   get '/' do
     erb :"home/index"
   end
@@ -120,5 +117,4 @@ class BikeShareApp < Sinatra::Base
     @stations = Station
     erb :"stations/dashboard"
   end
-
 end

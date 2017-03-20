@@ -58,7 +58,7 @@ class Station < ActiveRecord::Base
     end.installation_date
   end
 
-  def self.oldest_station
+  def self.oldest_stations
     Station.all.select do |station|
       station.installation_date == self.oldest_date
     end
@@ -70,7 +70,7 @@ class Station < ActiveRecord::Base
     end.installation_date
   end
 
-  def self.newest_station
+  def self.newest_stations
     Station.all.select do |station|
       station.installation_date == self.newest_date
     end

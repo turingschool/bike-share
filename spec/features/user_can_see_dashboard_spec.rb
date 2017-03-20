@@ -42,4 +42,10 @@ RSpec.describe 'When a user visits /station-dashboard' do
       expect(page).to have_content("Mark's Station")
     end
   end
+
+  it 'should display station that was most recently installed' do
+    within('li.newest-installations') do
+      expect(page).to have_content("Beth's Station")
+    end
+  end
 end

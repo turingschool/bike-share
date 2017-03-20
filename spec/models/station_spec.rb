@@ -116,14 +116,14 @@ RSpec.describe Station do
     end
 
     it 'shows the first installed station' do
-      oldest = Station.oldest_station
+      oldest = Station.oldest_stations
       sam = [Station.find(2)]
 
       expect(oldest).to eq(sam)
     end
 
     it 'shows the most recently installed station' do
-      newest = Station.newest_station
+      newest = Station.newest_stations
       beth = [Station.find(1)]
 
       expect(newest).to eq(beth)

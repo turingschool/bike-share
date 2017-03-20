@@ -3,6 +3,7 @@
   <li>Total stations: <%= @station.count %></li>
   <li>Average docks per station: <%= @station.find_average_docks %></li>
   <li>Most docks available at a station: <%= @station.max_dock_count %></li>
+
   <li class='most-docks'>
     <h6>Station(s) with the most docks:</h6>
     <% @station.stations_with_most_docks.each do |station| %>
@@ -10,10 +11,20 @@
     <% end %>
   </li>
   <li>Fewest docks available at a station: <%= @station.min_dock_count %></li>
+
   <li class="least-docks">
     <h6>Station(s) with the least docks:</h6>
     <% @station.stations_with_fewest_docks.each do |station| %>
     <%= station.name %><br>
     <% end %>
   </li>
+
+  <li class="newest-installations">
+    <h6>Newest station(s)</h6>
+    <% @station.newest_stations.each do |station| %>
+    <%= station.name %><br>
+    <% end %>
+  </li>
+
+
 </ul>

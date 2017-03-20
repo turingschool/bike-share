@@ -25,4 +25,12 @@ RSpec.describe 'When a user visits /station-dashboard' do
     expect(page).to have_content('Most docks available at a station: 12')
   end
 
+  it 'should display the names of the stations with the most docks' do
+    within('li.most-docks') do
+      expect(page).to have_content("Beth's Station")
+      expect(page).to have_content("Chris' Station")
+    end
+  end
+
+
 end

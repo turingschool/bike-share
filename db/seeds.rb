@@ -12,7 +12,7 @@ Station.destroy_all
 stations = CSV.open 'db/csv/station.csv',
 headers: true, header_converters: :symbol
 
-trips = CSV.open 'db/csv/trip_sample_data.csv',
+trips = CSV.open 'db/csv/fixtures/trip_sample_data.csv',
 headers: true, header_converters: :symbol
 
 

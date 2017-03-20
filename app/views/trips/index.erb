@@ -3,14 +3,15 @@
 <a href="/">Return to home</a>
 <a href="/trips/new">Create a New Trip</a>
 
-<h2>***THIS PAGE SHOULD ONLY SHOW THE FIRST 30 TRIPS***</h2>
 
 <div>
   <% @trips.each do |trip| %>
+  <p>Trip from <%= trip.start_station_name %> to <%=  trip.end_station_name %></p>
   <p>Bike ID: <%= trip.bike_id %></p><br>
   <p>Trip Duration (in minutes): <%= trip.duration %></p><br>
   <p>End Date: <%= trip.end_date %></p><br>
-  <p>Zipcode: </p><br>
+  <p>Subscription Type: <%= trip.subscription_type %></p>
+  <p>Zipcode: <%= trip.zip_code %></p><br>
   <a href="/trips/<%= trip.id %>/edit">Edit Trip</a>
 
   <form action="/trips/<%= trip.id %>" method="post">

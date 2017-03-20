@@ -3,7 +3,7 @@ require './app/models/city.rb'
 require 'CSV'
 require 'Date'
 
- CSV.foreach("./db/csv/station.csv", :headers => true) do |row|
+CSV.foreach("./db/csv/station.csv", :headers => true) do |row|
 
   city_name = row["city"]
   date = row["installation_date"]

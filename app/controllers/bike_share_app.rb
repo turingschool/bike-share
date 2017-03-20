@@ -2,7 +2,7 @@ require 'pry'
 
 class BikeShareApp < Sinatra::Base
   get '/stations' do
-    @stations = Station.all
+    @stations = Station.all # What's AR's sorting method?
 
     erb :"stations/index"
   end

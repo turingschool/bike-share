@@ -1,7 +1,4 @@
 class BikeShareApp < Sinatra::Base
-
-  set :method_override, true
-
   get '/' do
     erb :"home/index"
   end
@@ -65,10 +62,10 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/trips' do
-
-    start_station = Station.find_by(name: params[:trip][:start_station]).id
-    end_station = Station.find_by(name: params[:trip][:end_station]).id
-    subscription_type = SubscriptionType.find_by(subscription_type: params[:trip][:subscription_type]).id
+    # require "pry"; binding.pry
+    start_station = params[:trip][:start_station]
+    end_station = params[:trip][:end_station]
+    subscription_type = params[:trip][:subscription_type]
     zip_code = ZipCode.find_or_create_by(zip_code: params[:trip][:zip_code]).id
     bike = Bike.find_by(bike_number: params[:trip][:bike_number]).id
 
@@ -78,6 +75,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips/new' do
+    @stations = Station.all
+    @subtypes = SubscriptionType.all
     erb :'trips/new'
   end
 
@@ -87,9 +86,9 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/trips/:id' do
-    start_station = Station.find_by(name: params[:trip][:start_station]).id
-    end_station = Station.find_by(name: params[:trip][:end_station]).id
-    subscription_type = SubscriptionType.find_by(subscription_type: params[:trip][:subscription_type]).id
+    start_station = params[:trip][:start_station]
+    end_station = params[:trip][:end_station]
+    subscription_type = params[:trip][:subscription_type]
     zip_code = ZipCode.find_or_create_by(zip_code: params[:trip][:zip_code]).id
     bike = Bike.find_by(bike_number: params[:trip][:bike_number]).id
 
@@ -102,6 +101,8 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips/:id/edit' do
     @trip = Trip.find(params[:id])
+    @stations = Station.all
+    @subtypes = SubscriptionType.all
 
     erb :'trips/edit'
   end
@@ -116,5 +117,4 @@ class BikeShareApp < Sinatra::Base
     @stations = Station
     erb :"stations/dashboard"
   end
-
 end

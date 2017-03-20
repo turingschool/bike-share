@@ -65,4 +65,17 @@ class BikeShareApp < Sinatra::Base
     redirect "/stations"
   end
 
+  get "/trips" do
+    redirect "/trips/page/1"
+  end
+
+  get "/trips/page/:num" do |page_num|
+    binding.pry
+    trips     = Trip.where.not(start_date: nil)
+    @trips    = on_page(trips, page_num)
+    @next     = next_page()
+    @previous = previous_page()
+  end
+
+
 end

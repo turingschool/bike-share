@@ -9,11 +9,16 @@ RSpec.describe 'When a user visits /station-dashboard' do
     city.stations.create!(lat: 2, long: 1, name: 'Sam\'s Station', dock_count: 2, installation_date: Date.parse('12/10/1986'))
     city.stations.create!(lat: 2, long: 1, name: 'Chris\' Station', dock_count: 12, installation_date: Date.parse('8/8/2016'))
     city.stations.create!(lat: 2, long: 1, name: 'Mark\'s Station', dock_count: 2, installation_date: Date.parse('8/8/2016'))
+
+    visit '/station-dashboard'
   end
 
   it 'should display the total number of stations' do
-    visit '/station-dashboard'
-
-    expect(page).to have_content('Total station: 4')
+    expect(page).to have_content('Total stations: 4')
   end
+
+  it 'should display average docks per station' do
+    expect(page).to have_content('Average docks per station: 7')
+  end
+
 end

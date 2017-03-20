@@ -7,6 +7,7 @@
 
 <div>
   <% @trips.each do |trip| %>
+  <p>Trip from <%= trip.start_station_name %> to <%=  trip.end_station_name %></p>
   <p>Bike ID: <%= trip.bike_id %></p><br>
   <p>Trip Duration (in minutes): <%= trip.duration %></p><br>
   <p>End Date: <%= trip.end_date %></p><br>

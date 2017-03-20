@@ -8,6 +8,11 @@ class BikeShareApp < Sinatra::Base
 	include WillPaginate::Sinatra::Helpers
 
 
+
+  get '/' do
+    erb :home
+  end
+  
 	get '/stations/new' do
 		#inst var (AR methods)
 		erb :new_station

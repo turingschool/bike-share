@@ -65,6 +65,11 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/trips' do
+    start_station = Station.find_or_create_by(params[:start_station]).id
+    end_station = Station.find_or_create_by(params[:end_station]).id
+    params[:trip][:start_station_id] = start_station
+    params[:trip][:end_station_id] = end_station
+    # binding.pry
     Trip.create!(params[:trip])
     redirect "/trips"
   end
@@ -75,6 +80,10 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/trips/:id' do
+    start_station = Station.find_or_create_by(params[:start_station]).id
+    end_station = Station.find_or_create_by(params[:end_station]).id
+    params[:trip][:start_station_id] = start_station
+    params[:trip][:end_station_id] = end_station
     @trip = Trip.update(params[:id], params[:trip])
     redirect "/trips/#{@trip.id}"
   end

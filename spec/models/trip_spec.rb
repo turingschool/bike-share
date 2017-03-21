@@ -38,88 +38,65 @@ RSpec.describe Trip do
                  )
   end
 
-  xdescribe "validations" do
+  describe "validations" do
     it "should be valid with all attributes except zip_code" do
-       Trip.create(duration: 39,
+       trip = Trip.create(duration: 39,
                    start_date: format_date("12/15/2013 14:54"),
                    start_station_id: 4,
                    end_date: format_date("12/15/2013 15:56"),
                    bike_id: 6,
                    end_station_id: 32,
-                   subscription_type: "Subscriber"
+                   subscription_type_id: 1
                    )
       expect(trip).to be_valid
     end
 
     it "should be invalid without duration" do
-       Trip.create(start_date: format_date("12/15/2013 14:54"),
+       trip = Trip.create(start_date: format_date("12/15/2013 14:54"),
                    start_station_id: 4,
                    end_date: format_date("12/15/2013 15:56"),
                    bike_id: 6,
                    end_station_id: 32,
-                   subscription_type: "Subscriber"
+                   subscription_type_id: 1
                    )
       expect(trip).to_not be_valid
     end
 
     it "should be invalid without start_date" do
-       Trip.create(duration: 39,
+       trip = Trip.create(duration: 39,
                    start_station_id: 4,
                    end_date: format_date("12/15/2013 15:56"),
                    bike_id: 6,
                    end_station_id: 32,
-                   subscription_type: "Subscriber"
+                   subscription_type_id: 1
                    )
       expect(trip).to_not be_valid
     end
 
-    xit "should be invalid without start_station_name" do
-       Trip.create(duration: 39,
-                   start_station_id: 4,
-                   start_date: format_date("12/15/2013 14:54"),
-                   end_date: format_date("12/15/2013 15:56"),
-                   bike_id: 6,
-                   end_station_id: 32,
-                   subscription_type: "Subscriber"
-                         )
-      expect(trip).to_not be_valid
-    end
-
     it "should be invalid without end_date" do
-       Trip.create(duration: 39,
+       trip = Trip.create(duration: 39,
                    start_station_id: 4,
                    start_date: format_date("12/15/2013 14:54"),
                    bike_id: 6,
                    end_station_id: 32,
-                   subscription_type: "Subscriber"
+                   subscription_type_id: 1
                    )
       expect(trip).to_not be_valid
     end
 
     it "should be invalid without bike_id" do
-       Trip.create(duration: 39,
+       trip = Trip.create(duration: 39,
                    start_date: format_date("12/15/2013 14:54"),
                    start_station_id: 4,
                    end_date: format_date("12/15/2013 15:56"),
                    end_station_id: 32,
-                   subscription_type: "Subscriber"
-                   )
-      expect(trip).to_not be_valid
-    end
-    xit "should be invalid without end_station_name" do
-       Trip.create(duration: 39,
-                   start_date: format_date("12/15/2013 14:54"),
-                   start_station_id: 4,
-                   end_date: format_date("12/15/2013 15:56"),
-                   bike_id: 6,
-                   end_station_id: 32,
-                   subscription_type: "Subscriber"
+                   subscription_type_id: 1
                    )
       expect(trip).to_not be_valid
     end
 
     it "should be invalid without subscription_type" do
-       Trip.create(duration: 39,
+       trip = Trip.create(duration: 39,
                    start_date: format_date("12/15/2013 14:54"),
                    start_station_id: 4,
                    end_date: format_date("12/15/2013 15:56"),

@@ -40,4 +40,14 @@ class Station < ActiveRecord::Base
     # array_by_dock_count = all.min_by {|dock| dock.installation_date}
     self.minimum(:installation_date)
   end
+
+  def self.most_starts
+    # for each station
+    #count how many times it occurs in trip, start_station_id
+
+    # order by
+    #count of occurances of start_station_id
+
+  end
+
 end

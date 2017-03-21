@@ -14,15 +14,6 @@ class Trip < ActiveRecord::Base
   validates :bike_id, presence: true
   validates :subscription_type, presence: true
 
-  # def self.total
-  #   all.count
-  # end
-
-  # def self.avg
-  #   count_array = all.select('dock_count')
-  #   (count_array.inject(0){ |sum, el| sum + el.dock_count }.to_f / count_array.size).round(1)
-  # end
-
   def self.avg
     self.average(:duration).to_f.round(2)
   end
@@ -60,5 +51,4 @@ class Trip < ActiveRecord::Base
     end
     station_count.max_by { |k, v| v}
   end
-
 end

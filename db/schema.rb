@@ -27,6 +27,19 @@ ActiveRecord::Schema.define(version: 20170320235354) do
     t.string   "name"
   end
 
+  create_table "conditions", force: :cascade do |t|
+    t.date     "date"
+    t.integer  "max_temp"
+    t.integer  "mean_temp"
+    t.integer  "min_temp"
+    t.integer  "mean_humidity"
+    t.integer  "mean_visibility"
+    t.integer  "mean_wind_speed"
+    t.float    "precipitation"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "stations", force: :cascade do |t|
     t.string   "name"
     t.integer  "dock_count"

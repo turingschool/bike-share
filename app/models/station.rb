@@ -90,5 +90,13 @@ class Station < ActiveRecord::Base
       installation_date: params[:station][:installation_date]
     )
   end
+  
+  def self.start_station_with_most_rides
+    Station.all.max_by {|station| station.start_trips.count}
+  end
+  
+  def self.end_station_with_most_rides
+    Station.all.max_by {|station| station.end_trips.count}
+  end
 
 end

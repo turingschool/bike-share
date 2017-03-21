@@ -31,10 +31,9 @@ class Trip < ActiveRecord::Base
 
 #did not consider if there is a tie
   def self.most_end_station
-    trips = Trip.all.map do |trip|
-      trip.end_station_id
-    end
-    Station.find(trips.group_by(&:itself).values.max_by(&:size).first).name
+    ending_station_ids = Trip.pluck(:end_station_id)
+    most_popular_end_stations = ending_station_ids.group_by { |id| ending_station_ids.count(id) }.min.last.uniq
+    Station.find(most_popular_end_stations).map{|station| station.name }.sort
   end
 
 
@@ -43,13 +42,16 @@ class Trip < ActiveRecord::Base
   def self.monthly_totals
     monthly_totals = {}
     Trip.all.each do |trip|
+
       # Find the year of the trip
-      year = trip.start_date.year.to_s
+
+      # should this be a string?
+      year = trip.start_date.year.to_i
       monthly_totals[year] ||= Array.new(12, 0)
       # require "pry"; binding.pry
       # Find the month of the trip
       month = trip.start_date.month
-      monthly_totals[year][month] += 1
+      monthly_totals[year][month - 1] += 1
     end
     monthly_totals
   end

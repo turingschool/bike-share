@@ -37,7 +37,7 @@ RSpec.describe Trip do
                 )
   end
 
-  describe "validations" do
+  xdescribe "validations" do
     it "should be valid with all attributes except zip_code" do
        Trip.create(duration: 39,
                    start_date: format_date("12/15/2013 14:54"),
@@ -163,14 +163,16 @@ RSpec.describe Trip do
     end
 
     it "#most_end_station returns a station name" do
-      Station.create(id: 32, name: "South station", installation_date: 20150331, dock_count: 45, city_id: 1)
 
-      expect(Trip.most_end_station).to eq("South station")
+      expect(Trip.most_end_station).to eq(["East station"])
     end
 
-    xit "#month_breakdown" do
+    it "#monthly_totals" do
 
-      expect(Trip.month_breakdown).to be_instance_of(String)
+      expect(Trip.monthly_totals).to be_instance_of(Hash)
+      expect(Trip.monthly_totals[2013].last).to eq(1)
+      expect(Trip.monthly_totals[2013][10]).to eq(2)
+
     end
 
 

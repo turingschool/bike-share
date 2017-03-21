@@ -1,4 +1,4 @@
-require_relative "../spec_helper"
+require_relative "../../spec_helper"
 
 RSpec.describe "When a user deletes a station" do
   it "the station no longer exists" do
@@ -10,8 +10,9 @@ RSpec.describe "When a user deletes a station" do
 
     click_on 'Delete Station'
     expect(current_path).to eq '/stations'
-    expect(Station.all.count).to eq 1
 
+    expect(Station.all.count).to eq 1
+    expect(Station.where(id: 2)).to_not exist
     expect(page).to_not have_content(station2.name)
   end
 end

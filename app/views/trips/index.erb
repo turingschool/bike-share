@@ -9,6 +9,8 @@
   <p>End Station: <%= trip.end_station.name%></p>
   <p>Bike ID: <%= trip.bike.bike_number%></p>
   <p>Subscription Type: <%=  trip.subscription_type.subscription_type%></p>
-  <p>Zip Code: <%= trip.zip_code.zip_code%></p>
+  <p>Zip Code: <%= trip.zip_code.zip_code unless trip.zip_code.nil?%></p>
   <br>
 <% end %>
+
+<%= will_paginate @trips %>

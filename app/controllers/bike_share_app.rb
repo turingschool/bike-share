@@ -1,29 +1,23 @@
+require 'will_paginate/active_record'
+
 class BikeShareApp < Sinatra::Base
+  include WillPaginate::Sinatra::Helpers
 
   get '/' do
     erb :"home/index"
   end
 
   get '/stations' do
-    @stations = Station.all
+    @stations = Station.all.paginate(page: params[:page], per_page: 30)
     erb :"stations/index"
   end
 
   get '/stations/new' do
-    @station = Station.new
-    @cities = City.all
     erb :"stations/new"
   end
 
   post '/stations' do
-    city_name = params[:station][:city]
-    city = City.find_or_create_by(name: city_name)
-    input = {
-      name: params[:station][:name],
-      dock_count: params[:station][:dock_count],
-      installation_date: params[:station][:installation_date]
-    }
-    @station = city.stations.create(input)
+    @station = Station.create_station(params)
     redirect "/stations/#{@station.id}"
   end
 
@@ -38,35 +32,57 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
-
-    city_name = params[:station][:city]
-    city = City.find_or_create_by(name: city_name)
-    input = {
-      name: params[:station][:name],
-      dock_count: params[:station][:dock_count],
-      city_id: city.id.to_s,
-      installation_date: params[:station][:installation_date]
-    }
-    station = Station.find(params[:id]).update(input)
-
+    Station.update_station(params)
     redirect "/stations/#{params[:id]}"
-
   end
 
   delete '/stations/:id' do
     Station.destroy(params[:id])
-
     redirect '/stations'
   end
 
   get '/trips' do
-    @trips = Trip.all
+    @trips = Trip.all.paginate(page: params[:page], per_page: 30)
     erb :'trips/index'
+  end
+
+  post '/trips' do
+    @trip = Trip.create_trip(params)
+    redirect "/trips/#{@trip.id}"
+  end
+
+  get '/trips/new' do
+    @stations = Station.all
+    @subtypes = SubscriptionType.all
+    erb :'trips/new'
+  end
+
+  get '/trips/:id' do
+    @trip = Trip.find(params[:id])
+    erb :'trips/show'
+  end
+
+  put '/trips/:id' do
+    Trip.update_trip(params)
+    redirect "/trips/#{params[:id]}"
+  end
+
+  get '/trips/:id/edit' do
+    @trip = Trip.find(params[:id])
+    @stations = Station.all
+    @subtypes = SubscriptionType.all
+
+    erb :'trips/edit'
+  end
+
+  delete '/trips/:id' do
+    Trip.destroy(params[:id])
+
+    redirect '/trips'
   end
 
   get '/station-dashboard' do
     @stations = Station
     erb :"stations/dashboard"
   end
-
 end

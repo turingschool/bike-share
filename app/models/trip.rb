@@ -51,6 +51,10 @@ class Trip < ActiveRecord::Base
  def self.shortest_ride
    Trip.minimum(:duration).to_i
  end
+ 
+ def self.date_with_most_trips
+  #  Trip.order(start_date: :desc).first
+ end
 
  # def self.list_maker(trip_list)
  #   if trip_list.count == 0

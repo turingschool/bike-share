@@ -3,20 +3,20 @@ RSpec.describe Station do
   before :each do
     @city = City.create(name: "Denver")
   end
-  
+
   describe "validations" do
     it "is invalid without a name" do
-      station = @city.stations.new(dock_count: 100, installation_date: "3/14/2017")
+      station = @city.stations.new(dock_count: 100, installation_date: "14/3/2017")
       expect(station).to_not be_valid
     end
 
     it "is invalid without a city" do
-      station = Station.new(name: "Turing", dock_count: 100, installation_date: "3/14/2017")
+      station = Station.new(name: "Turing", dock_count: 100, installation_date: "14/3/2017")
       expect(station).to_not be_valid
     end
 
     it "is invalid without a dock count" do
-      station = @city.stations.new(name: "Turing", installation_date: "3/14/2017")
+      station = @city.stations.new(name: "Turing", installation_date: "14/3/2017")
       expect(station).to_not be_valid
     end
 
@@ -26,7 +26,7 @@ RSpec.describe Station do
     end
 
     it "should be valid with a name, city, dock_count, and installation_date" do
-      station = @city.stations.new(name: "Turing", dock_count: 100, installation_date: "3/14/2017")
+      station = @city.stations.new(name: "Turing", dock_count: 100, installation_date: "14/3/2017")
       expect(station).to be_valid
     end
   end

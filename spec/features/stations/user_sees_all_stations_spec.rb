@@ -3,8 +3,8 @@ require_relative "../../spec_helper"
 RSpec.describe "When a user visits '/stations' " do
   it "they see all the bike stations" do
     city = City.create(name: "Denver")
-    station1 = city.stations.create(name: "Turing", dock_count: 100, installation_date: "3/14/2017")
-    station2 = city.stations.create(name: "Galvanize", dock_count: 1, installation_date: "4/01/1972")
+    station1 = city.stations.create(name: "Turing", dock_count: 100, installation_date: "14/3/2017")
+    station2 = city.stations.create(name: "Galvanize", dock_count: 1, installation_date: "1/4/1972")
 
     visit '/stations'
 

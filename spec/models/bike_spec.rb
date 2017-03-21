@@ -52,5 +52,11 @@ RSpec.describe Bike do
       expect(Bike.max_rides).to eq([203])
     end
 
+    it "#min_rides should return bike_number 202" do
+      expect(Bike.min_rides).to eq([202])
+    end
+
+    
+
   end
 end

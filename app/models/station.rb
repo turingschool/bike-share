@@ -26,10 +26,10 @@ class Station < ActiveRecord::Base
   end
 
   def self.newest_station
-        Station.order(:dock_count).last
+    Station.order(:installation_date).last
   end
 
   def self.oldest_station
-    Station.order(:dock_count).first
+    Station.order(:installation_date).first
   end
 end

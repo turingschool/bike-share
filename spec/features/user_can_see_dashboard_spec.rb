@@ -67,12 +67,11 @@ RSpec.describe "As a user visits station dashboard" do
       end
 #------------------------------------------------------------------------------
       within("body") do
-        binding.pry
           expect(page).to have_content('Most Recently Installed Station: Golden Station')
       end
 
       within("body") do
-          expect(page).to have_content('Oldest Station: San Jose Diridon Caltrain Station')
+          expect(page).to have_content('Oldest Station: Denver Station')
       end
 
 

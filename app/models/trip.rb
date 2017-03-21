@@ -29,7 +29,6 @@ class Trip < ActiveRecord::Base
     Station.find(most_popular_start_stations).map{|station| station.name }.sort
   end
 
-#did not consider if there is a tie
   def self.most_end_station
     ending_station_ids = Trip.pluck(:end_station_id)
     most_popular_end_stations = ending_station_ids.group_by { |id| ending_station_ids.count(id) }.min.last.uniq

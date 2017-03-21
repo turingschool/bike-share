@@ -2,6 +2,7 @@ require_relative '../spec_helper'
 
 RSpec.describe Bike do
 
+  # refactor me!
   def format_date(date)
     fd = date.split(/[\/: ]/)
     Time.local(fd[2], fd[0], fd[1], fd[3], fd[4])
@@ -55,8 +56,6 @@ RSpec.describe Bike do
     it "#min_rides should return bike_number 202" do
       expect(Bike.min_rides).to eq([202])
     end
-
-    
 
   end
 end

@@ -17,7 +17,7 @@ RSpec.describe "When a user visits '/stations' " do
     expect(page).to have_content(station2.dock_count)
     expect(page).to have_content(station1.city.name)
     expect(page).to have_content(station2.city.name)
-    expect(page).to have_content(station1.installation_date)
-    expect(page).to have_content(station2.installation_date)
+    expect(page).to have_content(station1.installation_date.strftime("%B %d, %Y"))
+    expect(page).to have_content(station2.installation_date.strftime("%B %d, %Y"))
   end
 end

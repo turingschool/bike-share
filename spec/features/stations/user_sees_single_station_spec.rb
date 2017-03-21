@@ -15,7 +15,7 @@ RSpec.describe "When a user visits '/stations/:id' " do
     end
     expect(page).to have_content(@station2.dock_count)
     expect(page).to have_content(@station2.city.name)
-    expect(page).to have_content(@station2.installation_date)
+    expect(page).to have_content(@station2.installation_date.strftime("%B %d, %Y"))
   end
 
   it "they can click edit button" do

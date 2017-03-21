@@ -2,7 +2,7 @@ require_relative "../../spec_helper"
 
 RSpec.describe "when a user visits the page to create a new station" do
   it "they can create a new station" do
-    station = Station.create(name: "Japantown", dock_count: 15, city_id: 1, installation_date: "2013-08-05")
+    # station = Station.create(name: "Japantown", dock_count: 15, city_id: 1, installation_date: "2013-08-05")
     # city = City.create(city: "San Jose")
     # As a user
     # When I visit "/stations/new"
@@ -30,10 +30,10 @@ RSpec.describe "when a user visits the page to create a new station" do
     # and then I expect to see "City: San Jose"
     # and then I expect to see "Installation Date: 8/7/2013"
     within(".all-stations-info") do
-      expect(page).to have_content("Name: Japantown")
-      expect(page).to have_content("Dock Count: 15")
-      expect(page).to have_content("City: San Jose")
-      expect(page).to have_content("Installation Date: 2013-08-05")
+      expect(page).to have_content("Japantown")
+      expect(page).to have_content("15")
+      expect(page).to have_content("San Jose")
+      expect(page).to have_content("2013-08-05")
     end
   end
 end

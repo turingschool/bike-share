@@ -1,4 +1,4 @@
-require_relative "../spec_helper"
+require_relative "../../spec_helper"
 
 RSpec.describe "as a user deletes an existing trip from a single trip page" do
   it "they can see existing trip data and delete the trip record" do

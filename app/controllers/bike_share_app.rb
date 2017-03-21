@@ -12,7 +12,7 @@ class BikeShareApp < Sinatra::Base
   get '/' do
     erb :home
   end
-  
+
 	get '/stations/new' do
 		#inst var (AR methods)
 		erb :new_station
@@ -78,7 +78,7 @@ class BikeShareApp < Sinatra::Base
 	end
 
   get '/trips' do
-    @trips = Trip.all
+    @trips = Trip.all.paginate(:page => params[:page], :per_page => 5)
     @station = Station
     erb :"trips/trip_index"
   end

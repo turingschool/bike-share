@@ -172,6 +172,7 @@ RSpec.describe Trip do
                  end_station_id: 32,
                  subscription_type: "Subscriber"
                  )
+
       Trip.create(duration: 45,
                   start_date: format_date("11/15/2013 14:54"),
                   start_station_id: 7,
@@ -189,7 +190,49 @@ RSpec.describe Trip do
                   subscription_type: "Subscriber"
                   )
 
-      expect(Trip.most_start_station).to eq("East station")
+      expect(Trip.most_start_station).to eq(["East station"])
+    end
+    it "#most_start_station returns an array of station names for a tie" do
+      City.create(name: "Denver")
+      Station.create(id: 7, name: "East station", installation_date: 20150331, dock_count: 45, city_id: 1)
+      Station.create(id: 4, name: "West station", installation_date: 20150330, dock_count: 42, city_id: 1)
+      Trip.create(duration: 39,
+                 start_date: format_date("12/15/2013 14:54"),
+                 start_station_id: 4,
+                 end_date: format_date("12/15/2013 15:56"),
+                 bike_id: 6,
+                 end_station_id: 32,
+                 subscription_type: "Subscriber"
+                 )
+
+      Trip.create(duration: 30,
+                start_date: format_date("12/16/2013 14:54"),
+                start_station_id: 4,
+                end_date: format_date("12/16/2013 15:56"),
+                bike_id: 5,
+                end_station_id: 32,
+                subscription_type: "Subscriber"
+                )
+
+      Trip.create(duration: 45,
+                  start_date: format_date("11/15/2013 14:54"),
+                  start_station_id: 7,
+                  end_date: format_date("11/15/2013 15:56"),
+                  bike_id: 6,
+                  end_station_id: 32,
+                  subscription_type: "Subscriber"
+                  )
+      Trip.create(duration: 45,
+                  start_date: format_date("11/15/2013 14:54"),
+                  start_station_id: 7,
+                  end_date: format_date("11/15/2013 15:56"),
+                  bike_id: 6,
+                  end_station_id: 32,
+                  subscription_type: "Subscriber"
+                  )
+
+      expect(Trip.most_start_station).to eq(["East station", "West station"])
+
     end
     it "#most_end_station returns a station name" do
       City.create(name: "Denver")
@@ -222,7 +265,7 @@ RSpec.describe Trip do
       expect(Trip.most_end_station).to eq("South station")
     end
 
-    it "#month_breakdown" do
+    xit "#month_breakdown" do
       Trip.create(duration: 39,
                  start_date: format_date("12/15/2013 14:54"),
                  start_station_id: 4,

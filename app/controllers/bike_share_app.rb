@@ -98,6 +98,11 @@ class BikeShareApp < Sinatra::Base
     redirect '/trips'
   end
 
+  get '/trips-dashboard' do
+    @monthly_totals = Trip.monthly_totals
+    erb :"trips/trip-dashboard"
+  end
+
 #ITERATION 7 CONDITIONS STARTS HERE
 
   get '/conditions' do

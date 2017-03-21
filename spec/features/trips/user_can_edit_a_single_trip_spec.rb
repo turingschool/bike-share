@@ -11,15 +11,16 @@ RSpec.describe "When a user edits a trip" do
     zip_code = ZipCode.create(zip_code: 80602)
     @trip1 = bike.trips.create(duration: 100, start_date: "29/8/2013 14:14", start_station_id: station1.id, end_date: "29/8/2013 20:14", end_station_id: station2.id, subscription_type_id: subscription_type.id, zip_code_id: zip_code.id)
   end
-  it "the trips duration is changed" do
+  it "the trips subscription type is changed" do
 
     visit '/trips/1/edit'
-    fill_in 'trip[duration]', with: '316'
     select('Customer', :from =>'trip[subscription_type]')
     click_on 'Submit'
 
+    # require 'pry'; binding.pry
+
     expect(current_path).to eq '/trips/1'
-    expect(page).to have_content '316'
+    expect(page).to have_content '21600'
     expect(page).to_not have_content '100'
     expect(page).to have_content 'Subscription Type: Customer'
     expect(page).to_not have_content 'Subscription Type: Subscriber'

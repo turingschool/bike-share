@@ -14,7 +14,6 @@ RSpec.describe "When a user creates a trip" do
   it "the trip shows up in the index" do
 
     visit '/trips/new'
-    fill_in 'trip[duration]', with: 111
     fill_in 'trip[start_date]', with: Time.parse("2013-8-29 14:14 UTC")
     fill_in 'trip[end_date]', with: Time.parse("2013-8-29 15:14 UTC")
     select('Turing', :from =>'trip[start_station]')

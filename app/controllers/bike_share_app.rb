@@ -79,7 +79,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/weather_conditions/:id' do
-    weather = WeatherCondition.create(params[:weather_condition])
+    @weather = WeatherCondition.create(params[:weather_condition])
 
     redirect "/weather_conditions/#{@weather.id}"
   end

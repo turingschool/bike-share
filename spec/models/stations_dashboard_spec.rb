@@ -49,20 +49,13 @@ RSpec.describe Station do
   end
 
   describe ".newest_stations" do
-    xit "returns date time object" do
-      expect( Station.date_converter("3/14/2017") ).to eq(DateTime.strptime(@station1.installation_date, "%m/%d/%Y"))
-    end
-    xit "returns list of install dates" do
-      expect( Station.install_dates.count ).to eq(3)
-      expect( Station.install_dates.first.class ).to eq(DateTime)
-    end
-    xit "returns newest stations" do
+    it "returns newest stations" do
       expect( Station.newest_stations ).to eq(@station3.name)
     end
   end
 
   describe ".oldest_stations" do
-    xit "returns oldest stations" do
+    it "returns oldest stations" do
       expect( Station.oldest_stations ).to eq(@station1.name)
     end
   end

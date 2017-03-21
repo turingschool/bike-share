@@ -8,7 +8,7 @@ RSpec.describe "When a user visits '/station-dashboard' " do
     @station3 = city.stations.create(name: "Capital Hill", dock_count: 4, installation_date: "16/3/2017")
   end
 
-  xit "they see a dashboard message" do
+  it "they see a dashboard message" do
     visit '/station-dashboard'
 
     within('h1') do

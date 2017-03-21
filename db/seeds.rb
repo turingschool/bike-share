@@ -31,7 +31,7 @@ trips.each do |trip|
               start_station_id:     Station.find_by(name: trip[:start_station_name]).id,
               end_date:             Date.strptime(trip[:end_date], "%m/%d/%Y"),
               end_station_id:       Station.find_by(name: trip[:end_station_name]).id,
-              bike_id:              Bike.find_or_create_by(bike_number: trip[:bike_id]).id,
-              subscription_type_id: SubscriptionType.find_or_create_by(subscription_type: trip[:subscription_type]).id,
-              zip_code_id:          ZipCode.find_or_create_by(zip_code: trip[:zip_code]).id)
+              bike:                 Bike.find_or_create_by(bike_number: trip[:bike_id]),
+              subscription_type:    SubscriptionType.find_or_create_by(subscription_type: trip[:subscription_type]),
+              zip_code:             ZipCode.find_or_create_by(zip_code: trip[:zip_code]))
 end

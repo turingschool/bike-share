@@ -49,28 +49,20 @@ class Station < ActiveRecord::Base
     list_maker(Station.where(dock_count: fewest_bikes))
   end
 
-  def self.date_converter(string_date)
-    DateTime.strptime(string_date, "%m/%d/%Y")
-  end
-
-  def self.install_dates
-    Station.all.map do |station|
-      date_converter(station.installation_date)
-    end
-  end
-
-  def self.date_finder(picker)
-    Station.all.find_all do |station|
-      date_converter(station.installation_date) == picker
-    end
+  def self.newest_installation_date
+    Station.maximum(:installation_date)
   end
 
   def self.newest_stations
-    list_maker(date_finder(install_dates.max))
+    list_maker(Station.where(installation_date: newest_installation_date))
+  end
+
+  def self.oldest_installation_date
+    Station.minimum(:installation_date)
   end
 
   def self.oldest_stations
-    list_maker(date_finder(install_dates.min))
+    list_maker(Station.where(installation_date: oldest_installation_date))
   end
 
   def self.create_station(params)

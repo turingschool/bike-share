@@ -16,27 +16,27 @@ class Trip < ActiveRecord::Base
 
  def self.create_trip(params)
    Trip.create!(
-     duration:             params[:trip][:duration],
+     duration:             (Time.parse(params[:trip][:end_date]) - Time.parse(params[:trip][:start_date])).to_i,
      start_date:           params[:trip][:start_date],
      start_station_id:     params[:trip][:start_station],
      end_date:             params[:trip][:end_date],
      end_station_id:       params[:trip][:end_station],
      subscription_type_id: params[:trip][:subscription_type],
      zip_code:             ZipCode.find_or_create_by(zip_code: params[:trip][:zip_code]),
-     bike:                 Bike.find_by(bike_number: params[:trip][:bike_number])
+     bike:                 Bike.find_or_create_by(bike_number: params[:trip][:bike_number])
    )
  end
 
  def self.update_trip(params)
    Trip.find(params[:id]).update(
-     duration:             params[:trip][:duration],
+     duration:             (Time.parse(params[:trip][:end_date]) - Time.parse(params[:trip][:start_date])).to_i,
      start_date:           params[:trip][:start_date],
      start_station_id:     params[:trip][:start_station],
      end_date:             params[:trip][:end_date],
      end_station_id:       params[:trip][:end_station],
      subscription_type_id: params[:trip][:subscription_type],
      zip_code:             ZipCode.find_or_create_by(zip_code: params[:trip][:zip_code]),
-     bike:                 Bike.find_by(bike_number: params[:trip][:bike_number])
+     bike:                 Bike.find_or_create_by(bike_number: params[:trip][:bike_number])
    )
  end
 

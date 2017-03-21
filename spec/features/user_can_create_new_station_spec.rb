@@ -8,10 +8,11 @@ RSpec.describe "As a user tries to create a station" do
     fill_in "station[dock_count]", with: 49
     fill_in "station[installation_date]", with: "8/5/2016"
     click_on "Submit"
+
     expect(current_path).to eq("/stations")
-      expect(page).to have_content("Denver Station")
-      expect(page).to have_content("Denver")
-      expect(page).to have_content("49")
-      expect(page).to have_content("2016-05-08")
+    expect(page).to have_content("Denver Station")
+    expect(page).to have_content("Denver")
+    expect(page).to have_content("49")
+    expect(page).to have_content("2016-05-08")
   end
 end

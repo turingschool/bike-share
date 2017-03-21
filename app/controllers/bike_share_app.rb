@@ -39,9 +39,13 @@ class BikeShareApp < Sinatra::Base
     erb :"station/show"
   end
 
+  get '/trips' do
+    @trips = Trip.all
+    erb :"trip/index"
+  end
+
   get '/stations/:id/edit' do
     @station = Station.find(params[:id])
-
     erb :"station/edit"
   end
 
@@ -55,5 +59,4 @@ class BikeShareApp < Sinatra::Base
     @station = Station.destroy(params[:id])
     redirect '/stations'
   end
-
 end

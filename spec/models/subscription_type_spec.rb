@@ -10,6 +10,10 @@ RSpec.describe SubscriptionType do
 
   before :each do
     SubscriptionType.create(flavor: "Subscriber")
+    SubscriptionType.create(flavor: "Subscriber")
+    SubscriptionType.create(flavor: "Subscriber")
+    SubscriptionType.create(flavor: "Customer")
+    SubscriptionType.create(flavor: "Customer")
     Trip.create(duration: 39,
                  start_date: format_date("12/15/2013 14:54"),
                  start_station_id: 4,
@@ -43,6 +47,12 @@ RSpec.describe SubscriptionType do
 
     it "has trips" do
       expect(SubscriptionType.first.trips.first).to be_kind_of(Trip)
+    end
+  end
+
+  describe "methods" do
+    it "has subscription count" do
+      expect(SubscriptionType.type_breakout).to eq(22)
     end
   end
 

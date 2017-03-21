@@ -1,5 +1,9 @@
+require_relative 'pagination'
+
 class BikeShareApp < Sinatra::Base
   set :method_override, true
+
+  include Pagination
 
   get "/" do
     redirect "/stations_dashboard"
@@ -64,6 +68,19 @@ class BikeShareApp < Sinatra::Base
     redirect "/stations"
   end
 
+  get "/trips" do
+    redirect "/trips/page/1"
+  end
+
+  get "/trips/page/:num" do |page_num|
+    trips     = Trip.where.not(start_date: nil)
+    @trips    = on_page(trips, page_num.to_i)
+    @next     = next_page(page_num.to_i, trips.count)
+    @previous = previous_page(page_num.to_i)
+
+    erb :"trips/index"
+  end
+
   delete "/trips/:id" do
     Trip.destroy(params[:id])
     redirect "/trips"
@@ -77,6 +94,4 @@ private
 # declutters the routes
 # move input down here for example
 # city lookup too
-
-
 end

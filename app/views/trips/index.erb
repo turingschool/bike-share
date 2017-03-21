@@ -1,1 +1,43 @@
 <!DOCTYPE html>
+
+  <div class="row">
+
+    <div class="col-md-16">
+      <hr>
+      <table class="table table-striped">
+        <thead>
+          <tr><th>All Trips</th><th>Duration</th><th>Start Date</th><th>Start Station</th><th>End Date</th><th>End Station</th><th>Bike ID</th><th>Subscription ID</th><th>Zipcode ID</th><th>&nbsp;</th></tr>
+        </thead>
+        <tbody>
+          <% @trips.each do |trip| %>
+          <tr class="all-stations-info">
+            <td><%= trip.duration %></td>
+            <td><%= trip.start_date %></td>
+            <td><%= trip.start_station_id %></td>
+            <td><%= trip.end_date %></td>
+            <td><%= trip.end_station_id %></td>
+            <td><%= trip.bike_id %></td>
+            <td><%= trip.subscription_type %></td>
+            <td><%= trip.zipcode_id %></td>
+            <!-- <% city = City.find(station.city_id) %>
+            <% station = Station.find() %> -->
+            <td><form action="/trips/<%= trips.id %>" method="post">
+              <input type="hidden" name="_method" value="DELETE" />
+              <input type="submit" value="Delete Station" />
+            </form></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div>
+        <ul>
+          <li><a href="trips/page/<%= @previous %>"></a>Previous</li>
+          <li><a href="trips/page/<%= @next %>"></a>Next</li>
+        </ul>
+      </div>
+
+      <hr>
+
+      </div>
+    </div>
+  </div>

@@ -1,4 +1,4 @@
-require_relative "../spec_helper"
+require_relative "../../spec_helper"
 
 RSpec.describe "as a user edits an existing station" do
   it "they can see existing station data and enter replacement data" do

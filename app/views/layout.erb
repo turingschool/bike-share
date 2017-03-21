@@ -20,19 +20,49 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-
-        <li class="dropdown">
-          <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
-            MENU <span class="caret"></span></a>
+				<li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown">
+            STATIONS <span class="caret"></span></a>
           <ul id="g-account-menu" class="dropdown-menu" role="menu">
-            <li><a href="/stations/new">Add a new station</a></li>
-            <li><a href="#">Edit a station</a></li>
-            <li><a href="#">Nav item</a></li>
-            <li><a href="#">Nav item</a></li>
-            <li><a href="#">My Profile</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="/stations_dashboard">Dashboard</a></li>
+            <li><a href="/stations">All Stations</a></li>
+            <li><a href="/stations/new">Add a Station</a></li>
+            <li><a href="/stations/:id/edit">Edit a Station</a></li>
           </ul>
         </li>
+
+				<li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown">
+            TRIPS <span class="caret"></span></a>
+          <ul id="g-account-menu" class="dropdown-menu" role="menu">
+            <li><a href="/trips_dashboard">Dashboard</a></li>
+            <li><a href="/trips">All Trips</a></li>
+            <li><a href="/trips/new">Add a Trip</a></li>
+            <li><a href="/trips/:id/edit">Edit a Trip</a></li>
+          </ul>
+        </li>
+
+				<li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown">
+            WEATHER <span class="caret"></span></a>
+          <ul id="g-account-menu" class="dropdown-menu" role="menu">
+            <li><a href="/conditions_dashboard">Dashboard</a></li>
+            <li><a href="/conditions">All Conditions Index</a></li>
+            <li><a href="/conditions/new">Add a Weather Report</a></li>
+            <li><a href="/conditions/:id/edit">Edit a Weather Report</a></li>
+          </ul>
+        </li>
+
+				<li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown">
+            ACCOUNT <span class="caret"></span></a>
+          <ul id="g-account-menu" class="dropdown-menu" role="menu">
+						<li><a href="#">My Profile</a></li>
+						<li><a href="#">Logout</a></li>
+          </ul>
+        </li>
+
+
       </ul>
     </div>
   </div>
@@ -42,7 +72,7 @@
 	<%= yield %>
   <hr>
 </div>
-    
+
     <div class="col-sm-16">
       <footer class="text-center">This web application was developed by Team Sauce. <a href="#"><strong>Hire us!</strong></a></footer>
 

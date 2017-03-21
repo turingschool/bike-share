@@ -28,7 +28,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
-    # binding.pry
     city = Station.find(params[:id]).city
     city = City.update(city.id, name: params[:station][:city])
     params[:station].delete('city')
@@ -59,6 +58,17 @@ class BikeShareApp < Sinatra::Base
     @weather_conditions = WeatherCondition.all
 
     erb :"weather_conditions/index"
+  end
+
+  get '/weather_conditions/new' do
+    @weather_condition = WeatherCondition.new
+
+    erb :"weather_conditions/new"
+  end
+
+  post '/weather_conditions' do
+
+    redirect "/weather_conditions"
   end
 
   get '/weather_condition/:id' do

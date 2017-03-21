@@ -15,7 +15,7 @@ class Trip < ActiveRecord::Base
  validates :subscription_type_id, presence: true
 
  def self.create_trip(params)
-   Trip.create(
+   Trip.create!(
      duration:             params[:trip][:duration],
      start_date:           params[:trip][:start_date],
      start_station_id:     params[:trip][:start_station],

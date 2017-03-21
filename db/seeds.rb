@@ -15,7 +15,6 @@ headers: true, header_converters: :symbol
 trips = CSV.open 'db/csv/fixtures/trip_sample_data.csv',
 headers: true, header_converters: :symbol
 
-
 stations.each do |row|
   city = City.find_or_create_by!(name: row[:city])
   city.stations.create(id: row[:id],

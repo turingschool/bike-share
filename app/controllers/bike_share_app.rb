@@ -54,4 +54,13 @@ class BikeShareApp < Sinatra::Base
 
     erb :"stations/dashboard"
   end
+#----------------------------------------------------------------
+#----------------------------------------------------------------
+#----Trips Controller medthods down below---------------------------
+#----------------------------------------------------------------
+  get '/trips' do
+    @trips = Trip.all
+
+    erb :"trips/index"
+  end
 end

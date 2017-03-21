@@ -24,19 +24,14 @@ end
 trips = (CSV.open'db/fixtures/trips_fixture.csv', headers: true, header_converters: :symbol)
 
 trips.each do |trip|
-  bike = Bike.find_or_create_by(bike_number: trip[:bike_id])
-  subscription = SubscriptionType.find_or_create_by(subscription_type: trip[:subscription_type])
-  zip = ZipCode.find_or_create_by(zip_code: trip[:zip_code])
-  next unless Station.find_by(name: trip[:start_station_name])
-  next unless Station.find_by(name: trip[:end_station_name])
+  next unless Station.find_by(name: trip[:start_station_name]) && Station.find_by(name: trip[:end_station_name])
 
   Trip.create(duration:             trip[:duration],
               start_date:           Date.strptime(trip[:start_date], "%m/%d/%Y"),
               start_station_id:     Station.find_by(name: trip[:start_station_name]).id,
               end_date:             Date.strptime(trip[:end_date], "%m/%d/%Y"),
               end_station_id:       Station.find_by(name: trip[:end_station_name]).id,
-              bike_id:              bike.id,
-              subscription_type_id: subscription.id,
-              zip_code_id:          zip.id
-              )
+              bike_id:              Bike.find_or_create_by(bike_number: trip[:bike_id]).id,
+              subscription_type_id: SubscriptionType.find_or_create_by(subscription_type: trip[:subscription_type]).id,
+              zip_code_id:          ZipCode.find_or_create_by(zip_code: trip[:zip_code]).id)
 end

@@ -78,7 +78,7 @@ class BikeShareApp < Sinatra::Base
     @trips    = on_page(trips, page_num.to_i)
     @next     = next_page(page_num.to_i, trips.count)
     @previous = previous_page(page_num.to_i)
-
+ 
     erb :"trips/index"
   end
 

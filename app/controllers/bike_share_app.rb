@@ -31,7 +31,6 @@ class BikeShareApp < Sinatra::Base
               installation_date: params[:station][:installation_date]
               }
 
-
     @station = city.stations.create(input)
     redirect "/stations"
   end
@@ -64,5 +63,20 @@ class BikeShareApp < Sinatra::Base
     Station.destroy(params[:id])
     redirect "/stations"
   end
+
+  delete "/trips/:id" do
+    Trip.destroy(params[:id])
+    redirect "/trips"
+  end
+
+private
+
+# any method we write below this we'll have access to from other methods
+# can't test these
+# not accessible outside this file
+# declutters the routes
+# move input down here for example
+# city lookup too
+
 
 end

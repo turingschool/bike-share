@@ -31,7 +31,7 @@ class Station < ActiveRecord::Base
   def self.stations_by_least_docks
     docks = order(:dock_count)
     derks = docks.group_by {|x| x.dock_count}
-    results = derks.max_by {|x| derks.keys}
+    results = derks.min_by {|x| derks.keys}
     results[1].map do |r|
       r.name
     end.join(', ')

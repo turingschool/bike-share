@@ -67,6 +67,28 @@ class BikeShareApp < Sinatra::Base
     end
   end
 
+  get '/trips/new' do
+      @bikes = [1,2]
+      @weatherconditions = [1,2]
+      @stations = Station.all
+
+      erb :"trips/new"
+  end
+
+  post '/trips' do
+    binding.pry
+    trip = params['trip']
+    Trip.create(duration: trip['duration'].to_i,
+                start_date: DateTime.parse(trip['start_date']),
+                end_date: DateTime.parse(trip['end_date']), subscription_type: trip['subscription_type'],
+                bike_id: 1, # Bike.find_by(bin: trip['bike'])
+                start_station_id: 1,
+                end_station_id: 2,
+                weather_id: 1)
+
+    redirect '/trips'
+  end
+
   get '/trips/page/:page' do
     @page_number = params["page"].to_i
     batch_start = ((params["page"].to_i - 1) * 30) + 1

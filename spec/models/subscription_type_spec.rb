@@ -2,8 +2,14 @@ require_relative '../spec_helper'
 
 RSpec.describe SubscriptionType do
 
+  # refactor me!
+  def format_date(date)
+    fd = date.split(/[\/: ]/)
+    Time.local(fd[2], fd[0], fd[1], fd[3], fd[4])
+  end
+
   before :each do
-    SubscriptionType.create(type: "Subscriber")
+    SubscriptionType.create(flavor: "Subscriber")
     Trip.create(duration: 39,
                  start_date: format_date("12/15/2013 14:54"),
                  start_station_id: 4,
@@ -36,7 +42,7 @@ RSpec.describe SubscriptionType do
     end
 
     it "has trips" do
-      expect
+      expect(SubscriptionType.first.trips.first).to be_kind_of(Trip)
     end
   end
 

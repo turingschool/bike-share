@@ -3,6 +3,7 @@ require_relative "../spec_helper"
 
 RSpec.describe "Creating a trip" do
   it "Can enter trip attributes" do
+    SubscriptionType.create(flavor: "Subscriber")
     City.create(name: "Denver")
     Station.create(name: "Downtown", installation_date: "20140331", city_id: "1", dock_count: 4)
 
@@ -13,7 +14,7 @@ RSpec.describe "Creating a trip" do
     fill_in "trip[end_date]", with: "2015-03-31"
     fill_in "end_station[name]", with: "Downtown"
     fill_in "trip[bike_id]", with: 345
-    fill_in "trip[subscription_type]", with: "Subscriber"
+    fill_in "subscription_type[flavor]", with: "Subscriber"
     fill_in "trip[zip_code]", with: 53211
 
     click_on "Create Trip"

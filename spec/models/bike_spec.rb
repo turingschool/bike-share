@@ -9,7 +9,7 @@ RSpec.describe Bike do
   end
 
   before :each do
-    SubscriptionType.create(type: "Subscriber")
+    SubscriptionType.create(flavor: "Subscriber")
     Bike.create(bike_number: 202)
     Bike.create(bike_number: 203)
     Trip.create(duration: 39,

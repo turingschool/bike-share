@@ -61,6 +61,7 @@ class BikeShareApp < Sinatra::Base
 
   post '/trips' do
     add_station_to_trip(params)
+    add_subscription_type_to_trip(params)
     redirect "/trips"
   end
 
@@ -147,6 +148,14 @@ private
     end_station = Station.find_or_create_by(params[:end_station]).id
     params[:trip][:start_station_id] = start_station
     params[:trip][:end_station_id] = end_station
-    Trip.create!(params[:trip])
   end
+
+  def add_subscription_type_to_trip(params)
+    sti = SubscriptionType.find_or_create_by(flavor: params[:subscription_type][:flavor]).id
+    params[:trip][:subscription_type_id] = sti
+    Trip.create!(params[:trip])
+
+  end
+
+
 end

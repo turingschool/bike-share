@@ -1,5 +1,6 @@
 class Trip < ActiveRecord::Base
   belongs_to :station
+  belongs_to :bike
 
   validates :duration, presence: true
   validates :start_date, presence: true
@@ -8,5 +9,6 @@ class Trip < ActiveRecord::Base
   # validates :end_station_name, presence: true
   validates :bike_id, presence: true
   validates :subscription_type, presence: true
+
 
 end

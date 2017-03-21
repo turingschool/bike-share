@@ -10,9 +10,10 @@
   <p>Max Temp: <%= condition.max_temperature_f %></p><br>
   <p>Mean Temp: <%= condition.mean_temperature_f %></p><br>
   <p>Min Temp: <%= condition.min_temperature_f %></p><br>
-  <p>End Date: <%= trip.end_date %></p><br>
-  <p>Subscription Type: <%= trip.subscription_type %></p>
-  <p>Zipcode: <%= trip.zip_code %></p><br>
+  <p>Mean Humidity: <%= condidtion.mean_humidity %></p><br>
+  <p>Mean Visibility(in miles): <%= condidtion.mean_visibility_miles %></p>
+  <p>Mean Wind Speed (mph): <%= condidtion.mean_wind_speed_mph %></p><br>
+  <p>Prcipitation(inches): <%= condidtion.pre %></p><br>
   <a href="/trips/<%= trip.id %>/edit">Edit Trip</a>
 
   <form action="/trips/<%= trip.id %>" method="post">

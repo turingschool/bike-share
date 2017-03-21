@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170321200739) do
     t.integer "mean_humidity"
     t.integer "mean_visibility_miles"
     t.integer "mean_wind_speed_mph"
-    t.integer "precipication_inches"
+    t.integer "precipitation_inches"
     t.integer "zip_code"
   end
 

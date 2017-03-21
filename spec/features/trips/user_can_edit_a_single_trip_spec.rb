@@ -16,9 +16,7 @@ RSpec.describe "When a user edits a trip" do
     visit '/trips/1/edit'
     select('Customer', :from =>'trip[subscription_type]')
     click_on 'Submit'
-
-    # require 'pry'; binding.pry
-
+    
     expect(current_path).to eq '/trips/1'
     expect(page).to have_content '21600'
     expect(page).to_not have_content '100'

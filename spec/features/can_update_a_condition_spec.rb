@@ -17,7 +17,7 @@ RSpec.describe "Creating a condition" do
 
     expect(current_path).to eq("/conditions/1/edit")
 
-    fill_in "condition[date]", with: "8/29/2013"
+    fill_in "condition[date]", with: "20130829"
     fill_in "condition[max_temperature_f]", with: 85.0
     fill_in "condition[mean_temperature_f]", with: 50.0
     fill_in "condition[min_temperature_f]", with: 25.0
@@ -27,12 +27,12 @@ RSpec.describe "Creating a condition" do
     fill_in "condition[precipitation_inches]", with: 2
     fill_in "condition[zip_code]", with: 94127
 
-    click_on "Update Condition"
+    click_on "Submit"
 
-    expect(current_path).to eq("/conditions")
+    expect(current_path).to eq("/conditions/1")
 
-    expect(page).to have_content(50.0)
-    expect(page).to_not have_content(80.0)
+    expect(page).to have_content(50)
+    expect(page).to_not have_content(6)
     expect(page).to have_content(12)
     expect(page).to have_content(94127)
 

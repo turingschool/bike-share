@@ -14,6 +14,7 @@
   <p>Mean Visibility(in miles): <%= condition.mean_visibility_miles %></p><br>
   <p>Mean Wind Speed (mph): <%= condition.mean_wind_speed_mph %></p><br>
   <p>Precipitation(inches): <%= condition.precipitation_inches %></p><br>
+  <p>Zipcode: <%= condition.zip_code %></p>
   <a href="/conditions/<%= condition.id %>/edit">Edit Weather</a>
 
   <form action="/conditions/<%= condition.id %>" method="post">

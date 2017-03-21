@@ -14,6 +14,7 @@ RSpec.describe "When a user visits '/weather_conditions'" do
 
     within("li>a") do
       expect(page).to have_content("#{(Date.parse('29/10/1986'))}")
+    
     end
   end
 end

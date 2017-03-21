@@ -1,0 +1,20 @@
+<h2 class='date'><%= @weather_condition.date %></h2>
+
+<p class='max_temperature_f'>Max Temp: <%= @weather_condition.max_temperature_f %></p>
+<p class='min_temperature_f'>Min Temp: <%= @weather_condition.min_temperature_f %></p>
+<p class='mean_temperature_f'>Mean Temp: <%= @weather_condition.mean_temperature_f %></p>
+<p class='mean_humidity'>Mean Humidity: <%= @weather_condition.mean_humidity %></p>
+<p class='mean_visibility_miles'>Mean Visibility Miles: <%= @weather_condition.mean_visibility_miles %></p>
+<p class='mean_wind_speed_mph'>Mean Wind Speed MPH: <%= @weather_condition.mean_wind_speed_mph %></p>
+<p class='precipitation_inches'>Precipitation Inch: <%= @weather_condition.precipitation_inches %></p>
+
+
+<form action="/weather_conditions/<%= @weather_condition.id %>/edit" method="POST">
+  <input type="hidden" name="_method" value="GET">
+  <input type="submit" value="Edit"/>
+</form>
+
+<form action="/weather_conditions/<%= @weather_condition.id %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete"/>
+</form>

@@ -2,3 +2,25 @@
 
 <a href="/conditions/new">Create New</a>
 <a href="/conditions-dashboard">View Weather Stats</a>
+
+
+<div>
+  <% @conditions.each do |condition| %>
+  <p>Trip on: <%= condition.date %> </p>
+  <p>Max Temp: <%= condition.max_temperature_f %></p><br>
+  <p>Mean Temp: <%= condition.mean_temperature_f %></p><br>
+  <p>Min Temp: <%= condition.min_temperature_f %></p><br>
+  <p>End Date: <%= trip.end_date %></p><br>
+  <p>Subscription Type: <%= trip.subscription_type %></p>
+  <p>Zipcode: <%= trip.zip_code %></p><br>
+  <a href="/trips/<%= trip.id %>/edit">Edit Trip</a>
+
+  <form action="/trips/<%= trip.id %>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+  </form>
+  <% end %>
+
+</div>
+
+<%= will_paginate @trips %>

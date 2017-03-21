@@ -23,9 +23,10 @@ ActiveRecord::Schema.define(version: 20170321200739) do
     t.text "name"
   end
 
-  create_table "condidtions", force: :cascade do |t|
+  create_table "conditions", force: :cascade do |t|
     t.date    "date"
     t.integer "max_temperature_f"
+    t.integer "mean_temperature_f"
     t.integer "min_temperature_f"
     t.integer "mean_humidity"
     t.integer "mean_visibility_miles"

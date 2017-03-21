@@ -25,6 +25,7 @@ RSpec.describe "When a user needs to edit/update a bike station" do
     fill_in "station[installation_date]", with: Date.parse('29/10/1986')
 
     click_on "Submit"
+    
     expect(current_path).to eq("/stations/#{station.id}")
 
     expect(page).to have_content('Beavis Station')

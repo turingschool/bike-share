@@ -72,6 +72,24 @@ class BikeShareApp < Sinatra::Base
     redirect "/weather_conditions"
   end
 
+  get '/weather_conditions/:id/edit' do
+    @weather_condition = WeatherCondition.find(params[:id])
+
+    erb :"weather_conditions/edit"
+  end
+
+  put '/weather_conditions/:id' do
+    weather = WeatherCondition.create(params[:weather_condition])
+
+    redirect "/weather_conditions/#{@weather.id}"
+  end
+
+  delete '/weather_conditions/:id' do
+    @weather = WeatherCondition.destroy(params[:id])
+
+    redirect '/weather_conditions'
+  end
+
   get '/weather_conditions/:id' do
     @weather_condition = WeatherCondition.find(params[:id])
 

@@ -42,14 +42,8 @@ class Trip < ActiveRecord::Base
   def self.monthly_totals
     monthly_totals = {}
     Trip.all.each do |trip|
-
-      # Find the year of the trip
-
-      # should this be a string?
       year = trip.start_date.year.to_i
       monthly_totals[year] ||= Array.new(12, 0)
-      # require "pry"; binding.pry
-      # Find the month of the trip
       month = trip.start_date.month
       monthly_totals[year][month - 1] += 1
     end

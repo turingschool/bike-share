@@ -1,0 +1,53 @@
+
+<body>
+
+<a href="/trips">Return to all Trips</a>
+
+  <p>All Station Count: <%= Station.count %></p>
+  <p>Average Bikes (based on docks): <%= Station.average_bikes %></p>
+  <p>Most Bikes (based on docks): <%= Station.most_bikes %></p>
+  <p>Station(s) with most bikes (based on docks): <%= Station.stations_by_most_docks %></p>
+  <p>Fewest bikes (based on docks): <%= Station.fewest_bikes %></p>
+  <p>Station(s) with fewest bikes (based on docks): <%= Station.stations_by_least_docks %></p>
+  <p>Newest Station: <%= Station.newest_station.name %></p>
+  <p>Oldest Station: <%= Station.oldest_station.name %></p>
+
+<% Trip.all.each do |trip| %>
+  <%= trip.start_date.year %>
+<% end %>
+
+<%= @monthly_totals %>
+
+  <table border="1">
+    <tr>
+      <th>Month</th>
+      <th>2013</th>
+      <th>2014</th>
+    </tr>
+
+    <tr>
+      <td>January</td>
+      <td><%# @monthly_totals[2013][5] %></td>
+      <td><%# @monthly_totals[2015][5] %></td>
+    </tr>
+
+
+    <tr>
+      <td>February</td>
+      <td><%# @monthly_totals[2013][8] %></td>
+      <td><%# @monthly_totals[2015][9] %></td>
+    </tr>
+
+    <tr>
+      <td>March</td>
+      <td>234</td>
+      <td>234</td>
+    </tr>
+
+    <tr>
+      <td>April</td>
+      <td>234</td>
+      <td>234</td>
+    </tr>
+  </table>
+</body>

@@ -27,7 +27,7 @@ end
 trips = CSV.open("db/csv/trip.csv", headers: true, header_converters: :symbol)
 
 trips.each do |row|
-  zipcode = Zipcode.find_or_create_by(zipcode: row[:zipcode])
+  zip_code = Zipcode.find_or_create_by(zip_code: row[:zip_code])
 
   subscription = Subscription.find_or_create_by(subscription: row[:subscription])
 
@@ -38,7 +38,7 @@ trips.each do |row|
               end_station_id: row[:end_station_id],
               bike_id: row[:bike_id],
               subscription_type: row[:subscription_type],
-              zipcode_id: zipcode.id,
+              zipcode_id: zip_code.id,
               subscription_id: subscription.id
                  )
 end

@@ -12,7 +12,7 @@ class BikeShareApp < Sinatra::Base
   get '/' do
     erb :home
   end
-  
+
 	get '/stations/new' do
 		#inst var (AR methods)
 		erb :new_station
@@ -78,7 +78,7 @@ class BikeShareApp < Sinatra::Base
 	end
 
   get '/trips' do
-    @trips = Trip.all
+    @trips = Trip.all.paginate(:page => params[:page], :per_page => 5)
     @station = Station
     erb :"trips/trip_index"
   end
@@ -91,7 +91,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/trips' do
-    params[:trip][:duration] = (((DateTime.strptime(params[:trip][:end_date], "%Y-%m-%dT%H:%M")) - (DateTime.strptime(params[:trip][:start_date], "%Y-%m-%dT%l:%M"))) * 24 * 60 * 60).to_i
+    params[:trip][:duration] = (((DateTime.strptime(params[:trip][:end_date], "%Y-%m-%dT%H:%M")) - (DateTime.strptime(params[:trip][:start_date], "%Y-%m-%dT%H:%M"))) * 24 * 60 * 60).to_i
     Trip.create(params[:trip])
 
     redirect "/trips"

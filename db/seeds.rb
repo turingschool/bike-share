@@ -1,5 +1,6 @@
 require './app/models/city'
 require './app/models/station'
+require './app/models/trip'
 require 'pry'
 require 'csv'
 
@@ -20,3 +21,12 @@ CSV.foreach("db/csv/station.csv", headers: true, header_converters: :symbol) do 
   puts Station.all.last.name
   puts Station.all.last.city
 end
+
+CSV.foreach("db/csv/trip.csv", headers: true, header_converters: :symbol) do |trip_info|
+  trip_info[:start_date] = DateTime.strptime(trip_info[:start_date], "%m/%d/%Y %H:%M")
+  trip_info[:end_date] = DateTime.strptime(trip_info[:end_date], "%m/%d/%Y %H:%M")
+  trip_info.delete(:start_station_name)
+  trip_info.delete(:end_station_name)
+  trip_info = trip_info.to_hash
+  Trip.create(trip_info)
+ end

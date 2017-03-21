@@ -91,7 +91,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/trips' do
-    params[:trip][:duration] = (((DateTime.strptime(params[:trip][:end_date], "%Y-%m-%dT%l:%M")) - (DateTime.strptime(params[:trip][:start_date], "%Y-%m-%dT%l:%M"))) * 24 * 60 * 60).to_i
+    params[:trip][:duration] = (((DateTime.strptime(params[:trip][:end_date], "%Y-%m-%dT%H:%M")) - (DateTime.strptime(params[:trip][:start_date], "%Y-%m-%dT%l:%M"))) * 24 * 60 * 60).to_i
     Trip.create(params[:trip])
 
     redirect "/trips"

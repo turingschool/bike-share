@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321000939) do
+ActiveRecord::Schema.define(version: 20170321213351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,10 @@ ActiveRecord::Schema.define(version: 20170321000939) do
     t.decimal "long",              precision: 10, scale: 6
   end
 
+  create_table "subscription_types", force: :cascade do |t|
+    t.text "flavor"
+  end
+
   create_table "trips", force: :cascade do |t|
     t.integer "duration"
     t.date    "start_date"
@@ -39,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170321000939) do
     t.date    "end_date"
     t.integer "end_station_id"
     t.integer "bike_id"
-    t.text    "subscription_type"
+    t.text    "subscription_type_id"
     t.integer "zip_code"
   end
 

@@ -1,5 +1,6 @@
 class Trip < ActiveRecord::Base
   belongs_to :station
+  belongs_to :subscription_type
   belongs_to :bike
 
   validates :duration, presence: true
@@ -8,7 +9,7 @@ class Trip < ActiveRecord::Base
   validates :end_date, presence: true
   # validates :end_station_name, presence: true
   validates :bike_id, presence: true
-  validates :subscription_type, presence: true
+  validates :subscription_type_id, presence: true
 
 
   def self.average_trip_duration

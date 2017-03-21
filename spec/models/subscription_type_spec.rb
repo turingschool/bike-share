@@ -1,17 +1,9 @@
 require_relative '../spec_helper'
 
-RSpec.describe Bike do
-
-  # refactor me!
-  def format_date(date)
-    fd = date.split(/[\/: ]/)
-    Time.local(fd[2], fd[0], fd[1], fd[3], fd[4])
-  end
+RSpec.describe SubscriptionType do
 
   before :each do
     SubscriptionType.create(type: "Subscriber")
-    Bike.create(bike_number: 202)
-    Bike.create(bike_number: 203)
     Trip.create(duration: 39,
                  start_date: format_date("12/15/2013 14:54"),
                  start_station_id: 4,
@@ -38,25 +30,14 @@ RSpec.describe Bike do
                  )
   end
 
-  describe "attributes" do
-    it "should have bike number" do
-      expect(Bike.first.bike_number).to eq(202)
+  describe "itself" do
+    it "does exist" do
+      expect(SubscriptionType.create).to be_kind_of(SubscriptionType)
     end
 
-    it "should know about trips" do
-      expect(Bike.first.trips.first).to respond_to(:duration)
-      expect(Bike.first.trips.first.end_station_id).to eq(32)
+    it "has trips" do
+      expect
     end
   end
 
-  describe "ride count methods" do
-    it "#max_rides should return bike_number 203" do
-      expect(Bike.max_rides).to eq([203])
-    end
-
-    it "#min_rides should return bike_number 202" do
-      expect(Bike.min_rides).to eq([202])
-    end
-
-  end
 end

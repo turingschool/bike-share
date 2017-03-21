@@ -1,4 +1,7 @@
+require 'will_paginate/active_record'
+
 class BikeShareApp < Sinatra::Base
+  include WillPaginate::Sinatra::Helpers
 
   set :method_override, true
 
@@ -50,7 +53,7 @@ class BikeShareApp < Sinatra::Base
   #-----------------------------Trips
 
   get '/trips' do
-    @trips = Trip.all
+    @trips = Trip.all.paginate(:page => params[:page], :per_page => 30)
     erb :"trips/index"
   end
 
@@ -82,5 +85,10 @@ class BikeShareApp < Sinatra::Base
   delete '/trips/:id' do
     @trip = Trip.destroy(params[:id])
     redirect "/trips"
+  end
+
+  get '/trips-dashboard' do
+    @trips = Trip.all
+    erb :"trips/dashboard"
   end
 end

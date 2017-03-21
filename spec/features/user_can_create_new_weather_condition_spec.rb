@@ -1,6 +1,6 @@
 require_relative '../spec_helper'
 
-RSpec.describe "When a user visits 'new'" do
+RSpec.describe "When a user visits 'weather/new'" do
 
     # before do
     #   weather = WeatherCondition.create(max_temperature_f: 99.0, min_temperature_f: -121.9,
@@ -26,7 +26,8 @@ RSpec.describe "When a user visits 'new'" do
     expect( current_path ).to eq('/weather_conditions')
     # expect(page).to have_content("Date: ")
     # expect(page).to have_content("Date")
-    expect(page).to have_content("Max Temp: 3.14")
+    expect(page).to have_content("2013-06-08")
+
     # expect(page).to have_content("Min Temp: 3.14")
     # expect(page).to have_content("Mean Temp: 3.14")
     # expect(page).to have_content("Mean Humidity: 3.14")

@@ -7,11 +7,10 @@ RSpec.describe "When a user visits '/show'" do
     mean_temperature_f: 55.0, mean_humidity: 62.5, mean_visibility_miles: 0.2, mean_wind_speed_mph: 20.0,
     precipitation_inches: 1.2, date: Date.parse('29/10/1986'))
 
-    visit "/weather_condition/#{weather.id}"
+    visit "/weather_conditions/#{weather.id}"
   end
 
   it 'they see a single weather condition' do
-
     within('h2.date') do
       expect(page).to have_content(Date.parse('29/10/1986'))
     end

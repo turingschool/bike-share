@@ -13,11 +13,11 @@ RSpec.describe "when a user visits '/stations/1' " do
       expect(page).to have_content("Station Information")
     end
     # I expect to see station name for a single station
-    expect(page).to have_content("Name: Japantown")
+    expect(page).to have_content("Japantown")
     # I expect to see station dock count for a single station
-    expect(page).to have_content("Dock Count: 15")
+    expect(page).to have_content("15")
     # I expect to see station city for a single station
     # I expect to see station installation date for a single station
-    expect(page).to have_content("Installation Date: 2013-08-05")
+    expect(page).to have_content("2013-08-05")
   end
 end

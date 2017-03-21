@@ -10,7 +10,7 @@ require 'date'
 DatabaseCleaner.strategy = :truncation
 DatabaseCleaner.clean
 
-contents = CSV.open("db/csv/station.csv", headers: true, header_converters: :symbol)
+contents = CSV.open("db/fixtures/station.csv", headers: true, header_converters: :symbol)
 
 contents.each do |row|
   city = City.find_or_create_by(city: row[:city])
@@ -24,7 +24,7 @@ contents.each do |row|
 
 end
 
-trips = CSV.open("db/csv/trip.csv", headers: true, header_converters: :symbol)
+trips = CSV.open("db/fixtures/trip.csv", headers: true, header_converters: :symbol)
 
 trips.each do |row|
   zip_code = Zipcode.find_or_create_by(zip_code: row[:zip_code])

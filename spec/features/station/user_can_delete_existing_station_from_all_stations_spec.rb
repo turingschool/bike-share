@@ -18,3 +18,8 @@ RSpec.describe "as a user deletes an existing station from all stations page" do
     expect(page).to_not have_content(station.name)
   end
 end
+
+
+# test a bigger data set
+# 2 cities, 2 stations - figure out how to determine button interaction/solf the ambiguous-type issue
+# 

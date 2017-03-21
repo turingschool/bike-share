@@ -16,13 +16,13 @@ RSpec.describe "when a user visits '/stations' " do
     end
 
     # I expect to see content station name
-    expect(page).to have_content("Name: Japantown")
+    expect(page).to have_content("Japantown")
     # I expect to see content station dock count
-    expect(page).to have_content("Dock Count: 15")
+    expect(page).to have_content("15")
     # I expect to see content station city
     # (how the F do we do this with the city table etc)
     # I expect to see content station installation date
-    expect(page).to have_content("Installation Date: 2013-08-05")
+    expect(page).to have_content("2013-08-05")
 
 
   end

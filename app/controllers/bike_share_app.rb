@@ -6,12 +6,12 @@ class BikeShareApp < Sinatra::Base
   include Pagination
 
   get "/" do
-    redirect "/station_dashboard"
+    redirect "/stations_dashboard"
   end
 
-  get "/station_dashboard" do
+  get "/stations_dashboard" do
     @station = Station.all
-    erb :"stations/station_dashboard"
+    erb :"stations/stations_dashboard"
   end
 
   get "/stations" do
@@ -34,7 +34,6 @@ class BikeShareApp < Sinatra::Base
               city: city,
               installation_date: params[:station][:installation_date]
               }
-
 
     @station = city.stations.create(input)
     redirect "/stations"
@@ -82,25 +81,17 @@ class BikeShareApp < Sinatra::Base
     erb :"trips/index"
   end
 
-  private
+  delete "/trips/:id" do
+    Trip.destroy(params[:id])
+    redirect "/trips"
+  end
 
-  # ITEMS_PER_PAGE = 30
-  #
-  # def on_page(items, page_num)
-  #   items.limit(ITEMS_PER_PAGE).offset((page_num - 1) * ITEMS_PER_PAGE)
-  # end
-  #
-  # def total_pages(item_count)
-  #   (item_count / ITEMS_PER_PAGE).ceil
-  # end
-  #
-  # def next_page(page_num, item_count)
-  #   page_num + 1 unless page_num <= total_pages(item_count)
-  # end
-  #
-  # def previous_page(page_num)
-  #   page_num - 1 unless page_num <= 1
-  # end
+private
 
-
+# any method we write below this we'll have access to from other methods
+# can't test these
+# not accessible outside this file
+# declutters the routes
+# move input down here for example
+# city lookup too
 end

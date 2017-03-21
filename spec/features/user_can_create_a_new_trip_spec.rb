@@ -25,7 +25,7 @@ RSpec.describe "When a user visits '/trips/new'" do
     # fill_in "trip[bike]", with: 1
     # fill_in "trip[weather]", with: 87
     find('#bike_select').find(:xpath, 'option[1]').select_option
-    find('#bike_select').find(:xpath, 'option[1]').select_option
+    find('#weather_select').find(:xpath, 'option[1]').select_option
     find('#start_station_select').find(:xpath, 'option[1]').select_option
     find('#end_station_select').find(:xpath, 'option[2]').select_option
 

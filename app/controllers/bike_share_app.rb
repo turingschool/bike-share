@@ -1,5 +1,3 @@
-require 'pry'
-
 class BikeShareApp < Sinatra::Base
   get '/stations' do
     @stations = Station.all # What's AR's sorting method?
@@ -28,7 +26,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
-    # binding.pry
     city = Station.find(params[:id]).city
     city = City.update(city.id, name: params[:station][:city])
     params[:station].delete('city')
@@ -76,7 +73,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/trips' do
-    binding.pry
     trip = params['trip']
     Trip.create(duration: trip['duration'].to_i,
                 start_date: DateTime.parse(trip['start_date']),

@@ -19,7 +19,7 @@ RSpec.describe "when a user visits /stations" do
      Station.create(name: "Union Station", dock_count: 12, installation_date: "15/5/16", city_id: 1)
      visit "/stations"
 
-      within("button") do
+      within("#edit-button button") do
         click_on "Edit"
       end
       expect(current_path).to eq("/stations/1/edit")

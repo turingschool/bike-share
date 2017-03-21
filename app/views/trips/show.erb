@@ -1,9 +1,9 @@
 <h1>Trip ID: <%= @trip.id %></h1>
 <br>
 <p>Duration: <%= @trip.duration %></p>
-<p>Start Date: <%= @trip.start_date %></p>
+<p>Start Date: <%= @trip.start_date.strftime("%A, %B %d, %Y @ %I:%M%P") %></p>
 <p>Start Station: <%= @trip.start_station.name%></p>
-<p>End Date: <%= @trip.end_date%></p>
+<p>End Date: <%= @trip.end_date.strftime("%A, %B %d, %Y @ %I:%M%P") %></p>
 <p>End Station: <%= @trip.end_station.name%></p>
 <p>Bike Number: <%= @trip.bike.bike_number%></p>
 <p>Subscription Type: <%=  @trip.subscription_type.subscription_type%></p>

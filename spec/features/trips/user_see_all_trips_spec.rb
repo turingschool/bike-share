@@ -16,9 +16,9 @@ RSpec.describe "When a user visits '/trips' " do
       expect(page).to have_content('All Trips')
     end
     expect(page).to have_content(trip1.duration)
-    expect(page).to have_content(trip1.start_date)
+    expect(page).to have_content(trip1.start_date.strftime("%A, %B %d, %Y @ %I:%M%P"))
     expect(page).to have_content(station1.name)
-    expect(page).to have_content(trip1.end_date)
+    expect(page).to have_content(trip1.end_date.strftime("%A, %B %d, %Y @ %I:%M%P"))
     expect(page).to have_content(station2.name)
     expect(page).to have_content(trip1.bike.bike_number)
     expect(page).to have_content(trip1.subscription_type.subscription_type)

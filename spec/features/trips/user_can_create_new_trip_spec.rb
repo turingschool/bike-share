@@ -15,8 +15,8 @@ RSpec.describe "When a user creates a trip" do
 
     visit '/trips/new'
     fill_in 'trip[duration]', with: 111
-    fill_in 'trip[start_date]', with: '08/29/2013, 02:14 PM'
-    fill_in 'trip[end_date]', with: '08/29/2013, 03:14 PM'
+    fill_in 'trip[start_date]', with: Time.parse("2013-8-29 14:14 UTC")
+    fill_in 'trip[end_date]', with: Time.parse("2013-8-29 15:14 UTC")
     select('Turing', :from =>'trip[start_station]')
     select('Galvanize', :from =>'trip[end_station]')
     select('Subscriber', :from =>'trip[subscription_type]')
@@ -24,7 +24,6 @@ RSpec.describe "When a user creates a trip" do
 
     click_on 'Submit'
 
-    #require 'pry'; binding.pry
 
     expect(current_path).to eq '/trips/3'
     expect(page).to have_content 'Trip ID: 3'

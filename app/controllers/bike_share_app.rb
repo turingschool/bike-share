@@ -59,8 +59,19 @@ class BikeShareApp < Sinatra::Base
 #----Trips Controller medthods down below---------------------------
 #----------------------------------------------------------------
   get '/trips' do
-    @trips = Trip.all
+    if Trip.count < 31
+      @trips = Trip.all
+      erb :"trips/index"
+    else
+      redirect '/trips/page/1'
+    end
+  end
 
-    erb :"trips/index"
+  get '/trips/page/:page' do
+    @page_number = params["page"].to_i
+    batch_start = ((params["page"].to_i - 1) * 30) + 1
+    @trips = Trip.find_each(:batch_size => 30, :start => batch_start, :finish => batch_start+29)
+
+    erb :"trips/page"
   end
 end

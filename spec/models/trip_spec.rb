@@ -57,4 +57,15 @@ RSpec.describe Trip do
     expect(trip).to respond_to(:weather)
     end
   end
+
+  describe 'model methods' do
+
+    it 'can make its own name, with interpolation' do
+      Station.create(lat: 37.329732, long: -121.90178200000001, name: 'Start Dummy', dock_count: 12, city_id: 1, installation_date: Date.parse('8/6/2013'))
+      Station.create(lat: 37.329732, long: -121.90178200000001, name: 'End Dummy', dock_count: 12, city_id: 1, installation_date: Date.parse('8/6/2013'))
+      trip = Trip.create(duration: 22, start_date: start_date, end_date: end_date, subscription_type: 'subscriber', bike_id: 1, start_station_id: 1, end_station_id: 2, weather_id: 1)
+
+      expect(trip.make_name).to eq('8/29/2013: Start Dummy -> End Dummy')
+    end
+  end
 end

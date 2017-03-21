@@ -20,10 +20,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations' do
-    City.create(params[:city])
-    ci = City.find_by(params[:city]).id
-    params[:station][:city_id] = ci
-    Station.create(params[:station])
+    add_city_to_station(params)
     redirect "/stations"
   end
 
@@ -33,9 +30,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
-    City.create(params[:city])
-    ci = City.find_by(params[:city]).id
-    params[:station][:city_id] = ci
+    update_station(params)
     @station = Station.update(params[:id], params[:station])
 
     redirect "/stations/#{@station.id}"
@@ -65,12 +60,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/trips' do
-    start_station = Station.find_or_create_by(params[:start_station]).id
-    end_station = Station.find_or_create_by(params[:end_station]).id
-    params[:trip][:start_station_id] = start_station
-    params[:trip][:end_station_id] = end_station
-    # binding.pry
-    Trip.create!(params[:trip])
+    add_station_to_trip(params)
     redirect "/trips"
   end
 
@@ -80,10 +70,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/trips/:id' do
-    start_station = Station.find_or_create_by(params[:start_station]).id
-    end_station = Station.find_or_create_by(params[:end_station]).id
-    params[:trip][:start_station_id] = start_station
-    params[:trip][:end_station_id] = end_station
+    add_station_to_trip(params)
     @trip = Trip.update(params[:id], params[:trip])
     redirect "/trips/#{@trip.id}"
   end
@@ -102,8 +89,6 @@ class BikeShareApp < Sinatra::Base
     @monthly_totals = Trip.monthly_totals
     erb :"trips/trip-dashboard"
   end
-
-#ITERATION 7 CONDITIONS STARTS HERE
 
   get '/conditions' do
     @conditions = Condition.all
@@ -143,4 +128,25 @@ class BikeShareApp < Sinatra::Base
     erb :"conditions/condition-dashboard"
   end
 
+private
+  def add_city_to_station(params)
+    City.create(params[:city])
+    ci = City.find_by(params[:city]).id
+    params[:station][:city_id] = ci
+    Station.create(params[:station])
+  end
+
+  def update_station(params)
+    City.create(params[:city])
+    ci = City.find_by(params[:city]).id
+    params[:station][:city_id] = ci
+  end
+
+  def add_station_to_trip(params)
+    start_station = Station.find_or_create_by(params[:start_station]).id
+    end_station = Station.find_or_create_by(params[:end_station]).id
+    params[:trip][:start_station_id] = start_station
+    params[:trip][:end_station_id] = end_station
+    Trip.create!(params[:trip])
+  end
 end

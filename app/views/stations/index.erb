@@ -1,5 +1,7 @@
 <h1>All Bike Stations</h1>
 
+<%= will_paginate @stations %>
+
 <% @stations.each do |station| %>
   <a href="/stations/<%=station.id%>"><h4>Station Name: <%= station.name %></h4></a>
   <p>City: <%= station.city.name %></p>

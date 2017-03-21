@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20170319214940) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,8 +45,8 @@ ActiveRecord::Schema.define(version: 20170319214940) do
     t.integer  "dock_count"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.string   "installation_date"
     t.integer  "city_id"
+    t.date     "installation_date"
   end
 
   create_table "subscription_types", force: :cascade do |t|
@@ -58,15 +57,15 @@ ActiveRecord::Schema.define(version: 20170319214940) do
 
   create_table "trips", force: :cascade do |t|
     t.integer  "duration"
-    t.string   "start_date"
     t.integer  "start_station_id"
-    t.string   "end_date"
     t.integer  "end_station_id"
     t.integer  "bike_id"
     t.integer  "zip_code_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.integer  "subscription_type_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
   end
 
   create_table "zip_codes", force: :cascade do |t|

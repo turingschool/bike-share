@@ -36,9 +36,6 @@ class Trip < ActiveRecord::Base
     Station.find(most_popular_end_stations).map{|station| station.name }.sort
   end
 
-
-
-
   def self.monthly_totals
     monthly_totals = {}
     Trip.all.each do |trip|
@@ -49,6 +46,5 @@ class Trip < ActiveRecord::Base
     end
     monthly_totals
   end
-
 
 end

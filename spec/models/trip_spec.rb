@@ -98,4 +98,202 @@ RSpec.describe Trip do
       expect(trip).to_not be_valid
     end
   end
+
+  describe "calculation methods" do
+    it "#average_trip_duration returns 42" do
+      trip_1 = Trip.create(duration: 39,
+                         start_date: format_date("12/15/2013 14:54"),
+                         start_station_id: 4,
+                         end_date: format_date("12/15/2013 15:56"),
+                         bike_id: 6,
+                         end_station_id: 32,
+                         subscription_type: "Subscriber"
+                         )
+      trip_2 = Trip.create(duration: 45,
+                        start_date: format_date("11/15/2013 14:54"),
+                        start_station_id: 7,
+                        end_date: format_date("11/15/2013 15:56"),
+                        bike_id: 6,
+                        end_station_id: 32,
+                        subscription_type: "Subscriber"
+                        )
+
+      expect(Trip.average_trip_duration).to eq(42)
+    end
+
+    it "#longest_ride returns 45" do
+      Trip.create(duration: 39,
+                 start_date: format_date("12/15/2013 14:54"),
+                 start_station_id: 4,
+                 end_date: format_date("12/15/2013 15:56"),
+                 bike_id: 6,
+                 end_station_id: 32,
+                 subscription_type: "Subscriber"
+                 )
+      Trip.create(duration: 45,
+                  start_date: format_date("11/15/2013 14:54"),
+                  start_station_id: 7,
+                  end_date: format_date("11/15/2013 15:56"),
+                  bike_id: 6,
+                  end_station_id: 32,
+                  subscription_type: "Subscriber"
+                  )
+      expect(Trip.longest_ride).to eq(45)
+    end
+
+    it "#shortest_ride returns 39" do
+      Trip.create(duration: 39,
+                 start_date: format_date("12/15/2013 14:54"),
+                 start_station_id: 4,
+                 end_date: format_date("12/15/2013 15:56"),
+                 bike_id: 6,
+                 end_station_id: 32,
+                 subscription_type: "Subscriber"
+                 )
+      Trip.create(duration: 45,
+                  start_date: format_date("11/15/2013 14:54"),
+                  start_station_id: 7,
+                  end_date: format_date("11/15/2013 15:56"),
+                  bike_id: 6,
+                  end_station_id: 32,
+                  subscription_type: "Subscriber"
+                  )
+      expect(Trip.shortest_ride).to eq(39)
+    end
+
+    it "#most_start_station returns a station name" do
+      City.create(name: "Denver")
+      Station.create(id: 7, name: "East station", installation_date: 20150331, dock_count: 45, city_id: 1)
+      Trip.create(duration: 39,
+                 start_date: format_date("12/15/2013 14:54"),
+                 start_station_id: 4,
+                 end_date: format_date("12/15/2013 15:56"),
+                 bike_id: 6,
+                 end_station_id: 32,
+                 subscription_type: "Subscriber"
+                 )
+
+      Trip.create(duration: 45,
+                  start_date: format_date("11/15/2013 14:54"),
+                  start_station_id: 7,
+                  end_date: format_date("11/15/2013 15:56"),
+                  bike_id: 6,
+                  end_station_id: 32,
+                  subscription_type: "Subscriber"
+                  )
+      Trip.create(duration: 45,
+                  start_date: format_date("11/15/2013 14:54"),
+                  start_station_id: 7,
+                  end_date: format_date("11/15/2013 15:56"),
+                  bike_id: 6,
+                  end_station_id: 32,
+                  subscription_type: "Subscriber"
+                  )
+
+      expect(Trip.most_start_station).to eq(["East station"])
+    end
+    it "#most_start_station returns an array of station names for a tie" do
+      City.create(name: "Denver")
+      Station.create(id: 7, name: "East station", installation_date: 20150331, dock_count: 45, city_id: 1)
+      Station.create(id: 4, name: "West station", installation_date: 20150330, dock_count: 42, city_id: 1)
+      Trip.create(duration: 39,
+                 start_date: format_date("12/15/2013 14:54"),
+                 start_station_id: 4,
+                 end_date: format_date("12/15/2013 15:56"),
+                 bike_id: 6,
+                 end_station_id: 32,
+                 subscription_type: "Subscriber"
+                 )
+
+      Trip.create(duration: 30,
+                start_date: format_date("12/16/2013 14:54"),
+                start_station_id: 4,
+                end_date: format_date("12/16/2013 15:56"),
+                bike_id: 5,
+                end_station_id: 32,
+                subscription_type: "Subscriber"
+                )
+
+      Trip.create(duration: 45,
+                  start_date: format_date("11/15/2013 14:54"),
+                  start_station_id: 7,
+                  end_date: format_date("11/15/2013 15:56"),
+                  bike_id: 6,
+                  end_station_id: 32,
+                  subscription_type: "Subscriber"
+                  )
+      Trip.create(duration: 45,
+                  start_date: format_date("11/15/2013 14:54"),
+                  start_station_id: 7,
+                  end_date: format_date("11/15/2013 15:56"),
+                  bike_id: 6,
+                  end_station_id: 32,
+                  subscription_type: "Subscriber"
+                  )
+
+      expect(Trip.most_start_station).to eq(["East station", "West station"])
+
+    end
+    it "#most_end_station returns a station name" do
+      City.create(name: "Denver")
+      Station.create(id: 32, name: "South station", installation_date: 20150331, dock_count: 45, city_id: 1)
+      Trip.create(duration: 39,
+                 start_date: format_date("12/15/2013 14:54"),
+                 start_station_id: 4,
+                 end_date: format_date("12/15/2013 15:56"),
+                 bike_id: 6,
+                 end_station_id: 32,
+                 subscription_type: "Subscriber"
+                 )
+      Trip.create(duration: 45,
+                  start_date: format_date("11/15/2013 14:54"),
+                  start_station_id: 7,
+                  end_date: format_date("11/15/2013 15:56"),
+                  bike_id: 6,
+                  end_station_id: 32,
+                  subscription_type: "Subscriber"
+                  )
+      Trip.create(duration: 45,
+                  start_date: format_date("11/15/2013 14:54"),
+                  start_station_id: 7,
+                  end_date: format_date("11/15/2013 15:56"),
+                  bike_id: 6,
+                  end_station_id: 7,
+                  subscription_type: "Subscriber"
+                  )
+
+      expect(Trip.most_end_station).to eq("South station")
+    end
+
+    xit "#month_breakdown" do
+      Trip.create(duration: 39,
+                 start_date: format_date("12/15/2013 14:54"),
+                 start_station_id: 4,
+                 end_date: format_date("12/15/2013 15:56"),
+                 bike_id: 6,
+                 end_station_id: 32,
+                 subscription_type: "Subscriber"
+                 )
+      Trip.create(duration: 45,
+                  start_date: format_date("11/15/2013 14:54"),
+                  start_station_id: 7,
+                  end_date: format_date("11/15/2013 15:56"),
+                  bike_id: 6,
+                  end_station_id: 32,
+                  subscription_type: "Subscriber"
+                  )
+      Trip.create(duration: 45,
+                  start_date: format_date("11/15/2013 14:54"),
+                  start_station_id: 7,
+                  end_date: format_date("11/15/2013 15:56"),
+                  bike_id: 6,
+                  end_station_id: 7,
+                  subscription_type: "Subscriber"
+                  )
+
+      expect(Trip.month_breakdown).to be_instance_of(String)
+    end
+
+
+  end
 end

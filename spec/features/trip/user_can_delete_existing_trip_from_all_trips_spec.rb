@@ -1,7 +1,7 @@
 require_relative "../../spec_helper"
 
 RSpec.describe "as a user deletes an existing trip from all trips page" do
-  it "they can see existing trip data and delete the trip record" do
+  xit "they can see existing trip data and delete the trip record" do
     city = City.create(city: "Denver")
     start_station = Station.create(name: "Denver", dock_count: 15, city_id: 1, installation_date: "12/05/1987")
     end_station = Station.create(name: "Boulder", dock_count: 14, city_id: 2, installation_date: "12/05/1987")

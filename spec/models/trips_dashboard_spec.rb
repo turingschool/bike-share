@@ -46,22 +46,17 @@ RSpec.describe Trip do
   end
 
   describe ".total_rides_per_month" do
-    xit "returns total rides for every month" do
+    it "returns total rides for every month" do
       expect(Trip.total_rides_per_month).to eq({
-                                                january: [0, 0, 0, 0],
-                                                february: [0, 0, 0, 0],
-                                                march: [0, 0, 0, 0],
-                                                april: [0, 0, 0, 0],
-                                                may: [0, 0, 0, 0],
-                                                june: [0, 0, 0, 0],
-                                                july: [0, 0, 0, 0],
-                                                august: [2, 2, 0, 0],
-                                                september: [0, 0, 0, 0],
-                                                october: [1, 0, 1, 0],
-                                                november: [0, 0, 0, 0],
-                                                december: [0, 0, 0, 0]
+                                                2013 => {8 => 2},
+                                                2014 => {10 => 1}
                                                 })
     end
+  end
+
+  describe ".print_rides_per_month" do
+    xit "returns a workable hash for dashboard view for rides per month"
+
   end
 
   describe ".most_ridden_bike" do
@@ -101,8 +96,14 @@ RSpec.describe Trip do
   end
 
   describe ".date_with_most_trips" do
-    xit "finds the single date with the most trips" do
-      expect(Trip.date_with_most_trips).to eq(29/8/2013)
+    it "finds the single date with the most trips taken" do
+      expect(Trip.date_with_most_trips).to eq(Date.parse("29/8/2013"))
+    end
+  end
+
+  describe ".date_with_least_trips" do
+    it "finds the single date with the least trips taken" do
+      expect(Trip.date_with_least_trips).to eq(Date.parse("29/10/2014"))
     end
   end
 

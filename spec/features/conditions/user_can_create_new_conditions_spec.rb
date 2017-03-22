@@ -12,7 +12,7 @@ RSpec.describe "When a user creates conditions for a date" do
     fill_in 'condition[mean_visibility]', with: 5
     fill_in 'condition[mean_wind_speed]', with: 12
     fill_in 'condition[precipitation]', with: 0.01
-    
+
     click_on 'Submit'
 
     expect(current_path).to eq '/conditions/1'

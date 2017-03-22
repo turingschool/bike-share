@@ -89,11 +89,18 @@ RSpec.describe Trip do
       expect(@trip.start_station.name).to eq(@station1.name)
       expect(@trip.start_station.city).to eq(@station1.city)
     end
-    
+
     it "should return end station for the trip" do
       expect(@trip.end_station).to eq(@station2)
       expect(@trip.end_station.name).to eq(@station2.name)
       expect(@trip.end_station.city).to eq(@station2.city)
+    end
+  end
+
+  describe "subscription_type relationship" do
+    it "should return the trip subscribtion type" do
+      expect(@trip.subscription_type).to eq(@subscription_type)
+      expect(@trip.subscription_type.subscription_type).to eq("Subscriber")
     end
   end
 

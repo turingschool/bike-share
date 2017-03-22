@@ -1,5 +1,7 @@
 class Station < ActiveRecord::Base
-  validates :name, :city, :dock_count, :installation_date, presence: true
+  # validates :name, :dock_count, :installation_date, :city_id, presence: true
+
+  belongs_to :city
 
   def self.station_count
     Station.all.count

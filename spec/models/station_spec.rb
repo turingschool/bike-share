@@ -149,7 +149,7 @@ RSpec.describe Station do
     end
 
     it "#busiest_day" do
-      expect(station_1.busiest_day).to eq(("2013-12-15").to_date)
+      expect(station_1.busiest_day.first).to eq(("2013-12-15").to_date)
     end
 
     it "#most_frequent_zip returns most frequent zip" do

@@ -68,11 +68,13 @@ class Station < ActiveRecord::Base
   end
 
   def get_highest_uniq_ids
-    count_per_attribute(ending_ids).values.first.uniq
+    hash = count_per_attribute(ending_ids)
+    hash_to_max_arr(hash)
   end
 
   def get_lowest_uniq_ids
-    count_per_attribute(ending_ids).values.last.uniq
+    hash = count_per_attribute(ending_ids)
+    hash.min_by {|key, value| key}[1].uniq
   end
 
   def find_highest_station_objects
@@ -88,11 +90,8 @@ class Station < ActiveRecord::Base
   end
 
   def busiest_day
-    if count_per_attribute(starting_date_arr).values.first.uniq.count == 1
-      count_per_attribute(starting_date_arr).values.first.uniq[0]
-    else
-      count_per_attribute(starting_date_arr).values.first.uniq
-    end
+    hash = count_per_attribute(starting_date_arr)
+    hash_to_max_arr(hash)
   end
 
   def zip_code_arr
@@ -100,7 +99,8 @@ class Station < ActiveRecord::Base
   end
 
   def most_frequent_zip
-    count_per_attribute(zip_code_arr).values.first.uniq
+    hash = count_per_attribute(zip_code_arr)
+    hash_to_max_arr(hash)
   end
 
   def bike_id_arr
@@ -108,8 +108,11 @@ class Station < ActiveRecord::Base
   end
 
   def most_used_bike
-    var = count_per_attribute(bike_id_arr)
-    var.max_by {|key, value| key}[1].uniq
+    hash = count_per_attribute(bike_id_arr)
+    hash_to_max_arr(hash)
   end
-  # Bike ID most frequently starting a trip at this station.
+
+  def hash_to_max_arr(hash)
+    hash.max_by {|key, value| key}[1].uniq
+  end
 end

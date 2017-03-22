@@ -56,15 +56,28 @@ def self.ended_at(station)
   where(end_station_id: station)
 end
 
-def self.highest_number_trips_date
+def self.number_by_date_hash
   start_dates = pluck(:start_date)
   start_dates.group_by { |start_date| start_dates.count(start_date)}
 end
 
+def self.highest_number_trips_date
+  number_by_date_hash.max.last.uniq
+end
+
+def self.most_trips_date_count
+  number_by_date_hash.max.first
+end
 
 def self.fewest_number_trips_date
-  start_dates = pluck(:start_date)
-  start_dates.group_by { |start_date| start_dates.count(start_date)}
+  number_by_date_hash.min.last.uniq
 end
+
+def self.fewest_trips_date_count
+  number_by_date_hash.min.first
+end
+
+
+# Bike ID most frequently starting a trip at specific station.
 
 end

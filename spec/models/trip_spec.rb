@@ -155,14 +155,14 @@ RSpec.describe Trip do
 
     it "#highest_number_trips_date" do
 
-      expect(Trip.highest_number_trips_date).to be_instance_of(Hash)
-      # expect(Trip.highest_number_trips_date[1].first).to eq("2013/11/15")
+      expect(Trip.highest_number_trips_date).to be_instance_of(Array)
+      expect(Trip.highest_number_trips_date.first).to eq(("2013/11/15").to_date)
     end
 
     it "#fewest_number_trips_date" do
 
-      expect(Trip.fewest_number_trips_date).to be_instance_of(Hash)
-      # expect(Trip.fewest_number_trips_date[1].first).to eq("2015/12/13")
+      expect(Trip.fewest_number_trips_date).to be_instance_of(Array)
+      expect(Trip.fewest_number_trips_date.first).to eq(("2013/12/15").to_date)
     end
 
 

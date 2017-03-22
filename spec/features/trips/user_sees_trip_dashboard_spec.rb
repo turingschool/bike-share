@@ -61,5 +61,14 @@ RSpec.describe "When a user visits '/trip-dashboard' " do
       expect(page).to have_content('Percent Subscribers: 33.33%')
     end
 
+    within('div.date_with_most_trips') do
+      expect(page).to have_content('Date with most trips: Thursday, August 29, 2013')
+    end
+
+    within('div.date_with_least_trips') do
+      expect(page).to have_content('Date with least trips: Wednesday, October 29, 2014')
+    end
+
+
   end
 end

@@ -65,3 +65,15 @@
     Percent Subscribers: <%= @subscriptions.percent_subscription_type(@subscriptions.total_subscribers) %>%
   </p>
 </div>
+
+<div class="date_with_most_trips">
+  <p>
+    Date with most trips: <%= @trips.date_with_most_trips.strftime("%A, %B %d, %Y") %>
+  </p>
+</div>
+
+<div class="date_with_least_trips">
+  <p>
+    Date with least trips: <%= @trips.date_with_least_trips.strftime("%A, %B %d, %Y") %>
+  </p>
+</div>

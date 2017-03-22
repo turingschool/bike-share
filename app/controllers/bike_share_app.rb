@@ -88,6 +88,8 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips-dashboard' do
     @monthly_totals = Trip.monthly_totals
+    @subscription_counts = SubscriptionType.type_breakout
+    @all_subscriptions = SubscriptionType.all.count
     erb :"trips/trip-dashboard"
   end
 

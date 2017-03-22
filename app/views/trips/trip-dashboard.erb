@@ -61,8 +61,8 @@
     <% @subscription_counts.each do |subscription_type, counts| %>
       <tr>
         <td><%= subscription_type %></td>
-        <td><%= counts['total'] %></td>
-        <td><%= counts['average'] %></td>
+        <td><%= counts %></td>
+        <td><%= (counts*100.0/@all_subscriptions) %></td>
       </tr>
     <% end %>
 </table>

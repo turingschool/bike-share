@@ -1,11 +1,5 @@
 require_relative '../spec_helper'
 
-
-def format_date(date)
-  fd = date.split(/[\/: ]/)
-  Time.local(fd[2], fd[0], fd[1], fd[3], fd[4])
-end
-
 RSpec.describe Condition do
   describe "validations" do
     it "should be valid with all attributes" do

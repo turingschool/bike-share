@@ -2,12 +2,6 @@ require_relative '../spec_helper'
 
 RSpec.describe Bike do
 
-  # refactor me!
-  def format_date(date)
-    fd = date.split(/[\/: ]/)
-    Time.local(fd[2], fd[0], fd[1], fd[3], fd[4])
-  end
-
   before :each do
     SubscriptionType.create(flavor: "Subscriber")
     Bike.create(bike_number: 202)

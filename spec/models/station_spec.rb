@@ -1,10 +1,5 @@
 require_relative '../spec_helper'
 
-def format_date(date)
-  fd = date.split(/[\/: ]/)
-  Time.local(fd[2], fd[0], fd[1], fd[3], fd[4])
-end
-
 RSpec.describe Station do
   attr_reader :station_1,
               :station_2
@@ -112,13 +107,13 @@ RSpec.describe Station do
       expect(Station.oldest_station.name).to eq("Navy Pier")
     end
 
-    it "#most_frequent_destination should return most frequent destination for rides from this station" do
+    xit "#most_frequent_destination should return most frequent destination for rides from this station" do
       expect(station_1.most_frequent_destination).to be_kind_of(Station)
       expect(station_1.most_frequent_destination.name).to eq("Whatever")
 
     end
 
-    it "#most_frequent_origination should return most frequent origination for rides from this station" do
+    xit "#most_frequent_origination should return most frequent origination for rides from this station" do
     end
   end
 end

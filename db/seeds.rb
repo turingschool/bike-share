@@ -8,13 +8,16 @@ require 'pry'
 City.destroy_all
 Station.destroy_all
 
-
-
 stations = CSV.open 'db/csv/fixtures/stations_sample_data.csv',
 headers: true, header_converters: :symbol
 
 trips = CSV.open 'db/csv/fixtures/trip_sample_data.csv',
 headers: true, header_converters: :symbol
+
+def format_date(date)
+  fd = date.split(/[\/: ]/)
+  Time.local(fd[2], fd[0], fd[1], fd[3], fd[4])
+end
 
 stations.each do |row|
   puts "creating station: #{row}"
@@ -27,12 +30,8 @@ stations.each do |row|
                  long: row[:long],
                  installation_date: Date.strptime(row[:installation_date], '%m/%e/%Y')
                  )
-  end
+end
 
-  def format_date(date)
-    fd = date.split(/[\/: ]/)
-    Time.local(fd[2], fd[0], fd[1], fd[3], fd[4])
-  end
 
 trips.each do |row|
   puts "creating trip: #{row}"

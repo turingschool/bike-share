@@ -23,3 +23,9 @@ RSpec.configure do |c|
 
    c.include Capybara::DSL
 end
+
+
+def format_date(date)
+  fd = date.split(/[\/: ]/)
+  Time.local(fd[2], fd[0], fd[1], fd[3], fd[4])
+end

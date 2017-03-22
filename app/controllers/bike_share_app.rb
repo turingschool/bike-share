@@ -83,9 +83,13 @@ class BikeShareApp < Sinatra::Base
     Trip.destroy(params[:id])
     redirect '/trips'
   end
-
+  
+  
   get '/trip-dashboard' do
     @trips = Trip
+    @stations = Station
+    @bikes = Bike
+    @subscriptions = SubscriptionType
     erb :"trips/dashboard"
   end
   
@@ -126,14 +130,6 @@ class BikeShareApp < Sinatra::Base
   get '/weather-dashboard' do
     @conditions = Condition
     erb :"conditions/dashboard"
-  end
-
-  get '/trip-dashboard' do
-    @trips = Trip
-    @stations = Station
-    @bikes = Bike
-    @subscriptions = SubscriptionType
-    erb :"trips/dashboard"
   end
 
 end

@@ -2,7 +2,10 @@ require 'pry'
 require_relative 'pagination'
 
 class BikeShareApp < Sinatra::Base
-    set :method_override, true
+  
+  set :root, File.expand_path("..", __dir__)
+    
+  set :method_override, true
 
     include Pagination
 
@@ -104,6 +107,7 @@ class BikeShareApp < Sinatra::Base
     redirect '/stations'
   end
 
+
   get '/trips/new' do
     erb :"/trip/new"
   end
@@ -150,5 +154,4 @@ class BikeShareApp < Sinatra::Base
     @trip = Trip.destroy(params[:id])
     redirect '/trips'
   end
-
 end

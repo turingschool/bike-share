@@ -67,7 +67,34 @@
     </tr>
     <% end %>
   </table>
-  <p> <strong>Busiest Bike</strong> <%= @trips.busiest_bike.keys.flatten  %> with <% @trips.busiest_bike %> </p>
+  <p> <strong>Busiest Bike:</strong>  #<%= @trips.busiest_bike.stringify_keys.first.first  %> with <%= @trips.busiest_bike.values.first %> rides </p>
+  <p> <strong>Least Used Bike:</strong>  #<%= @trips.least_busy_bike.stringify_keys.first.first  %> with <%= @trips.least_busy_bike.values.first %> rides
+  </p>
+  <div>
+    <table>
+       <% subscribers = @trips.subscription_info  %>
+      <th><strong>Customer Types</strong> </th>
+      <th>Data</th>
+      <% subscribers.each do |k, v| %>
+      <tr>
+        <td>
+          <%= k.to_s.split("_").join(" ").capitalize %>
+        </td>
+        <td>
+          <%= v %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <p> <strong>Busiest date:</strong>
+    <% busiest_day = @trips.busiest_day %>
+      <%=  busiest_day[0]  %> with <%= busiest_day[1] %> rides
+  </p>
+  <p> <strong>Least Busy date:</strong>
+    <% least_busy_day = @trips.least_busy_day %>
+      <%=  least_busy_day[0]  %> with <%= least_busy_day[1] %> rides
+  </p>
 
 </div>
 </div>

@@ -24,7 +24,8 @@ class Trip < ActiveRecord::Base
      end_station_id:       params[:trip][:end_station],
      subscription_type_id: params[:trip][:subscription_type],
      zip_code:             ZipCode.find_or_create_by(zip_code: params[:trip][:zip_code]),
-     bike:                 Bike.find_or_create_by(bike_number: params[:trip][:bike_number])
+     bike:                 Bike.find_or_create_by(bike_number: params[:trip][:bike_number]),
+     condition:            Condition.find_by(date: params[:trip][:start_date].to_date)
    )
  end
 
@@ -37,7 +38,8 @@ class Trip < ActiveRecord::Base
      end_station_id:       params[:trip][:end_station],
      subscription_type_id: params[:trip][:subscription_type],
      zip_code:             ZipCode.find_or_create_by(zip_code: params[:trip][:zip_code]),
-     bike:                 Bike.find_or_create_by(bike_number: params[:trip][:bike_number])
+     bike:                 Bike.find_or_create_by(bike_number: params[:trip][:bike_number]),
+     condition:            Condition.find_by(date: params[:trip][:start_date].to_date)
    )
  end
 
@@ -118,7 +120,7 @@ class Trip < ActiveRecord::Base
     end
     sum
   end
-  
+
   def self.month_library
     {
       1 => "January",

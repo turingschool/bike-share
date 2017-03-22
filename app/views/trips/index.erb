@@ -138,11 +138,10 @@
             <td><%= trip.end_date %></td>
             <td><%= trip.end_station_id %></td>
             <td><%= trip.bike_id %></td>
-            <td><%= trip.subscription_type %></td>
+            <td><%= trip.subscription_id %></td>
             <td><%= trip.zipcode_id %></td>
-            <!-- <% city = City.find(station.city_id) %>
-            <% station = Station.find() %> -->
-            <td><form action="/trips/<%= trips.id %>" method="post">
+
+						<td><form action="/trips/<%= trips.id %>" method="post">
               <input type="hidden" name="_method" value="DELETE" />
               <input type="submit" value="Delete Station" />
             </form></td>

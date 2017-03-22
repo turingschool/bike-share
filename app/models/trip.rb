@@ -52,4 +52,19 @@ class Trip < ActiveRecord::Base
     where(start_station_id: station)
   end
 
+def self.ended_at(station)
+  where(end_station_id: station)
+end
+
+def self.highest_number_trips_date
+  start_dates = pluck(:start_date)
+  start_dates.group_by { |start_date| start_dates.count(start_date)}
+end
+
+
+def self.fewest_number_trips_date
+  start_dates = pluck(:start_date)
+  start_dates.group_by { |start_date| start_dates.count(start_date)}
+end
+
 end

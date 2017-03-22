@@ -31,7 +31,6 @@ CSV.foreach("db/csv/weather.csv", headers: true, header_converters: :symbol) do 
   weather_info[:mean_visibility] = row[:mean_visibility_miles]
   weather_info[:mean_wind_speed] = row[:mean_wind_speed_mph]
   weather_info[:precipitation] = row[:precipitation_inches]
-  binding.pry
   Weather.create(weather_info)
 
 end
@@ -45,4 +44,3 @@ CSV.foreach("db/csv/trip.csv", headers: true, header_converters: :symbol) do |tr
   trip_info = trip_info.to_hash
   Trip.create(trip_info)
  end
-

@@ -6,6 +6,8 @@ gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'pry'
 gem 'awesome_print', require:'ap'
+gem 'will_paginate'
+gem 'groupdate'
 
 group :development, :test do
   gem 'shotgun'

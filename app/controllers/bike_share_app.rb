@@ -113,6 +113,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/trips' do
+    @sub_type = SubscriptionType.find_or_create_by(params["subscription_type"])
+    params[:trip]["subscription_type_id"] = @sub_type.id
     @trip = Trip.create(params[:trip])
     redirect '/trips'
   end

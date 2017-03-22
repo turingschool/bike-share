@@ -3,22 +3,22 @@ require_relative "../spec_helper"
 RSpec.describe Station do
   describe "knows attributes" do
     it "returns station name" do
-      station = Station.create(name: "Denver Station", city: "Denver", dock_count: 25, installation_date: "8/6/2013")
+      station = Station.create(name: "Denver Station", city_id: 1, dock_count: 25, installation_date: "8/6/2013")
       result = station.name
       expect(result).to eq("Denver Station")
     end
     it "returns city name" do
-        station = Station.create(name: "Denver Station", city: "Denver", dock_count: 25, installation_date: "8/6/2013")
-        result = station.city
-        expect(result).to eq("Denver")
+        station = Station.create(name: "Denver Station", city_id: 1, dock_count: 25, installation_date: "8/6/2013")
+        result = station.city_id
+        expect(result).to eq(1)
     end
     it "returns dock count" do
-      station = Station.create(name: "Denver Station", city: "Denver", dock_count: 25, installation_date: "8/6/2013")
+      station = Station.create(name: "Denver Station", city_id: 1, dock_count: 25, installation_date: "8/6/2013")
         result = station.dock_count
         expect(result).to eq(25)
     end
     it "returns installation date" do
-      station = Station.create(name: "Denver Station", city: "Denver", dock_count: 25, installation_date:"8/6/2013")
+      station = Station.create(name: "Denver Station", city_id: 1, dock_count: 25, installation_date:"8/6/2013")
         result = station.installation_date
         expect(result).to eq (Date.strptime("8/6/2013", '%d/%m/%Y'))
     end
@@ -26,10 +26,10 @@ RSpec.describe Station do
 
   describe "validations" do
     it "is invalid without a name" do
-      station = Station.new(city: "Denver", dock_count: 25, installation_date:"Fri, 11 Apr 2014")
+      station = Station.new(city_id: 1, dock_count: 25, installation_date:"Fri, 11 Apr 2014")
       expect(station).to_not be_valid
     end
-    it "is invalid without a city" do
+    it "is invalid without a city id" do
       station = Station.new(name: "Denver Station", dock_count: 25, installation_date:"Fri, 11 Apr 2014")
       expect(station).to_not be_valid
     end
@@ -43,7 +43,7 @@ RSpec.describe Station do
     end
 
     it "should be valid with all attributes" do
-      station = Station.new(name: "Denver Station", city: "Denver", dock_count: 25, installation_date: "8/6/2013")
+      station = Station.new(name: "Denver Station", city_id: 1, dock_count: 25, installation_date: "8/6/2013")
       expect(station).to be_valid
       station =  Station.new(name: "Denver Station",  dock_count: 25, installation_date: "8/6/2013")
       expect(station).to_not be_valid

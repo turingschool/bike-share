@@ -2,14 +2,17 @@ require_relative '../spec_helper'
 require 'pry'
 
 RSpec.describe "A user can view station" do
-  before(:each) {Station.create(name:'San Jose Diridon Caltrain Station', city: "San Jose", dock_count: 27, installation_date: "8/6/2013")}
+  before(:each) do
+    Station.create(name: "Denver Station", city_id: 1, dock_count: 25, installation_date: "8/6/2013")
+    City.create(name: "Denver")
+   end
   it "and has all content" do
     visit '/stations/1'
     within("ul li:nth-child(1)") do
-      expect(page).to have_content("City: San Jose")
+      expect(page).to have_content("City: Denver")
     end
     within("ul li:nth-child(2)") do
-      expect(page).to have_content("Dock Count: 27")
+      expect(page).to have_content("Dock Count: 25")
     end
     within("ul li:nth-child(3)") do
       expect(page).to have_content("Installation Date: 2013-06-08")

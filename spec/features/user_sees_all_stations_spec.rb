@@ -4,7 +4,10 @@ require 'pry'
 
 
 RSpec.describe "User sees all content" do
-  before(:each) {Station.create(name: "Denver Station", city: "Denver", dock_count: 25, installation_date: "8/6/2013")}
+  before(:each) do
+    Station.create(name: "Denver Station", city_id: 1, dock_count: 25, installation_date: "8/6/2013")
+    City.create(name: "Denver")
+   end
   it "and has one of the stations and all header names" do
       visit "/stations"
       expect(page).to have_content("Name")

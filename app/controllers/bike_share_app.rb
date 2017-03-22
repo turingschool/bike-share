@@ -3,6 +3,7 @@ require 'will_paginate/active_record'
 
 class BikeShareApp < Sinatra::Base
   set :method_override, true
+  layout "layout"
 
   # include Pagination
   include WillPaginate::Sinatra::Helpers
@@ -10,7 +11,7 @@ class BikeShareApp < Sinatra::Base
 #====================STATION=======================
 
   get "/" do
-    redirect "/stations_dashboard"
+    redirect "/stations_dashboard"  # change this to homepage when we have it
   end
 
   get "/stations_dashboard" do
@@ -127,6 +128,46 @@ class BikeShareApp < Sinatra::Base
     Trip.destroy(params[:id])
     redirect "/trips"
   end
+
+  get "/conditions_dashboard" do
+    @condition = Condition.all
+    erb :"conditions/conditions_dashboard"
+  end
+
+  get "/conditions" do
+    @conditions = Condition.all
+    erb :"conditions/index"
+  end
+
+  get "/conditions/new" do
+    erb :"conditions/new"
+  end
+
+  post "/conditions" do
+    @condition = Conditions.create(params[:condition])
+    redirect "/conditions"
+  end
+
+  get "/conditions/:id/edit" do
+    @condition = Condition.find(params[:id])
+    erb :"conditions/edit"
+  end
+
+  put "/conditions/:id" do
+    @condition = Condition.update(params[:id], params[:condition])
+    redirect "/conditions/#{@condition.id}"
+  end
+
+  get "/conditions/:id" do
+    @condition = Condition.find(params[:id])
+    erb :"conditions/show"
+  end
+
+  delete "/conditions/:id" do
+    Condition.destroy(params[:id])
+    redirect "/conditions"
+  end
+
 end
 
 # private
@@ -141,6 +182,7 @@ end
 #     start_date: params[:trip][:start_date],
 #     end_date: params[:trip][:end_date])
 # end
+
 
 # any method we write below this we'll have access to from other methods
 # can't test these

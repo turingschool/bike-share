@@ -50,7 +50,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/station-dashboard' do
     @station = Station
-
+# perform logic here before passing to the view
     erb :"stations/dashboard"
   end
 
@@ -88,6 +88,12 @@ class BikeShareApp < Sinatra::Base
     @weather = WeatherCondition.destroy(params[:id])
 
     redirect '/weather_conditions'
+  end
+
+  get '/weather-dashboard' do
+    @station_total = Station.total
+# perform logic here before passing to the view
+    erb :"weather_conditions/dashboard"
   end
 
   get '/weather_conditions/:id' do

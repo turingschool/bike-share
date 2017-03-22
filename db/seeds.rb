@@ -22,6 +22,8 @@ end
 
 CSV.foreach("./db/csv/weather.csv", :headers => true) do |row|
 
+  if row['zip_code'] == '94107'
+
   date = row['date']
   row['date'] = Date.strptime(date, '%m/%d/%Y')
 

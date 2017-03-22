@@ -57,6 +57,17 @@
         <td><%= month_array[:months][12] %></td>
       </tr>
   </table>
+  <table cellspacing="10">
+    <th><h2>Year</h2></th>
+    <th><h2>Rides</h2></th>
+    <% month_array[:years].each do |year| %>
+    <tr>
+      <td><strong><%= year[0] %></strong></td>
+      <td><%= year[1] %></td>
+    </tr>
+    <% end %>
+  </table>
+  <p> <strong>Busiest Bike</strong> <%= @trips.busiest_bike.keys.flatten  %> with <% @trips.busiest_bike %> </p>
 
 </div>
 </div>

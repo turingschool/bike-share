@@ -3,17 +3,35 @@ require 'pry'
 
 RSpec.describe "A user can view trip" do
   it "and has all content" do
-    Trip.create(duration: 63, start_date: 8/28/2013, start_station_name: "South Van Ness at Market", start_station_id: 66, end_date: 8/29/2913, end_station_name: "South Van Ness at Market", end_station_id: 66, bike_id: 520,subscription_type: "Subscriber",zip_code: 94127)
-    visit '/trips/1'
-    expect(page.all('li')[0].text).to eq("Duration: 63")
-    expect(page.all('li')[1].text).to eq("Start Date: 8/28/2013")
-    expect(page.all('li')[2].text).to eq("Start Station Name: South Van Ness at Market")
-    expect(page.all('li')[3].text).to eq("Start Station ID: 66")
-    expect(page.all('li')[4].text).to eq("End Date: 8/29/2013")
-    expect(page.all('li')[5].text).to eq("End Station Name: South Van Ness at Market")
-    expect(page.all('li')[6].text).to eq("End Station ID: 66")
-    expect(page.all('li')[7].text).to eq("Bike ID: 520")
-    expect(page.all('li')[8].text).to eq("Subscription Type: Subscriber")
-    expect(page.all('li')[9].text).to eq("Zip Code: 94127")
+    Trip.create(duration: 63, start_date: "2013/8/28", start_station_name: "South Van Ness at Market", start_station_id: 66, end_date: "2013/08/29", end_station_name: "South Van Ness at Market", end_station_id: 66, bike_id: 520, subscription_type: "Subscriber", zip_code: 94127)
+    visit '/trips'
+   
+    expect(page).to have_content("Duration")
+    expect(page).to have_content("Start Date")
+    expect(page).to have_content("Start Station Name")
+    expect(page).to have_content("Start Station ID")
+    expect(page).to have_content("End Date")
+    expect(page).to have_content("End Station Name")
+    expect(page).to have_content("End Station ID")
+    expect(page).to have_content("Bike ID")
+    expect(page).to have_content("Subscription Type")
+    expect(page).to have_content("Zip Code")
+
+    expect(page).to have_content("63")
+    expect(page).to have_content("2013-08-28")
+    expect(page).to have_content("South Van Ness at Market")
+    expect(page).to have_content("66")
+    expect(page).to have_content("2013-08-29")
+    expect(page).to have_content("South Van Ness at Market")
+    expect(page).to have_content("66")
+    expect(page).to have_content("520")
+    expect(page).to have_content("Subscriber")
+    expect(page).to have_content("94127")
+  end
+
+  it "and has a create new trip button that links to correct route" do
+    visit "/trips"
+    page.click_link('', :href => '/trips/new')
+    expect(current_path).to eq("/trips/new")
   end
 end

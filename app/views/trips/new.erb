@@ -1,0 +1,31 @@
+<form action="/trips" method="post">
+  <h2>New Trip</h2>
+  Start Date<br>
+  <input type='datetime-local'  name='trip[start_date]' ><br>
+  Start Station Name<br>
+  <select name='trip[start_station]'>
+    <% @stations.each do |station| %>
+      <option value=<%= station.id %>><%= station.name %></option>
+    <% end %>
+  </select><br>
+  End Date<br>
+  <input type='datetime-local'  name='trip[end_date]'><br>
+  End Station Name<br>
+  <select name='trip[end_station]'>
+    <% @stations.each do |station| %>
+      <option value=<%= station.id %>><%= station.name %></option>
+    <% end %>
+  </select><br>
+  Bike Number<br>
+  <input type='number'  name='trip[bike_number]'><br>
+  Subscription Type<br>
+  <select name='trip[subscription_type]'>
+    <% @subtypes.each do |subtype| %>
+      <option value=<%= subtype.id %>><%= subtype.subscription_type %></option>
+    <% end %>
+  </select><br>
+  Zip Code<br>
+  <input type='number'  name='trip[zip_code]'><br>
+
+  <input type='submit' value='Submit'>
+</form>

@@ -1,0 +1,59 @@
+<h1>Edit Conditions</h1>
+
+<form action="/conditions/<%= @weather.id %>" method="post" class="pure-form pure-form-aligned">
+  <input type="hidden" name="_method" value="PUT" />
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="date">Date: </label>
+            <input name="weather[date]" type="datetime" value="<%= @weather.date.strftime('%Y-%m-%d') %>" required>
+        </div>
+       
+        <div class="pure-control-group">
+            <label for="max temp">Max Temperature: </label>
+            <input name="weather[max_temperature]" type="number" value="<%= @weather.max_temperature %>" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="min temp">Min Temperature: </label>
+            <input name="weather[min_temperature]" type="number" value="<%= @weather.min_temperature %>" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="mean temp">Avg Temperature: </label>
+            <input name="weather[mean_temperature]" type="number" value="<%= @weather.mean_temperature %>" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="mean humidity">Avg Humidity: </label>
+            <input name="weather[mean_humidity]" type="number" value="<%= @weather.mean_humidity %>" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="mean visibility">Avg Visibility: </label>
+            <input name="weather[mean_visibility]" type="number" value="<%= @weather.mean_visibility %>" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="mean wind_speed">Avg Wind Speed: </label>
+            <input name="weather[mean_wind_speed]" type="number" value="<%= @weather.mean_wind_speed %>" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="precipitation">Precipitation: </label>
+            <input name="weather[precipitation]" type="number" value="<%= @weather.precipitation %>" required>
+        </div>
+
+
+        <div class="pure-controls">
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Update</button>
+        </div>
+    </fieldset>
+</form>
+
+<form action="/weathers/<%= @weather.id %>" method="post" class="pure-form pure-form-aligned">
+  <input type="hidden" name="_method" value="DELETE" />
+  <div class="pure-controls">
+    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised  mdl-js-ripple-effect mdl-button--accent">Delete</button>
+  </div>
+
+</form>

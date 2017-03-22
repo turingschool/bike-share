@@ -1,0 +1,51 @@
+<h1>Create a New Conditions Report</h1>
+
+<form action="/conditions" method="post"class="pure-form pure-form-aligned">
+    <fieldset>
+    <!-- address required tag for fields? -->
+        <div class="pure-control-group">
+            <label for="date">Date: </label>
+            <input name="weather[date]" type="date" placeholder="MM/DD/YY" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="max temp">Max Temperature: </label>
+            <input name="weather[max_temperature]" type="number" placeholder="Max Temp: F" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="min temp">Minimum Temperature: </label>
+            <input name="weather[min_temperature]" type="number" placeholder="Min Temp: F" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="mean temp">Average Temperature: </label>
+            <input name="weather[mean_temperature]" type="number" placeholder="Avg Temp: F" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="avg humidity">Avg Humidity: </label>
+            <input name="weather[mean_humidity]" type="number" placeholder="Avg Humidity: " required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="avg vis">Average Visibility: </label>
+            <input name="weather[mean_visibility]" type="number" placeholder="Avg Visibility in miles " required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="mean wind">Avg Wind Speed: </label>
+            <input name="weather[mean_wind_speed]" type="number" placeholder="Avg Wind: mph " required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="rain">Precipitation: </label>
+            <input name="weather[precipitation]" type="number" placeholder="precipitation in inches " required>
+        </div>
+
+        <div class="pure-controls">
+            <label for="cb" class="pure-checkbox"></label>
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Submit</button>
+        </div>
+    </fieldset>
+</form>

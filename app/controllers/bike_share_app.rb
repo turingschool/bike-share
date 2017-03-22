@@ -2,12 +2,8 @@ require 'pry'
 require 'will_paginate'
 require 'will_paginate/active_record'
 
-
-
 class BikeShareApp < Sinatra::Base
 	include WillPaginate::Sinatra::Helpers
-
-
 
   get '/' do
     erb :home
@@ -30,8 +26,6 @@ class BikeShareApp < Sinatra::Base
 
     city = City.where(name: params[:city][:name]) #finds if it already exists
 
-    # binding.pry
-
     params[:station][:city_id] = city.ids.first #Find out where .id method went to? Refactor to place in model
 		Station.create(params[:station])
 
@@ -51,7 +45,6 @@ class BikeShareApp < Sinatra::Base
 
     @station = Station.find(params[:id])
     @city_name = City.find(@station.city_id).name
-    # binding.pry
     erb :"stations/show"
   end
 
@@ -61,7 +54,6 @@ class BikeShareApp < Sinatra::Base
     city = City.where(name: params[:city][:name]) #finds if it already exists
 
     params[:station][:city_id] = city.ids.first #Find out where .id method went to? Refactor to place in model
-
 
     Station.update(params[:id], params[:station])
     redirect '/stations'
@@ -86,7 +78,6 @@ class BikeShareApp < Sinatra::Base
   get '/trips/new' do
     @stations = Station.all
 
-    # @trips = Trip
     erb :"trips/new"
   end
 
@@ -100,22 +91,50 @@ class BikeShareApp < Sinatra::Base
   get '/trips/:id' do
     @trip = Trip.find(params[:id])
     @stations = Station.all
-    # binding.pry
     erb :"trips/show"
   end
 
 	delete '/trips/:id' do
-    # trip = Trip.find(params[:id])
     Trip.destroy(params[:id])
-    # binding.pry
     redirect '/trips'
   end
 
-  # post '/trips' do
+  get '/conditions' do 
+    @weathers = Weather.all.paginate(:page => params[:page], :per_page => 5)
+    erb :"weathers/weather_index"
+  end
 
+  get '/conditions/new' do
+    erb :"weathers/new"
+  end
 
-  # redirect '/trips'
-  # end
+  get '/conditions/:id' do
+    @weather = Weather.find(params[:id])
+    erb :"weathers/show"
+  end
 
+  post '/conditions' do
+    Weather.create(params[:weather])
+    # binding.pry
+    #check date format incomingness
+    # params[:weather][:date] = DateTime.strptime(params[:weather][:date], "%Y-%m-%dT%H:%M")
+    # (DateTime.strptime(params[:trip][:end_date], "%Y-%m-%dT%H:%M")
+    
+    redirect '/conditions'
+  end
 
+  put '/conditions/:id' do
+    Weather.update(params[:id], params[:weather])
+    redirect '/conditions'
+  end
+
+  delete '/conditions/:id' do
+    Weather.destroy(params[:id])
+    redirect '/conditions'
+  end
+
+  get '/weather-dashboard' do
+    @weathers = Weather
+    erb :"weathers/dashboard"
+  end
 end

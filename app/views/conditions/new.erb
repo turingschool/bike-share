@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Create New Weather</title>
+    <title>Create New Weather Conditions</title>
   </head>
   <body>
-    <h1>Create New Weather</h1>
+    <h1>Create New Weather Conditions</h1>
+    <form action="/conditions" method="post">
+      <label for=""> Date</label>
+      <input type="textfield" name="condition[date]"><br>
+      <label for="">Max Temp:</label>
+      <input type="textfield" name="condition[max_temperature_f]"><br>
+      <label for="">Mean Temp:</label>
+      <input type="textfield" name="condition[mean_temperature_f]"><br>
+      <label for="">Min Temp:</label>
+      <input type="textfield" name="condition[min_temperature_f]"><br>
+      <label for="">Mean Humidity:</label>
+      <input type="textfield" name="condition[mean_humidity]"><br>
+      <label for="">Mean Visibility:</label>
+      <input type="textfield" name="condition[mean_visibility_miles]"><br>
+      <label for="">Mean Wind Speed (mph):</label>
+      <input type="textfield" name="condition[mean_wind_speed_mph]"><br>
+      <label for="">Precipitation (inches):</label>
+      <input type="textfield" name="condition[precipitation_inches]"><br>
+      <label for="">Zipcode:</label>
+      <input type="textfield" name="condition[zip_code]"><br>
+      <input type="submit" value="Create New Weather">
     </form>
   </body>
 </html>

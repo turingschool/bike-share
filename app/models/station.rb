@@ -1,6 +1,7 @@
 class Station < ActiveRecord::Base
   belongs_to :city
-  has_many :trips
+  has_many :beginning_trips, inverse_of: :start_station, class_name: "Trip", foreign_key: :start_station_id
+  has_many :ending_trips, inverse_of: :end_station, class_name: "Trips", foreign_key: :end_station_id
 
   validates :name, presence: true, uniqueness: true
   validates :dock_count, presence: true
@@ -50,6 +51,16 @@ class Station < ActiveRecord::Base
 
   def self.oldest_station
     stations_by_install_date.reverse.first
-
   end
+
+  def sorted_destination
+    trips = Trip.where(start_station_id: id)
+    trips.each_with_object(Hash.new(0)) { |trip, counts| counts[trip.id] += 1 }
+  end
+
+  def most_frequent_destination
+    Trip.find(sorted_destination.sort.first)
+    binding.pry
+  end
+
 end

@@ -1,16 +1,44 @@
 require_relative '../spec_helper'
 
+def format_date(date)
+  fd = date.split(/[\/: ]/)
+  Time.local(fd[2], fd[0], fd[1], fd[3], fd[4])
+end
+
 RSpec.describe Station do
-  attr_reader :station1,
-              :station2,
-              :station3
+  attr_reader :station_1,
+              :station_2
 
   before :each do
     City.create(name:"Chicago")
     City.create(name:"Denver")
-    Station.create(name: "Navy Pier", dock_count: "10", installation_date: "20160101", city_id: 1)
-    Station.create(name: "Whatever", dock_count: "6", installation_date: "20160203", city_id: 2)
+    @station_1 = Station.create(name: "Navy Pier", dock_count: "10", installation_date: "20160101", city_id: 1)
+    @station_2 = Station.create(name: "Whatever", dock_count: "6", installation_date: "20160203", city_id: 2)
     Station.create(name: "New", dock_count: "10", installation_date: "20160303", city_id: 2)
+    Trip.create(duration: 39,
+                start_date: format_date("12/15/2013 14:54"),
+                start_station_id: 1,
+                end_date: format_date("12/15/2013 15:56"),
+                bike_id: 6,
+                end_station_id: 2,
+                subscription_type_id: 1
+                )
+     Trip.create(duration: 45,
+                 start_date: format_date("11/15/2013 14:54"),
+                 start_station_id: 1,
+                 end_date: format_date("11/15/2013 15:56"),
+                 bike_id: 6,
+                 end_station_id: 1,
+                 subscription_type_id: 1
+                 )
+     Trip.create(duration: 45,
+                 start_date: format_date("11/15/2013 14:54"),
+                 start_station_id: 1,
+                 end_date: format_date("11/15/2013 15:56"),
+                 bike_id: 6,
+                 end_station_id: 1,
+                 subscription_type_id: 1
+                 )
   end
 
   describe "validations" do
@@ -82,6 +110,15 @@ RSpec.describe Station do
     it "#oldest_station should return a station object" do
       expect(Station.oldest_station).to be_kind_of(Station)
       expect(Station.oldest_station.name).to eq("Navy Pier")
+    end
+
+    it "#most_frequent_destination should return most frequent destination for rides from this station" do
+      expect(station_1.most_frequent_destination).to be_kind_of(Station)
+      expect(station_1.most_frequent_destination.name).to eq("Whatever")
+
+    end
+
+    it "#most_frequent_origination should return most frequent origination for rides from this station" do
     end
   end
 end

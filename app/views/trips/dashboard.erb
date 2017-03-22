@@ -77,3 +77,20 @@
     Date with least trips: <%= @trips.date_with_least_trips.strftime("%A, %B %d, %Y") %>
   </p>
 </div>
+
+<div class="month_by_month_breakdown">
+  <p>
+    <h4>Month by Month Ride Breakdown</h4>
+    <table>
+      <tr>
+        <th>Month</th>
+        <%= @trips.top_table_row %>
+      </tr>
+      <%= @trips.month_rows[0] %>
+      <tr>
+        <td>Grand Total</td>
+        <%= @trips.grand_total_rows %>
+      </tr>
+    </table>
+  </p>
+</div>

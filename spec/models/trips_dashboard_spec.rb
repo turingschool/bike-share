@@ -48,15 +48,10 @@ RSpec.describe Trip do
   describe ".total_rides_per_month" do
     it "returns total rides for every month" do
       expect(Trip.total_rides_per_month).to eq({
-                                                2013 => {8 => 2},
-                                                2014 => {10 => 1}
+                                                8 => {2013 => 2},
+                                                10 => {2014 => 1}
                                                 })
     end
-  end
-
-  describe ".print_rides_per_month" do
-    it "returns a workable hash for dashboard view for rides per month"
-
   end
 
   describe ".most_ridden_bike" do

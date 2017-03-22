@@ -1,13 +1,13 @@
 <h1>Weather Conditions</h1>
 
+<a href="/conditions-dashboard">View Weather Stats</a>  
 <a href="/conditions/new">Create New</a>
-<a href="/conditions-dashboard">View Weather Stats</a>
 
 
 <div class="model_index">
   <% @conditions.each do |condition| %>
     <div class="model_home">
-      <p>Trip on: <%= condition.date %> </p>
+      <p> <a href="/conditions/<%= condition.id %>"> <button> Trip on: <%= condition.date %></button></p></a><br>
       <p>Max Temp: <%= condition.max_temperature_f %></p><br>
       <p>Mean Temp: <%= condition.mean_temperature_f %></p><br>
       <p>Min Temp: <%= condition.min_temperature_f %></p><br>

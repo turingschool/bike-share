@@ -11,8 +11,8 @@ RSpec.describe "when a user visits '/stations' " do
     # I expect to be on /stations page
     expect(current_path).to eq("/stations")
     #I expect to see a list of all bike share stations
-    within("h1") do
-      expect(page).to have_content("All Bike Stations")
+    within("h3") do
+      expect(page).to have_content("All Stations")
     end
 
     # I expect to see content station name

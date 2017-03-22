@@ -1,5 +1,5 @@
 class Zipcode < ActiveRecord::Base
-  belongs_to :trip
+  has_many :trips
 
 
   validates :zip_code, presence: true, uniqueness: true

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321174646) do
+ActiveRecord::Schema.define(version: 20170322005343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20170321174646) do
   end
 
   create_table "subscriptions", force: :cascade do |t|
-    t.integer  "subscription"
+    t.string   "subscription"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -43,10 +43,9 @@ ActiveRecord::Schema.define(version: 20170321174646) do
     t.integer  "start_station_id"
     t.integer  "end_station_id"
     t.integer  "bike_id"
-    t.text     "subscription_type"
     t.integer  "zipcode_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "subscription_id"
     t.datetime "start_date"
     t.datetime "end_date"

@@ -2,7 +2,10 @@ require 'pry'
 require_relative 'pagination'
 
 class BikeShareApp < Sinatra::Base
-    set :method_override, true
+  
+  set :root, File.expand_path("..", __dir__)
+    
+  set :method_override, true
 
     include Pagination
 
@@ -36,6 +39,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations' do
+    @city = City.find_or_create_by(params[:city])
+    params[:station]["city_id"] = @city.id
     @station = Station.create(params[:station])
     redirect '/stations'
   end
@@ -72,10 +77,10 @@ class BikeShareApp < Sinatra::Base
     erb :"station/edit"
   end
 
-  
+
 
   get '/conditions/:id/edit' do
-    @condition = Condition.find(params[:id])
+    @condition = Condition.find(params[:id]
     erb :"conditions/edit"
   end
 
@@ -85,6 +90,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
+    @city = City.find_or_create_by(params[:city])
+    params[:station][:city_id] = @city.id
     @station = Station.update(params[:id].to_i, params[:station])
     redirect '/stations'
     #redirect '/stations/#{@station.id}' isn't working
@@ -99,6 +106,7 @@ class BikeShareApp < Sinatra::Base
     @station = Station.destroy(params[:id])
     redirect '/stations'
   end
+
 
   get '/trips/new' do
     erb :"/trip/new"
@@ -132,6 +140,10 @@ class BikeShareApp < Sinatra::Base
     erb :"trip/show"
   end
 
+  get '/weather-dashboard' do
+
+  end
+
   put '/trips/:id' do
     @trip = Trip.update(params[:id].to_i, params[:trip])
     redirect '/trips'
@@ -142,5 +154,4 @@ class BikeShareApp < Sinatra::Base
     @trip = Trip.destroy(params[:id])
     redirect '/trips'
   end
-
 end

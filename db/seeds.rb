@@ -3,6 +3,7 @@ require './app/models/station.rb'
 require './app/models/trip.rb'
 require './app/models/condition.rb'
 require './app/models/subscription_type.rb'
+require './app/models/city.rb'
 require 'pry'
 
 
@@ -14,11 +15,12 @@ Station.destroy_all
 open_contents = CSV.open('./db/csv/station.csv', headers: true, header_converters: :symbol)
 
 open_contents.each do |row|
+  city = City.find_or_create_by(name: row[:city])
   date = row[:installation_date]
   row[:installation_date] = Date.strptime(date, '%m/%d/%Y')
   Station.create!(name: row[:name],
                   dock_count: row[:dock_count],
-                  city: row[:city],
+                  city_id: city.id,
                   installation_date: row[:installation_date]
                   )
 end
@@ -29,7 +31,7 @@ open_contents = CSV.open('./db/fixtures/trip.csv', headers: true, header_convert
 
 open_contents.each do |row|
   @count += 1
-  next unless row[:end_date] != ''
+  next if row[:end_date].nil?
   next if row[:zip_code].nil? || row[:zip_code].length < 5
 
 subscription = SubscriptionType.find_or_create_by(name: row[:subscription_type])

@@ -17,13 +17,16 @@ RSpec.describe "A user sees a form" do
     click_on "Update Condition"
 
       expect(current_path).to eq("/conditions/page/1")
-      expect(page).to have_content("2013-08-08")
-      expect(page).to have_content("75")
-      expect(page).to have_content("88")
-      expect(page).to have_content("80")
-      expect(page).to have_content("4")
-      expect(page).to have_content("2")
-      expect(page).to have_content("5")
-      expect(page).to have_content("33")
+
+      within(".conditions") do
+        expect(page).to have_content("2013-08-08")
+        expect(page).to have_content("75")
+        expect(page).to have_content("88")
+        expect(page).to have_content("80")
+        expect(page).to have_content("4")
+        expect(page).to have_content("2")
+        expect(page).to have_content("5")
+        expect(page).to have_content("33")
+      end
   end
 end

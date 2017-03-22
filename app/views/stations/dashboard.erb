@@ -1,0 +1,58 @@
+
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title mdl-card--expand">
+      <h2 class="mdl-card__title-text">Total Stations</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <p>Number of total stations: <%= @station.total %>  </p>
+    </div>
+  </div>
+
+	<div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title mdl-card--expand">
+      <h2 class="mdl-card__title-text">Average Docks/Per Station</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <p>Average bikes per station: <%= @station.avg %>  </p>
+    </div>
+  </div>
+
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title mdl-card--expand">
+      <h2 class="mdl-card__title-text">Most bikes at a Station</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <p>Number of docks: <%= @station.most_bikes.dock_count %></p>
+      <p>Name of Station: <%= @station.most_bikes.name %></p>
+    </div>
+  </div>
+
+	<div class="demo-card-square mdl-card mdl-shadow--2dp">
+     <div class="mdl-card__title mdl-card--expand">
+      <h2 class="mdl-card__title-text">Least bikes at a Station</h2>
+      </div>
+    <div class="mdl-card__supporting-text">
+      <p>Number of docks: <%= @station.least_bikes.dock_count %></p>
+      <p>Name of Station: <%= @station.least_bikes.name %></p>
+    </div>
+  </div>
+
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+		<div class="mdl-card__title mdl-card--expand">
+      <h2 class="mdl-card__title-text">Newest Station</h2>
+      </div>
+    <div class="mdl-card__supporting-text">
+      	<p>Newest Station: <%= @station.newest_station.name %></p>
+    </div>
+  </div>
+
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title mdl-card--expand">
+      <h2 class="mdl-card__title-text">Oldest Station</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <p>Oldest Station: <%= @station.oldest_station.name %></p>
+    </div>
+  </div>
+</div>
+

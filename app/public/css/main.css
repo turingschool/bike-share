@@ -1,0 +1,66 @@
+.mdl-layout__content {
+	background: url('../assets/bikes.jpg') center / cover;
+
+}
+
+.pure-form-aligned {
+	text-align: center;
+	padding: 20px;
+	/*opacity: 1.0 !important;*/
+}
+.pure-control-group {
+	font-family: Helvetica;
+	font-weight: bold;
+	font-style: italic;
+	font-size: 24px;
+	color: black;
+}
+
+h1 {
+	top: 50px;
+	text-align: center;
+	font-weight: bold;
+	color: white;
+}
+
+.mdl-button {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.mdl-button--colored:hover {
+	/*padding: 10px;*/
+	background-color: plum;
+	font-style: italic;
+}
+.mdl-card__actions {
+	/*margin: 50px;*/
+	padding: 10px;
+}
+/*.mdl-card--border {
+	padding: 50px;
+	/*margin: 50px;*/
+/*}*/
+.demo-card-square {
+	background-color: silver;
+	padding: 20px;
+	margin-top: 50px;
+	margin-left: 750px;
+	/*margin: auto;*/
+}
+
+img {
+	padding-top: 50px;
+	margin-left: 650px;
+	max-width: 400px;
+	max-height: 300px;
+	min-width: 100px;
+	position: relative;
+}
+/*.deleted {
+	position: relative;
+}*/
+
+/*.mdl-mini-footer {
+	text-align: center;
+}*/

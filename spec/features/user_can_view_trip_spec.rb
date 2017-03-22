@@ -2,7 +2,7 @@
 require 'pry'
 
 RSpec.describe "A user can view trip" do
-  before(:each) {Trip.create(duration: 63, start_date: "2013/8/28", start_station_name: "South Van Ness at Market", end_date: "2013/08/29", end_station_name: "South Van Ness at Market", bike_id: 520, subscription_type: "Subscriber", zip_code: 94127)}
+  before(:each) {Trip.create(duration: 63, start_date: "2013/8/28", start_station_name: "South Van Ness at Market", end_date: "2013/08/29", end_station_name: "South Van Ness at Market", bike_id: 520, subscription_type_id: "Subscriber", zip_code: 94127)}
   
   it "and has all content" do
     visit '/trips/1'

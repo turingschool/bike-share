@@ -51,6 +51,9 @@ end
 
 # create our conditions
 
+# PICK A ZIPCODE and only seed conditions for that zip
+# but we don't need zipcode in our table
+
 # id
 # date (d - m - yyyy)
 

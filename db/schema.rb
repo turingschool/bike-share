@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170320235354) do
+ActiveRecord::Schema.define(version: 20170322165130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20170320235354) do
     t.integer  "subscription_type_id"
     t.datetime "start_date"
     t.datetime "end_date"
+    t.integer  "condition_id"
   end
 
   create_table "zip_codes", force: :cascade do |t|

@@ -13,7 +13,7 @@ RSpec.describe "when a user visits /stations/:id" do
     Trip.create(duration: 40, start_date: "23/9/2014", start_station_id: 2, end_date: "23/9/2014", end_station_id: 2, bike_id: 2, subscription_type_id: 1, zip_code_id: 1)
     visit '/stations/1'
 
-    within("h1.station-name") do
+    within("h1.title") do
       expect(page).to have_content("Union Station")
     end
 

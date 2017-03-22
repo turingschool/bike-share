@@ -6,7 +6,7 @@ RSpec.describe "when a user visits /stations" do
     visit '/stations'
 
     within("h1.title") do
-      expect(page).to have_content("Bike Share Stations")
+      expect(page).to have_content("Stations")
     end
 
     #come back to me

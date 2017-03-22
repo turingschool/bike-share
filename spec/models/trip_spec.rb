@@ -60,12 +60,39 @@ RSpec.describe Trip do
 
   describe 'model methods' do
 
+    attr_reader :trip1, :trip2, :start_station, :end_station
+
     it 'can make its own name, with interpolation' do
-      Station.create(lat: 37.329732, long: -121.90178200000001, name: 'Start Dummy', dock_count: 12, city_id: 1, installation_date: Date.parse('8/6/2013'))
-      Station.create(lat: 37.329732, long: -121.90178200000001, name: 'End Dummy', dock_count: 12, city_id: 1, installation_date: Date.parse('8/6/2013'))
-      trip = Trip.create(duration: 22, start_date: start_date, end_date: end_date, subscription_type: 'subscriber', bike_id: 1, start_station_id: 1, end_station_id: 2, weather_id: 1)
+      @start_station = Station.create(lat: 37.329732, long: -121.90178200000001, name: 'Start Dummy', dock_count: 12, city_id: 1, installation_date: Date.parse('8/6/2013'))
+      @end_station = Station.create(lat: 37.329732, long: -121.90178200000001, name: 'End Dummy', dock_count: 12, city_id: 1, installation_date: Date.parse('8/6/2013'))
+      @trip1 = Trip.create(duration: 22, start_date: start_date, end_date: end_date, subscription_type: 'subscriber', bike_id: 1, start_station_id: 1, end_station_id: 2, weather_id: 1)
+      @trip2 = Trip.create(duration: 24, start_date: start_date, end_date: end_date, subscription_type: 'subscriber', bike_id: 1, start_station_id: 1, end_station_id: 2, weather_id: 1)
 
       expect(trip.make_name).to eq('8/29/2013: Start Dummy -> End Dummy')
+    end
+
+    it 'knows the average duration of trips' do
+      expect(Station.average_duration).to eq(23)
+    end
+
+    it 'knows its longest ride' do
+      expect(Station.longest_rides).to eq([trip2])
+    end
+
+    it 'knows its shortest ride' do
+      expect(Station.shortest_rides.to eq([trip1]))
+    end
+
+    it 'knows the most popular starting station' do
+      expect(Station.most_popular_starting_stations).to eq([start_station])
+    end
+
+    it 'knows the least popular starting station' do
+      expect(Station.least_popular_starting_stations).to eq([end_station])
+    end
+
+    it 'knows the number of rides for a month' do
+
     end
   end
 end

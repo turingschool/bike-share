@@ -53,14 +53,20 @@ class Station < ActiveRecord::Base
     stations_by_install_date.reverse.first
   end
 
-
-
   def all_trips_starting_at_id
     Trip.started_at(id)
   end
 
   def ending_ids
     all_trips_starting_at_id.map {|trip| trip.end_station_id}
+  def self.date_with_highest_number_of_trips
+    trip = Trip.find()
+    trip
+  end
+
+  def sorted_destination
+    trips = Trip.where(start_station_id: id)
+    trips.each_with_object(Hash.new(0)) { |trip, counts| counts[trip.id] += 1 }
   end
 
   def count_per_attribute(obj_attribute)

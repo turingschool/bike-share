@@ -8,7 +8,6 @@ class Trip < ActiveRecord::Base
  
  belongs_to :condition
 
- validates :duration, presence: true
  validates :start_date, presence: true
  validates :start_station_id, presence: true
  validates :end_date, presence: true
@@ -41,15 +40,15 @@ class Trip < ActiveRecord::Base
      bike:                 Bike.find_or_create_by(bike_number: params[:trip][:bike_number])
    )
  end
- 
+
  def self.average_duration
    Trip.average(:duration).to_i
  end
- 
+
  def self.longest_ride
    Trip.maximum(:duration).to_i
  end
- 
+
  def self.shortest_ride
    Trip.minimum(:duration).to_i
  end

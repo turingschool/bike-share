@@ -11,10 +11,9 @@ RSpec.describe 'When a user clicks delete' do
 
   it 'should remove the trip' do
     visit '/trips/1'
-
     click_on 'Delete'
+    expect(Trip.exists?(1)).to be false
 
     expect(current_path).to eq('/trips')
-    expect(Trip.find(1)).to be_nil
   end
 end

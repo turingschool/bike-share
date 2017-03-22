@@ -98,4 +98,11 @@ class BikeShareApp < Sinatra::Base
 
     erb :"trips/show"
   end
+
+  delete '/trips/:id' do
+    id = params['id']
+    Trip.delete(id)
+
+    redirect '/trips'
+  end
 end

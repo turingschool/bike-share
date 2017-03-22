@@ -11,7 +11,7 @@
       <p>Bike ID: <%= trip.bike_id %></p><br>
       <p>Trip Duration (in minutes): <%= trip.duration %></p><br>
       <p>End Date: <%= trip.end_date %></p><br>
-      <p>Subscription Type: <%= trip.subscription_type %></p>
+      <p>Subscription Type: <%= trip.subscription_type.flavor %></p>
       <p>Zipcode: <%= trip.zip_code %></p><br>
       <a href="/trips/<%= trip.id %>/edit">Edit Trip</a>
 

@@ -1,8 +1,67 @@
-<!-- <h1>Welcome to the Trips Dashboard!</h1>
+<h1>Welcome to the Trips Dashboard!</h1>
 
 <div class="average_duration">
   <p>
-    Average duration of a ride: <%= @trips.average_duration %>
+    Average duration of a ride: <%= @trips.average_duration / 60 %> minutes
   </p>
-</div> -->
+</div>
 
+<div class="longest_ride">
+  <p>
+    Longest Ride: <%= @trips.longest_ride / 60 %> minutes
+  </p>
+</div>
+
+<div class="shortest_ride">
+  <p>
+    Shortest Ride: <%= @trips.shortest_ride %>
+  </p>
+</div>
+
+<div class="start_station_with_most_rides">
+  <p>
+    Station with the most rides as a starting place: <%= @stations.start_station_with_most_rides.name %>
+  </p>
+</div>
+
+<div class="end_station_with_most_rides">
+  <p>
+    Station with the most rides as a ending place: <%= @stations.end_station_with_most_rides.name %>
+  </p>
+</div>
+
+<div class="most_ridden_bike">
+  <p>
+    Most ridden bike: Number <%= @bikes.most_trips.bike_number %>
+  </p>
+  <p>
+    Total number of rides: <%= @bikes.most_trips.trips.count %>
+  </p>
+</div>
+
+<div class="least_ridden_bike">
+  <p>
+    Least ridden bike: Number <%= @bikes.least_trips.bike_number %>
+  </p>
+  <p>
+    Total number of rides: <%= @bikes.least_trips.trips.count %>
+  </p>
+</div>
+
+<div class="total_and_percent_customers">
+  <p>
+    Total Customers: <%= @subscriptions.total_customers %>
+  </p>
+  <p>
+    Percent Customers: <%= @subscriptions.percent_subscription_type(@subscriptions.total_subscribers) %>%
+  </p>
+</div>
+
+<div class="total_and_percent_subscribers">
+  <p>
+    Total Subscribers: <%= @subscriptions.total_subscribers %>
+  </p>
+  <p>
+    Percent Customers: <%= @subscriptions.percent_subscription_type(@subscriptions.total_customers  ) %>%
+  </p>
+</div>

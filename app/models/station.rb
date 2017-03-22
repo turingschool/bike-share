@@ -59,5 +59,12 @@ class Station < ActiveRecord::Base
     list_maker(oldest)
   end
 
+  def self.station_with_the_most_rides_as_a_starting_place
+    Station.all.max_by {|station| station.start_trips.count}
+  end
+
+  def self.station_with_the_most_rides_as_a_ending_place
+    Station.all.max_by {|station| station.end_trips.count}
+  end
 
 end

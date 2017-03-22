@@ -1,9 +1,9 @@
 require_relative "../../spec_helper"
 
 RSpec.describe "when a user visits the page to create a new station" do
+
   it "they can create a new station" do
-    # station = Station.create(name: "Japantown", dock_count: 15, city_id: 1, installation_date: "2013-08-05")
-    # city = City.create(city: "San Jose")
+
     # As a user
     # When I visit "/stations/new"
     visit "/stations/new"

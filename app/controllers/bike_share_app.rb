@@ -2,6 +2,7 @@ require_relative 'pagination'
 
 class BikeShareApp < Sinatra::Base
   set :method_override, true
+  layout "layout"
 
   include Pagination
 

@@ -10,6 +10,7 @@ class Trip < ActiveRecord::Base
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :subscription_type, presence: true
+  validates :bike_id, uniqueness: true
 
   def make_name
     date = start_date.strftime('%-m/%-d/%Y')

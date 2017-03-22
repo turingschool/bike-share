@@ -112,7 +112,7 @@ RSpec.describe Trip do
   end
 
   describe "relationships" do
-    it "where every trip has one weather" do
+    it "every trip has one weather" do
 
       trip1 = Trip.create(duration: 23, start_date: @start_date, end_date: @end_date, subscription_type: 'subscriber')
 

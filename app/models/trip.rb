@@ -6,7 +6,6 @@ class Trip < ActiveRecord::Base
  belongs_to :zip_code
  belongs_to :subscription_type
 
- validates :duration, presence: true
  validates :start_date, presence: true
  validates :start_station_id, presence: true
  validates :end_date, presence: true
@@ -39,19 +38,19 @@ class Trip < ActiveRecord::Base
      bike:                 Bike.find_or_create_by(bike_number: params[:trip][:bike_number])
    )
  end
- 
+
  def self.average_duration
    Trip.average(:duration).to_i
  end
- 
+
  def self.longest_ride
    Trip.maximum(:duration).to_i
  end
- 
+
  def self.shortest_ride
    Trip.minimum(:duration).to_i
  end
- 
+
  def self.date_with_most_trips
   #  Trip.order(start_date: :desc).first
  end
@@ -68,17 +67,17 @@ class Trip < ActiveRecord::Base
  #     output[0..-3]
  #   end
  # end
- # 
+ #
  # def self.start_station_with_most_rides
  #   list_maker(Trip.where(start_station_id: 1))
  # end
- # 
+ #
  # def self.rides_per_start_station
  #   Trip.start_stations.count(:start_station_id)
  # end
- 
+
  # def self.total_rides_per_month
- #   
+ #
  # end
 
 

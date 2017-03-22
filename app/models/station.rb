@@ -24,14 +24,44 @@ class Station < ActiveRecord::Base
     Station.maximum(:dock_count)
   end
 
-  def self.list_maker(station_list)
-    if station_list.count == 0
-      "No Stations Available"
-    elsif station_list.count == 1
-      station_list.first.name
+  def self.list_maker(list)
+    if list.count == 0
+      if list.first.class == Station
+        "No Stations Availible"
+      elsif list.first.class == ZipCode
+        "No Zip Codes Availible"
+      elsif list.first.class == Bike
+        "No Bikes Availible"
+      else
+        "No Dates Availible"
+      end
+    elsif list.count == 1
+      if list.first.class == Station
+        list.first.name
+      elsif list.first.class == ZipCode
+        list.first.zip_code.to_s
+      elsif list.first.class == Bike
+        list.first.bike_number.to_s
+      else
+        list.first.strftime("%B %d, %Y")
+      end
     else
-      output = station_list.reduce("") do |sum, station|
-          sum + station.name + ", "
+      if list.first.class == Station
+        output = list.reduce("") do |sum, station|
+            sum + station.name + ", "
+        end
+      elsif list.first.class == ZipCode
+        output = list.reduce("") do |sum, zipcode|
+            sum + zipcode.zip_code.to_s + ", "
+        end
+      elsif list.first.class == Bike
+        output = list.reduce("") do |sum, bike|
+            sum + bike.bike_number.to_s + ", "
+        end
+      else
+        output = list.reduce("") do |sum, date|
+            sum + date.strftime("%B %d, %Y") + ", "
+        end
       end
       output[0..-3]
     end
@@ -82,13 +112,56 @@ class Station < ActiveRecord::Base
       installation_date: params[:station][:installation_date]
     )
   end
-  
+
   def self.start_station_with_most_rides
     Station.all.max_by {|station| station.start_trips.count}
   end
-  
+
   def self.end_station_with_most_rides
     Station.all.max_by {|station| station.end_trips.count}
   end
 
+  def number_of_rides_started
+    start_trips.count
+  end
+
+  def number_of_rides_ended
+    end_trips.count
+  end
+
+  def most_frequent_destination
+    freq = start_trips.pluck(:end_station_id).inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+    max = freq.values.max
+    stations = freq.select { |k, f| f == max }.keys.map{|id| Station.find(id)}
+    Station.list_maker(stations)
+  end
+
+  def most_frequent_origin
+    freq = end_trips.pluck(:start_station_id).inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+    max = freq.values.max
+    stations = freq.select { |k, f| f == max }.keys.map{|id| Station.find(id)}
+    Station.list_maker(stations)
+  end
+
+  def busiest_days
+    dates = start_trips.map {|trip| trip.start_date.to_date}
+    freq = dates.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+    max = freq.values.max
+    date = freq.select { |k, f| f == max }.keys
+    Station.list_maker(date) + " with #{max} trips"
+  end
+
+  def most_frequent_zip_codes
+    freq = start_trips.pluck(:zip_code_id).inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+    max = freq.values.max
+    zip_codes = freq.select { |k, f| f == max }.keys.map{|id| ZipCode.find(id)}
+    Station.list_maker(zip_codes) + " with #{max} trips"
+  end
+
+  def most_frequent_bike
+    freq = start_trips.pluck(:bike_id).inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+    max = freq.values.max
+    bikes = freq.select { |k, f| f == max }.keys.map{|id| Bike.find(id)}
+    Station.list_maker(bikes) + " with #{max} trips"
+  end
 end

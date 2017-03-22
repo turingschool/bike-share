@@ -1,22 +1,21 @@
 <body class="stations-show-bg">
-  <div class="page-header">
+  <div class="page-header top">
     <h1 class="title text-right"><%= @station.name %></h1><br/>
   </div>
 
   <div class="container">
-    <div class="show-box text-center">
-      <button type="button"><a href="/stations/<%= @station.id %>/edit">Edit</a></button>
-      <p>Bike Capacity: <%= @station.dock_count %><br></p>
-      <p>Installation Date: <%= @station.installation_date %></p>
-      <p>City: <%= @station.city.name %></p>
-      <p>Number of Rides starting from this station: <%= @station.start_trips.count %></p>
-      <p>Number of Rides ending at this station: <%= @station.end_trips.count%></p>
-      <p>Most frequent destination station: <%= @station.frequent_destination %></p>
-      <p>Most frequent origination station: <%= @station.frequent_origination %></p>
-      <p>Busiest Day: <%= @station.busiest_day %></p>
-      <p>Most frequent customer zip code: <%= @station.max_zip_code_count %></p>
-      <p>Most frequently used bike: <%= @station.most_frequent_bike %></p>
-      <button type="button"><a href="/stations/<%= @station.id %>/edit">Edit</a></button>
+    <div class="station-box text-center">
+      <p>Bike Capacity: <span class="dashboard-value"><%= @station.dock_count %></span></p>
+      <p>Installation Date: <span class="dashboard-value"><%= @station.installation_date %></span></p>
+      <p>City: <span class="dashboard-value"><%= @station.city.name %></span></p>
+      <p>Number of Rides starting from this station: <span class="dashboard-value"><%= @station.start_trips.count %></span></p>
+      <p>Number of Rides ending at this station: <span class="dashboard-value"><%= @station.end_trips.count%></span></p>
+      <p>Most frequent destination station: <span class="dashboard-value"><%= @station.frequent_destination %></span></p>
+      <p>Most frequent origination station: <span class="dashboard-value"><%= @station.frequent_origination %></span></p>
+      <p>Busiest Day: <span class="dashboard-value"><%= @station.busiest_day %></span></p>
+      <p>Most frequent customer zip code: <span class="dashboard-value"><%= @station.max_zip_code_count %></span></p>
+      <p>Most frequently used bike: <span class="dashboard-value"><%= @station.most_frequent_bike %></span></p>
+      <button type="button"><a href="/stations/<%= @station.id %>/edit">Edit</a></span></button>
 
       <form action="/stations/<%= @station.id %>" method="post">
         <div class="form-group">

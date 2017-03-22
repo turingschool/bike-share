@@ -27,8 +27,8 @@
 
     <tr>
       <td>January</td>
-      <td><%# @monthly_totals[2013][5] %></td>
-      <td><%# @monthly_totals[2015][5] %></td>
+      <td><% @monthly_totals[2013][5] %></td>
+      <td><% @monthly_totals[2015][5] %></td>
     </tr>
 
 
@@ -50,4 +50,20 @@
       <td>234</td>
     </tr>
   </table>
+
+  <table border="1">
+    <tr>
+      <th>Subscription Type</th>
+      <th>Total</th>
+      <th>Percent</th>
+    </tr>
+
+    <% @subscription_counts.each do |subscription_type, counts| %>
+      <tr>
+        <td><%= subscription_type %></td>
+        <td><%= counts %></td>
+        <td><%= (counts*100.0/@all_subscriptions) %></td>
+      </tr>
+    <% end %>
+</table>
 </body>

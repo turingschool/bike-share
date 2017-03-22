@@ -51,8 +51,9 @@ RSpec.describe SubscriptionType do
   end
 
   describe "methods" do
-    xit "has subscription count" do
-      expect(SubscriptionType.type_breakout).to eq(22)
+    it "has subscription count" do
+      expect(SubscriptionType.type_breakout).to be_kind_of(Hash)
+      expect(SubscriptionType.type_breakout.keys.first).to eq("Customer")
     end
   end
 

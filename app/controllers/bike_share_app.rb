@@ -99,7 +99,7 @@ class BikeShareApp < Sinatra::Base
     redirect '/trips'
   end
 
-  get '/conditions' do 
+  get '/conditions' do
     @weathers = Weather.all.paginate(:page => params[:page], :per_page => 5)
     erb :"weathers/weather_index"
   end
@@ -119,7 +119,7 @@ class BikeShareApp < Sinatra::Base
     #check date format incomingness
     # params[:weather][:date] = DateTime.strptime(params[:weather][:date], "%Y-%m-%dT%H:%M")
     # (DateTime.strptime(params[:trip][:end_date], "%Y-%m-%dT%H:%M")
-    
+
     redirect '/conditions'
   end
 
@@ -137,4 +137,9 @@ class BikeShareApp < Sinatra::Base
     @weathers = Weather
     erb :"weathers/dashboard"
   end
+
+	get '/trips-dashboard' do
+		@trips = Trip
+		erb :"trips/dashboard"
+	end
 end

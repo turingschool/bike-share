@@ -6,7 +6,7 @@ class Station < ActiveRecord::Base
   has_many :start_trips, class_name: 'Trip', foreign_key: :start_station_id
   has_many :end_trips, class_name: 'Trip', foreign_key: :end_station_id
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :dock_count, presence: true
   validates :installation_date, presence: true
   validates :lat, presence: true

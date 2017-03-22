@@ -5,7 +5,7 @@ class Trip < ActiveRecord::Base
  belongs_to :bike
  belongs_to :zip_code
  belongs_to :subscription_type
- 
+
  belongs_to :condition
 
  validates :duration, presence: true
@@ -41,47 +41,77 @@ class Trip < ActiveRecord::Base
      bike:                 Bike.find_or_create_by(bike_number: params[:trip][:bike_number])
    )
  end
- 
+
  def self.average_duration
    Trip.average(:duration).to_i
  end
- 
+
  def self.longest_ride
    Trip.maximum(:duration).to_i
  end
- 
+
  def self.shortest_ride
    Trip.minimum(:duration).to_i
  end
-  
+
   def self.trip_quantities
     date = Trip.all.map {|trip| trip.start_date.to_date}
     date.reduce(Hash.new(0)) {|h, date| h[date] += 1; h}
   end
-  
+
   def self.date_with_most_trips
     Trip.trip_quantities.max_by {|key, value| value}.first
   end
-  
+
   def self.date_with_least_trips
     Trip.trip_quantities.min_by {|key, value| value}.first
   end
-  
+
   def self.total_rides_per_month
     ride_years = Trip.all.reduce(Hash.new(0)) do |hash, trip|
       hash[trip.start_date.year] = Hash.new(0)
       hash
     end
-    
+
     Trip.all.each do |trip|
       ride_years[trip.start_date.year][trip.start_date.month] += 1
     end
-    ride_years
+    Trip.rides_per_month_prepper(ride_years)
   end
- 
- # def self.total_rides_per_month
- #   
- # end
 
+  def self.rides_per_month_prepper(something)
+    require 'pry'; binding.pry
+    # something = {2013=>{8=>2}, 2014=>{10=>1}}
+    out = something.keys.sort.reduce(Hash.new(0)) do |h, year|
+      # something.keys.sort = [2013, 2014]
+      out2 = (1..12).to_a.map do |month|
+        # year = 2013
+        if something[year][month] == 1
+          "#{Trip.month_library[month]} had 1 ride."
+        else
+          "#{Trip.month_library[month]} had #{something[year][month]} rides."
+        end
+      end
+      h[year] = out2.join("<br>")
+      h
+    end
+  end
+
+  def self.month_library
+    {
+      1 => "January",
+      2 => "February",
+      3 => "March",
+      4 => "April",
+      5 => "May",
+      6 => "June",
+      7 => "July",
+      8 => "August",
+      9 => "September",
+      10 => "October",
+      11 => "November",
+      12 => "December"
+    }
+  end
 
 end

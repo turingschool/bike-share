@@ -55,7 +55,7 @@ RSpec.describe Trip do
   end
 
   describe ".print_rides_per_month" do
-    xit "returns a workable hash for dashboard view for rides per month"
+    it "returns a workable hash for dashboard view for rides per month"
 
   end
 

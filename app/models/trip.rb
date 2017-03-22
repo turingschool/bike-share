@@ -1,6 +1,8 @@
 class Trip < ActiveRecord::Base
     has_many :zipcodes
 
+    belongs_to :bike_id, class_name: 'Bike', foreign_key: :bike_id
+
     belongs_to :start_station, class_name: 'Station', foreign_key: :start_station_id
     belongs_to :end_station, class_name: 'Station', foreign_key: :end_station_id
 
@@ -17,4 +19,6 @@ class Trip < ActiveRecord::Base
     def self.shortest_ride
       Trip.minimum(:duration)
     end
+
+
 end

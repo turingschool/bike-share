@@ -4,6 +4,7 @@ require_relative '../app/models/station'
 require_relative '../app/models/trip'
 require_relative '../app/models/zipcode'
 require_relative '../app/models/subscription'
+require_relative '../app/models/bike'
 require 'database_cleaner'
 require 'date'
 
@@ -28,6 +29,7 @@ trips = CSV.open("db/fixtures/trip.csv", headers: true, header_converters: :symb
 
 trips.each do |row|
   zip_code = Zipcode.find_or_create_by(zip_code: row[:zip_code])
+  bike = Bike.find_or_create_by(bike_number: row[:bike_number])
 
   subscription = Subscription.find_or_create_by(subscription: row[:subscription])
 

@@ -72,12 +72,37 @@ class BikeShareApp < Sinatra::Base
     redirect "/trips/page/1"
   end
 
+  get "/trips/new" do
+    @trip = Trip.new
+
+    erb :"trips/new"
+  end
+
+  post "/trips" do
+    binding.pry
+    first_station      = params[:trip][:start_station]
+    second_station     = params[:trip][:end_station]
+    start_station      = Station.find_or_create_by(first_station)
+    end_station        = Station.find_or_create_by(second_station)
+    subscription       = params[:trip][:subscription]
+    subscription_type  = Subscription.find_or_create_by(subscription)
+    input = { duration: params[:trip][:duration],
+              start_station: start_station,
+              end_station: end_station,
+              bike_id: params[:trip][:bike_id],
+              subscription: subscription,
+              zip_code: zip_code,
+              start_date: params[:trip][:start_date],
+              end_date: params[:trip][end_date]
+            }
+  end
+
   get "/trips/page/:num" do |page_num|
     trips     = Trip.where.not(start_date: nil)
     @trips    = on_page(trips, page_num.to_i)
     @next     = next_page(page_num.to_i, trips.count)
     @previous = previous_page(page_num.to_i)
- 
+
     erb :"trips/index"
   end
 
@@ -85,8 +110,8 @@ class BikeShareApp < Sinatra::Base
     Trip.destroy(params[:id])
     redirect "/trips"
   end
+end
 
-private
 
 # any method we write below this we'll have access to from other methods
 # can't test these
@@ -94,4 +119,3 @@ private
 # declutters the routes
 # move input down here for example
 # city lookup too
-end

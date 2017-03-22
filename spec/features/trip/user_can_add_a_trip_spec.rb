@@ -5,16 +5,15 @@ RSpec.describe "when a user visits 'trips/new'" do
 
     #when I visit
     visit '/trips/new'
-
     #and I fill in
     fill_in "trip[duration]", with: "23"
     fill_in "trip[start_station]", with: "Denver"
+    # binding.pry
     fill_in "trip[end_station]", with: "Boulder"
     fill_in "trip[bike_id]", with: "1"
     fill_in "trip[subscription]", with: "Subcriber"
     fill_in "trip[start_date]", with: "8/29/2013 14:14"
     fill_in "trip[end_date]", with: "8/29/2013 14:37"
-
     #and I click
     click_on("Create Trip")
 

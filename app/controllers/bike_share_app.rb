@@ -88,7 +88,7 @@ class BikeShareApp < Sinatra::Base
   get '/trips/page/:page' do
     @page_number = params["page"].to_i
     batch_start = ((params["page"].to_i - 1) * 30) + 1
-    @trips = Trip.find_each(:batch_size => 30, :start => batch_start, :finish => batch_start+29)
+    @trips = Trip.find_each(batch_size: 30, start: batch_start, finish: batch_start + 29)
 
     erb :"trips/page"
   end

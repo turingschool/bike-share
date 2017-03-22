@@ -41,7 +41,6 @@ value='2222-08-29 13:43:00 UTC'
     expect(current_path).to eq('/trips/1')
 
     expect(page).to have_content('Duration: 11')
-    require "pry"; binding.pry
     expect(page).to have_content('Start Date: 2002-01-01 09:01:00 UTC')
     expect(page).to have_content('End Date: 1982-02-02 23:45:00 UTC')
     # expect(page).to have_content('Fake bike!')

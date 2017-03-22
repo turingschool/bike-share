@@ -49,6 +49,13 @@ CSV.foreach "db/csv/station.csv", headers: true, header_converters: :symbol do |
   )
 end
 
+# create our conditions
+
+# id
+# date (d - m - yyyy)
+
+
+
 CSV.foreach "db/fixture_csv/trip_fixture.csv", headers: true, header_converters: :symbol do |row|
   @count += 1
 
@@ -61,6 +68,7 @@ CSV.foreach "db/fixture_csv/trip_fixture.csv", headers: true, header_converters:
     bike:                 Bike.find_or_create_by(bike_number: row[:bike_id]),
     zip_code:             clean_zipcode(row[:zip_code]),
     subscription_type:    SubscriptionType.find_or_create_by(subscription_type: row[:subscription_type])
+    # condition:       condition.where(date: clean_datetime(row[:start_date]).to_date)
   )
   p "Creating Trip Number #{@count} with start station #{row[:start_station_name]} "
 end

@@ -1,6 +1,7 @@
 require './app/models/station.rb'
 require './app/models/city.rb'
 require './app/models/trip.rb'
+require './app/models/bike.rb'
 require 'CSV'
 require 'Date'
 
@@ -19,11 +20,34 @@ CSV.foreach("./db/csv/station.csv", :headers => true) do |row|
   city.stations.create!(row.to_h)
 end
 
-start_date = DateTime.strptime('8/29/2013 14:01', '%m/%d/%Y %k:%M')
-end_date = DateTime.strptime('8/29/2013 14:23', '%m/%d/%Y %k:%M')
+CSV.foreach("./db/csv/trips_truncated.csv", :headers => true) do |row|
+  bin = row["bike_id"]
+  start_date = row["start_date"]
+  end_date = row["end_date"]
 
-31.times do |i|
-  Station.create!(lat: 37.329732, long: -121.90178200000001, name: "Start Dummy \##{i + 1}", dock_count: 12, city_id: 1, installation_date: Date.parse('8/6/2013'))
-  Station.create!(lat: 37.329732, long: -121.90178200000001, name: "End Dummy \##{i + 1}", dock_count: 12, city_id: 1, installation_date: Date.parse('8/6/2013'))
-  Trip.create!(duration: 22, start_date: start_date, end_date: end_date, subscription_type: 'subscriber', bike_id: 1, start_station_id: (i * 2) + 1, end_station_id: (i + 1) * 2, weather_id: 1)
+  row['start_date'] = DateTime.strptime(start_date, '%m/%d/%Y %k:%M')
+  row['end_date'] = DateTime.strptime(end_date, '%m/%d/%Y %k:%M')
+
+  row['subscription_type'] = row['subscription_type'].downcase
+
+  start_station = Station.find_by(name: row["start_station_name"])
+
+  end_station = Station.find_by(name: row["end_station_name"])
+
+  next if start_station.nil? || end_station.nil?
+
+  row["start_station_id"] = start_station.id
+  row["end_station_id"] = end_station.id
+
+  bike = Bike.find_or_create_by(bin: bin)
+
+  row.delete("start_station_name")
+  row.delete("end_station_name")
+  row.delete("bike_id")
+  row.delete("id")
+
+  bike.trips.create!(row.to_h)
 end
+# id,duration,start_date,start_station_name,start_station_id,end_date,end_station_name,end_station_id,bike_id,subscription_type,zip_code
+#
+# start_station, end_station, start_date, end_date, duration, subscyption

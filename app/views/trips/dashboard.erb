@@ -14,7 +14,7 @@
 
 <div class="shortest_ride">
   <p>
-    Shortest Ride: <%= @trips.shortest_ride %>
+    Shortest Ride: <%= @trips.shortest_ride / 60 %> minute
   </p>
 </div>
 
@@ -53,7 +53,7 @@
     Total Customers: <%= @subscriptions.total_customers %>
   </p>
   <p>
-    Percent Customers: <%= @subscriptions.percent_subscription_type(@subscriptions.total_subscribers) %>%
+    Percent Customers: <%= @subscriptions.percent_subscription_type(@subscriptions.total_customers) %>%
   </p>
 </div>
 
@@ -62,6 +62,6 @@
     Total Subscribers: <%= @subscriptions.total_subscribers %>
   </p>
   <p>
-    Percent Customers: <%= @subscriptions.percent_subscription_type(@subscriptions.total_customers  ) %>%
+    Percent Subscribers: <%= @subscriptions.percent_subscription_type(@subscriptions.total_subscribers) %>%
   </p>
 </div>

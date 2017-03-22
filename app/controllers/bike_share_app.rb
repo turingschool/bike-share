@@ -1,4 +1,11 @@
 class BikeShareApp < Sinatra::Base
+
+  get '/' do
+
+    erb :home
+
+  end
+
   get '/stations' do
     @stations = Station.all # What's AR's sorting method?
 
@@ -53,7 +60,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/weather_conditions' do
-    @weather_conditions = WeatherCondition.all
+    @weather_conditions = WeatherCondition.all.order(:date)
 
     erb :"weather_conditions/index"
   end
@@ -106,7 +113,7 @@ class BikeShareApp < Sinatra::Base
 #----------------------------------------------------------------
   get '/trips' do
     if Trip.count < 31
-      @trips = Trip.all
+      @trips = Trip.all.order(:page)
       erb :"trips/index"
     else
       redirect '/trips/page/1'

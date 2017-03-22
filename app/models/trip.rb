@@ -9,4 +9,8 @@ class Trip < ActiveRecord::Base
   validates :bike_id, presence: true
   validates :subscription_type, presence: true
   validates :zip_code, presence: true
+
+  def self.order_by_date
+    Trip.order(:start_date).reverse
+  end
 end

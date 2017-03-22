@@ -53,8 +53,14 @@ class BikeShareApp < Sinatra::Base
 
 
   get '/trips' do
-    @trips = Trip.all
-    erb :"trip/index"
+    redirect '/trips/page/1'
+  end
+
+  get '/trips/page/:num' do |num|
+      @trips = page_display(Trip, num.to_i)
+      @next_page = next_page(num.to_i, Trip.count)
+      @previous_page = previous_page(num.to_i)
+      erb :"trip/index"
   end
 
   get '/conditions' do
@@ -65,6 +71,8 @@ class BikeShareApp < Sinatra::Base
     @station = Station.find(params[:id])
     erb :"station/edit"
   end
+
+  
 
   get '/conditions/:id/edit' do
     @condition = Condition.find(params[:id])
@@ -92,11 +100,6 @@ class BikeShareApp < Sinatra::Base
     redirect '/stations'
   end
 
-  get '/trips' do
-    @trips = Trip.all
-    erb :"trip/index"
-  end
-
   get '/trips/new' do
     erb :"/trip/new"
   end
@@ -117,4 +120,27 @@ class BikeShareApp < Sinatra::Base
       @previous_page = previous_page(num.to_i)
       erb :"conditions/index"
   end
+
+  get '/trips/:id/edit' do
+    @trip = Trip.find(params[:id])
+    erb :"trip/edit"
+  end
+
+  get '/trips/:id' do
+    id = params[:id]
+    @trip = Trip.find(id)
+    erb :"trip/show"
+  end
+
+  put '/trips/:id' do
+    @trip = Trip.update(params[:id].to_i, params[:trip])
+    redirect '/trips'
+    #redirect '/trips/#{@trip.id}' isn't working
+  end
+
+  delete '/trips/:id' do
+    @trip = Trip.destroy(params[:id])
+    redirect '/trips'
+  end
+
 end

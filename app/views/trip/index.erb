@@ -8,27 +8,36 @@
     <th>Duration &nbsp</th>
     <th>Start Date &nbsp</th>
     <th>Start Station Name &nbsp</th>
-    <th>Start Station ID &nbsp</th>
     <th>End Date &nbsp</th>
     <th>End Station Name &nbsp</th>
-    <th>End Station ID &nbsp</th>
     <th>Bike ID &nbsp</th>
     <th>Subscription Type &nbsp</th>
     <th>Zip Code</th>
   </tr>
   <% @trips.each do |trip| %>
     <tr>
-      <td><a href= "trips/<%=trip.id%>"><%= trip.duration%></a></td>
+      <td><a href= "/trips/<%=trip.id%>"><%= trip.duration%></a></td>
       <td><%= trip.start_date %></td>
       <td><%= trip.start_station_name %></td>
-      <td><%= trip.start_station_id %></td>
       <td><%= trip.end_date %></td>
-      <td><%= trip.end_station_name %></td>
       <td><%= trip.end_station_id %></td>
       <td><%= trip.bike_id %></td>
       <td><%= trip.subscription_type %></td>
       <td><%= trip.zip_code %></td>
+      <td>    <form action="/trips/<%=trip.id%>" method="post">
+                  <input type="hidden" name="_method" value="DELETE" />
+                  <input type="submit" value="Delete" />
+                </form></td>
       </td>
     </tr>
   <% end %>
+
+   
 </table>
+
+<a href="/trips/page/<%=@previous_page%>">
+  <button type="button" name="button">Previous</button>
+</a>
+<a href="/trips/page/<%=@next_page%>">
+<button type="button" name="button">Next</button>
+</a>

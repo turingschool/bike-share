@@ -50,6 +50,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
+    
     @trips = Trip.all.paginate(:page => params[:page], :per_page => 30)
     erb :"trips/index"
   end

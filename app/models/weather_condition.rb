@@ -1,6 +1,6 @@
 class WeatherCondition < ActiveRecord::Base
 
-  belongs_to :trip  #trip or trips???
+  has_many :trips
 
   validates :max_temperature_f, presence: true
   validates :min_temperature_f, presence: true

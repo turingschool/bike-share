@@ -105,4 +105,24 @@ RSpec.describe WeatherCondition do
   #   expect(@weather.total)
   # end
 
+  describe "relationships between trips and weather" do
+    it "every weather has many trips" do
+
+      start_date = DateTime.strptime('8/29/2000 14:01', '%m/%d/%Y %k:%M')
+      end_date = DateTime.strptime('8/29/2000 14:23', '%m/%d/%Y %k:%M')
+
+      trip1 = Trip.create(duration: 23, start_date: start_date, end_date: end_date, subscription_type: 'subscriber')
+      trip2 = Trip.create(duration: 22, start_date: start_date, end_date: end_date, subscription_type: 'subscriber')
+
+      # require "pry"; binding.pry
+      @weather.trips << trip1
+      @weather.trips << trip2
+
+      expect(@weather.trips).to include(trip1)
+      expect(@weather.trips).to include(trip2)
+    end
+  end
+
+
+
 end

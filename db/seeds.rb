@@ -79,6 +79,6 @@ CSV.foreach("./db/csv/weather.csv", :headers => true) do |row|
 
   weather.update_attributes(row.to_h)
 
+  end
 end
-
  puts "seeded"

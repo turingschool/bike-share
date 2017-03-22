@@ -128,8 +128,7 @@ class BikeShareApp < Sinatra::Base
                 end_date: DateTime.parse(trip['end_date']), subscription_type: trip['subscription_type'],
                 bike_id: 1, # Bike.find_by(bin: trip['bike'])
                 start_station_id: 1,
-                end_station_id: 2,
-                weather_id: 1)
+                end_station_id: 2)
 
     redirect '/trips'
   end

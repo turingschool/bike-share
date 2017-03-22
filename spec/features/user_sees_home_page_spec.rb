@@ -5,15 +5,20 @@ RSpec.describe "When a user visits '/' " do
     visit '/'
 
     within('h1') do
-      expect(page).to have_content('Welcome to Bike Share!!!')
+      expect(page).to have_content('Welcome to Bike Share!')
     end
 
-    within('a.bike_index') do
-      expect(page).to have_content("All Bike Stations")
+    within('a.dropdown-toggle.stations') do
+      expect(page).to have_content("Bike Stations")
     end
 
-    within('a.new_station') do
-      expect(page).to have_content("Create a New Station")
+    within('a.dropdown-toggle.trips') do
+      expect(page).to have_content("Trips")
     end
+
+    within('a.dropdown-toggle.conditions') do
+      expect(page).to have_content("Weather Conditions")
+    end
+
   end
 end

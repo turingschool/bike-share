@@ -5,7 +5,6 @@ class SubscriptionType < ActiveRecord::Base
   def self.type_breakout
     grouped = SubscriptionType.all.group_by(&:flavor)
     total_count = SubscriptionType.count
-    binding.pry
     total_count / grouped[1].count.to_f
 
   end

@@ -64,5 +64,13 @@ RSpec.describe Trip do
       expect(@trip).to respond_to(:zip_code)
 
     end
+
+    describe "relationships" do
+      it "a trip should have a start and end station attached to it" do
+        expect(@trip.start_station.name).to eq('Turing')
+        expect(@trip.end_station.name).to eq('Galvanize')
+      end
+    end
+
   end
 end

@@ -52,9 +52,11 @@
             <% city = City.find(station.city_id) %>
             <td><%= city.city %></td>
             <td><%= station.installation_date %></td>
+            <td><a href="/stations/<%= station.id %>/edit"><button type="button" class="btn btn-info">Edit Station</button></a>
+
             <td><form action="/stations/<%= station.id %>" method="post">
               <input type="hidden" name="_method" value="DELETE" />
-              <input type="submit" value="Delete Station" />
+              <input class="btn btn-info" type="submit" value="Delete Station" />
             </form></td>
           </tr>
           <% end %>

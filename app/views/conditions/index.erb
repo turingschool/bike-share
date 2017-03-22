@@ -1,0 +1,40 @@
+<div class="row">
+
+  <div class="col-md-16">
+    <hr>
+    <table class="table table-striped">
+      <thead>
+        <tr><th>Date</th><th>Max Temperature</th><th>Min Temperature</th><th>Mean Temperature</th><th>Mean Humidity</th><th>Mean Humidity</th><th>Mean Visibility</th><th>Mean Windspeed</th><th>Precipitation</th><th>&nbsp;</th></tr>
+      </thead>
+      <tbody>
+        <% @conditions.each do |condition| %>
+        <tr>
+          <td><%= condition.date %></td>
+          <td><%= condition.max_temperature %></td>
+          <td><%= condition.min_temperature %></td>
+          <td><%= condition.mean_temperature %></td>
+          <td><%= condition.mean_humidity %></td>
+          <td><%= condition.mean_visibility %></td>
+          <td><%= condition.mean_windspeed %></td>
+          <td><%= condition.precipitation %></td>
+
+          <td><form action="/conditions/<%= conditions.id %>" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            <input type="submit" value="Delete Weather Report" />
+          </form></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div>
+      <ul>
+        <li><a href="conditions/page/<%= @previous %>"></a>Previous</li>
+        <li><a href="conditions/page/<%= @next %>"></a>Next</li>
+      </ul>
+    </div>
+
+    <hr>
+
+    </div>
+  </div>
+</div>

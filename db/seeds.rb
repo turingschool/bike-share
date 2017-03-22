@@ -32,7 +32,7 @@ trips.each do |row|
   bike = Bike.find_or_create_by(bike_number: row[:bike_id].to_i)
   # binding.pry
 
-  subscription = Subscription.find_or_create_by(subscription: row[:subscription])
+  subscription = Subscription.find_or_create_by(subscription: row[:subscription_type])
 
   Trip.create(duration: row[:duration],
               start_date: DateTime.strptime(row[:start_date], "%m/%d/%Y %H:%M").to_s,
@@ -41,7 +41,7 @@ trips.each do |row|
               end_station_id: row[:end_station_id],
               bike_id: bike,
               subscription_type: row[:subscription_type],
-              zipcode_id: zip_code,
-              subscription_id: subscription
+              zipcode_id: zip_code.id,
+              subscription_id: subscription.id
                  )
 end

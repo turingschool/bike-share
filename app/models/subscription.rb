@@ -1,5 +1,5 @@
 class Subscription < ActiveRecord::Base
-  belongs_to :trip
+  has_many :trips
 
-  validates :subscription, presence: true, uniqueness: true
+  validates :subscription, presence: true
 end

@@ -2,9 +2,9 @@ require 'pry'
 require_relative 'pagination'
 
 class BikeShareApp < Sinatra::Base
-  
+
   set :root, File.expand_path("..", __dir__)
-    
+
   set :method_override, true
 
     include Pagination
@@ -80,7 +80,7 @@ class BikeShareApp < Sinatra::Base
 
 
   get '/conditions/:id/edit' do
-    @condition = Condition.find(params[:id]
+    @condition = Condition.find(params[:id])
     erb :"conditions/edit"
   end
 

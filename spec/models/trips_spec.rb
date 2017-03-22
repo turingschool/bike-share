@@ -73,6 +73,14 @@ RSpec.describe Trip do
       expect(@trip.condition.date).to eq(@trip.start_date.to_date)
       expect(@trip.condition.max_temp).to eq(30)
     end
+
+    describe "relationships" do
+      it "a trip should have a start and end station attached to it" do
+        expect(@trip.start_station.name).to eq('Turing')
+        expect(@trip.end_station.name).to eq('Galvanize')
+      end
+    end
+
   end
 
   describe "station relationships" do

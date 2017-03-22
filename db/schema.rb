@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20170321194444) do
     t.integer  "mean_humidity"
     t.integer  "mean_visibility"
     t.integer  "mean_wind_speed"
-    t.integer  "precipitation"
+    t.float    "precipitation"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

@@ -35,8 +35,6 @@ class BikeShareApp < Sinatra::Base
     erb :"conditions/new"
   end
 
-
-
   post '/stations' do
     @station = Station.create(params[:station])
     redirect '/stations'

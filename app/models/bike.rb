@@ -13,4 +13,6 @@ class Bike < ActiveRecord::Base
     Bike.find(bike_ids).map { |bike| bike.bike_number }
   end
 
+  
+
 end

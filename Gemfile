@@ -8,6 +8,7 @@ gem 'pry'
 gem 'awesome_print', require:'ap'
 gem 'will_paginate'
 gem 'groupdate'
+gem 'rubysl-zlib', '~> 2.0', '>= 2.0.1'
 
 group :development, :test do
   gem 'shotgun'

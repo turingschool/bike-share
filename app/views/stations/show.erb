@@ -5,5 +5,6 @@
 <p>Installation Date: <%= @station.installation_date %></p>
 
 <p>Trips started at this Station: <%= Trip.started_at(@station).count %>
+<p>Trips ended at this Station: <%= Trip.ended_at(@station).count %>
 
 <a href="/stations">All Stations</a>

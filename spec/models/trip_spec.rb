@@ -150,9 +150,15 @@ RSpec.describe Trip do
       expect(Trip.monthly_totals).to be_instance_of(Hash)
       expect(Trip.monthly_totals[2013].last).to eq(1)
       expect(Trip.monthly_totals[2013][10]).to eq(2)
-
     end
 
+    it "#started_at" do
+      expect(Trip.started_at(7).count).to eq(2)
+    end
+
+    it "#ended_at" do
+      expect(Trip.ended_at(32).count).to eq(2)
+    end
 
   end
 end

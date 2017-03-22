@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 20170320224928) do
   create_table "stations", force: :cascade do |t|
     t.text     "name"
     t.integer  "dock_count"
-    t.text     "city"
     t.date     "installation_date"
     t.float    "lat"
     t.float    "long"

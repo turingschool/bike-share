@@ -92,4 +92,10 @@ class BikeShareApp < Sinatra::Base
 
     erb :"trips/page"
   end
+
+  get '/trips/:id' do
+    @trip = Trip.find(params[:id])
+
+    erb :"trips/show"
+  end
 end

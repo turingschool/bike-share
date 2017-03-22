@@ -60,11 +60,11 @@ class Trip < ActiveRecord::Base
   end
 
   def self.busiest_bike
-    self.group(:bike_id).order(bike_id: :desc).count.max_by {|k,v| v}.first
+    self.group(:bike_id).order('count_id DESC').limit(1).count(:id)
   end
 
   def self.least_busy_bike
-    self.group(:bike_id).order(bike_id: :desc).count.min_by {|k,v| v}.first
+    self.group(:bike_id).order('count_id ASC').limit(1).count(:id)
   end
 
   def self.subscription_info

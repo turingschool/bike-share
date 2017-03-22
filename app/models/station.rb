@@ -23,22 +23,22 @@ class Station < ActiveRecord::Base
 
   def self.most_bikes
     # array_by_dock_count = all.max_by {|dock| dock.dock_count}
-    self.maximum(:dock_count)
+    self.where(dock_count: self.maximum(:dock_count)).first
   end
 
   def self.least_bikes
     # array_by_dock_count = all.min_by {|dock| dock.dock_count}
-    self.minimum(:dock_count)
+    self.where(dock_count: self.minimum(:dock_count)).first
   end
 
   def self.newest_station
     # array_by_dock_count = all.max_by {|dock| dock.installation_date}
-    self.maximum(:installation_date)
+    self.where(installation_date: self.maximum(:installation_date)).first
   end
 
   def self.oldest_station
     # array_by_dock_count = all.min_by {|dock| dock.installation_date}
-    self.minimum(:installation_date)
+    self.where(installation_date: self.minimum(:installation_date)).first
   end
 
   def self.most_starts

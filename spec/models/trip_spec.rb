@@ -2,11 +2,17 @@ require_relative '../spec_helper'
 
 RSpec.describe Trip do
 
-  attr_reader :start_date, :end_date
+  attr_reader :start_station,
+              :end_station,
+              :start_date,
+              :end_date
 
   before do
     @start_date = DateTime.strptime('8/29/2013 14:01', '%m/%d/%Y %k:%M')
     @end_date = DateTime.strptime('8/29/2013 14:23', '%m/%d/%Y %k:%M')
+
+    @start_station = Station.create(lat: 37.329732, long: -121.90178200000001, name: 'Start Dummy', dock_count: 12, city_id: 1, installation_date: Date.parse('8/6/2013'))
+    @end_station = Station.create(lat: 37.329732, long: -121.90178200000001, name: 'End Dummy', dock_count: 12, city_id: 1, installation_date: Date.parse('8/6/2013'))
   end
 
   describe 'validations' do
@@ -40,10 +46,19 @@ RSpec.describe Trip do
 
       expect(trip).to_not be_valid
     end
+
+    it 'is invalid if it has a duplicate bike' do
+      bike = Bike.create(bin: 22)
+      Trip.create(duration: 22, start_date: start_date, end_date: end_date, subscription_type: 'subscriber', bike: bike)
+
+      trip = Trip.create(duration: 22, start_date: start_date, end_date: end_date, subscription_type: 'subscriber', bike: bike)
+
+      expect(trip).to_not be_valid
+    end
   end
 
   describe 'attributes' do
-    it 'should have a duration, start_date, end_date, subscription_type, bike, start_station, end_station, weather' do
+    it 'should have a duration, start_date, end_date, subscription_type, bike, start_station, end_station, start_date, end_date and weather_condition' do
 
       trip = Trip.new
 
@@ -63,8 +78,6 @@ RSpec.describe Trip do
     attr_reader :trip1, :trip2, :start_station, :end_station
 
     before do
-      @start_station = Station.create(lat: 37.329732, long: -121.90178200000001, name: 'Start Dummy', dock_count: 12, city_id: 1, installation_date: Date.parse('8/6/2013'))
-      @end_station = Station.create(lat: 37.329732, long: -121.90178200000001, name: 'End Dummy', dock_count: 12, city_id: 1, installation_date: Date.parse('8/6/2013'))
       @trip1 = Trip.create(duration: 22, start_date: start_date, end_date: end_date, subscription_type: 'subscriber', bike_id: 1, start_station_id: 1, end_station_id: 2)
       @trip2 = Trip.create(duration: 24, start_date: start_date, end_date: end_date, subscription_type: 'subscriber', bike_id: 1, start_station_id: 1, end_station_id: 2)
     end

@@ -32,12 +32,22 @@ RSpec.describe Bike do
   end
 
   describe 'relationships' do
-    it 'has a trip' do
+    it 'has many trips' do
       bike = Bike.create(bin: 22)
 
-      trip = bike.trips.create(duration: 22, start_date: DateTime.new, end_date: DateTime.new, subscription_type: 'subscriber')
+      trip1 = bike.trips.create(duration: 22, start_date: DateTime.new, end_date: DateTime.new, subscription_type: 'subscriber')
+      trip2 = bike.trips.create(duration: 22, start_date: DateTime.new, end_date: DateTime.new, subscription_type: 'subscriber')
 
-      expect(bike.trips.first).to eq(trip)
+      expect(bike.trips).to include(trip1)
+      expect(bike.trips).to include(trip2)
+    end
+
+    it 'belongs to a trip' do
+      trip = Trip.create(duration: 22, start_date: DateTime.new, end_date: DateTime.new, subscription_type: 'subscriber')
+
+      bike = trip.bike.create(bin: 22)
+
+      expect(trip.bike).to be(bike)
     end
   end
 end

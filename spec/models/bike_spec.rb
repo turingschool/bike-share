@@ -23,4 +23,14 @@ RSpec.describe Bike do
       expect(bike).to respond_to(:bin)
     end
   end
+
+  describe 'relationships' do
+    it 'has a trip' do
+      bike = Bike.create(bin: 22)
+
+      trip = bike.trips.create(duration: 22, start_date: DateTime.new, end_date: DateTime.new, subscription_type: 'subscriber')
+
+      expect(bike.trips.first).to eq(trip)
+    end
+  end
 end

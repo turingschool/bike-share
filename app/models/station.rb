@@ -50,6 +50,10 @@ class Station < ActiveRecord::Base
 
   def self.oldest_station
     stations_by_install_date.reverse.first
+  end
 
+  def self.date_with_highest_number_of_trips
+    trip = Trip.find()
+    trip
   end
 end

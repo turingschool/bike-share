@@ -18,6 +18,24 @@ RSpec.describe Station do
                 end_station_id: 2,
                 subscription_type_id: 1
                 )
+
+    Trip.create(duration: 39,
+                start_date: format_date("12/15/2013 14:54"),
+                start_station_id: 1,
+                end_date: format_date("12/15/2013 15:56"),
+                bike_id: 6,
+                end_station_id: 3,
+                subscription_type_id: 1
+                )
+
+    Trip.create(duration: 39,
+                start_date: format_date("12/15/2013 14:44"),
+                start_station_id: 1,
+                end_date: format_date("12/15/2013 15:56"),
+                bike_id: 6,
+                end_station_id: 2,
+                subscription_type_id: 1
+                )
      Trip.create(duration: 45,
                  start_date: format_date("11/15/2013 14:54"),
                  start_station_id: 1,
@@ -107,9 +125,9 @@ RSpec.describe Station do
       expect(Station.oldest_station.name).to eq("Navy Pier")
     end
 
-    xit "#most_frequent_destination should return most frequent destination for rides from this station" do
-      expect(station_1.most_frequent_destination).to be_kind_of(Station)
-      expect(station_1.most_frequent_destination.name).to eq("Whatever")
+    it "#most_frequent_destinations should return most frequent destination for rides from this station" do
+      expect(station_1.most_frequent_destinations).to be_kind_of(Array)
+      expect(station_1.most_frequent_destinations.first).to be_kind_of(Station)
 
     end
 

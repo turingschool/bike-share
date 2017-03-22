@@ -53,14 +53,29 @@ class Station < ActiveRecord::Base
     stations_by_install_date.reverse.first
   end
 
-  def sorted_destination
-    trips = Trip.where(start_station_id: id)
-    trips.each_with_object(Hash.new(0)) { |trip, counts| counts[trip.id] += 1 }
+  def most_frequent_destinations
+    trips = Trip.started_at(id)
+    end_station_ids = trips.map(&:end_station_id)
+    counts = Hash.new(0)
+    end_station_ids.each do |id|
+      counts[id] += 1
+    end
+    x = counts.select{ |key, value| value == counts.first[1] }
+    destination_ids = x.keys
+    destination_ids.map do |id|
+      Station.find(id)
+    end
+
+
   end
 
-  def most_frequent_destination
-    Trip.find(sorted_destination.sort.first)
-    binding.pry
-  end
+  # Use trip.rb methods:
+  # def self.started_at(station)
+  #   where(start_station_id: station)
+  # end
+  #
+  # def self.ended_at(station)
+  #   where(end_station_id: station)
+  # end
 
 end

@@ -128,22 +128,22 @@ RSpec.describe Trip do
 
       expect(Trip.name_popular_ending_station).to eq("Penn Station")
     end
-  end  
-  
-  # describe ".rides_by_month" do
-  #   it "returns breakdown of rides by month" do
-  #     Bike.create(bike_number: 25)
-  #     SubscriptionType.create(subscription_type: "Subscriber")
-  #     Station.create(name: "Union Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
-  #     Station.create(name: "Penn Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
-  #     City.create(name:"Mountain View")
-  #     Trip.create(duration: 60, start_date: "Fri, 11 Apr 2014", start_station_id: 1, end_date: "Fri, 11 Apr 2014", end_station_id: 2, bike_id: 1, subscription_type_id: 1)
-  #     Trip.create(duration: 40, start_date: "Wed, 09 Apr 2014", start_station_id: 2, end_date: "Wed, 09 Apr 2014", end_station_id: 2, bike_id: 1, subscription_type_id: 1)
-  #     Trip.create(duration: 110, start_date: "Fri, 12 Apr 2013", start_station_id: 1, end_date: "Fri, 12 Apr 2013", end_station_id: 1, bike_id: 1, subscription_type_id: 1)
+  end
 
-  #     expect(Trip.rides_by_month).to be_a(Hash)
-  #   end
-  # end
+  describe ".monthly_totals" do
+    it "returns breakdown of rides by month" do
+      Bike.create(bike_number: 25)
+      SubscriptionType.create(subscription_type: "Subscriber")
+      Station.create(name: "Union Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
+      Station.create(name: "Penn Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
+      City.create(name:"Mountain View")
+      Trip.create(duration: 60, start_date: "Fri, 11 Apr 2014", start_station_id: 1, end_date: "Fri, 11 Apr 2014", end_station_id: 2, bike_id: 1, subscription_type_id: 1)
+      Trip.create(duration: 40, start_date: "Wed, 09 Apr 2014", start_station_id: 2, end_date: "Wed, 09 Apr 2014", end_station_id: 2, bike_id: 1, subscription_type_id: 1)
+      Trip.create(duration: 110, start_date: "Fri, 12 Apr 2013", start_station_id: 1, end_date: "Fri, 12 Apr 2013", end_station_id: 1, bike_id: 1, subscription_type_id: 1)
+
+      expect(Trip.monthly_totals).to be_a(Hash)
+    end
+  end
 
   describe ".most_popular_bike" do
     it "returns bike_number of the most popular bike " do

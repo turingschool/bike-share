@@ -83,6 +83,12 @@ class BikeShareApp < Sinatra::Base
     redirect "/trips"
   end
 
+  get "/trips/:id" do
+    @trip = Trip.find(params[:id])
+
+    erb :"trips/show"
+  end
+
   get "/trips/page/:num" do |page_num|
     trips     = Trip.where.not(start_date: nil)
     @trips    = on_page(trips, page_num.to_i)

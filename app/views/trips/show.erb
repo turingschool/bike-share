@@ -1,1 +1,31 @@
 <!DOCTYPE html>
+<h1>Trip Information</h1>
+
+<table>
+  <tr>
+    <th>Duration</th>
+    <th>Start Station</th>
+    <th>End Station</th>
+    <th>Bike ID</th>
+    <th>Zipcode</th>
+    <th>Subscription Type</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+  </tr>
+
+  <tr class="station-info">
+     <td>Duration: <%= @trip.duration %> </td>
+     <td>Start Station: <%= @trip.start_station.name %> </td>
+     <td>End Station: <%= @trip.end_station.name %> </td>
+     <td>Bike ID: <%= @trip.bike_id %> </td>
+     <td>Zipcode: <%= @trip.zipcode.zip_code %> </td>
+     <td>Subscription Type: <%= @trip.subscription.subscription %> </td>
+     <td>Start Date: <%= @trip.start_date %> </td>
+     <td>End Date: <%= @trip.end_date %> </td>
+  </tr>
+</table>
+
+<form action="/trips/<%= @trip.id %>" method="post">
+  <input type="hidden" name="_method" value="DELETE" />
+  <input type="submit" value="Delete Station" />
+</form>

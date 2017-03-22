@@ -1,0 +1,49 @@
+<h1>Welcome to the Station Dashboard!</h1>
+
+<div class="total_stations">
+  <p>
+    Total count of stations: <%= @stations.total_stations %>
+  </p>
+</div>
+
+<div class="average_bikes">
+  <p>
+    Average bikes available per station: <%= @stations.average_bikes %>
+  </p>
+</div>
+
+<div class="most_bikes">
+  <p>
+    Most bikes available at a station: <%= @stations.most_bikes %>
+  </p>
+</div>
+
+<div class="stations_with_most_bikes">
+  <p>
+    Station(s) where the most bikes are available: <%= @stations.stations_with_most_bikes %>
+  </p>
+</div>
+
+<div class="fewest_bikes">
+  <p>
+    Fewest bikes available at a station: <%= @stations.fewest_bikes %>
+  </p>
+</div>
+
+<div class="stations_with_fewest_bikes">
+  <p>
+    Station(s) where the fewest bikes are available: <%= @stations.stations_with_fewest_bikes %>
+  </p>
+</div>
+
+<div class="newest_stations">
+  <p>
+    Most recently installed station(s): <%= @stations.newest_stations %>
+  </p>
+</div>
+
+<div class="oldest_stations">
+  <p>
+    Oldest station(s): <%= @stations.oldest_stations %>
+  </p>
+</div>

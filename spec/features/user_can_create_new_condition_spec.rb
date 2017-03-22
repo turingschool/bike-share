@@ -13,7 +13,7 @@ RSpec.describe "As a user tries to create a condition" do
     fill_in "condition[precipitation]", with: 0
     click_on "Submit"
 
-    expect(current_path).to eq("/conditions")
+    expect(current_path).to eq("/conditions/page/1")
     expect(page).to have_content("2015-07-08")
     expect(page).to have_content("110")
     expect(page).to have_content("88")

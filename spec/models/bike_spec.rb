@@ -43,11 +43,10 @@ RSpec.describe Bike do
     end
 
     it 'belongs to a trip' do
-      trip = Trip.create(duration: 22, start_date: DateTime.new, end_date: DateTime.new, subscription_type: 'subscriber')
+      bike = Bike.create(bin: 22)
+      trip = Trip.create(duration: 22, start_date: DateTime.new, end_date: DateTime.new, subscription_type: 'subscriber', bike_id: 1)
 
-      bike = trip.bike.create(bin: 22)
-
-      expect(trip.bike).to be(bike)
+      expect(trip.bike).to eq(bike)
     end
   end
 end

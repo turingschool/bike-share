@@ -1,6 +1,6 @@
 class Trip < ActiveRecord::Base
 
-  has_one :bike
+  belongs_to :bike
   belongs_to :weather_condition
 
   belongs_to :start_station, foreign_key: 'start_station_id', class_name: 'Station'

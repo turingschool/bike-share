@@ -10,8 +10,7 @@ RSpec.describe "When a user visits '/' " do
       expect(page).to have_content("Welcome to Bike Share!")
     end
     #and i expect to see a link to "Stations"
-    within("a") do
-      expect(page).to have_content("Stations")
-    end
+      expect(page).to have_link("Stations", :href => "/stations")
+      expect(page).to have_link("Trips", :href => "/trips")
   end
 end

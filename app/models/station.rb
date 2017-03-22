@@ -1,5 +1,7 @@
 class Station < ActiveRecord::Base
-  validates :name, :city, :dock_count, :installation_date, presence: true
+  # validates :name, :dock_count, :installation_date, :city_id, presence: true
+
+  belongs_to :city
 
   def self.station_count
     Station.all.count
@@ -26,10 +28,10 @@ class Station < ActiveRecord::Base
   end
 
   def self.newest_station
-        Station.order(:dock_count).first
+    Station.order(:installation_date).last
   end
 
   def self.oldest_station
-    Station.order(:dock_count).reverse.first
+    Station.order(:installation_date).first
   end
 end

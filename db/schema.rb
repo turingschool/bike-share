@@ -10,18 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170320002707) do
+ActiveRecord::Schema.define(version: 20170322163921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "cities", force: :cascade do |t|
+    t.text     "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "conditions", force: :cascade do |t|
+    t.date     "date"
+    t.integer  "max_temp"
+    t.integer  "min_temp"
+    t.integer  "mean_temp"
+    t.integer  "mean_humidity"
+    t.integer  "mean_visibility"
+    t.integer  "mean_wind_speed"
+    t.float    "precipitation"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "stations", force: :cascade do |t|
     t.text     "name"
     t.integer  "dock_count"
-    t.text     "city"
     t.date     "installation_date"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "city_id"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.bigint   "duration"
+    t.date     "start_date"
+    t.text     "start_station_name"
+    t.bigint   "start_station_id"
+    t.date     "end_date"
+    t.text     "end_station_name"
+    t.bigint   "end_station_id"
+    t.integer  "bike_id"
+    t.text     "subscription_type"
+    t.bigint   "zip_code"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
 end

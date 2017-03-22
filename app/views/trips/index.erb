@@ -1,49 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta charset="utf-8">
-		<title>Bike Share Management Application</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="../../public/css/bootstrap.min.css" rel="stylesheet">
-		<!--[if lt IE 9]>
-			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<link href="css/styles.css" rel="stylesheet">
-	</head>
-	<body>
-<!-- Header -->
-<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-toggle"></span>
-      </button>
-      <a class="navbar-brand" href="#">Bike Share Administrative Panel</a>
-    </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-
-        <li class="dropdown">
-          <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
-            MENU <span class="caret"></span></a>
-          <ul id="g-account-menu" class="dropdown-menu" role="menu">
-            <li><a href="/stations/new">Add a new station</a></li>
-            <li><a href="#">Edit a station</a></li>
-            <li><a href="#">Nav item</a></li>
-            <li><a href="#">Nav item</a></li>
-            <li><a href="#">My Profile</a></li>
-            <li><a href="#">Logout</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div><!-- /container -->
-</div>
-<!-- /Header -->
-
-<!-- Main -->
-<div class="container">
 
   <!-- upper section -->
   <div class="row">
@@ -143,7 +98,7 @@
 
 						<td><form action="/trips/<%= trip.id %>" method="post">
               <input type="hidden" name="_method" value="DELETE" />
-              <input type="submit" value="Delete Station" />
+              <input class="btn btn-info" type="submit" value="Delete Station" />
             </form></td>
           </tr>
           <% end %>
@@ -162,15 +117,3 @@
       </div>
     </div>
   </div>
-
-
-
-    <div class="col-sm-16">
-      <footer class="text-center">This web application was developed by Team Sauce. <a href="#"><strong>Hire us!</strong></a></footer>
-
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
-    </div>
-
-  </body>
-</html>

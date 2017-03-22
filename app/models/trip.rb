@@ -6,7 +6,8 @@ class Trip < ActiveRecord::Base
  belongs_to :zip_code
  belongs_to :subscription_type
 
- validates :duration, presence: true
+ belongs_to :condition
+
  validates :start_date, presence: true
  validates :start_station_id, presence: true
  validates :end_date, presence: true
@@ -39,5 +40,100 @@ class Trip < ActiveRecord::Base
      bike:                 Bike.find_or_create_by(bike_number: params[:trip][:bike_number])
    )
  end
+
+ def self.average_duration
+   Trip.average(:duration).to_i
+ end
+
+ def self.longest_ride
+   Trip.maximum(:duration).to_i
+ end
+
+ def self.shortest_ride
+   Trip.minimum(:duration).to_i
+ end
+
+  def self.trip_quantities
+    date = Trip.all.map {|trip| trip.start_date.to_date}
+    date.reduce(Hash.new(0)) {|h, date| h[date] += 1; h}
+  end
+
+  def self.date_with_most_trips
+    Trip.trip_quantities.max_by {|key, value| value}.first
+  end
+
+  def self.date_with_least_trips
+    Trip.trip_quantities.min_by {|key, value| value}.first
+  end
+
+  # LAUREN WILL REFACTOR THE BELOW DISGUSTINGNESS :D
+
+  def self.total_rides_per_month
+    ride_months = Trip.all.reduce(Hash.new(0)) do |hash, trip|
+      hash[trip.start_date.month] = Hash.new(0)
+      hash
+    end
+
+    Trip.all.each do |trip|
+      ride_months[trip.start_date.month][trip.start_date.year] +=1
+    end
+
+    ride_months
+  end
+
+  def self.rides_per_month_prepper
+    Trip.total_rides_per_month.values.map {|h| h.keys }.flatten.uniq.sort
+  end
+
+  def self.top_table_row
+    years = Trip.rides_per_month_prepper
+    years.reduce("") do |sum, year|
+      sum + "<th>#{year}</th>"
+    end
+  end
+
+  def self.month_rows
+    years = Trip.rides_per_month_prepper
+    month_hash = Trip.total_rides_per_month
+    grand_total_hash = Hash.new(0)
+    sum = ""
+    12.times do |month|
+      sum += ("<tr>" + "<td>" + Trip.month_library[month+1] + "</td>")
+      years.each do |year|
+        thing = month_hash[month+1][year]
+        sum += ("<td>" + "#{thing}" + "</td>")
+        grand_total_hash[year] += thing
+      end
+    end
+    sum += "</tr>"
+    [sum, grand_total_hash]
+  end
+
+  def self.grand_total_rows
+    years = Trip.rides_per_month_prepper
+    grand_total_hash = Trip.month_rows[1]
+    sum = ""
+    years.each do |year|
+      sum += "<td>#{grand_total_hash[year]}</td>"
+    end
+    sum
+  end
+  
+  def self.month_library
+    {
+      1 => "January",
+      2 => "February",
+      3 => "March",
+      4 => "April",
+      5 => "May",
+      6 => "June",
+      7 => "July",
+      8 => "August",
+      9 => "September",
+      10 => "October",
+      11 => "November",
+      12 => "December"
+    }
+  end
 
 end

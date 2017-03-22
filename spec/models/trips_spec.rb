@@ -11,12 +11,6 @@ RSpec.describe Trip do
   end
 
   describe "validations" do
-    it "is invalid without a duration" do
-      trip = Trip.create(start_date: "29/8/2013 14:14", start_station_id: @station1.id, end_date: "29/8/2013 20:14", end_station_id: @station2.id, bike_id: @bike.id, subscription_type_id: @subscription_type.id, zip_code_id: @zip_code.id)
-
-      expect(trip).to_not be_valid
-    end
-
     it "is invalid without a start date" do
       trip = Trip.create(duration: 100, start_station_id: @station1.id, end_date: "29/8/2013 20:14", end_station_id: @station2.id, bike_id: @bike.id, subscription_type_id: @subscription_type.id, zip_code_id: @zip_code.id)
 

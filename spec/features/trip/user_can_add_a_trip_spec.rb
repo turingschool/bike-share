@@ -31,3 +31,9 @@ RSpec.describe "when a user visits 'trips/new'" do
 
   end
 end
+
+
+station = city.stations.create(name: "Japantown", dock_count: 15, city: city, installation_date: "2013-08-05")
+zipcode = Zipcode.create(zip_code: 94062)
+subscription = Subsciption.create(subscription: "Customer")
+trip = Trip.create(duration: 550, start_date: "6/18/14 17:08", start_station_id: 51, end_date: "6/18/14 17:17", end_station_id: 70, bike_id: 551, subscription_type: "Subscriber", zipcode_id: 1)

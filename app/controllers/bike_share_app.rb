@@ -36,6 +36,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations' do
+    @city = City.create(params[:city])
+    params[:station]["city_id"] = @city.id
     @station = Station.create(params[:station])
     redirect '/stations'
   end
@@ -72,7 +74,7 @@ class BikeShareApp < Sinatra::Base
     erb :"station/edit"
   end
 
-  
+
 
   get '/conditions/:id/edit' do
     @condition = Condition.find(params[:id])
@@ -85,6 +87,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
+    @city = City.find_or_create_by(params[:city])
+    params[:station][:city_id] = @city.id
     @station = Station.update(params[:id].to_i, params[:station])
     redirect '/stations'
     #redirect '/stations/#{@station.id}' isn't working
@@ -130,6 +134,10 @@ class BikeShareApp < Sinatra::Base
     id = params[:id]
     @trip = Trip.find(id)
     erb :"trip/show"
+  end
+
+  get '/weather-dashboard' do
+
   end
 
   put '/trips/:id' do

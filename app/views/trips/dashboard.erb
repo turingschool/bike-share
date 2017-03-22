@@ -1,48 +1,52 @@
     <h1 class="title">Trips Dashboard</h1>
 
     <ul>
-      <li>Average Ride Duration: <%= @trips.average_duration %></li>
+      <li>Average Ride Duration: <%= @trips.average_duration %> minutes</li>
       <li>Longest Ride: <%= @trips.longest_trip.duration %> minutes</li>
       <li>Shortest Ride: <%= @trips.shortest_trip.duration %> minutes</li>
       <li>Most Frequent Starting Station: <%= @trips.name_popular_starting_station %></li>
       <li>Most Frequent Ending Station: <%= @trips.name_popular_ending_station %></li>
-      <li>Most Popular Bike: <%= @stations.newest_station %></li>
-      <li>Least Popular Bike: <%= @stations.oldest_station %></li>
-      <li>Subscription Breakdown: <%= @stations.station_with_fewest_bikes %></li>
-      <li>Busiest Day: <%= @stations.newest_station %></li>
-      <li>Least Busy Day: <%= @stations.oldest_station %></li>
+      <li>Most Popular Bike: Bike <%= @trips.most_popular_bike %> Trips: <%= @trips.most_ridden_bike_count %></li>
+      <li>Least Popular Bike: Bike <%= @trips.least_popular_bike %> Trips: <%= @trips.least_popular_bike_count %></li>
+      <li>Subscription Breakdown: <%= @trips.subscription_breakdown %></li>
+      <li>Busiest Day: <%= @trips.busiest_day %></li>
+      <li>Least Busy Day: <%= @trips.least_busy_day %></li>
     </ul>
-
+<!--
     <div class="container all-stations">
 
   <div class="panel">
     <div class="panel-heading stations-panel">All Trips</div>
     <table class="table table-striped table-hover table-condensed">
       <tr>
-        <th>Month</th>
-        <th>2013</div></th>
-        <th>2014</th>
+        <th>Year</th>
+        <th>Jan</th>
+        <th>Feb</th>
+        <th>Mar</th>
+        <th>Apr</th>
+        <th>May</th>
+        <th>Jun</th>
+        <th>Jul</th>
+        <th>Aug</th>
+        <th>Sep</th>
+        <th>Oct</th>
+        <th>Nov</th>
+        <th>Dec</th>
       </tr>
 
-      <% @trips.rides_by_month.each do |k, v| %>
-        <tr>
-          <td><%= data.k.split.first %></div></td>
-          <td><div class="station-name"><a href="/trips/<%= trip.id %>"><%= trip.start_date %></a></div></td>
-          <td><%= trip.duration %> minutes</td>
-          <td><%= trip.start_station.name %></td>
-          <td><%= trip.end_station.name %></td>
-          <td><%= trip.bike.bike_number %></td>
-          <td><div id="edit-button"><button type="button"><a href="/trips/<%= trip.id %>/edit">Edit</a></button></div></td>
-          <td>
-            <form action="/trips/<%= trip.id %>" method="post">
-              <div class="form-group delete-button">
-                <input type="hidden" name="_method" value="DELETE" />
-                <input type="submit" value="Delete">
-              </div>
-            </form>
-          </td>
-        </tr>
-      <% end%>
+      <tr>
+        <td>2013</td>
+        <%#<% @trips.rides_by_month[2013].each do |k, v| %>%>
+        <%#<td><%= v %></td>%>
+        <%#<% end%>%>
+      </tr>
+      <tr>
+        <td>2014</td>
+        <%#<% @trips.rides_by_month[2014].each do |k, v| %> %>
+        <%#<td><%= v %></td>%>
+        <%#<% end%>%>
+      </tr>
     </table>
   </div>
 </div>
+-->

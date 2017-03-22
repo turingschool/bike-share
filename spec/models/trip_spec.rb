@@ -130,8 +130,23 @@ RSpec.describe Trip do
     end
   end  
   
-  describe ".rides_by_month" do
-    it "returns breakdown of rides by month" do
+  # describe ".rides_by_month" do
+  #   it "returns breakdown of rides by month" do
+  #     Bike.create(bike_number: 25)
+  #     SubscriptionType.create(subscription_type: "Subscriber")
+  #     Station.create(name: "Union Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
+  #     Station.create(name: "Penn Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
+  #     City.create(name:"Mountain View")
+  #     Trip.create(duration: 60, start_date: "Fri, 11 Apr 2014", start_station_id: 1, end_date: "Fri, 11 Apr 2014", end_station_id: 2, bike_id: 1, subscription_type_id: 1)
+  #     Trip.create(duration: 40, start_date: "Wed, 09 Apr 2014", start_station_id: 2, end_date: "Wed, 09 Apr 2014", end_station_id: 2, bike_id: 1, subscription_type_id: 1)
+  #     Trip.create(duration: 110, start_date: "Fri, 12 Apr 2013", start_station_id: 1, end_date: "Fri, 12 Apr 2013", end_station_id: 1, bike_id: 1, subscription_type_id: 1)
+
+  #     expect(Trip.rides_by_month).to be_a(Hash)
+  #   end
+  # end
+
+  describe ".most_popular_bike" do
+    it "returns bike_number of the most popular bike " do
       Bike.create(bike_number: 25)
       SubscriptionType.create(subscription_type: "Subscriber")
       Station.create(name: "Union Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
@@ -139,9 +154,82 @@ RSpec.describe Trip do
       City.create(name:"Mountain View")
       Trip.create(duration: 60, start_date: "Fri, 11 Apr 2014", start_station_id: 1, end_date: "Fri, 11 Apr 2014", end_station_id: 2, bike_id: 1, subscription_type_id: 1)
       Trip.create(duration: 40, start_date: "Wed, 09 Apr 2014", start_station_id: 2, end_date: "Wed, 09 Apr 2014", end_station_id: 2, bike_id: 1, subscription_type_id: 1)
-      Trip.create(duration: 110, start_date: "Fri, 12 Apr 2013", start_station_id: 1, end_date: "Fri, 12 Apr 2013", end_station_id: 1, bike_id: 1, subscription_type_id: 1)
+      Trip.create(duration: 110, start_date: "Wed, 09 Apr 2014", start_station_id: 1, end_date: "Wed, 09 Apr 2014", end_station_id: 1, bike_id: 1, subscription_type_id: 1)
 
-      expect(Trip.rides_by_month).to be_a(Hash)
+      expect(Trip.most_popular_bike).to eq(25)
+    end
+  end
+
+  describe ".least_popular_bike" do
+    it "returns bike_number of the most least bike " do
+      Bike.create(bike_number: 25)
+      Bike.create(bike_number: 27)
+      SubscriptionType.create(subscription_type: "Subscriber")
+      Station.create(name: "Union Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
+      Station.create(name: "Penn Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
+      City.create(name:"Mountain View")
+      Trip.create(duration: 60, start_date: "Fri, 11 Apr 2014", start_station_id: 1, end_date: "Fri, 11 Apr 2014", end_station_id: 2, bike_id: 1, subscription_type_id: 1)
+      Trip.create(duration: 40, start_date: "Wed, 09 Apr 2014", start_station_id: 2, end_date: "Wed, 09 Apr 2014", end_station_id: 2, bike_id: 2, subscription_type_id: 1)
+      Trip.create(duration: 110, start_date: "Wed, 09 Apr 2014", start_station_id: 1, end_date: "Wed, 09 Apr 2014", end_station_id: 1, bike_id: 1, subscription_type_id: 1)
+
+      expect(Trip.least_popular_bike).to eq(27)
+    end
+  end
+
+   describe ".subscription_breakdown" do
+    it "returns bike_number of the most least bike " do
+      Bike.create(bike_number: 25)
+      Bike.create(bike_number: 27)
+      SubscriptionType.create(subscription_type: "Customer")
+      SubscriptionType.create(subscription_type: "Subscriber")
+      Station.create(name: "Union Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
+      Station.create(name: "Penn Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
+      City.create(name:"Mountain View")
+      Trip.create(duration: 60, start_date: "Fri, 11 Apr 2014", start_station_id: 1, end_date: "Fri, 11 Apr 2014", end_station_id: 2, bike_id: 1, subscription_type_id: 1)
+      Trip.create(duration: 40, start_date: "Wed, 09 Apr 2014", start_station_id: 2, end_date: "Wed, 09 Apr 2014", end_station_id: 2, bike_id: 2, subscription_type_id: 1)
+      Trip.create(duration: 110, start_date: "Wed, 09 Apr 2014", start_station_id: 1, end_date: "Wed, 09 Apr 2014", end_station_id: 1, bike_id: 1, subscription_type_id: 2)
+
+      result = "Customer: 66.67% (2) Subscriber: 33.33% (1)"
+
+      expect(Trip.subscription_breakdown).to eq(result)
+    end
+  end
+
+  describe ".busiest_day" do
+    it "Returns a single day with the most trips and count of trips" do
+      Bike.create(bike_number: 25)
+      Bike.create(bike_number: 27)
+      SubscriptionType.create(subscription_type: "Customer")
+      SubscriptionType.create(subscription_type: "Subscriber")
+      Station.create(name: "Union Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
+      Station.create(name: "Penn Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
+      City.create(name:"Mountain View")
+      Trip.create(duration: 60, start_date: "Fri, 11 Apr 2014", start_station_id: 1, end_date: "Fri, 11 Apr 2014", end_station_id: 2, bike_id: 1, subscription_type_id: 1)
+      Trip.create(duration: 40, start_date: "Wed, 09 Apr 2014", start_station_id: 2, end_date: "Wed, 09 Apr 2014", end_station_id: 2, bike_id: 2, subscription_type_id: 1)
+      Trip.create(duration: 110, start_date: "Wed, 09 Apr 2014", start_station_id: 1, end_date: "Wed, 09 Apr 2014", end_station_id: 1, bike_id: 1, subscription_type_id: 2)
+
+      result = "2014-04-09 - 2 trip(s)"
+
+      expect(Trip.busiest_day).to eq(result)
+    end
+  end
+
+  describe ".least_busy_day" do
+    it "Returns a single day with the least trips and count of trips" do
+      Bike.create(bike_number: 25)
+      Bike.create(bike_number: 27)
+      SubscriptionType.create(subscription_type: "Customer")
+      SubscriptionType.create(subscription_type: "Subscriber")
+      Station.create(name: "Union Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
+      Station.create(name: "Penn Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
+      City.create(name:"Mountain View")
+      Trip.create(duration: 60, start_date: "Fri, 11 Apr 2014", start_station_id: 1, end_date: "Fri, 11 Apr 2014", end_station_id: 2, bike_id: 1, subscription_type_id: 1)
+      Trip.create(duration: 40, start_date: "Wed, 09 Apr 2014", start_station_id: 2, end_date: "Wed, 09 Apr 2014", end_station_id: 2, bike_id: 2, subscription_type_id: 1)
+      Trip.create(duration: 110, start_date: "Wed, 09 Apr 2014", start_station_id: 1, end_date: "Wed, 09 Apr 2014", end_station_id: 1, bike_id: 1, subscription_type_id: 2)
+
+      result = "2014-04-11 - 1 trip(s)"
+
+      expect(Trip.least_busy_day).to eq(result)
     end
   end
 end

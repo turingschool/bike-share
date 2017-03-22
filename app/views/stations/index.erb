@@ -6,7 +6,7 @@
   <div class="model_index">
   <% @stations.each do |station| %>
     <div class="model_home">
-      <h3><%= station.name %></h3><br>
+      <h3> <a href="/stations/<%= station.id %>"> <button> <%= station.name %></button></h3></a><br>
       <p>Dock Count: <%= station.dock_count %></p><br>
       <p>City: <%= station.city.name %></p><br>
       <p>Installation Date: <%= station.installation_date %></p><br>
@@ -20,5 +20,5 @@
     </div>
   <% end %>
   </div>
- 
+
 <%= will_paginate @stations %>

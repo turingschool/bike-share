@@ -74,4 +74,19 @@ RSpec.describe Trip do
       expect(@trip.condition.max_temp).to eq(30)
     end
   end
+
+  describe "station relationships" do
+    it "should return start station for the trip" do
+      expect(@trip.start_station).to eq(@station1)
+      expect(@trip.start_station.name).to eq(@station1.name)
+      expect(@trip.start_station.city).to eq(@station1.city)
+    end
+    
+    it "should return end station for the trip" do
+      expect(@trip.end_station).to eq(@station2)
+      expect(@trip.end_station.name).to eq(@station2.name)
+      expect(@trip.end_station.city).to eq(@station2.city)
+    end
+  end
+
 end

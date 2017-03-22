@@ -6,16 +6,16 @@ RSpec.describe "when a user visits '/trips' " do
 # module pagination
 
   it "they see welcome message" do
-    visit "/trips/page/1"
+    visit "/trips"
     # expect(page).to eq("/trips/page/1")
     expect(page).to have_content("All Trips")
   end
 
   it "they can see 30 trips" do
-    visit "/trips/page/1"
+    visit "/trips"
 
 
-    expect(current_path).to eq("/trips/page/1")
+    expect(current_path).to eq("/trips")
 
 
     expect(page).to have_content("All Trips")
@@ -25,14 +25,17 @@ RSpec.describe "when a user visits '/trips' " do
     expect(page).to have_content("End Date")
     expect(page).to have_content("End Station")
     expect(page).to have_content("Bike ID")
-    expect(page).to have_content("Subscription ID")
-    expect(page).to have_content("Zipcode ID")
+    expect(page).to have_content("Subscription Type")
+    expect(page).to have_content("Zipcode")
   end
 
   it "and sees 30 trips on each page" do
 
+    city = City.create(city: "Denver")
     start_station = Station.create(name: "Denver", dock_count: 15, city_id: 1, installation_date: "12/05/1987")
     end_station = Station.create(name: "Boulder", dock_count: 14, city_id: 2, installation_date: "12/05/1987")
+    zipcode = Zipcode.create(zip_code: 94062)
+    subscription = Subscription.create(subscription: "Customer")
 
     (30..91).each do |n|
       trip = Trip.create(duration: 123, start_date: "12/05/1987",
@@ -40,8 +43,8 @@ RSpec.describe "when a user visits '/trips' " do
                                        end_station: end_station, bike_id: 1,
                                        subscription_id: 1, zipcode_id: 1)
     end
-    # trip = Trip.create(duration: 123, start_date: "12/05/1987", start_station_id: 1, end_date: "12/05/1987", end_station_id: 2, bike_id: 1, subscription_id: 1, zipcode_id: 1)
-    visit('/trips/page/1')
+
+    visit('/trips')
 
     expect(page).to have_content("1930")
     expect(page).to have_content("1959")
@@ -54,7 +57,7 @@ RSpec.describe "when a user visits '/trips' " do
     expect(page).to have_content("1989")
     expect(page).to_not have_content("1930")
     expect(page).to_not have_content("1959")
-    expect(current_path).to eq('/trips/page/2')
+    expect(current_path).to eq('/trips')
 
     click_on("Previous")
 
@@ -62,7 +65,7 @@ RSpec.describe "when a user visits '/trips' " do
     expect(page).to have_content("1959")
     expect(page).to_not have_content("1960")
     expect(page).to_not have_content("1989")
-    expect(current_path).to eq('/trips/page/1')
+    expect(current_path).to eq('/trips')
 
   end
 end

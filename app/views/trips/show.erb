@@ -13,7 +13,7 @@
     <th>End Date</th>
   </tr>
 
-  <tr class="station-info">
+  <tr>
      <td>Duration: <%= @trip.duration %> </td>
      <td>Start Station: <%= @trip.start_station.name %> </td>
      <td>End Station: <%= @trip.end_station.name %> </td>
@@ -27,5 +27,5 @@
 
 <form action="/trips/<%= @trip.id %>" method="post">
   <input type="hidden" name="_method" value="DELETE" />
-  <input type="submit" value="Delete Station" />
+  <input type="submit" value="Delete Trip" />
 </form>

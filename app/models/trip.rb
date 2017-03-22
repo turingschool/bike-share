@@ -20,7 +20,7 @@ class Trip < ActiveRecord::Base
   end
 
   def self.update_trip(params)
-    Trip.create!(duration: params[:trip][:duration],
+    Trip.update(duration: params[:trip][:duration],
       start_station: Station.find_or_create_by(name: params[:trip][:start_station]),
       end_station: Station.find_or_create_by(name: params[:trip][:end_station]),
       bike_id: params[:trip][:bike_id],

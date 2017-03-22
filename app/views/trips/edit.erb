@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<h1>Edit Station</h1>
+<h1>Edit Trip</h1>
 
 <table>
   <tr>
@@ -14,7 +14,7 @@
     <th>End Date</th>
   </tr>
 
-  <tr class="station-info">
+  <tr>
     <td>Duration: <%= @trip.duration %> </td>
     <td>Start Station: <%= @trip.start_station.name %> </td>
     <td>End Station: <%= @trip.end_station.name %> </td>
@@ -43,4 +43,5 @@
   <input type="textfield" name="trip[start_date]">
   <label for="">End Date: </label>
   <input type="textfield" name="trip[end_date]">
+  <input class="btn btn-info" type="submit" value="Update Trip" />
 </form>

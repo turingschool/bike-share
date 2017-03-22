@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<h1>Add a New Trip</h1>
+
+<p>Please enter the new Trips's data.</p>
+
+<form action="/trips" method="post">
+  <label for="">Duration: </label>
+  <input type="textfield" name="trip[duration]">
+  <label for="">Starting Station: </label>
+  <input type="textfield" name="trip[start_station]">
+  <label for="">End Station: </label>
+  <input type="textfield" name="trip[end_station]">
+  <label for="">Zipcode: </label>
+  <input type="textfield" name="trip[zip_code]">
+  <label for="">Bike ID: </label>
+  <input type="textfield" name="trip[bike_id]">
+  <label for="">Subsciption Type: </label>
+  <input type="textfield" name="trip[subscription]">
+  <label for="">Start Date: </label>
+  <input type="textfield" name="trip[start_date]">
+  <label for="">End Date: </label>
+  <input type="textfield" name="trip[end_date]">
+  <input type="submit" value="Create Trip" />
+</form>

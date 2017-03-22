@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-sm-16">
+    <h3><i class="glyphicon glyphicon-plus"></i> Add a New Station</h3>
+    <hr>
+      <div class="row">
+        <div class="col-md-12">
+  			  <div class="well">Please complete all fields to add the new station.</div>
+        </div>
+        <div class="col-md-9">
+          <div class="panel panel-default">
+            <div class="panel-heading"><h4>Station Index</h4></div>
+            <div class="panel-body">
+            <p>
+            Lorem ipsum copy here as a placeholder.
+            </p>
+          </div>
+        </div>
+      </div>
+
+        <div class="col-md-3">
+          <div class="btn-group btn-group-justified">
+            <a href="#" class="btn btn-info col-sm-3">
+              <i class="glyphicon glyphicon-question-sign"></i><br>
+              help
+            </a>
+          </div>
+
+			    </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-16">
+      <hr>
+      <form action="/stations" method="post">
+        <label for="">Name: </label>
+        <input type="textfield" name="station[name]">
+        <label for="">Dock Count: </label>
+        <input type="textfield" name="station[dock_count]">
+        <label for="">City ID: </label>
+        <input type="textfield" name="station[city]">
+        <label for="">Installation Date: </label>
+        <input type="textfield" name="station[installation_date]">
+        <input class="btn btn-info" type="submit" value="Create Station" />
+      </form>
+
+      </div>
+    </div>
+  </div>

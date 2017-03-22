@@ -1,18 +1,18 @@
 require_relative "../../spec_helper"
 
-RSpec.describe "When a user deletes a station" do
-  it "the station no longer exists" do
-    city = City.create(name: "Denver")
-    station1 = city.stations.create(name: "Turing", dock_count: 100, installation_date: "14/3/2017")
-    station2 = city.stations.create(name: "Galvanize", dock_count: 1, installation_date: "1/4/1972")
+RSpec.describe "When a user deletes a condition" do
+  it "the condition no longer exists" do
+    conditions_for_date1 = Condition.create(date: "14/3/2017", max_temp: 30.0, min_temp: 20.0, mean_temp: 26.0, mean_humidity: 30.0, mean_visibility: 3.0, mean_wind_speed: 12.0, precipitation: 0.03)
+    conditions_for_date2 = Condition.create(date: "20/3/2016", max_temp: 20.0, min_temp: 40.0, mean_temp: 30.0, mean_humidity: 10.0, mean_visibility: 1.0, mean_wind_speed: 15.0, precipitation: 0.03)
 
-    visit '/stations/2'
+    visit '/conditions/2'
 
-    click_on 'Delete Station'
-    expect(current_path).to eq '/stations'
+    click_on 'Delete conditions for this day'
+    expect(current_path).to eq '/conditions'
 
-    expect(Station.all.count).to eq 1
-    expect(Station.where(id: 2)).to_not exist
-    expect(page).to_not have_content(station2.name)
+    expect(Condition.all.count).to eq 1
+    expect(Condition.where(id: 2)).to_not exist
+    expect(page).to_not have_content(conditions_for_date2.date)
+    expect(page).to have_content(conditions_for_date1.max_temp)
   end
 end

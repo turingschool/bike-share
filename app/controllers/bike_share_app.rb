@@ -36,7 +36,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations' do
-    @city = City.create(params[:city])
+    @city = City.find_or_create_by(params[:city])
     params[:station]["city_id"] = @city.id
     @station = Station.create(params[:station])
     redirect '/stations'
@@ -77,7 +77,7 @@ class BikeShareApp < Sinatra::Base
 
 
   get '/conditions/:id/edit' do
-    @condition = Condition.find(params[:id])
+    @condition = Condition.find(params[:id]
     erb :"conditions/edit"
   end
 

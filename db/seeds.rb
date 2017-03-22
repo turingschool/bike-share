@@ -30,7 +30,7 @@ open_contents = CSV.open('./db/fixtures/trip.csv', headers: true, header_convert
 
 open_contents.each do |row|
   @count += 1
-  next unless row[:end_date] != ''
+  next if row[:end_date].nil?
   next if row[:zip_code].nil? || row[:zip_code].length < 5
 
 start_date = row[:start_date]

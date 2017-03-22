@@ -29,7 +29,7 @@ trips = CSV.open("db/fixtures/trip.csv", headers: true, header_converters: :symb
 trips.each do |row|
   zip_code = Zipcode.find_or_create_by(zip_code: row[:zip_code])
 
-  subscription = Subscription.find_or_create_by(subscription: row[:subscription])
+  subscription = Subscription.find_or_create_by(subscription: row[:subscription_type])
 
   Trip.create(duration: row[:duration],
               start_date: DateTime.strptime(row[:start_date], "%m/%d/%Y %H:%M").to_s,

@@ -74,6 +74,11 @@ class BikeShareApp < Sinatra::Base
 
 #==========================TRIPS==========================
 
+  get "/trips" do
+    @trips = Trip.all.paginate(page: params[:page], per_page: 30)
+    erb :"trips/index"
+  end
+
   get "/trips/new" do
     @trip = Trip.new
     erb :"trips/new"
@@ -95,23 +100,28 @@ class BikeShareApp < Sinatra::Base
   end
 
   put "/trips/:id" do
-    @trip = Trip.update_station(params)
-    redirect "trips/#{@trip.id}"
-  end
-
-  get "/trips" do
-    @trips = Trip.all.paginate(page: params[:page], per_page: 30)
-    erb :"trips/index"
-  end
-
-  # get "/trips/page/:num" do |page_num|
-  #   trips     = Trip.where.not(start_date: nil)
-  #   @trips    = on_page(trips, page_num.to_i)
-  #   @next     = next_page(page_num.to_i, trips.count)
-  #   @previous = previous_page(page_num.to_i)
+  #   duration = params[:trip][:duration]
+  #   start_station = Station.find_or_create_by(name: params[:trip][:start_station])
+  #   end_station = Station.find_or_create_by(name: params[:trip][:end_station])
+  #   bike_id = params[:trip][:bike_id]
+  #   subscription = Subscription.find_or_create_by(subscription: params[:trip][:subscription])
+  #   zipcode = Zipcode.find_or_create_by(zip_code: params[:trip][:zip_code])
+  #   start_date = params[:trip][:start_date]
+  #   end_date = params[:trip][:end_date]
   #
-  #   erb :"trips/index"
-  # end
+  #   input = { duration: duration,
+  #             start_station: start_station,
+  #             end_station: end_station,
+  #             bike_id: bike_id,
+  #             subscription: subscription,
+  #             zipcode: zipcode,
+  #             start_date: start_date,
+  #             end_date: end_date}
+  # @trip =  Trip.update(input)
+    @trip = Trip.update_trip(params)
+    redirect "/trips/#{@trip.first.id}"
+  end
+
 
   delete "/trips/:id" do
     Trip.destroy(params[:id])
@@ -119,6 +129,18 @@ class BikeShareApp < Sinatra::Base
   end
 end
 
+# private
+
+# def self.update_trip(params)
+#   Trip.update(duration: params[:trip][:duration],
+#     start_station: Station.find_or_create_by(name: params[:trip][:start_station]),
+#     end_station: Station.find_or_create_by(name: params[:trip][:end_station]),
+#     bike_id: params[:trip][:bike_id],
+#     subscription: Subscription.find_or_create_by(subscription: params[:trip][:subscription]),
+#     zipcode: Zipcode.find_or_create_by(zip_code: params[:trip][:zip_code]),
+#     start_date: params[:trip][:start_date],
+#     end_date: params[:trip][:end_date])
+# end
 
 # any method we write below this we'll have access to from other methods
 # can't test these

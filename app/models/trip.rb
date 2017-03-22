@@ -3,8 +3,8 @@ class Trip < ActiveRecord::Base
   has_one :bike
   has_one :weather
 
-  has_one :start_station, foreign_key: 'start_station_id', class_name: 'Station'
-  has_one :end_station, foreign_key: 'end_station_id', class_name: 'Station'
+  belongs_to :start_station, foreign_key: 'start_station_id', class_name: 'Station'
+  belongs_to :end_station, foreign_key: 'end_station_id', class_name: 'Station'
 
   validates :duration, presence: true
   validates :start_date, presence: true

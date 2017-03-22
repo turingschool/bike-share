@@ -1,6 +1,9 @@
 class Station < ActiveRecord::Base
 
   belongs_to :city
+  has_many :trips
+  has_many :start_trips, class_name: 'Trip', foreign_key: :start_station_id
+  has_many :end_station, class_name: 'Trip', foreign_key: :end_station_id
 
   validates :name, presence: true
   validates :dock_count, presence: true

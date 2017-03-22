@@ -4,7 +4,6 @@ RSpec.describe "when a user visits /stations/:id/edit" do
   it "they can edit that station" do
     City.create(name:"San Jose")
     Station.create(name: "Union Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
-    Station.create(name: "Penn Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
     Bike.create(bike_number: 23)
     Bike.create(bike_number: 25)
     ZipCode.create(zip_code: 80210)

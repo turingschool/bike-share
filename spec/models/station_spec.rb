@@ -130,7 +130,7 @@ RSpec.describe Station do
       ZipCode.create(zip_code: 80210)
       Trip.create(duration: 60, start_date: "24/9/2014", start_station_id: 1, end_date: "23/9/2014", end_station_id: 2, bike_id: 1, subscription_type_id: 1, zip_code_id: 1)
       Trip.create(duration: 40, start_date: "23/9/2014", start_station_id: 1, end_date: "23/9/2014", end_station_id: 1, bike_id: 2, subscription_type_id: 1, zip_code_id: 1)
-      Trip.create(duration: 40, start_date: "23/9/2014", start_station_id: 2, end_date: "23/9/2014", end_station_id: 2, bike_id: 2, subscription_type_id: 1, zip_code_id: 1)
+      Trip.create(duration: 40, start_date: "23/9/2014", start_station_id: 1, end_date: "23/9/2014", end_station_id: 2, bike_id: 2, subscription_type_id: 1, zip_code_id: 1)
       expect(station_1.frequent_destination).to eq("Penn Station")
     end
   end

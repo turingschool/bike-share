@@ -35,8 +35,6 @@ class BikeShareApp < Sinatra::Base
     erb :"conditions/new"
   end
 
-
-
   post '/stations' do
     @station = Station.create(params[:station])
     redirect '/stations'
@@ -93,7 +91,6 @@ class BikeShareApp < Sinatra::Base
     @station = Station.destroy(params[:id])
     redirect '/stations'
   end
-
 
   get '/trips' do
     @trips = Trip.all

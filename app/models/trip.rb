@@ -50,41 +50,9 @@ class Trip < ActiveRecord::Base
     Station.find(most_popular_end_station_id).name
   end
 
-  # group trips by year
-  # within each year, group trips by month
-  # each month has number of trips
-
-  # {year => {month => trip_count, month => trip_count}}
-
-
-  def self.select_years
-    years={}
-    years[2013] = Trip.where('extract(year from start_date) = ?', 2013)
-    years[2014] = Trip.where('extract(year from start_date) = ?', 2014)
-    years
+  def self.years
+    [2013, 2014, 2015]
   end
-  # years[2014].group_by_month(:start_date, format: "%b %Y").count
-
-
-  # def self.select_months(years_hash)
-  #   years_hash.each do |k, v|
-  #   end
-  # end
-
-  # def self.rides_by_month
-  #   month_totals={}
-  #   month_totals[2013] = select_years[2013].group_by_month(:start_date, format: "%b %Y").count
-  #   month_totals[2014] = select_years[2014].group_by_month(:start_date, format: "%b %Y").count
-  #   month_totals
-  #   # require 'pry'; binding.pry
-  # end
-
-#    month_totals
-# => {2013=>{"Apr 2013"=>1}, 2014=>{"Apr 2014"=>2}}
-# [5] pry(Trip)> month_totals[2013].each do |k, v|
-# [5] pry(Trip)*   puts k
-# [5] pry(Trip)*   puts v
-# [5] pry(Trip)* end  
 
   def self.month_hash
     {1 => "January",
@@ -101,6 +69,23 @@ class Trip < ActiveRecord::Base
      12 => "December"}
   end
 
+  def self.get_monthly_count(trips, month)
+    trips.where('extract(month FROM start_date) = ?', month)
+      .count
+  end
+
+  def self.monthly_totals
+    total = {}
+    years.each do |year|
+      trips = where('extract(year FROM start_date) = ?', year)
+      year_total = {}
+      month_hash.each do |k,v|
+        year_total[v] = get_monthly_count(trips, k)
+      end
+      total[year] = year_total
+    end
+    total
+  end
 
   def self.bike_ride_counts
     counts = Trip.group(:bike_id).count(:id)

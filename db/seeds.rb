@@ -13,7 +13,7 @@ DatabaseCleaner.clean
 stations = (CSV.open'db/csv/station.csv', headers: true, header_converters: :symbol)
 
 stations.each do |station|
-  Station.create(name:              station[:name],
+  Station.create!(name:             station[:name],
                  dock_count:        station[:dock_count].to_i,
                  installation_date: Date.strptime(station[:installation_date], "%m/%d/%Y"),
                  city:              City.find_or_create_by(name: station[:city]))
@@ -24,7 +24,7 @@ trips = (CSV.open'db/fixtures/trips_fixture.csv', headers: true, header_converte
 trips.each do |trip|
   next unless Station.find_by(name: trip[:start_station_name]) && Station.find_by(name: trip[:end_station_name])
 
-  Trip.create(duration:             trip[:duration],
+  Trip.create!(duration:            trip[:duration],
               start_date:           Date.strptime(trip[:start_date], "%m/%d/%Y"),
               start_station_id:     Station.find_by(name: trip[:start_station_name]).id,
               end_date:             Date.strptime(trip[:end_date], "%m/%d/%Y"),

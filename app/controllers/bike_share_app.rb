@@ -1,7 +1,10 @@
 require 'pry'
+require_relative 'pagination'
 
 class BikeShareApp < Sinatra::Base
     set :method_override, true
+
+    include Pagination
 
   get '/' do
     erb :"home/index"
@@ -32,6 +35,8 @@ class BikeShareApp < Sinatra::Base
     erb :"conditions/new"
   end
 
+
+
   post '/stations' do
     @station = Station.create(params[:station])
     redirect '/stations'
@@ -54,8 +59,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/conditions' do
-    @conditions = Condition.all
-    erb :"conditions/index"
+    redirect '/conditions/page/1'
   end
   get '/stations/:id/edit' do
     @station = Station.find(params[:id])
@@ -91,5 +95,12 @@ class BikeShareApp < Sinatra::Base
   delete '/conditions/:id' do
     @condition = Condition.destroy(params[:id])
     redirect '/conditions'
+  end
+
+  get '/conditions/page/:num' do |num|
+      @conditions = page_display(Condition, num.to_i)
+      @next_page = next_page(num.to_i, Condition.count)
+      @previous_page = previous_page(num.to_i)
+      erb :"conditions/index"
   end
 end

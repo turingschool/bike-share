@@ -44,6 +44,6 @@ RSpec.describe "A user can view condition" do
     visit '/conditions/1'
     expect(page).to have_button('Delete')
     click_on "Delete"
-    expect(current_path).to eq('/conditions')
+    expect(current_path).to eq('/conditions/page/1')
   end
 end

@@ -16,7 +16,7 @@ RSpec.describe "A user sees a form" do
     fill_in "condition[precipitation]", with: 33
     click_on "Update Condition"
 
-      expect(current_path).to eq("/conditions")
+      expect(current_path).to eq("/conditions/page/1")
       expect(page).to have_content("2013-08-08")
       expect(page).to have_content("75")
       expect(page).to have_content("88")

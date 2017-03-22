@@ -4,20 +4,22 @@
 <a href="/trips/new">Create a New Trip</a>
 
 
-<div>
+<div class="model_index">
   <% @trips.each do |trip| %>
-  <p>Trip from <%= Station.find(trip.start_station_id).name %> to <%=  Station.find(trip.end_station_id).name %></p>
-  <p>Bike ID: <%= trip.bike_id %></p><br>
-  <p>Trip Duration (in minutes): <%= trip.duration %></p><br>
-  <p>End Date: <%= trip.end_date %></p><br>
-  <p>Subscription Type: <%= trip.subscription_type %></p>
-  <p>Zipcode: <%= trip.zip_code %></p><br>
-  <a href="/trips/<%= trip.id %>/edit">Edit Trip</a>
+    <div class="model_home">
+      <p>Trip from <%= Station.find(trip.start_station_id).name %> to <%=  Station.find(trip.end_station_id).name %></p>
+      <p>Bike ID: <%= trip.bike_id %></p><br>
+      <p>Trip Duration (in minutes): <%= trip.duration %></p><br>
+      <p>End Date: <%= trip.end_date %></p><br>
+      <p>Subscription Type: <%= trip.subscription_type %></p>
+      <p>Zipcode: <%= trip.zip_code %></p><br>
+      <a href="/trips/<%= trip.id %>/edit">Edit Trip</a>
 
-  <form action="/trips/<%= trip.id %>" method="post">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete">
-  </form>
+      <form action="/trips/<%= trip.id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete">
+      </form>
+  </div>
   <% end %>
 
 </div>

@@ -4,23 +4,25 @@
 <a href="/conditions-dashboard">View Weather Stats</a>
 
 
-<div>
+<div class="model_index">
   <% @conditions.each do |condition| %>
-  <p>Trip on: <%= condition.date %> </p>
-  <p>Max Temp: <%= condition.max_temperature_f %></p><br>
-  <p>Mean Temp: <%= condition.mean_temperature_f %></p><br>
-  <p>Min Temp: <%= condition.min_temperature_f %></p><br>
-  <p>Mean Humidity: <%= condition.mean_humidity %></p><br>
-  <p>Mean Visibility(in miles): <%= condition.mean_visibility_miles %></p><br>
-  <p>Mean Wind Speed (mph): <%= condition.mean_wind_speed_mph %></p><br>
-  <p>Precipitation(inches): <%= condition.precipitation_inches %></p><br>
-  <p>Zipcode: <%= condition.zip_code %></p>
-  <a href="/conditions/<%= condition.id %>/edit">Edit Weather</a>
+    <div class="model_home">
+      <p>Trip on: <%= condition.date %> </p>
+      <p>Max Temp: <%= condition.max_temperature_f %></p><br>
+      <p>Mean Temp: <%= condition.mean_temperature_f %></p><br>
+      <p>Min Temp: <%= condition.min_temperature_f %></p><br>
+      <p>Mean Humidity: <%= condition.mean_humidity %></p><br>
+      <p>Mean Visibility(in miles): <%= condition.mean_visibility_miles %></p><br>
+      <p>Mean Wind Speed (mph): <%= condition.mean_wind_speed_mph %></p><br>
+      <p>Precipitation(inches): <%= condition.precipitation_inches %></p><br>
+      <p>Zipcode: <%= condition.zip_code %></p>
+      <a href="/conditions/<%= condition.id %>/edit">Edit Weather</a>
 
-  <form action="/conditions/<%= condition.id %>" method="post">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete">
-  </form>
+      <form action="/conditions/<%= condition.id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete">
+      </form>
+    </div>
   <% end %>
 
 </div>

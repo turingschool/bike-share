@@ -3,10 +3,9 @@
 
 <a href="/station-dashboard">View Station Stats</a>
 <a href="/stations/new">Create a New Station</a>
-<div>
-  <div class="each_station">
+  <div class="model_index">
   <% @stations.each do |station| %>
-
+    <div class="model_home">
       <h3><%= station.name %></h3><br>
       <p>Dock Count: <%= station.dock_count %></p><br>
       <p>City: <%= station.city.name %></p><br>
@@ -18,8 +17,8 @@
         <input type="hidden" name="_method" value="DELETE">
         <input class="station_button" type="submit" value="Delete">
       </form>
-      <% end %>
     </div>
-</div>
+  <% end %>
+  </div>
 
 <%= will_paginate @stations %>

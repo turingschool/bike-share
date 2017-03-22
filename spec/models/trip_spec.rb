@@ -83,7 +83,6 @@ RSpec.describe Trip do
       expect(trip).to_not be_valid
     end
   
-
     it "should be valid with all attributes" do
       trip = Trip.create(duration: 63, start_date: "2013/8/28", start_station_name: "South Van Ness at Market", end_date: "2013/08/29", end_station_name: "South Van Ness at Market", bike_id: 520, subscription_type_id: "Subscriber", zip_code: 94127)
       expect(trip).to be_valid

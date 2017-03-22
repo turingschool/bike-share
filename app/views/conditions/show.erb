@@ -1,0 +1,22 @@
+<div class="page-header">
+  <h1 class="title text-right station-name">Conditions For: <%= @condition.date %></h1><br/>
+</div>
+
+<p>Maximum Temperature: <%= @condition.max_temp %><br></p>
+<p>Mean Temperature: <%= @condition.mean_temp %></p>
+<p>Minimum Temperature: <%= @condition.min_temp %></p>
+<p>Mean Humidity: <%= @condition.mean_humidity %></p>
+<p>Mean Visibility (in miles): <%= @condition.mean_visibility %></p>
+<p>Mean Wind Speed (mph): <%= @condition.mean_wind %></p>
+<p>Precipitation (inches): <%= @condition.precipitation %></p>
+
+<div id="edit-button">
+  <button type="button"><a href="/conditions/<%= @condition.id %>/edit">Edit</a></button>
+</div>
+
+<form action="/conditions/<%= @condition.id %>" method="post">
+  <div class="form-group">
+    <input type="hidden" name="_method" value="DELETE" />
+    <input type="submit" value="Delete">
+  </div>
+</form>

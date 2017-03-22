@@ -91,4 +91,41 @@ class BikeShareApp < Sinatra::Base
     @trips = Trip.all
     erb :"trips/dashboard"
   end
+
+  #------------------------------------conditions
+
+  get '/conditions' do
+    @conditions = Condition.all.paginate(:page => params[:page], :per_page => 30)
+    erb :"conditions/index"
+  end
+
+  get '/conditions/new' do
+    erb :"conditions/new"
+  end
+
+  post '/conditions' do
+    condition = Condition.new(params[:condition])
+    condition.save
+    redirect "/conditions"
+  end
+
+  get '/conditions/:id' do
+    @condition = Condition.find(params[:id])
+    erb :"conditions/show"
+  end
+
+  get '/conditions/:id/edit' do
+    @condition = Condition.find(params[:id])
+    erb :"conditions/edit"
+  end
+
+  put '/conditions/:id' do
+    @condition = Condition.update(params[:id], params[:condition])
+    redirect "/conditions/#{@condition.id}"
+  end
+
+  delete '/conditions/:id' do
+    @condition = Condition.destroy(params[:id])
+    redirect "/conditions"
+  end
 end

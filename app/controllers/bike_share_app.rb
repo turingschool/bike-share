@@ -127,4 +127,13 @@ class BikeShareApp < Sinatra::Base
     @conditions = Condition
     erb :"conditions/dashboard"
   end
+
+  get '/trip-dashboard' do
+    @trips = Trip
+    @stations = Station
+    @bikes = Bike
+    @subscriptions = SubscriptionType
+    erb :"trips/dashboard"
+  end
+
 end

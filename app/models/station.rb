@@ -164,4 +164,5 @@ class Station < ActiveRecord::Base
     bikes = freq.select { |k, f| f == max }.keys.map{|id| Bike.find(id)}
     Station.list_maker(bikes) + " with #{max} trips"
   end
+
 end

@@ -10,7 +10,6 @@ class Condition < ActiveRecord::Base
   validates :mean_wind_speed, presence: true
   validates :precipitation, presence: true
   
-  
     def self.create_condition(params)
       Condition.create(
         date: params[:condtion][:date],
@@ -36,5 +35,5 @@ class Condition < ActiveRecord::Base
         precipitation: params[:condition][:precipitation]
       )
     end
-  
+
 end

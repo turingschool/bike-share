@@ -9,7 +9,7 @@ class WeatherCondition < ActiveRecord::Base
   validates :mean_visibility_miles, presence: true
   validates :mean_wind_speed_mph, presence: true
   validates :precipitation_inches, presence: true
-  validates :date, presence: true
+  validates :date, presence: true, uniqueness: true
 
   def self.total
     WeatherCondition.count

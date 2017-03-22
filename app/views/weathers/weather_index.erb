@@ -1,0 +1,21 @@
+<% @weathers.each do |weather| %>
+
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title mdl-card--expand">
+      <h2 class="mdl-card__title-text">Weather ID: <%= weather.id %></h2>
+    </div>
+    <!-- <div class="mdl-card__supporting-text"> -->
+
+    <!-- </div> -->
+        <div class="mdl-card__actions mdl-card--border">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="weathers/<%= weather.id %>">View & Edit</a>
+      <form action="/weathers/<%= weather.id %>" method="post">
+       <input type="hidden" name="_method" value="DELETE" />
+      <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Delete</button>
+      </form>
+    </div>
+  </div>
+
+<% end %>
+
+<%= will_paginate @weathers %>

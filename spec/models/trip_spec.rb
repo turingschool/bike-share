@@ -17,7 +17,7 @@ RSpec.describe Trip do
                 start_station_id: 4,
                 end_date: format_date("12/15/2013 15:56"),
                 bike_id: 6,
-                end_station_id: 32,
+                end_station_id: 7,
                 subscription_type_id: 1
                 )
      Trip.create(duration: 45,
@@ -25,7 +25,7 @@ RSpec.describe Trip do
                  start_station_id: 7,
                  end_date: format_date("11/15/2013 15:56"),
                  bike_id: 6,
-                 end_station_id: 32,
+                 end_station_id: 7,
                  subscription_type_id: 1
                  )
      Trip.create(duration: 45,
@@ -150,9 +150,27 @@ RSpec.describe Trip do
       expect(Trip.monthly_totals).to be_instance_of(Hash)
       expect(Trip.monthly_totals[2013].last).to eq(1)
       expect(Trip.monthly_totals[2013][10]).to eq(2)
-
     end
 
+    it "#started_at" do
+      expect(Trip.started_at(7).count).to eq(2)
+    end
+
+    it "#ended_at" do
+      expect(Trip.ended_at(7).count).to eq(3)
+    end
+
+    it "#highest_number_trips_date" do
+
+      expect(Trip.highest_number_trips_date).to be_instance_of(Array)
+      expect(Trip.highest_number_trips_date.first).to eq(("2013/11/15").to_date)
+    end
+
+    it "#fewest_number_trips_date" do
+
+      expect(Trip.fewest_number_trips_date).to be_instance_of(Array)
+      expect(Trip.fewest_number_trips_date.first).to eq(("2013/12/15").to_date)
+    end
 
   end
 end

@@ -7,9 +7,9 @@ class Trip < ActiveRecord::Base
 
   validates :duration, presence: true
   validates :start_date, presence: true
-  # validates :start_station_name, presence: true
   validates :end_date, presence: true
-  # validates :end_station_name, presence: true
+  validates :start_station_id, presence: true
+  validates :end_station_id, presence: true
   validates :bike_id, presence: true
   validates :subscription_type_id, presence: true
 
@@ -53,19 +53,34 @@ class Trip < ActiveRecord::Base
     where(start_station_id: station)
   end
 
-def self.ended_at(station)
-  where(end_station_id: station)
-end
+  def self.ended_at(station)
+    where(end_station_id: station)
+  end
 
-def self.highest_number_trips_date
-  start_dates = pluck(:start_date)
-  start_dates.group_by { |start_date| start_dates.count(start_date)}
-end
+  def self.number_by_date_hash
+    start_dates = pluck(:start_date)
+    start_dates.group_by { |start_date| start_dates.count(start_date)}
+  end
 
+  def self.highest_number_trips_date
+    start_dates = pluck(:start_date)
+    start_dates.group_by { |start_date| start_dates.count(start_date)}
+  end
 
-def self.fewest_number_trips_date
-  start_dates = pluck(:start_date)
-  start_dates.group_by { |start_date| start_dates.count(start_date)}
-end
+  def self.highest_number_trips_date
+    number_by_date_hash.max.last.uniq
+  end
+
+  def self.most_trips_date_count
+    number_by_date_hash.max.first
+  end
+
+  def self.fewest_number_trips_date
+    number_by_date_hash.min.last.uniq
+  end
+
+  def self.fewest_trips_date_count
+    number_by_date_hash.min.first
+  end
 
 end

@@ -117,8 +117,8 @@
 </table>
 
 
-<p>The most trips, <%= Trip.highest_number_trips_date.max.first %>, were taken on <%= Trip.highest_number_trips_date.max.last.uniq %></p>
-<p>The fewest trips, <%= Trip.fewest_number_trips_date.min.first %>, were taken on <%= Trip.fewest_number_trips_date.min.last.uniq%></p>
+<p>The most trips, <%= Trip.most_trips_date_count %>, were taken on <%= Trip.highest_number_trips_date %></p>
+<p>The fewest trips, <%= Trip.fewest_trips_date_count %>, were taken on <%= Trip.fewest_number_trips_date%></p>
 
 
 

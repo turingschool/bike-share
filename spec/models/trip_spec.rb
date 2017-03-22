@@ -136,6 +136,8 @@ binding.pry
                             subscription_id: 2,
                             start_date: "2013-08-29 14:13:00",
                             end_date: "2013-08-29 14:13:00" })
+
+      @bike = Bike.create({bike_number: 520})
     end
 
     it "returns the average duration of a ride" do

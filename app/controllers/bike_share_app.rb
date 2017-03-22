@@ -68,6 +68,8 @@ class BikeShareApp < Sinatra::Base
     erb :"station/edit"
   end
 
+  
+
   get '/conditions/:id/edit' do
     @condition = Condition.find(params[:id])
     erb :"conditions/edit"
@@ -119,5 +121,22 @@ class BikeShareApp < Sinatra::Base
       @next_page = next_page(num.to_i, Condition.count)
       @previous_page = previous_page(num.to_i)
       erb :"conditions/index"
+  end
+
+  get '/trips/:id/edit' do
+    @trip = Trip.find(params[:id])
+    erb :"trip/edit"
+  end
+
+  get '/trips/:id' do
+    id = params[:id]
+    @trip = Trip.find(id)
+    erb :"trip/show"
+  end
+
+  put '/trips/:id' do
+    @trip = Trip.update(params[:id].to_i, params[:trip])
+    redirect '/trips'
+    #redirect '/trips/#{@trip.id}' isn't working
   end
 end

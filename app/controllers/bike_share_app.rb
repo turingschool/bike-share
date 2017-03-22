@@ -5,6 +5,8 @@ class BikeShareApp < Sinatra::Base
 
   include Pagination
 
+#====================STATION=======================
+
   get "/" do
     redirect "/stations_dashboard"
   end
@@ -68,14 +70,10 @@ class BikeShareApp < Sinatra::Base
     redirect "/stations"
   end
 
+#==========================TRIPS==========================
+
   get "/trips" do
     redirect "/trips/page/1"
-  end
-
-  get "/trips/new" do
-    @trip = Trip.new
-
-    erb :"trips/new"
   end
 
   post "/trips" do
@@ -83,10 +81,24 @@ class BikeShareApp < Sinatra::Base
     redirect "/trips"
   end
 
+  get "/trips/new" do
+    @trip = Trip.new
+    erb :"trips/new"
+  end
+
   get "/trips/:id" do
     @trip = Trip.find(params[:id])
-
     erb :"trips/show"
+  end
+
+  get "/trips/:id/edit" do
+    @trip = Trip.find(params[:id])
+    erb :"trips/edit"
+  end
+
+  put "/trips/:id" do
+    @trip = Trip.update_station(params)
+    redirect "trips/#{@trip.id}"
   end
 
   get "/trips/page/:num" do |page_num|

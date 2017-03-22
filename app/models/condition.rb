@@ -9,7 +9,7 @@ class Condition < ActiveRecord::Base
   validates :mean_visibility, presence: true
   validates :mean_wind_speed, presence: true
   validates :precipitation, presence: true
-
+  
     def self.create_condition(params)
       Condition.create(
         date: params[:condition][:date],
@@ -25,7 +25,7 @@ class Condition < ActiveRecord::Base
 
     def self.update_condition(params)
       Condition.find(params[:id]).update(
-        date: params[:condtion][:date],
+        date: params[:condition][:date],
         max_temp: params[:condition][:max_temp],
         min_temp: params[:condition][:min_temp],
         mean_temp: params[:condition][:mean_temp],

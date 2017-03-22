@@ -1,9 +1,13 @@
 require_relative 'pagination'
+require 'will_paginate/active_record'
 
 class BikeShareApp < Sinatra::Base
   set :method_override, true
 
-  include Pagination
+  # include Pagination
+  include WillPaginate::Sinatra::Helpers
+
+#====================STATION=======================
 
   get "/" do
     redirect "/stations_dashboard"
@@ -68,14 +72,21 @@ class BikeShareApp < Sinatra::Base
     redirect "/stations"
   end
 
-  get "/trips" do
-    redirect "/trips/page/1"
-  end
+#==========================TRIPS==========================
 
   get "/trips/new" do
     @trip = Trip.new
-
     erb :"trips/new"
+  end
+
+  get "/trips/:id" do
+    @trip = Trip.find(params[:id])
+    erb :"trips/show"
+  end
+
+  get "/trips/:id/edit" do
+    @trip = Trip.find(params[:id])
+    erb :"trips/edit"
   end
 
   post "/trips" do
@@ -83,14 +94,24 @@ class BikeShareApp < Sinatra::Base
     redirect "/trips"
   end
 
-  get "/trips/page/:num" do |page_num|
-    trips     = Trip.where.not(start_date: nil)
-    @trips    = on_page(trips, page_num.to_i)
-    @next     = next_page(page_num.to_i, trips.count)
-    @previous = previous_page(page_num.to_i)
+  put "/trips/:id" do
+    @trip = Trip.update_station(params)
+    redirect "trips/#{@trip.id}"
+  end
 
+  get "/trips" do
+    @trips = Trip.all.paginate(page: params[:page], per_page: 30)
     erb :"trips/index"
   end
+
+  # get "/trips/page/:num" do |page_num|
+  #   trips     = Trip.where.not(start_date: nil)
+  #   @trips    = on_page(trips, page_num.to_i)
+  #   @next     = next_page(page_num.to_i, trips.count)
+  #   @previous = previous_page(page_num.to_i)
+  #
+  #   erb :"trips/index"
+  # end
 
   delete "/trips/:id" do
     Trip.destroy(params[:id])

@@ -91,7 +91,7 @@
             <td><%= trip.subscription_id %></td>
             <td><%= trip.zipcode_id %></td>
 
-						<td><form action="/trips/<%= trips.id %>" method="post">
+						<td><form action="/trips/<%= @trips.id %>" method="post">
               <input type="hidden" name="_method" value="DELETE" />
               <input type="submit" value="Delete Station" />
             </form></td>

@@ -17,6 +17,10 @@ class Trip < ActiveRecord::Base
     end_name = Station.find(end_station_id).name
     "#{date}: #{start_name} -> #{end_name}"
   end
+
+  def self.average_duration
+    Trip.average(:duration).to_i
+  end
 end
 
 #add trip-dashboard methods and trip dashboard file later

@@ -99,6 +99,28 @@ class BikeShareApp < Sinatra::Base
     erb :"trips/show"
   end
 
+  get '/trips/:id/edit' do
+    @trip = Trip.find(params[:id])
+    @bikes = Bike.all
+    @weatherconditions = [1, 2] # Fix!
+    @stations = Station.all
+
+    erb :"trips/edit"
+  end
+
+  put '/trips/:id' do
+    id = params['id']
+    trip = params['trip']
+
+    trip.delete('weather') # Delete this when integrating weather!
+    trip['start_station'] = Station.find_by(name: trip['start_station'])
+    trip['end_station'] = Station.find_by(name: trip['end_station'])
+
+    Trip.update(id, params['trip'])
+
+    redirect "/trips/#{id}"
+  end
+
   delete '/trips/:id' do
     id = params['id']
     Trip.delete(id)

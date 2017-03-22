@@ -2,7 +2,7 @@ require_relative '../spec_helper'
 
 RSpec.describe "When a user visits a single trip" do
 
-attr_reader :start_date, :end_date
+  attr_reader :start_date, :end_date
   before do
     @start_date = DateTime.strptime('8/29/2013 14:01', '%m/%d/%Y %k:%M')
     @end_date = DateTime.strptime('8/29/2013 14:23', '%m/%d/%Y %k:%M')
@@ -14,34 +14,34 @@ attr_reader :start_date, :end_date
     visit '/trips/1'
   end
 
-    it 'they can see a single trips duration' do
-      expect(page).to have_content('Duration: 22')
-    end
+  it 'they can see a single trips duration' do
+    expect(page).to have_content('Duration: 22')
+  end
 
-    it 'they can see a single trips start_date' do
-      expect(page).to have_content('Start Date: 2013-08-29 14:01:00 UTC')
-    end
+  it 'they can see a single trips start_date' do
+    expect(page).to have_content('Start Date: 2013-08-29 14:01:00 UTC')
+  end
 
-    it 'they can see a single trips end_date' do
-      expect(page).to have_content('End Date: 2013-08-29 14:23:00 UTC')
-    end
+  it 'they can see a single trips end_date' do
+    expect(page).to have_content('End Date: 2013-08-29 14:23:00 UTC')
+  end
 
-    it 'they can choose customer/subscriber selector' do
-      expect(page).to have_content('Subscryption Type: subscriber')
+  it 'they can choose customer/subscriber selector' do
+    expect(page).to have_content('Subscryption Type: subscriber')
 
-      # expect(page).to have_content(subscription_type: 'customer')
-    end
+    # expect(page).to have_content(subscription_type: 'customer')
+  end
 
   it 'they can see a single trips bike' do
     expect(page).to have_content('Bike: 1')
   end
 
   it 'they can see a single trips start_station' do
-    expect(page).to have_content('Start Station: 1')
+    expect(page).to have_content('Start Station: Start Dummy')
   end
 
   it 'they can see a single trips end_station' do
-    expect(page).to have_content('End Station: 2')
+    expect(page).to have_content('End Station: End Dummy')
   end
 
   # it 'they can see a single trips weather' do

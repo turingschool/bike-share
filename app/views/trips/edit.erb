@@ -1,0 +1,39 @@
+<form action='/trips/<%= @trip.id %>' method='post'>
+  Duration<br>
+  <input type='number' name='trip[duration]' value='<%= @trip.duration %>'></input><br>
+  Start date (and time)<br>
+  <input type='datetime' value='<%= @trip.start_date.to_s %>' name='trip[start_date]'></input><br>
+  End date (and time)<br>
+  <input type='datetime' name='trip[end_date]' value='<%= @trip.end_date.to_s %>'></input><br>
+  Subscription<br>
+  <input id='subscriber' type="radio" name='trip[subscription_type]' value="subscriber" <%= checked='checked' if @trip.subscription_type == 'subscriber' %>> Subscriber</input><br>
+  <input id='customer' type="radio" name='trip[subscription_type]' value="customer"<%= checked='checked' if @trip.subscription_type == 'customer' %>>
+  Customer</input><br>
+  Bike<br>
+  <select id='bike_select' name='trip[bike]'>
+    <% @bikes.each do |bike| %>
+      <option><%= bike.bin %></option>
+    <% end %>
+  </select><br>
+  Weather<br>
+  <select id='weather_select' name='trip[weather]'>
+    <% @weatherconditions.each do |condition| %>
+      <option><%= 'Fake weather' %></option>
+    <% end %>
+  </select><br>
+  Start station <br>
+  <select id='start_station_select' name='trip[start_station]'>
+    <% @stations.each do |station| %>
+      <option <%= selected='selected' if @trip.start_station == station %>><%= station.name %></option>
+    <% end %>
+  </select><br>
+  End station <br>
+  <select id='end_station_select' name='trip[end_station]'>
+    <% @stations.each do |station| %>
+      <option <%= selected='selected' if @trip.end_station == station %>><%= station.name %></option>
+    <% end %>
+  </select>
+  <br>
+  <input type='submit' value='Update'></input>
+  <input type="hidden" name="_method" value="PUT"/>
+</form>

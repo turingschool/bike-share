@@ -6,7 +6,7 @@
 <p class='subscription_type'>Subscryption Type: <%= @trip.subscription_type %></p>
 <p class='bike_bin'>Bike: <%= @trip.bike_id %></p>
 <p class='start_station'>Start Station: <%= @trip.start_station.name %></p>
-<p class='end_station'>End Station: <%= @trip.end_station_id %></p>
+<p class='end_station'>End Station: <%= @trip.end_station.name %></p>
 
 <form action="/trips/<%= @trip.id %>/edit" method="POST">
   <input type="hidden" name="_method" value="GET">

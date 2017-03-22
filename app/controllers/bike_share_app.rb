@@ -108,25 +108,33 @@ class BikeShareApp < Sinatra::Base
     erb :"weathers/new"
   end
 
-  get '/conditions/:id'
-    @weathers = Weather.find(params[:id])
+  get '/conditions/:id' do
+    @weather = Weather.find(params[:id])
     erb :"weathers/show"
   end
 
-  post '/conditions'
+  post '/conditions' do
     Weather.create(params[:weather])
+    # binding.pry
     #check date format incomingness
-    params[:weather][:date] = Date.strptime(params[:weather][:date], "%m/%d/%Y")
+    # params[:weather][:date] = DateTime.strptime(params[:weather][:date], "%Y-%m-%dT%H:%M")
+    # (DateTime.strptime(params[:trip][:end_date], "%Y-%m-%dT%H:%M")
+    
     redirect '/conditions'
   end
 
-  put '/conditions/:id'
+  put '/conditions/:id' do
     Weather.update(params[:id], params[:weather])
     redirect '/conditions'
   end
 
-  delete '/conditions/:id'
+  delete '/conditions/:id' do
     Weather.destroy(params[:id])
     redirect '/conditions'
+  end
+
+  get '/weather-dashboard' do
+    @weathers = Weather
+    erb :"weathers/dashboard"
   end
 end

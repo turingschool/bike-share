@@ -1,4 +1,7 @@
 class Trip < ActiveRecord::Base
+  default_scope { order(start_date: :desc) }
+  # scope :ordered_by_title, -> { order(title: :asc) }
+
   belongs_to :start_station, class_name: 'Station', foreign_key: :start_station_id
   belongs_to :end_station, class_name: 'Station', foreign_key: :end_station_id
   belongs_to :end_station, class_name: 'Station'

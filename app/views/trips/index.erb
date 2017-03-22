@@ -1,6 +1,6 @@
 <h1>All Trips</h1>
 
-<a href="/trips-dashboard">Trip Stats</a>
+<a href="/trips-dashboard">View Trip Stats</a>
 <a href="/trips/new">Create a New Trip</a>
 
 
@@ -10,6 +10,7 @@
       <p> <a href="/trips/<%= trip.id %>"> <button> Trip from <%= trip.start_station.try(:name) %> to <%= trip.end_station.try(:name) %></button></p></a><br>
       <p>Bike ID: <%= trip.bike_id %></p><br>
       <p>Trip Duration (in minutes): <%= trip.duration %></p><br>
+      <p>Start Date: <%= trip.start_date %></p><br>
       <p>End Date: <%= trip.end_date %></p><br>
       <p>Subscription Type: <%= trip.subscription_type.try(:flavor)  %></p>
       <p>Zipcode: <%= trip.zip_code %></p><br>

@@ -6,11 +6,11 @@
 
 <div>
   <% @trips.each do |trip| %>
-  <p>Trip from <%= Station.find(trip.start_station_id).name %> to <%=  Station.find(trip.end_station_id).name %></p>
+  <p>Trip from <%= trip.start_station.try(:name) %> to <%= trip.end_station.try(:name) %></p>
   <p>Bike ID: <%= trip.bike_id %></p><br>
   <p>Trip Duration (in minutes): <%= trip.duration %></p><br>
   <p>End Date: <%= trip.end_date %></p><br>
-  <p>Subscription Type: <%= trip.subscription_type.flavor  %></p>
+  <p>Subscription Type: <%= trip.subscription_type.try(:flavor)  %></p>
   <p>Zipcode: <%= trip.zip_code %></p><br>
   <a href="/trips/<%= trip.id %>/edit">Edit Trip</a>
 

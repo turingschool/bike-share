@@ -8,6 +8,11 @@ class SubscriptionType < ActiveRecord::Base
     binding.pry
     total_count / grouped[1].count.to_f
 
+
+SubscriptionType.group(:flavor).count
+
+
+counts.each do |flavor, count|; puts "There are #{count} of #{flavor} (#{count * 100.0/total})"; end
   end
 
 end

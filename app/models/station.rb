@@ -53,13 +53,16 @@ class Station < ActiveRecord::Base
     stations_by_install_date.reverse.first
   end
 
-  def most_frequent_destinations
+  def arr_end_station_ids
     trips = Trip.started_at(id)
     end_station_ids = trips.map(&:end_station_id)
-    counts = Hash.new(0)
-    end_station_ids.each do |id|
-      counts[id] += 1
-    end
+    binding.pry
+    end_station_ids.group_by {|esi| end_station_ids.count(esi)}
+    # paused here
+  end
+
+  def most_frequent_destinations
+    arr_end_station_ids
     x = counts.select{ |key, value| value == counts.first[1] }
     destination_ids = x.keys
     destination_ids.map do |id|

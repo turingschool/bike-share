@@ -128,6 +128,8 @@ RSpec.describe Station do
     it "#most_frequent_destinations should return most frequent destination for rides from this station" do
       expect(station_1.most_frequent_destinations).to be_kind_of(Array)
       expect(station_1.most_frequent_destinations.first).to be_kind_of(Station)
+      expect(station_1.most_frequent_destinations.count).to eq(2)
+      expect(station_1.most_frequent_destinations.first.id).to eq(2)
 
     end
 

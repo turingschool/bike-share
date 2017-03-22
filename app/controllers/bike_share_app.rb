@@ -39,6 +39,11 @@ class BikeShareApp < Sinatra::Base
   delete '/stations/:id' do
     Station.destroy(params[:id])
     redirect '/stations'
+  end  
+
+  get '/station-dashboard' do
+    @stations = Station
+    erb :"stations/dashboard"
   end
 
   get '/trips' do
@@ -71,18 +76,55 @@ class BikeShareApp < Sinatra::Base
     @trip = Trip.find(params[:id])
     @stations = Station.all
     @subtypes = SubscriptionType.all
-
     erb :'trips/edit'
   end
 
   delete '/trips/:id' do
     Trip.destroy(params[:id])
-
     redirect '/trips'
   end
 
-  get '/station-dashboard' do
-    @stations = Station
-    erb :"stations/dashboard"
+  get '/trip-dashboard' do
+    @trips = Trip
+    erb :"trips/dashboard"
+  end
+  
+  get '/conditions' do
+    @conditions = Condition.all.paginate(page: params[:page], per_page: 30)
+    erb :'conditions/index'
+  end
+
+  post '/conditions' do
+    @condition = Condition.create_condition(params)
+    redirect "/conditions/#{@condition.id}"
+  end
+
+  get '/conditions/new' do
+    erb :'conditions/new'
+  end
+
+  get '/conditions/:id' do
+    @condition = Condition.find(params[:id])
+    erb :'conditions/show'
+  end
+
+  put '/conditions/:id' do
+    Condition.update_condition(params)
+    redirect "/conditions/#{params[:id]}"
+  end
+
+  get '/conditions/:id/edit' do
+    @condition = Condition.find(params[:id])
+    erb :'conditions/edit'
+  end
+
+  delete '/conditions/:id' do
+    Condition.destroy(params[:id])
+    redirect '/conditions'
+  end
+  
+  get '/weather-dashboard' do
+    @conditions = Condition
+    erb :"conditions/dashboard"
   end
 end

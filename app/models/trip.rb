@@ -78,10 +78,5 @@ class Trip < ActiveRecord::Base
     end
     ride_years
   end
- 
- # def self.total_rides_per_month
- #   
- # end
-
 
 end

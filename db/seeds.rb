@@ -37,7 +37,6 @@ trips.each do |row|
               end_date: DateTime.strptime(row[:end_date], "%m/%d/%Y %H:%M").to_s,
               end_station_id: row[:end_station_id],
               bike_id: row[:bike_id],
-              subscription_type: row[:subscription_type],
               zipcode_id: zip_code.id,
               subscription_id: subscription.id
                  )

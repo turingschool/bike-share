@@ -53,32 +53,63 @@ class Station < ActiveRecord::Base
     stations_by_install_date.reverse.first
   end
 
-  def arr_end_station_ids
-    trips = Trip.started_at(id)
-    end_station_ids = trips.map(&:end_station_id)
-    binding.pry
-    end_station_ids.group_by {|esi| end_station_ids.count(esi)}
-    # paused here
+
+
+  def all_trips_starting_at_id
+    Trip.started_at(id)
   end
 
-  def most_frequent_destinations
-    arr_end_station_ids
-    x = counts.select{ |key, value| value == counts.first[1] }
-    destination_ids = x.keys
-    destination_ids.map do |id|
-      Station.find(id)
+  def ending_ids
+    all_trips_starting_at_id.map {|trip| trip.end_station_id}
+  end
+
+  def count_per_attribute(obj_attribute)
+    obj_attribute.group_by {|att| obj_attribute.count(att)}
+  end
+
+  def get_highest_uniq_ids
+    count_per_attribute(ending_ids).values.first.uniq
+  end
+
+  def get_lowest_uniq_ids
+    count_per_attribute(ending_ids).values.last.uniq
+  end
+
+  def find_highest_station_objects
+    get_highest_uniq_ids.map {|id| Station.find(id)}
+  end
+
+  def find_lowest_station_objects
+    get_lowest_uniq_ids.map {|id| Station.find(id)}
+  end
+
+  def starting_date_arr
+    all_trips_starting_at_id.map {|trip| trip.start_date}
+  end
+
+  def busiest_day
+    if count_per_attribute(starting_date_arr).values.first.uniq.count == 1
+      count_per_attribute(starting_date_arr).values.first.uniq[0]
+    else
+      count_per_attribute(starting_date_arr).values.first.uniq
     end
-
-
   end
 
-  # Use trip.rb methods:
-  # def self.started_at(station)
-  #   where(start_station_id: station)
-  # end
-  #
-  # def self.ended_at(station)
-  #   where(end_station_id: station)
-  # end
+  def zip_code_arr
+    all_trips_starting_at_id.map {|trip| trip.zip_code}
+  end
 
+  def most_frequent_zip
+    count_per_attribute(zip_code_arr).values.first.uniq
+  end
+
+  def bike_id_arr
+    all_trips_starting_at_id.map {|trip| trip.bike_id}
+  end
+
+  def most_used_bike
+    var = count_per_attribute(bike_id_arr)
+    var.max_by {|key, value| key}[1].uniq
+  end
+  # Bike ID most frequently starting a trip at this station.
 end

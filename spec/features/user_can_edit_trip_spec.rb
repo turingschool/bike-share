@@ -18,7 +18,7 @@ RSpec.describe "A user sees a form" do
 
     click_on "Update Trip"
 
-    expect(current_path).to eq("/trips")
+    expect(current_path).to eq("/trips/page/1")
     expect(page).to have_content("20")
     expect(page).to have_content("2013-08-05")
     expect(page).to have_content("Jersey")

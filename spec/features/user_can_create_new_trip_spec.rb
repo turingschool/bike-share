@@ -16,7 +16,7 @@ RSpec.describe "As a user tries to create a trip" do
 
     click_on "Submit"
 
-    expect(current_path).to eq("/trips")
+    expect(current_path).to eq("/trips/page/1")
     expect(page).to have_content("20")
     expect(page).to have_content("2013-08-05")
     expect(page).to have_content("Jersey")

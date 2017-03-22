@@ -5,6 +5,10 @@
 <a href="/trips/<%=@trip.id%>/edit">
   <button type="button" name="button">Edit</button>
 </a>
+<form action="/trips/<%= @trip.id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE" />
+        <input type="submit" value="Delete" />
+      </form>
 
 <ul>
   <li>Duration: <%=@trip.duration %></li>

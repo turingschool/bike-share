@@ -141,7 +141,7 @@
             <td><%= trip.subscription_id %></td>
             <td><%= trip.zipcode_id %></td>
 
-						<td><form action="/trips/<%= trips.id %>" method="post">
+						<td><form action="/trips/<%= trip.id %>" method="post">
               <input type="hidden" name="_method" value="DELETE" />
               <input type="submit" value="Delete Station" />
             </form></td>
@@ -151,8 +151,9 @@
       </table>
       <div>
         <ul>
-          <li><a href="trips/page/<%= @previous %>"></a>Previous</li>
-          <li><a href="trips/page/<%= @next %>"></a>Next</li>
+					<%= will_paginate @trips %>
+          <!-- <li><a href="/trips/page/<%= @previous %>">Previous</a></li>
+          <li><a href="/trips/page/<%= @next %>">Next</a></li> -->
         </ul>
       </div>
 

@@ -1,7 +1,7 @@
 require_relative "../../spec_helper"
 
 RSpec.describe "when a user visits 'trips/new'" do
-  it "they can create a new trip" do
+  xit "they can create a new trip" do
     city = City.create(city: "Denver")
     city.stations.create(name: "Downtown", dock_count: 15, city: city, installation_date: "2013-08-05")
     city.stations.create(name: "Caphill", dock_count: 15, city: city, installation_date: "2013-08-05")

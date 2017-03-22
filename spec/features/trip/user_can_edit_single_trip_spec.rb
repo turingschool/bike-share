@@ -1,7 +1,7 @@
 require_relative "../../spec_helper"
 
 RSpec.describe "when a user visits '/trips/:id/edit' " do
-  it "they can edit a single trip"do
+  xit "they can edit a single trip"do
   #setup
   city = City.create(city: "Denver")
   start_station = city.stations.create(name: "Downtown", dock_count: 15, city: city, installation_date: "2013-08-05")

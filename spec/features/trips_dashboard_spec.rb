@@ -23,7 +23,7 @@ RSpec.describe "when a user visits /trips-dashboard" do
     expect(page).to have_content("Shortest Ride: 40 minutes")
     expect(page).to have_content("Most Frequent Starting Station: Union Station")
     expect(page).to have_content("Most Frequent Ending Station: Penn Station")
-    expect(page).to have_content("Rides by month:")
+    expect(page).to have_content("Month by Month Breakdown")
     expect(page).to have_content("Most Popular Bike: Bike 23 Trips: 2")
     expect(page).to have_content("Least Popular Bike: Bike 25 Trips: 1")
     expect(page).to have_content("Customer: 33.33% (1)") 

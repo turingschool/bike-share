@@ -16,5 +16,6 @@ group :development, :test do
   gem 'launchy'
   gem 'rack-test'
   gem 'database_cleaner'
+  gem 'emoji_spec', :git => "https://gist.github.com/6112257.git"
   gem 'rake'
 end

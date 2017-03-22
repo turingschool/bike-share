@@ -1,0 +1,11 @@
+<h2 class"title">Trips</h2>
+
+<form action='/trips/new' method='get'>
+  <input type="button" value='New Trip'></input>
+</form>
+
+<ol>
+  <% @trips.each do |trip| %>
+  <li><a href="/trips/<%=trip.id %>"><%= trip.make_name %></a></li>
+  <% end %>
+</ol>

@@ -1,0 +1,19 @@
+<h2 class"title">Trips Page <%= @page_number %></h2>
+
+<form action='/trips/new' method='get'>
+  <input type="submit" value='New Trip'></input>
+</form>
+
+<form action='/trips/page/<%= @page_number -1 %>'>
+  <input type="submit" value="previous">
+</form>
+
+<form action='/trips/page/<%= @page_number +1 %>'>
+  <input type="submit" value="next">
+</form>
+
+<ol>
+  <% @trips.each do |trip| %>
+  <li><a href="/trips/<%=trip.id %>"><%= trip.make_name %></a></li>
+  <% end %>
+</ol>

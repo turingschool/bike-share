@@ -1,5 +1,3 @@
-require 'pry'
-
 class BikeShareApp < Sinatra::Base
   get '/stations' do
     @stations = Station.all # What's AR's sorting method?
@@ -102,4 +100,80 @@ class BikeShareApp < Sinatra::Base
     erb :"weather_conditions/show"
   end
 
+#----------------------------------------------------------------
+#----------------------------------------------------------------
+#----Trips Controller medthods down below---------------------------
+#----------------------------------------------------------------
+  get '/trips' do
+    if Trip.count < 31
+      @trips = Trip.all
+      erb :"trips/index"
+    else
+      redirect '/trips/page/1'
+    end
+  end
+
+  get '/trips/new' do
+      @bikes = [1,2]
+      @weatherconditions = [1,2]
+      @stations = Station.all
+
+      erb :"trips/new"
+  end
+
+  post '/trips' do
+    trip = params['trip']
+    Trip.create(duration: trip['duration'].to_i,
+                start_date: DateTime.parse(trip['start_date']),
+                end_date: DateTime.parse(trip['end_date']), subscription_type: trip['subscription_type'],
+                bike_id: 1, # Bike.find_by(bin: trip['bike'])
+                start_station_id: 1,
+                end_station_id: 2,
+                weather_id: 1)
+
+    redirect '/trips'
+  end
+
+  get '/trips/page/:page' do
+    @page_number = params["page"].to_i
+    batch_start = ((params["page"].to_i - 1) * 30) + 1
+    @trips = Trip.find_each(batch_size: 30, start: batch_start, finish: batch_start + 29)
+
+    erb :"trips/page"
+  end
+
+  get '/trips/:id' do
+    @trip = Trip.find(params[:id])
+
+    erb :"trips/show"
+  end
+
+  get '/trips/:id/edit' do
+    @trip = Trip.find(params[:id])
+    @bikes = Bike.all
+    @weatherconditions = [1, 2] # Fix!
+    @stations = Station.all
+
+    erb :"trips/edit"
+  end
+
+  put '/trips/:id' do
+    id = params['id']
+    trip = params['trip']
+
+    trip.delete('weather') # Delete this when integrating weather!
+    trip['start_station'] = Station.find_by(name: trip['start_station'])
+    trip['end_station'] = Station.find_by(name: trip['end_station'])
+
+    Trip.update(id, params['trip'])
+
+    redirect "/trips/#{id}"
+  end
+
+  delete '/trips/:id' do
+    id = params['id']
+    Trip.delete(id)
+
+    redirect '/trips'
+  end
 end

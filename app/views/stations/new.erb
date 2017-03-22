@@ -1,12 +1,21 @@
-<form action="/stations" method="post">
-  <h2>New Station</h2>
-  Name<br>
-  <input type='text'  name='station[name]' ><br>
-  City<br>
-  <input type='text'  name='station[city]' ><br>
-  Dock Count<br>
-  <input type='number'  name='station[dock_count]'><br>
-  Installation Date<br>
-  <input type='date'  name='station[installation_date]'><br>
-  <input type='submit' value='Submit'>
+<h2>New Station</h2>
+
+<form class="well" action="/stations" method="post">
+  <div class="form-group">
+    <label>Name</label>
+    <input type='text'  name='station[name]'>
+  </div>
+  <div class="form-group">
+    <label>City</label>
+    <input type='text'  name='station[city]' ><br>
+  </div>
+  <div class="form-group">
+    <label>Dock Count</label>
+    <input type='number'  name='station[dock_count]'><br>
+  </div>
+  <div class="form-group">
+    <label>Installation Date</label>
+    <input type='date'  name='station[installation_date]'><br>
+  </div>
+  <input type='submit' class="btn btn-primary" value='Submit'>
 </form>

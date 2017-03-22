@@ -13,6 +13,7 @@ group :development, :test do
   gem 'tux'
   gem 'rack-test'
   gem 'pry'
+  gem 'simplecov', :require => false
 end
 
 group :test do

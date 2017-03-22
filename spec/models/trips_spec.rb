@@ -4,10 +4,11 @@ RSpec.describe Trip do
     city = City.create(name: "Denver")
     @station1 = city.stations.create(name: "Turing", dock_count: 100, installation_date: "14/3/2017")
     @station2 = city.stations.create(name: "Galvanize", dock_count: 1, installation_date: "1/4/1972")
+    @condition = Condition.create(date: "29/8/2013", max_temp: 30.0, min_temp: 20.0, mean_temp: 26.0, mean_humidity: 30.0, mean_visibility: 3.0, mean_wind_speed: 12.0, precipitation: 0.03)
     @bike = Bike.create(bike_number: 33)
     @subscription_type = SubscriptionType.create(subscription_type: "Subscriber")
     @zip_code = ZipCode.create(zip_code: 80602)
-    @trip = Trip.create(duration: 100, start_date: "29/8/2013 14:14", start_station_id: @station1.id, end_date: "29/8/2013 20:14", end_station_id: @station2.id, bike_id: @bike.id, subscription_type_id: @subscription_type.id, zip_code_id: @zip_code.id)
+    @trip = Trip.create(duration: 100, start_date: "29/8/2013 14:14", start_station: @station1, end_date: "29/8/2013 20:14", end_station: @station2, bike: @bike, subscription_type: @subscription_type, zip_code: @zip_code, condition: @condition)
   end
 
   describe "validations" do
@@ -62,7 +63,15 @@ RSpec.describe Trip do
       expect(@trip).to respond_to(:bike)
       expect(@trip).to respond_to(:subscription_type)
       expect(@trip).to respond_to(:zip_code)
+      expect(@trip).to respond_to(:condition)
+    end
+  end
 
+  describe "condition relationship" do
+    it "should return condition for that trips start date" do
+      expect(@trip.condition).to eq(@condition)
+      expect(@trip.condition.date).to eq(@trip.start_date.to_date)
+      expect(@trip.condition.max_temp).to eq(30)
     end
   end
 end

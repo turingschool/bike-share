@@ -1,0 +1,73 @@
+<div class="demo-card-square mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__supporting-text">
+  <p> <strong>Average ride duration:</strong> <%= ((@trips.avg)/60).round(0)  %> minutes</p>
+  <p> <strong>Longest Ride:</strong> <%= (@trips.longest/60/60/24).round(1) %> days</p>
+  <p> <strong>Shortest Ride:</strong>  <%= (@trips.shortest) %> seconds </p>
+  <p> <strong>Most Popular place to start a ride:</strong>  <%= (@trips.most_start) %> </p>
+  <p> <strong>Most Popular place to end a ride:</strong>  <%= (@trips.most_end) %> </p>
+  <table cellspacing="10">
+    <th><h2>Month</h2></th>
+    <th><h2>Rides</h2></th>
+    <tr> <% month_array=@trips.by_month %>
+      <td><strong>January:</strong></td>
+      <td><%= month_array[:months][1] %></td>
+    </tr>
+      <tr>
+        <td><strong>February:</strong></td>
+        <td><%= month_array[:months][2] %></td>
+      </tr>
+      <tr>
+        <td><strong>March:</strong></td>
+        <td><%= month_array[:months][3] %></td>
+      </tr>
+      <tr>
+        <td><strong>April:</strong></td>
+        <td><%= month_array[:months][4] %></td>
+      </tr>
+      <tr>
+        <td><strong>May:</strong></td>
+        <td><%= month_array[:months][5] %></td>
+      </tr>
+      <tr>
+        <td><strong>June:</strong></td>
+        <td><%= month_array[:months][6] %></td>
+      </tr>
+      <tr>
+        <td><strong>July:</strong></td>
+        <td><%= month_array[:months][7] %></td>
+      </tr>
+      <tr>
+        <td><strong>August:</strong></td>
+        <td><%= month_array[:months][8] %></td>
+      </tr>
+      <tr>
+        <td><strong>September:</strong></td>
+        <td><%= month_array[:months][9] %></td>
+      </tr>
+      <tr>
+        <td><strong>October:</strong></td>
+        <td><%= month_array[:months][10] %></td>
+      </tr>
+      <tr>
+        <td><strong>November:</strong></td>
+        <td><%= month_array[:months][11] %></td>
+      </tr>
+      <tr>
+        <td><strong>December:</strong></td>
+        <td><%= month_array[:months][12] %></td>
+      </tr>
+  </table>
+  <table cellspacing="10">
+    <th><h2>Year</h2></th>
+    <th><h2>Rides</h2></th>
+    <% month_array[:years].each do |year| %>
+    <tr>
+      <td><strong><%= year[0] %></strong></td>
+      <td><%= year[1] %></td>
+    </tr>
+    <% end %>
+  </table>
+  <p> <strong>Busiest Bike</strong> <%= @trips.busiest_bike.keys.flatten  %> with <% @trips.busiest_bike %> </p>
+
+</div>
+</div>

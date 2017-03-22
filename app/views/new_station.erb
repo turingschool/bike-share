@@ -1,0 +1,32 @@
+<h1>Create a New Station</h1>
+
+<form action="/stations" method="post"class="pure-form pure-form-aligned">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="name">Name: </label>
+            <input name="station[name]" type="text" placeholder="Name: " required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="dock_count">Dock Count: </label>
+            <input name="station[dock_count]" type="text" placeholder="Dock Count" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="city">City: </label>
+            <input name="city[name]" type="text" placeholder="Enter City" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="installation_date">Installation Date: </label>
+            <input name="station[installation_date]" type="date" placeholder="MM/DD/YY" required>
+        </div>
+
+        <div class="pure-controls">
+            <label for="cb" class="pure-checkbox"></label>
+           <!--  <input id="cb" type="checkbox"> I've read the terms and conditions
+            </label> -->
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Submit</button>
+        </div>
+    </fieldset>
+</form>

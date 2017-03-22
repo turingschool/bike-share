@@ -30,6 +30,13 @@ RSpec.describe Station do
       expect(station).to be_valid
     end
   end
+  
+  describe "relationships" do
+    it "returns stations when city is created from station" do
+      Station.create(name: "Memorial Union", dock_count: 100, installation_date: "14/3/2017", city_id: 1)
+      expect(@city.stations.first.name).to eq("Memorial Union") 
+    end
+  end
 
   describe "attributes" do
     it "should have name, city, dock count, and an installation date" do

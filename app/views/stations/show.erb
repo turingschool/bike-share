@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<h1>Station Information</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Dock Count</th>
+    <th>City</th>
+    <th>Installation Date</th>
+  </tr>
+
+  <tr class="station-info">
+     <td>Name: <%= @station.name %> </td>
+     <td>Dock Count: <%= @station.dock_count %> </td>
+     <td> <%= @station.city %> </td> <!--check on this later-->
+     <td>Installation Date: <%= @station.installation_date %> </td>
+  </tr>
+</table>
+
+<form action="/stations/<%= @station.id %>" method="post">
+  <input type="hidden" name="_method" value="DELETE" />
+  <input type="submit" value="Delete Station" />
+</form>

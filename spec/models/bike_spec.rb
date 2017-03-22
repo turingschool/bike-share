@@ -14,6 +14,13 @@ RSpec.describe Bike do
 
       expect(bike).to_not be_valid
     end
+
+    it 'is invalid with a duplicate bin' do
+      Bike.create(bin: 22)
+      bike = Bike.create(bin: 22)
+
+      expect(bike).to_not be_valid
+    end
   end
 
   describe 'attributes' do

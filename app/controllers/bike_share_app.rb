@@ -10,8 +10,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations' do
-    @stations = Station.all.paginate(:page => params[:page], :per_page => 5)
-
+    @stations = Station.all.paginate(:page => params[:page], :per_page => 30)
     erb :"stations/index"
   end
 
@@ -51,7 +50,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trips = Trip.all.paginate(:page => params[:page], :per_page => 5)
+    @trips = Trip.all.paginate(:page => params[:page], :per_page => 30)
     erb :"trips/index"
   end
 
@@ -61,6 +60,7 @@ class BikeShareApp < Sinatra::Base
 
   post '/trips' do
     add_station_to_trip(params)
+    add_subscription_type_to_trip(params)
     redirect "/trips"
   end
 
@@ -87,11 +87,13 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips-dashboard' do
     @monthly_totals = Trip.monthly_totals
+    @subscription_counts = SubscriptionType.type_breakout
+    @all_subscriptions = SubscriptionType.all.count
     erb :"trips/trip-dashboard"
   end
 
   get '/conditions' do
-    @conditions = Condition.all
+    @conditions = Condition.all.paginate(:page => params[:page], :per_page => 30)
     erb :"conditions/index"
   end
 
@@ -147,6 +149,14 @@ private
     end_station = Station.find_or_create_by(params[:end_station]).id
     params[:trip][:start_station_id] = start_station
     params[:trip][:end_station_id] = end_station
-    Trip.create!(params[:trip])
   end
+
+  def add_subscription_type_to_trip(params)
+    sti = SubscriptionType.find_or_create_by(flavor: params[:subscription_type][:flavor]).id
+    params[:trip][:subscription_type_id] = sti
+    Trip.create!(params[:trip])
+
+  end
+
+
 end

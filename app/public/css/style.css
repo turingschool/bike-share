@@ -71,7 +71,8 @@ html, body {
 }
 
 #body {
-  background-image: URL("https://isastudentblog.files.wordpress.com/2016/02/sevici-bike-station-sevilla-spain-sloan-photo-1.jpg");
+  background-image: URL("https://images5.alphacoders.com/487/thumb-1920-487129.jpg");
+  background-repeat: no-repeat;
   background-size: 100% 100%;
   padding: 10px;
   padding-bottom: 60px; /* height*/

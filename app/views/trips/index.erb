@@ -1,13 +1,13 @@
 <h1>All Trips</h1>
 
-<a href="/">Return to home</a>
+<a href="/trips-dashboard">Trip Stats</a>
 <a href="/trips/new">Create a New Trip</a>
 
 
 <div class="model_index">
   <% @trips.each do |trip| %>
     <div class="model_home">
-      <p>Trip from <%= trip.start_station.try(:name) %> to <%= trip.end_station.try(:name) %></p>
+      <p> <a href="/trips/<%= trip.id %>"> <button> Trip from <%= trip.start_station.try(:name) %> to <%= trip.end_station.try(:name) %></button></p></a><br>
       <p>Bike ID: <%= trip.bike_id %></p><br>
       <p>Trip Duration (in minutes): <%= trip.duration %></p><br>
       <p>End Date: <%= trip.end_date %></p><br>

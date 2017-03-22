@@ -1,10 +1,14 @@
 require_relative 'pagination'
+require 'will_paginate/active_record'
 
 class BikeShareApp < Sinatra::Base
   set :method_override, true
   layout "layout"
 
-  include Pagination
+  # include Pagination
+  include WillPaginate::Sinatra::Helpers
+
+#====================STATION=======================
 
   get "/" do
     redirect "/stations_dashboard"  # change this to homepage when we have it
@@ -69,14 +73,26 @@ class BikeShareApp < Sinatra::Base
     redirect "/stations"
   end
 
+#==========================TRIPS==========================
+
   get "/trips" do
-    redirect "/trips/page/1"
+    @trips = Trip.all.paginate(page: params[:page], per_page: 30)
+    erb :"trips/index"
   end
 
   get "/trips/new" do
     @trip = Trip.new
-
     erb :"trips/new"
+  end
+
+  get "/trips/:id" do
+    @trip = Trip.find(params[:id])
+    erb :"trips/show"
+  end
+
+  get "/trips/:id/edit" do
+    @trip = Trip.find(params[:id])
+    erb :"trips/edit"
   end
 
   post "/trips" do
@@ -84,14 +100,29 @@ class BikeShareApp < Sinatra::Base
     redirect "/trips"
   end
 
-  get "/trips/page/:num" do |page_num|
-    trips     = Trip.where.not(start_date: nil)
-    @trips    = on_page(trips, page_num.to_i)
-    @next     = next_page(page_num.to_i, trips.count)
-    @previous = previous_page(page_num.to_i)
-
-    erb :"trips/index"
+  put "/trips/:id" do
+  #   duration = params[:trip][:duration]
+  #   start_station = Station.find_or_create_by(name: params[:trip][:start_station])
+  #   end_station = Station.find_or_create_by(name: params[:trip][:end_station])
+  #   bike_id = params[:trip][:bike_id]
+  #   subscription = Subscription.find_or_create_by(subscription: params[:trip][:subscription])
+  #   zipcode = Zipcode.find_or_create_by(zip_code: params[:trip][:zip_code])
+  #   start_date = params[:trip][:start_date]
+  #   end_date = params[:trip][:end_date]
+  #
+  #   input = { duration: duration,
+  #             start_station: start_station,
+  #             end_station: end_station,
+  #             bike_id: bike_id,
+  #             subscription: subscription,
+  #             zipcode: zipcode,
+  #             start_date: start_date,
+  #             end_date: end_date}
+  # @trip =  Trip.update(input)
+    @trip = Trip.update_trip(params)
+    redirect "/trips/#{@trip.first.id}"
   end
+
 
   delete "/trips/:id" do
     Trip.destroy(params[:id])
@@ -139,6 +170,18 @@ class BikeShareApp < Sinatra::Base
 
 end
 
+# private
+
+# def self.update_trip(params)
+#   Trip.update(duration: params[:trip][:duration],
+#     start_station: Station.find_or_create_by(name: params[:trip][:start_station]),
+#     end_station: Station.find_or_create_by(name: params[:trip][:end_station]),
+#     bike_id: params[:trip][:bike_id],
+#     subscription: Subscription.find_or_create_by(subscription: params[:trip][:subscription]),
+#     zipcode: Zipcode.find_or_create_by(zip_code: params[:trip][:zip_code]),
+#     start_date: params[:trip][:start_date],
+#     end_date: params[:trip][:end_date])
+# end
 
 
 # any method we write below this we'll have access to from other methods

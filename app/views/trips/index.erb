@@ -1,6 +1,6 @@
   <div class="row">
 	  <div class="col-sm-16">
-      <h3><i class="glyphicon glyphicon-dashboard"></i> All Stations</h3>
+      <h3><i class="glyphicon glyphicon-dashboard"></i> All Trips</h3>
       <hr>
 
       <div class="row">
@@ -46,13 +46,9 @@
         <div class="col-md-5">
 
           <div class="btn-group btn-group-justified">
-            <a href="/stations/new" class="btn btn-info col-sm-3">
+            <a href="/trips/new" class="btn btn-info col-sm-3">
               <i class="glyphicon glyphicon-plus"></i><br>
-              add a station
-            </a>
-            <a href="#" class="btn btn-info col-sm-3">
-              <i class="glyphicon glyphicon-cog"></i><br>
-              edit a station
+              add a trip
             </a>
             <a href="#" class="btn btn-info col-sm-3">
               <i class="glyphicon glyphicon-question-sign"></i><br>
@@ -77,23 +73,23 @@
       <hr>
       <table class="table table-striped">
         <thead>
-          <tr><th>All Trips</th><th>Duration</th><th>Start Date</th><th>Start Station</th><th>End Date</th><th>End Station</th><th>Bike ID</th><th>Subscription ID</th><th>Zipcode ID</th><th>&nbsp;</th></tr>
+          <tr><th>Duration</th><th>Start Date</th><th>Start Station</th><th>End Date</th><th>End Station</th><th>Bike ID</th><th>Subscription Type</th><th>Zipcode</th><th>&nbsp;</th></tr>
         </thead>
         <tbody>
           <% @trips.each do |trip| %>
-          <tr class="all-stations-info">
+          <tr>
             <td><%= trip.duration %></td>
             <td><%= trip.start_date %></td>
-            <td><%= trip.start_station_id %></td>
+            <td><%= trip.start_station.try(:name) %></td>
             <td><%= trip.end_date %></td>
-            <td><%= trip.end_station_id %></td>
+            <td><%= trip.end_station.try(:name) %></td>
             <td><%= trip.bike_id %></td>
-            <td><%= trip.subscription_id %></td>
-            <td><%= trip.zipcode_id %></td>
-
-						<td><form action="/trips/<%= @trips.id %>" method="post">
+            <td><%= trip.subscription.try(:subscription) %></td>
+            <td><%= trip.zipcode.try(:zip_code) %></td>
+            <td><a href="/trips/<%= trip.id %>/edit"><button type="button" class="btn btn-info">Edit Trip</button></a>
+						<td><form action="/trips/<%= trip.id %>" method="post">
               <input type="hidden" name="_method" value="DELETE" />
-              <input type="submit" value="Delete Station" />
+              <input class="btn btn-info" type="submit" value="Delete Trip" />
             </form></td>
           </tr>
           <% end %>
@@ -101,8 +97,9 @@
       </table>
       <div>
         <ul>
-          <li><a href="trips/page/<%= @previous %>"></a>Previous</li>
-          <li><a href="trips/page/<%= @next %>"></a>Next</li>
+					<%= will_paginate @trips %>
+          <!-- <li><a href="/trips/page/<%= @previous %>">Previous</a></li>
+          <li><a href="/trips/page/<%= @next %>">Next</a></li> -->
         </ul>
       </div>
 
@@ -110,4 +107,3 @@
 
       </div>
     </div>
-  </div>

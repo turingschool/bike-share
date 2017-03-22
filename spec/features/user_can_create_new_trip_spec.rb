@@ -9,7 +9,7 @@ RSpec.describe "As a user tries to create a trip" do
     fill_in "trip[end_date]", with: "2013/09/04"
     fill_in "trip[end_station_name]", with: "Jersey"
     fill_in "trip[bike_id]", with: 123
-    fill_in "trip[subscription_type_id]", with: "Subscriber"
+    fill_in "subscription_type[name]", with: "Subscriber"
     fill_in "trip[zip_code]", with: 12345
 
     click_on "Submit"

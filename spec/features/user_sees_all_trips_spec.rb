@@ -2,10 +2,14 @@ require_relative '../spec_helper'
 require 'pry'
 
 RSpec.describe "A user can view trip" do
+  before(:each) do
+    Trip.create(duration: 63, start_date: "2013/8/28", start_station_name: "South Van Ness at Market", end_date: "2013/08/29", end_station_name: "South Van Ness at Market", bike_id: 520, subscription_type_id: 1, zip_code: 94127)
+    SubscriptionType.create(name: "Subscriber")
+   end
   it "and has all content" do
-    Trip.create(duration: 63, start_date: "2013/8/28", start_station_name: "South Van Ness at Market", end_date: "2013/08/29", end_station_name: "South Van Ness at Market", bike_id: 520, subscription_type_id: "Subscriber", zip_code: 94127)
+
     visit '/trips'
-   
+
     expect(page).to have_content("Duration")
     expect(page).to have_content("Start Date")
     expect(page).to have_content("Start Station Name")
@@ -14,7 +18,7 @@ RSpec.describe "A user can view trip" do
     expect(page).to have_content("Bike ID")
     expect(page).to have_content("Subscription Type")
     expect(page).to have_content("Zip Code")
-    
+
     expect(page).to have_content("63")
     expect(page).to have_content("2013-08-28")
     expect(page).to have_content("South Van Ness at Market")

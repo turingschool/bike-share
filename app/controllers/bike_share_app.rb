@@ -147,6 +147,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/trips/:id' do
+    @sub_type = SubscriptionType.find_or_create_by(params["subscription_type"])
+    params[:trip]["subscription_type_id"] = @sub_type.id
     @trip = Trip.update(params[:id].to_i, params[:trip])
     redirect '/trips'
     #redirect '/trips/#{@trip.id}' isn't working

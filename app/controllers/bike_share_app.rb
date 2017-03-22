@@ -2,9 +2,9 @@ require 'pry'
 require_relative 'pagination'
 
 class BikeShareApp < Sinatra::Base
-  
+
   set :root, File.expand_path("..", __dir__)
-    
+
   set :method_override, true
 
     include Pagination
@@ -80,7 +80,7 @@ class BikeShareApp < Sinatra::Base
 
 
   get '/conditions/:id/edit' do
-    @condition = Condition.find(params[:id]
+    @condition = Condition.find(params[:id])
     erb :"conditions/edit"
   end
 
@@ -113,6 +113,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/trips' do
+    @sub_type = SubscriptionType.find_or_create_by(params["subscription_type"])
+    params[:trip]["subscription_type_id"] = @sub_type.id
     @trip = Trip.create(params[:trip])
     redirect '/trips'
   end
@@ -145,6 +147,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/trips/:id' do
+    @sub_type = SubscriptionType.find_or_create_by(params["subscription_type"])
+    params[:trip]["subscription_type_id"] = @sub_type.id
     @trip = Trip.update(params[:id].to_i, params[:trip])
     redirect '/trips'
     #redirect '/trips/#{@trip.id}' isn't working

@@ -3,7 +3,7 @@ require_relative "../spec_helper"
 RSpec.describe Trip do
   describe "knows attributes" do
 
-    let (:trip) {Trip.create(duration: 63, start_date: "2013/8/28", start_station_name: "South Van Ness at Market", end_date: "2013/08/29", end_station_name: "South Van Ness at Market", bike_id: 520, subscription_type_id: "Subscriber", zip_code: 94127)}
+    let (:trip) {Trip.create(duration: 63, start_date: "2013/8/28", start_station_name: "South Van Ness at Market", end_date: "2013/08/29", end_station_name: "South Van Ness at Market", bike_id: 520, subscription_type_id: 1, zip_code: 94127)}
 
     it "returns trip duration" do
       result = trip.duration
@@ -21,7 +21,7 @@ RSpec.describe Trip do
     end
 
     it "returns end date" do
-      
+
       result = trip.end_date
       expect(result).to eq(Date.strptime("2013/8/29", '%Y/%m/%d'))
     end
@@ -38,7 +38,7 @@ RSpec.describe Trip do
 
     it "returns subscription type" do
       result = trip.subscription_type_id
-      expect(result).to eq("Subscriber")
+      expect(result).to eq(1)
     end
 
     it "returns zip code" do
@@ -83,7 +83,7 @@ RSpec.describe Trip do
       expect(trip).to_not be_valid
     end
 
-  
+
     it "should be valid with all attributes" do
       trip = Trip.create(duration: 63, start_date: "2013/8/28", start_station_name: "South Van Ness at Market", end_date: "2013/08/29", end_station_name: "South Van Ness at Market", bike_id: 520, subscription_type_id: "Subscriber", zip_code: 94127)
       expect(trip).to be_valid

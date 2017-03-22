@@ -35,7 +35,6 @@ open_contents.each do |row|
   next if row[:zip_code].nil? || row[:zip_code].length < 5
 
 subscription = SubscriptionType.find_or_create_by(name: row[:subscription_type])
-
 start_date = row[:start_date]
   row[:start_date] = Date.strptime(start_date, '%m/%d/%Y')
 end_date = row[:end_date]
@@ -44,7 +43,7 @@ end_date = row[:end_date]
               start_date: row[:start_date],
               start_station_name: row[:start_station_name],
               end_date: row[:end_date],
-              end_station_name: row[:end_station_name],        
+              end_station_name: row[:end_station_name],
               bike_id: row[:bike_id],
               subscription_type_id: subscription.id,
               zip_code: row[:zip_code]

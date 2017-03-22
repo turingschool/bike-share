@@ -4,10 +4,10 @@ require 'pry'
 RSpec.describe "As a user visits station dashboard" do
 
   before(:each) do
-    Station.create(name:'San Jose Diridon Caltrain Station', city: "San Jose", dock_count: 27, installation_date: "8/1/2013")
-    Station.create(name: "Denver Station", city: "Denver", dock_count: 25, installation_date: "8/6/2012")
-    Station.create(name: "Test Station", city: "Denver", dock_count: 55, installation_date: "8/6/2015")
-    Station.create(name: "Golden Station", city: "Denver", dock_count: 35, installation_date: "8/9/2016")
+    Station.create(name:'San Jose Diridon Caltrain Station', city_id: 1, dock_count: 27, installation_date: "8/1/2013")
+    Station.create(name: "Denver Station", city_id: 1, dock_count: 25, installation_date: "8/6/2012")
+    Station.create(name: "Test Station", city_id: 1, dock_count: 55, installation_date: "8/6/2015")
+    Station.create(name: "Golden Station", city_id: 1, dock_count: 35, installation_date: "8/9/2016")
   end
 
   it "they can see content" do

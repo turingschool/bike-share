@@ -103,10 +103,10 @@ class BikeShareApp < Sinatra::Base
   post '/trips' do
     @trip = Trip.create(params[:trip])
     redirect '/trips'
+  end
 
   delete '/conditions/:id' do
     @condition = Condition.destroy(params[:id])
     redirect '/conditions'
-
   end
 end

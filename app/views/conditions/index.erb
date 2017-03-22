@@ -12,6 +12,11 @@
   <p>Average Wind Speed: <%= condition.mean_wind_speed %> mph</p>
   <p>Precipitation: <%= condition.precipitation %> inches</p>
   <br>
+  <a class="btn btn-primary" href='/conditions/<%= condition.id %>/edit'>edit</a>
+  <form action="/conditions/<%= condition.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input class="btn btn-danger" type="submit" value="Delete Condition">
+  </form>
 <% end %>
 
 <%= will_paginate @conditions %>

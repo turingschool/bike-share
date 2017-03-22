@@ -100,7 +100,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/conditions' do
-    @weathers = Weather.all.paginate(:page => params[:page], :per_page => 5)
+    @weathers = Weather.all.paginate(:page => params[:page], :per_page => 30)
     erb :"weathers/weather_index"
   end
 

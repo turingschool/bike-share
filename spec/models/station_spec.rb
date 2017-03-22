@@ -119,4 +119,84 @@ RSpec.describe Station do
     end
   end
 
+    describe "#frequent_destination" do
+    it "most frequent destination station from a particular station" do
+      City.create(name: "San Jose")
+      station_1 = Station.create(name: "Union Station", dock_count: 10, installation_date: "Wed, 09 Apr 2014", city_id: 1)
+      station_2 = Station.create(name: "Penn Station", dock_count: 10, installation_date: "Fri, 11 Apr 2014", city_id: 1)
+      station_3 = Station.create(name: "Grand Central Station", dock_count: 20, installation_date: "Tue, 15 Apr 2014", city_id: 1)
+      Bike.create(bike_number: 23)
+      Bike.create(bike_number: 25)
+      ZipCode.create(zip_code: 80210)
+      Trip.create(duration: 60, start_date: "24/9/2014", start_station_id: 1, end_date: "23/9/2014", end_station_id: 2, bike_id: 1, subscription_type_id: 1, zip_code_id: 1)
+      Trip.create(duration: 40, start_date: "23/9/2014", start_station_id: 1, end_date: "23/9/2014", end_station_id: 1, bike_id: 2, subscription_type_id: 1, zip_code_id: 1)
+      Trip.create(duration: 40, start_date: "23/9/2014", start_station_id: 2, end_date: "23/9/2014", end_station_id: 2, bike_id: 2, subscription_type_id: 1, zip_code_id: 1)
+      expect(station_1.frequent_destination).to eq("Penn Station")
+    end
+  end
+
+  describe "#frequent_origination" do
+    it "most frequent origination station from a particular station" do
+      City.create(name: "San Jose")
+      station_1 = Station.create(name: "Union Station", dock_count: 10, installation_date: "Wed, 09 Apr 2014", city_id: 1)
+      station_2 = Station.create(name: "Penn Station", dock_count: 10, installation_date: "Fri, 11 Apr 2014", city_id: 1)
+      station_3 = Station.create(name: "Grand Central Station", dock_count: 20, installation_date: "Tue, 15 Apr 2014", city_id: 1)
+      Bike.create(bike_number: 23)
+      Bike.create(bike_number: 25)
+      ZipCode.create(zip_code: 80210)
+      Trip.create(duration: 60, start_date: "24/9/2014", start_station_id: 1, end_date: "23/9/2014", end_station_id: 2, bike_id: 1, subscription_type_id: 1, zip_code_id: 1)
+      Trip.create(duration: 40, start_date: "23/9/2014", start_station_id: 1, end_date: "23/9/2014", end_station_id: 2, bike_id: 2, subscription_type_id: 1, zip_code_id: 1)
+      Trip.create(duration: 40, start_date: "23/9/2014", start_station_id: 2, end_date: "23/9/2014", end_station_id: 2, bike_id: 2, subscription_type_id: 1, zip_code_id: 1)
+      expect(station_2.frequent_origination).to eq("Union Station")
+    end
+  end
+
+  describe "#busiest_day" do
+    it "returns day with most trips" do
+      City.create(name: "San Jose")
+      station_1 = Station.create(name: "Union Station", dock_count: 10, installation_date: "Wed, 09 Apr 2014", city_id: 1)
+      station_2 = Station.create(name: "Penn Station", dock_count: 10, installation_date: "Fri, 11 Apr 2014", city_id: 1)
+      station_3 = Station.create(name: "Grand Central Station", dock_count: 20, installation_date: "Tue, 15 Apr 2014", city_id: 1)
+      Bike.create(bike_number: 23)
+      Bike.create(bike_number: 25)
+      ZipCode.create(zip_code: 80210)
+      Trip.create(duration: 60, start_date: "24/9/2014", start_station_id: 1, end_date: "23/9/2014", end_station_id: 2, bike_id: 1, subscription_type_id: 1, zip_code_id: 1)
+      Trip.create(duration: 40, start_date: "24/9/2014", start_station_id: 1, end_date: "23/9/2014", end_station_id: 1, bike_id: 2, subscription_type_id: 1, zip_code_id: 1)
+      Trip.create(duration: 40, start_date: "23/9/2014", start_station_id: 2, end_date: "23/9/2014", end_station_id: 2, bike_id: 2, subscription_type_id: 1, zip_code_id: 1)
+      expect(station_1.busiest_day.to_s).to eq("2014-09-24")
+    end
+  end
+
+  describe "#max_zip_code_count" do
+    it "returns most frequent zip code" do
+      City.create(name: "San Jose")
+      station_1 = Station.create(name: "Union Station", dock_count: 10, installation_date: "Wed, 09 Apr 2014", city_id: 1)
+      station_2 = Station.create(name: "Penn Station", dock_count: 10, installation_date: "Fri, 11 Apr 2014", city_id: 1)
+      station_3 = Station.create(name: "Grand Central Station", dock_count: 20, installation_date: "Tue, 15 Apr 2014", city_id: 1)
+      Bike.create(bike_number: 23)
+      Bike.create(bike_number: 25)
+      ZipCode.create(zip_code: 80210)
+      Trip.create(duration: 60, start_date: "24/9/2014", start_station_id: 1, end_date: "23/9/2014", end_station_id: 2, bike_id: 1, subscription_type_id: 1, zip_code_id: 1)
+      Trip.create(duration: 40, start_date: "24/9/2014", start_station_id: 1, end_date: "23/9/2014", end_station_id: 1, bike_id: 2, subscription_type_id: 1, zip_code_id: 1)
+      Trip.create(duration: 40, start_date: "23/9/2014", start_station_id: 2, end_date: "23/9/2014", end_station_id: 2, bike_id: 2, subscription_type_id: 1, zip_code_id: 1)
+      expect(station_1.max_zip_code_count.to_s).to eq("80210")
+    end
+  end
+
+  describe "#most_frequent_bike" do
+    it "returns most used bike" do
+      City.create(name: "San Jose")
+      station_1 = Station.create(name: "Union Station", dock_count: 10, installation_date: "Wed, 09 Apr 2014", city_id: 1)
+      station_2 = Station.create(name: "Penn Station", dock_count: 10, installation_date: "Fri, 11 Apr 2014", city_id: 1)
+      station_3 = Station.create(name: "Grand Central Station", dock_count: 20, installation_date: "Tue, 15 Apr 2014", city_id: 1)
+      Bike.create(bike_number: 23)
+      Bike.create(bike_number: 25)
+      ZipCode.create(zip_code: 80210)
+      Trip.create(duration: 60, start_date: "24/9/2014", start_station_id: 1, end_date: "23/9/2014", end_station_id: 2, bike_id: 2, subscription_type_id: 1, zip_code_id: 1)
+      Trip.create(duration: 40, start_date: "24/9/2014", start_station_id: 1, end_date: "23/9/2014", end_station_id: 1, bike_id: 2, subscription_type_id: 1, zip_code_id: 1)
+      Trip.create(duration: 40, start_date: "23/9/2014", start_station_id: 2, end_date: "23/9/2014", end_station_id: 2, bike_id: 1, subscription_type_id: 1, zip_code_id: 1)
+      expect(station_1.most_frequent_bike).to eq(25)
+    end
+  end
+
 end

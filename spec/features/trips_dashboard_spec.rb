@@ -19,16 +19,16 @@ RSpec.describe "when a user visits /trips-dashboard" do
     
     visit "/trips-dashboard"
 
-    expect(page).to have_content("Average Ride Duration: 70 minutes")
-    expect(page).to have_content("Longest ride: 110 minutes")
-    expect(page).to have_content("Shortest ride: 40 minutes")
-    expect(page).to have_content("Most frequent starting station: Union Station")
-    expect(page).to have_content("Most frequent ending station: Penn Station")
-    expect(page).to have_content("Rides by month:")
-    expect(page).to have_content("Most popular bike: Bike 23")
-    expect(page).to have_content("Least popular bike: Bike 25")
-    expect(page).to have_content("Subcription breakdown: Subscriber: 66%(2), Customer: 33%(1)") 
-    expect(page).to have_content("Busiest day: 23/9/2014 - 2 trip(s)")
-    expect(page).to have_content("Least busiest day: 23/8/2015 - 1 trip(s)")
+    expect(page).to have_content("Average Ride Duration: 70.0 minutes")
+    expect(page).to have_content("Longest Ride: 110 minutes")
+    expect(page).to have_content("Shortest Ride: 40 minutes")
+    expect(page).to have_content("Most Frequent Starting Station: Union Station")
+    expect(page).to have_content("Most Frequent Ending Station: Penn Station")
+    # expect(page).to have_content("Rides by month:")
+    expect(page).to have_content("Most Popular Bike: Bike 23 Trips: 2")
+    expect(page).to have_content("Least Popular Bike: Bike 25 Trips: 1")
+    expect(page).to have_content("Customer: 33.33% (1)") 
+    expect(page).to have_content("Busiest Day: 2014-09-23 - 2 trip(s)")
+    expect(page).to have_content("Least Busy Day: 2015-08-23 - 1 trip(s)")
   end
 end

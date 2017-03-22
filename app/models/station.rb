@@ -37,4 +37,57 @@ class Station < ActiveRecord::Base
     find_by(installation_date: minimum(:installation_date)).name
   end
 
+  def destination_counts
+    start_trips.group(:end_station_id).count(:id)
+  end
+  
+  def max_destination_station
+    destination_counts.max_by{|k, v| v}.first
+  end
+  
+  def frequent_destination
+    Station.find(max_destination_station).name
+  end
+
+  def origination_counts
+    end_trips.group(:start_station_id).count(:id)
+  end
+  
+  def max_origination_station
+    origination_counts.max_by{|k,v| v}.first
+  end
+  
+  def frequent_origination
+    Station.find(max_origination_station).name
+  end
+
+  def start_date_count
+    start_trips.group(:start_date).count(:id)
+  end
+  
+  def busiest_day
+    start_date_count.max_by{|k,v| v}.first
+  end
+  
+  def zip_code_counts
+    start_trips.group(:zip_code).count(:id)
+  end
+
+  def max_zip_code_count
+    zip_code_counts.max_by{|k,v| v}.first.zip_code
+  end
+
+  def bike_count
+    start_trips.group(:bike_id).count(:id)
+  end
+
+  def max_bike_count
+    bike_count.max_by{|k,v| v}.first
+  end
+      
+  def most_frequent_bike
+    Bike.find(max_bike_count).bike_number
+  end
+  
+
 end

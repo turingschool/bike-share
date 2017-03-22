@@ -76,7 +76,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/trips' do
-    binding.pry
     trip = params['trip']
     Trip.create(duration: trip['duration'].to_i,
                 start_date: DateTime.parse(trip['start_date']),
@@ -95,5 +94,11 @@ class BikeShareApp < Sinatra::Base
     @trips = Trip.find_each(:batch_size => 30, :start => batch_start, :finish => batch_start+29)
 
     erb :"trips/page"
+  end
+
+  get '/trips/:id' do
+    @trip = Trip.find(params[:id])
+
+    erb :"trips/show"
   end
 end

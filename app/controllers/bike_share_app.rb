@@ -137,7 +137,6 @@ class BikeShareApp < Sinatra::Base
     @page_number = params["page"].to_i
     batch_start = ((params["page"].to_i - 1) * 30) + 1
     @trips = Trip.find_each(batch_size: 30, start: batch_start, finish: batch_start + 29)
-
     erb :"trips/page"
   end
 
@@ -164,6 +163,9 @@ class BikeShareApp < Sinatra::Base
     trip['start_station'] = Station.find_by(name: trip['start_station'])
     trip['end_station'] = Station.find_by(name: trip['end_station'])
     trip['bike'] = Bike.find_by(bin: trip['bike'])
+    date = trip['start_date'].to_date
+
+    trip['weather_condition'] = WeatherCondition.find_by(date: date)
 
     Trip.update(id, params['trip'])
 

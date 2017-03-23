@@ -1,5 +1,15 @@
 require_relative "../spec_helper"
 
+
+def create_trip_set
+  x = 4
+  15.times do
+    duration = 60 + x
+    Trip.create(duration: duration, start_date: "2013/8/28", start_station_name: "South Van Ness at Market", end_date: "2013/08/29", end_station_name: "South Van Ness at Market", bike_id: 520, subscription_type_id: "Subscriber", zip_code: 94127)
+    x += 15
+  end
+end
+
 RSpec.describe Trip do
   describe "knows attributes" do
 
@@ -21,7 +31,6 @@ RSpec.describe Trip do
     end
 
     it "returns end date" do
-
       result = trip.end_date
       expect(result).to eq(Date.strptime("2013/8/29", '%Y/%m/%d'))
     end
@@ -89,4 +98,24 @@ RSpec.describe Trip do
       expect(trip).to be_valid
     end
   end
+
+  describe "dashboard calculations" do
+
+    it "can average trip durations" do
+      create_trip_set
+      expect(Trip.average_ride_duration).to eq(169.0)
+    end
+
+    it "can find lowest trip duration" do
+      create_trip_set
+      expect(Trip.shortest_ride).to eq(64)
+    end
+
+    it "can find longest trip duration" do
+      create_trip_set
+      expect(Trip.longest_ride).to eq(274)
+    end
+  end
+
+
 end

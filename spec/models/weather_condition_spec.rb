@@ -108,10 +108,6 @@ RSpec.describe WeatherCondition do
     end
   end
 
-  # describe ".total " do
-  #   expect(@weather.total)
-  # end
-
   describe "relationships between trips and weather" do
     it "every weather has many trips" do
 

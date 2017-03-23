@@ -1,0 +1,27 @@
+<h1>All Trips</h1>
+
+<a href="/trips-dashboard">Trip Stats</a>
+<a href="/trips/new">Create a New Trip</a>
+
+
+<div class="model_index">
+  <% @trips.each do |trip| %>
+    <div class="model_home">
+      <p> <a href="/trips/<%= trip.id %>"> <button> Trip from <%= trip.start_station.try(:name) %> to <%= trip.end_station.try(:name) %></button></p></a><br>
+      <p>Bike ID: <%= trip.bike_id %></p><br>
+      <p>Trip Duration (in minutes): <%= trip.duration %></p><br>
+      <p>End Date: <%= trip.end_date %></p><br>
+      <p>Subscription Type: <%= trip.subscription_type.try(:flavor)  %></p>
+      <p>Zipcode: <%= trip.zip_code %></p><br>
+      <a href="/trips/<%= trip.id %>/edit">Edit Trip</a>
+
+      <form action="/trips/<%= trip.id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete">
+      </form>
+  </div>
+  <% end %>
+
+</div>
+
+<%= will_paginate @trips %>

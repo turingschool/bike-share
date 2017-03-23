@@ -1,0 +1,125 @@
+
+<body>
+
+<a href="/trips">Return to all Trips</a>
+
+  <p>All Station Count: <%= Station.count %></p>
+  <p>Average Bikes (based on docks): <%= Station.average_bikes %></p>
+  <p>Most Bikes (based on docks): <%= Station.most_bikes %></p>
+  <p>Station(s) with most bikes (based on docks): <%= Station.stations_by_most_docks %></p>
+  <p>Fewest bikes (based on docks): <%= Station.fewest_bikes %></p>
+  <p>Station(s) with fewest bikes (based on docks): <%= Station.stations_by_least_docks %></p>
+  <p>Newest Station: <%= Station.newest_station.name %></p>
+  <p>Oldest Station: <%= Station.oldest_station.name %></p>
+
+<% Trip.all.each do |trip| %>
+  <%= trip.start_date.year %>
+<% end %>
+
+<%= @monthly_totals %>
+
+  <table border="1">
+    <tr>
+      <th>Month</th>
+      <th>2013</th>
+      <th>2014</th>
+    </tr>
+
+    <tr>
+      <td>January</td>
+      <td><%= @monthly_totals[2013][0] %></td>
+      <td><%= @monthly_totals[2013][0] %></td>
+    </tr>
+
+
+    <tr>
+      <td>February</td>
+      <td><%= @monthly_totals[2013][1] %></td>
+      <td><%= @monthly_totals[2013][1] %></td>
+    </tr>
+
+    <tr>
+      <td>March</td>
+      <td><%= @monthly_totals[2013][2] %></td>
+      <td><%= @monthly_totals[2013][2] %></td>
+    </tr>
+
+    <tr>
+      <td>April</td>
+      <td><%= @monthly_totals[2013][3] %></td>
+      <td><%= @monthly_totals[2013][3] %></td>
+    </tr>
+
+    <tr>
+      <td>May</td>
+      <td><%= @monthly_totals[2013][4] %></td>
+      <td><%= @monthly_totals[2013][4] %></td>
+    </tr>
+
+    <tr>
+      <td>June</td>
+      <td><%= @monthly_totals[2013][5] %></td>
+      <td><%= @monthly_totals[2013][5] %></td>
+    </tr>
+
+    <tr>
+      <td>July</td>
+      <td><%= @monthly_totals[2013][6] %></td>
+      <td><%= @monthly_totals[2013][6] %></td>
+    </tr>
+
+    <tr>
+      <td>August</td>
+      <td><%= @monthly_totals[2013][7] %></td>
+      <td><%= @monthly_totals[2013][7] %></td>
+    </tr>
+
+    <tr>
+      <td>September</td>
+      <td><%= @monthly_totals[2013][8] %></td>
+      <td><%= @monthly_totals[2013][8] %></td>
+    </tr>
+
+    <tr>
+      <td>October</td>
+      <td><%= @monthly_totals[2013][9] %></td>
+      <td><%= @monthly_totals[2013][9] %></td>
+    </tr>
+
+    <tr>
+      <td>November</td>
+      <td><%= @monthly_totals[2013][10] %></td>
+      <td><%= @monthly_totals[2013][10] %></td>
+    </tr>
+
+    <tr>
+      <td>December</td>
+      <td><%= @monthly_totals[2013][11] %></td>
+      <td><%= @monthly_totals[2013][11] %></td>
+    </tr>
+
+  </table>
+
+  <table border="1">
+    <tr>
+      <th>Subscription Type</th>
+      <th>Total</th>
+      <th>Percent</th>
+    </tr>
+
+    <% @subscription_counts.each do |subscription_type, counts| %>
+      <tr>
+        <td><%= subscription_type %></td>
+        <td><%= counts %></td>
+        <td><%= (counts*100.0/@all_subscriptions) %></td>
+      </tr>
+    <% end %>
+</table>
+
+
+<p>The most trips, <%= Trip.most_trips_date_count %>, were taken on <%= Trip.highest_number_trips_date %></p>
+<p>The fewest trips, <%= Trip.fewest_trips_date_count %>, were taken on <%= Trip.fewest_number_trips_date%></p>
+
+
+
+</body>

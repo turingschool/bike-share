@@ -1,0 +1,96 @@
+
+/* typography */
+h1, h2, h3, p, li {
+  font-family: 'Oswald', sans-serif;
+  margin: 0px 40px 10px 40px;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+
+.model_home {
+  margin: 1em;
+  text-align: center;
+  width: 300px;
+  background-color: lightgrey;
+  border: 2px black solid;
+  border-radius: 60px;
+  padding: 1em;
+}
+
+.model_index {
+  display: flex;
+  flex-grow: 2;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+a {
+  text-decoration: none
+  color: #282c34;
+}
+
+a:hover {
+  color: #4a4e65;
+}
+
+/* station styling */
+.station_button {
+  border: 2px solid;
+  border-radius: 5px;
+  background-color: #007fe9;
+  margin: 20px;
+
+}
+
+.model_home a {
+  text-decoration: none;
+  color: black;
+}
+
+/*
+forcing footer to the bottom per
+http://matthewjamestaylor.com/blog/keeping-footers-at-the-bottom-of-the-page
+*/
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  text-align: center;
+}
+
+#container {
+  min-height: 100%;
+  position: relative;
+}
+
+#header {
+  background: #fafafb;
+  padding: 10px;
+  text-align: center;
+}
+
+#body {
+  background-image: URL("https://images5.alphacoders.com/487/thumb-1920-487129.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 10px;
+  padding-bottom: 60px; /* height*/
+}
+
+#footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 60px; /* height of footer */
+  background: #fafafb;
+  text-align: center;
+}
+
+.global_nav {
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin: 0px 40px 10px 40px;
+}

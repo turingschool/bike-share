@@ -38,11 +38,10 @@ RSpec.describe "when a user visits /conditions/1" do
 
     visit '/conditions/1'
 
-    within "#edit-button button" do
+    within "#edit-button" do
       click_on "Edit"
     end
 
     expect(current_path).to eq("/conditions/1/edit")
   end
 end
-

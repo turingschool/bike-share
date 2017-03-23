@@ -1,8 +1,8 @@
-<div class="page-header">
-  <h1 class="title text-right">Conditions</h1><br/>
+<div class="page-header top">
+  <h1 class="title text-left">Conditions</h1><br/>
 </div>
 
-<div class="container all-stations">
+<div class="container all-trips">
 
   <div class="panel">
     <div class="panel-heading stations-panel">Conditions</div>
@@ -13,11 +13,13 @@
         <th>High Temperature</div></th>
         <th>Low Temperature</th>
         <th>Precipitation</th>
+        <th>Edit Info</th>
+        <th>Delete Condition</th>
       </tr>
 
       <% @conditions.each do |condition| %>
         <tr>
-          <td><div id="station-id"><a href="/conditions/<%= condition.id %>"><%= condition.date %></div></td>
+          <td><div id="condition-date"><a href="/conditions/<%= condition.id %>"><%= condition.date %></a></div></td>
           <td><%= condition.max_temp %> </td>
           <td><%= condition.min_temp %> </td>
           <td><%= condition.precipitation %></td>

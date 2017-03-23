@@ -14,11 +14,24 @@
           <input type="text" name='station[name]' value="<%= @station.name %>" class="form-control" placeholder="Name">
         </div>
 
+        <div class="form-group">
+          <label for="number_of_docks">Number of Docks:</label>
+          <input type="number" name='station[dock_count]' value="<%= @station.dock_count %>" class="form-control">
+        </div>
 
-        Number of Docks: <input type="number" name='station[dock_count]' value="<%= @station.dock_count %>"/><br/>
-        Installation Date: <input type="date" name='station[installation_date]' value="<%= @station.installation_date %>"/><br/>
-        City: <input type="number" name='station[city_id]' value="<%= @station.city_id %>"/><br/>
-        <input type="submit" value="Submit"/>
+        <div class="form-group">
+          <label for="installation_date">Installation Date:</label>
+          <input type="date" name='station[installation_date]' value="<%= @station.installation_date %>" class="form-control">
+        </div>
+
+
+        <div class="form-group">
+          <label for="city">City:</label>
+          <input type="number" name='station[city_id]' value="<%= @station.city_id %>" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
       </form>
     </div>
   </div>

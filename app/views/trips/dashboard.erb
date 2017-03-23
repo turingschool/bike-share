@@ -1,39 +1,45 @@
-    <h1 class="title">Trips Dashboard</h1>
+<div class="page-header top">
+  <h1 class="title text-left">Trips Dashboard</h1><br/>
+</div>
 
-    <ul>
-      <li>Average Ride Duration: <%= @trips.average_duration %> minutes</li>
-      <li>Longest Ride: <%= @trips.longest_trip.duration %> minutes</li>
-      <li>Shortest Ride: <%= @trips.shortest_trip.duration %> minutes</li>
-      <li>Most Frequent Starting Station: <%= @trips.name_popular_starting_station %></li>
-      <li>Most Frequent Ending Station: <%= @trips.name_popular_ending_station %></li>
-      <li>Most Popular Bike: Bike <%= @trips.most_popular_bike %> Trips: <%= @trips.most_ridden_bike_count %></li>
-      <li>Least Popular Bike: Bike <%= @trips.least_popular_bike %> Trips: <%= @trips.least_popular_bike_count %></li>
-      <li>Subscription Breakdown: <%= @trips.subscription_breakdown %></li>
-      <li>Busiest Day: <%= @trips.busiest_day %></li>
-      <li>Least Busy Day: <%= @trips.least_busy_day %></li>
-    </ul>
+<div class="container stations-dashboard">
+
+  <ul>
+    <li>Average Ride Duration: <span class="dashboard-value"><%= @trips.average_duration %> minutes</span></li>
+    <li>Longest Ride: <span class="dashboard-value"><%= @trips.longest_trip.duration %> minutes</span></li>
+    <li>Shortest Ride: <span class="dashboard-value"><%= @trips.shortest_trip.duration %> minutes</span></li>
+    <li>Most Frequent Starting Station: <span class="dashboard-value"><%= @trips.name_popular_starting_station %></span></li>
+    <li>Most Frequent Ending Station: <span class="dashboard-value"><%= @trips.name_popular_ending_station %></span></li>
+    <li>Most Popular Bike: Bike <span class="dashboard-value"><%= @trips.most_popular_bike %> Trips: <%= @trips.most_ridden_bike_count %></span></li>
+    <li>Least Popular Bike: Bike <span class="dashboard-value"><%= @trips.least_popular_bike %> Trips: <%= @trips.least_popular_bike_count %></span></li>
+    <li>Subscription Breakdown: <span class="dashboard-value"><%= @trips.subscription_breakdown %></span></li>
+    <li>Busiest Day: <span class="dashboard-value"><%= @trips.busiest_day %></span></li>
+    <li>Least Busy Day: <span class="dashboard-value"><%= @trips.least_busy_day %></span></li>
+  </ul>
+
+</div>
 
 
-<div class="container all-stations">
+<div class="container all-stations trips-dashboard">
   <div class="panel">
     <div class="panel-heading stations-panel">Month by Month Breakdown</div>
     <table class="table table-striped table-hover table-condensed table-bordered">
-    <tr>
-      <th>Year</th>
-      <% @trips.monthly_totals[2013].each do |k, v| %>
-        <th><%= k %></th>
-      <% end %>
-      <th>Subtotal</th>
-    </tr>
-    <% @trips.monthly_totals.each do |k, v| %>
       <tr>
-        <td><%= k %></td>
-          <% v.each do |k, v| %>
-            <td><%= v %></td>
-          <% end %>
-          <td><%= v.values.sum %></td>
+        <th>Year</th>
+        <% @trips.monthly_totals[2013].each do |k, v| %>
+          <th><%= k %></th>
+        <% end %>
+        <th>Subtotal</th>
       </tr>
-    <% end %>
+      <% @trips.monthly_totals.each do |k, v| %>
+        <tr>
+          <td><%= k %></td>
+            <% v.each do |k, v| %>
+              <td><%= v %></td>
+            <% end %>
+            <td><%= v.values.sum %></td>
+        </tr>
+      <% end %>
     </table>
   </div>
 </div>

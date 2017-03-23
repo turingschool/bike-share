@@ -1,6 +1,6 @@
 <body class="stations-show-bg">
   <div class="page-header top">
-    <h1 class="title text-left"><%= @station.name %></h1><br/>
+    <h1 class="title text-left"><%= @station.name %></h1>
   </div>
 
   <div class="container">
@@ -15,7 +15,8 @@
       <p>Busiest Day: <span class="dashboard-value"><%= @station.busiest_day %></span></p>
       <p>Most frequent customer zip code: <span class="dashboard-value"><%= @station.max_zip_code_count %></span></p>
       <p>Most frequently used bike: <span class="dashboard-value"><%= @station.most_frequent_bike %></span></p>
-      <button type="button"><a href="/stations/<%= @station.id %>/edit">Edit</a></span></button>
+
+      <button type="button"><span id="edit-button"><a href="/stations/<%= @station.id %>/edit">Edit</a></span></button>
 
       <form action="/stations/<%= @station.id %>" method="post">
         <div class="form-group">

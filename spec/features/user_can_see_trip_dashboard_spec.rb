@@ -5,13 +5,13 @@ RSpec.describe "As a user visits trip dashboard" do
 
   before(:each) do
     Trip.create(duration: 60, start_date: "2013/8/20 14:21", start_station_name: "South Van Ness at Market", end_date: "2013/08/21", end_station_name: "New York Station", bike_id: 520, subscription_type_id: 1, zip_code: 94127)
-    Trip.create(duration: 61, start_date: "2013/8/22", start_station_name: "Denver Statation", end_date: "2013/08/23", end_station_name: "Washington Station", bike_id: 521, subscription_type_id: 1, zip_code: 94127)
+    Trip.create(duration: 61, start_date: "2013/8/22", start_station_name: "Denver Station", end_date: "2013/08/23", end_station_name: "Washington Station", bike_id: 521, subscription_type_id: 1, zip_code: 94127)
     Trip.create(duration: 62, start_date: "2013/8/24", start_station_name: "Denver Station", end_date: "2013/08/25", end_station_name: "New York Station", bike_id: 522, subscription_type_id: 2, zip_code: 94127)
   end
 
   it "they can see content" do
       visit '/trips-dashboard'
-      within('h2') do   
+      within('h2') do
         expect(page).to have_content('Dashboard')
       end
 
@@ -28,12 +28,14 @@ RSpec.describe "As a user visits trip dashboard" do
       end
 
       within("body") do
-          expect(page).to have_content('Station with the most rides as a starting place: Denver Statiton')
+          expect(page).to have_content('Station with the most rides as a starting place: Denver Station')
       end
 
       within("body") do
           expect(page).to have_content('Station with the most rides as an ending place: New York Station')
       end
+    end
+  end
 
       # within("body") do
       #     expect(page).to have_content('Month by Month breakdown of number of rides with subtotals for each year:')
@@ -58,7 +60,7 @@ RSpec.describe "As a user visits trip dashboard" do
       # within("body") do
       #     expect(page).to have_content('Single date with the lowest number of trips with a count of those trips:')
       # end
-      
+
 
 
 

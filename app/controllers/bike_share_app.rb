@@ -139,6 +139,10 @@ class BikeShareApp < Sinatra::Base
   get '/trips/:id' do
     id = params[:id]
     @trip = Trip.find(id)
+    @start_trip_station_name = @trip.start_station_name
+    @end_trip_station_name = @trip.end_station_name
+    @number_of_rides_started = Trip.number_of_rides_started_at_station(@start_trip_station_name)
+    @number_of_rides_ended = Trip.number_of_rides_ended_at_station(@end_trip_station_name)
     erb :"trip/show"
   end
 
@@ -163,7 +167,11 @@ class BikeShareApp < Sinatra::Base
     @average_ride_duration = Trip.average_ride_duration
     @longest_ride = Trip.longest_ride
     @shortest_ride = Trip.shortest_ride
-    
+    @station_with_most_rides_start = Trip.station_with_most_rides_start_station
+    @station_name_most_rides_start = @station_with_most_rides_start.first
+    @station_count_most_rides_start = @station_with_most_rides_start.last
+    @station_with_most_rides_end = Trip.station_with_most_rides_end_station
+
     erb :"trip/dashboard"
   end
 end

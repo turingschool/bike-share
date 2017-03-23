@@ -36,12 +36,13 @@ open_contents.each do |row|
   next if row[:zip_code].nil? || row[:zip_code].length < 5
 
 subscription = SubscriptionType.find_or_create_by(name: row[:subscription_type])
-
   Trip.create!(duration: row[:duration],
-              start_date: DateTime.strptime(row[:start_date], "%m/%d/%Y %H:%M"),
+              start_date: DateTime.strptime(row[:start_date], '%m/%d/%Y'),
               start_station_name: row[:start_station_name],
-              end_date: DateTime.strptime(row[:end_date], "%m/%d/%Y %H:%M"),
+              start_station_id: row[:start_station_id],
+              end_date: DateTime.strptime(row[:end_date], '%m/%d/%Y'),
               end_station_name: row[:end_station_name],
+              end_station_id: row[:end_station_id],
               bike_id: row[:bike_id],
               subscription_type_id: subscription.id,
               zip_code: row[:zip_code]

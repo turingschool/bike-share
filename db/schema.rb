@@ -53,8 +53,10 @@ ActiveRecord::Schema.define(version: 20170322171233) do
     t.bigint   "duration"
     t.datetime "start_date"
     t.text     "start_station_name"
+    t.integer  "start_station_id"
     t.datetime "end_date"
     t.text     "end_station_name"
+    t.integer  "end_station_id"
     t.integer  "bike_id"
     t.bigint   "zip_code"
     t.datetime "created_at",           null: false

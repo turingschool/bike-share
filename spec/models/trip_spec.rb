@@ -1,4 +1,31 @@
 require_relative "../spec_helper"
+#SETUP
+#===========================================================
+STATIONS = ["South Van Ness at Market",
+"San Jose City Hall",
+"Mountain View City Hall",
+"San Jose City Hall",
+"South Van Ness at Market",
+"Golden Gate at Polk",
+"Santa Clara at Almaden",
+"South Van Ness at Market",
+"South Van Ness at Market",
+"South Van Ness at Market",
+"Golden Gate at Polk",
+"Golden Gate at Polk",
+]
+
+def create_trip_set_station_with_most_by_start
+  STATIONS.each do |station|
+    Trip.create(duration: 55, start_date: "2013/8/28", start_station_name:station, end_date: "2013/08/29", end_station_name: "South Van Ness at Market", bike_id: 520, subscription_type_id: "Subscriber", zip_code: 94127)
+  end
+end
+
+def create_trip_set_station_with_most_by_end
+  STATIONS.each do |station|
+    Trip.create(duration: 55, start_date: "2013/8/28", start_station_name:station, end_date: "2013/08/29", end_station_name: station, bike_id: 520, subscription_type_id: "Subscriber", zip_code: 94127)
+  end
+end
 
 
 def create_trip_set
@@ -9,7 +36,7 @@ def create_trip_set
     x += 15
   end
 end
-
+#=============================================================
 RSpec.describe Trip do
   describe "knows attributes" do
 
@@ -100,7 +127,6 @@ RSpec.describe Trip do
   end
 
   describe "dashboard calculations" do
-
     it "can average trip durations" do
       create_trip_set
       expect(Trip.average_ride_duration).to eq(169.0)
@@ -114,6 +140,18 @@ RSpec.describe Trip do
     it "can find longest trip duration" do
       create_trip_set
       expect(Trip.longest_ride).to eq(274)
+    end
+
+    it "can find station with most rides as starting place" do
+      create_trip_set_station_with_most_by_start
+      result = Trip.station_with_most_rides_start_station.first
+      expect(result).to eq("South Van Ness at Market")
+    end
+
+    it "can find station with most rides as starting place" do
+      create_trip_set_station_with_most_by_end
+      result = Trip.station_with_most_rides_end_station.first
+      expect(result).to eq("South Van Ness at Market")
     end
   end
 

@@ -3,7 +3,7 @@ require 'will_paginate/active_record'
 
 class BikeShareApp < Sinatra::Base
   set :method_override, true
-  layout "layout"
+
 
   # include Pagination
   include WillPaginate::Sinatra::Helpers
@@ -11,7 +11,7 @@ class BikeShareApp < Sinatra::Base
 #====================STATION=======================
 
   get "/" do
-    redirect "/stations_dashboard"  # change this to homepage when we have it
+    erb :"home"
   end
 
   get "/stations_dashboard" do

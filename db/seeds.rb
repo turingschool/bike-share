@@ -35,7 +35,7 @@ conditions.each do |condition|
                     precipitation:    condition[:precipitation_inches])
 end
 
-trips = (CSV.open'db/fixtures/big_trip_fixture.csv', headers: true, header_converters: :symbol)
+trips = (CSV.open'db/fixtures/really_big_trip_fixture.csv', headers: true, header_converters: :symbol)
 
 trips.each do |trip|
   next unless Station.find_by(name: trip[:start_station_name]) && Station.find_by(name: trip[:end_station_name])

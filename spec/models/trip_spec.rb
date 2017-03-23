@@ -79,7 +79,7 @@ RSpec.describe Trip do
 
     before do
       @trip1 = Trip.create(duration: 22, start_date: start_date, end_date: end_date, subscription_type: 'subscriber', bike_id: 1, start_station_id: 1, end_station_id: 2)
-      @trip2 = Trip.create(duration: 24, start_date: start_date, end_date: end_date, subscription_type: 'subscriber', start_station_id: 1, end_station_id: 2)
+      @trip2 = Trip.create(duration: 24, start_date: start_date, end_date: end_date, subscription_type: 'customer', start_station_id: 1, end_station_id: 2)
     end
 
     it 'can make its own name, with interpolation' do
@@ -120,7 +120,7 @@ RSpec.describe Trip do
 
 
       expect(Trip.most_popular_bikes).to eq([bike2])
-      expect(Trip.most_popular_bikes.first.trips.count).to eq(2)
+      expect(Trip.most_popular_bike_trips_count).to eq(2)
     end
 
     it 'knows the least popular bike and can count its rides' do
@@ -133,7 +133,11 @@ RSpec.describe Trip do
 
 
       expect(Trip.least_popular_bikes).to eq([bike1])
-      expect(Trip.least_popular_bikes.first.trips.count).to eq(1)
+      expect(Trip.least_popular_bike_trips_count).to eq(1)
+    end
+
+    it 'knows about subscription types' do
+
     end
   end
 

@@ -103,7 +103,7 @@ RSpec.describe Trip do
     end
 
     it 'knows the least popular starting station' do
-      expect(Trip.least_popular_starting_stations).to eq([end_station])
+      expect(Trip.most_popular_end_stations).to eq([end_station])
     end
 
     it 'knows the number of rides for a month' do

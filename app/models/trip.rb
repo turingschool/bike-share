@@ -33,6 +33,20 @@ class Trip < ActiveRecord::Base
     min = Trip.minimum(:duration)
     Trip.select {|t| t.duration == min}
   end
+
+  def self.most_popular_starting_stations
+    max = Station.all.max_by do |station|
+      station.start_trips.count
+    end.start_trips.count
+    Station.select {|s| s.start_trips.count == max}
+  end
+
+  def self.most_popular_end_stations
+    max = Station.all.max_by do |station|
+      station.end_trips.count
+    end.end_trips.count
+    Station.select {|s| s.end_trips.count == max}
+  end
 end
 
 #add trip-dashboard methods and trip dashboard file later

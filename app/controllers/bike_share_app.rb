@@ -41,8 +41,15 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations/:id' do
+    @trips = Trip
     @station = Station.find(params[:id])
-
+    @rides_started = @station.rides_started
+    @rides_ended = @station.rides_ended
+    @most_frequent_destination = @station.most_frequent_destination
+    @most_frequent_origination = @station.most_frequent_origination
+    @most_frequent_zip_code = @station.most_frequent_zip_code
+    @most_bikes_starting_here = @station.most_bikes_starting_here
+    # binding.pry
     erb :"stations/show"
   end
 

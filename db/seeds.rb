@@ -33,14 +33,13 @@ trips.each do |row|
   # binding.pry
 
   subscription = Subscription.find_or_create_by(subscription: row[:subscription_type])
-
+# binding.pry
   Trip.create(duration: row[:duration],
               start_date: DateTime.strptime(row[:start_date], "%m/%d/%Y %H:%M").to_s,
               start_station_id: row[:start_station_id],
               end_date: DateTime.strptime(row[:end_date], "%m/%d/%Y %H:%M").to_s,
               end_station_id: row[:end_station_id],
-              bike_id: bike,
-              subscription_type: row[:subscription_type],
+              bike_id: row[:bike_id],
               zipcode_id: zip_code.id,
               subscription_id: subscription.id
                  )

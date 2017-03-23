@@ -19,7 +19,7 @@ RSpec.describe Station do
 
   describe "validations" do
     it "can give date with highest trips at current station" do
-      expect(Station.date_with_highest_number_of_trips).to eq("2013-12-15")
+      expect(Station.date_with_highest_number_of_trips.first).to eq(("2013-12-15").to_date)
     end
   end
 end

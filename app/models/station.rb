@@ -59,9 +59,20 @@ class Station < ActiveRecord::Base
 
   def ending_ids
     all_trips_starting_at_id.map {|trip| trip.end_station_id}
+  end
+
+
+  def self.all_trips
+    Trip.all
+  end
+
+  def self.all_trips_date
+    all_trips.map {|trip| trip.start_date}
+  end
+
   def self.date_with_highest_number_of_trips
-    trip = Trip.find()
-    trip
+    hash = all_trips_date.group_by {|date| all_trips_date.count(date)}
+    hash.max_by {|key, value| key}[1].uniq
   end
 
   def sorted_destination

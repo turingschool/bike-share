@@ -86,7 +86,7 @@ html, body {
 }
 
 #body {
-  background-image: URL("https://previews.123rf.com/images/kittisaktaramas/kittisaktaramas1209/kittisaktaramas120900034/15514554-Stone-Brick-wall-seamless-Vector-illustration-background-texture-pattern-for-continuous-replicate-Stock-Vector.jpg");
+  /*background-image: URL("https://previews.123rf.com/images/kittisaktaramas/kittisaktaramas1209/kittisaktaramas120900034/15514554-Stone-Brick-wall-seamless-Vector-illustration-background-texture-pattern-for-continuous-replicate-Stock-Vector.jpg");*/
   padding: 10px;
   padding-bottom: 60px; /* height*/
 }

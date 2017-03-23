@@ -6,15 +6,24 @@ h1, h2, h3, p, li {
   letter-spacing: 2px;
   font-size: 20px;
 }
+h1 {
+  font-size: 40px;
+  text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+}
 
 .model_home {
   margin: 1em;
-  text-align: center;
+  text-align: left;
   width: 300px;
   background-color: lightgrey;
   border: 2px black solid;
   border-radius: 60px;
   padding: 1em;
+}
+
+.model_home button {
+font-size: 1em ;
+font-family: 'Oswald';
 }
 
 .model_index {
@@ -33,13 +42,19 @@ a:hover {
   color: #4a4e65;
 }
 
+button, a {
+  text-decoration: none;
+  color: black;
+
+}
+
 /* station styling */
 .station_button {
   border: 2px solid;
   border-radius: 5px;
   background-color: #007fe9;
   margin: 20px;
-
+  padding: 5px;
 }
 
 .model_home a {
@@ -71,7 +86,7 @@ html, body {
 }
 
 #body {
-  background-size: 100% 100%;
+  background-image: URL("https://previews.123rf.com/images/kittisaktaramas/kittisaktaramas1209/kittisaktaramas120900034/15514554-Stone-Brick-wall-seamless-Vector-illustration-background-texture-pattern-for-continuous-replicate-Stock-Vector.jpg");
   padding: 10px;
   padding-bottom: 60px; /* height*/
 }
@@ -83,6 +98,10 @@ html, body {
   height: 60px; /* height of footer */
   background: #fafafb;
   text-align: center;
+}
+
+.weather_body #body{
+  background-image: URL("https://static.pexels.com/photos/53594/blue-clouds-day-fluffy-53594.jpeg");
 }
 
 .global_nav {

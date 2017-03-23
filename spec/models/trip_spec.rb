@@ -3,9 +3,9 @@ require_relative '../spec_helper'
 RSpec.describe Trip do
 
   attr_reader :start_station,
-              :end_station,
-              :start_date,
-              :end_date
+    :end_station,
+    :start_date,
+    :end_date
 
   before do
     @start_date = DateTime.strptime('8/29/2013 14:01', '%m/%d/%Y %k:%M')
@@ -99,7 +99,7 @@ RSpec.describe Trip do
     end
 
     it 'knows the most popular starting station' do
-      expect(Trip.most_popular_starting_stations).to eq([start_station])
+      expect(Trip.most_popular_start_stations).to eq([start_station])
     end
 
     it 'knows the least popular starting station' do
@@ -107,7 +107,33 @@ RSpec.describe Trip do
     end
 
     it 'knows the number of rides for a month' do
+      expect('something').to eq('this')
+    end
 
+    it 'knows the most popular bike and can count its rides' do
+      bike1 = Bike.create(bin:1)
+      bike2 = Bike.create(bin:2)
+
+      bike1.trips << trip1
+      bike2.trips << trip2
+      bike2.trips << Trip.create(duration: 24, start_date: end_date, end_date: start_date, subscription_type: 'subscriber', start_station_id: 1, end_station_id: 2)
+
+
+      expect(Trip.most_popular_bikes).to eq([bike2])
+      expect(Trip.most_popular_bikes.first.trips.count).to eq(2)
+    end
+
+    it 'knows the least popular bike and can count its rides' do
+      bike1 = Bike.create(bin:1)
+      bike2 = Bike.create(bin:2)
+
+      bike1.trips << trip1
+      bike2.trips << trip2
+      bike2.trips << Trip.create(duration: 24, start_date: end_date, end_date: start_date, subscription_type: 'subscriber', start_station_id: 1, end_station_id: 2)
+
+
+      expect(Trip.least_popular_bikes).to eq([bike1])
+      expect(Trip.least_popular_bikes.first.trips.count).to eq(1)
     end
   end
 

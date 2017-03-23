@@ -34,7 +34,7 @@ class Trip < ActiveRecord::Base
     Trip.select {|t| t.duration == min}
   end
 
-  def self.most_popular_starting_stations
+  def self.most_popular_start_stations
     max = Station.all.max_by do |station|
       station.start_trips.count
     end.start_trips.count
@@ -46,6 +46,22 @@ class Trip < ActiveRecord::Base
       station.end_trips.count
     end.end_trips.count
     Station.select {|s| s.end_trips.count == max}
+  end
+
+  def self.most_popular_bikes
+    max = Bike.all.max_by do |bike|
+      bike.trips.count
+    end.trips.count
+
+    Bike.select {|b| b.trips.count == max}
+  end
+
+  def self.least_popular_bikes
+    min = Bike.all.min_by do |bike|
+      bike.trips.count
+    end.trips.count
+
+    Bike.select {|b| b.trips.count == min}
   end
 end
 

@@ -5,7 +5,7 @@ RSpec.describe Trip do
   describe "validations" do
 
     it "is valid with all attributes" do
-binding.pry
+
       trip = Trip.create({duration: 63,
                           start_station_id: 66,
                           end_station_id: 66,
@@ -113,31 +113,38 @@ binding.pry
       @trip_1 = Trip.create({duration: 63,
                           start_station_id: 1,
                           end_station_id: 1,
-                          bike_id: 520,
+                          bike_id: 1,
                           zipcode_id: 1,
                           subscription_id: 2,
-                          start_date: "2013-08-29 14:13:00",
-                          end_date: "2013-08-29 14:13:00" })
+                          start_date: "2013-12-05 14:13:00",
+                          end_date: "2013-12-05 14:13:00" })
 
       @trip_2 = Trip.create({duration: 63,
                             start_station_id: 2,
                             end_station_id: 1,
-                            bike_id: 520,
+                            bike_id: 1,
                             zipcode_id: 1,
                             subscription_id: 2,
-                            start_date: "2013-08-29 14:13:00",
-                            end_date: "2013-08-29 14:13:00" })
+                            start_date: "2013-05-23 14:13:00",
+                            end_date: "2013-05-23 14:13:00" })
 
       @trip_3 = Trip.create({duration: 133,
                             start_station_id: 2,
                             end_station_id: 1,
-                            bike_id: 52,
+                            bike_id: 2,
                             zipcode_id: 1,
-                            subscription_id: 2,
-                            start_date: "2013-08-29 14:13:00",
-                            end_date: "2013-08-29 14:13:00" })
+                            subscription_id: 1,
+                            start_date: "2013-05-23 14:13:00",
+                            end_date: "2013-05-23 14:13:00" })
 
-      @bike = Bike.create({bike_number: 520})
+      @bike_1 = Bike.create({bike_number: 520})
+
+      @bike_2 = Bike.create({bike_number: 52})
+
+      @subscription_1 = Subscription.create({subscription: "Subscriber"})
+
+      @subscription_2 = Subscription.create({subscription: "Customer"})
+
     end
 
     it "returns the average duration of a ride" do
@@ -177,7 +184,69 @@ binding.pry
     it "returns the most ridden bike with the total number of rides for that bike" do
 
       result = Bike.most_ridden_bike_and_total_rides
-      expect(result).to eq("2")
+      expect(result).to eq(2)
+    end
+
+    it "returns the least ridden bike with the total number of rides for that bike" do
+
+      result = Bike.least_ridden_bike_and_total_rides
+      expect(result).to eq(1)
+    end
+
+    it "returns user Subscriber subscription total" do
+
+      result = Subscription.subscriber_totals
+      expect(result).to eq(1)
+
+    end
+
+    it "returns user Subscriber subscription percentage of total" do
+
+      result = Subscription.subscriber_percentage
+      expect(result).to eq(34)
+
+    end
+
+    it "returns user Customer subscription total" do
+
+    result = Subscription.customer_totals
+    expect(result).to eq(2)
+
+    end
+
+    it "returns user Customer subscription percentage of total" do
+
+    result = Subscription.customer_percentage
+    expect(result).to eq(67)
+
+    end
+
+    it "returns the day with the most trips" do
+
+    result = Trip.day_with_most_trips
+    expect(result).to eq("2013-05-23 14:13:00")
+
+    end
+
+    it "returns the day with the least trips" do
+
+    result = Trip.day_with_least_trips
+    expect(result).to eq("2013-12-05 14:13:00")
+
+    end
+
+    it "returns the number of rides by month" do
+
+    result = Trip.rides_by_month
+    expect(result).to eq("2013-12-05 14:13:00")
+
+    end
+
+    it "returns the number of rides by year" do
+
+    result = Trip.rides_by_year
+    expect(result).to eq("2013-12-05 14:13:00")
+
     end
   end
 

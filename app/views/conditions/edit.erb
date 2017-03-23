@@ -1,0 +1,22 @@
+<h1>Edit Condition</h1>
+
+<form action="/conditions/<%=@condition.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT" />
+  <label for="">Date:</label>
+  <input type="textfield" name="condition[date]" value="<%= @condition.date %>">
+  <label for="">Max Temp:</label>
+  <input type="textfield" name="condition[max_temp]" value="<%= @condition.max_temp %>">
+  <label for="">Min Temp:</label>
+  <input type="textfield" name="condition[min_temp]" value="<%= @condition.min_temp %>">
+  <label for="">Mean Temp:</label>
+  <input type="textfield" name="condition[mean_temp]" value="<%= @condition.mean_temp %>">
+  <label for="">Mean Humidity:</label>
+  <input type="textfield" name="condition[mean_humidity]" value="<%= @condition.mean_humidity %>">
+  <label for="">Mean Visibility:</label>
+  <input type="textfield" name="condition[mean_visibility]" value="<%= @condition.mean_visibility %>">
+  <label for="">Mean Windspeed:</label>
+  <input type="textfield" name="condition[mean_wind_speed]" value="<%= @condition.mean_wind_speed %>">
+  <label for="">Precipitation:</label>
+  <input type="textfield" name="condition[precipitation]" value="<%= @condition.precipitation %>">
+  <input type="submit" value="Update Condition"/>
+</form>

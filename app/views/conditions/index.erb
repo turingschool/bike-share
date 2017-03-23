@@ -1,0 +1,48 @@
+<h1>All Conditions</h1>
+
+<a href="/conditions/new">
+  <button type="button" name="button">Create New Condition</button>
+</a>
+
+<a href="/condition-dashboard">
+  <button type="button" name="button">Dashboard</button>
+</a>
+
+<table class="conditions">
+  <tr>
+    <th>Date</th>
+    <th>Max Temp</th>
+    <th>Min Temp</th>
+    <th>Mean Temp</th>
+    <th>Mean Humidity</th>
+    <th>Mean Visibility</th>
+    <th>Mean Wind Speed</th>
+    <th>Precipitation</th>
+    <th></th>
+  </tr>
+
+  <% @conditions.each do |condition| %>
+    <tr>
+      <td><a href= "/conditions/<%=condition.id%>"><%=condition.date %></a></td>
+      <td><%= condition.max_temp %></td>
+      <td><%= condition.min_temp %></td>
+      <td><%= condition.mean_temp %></td>
+      <td><%= condition.mean_humidity %></td>
+      <td><%= condition.mean_visibility %></td>
+      <td><%= condition.mean_wind_speed %></td>
+      <td><%= condition.precipitation %></td>
+      <td>    <form action="/conditions/<%=condition.id%>" method="post">
+                  <input type="hidden" name="_method" value="DELETE" />
+                  <input type="submit" value="Delete" />
+                </form></td>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%=  %>
+<a href="/conditions/page/<%=@previous_page%>">
+  <button type="button" name="button">Previous</button>
+</a>
+<a href="/conditions/page/<%=@next_page%>">
+<button type="button" name="button">Next</button>
+</a>

@@ -1,6 +1,10 @@
 class BikeShareApp < Sinatra::Base
+
   get '/stations' do
-    @stations = Station.all # What's AR's sorting method?
+
+    @stations = Station.all.order(:name)
+
+    # if we want to extract order/sort from controller to the models look into this --> http://api.rubyonrails.org/classes/ActiveRecord/Scoping/Named/ClassMethods.html#method-i-scope
 
     erb :"stations/index"
   end
@@ -52,8 +56,13 @@ class BikeShareApp < Sinatra::Base
     erb :"stations/dashboard"
   end
 
+  # ------------------------------------------------------------------
+  # ------------------------------------------------------------------
+  # ------------------------------------------------------------------
+  # ------------------------------------------------------------------
+
   get '/weather_conditions' do
-    @weather_conditions = WeatherCondition.all
+    @weather_conditions = WeatherCondition.all.order(:date)
 
     erb :"weather_conditions/index"
   end
@@ -88,9 +97,11 @@ class BikeShareApp < Sinatra::Base
     redirect '/weather_conditions'
   end
 
-  get '/weather-dashboard' do
-    @station_total = Station.total
-# perform logic here before passing to the view
+  get "/weather-dashboard" do
+    @trips_temp_data = WeatherCondition.trips_by_temperature
+    @trips_precip_data = WeatherCondition.trips_by_precipitation
+    @trips_wind_speed_data = WeatherCondition.trips_by_wind_speed
+    @trips_visibility_data = WeatherCondition.trips_by_visibility
     erb :"weather_conditions/dashboard"
   end
 

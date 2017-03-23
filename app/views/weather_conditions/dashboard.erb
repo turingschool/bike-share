@@ -1,38 +1,140 @@
-<h2>WEATHER DASHBARD!</h2>
+<h6>WEATHER DASHBARD!</h6>
 <h6>with enthusiasm</h6>
-<ul>
-  <li>Number of weather records: <%= @station_total %></li>
-  <li>Average docks per station: <%= @station.find_average_docks %></li>
-  <li>Most docks available at a station: <%= @station.max_dock_count %></li>
+<h1> Weather Conditions Stats </h1>
+<h4>Number of Rides by Temperature</h4>
+<table class="table" id="number_of_rides_by_temp">
+  <tr>
+    <th>
+      Temperature
+    </th>
+    <th>
+      Max
+    </th>
+    <th>
+      Min
+    </th>
+    <th>
+      Mean
+    </th>
+  </tr>
+  <% @trips_temp_data.each do |range, data| %>
+    <tr>
+      <td>
+        <%= range %>
+      </td>
+      <td>
+        <%= data.values.max %>
+      </td>
+      <td>
+        <%= data.values.min %>
+      </td>
+      <td>
+        <%= (data.values.reduce(:+) / data.count).round(0).to_i %>
+      </td>
+    </tr>
+  <% end  %>
+</table>
 
-  <li class='most-docks'>
-    <h6>Station(s) with the most docks:</h6>
-    <% @station.stations_with_most_docks.each do |station| %>
-    <%= station.name %><br>
-    <% end %>
-  </li>
-  <li>Fewest docks available at a station: <%= @station.min_dock_count %></li>
+<h4>Number of Rides by Precipitation</h4>
+<table class="table" id="number_of_rides_by_precip">
+  <tr>
+    <th>
+      Precip in Inches
+    </th>
+    <th>
+      Max
+    </th>
+    <th>
+      Min
+    </th>
+    <th>
+      Mean
+    </th>
+  </tr>
+  <% @trips_precip_data.each do |range, data| %>
+    <tr>
+      <td>
+        <%= range %>
+      </td>
+      <td>
+        <%= data.values.max %>
+      </td>
+      <td>
+        <%= data.values.min %>
+      </td>
+      <td>
+        <%= (data.values.reduce(:+) / data.count).round(0).to_i %>
+      </td>
+    </tr>
+  <% end  %>
+</table>
 
-  <li class="least-docks">
-    <h6>Station(s) with the least docks:</h6>
-    <% @station.stations_with_fewest_docks.each do |station| %>
-    <%= station.name %><br>
-    <% end %>
-  </li>
+<h4>Number of Rides by Wind Speed</h4>
+<table class="table" id="number_of_rides_by_wind_speed">
+  <tr>
+    <th>
+      Wind in MPH
+    </th>
+    <th>
+      Max
+    </th>
+    <th>
+      Min
+    </th>
+    <th>
+      Mean
+    </th>
+  </tr>
+  <% @trips_wind_speed_data.each do |range, data| %>
+    <tr>
+      <td>
+        <%= range %>
+      </td>
+      <td>
+        <%= data.values.max %>
+      </td>
+      <td>
+        <%= data.values.min %>
+      </td>
+      <td>
+        <%= (data.values.reduce(:+) / data.count).round(0).to_i %>
+      </td>
+    </tr>
+  <% end  %>
+</table>
 
-  <li class="newest-installations">
-    <h6>Newest station(s)</h6>
-    <% @station.newest_stations.each do |station| %>
-    <%= station.name %><br>
-    <% end %>
-  </li>
+<h4>Number of Rides by Visibility</h4>
+<table class="table" id="number_of_rides_by_visibility">
+  <tr>
+    <th>
+      Visibility in Miles
+    </th>
+    <th>
+      Highest
+    </th>
+    <th>
+      Lowest
+    </th>
+    <th>
+      Average
+    </th>
+  </tr>
+  <% @trips_visibility_data.each do |range, data| %>
+    <tr>
+      <td>
+        <%= range %>
+      </td>
+      <td>
+        <%= data.values.max %>
+      </td>
+      <td>
+        <%= data.values.min %>
+      </td>
+      <td>
+        <%= (data.values.reduce(:+) / data.count).round(0).to_i %>
+      </td>
+    </tr>
+  <% end  %>
+</table>
 
-  <li class="oldest-installations">
-    <h6>Oldest station(s)</h6>
-    <% @station.oldest_stations.each do |station| %>
-    <%= station.name %><br>
-    <% end %>
-  </li>
-
-
-</ul>
+</div>

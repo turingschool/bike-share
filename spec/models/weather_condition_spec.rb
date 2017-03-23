@@ -101,10 +101,6 @@ RSpec.describe WeatherCondition do
     end
   end
 
-  # describe ".total " do
-  #   expect(@weather.total)
-  # end
-
   describe "relationships between trips and weather" do
     it "every weather has many trips" do
 
@@ -123,6 +119,59 @@ RSpec.describe WeatherCondition do
     end
   end
 
+  # -------------------------------------------------------
+  # -------------------------------------------------------
+  # -------------------------------------------------------
+  # -------------------------------------------------------
+
+
+  describe "dashboard can show stats in 10 degree temp blocks" do
+    it "shows max rides in a certain 10 degree range" do
+
+      # start_date = DateTime.strptime('8/29/2000 14:01', '%m/%d/%Y %k:%M')
+      # end_date = DateTime.strptime('8/29/2000 14:23', '%m/%d/%Y %k:%M')
+      #
+      # trip1 = Trip.create(duration: 23, start_date: start_date, end_date: end_date, subscription_type: 'subscriber')
+      # trip2 = Trip.create(duration: 22, start_date: start_date, end_date: end_date, subscription_type: 'subscriber')
+      #
+      # @weather.trips << trip1
+      # @weather.trips << trip2
+      #
+      # expect(@weather.trips).to include(trip1)
+      # expect(@weather.trips).to include(trip2)
+    end
+
+    it "shows min rides per 10 degrees" do
+
+      start_date = DateTime.strptime('8/29/2000 14:01', '%m/%d/%Y %k:%M')
+      end_date = DateTime.strptime('8/29/2000 14:23', '%m/%d/%Y %k:%M')
+
+      trip1 = Trip.create(duration: 23, start_date: start_date, end_date: end_date, subscription_type: 'subscriber')
+      trip2 = Trip.create(duration: 22, start_date: start_date, end_date: end_date, subscription_type: 'subscriber')
+
+      @weather.trips << trip1
+      @weather.trips << trip2
+
+      expect(@weather.trips).to include(trip1)
+      expect(@weather.trips).to include(trip2)
+    end
+
+    it "shows mean rides per 10 degrees" do
+
+      start_date = DateTime.strptime('8/29/2000 14:01', '%m/%d/%Y %k:%M')
+      end_date = DateTime.strptime('8/29/2000 14:23', '%m/%d/%Y %k:%M')
+
+      trip1 = Trip.create(duration: 23, start_date: start_date, end_date: end_date, subscription_type: 'subscriber')
+      trip2 = Trip.create(duration: 22, start_date: start_date, end_date: end_date, subscription_type: 'subscriber')
+
+      @weather.trips << trip1
+      @weather.trips << trip2
+
+      expect(@weather.trips).to include(trip1)
+      expect(@weather.trips).to include(trip2)
+    end
+
+  end
 
 
 end

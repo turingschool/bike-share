@@ -80,6 +80,11 @@ class BikeShareApp < Sinatra::Base
     erb :"trips/index"
   end
 
+  get "/trips_dashboard" do
+    @trips = Trip.all
+    erb :"trips/trips_dashboard"
+  end
+
   get "/trips/new" do
     @trip = Trip.new
     erb :"trips/new"
@@ -101,24 +106,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   put "/trips/:id" do
-  #   duration = params[:trip][:duration]
-  #   start_station = Station.find_or_create_by(name: params[:trip][:start_station])
-  #   end_station = Station.find_or_create_by(name: params[:trip][:end_station])
-  #   bike_id = params[:trip][:bike_id]
-  #   subscription = Subscription.find_or_create_by(subscription: params[:trip][:subscription])
-  #   zipcode = Zipcode.find_or_create_by(zip_code: params[:trip][:zip_code])
-  #   start_date = params[:trip][:start_date]
-  #   end_date = params[:trip][:end_date]
-  #
-  #   input = { duration: duration,
-  #             start_station: start_station,
-  #             end_station: end_station,
-  #             bike_id: bike_id,
-  #             subscription: subscription,
-  #             zipcode: zipcode,
-  #             start_date: start_date,
-  #             end_date: end_date}
-  # @trip =  Trip.update(input)
     @trip = Trip.update_trip(params)
     redirect "/trips/#{@trip.first.id}"
   end

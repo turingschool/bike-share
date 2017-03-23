@@ -237,17 +237,22 @@ RSpec.describe Trip do
 
     it "returns the number of rides by month" do
 
-    result = Trip.rides_by_month
-    expect(result).to eq("2013-12-05 14:13:00")
+    result = Trip.rides_by_month(5)
+    expect(result).to eq("2")
+
+    result = Trip.rides_by_month(12)
+    expect(result).to eq("1")
 
     end
 
     it "returns the number of rides by year" do
 
-    result = Trip.rides_by_year
-    expect(result).to eq("2013-12-05 14:13:00")
+    result = Trip.rides_by_year(2013)
+    expect(result).to eq("3")
 
     end
+
+
   end
 
 

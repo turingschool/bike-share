@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<div class="row">
+  <div class="col-sm-16">
+    <h3><i class="glyphicon glyphicon-dashboard"></i> Stations Dashboard</h3>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-7">
+        <div class="well">“Nothing compares to the simple pleasure of riding a bike” <em>– John F Kennedy</em></div>
+          <hr>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4>Top stations</h4></div>
+          <div class="panel-body">
+            <small>Redwood City Caltrain Station  |  bike inventory status</small>
+            <div class="progress">
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%">
+                <span class="sr-only">72% full</span>
+              </div>
+            </div>
+
+            <small>Japantown Bike Station  |  bike inventory status</small>
+            <div class="progress">
+              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                <span class="sr-only">60% full</span>
+              </div>
+            </div>
+
+            <small>South Van Ness at Market  |  bike inventory status</small>
+            <div class="progress">
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 42%">
+              <span class="sr-only">42% full</span>
+              </div>
+            </div>
+
+            <small>2nd at Townsend  |  bike inventory status</small>
+            <div class="progress">
+              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 88%">
+              <span class="sr-only">88% full</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="btn-group btn-group-justified">
+          <a href="/stations/new" class="btn btn-info col-sm-3">
+            <i class="glyphicon glyphicon-plus"></i><br>
+            add a trip
+          </a>
+          <a href="/stations" class="btn btn-info col-sm-3">
+            <i class="glyphicon glyphicon-cog"></i><br>
+            edit trips
+          </a>
+          <a href="#" class="btn btn-info col-sm-3">
+            <i class="glyphicon glyphicon-question-sign"></i><br>
+            help
+          </a>
+        </div>
+            <hr>
+          <p>
+          <img src="http://piximus.net/media/16892/just-horsing-around-39.jpg" width="473">
+          <h5 align="right"><em>"It's easier than riding a horse!"</em></h5>
+          </p>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<table>
+<tr>
+  <td>Total number of trips: <%=@trips.count  %> </td>
+</tr>
+<tr>
+  <td>Average duration of trip: <%= @trips.average_duration_of_ride %> </td>
+</tr>
+<tr>
+  <td>Longest Ride: <%= @trips.longest_ride %> </td>
+</tr>
+<tr>
+  <td>Shortest Ride: <%= @trips.shortest_ride %> </td>
+</tr>
+<tr>
+  <td>Day with most trips: <%= @trips.day_with_most_trips %> </td>
+</tr>
+<tr>
+  <td>Day with least trips: <%= @trips.day_with_least_trips %> </td>
+</tr>
+</table>
+
+<h3>Rides per month by year</h3>
+<p> Total rides in 2013: <%= @trips.rides_by_year(2013) %> </p>
+<ul>
+  <li>January: <%= @trips.rides_by_month(1) %> </li>
+  <li>February: <%= @trips.rides_by_month(2) %> </li>
+  <li>March: <%= @trips.rides_by_month(3) %> </li>
+  <li>April: <%= @trips.rides_by_month(4) %> </li>
+  <li>May: <%= @trips.rides_by_month(5) %> </li>
+  <li>June: <%= @trips.rides_by_month(6) %> </li>
+  <li>July: <%= @trips.rides_by_month(7) %> </li>
+  <li>August: <%= @trips.rides_by_month(8) %> </li>
+  <li>September: <%= @trips.rides_by_month(9) %> </li>
+  <li>October: <%= @trips.rides_by_month(10) %> </li>
+  <li>November: <%= @trips.rides_by_month(11) %> </li>
+  <li>December: <%= @trips.rides_by_month(12) %> </li>
+</ul>
+
+<p> Total rides in 2014: <%= @trips.rides_by_year(2014) %> </p>
+<ul>
+  <li>January: <%= @trips.rides_by_month(1) %> </li>
+  <li>February: <%= @trips.rides_by_month(2) %> </li>
+  <li>March: <%= @trips.rides_by_month(3) %> </li>
+  <li>April: <%= @trips.rides_by_month(4) %> </li>
+  <li>May: <%= @trips.rides_by_month(5) %> </li>
+  <li>June: <%= @trips.rides_by_month(6) %> </li>
+  <li>July: <%= @trips.rides_by_month(7) %> </li>
+  <li>August: <%= @trips.rides_by_month(8) %> </li>
+  <li>September: <%= @trips.rides_by_month(9) %> </li>
+  <li>October: <%= @trips.rides_by_month(10) %> </li>
+  <li>November: <%= @trips.rides_by_month(11) %> </li>
+  <li>December: <%= @trips.rides_by_month(12) %> </li>
+</ul>
+
+<p> Total rides in 2015: <%= @trips.rides_by_year(2015) %> </p>
+<ul>
+  <li>January: <%= @trips.rides_by_month(1) %> </li>
+  <li>February: <%= @trips.rides_by_month(2) %> </li>
+  <li>March: <%= @trips.rides_by_month(3) %> </li>
+  <li>April: <%= @trips.rides_by_month(4) %> </li>
+  <li>May: <%= @trips.rides_by_month(5) %> </li>
+  <li>June: <%= @trips.rides_by_month(6) %> </li>
+  <li>July: <%= @trips.rides_by_month(7) %> </li>
+  <li>August: <%= @trips.rides_by_month(8) %> </li>
+  <li>September: <%= @trips.rides_by_month(9) %> </li>
+  <li>October: <%= @trips.rides_by_month(10) %> </li>
+  <li>November: <%= @trips.rides_by_month(11) %> </li>
+  <li>December: <%= @trips.rides_by_month(12) %> </li>
+</ul>

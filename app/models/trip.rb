@@ -9,18 +9,6 @@ class Trip < ActiveRecord::Base
 
     validates :duration, :start_date, :start_station_id, :bike_id, :end_date, :end_station_id, presence: true
 
-    def self.average_duration_of_ride
-      Trip.average(:duration).round
-    end
-
-    def self.longest_ride
-      Trip.maximum(:duration)
-    end
-
-    def self.shortest_ride
-      Trip.minimum(:duration)
-    end
-
 
   def self.create_trip(params)
     Trip.create!(duration: params[:trip][:duration],
@@ -44,6 +32,18 @@ class Trip < ActiveRecord::Base
       end_date: params[:trip][:end_date])
   end
 
+  def self.average_duration_of_ride
+    average(:duration).round
+  end
+
+  def self.longest_ride
+    maximum(:duration)
+  end
+
+  def self.shortest_ride
+    minimum(:duration)
+  end
+
   def self.day_with_most_trips
     most_trips = Trip.select("end_date").group("end_date").count
 
@@ -56,11 +56,13 @@ class Trip < ActiveRecord::Base
     least_trips.invert[least_trips.values.min]
   end
 
-  def self.rides_by_month
-    
+  def self.rides_by_month(month)
+    month = Trip.where("extract(month FROM end_date) = ?", month)
+    "#{month.count}"
   end
 
-  def self_rides_by_year
-
+  def self.rides_by_year(year)
+    year = Trip.where("extract(year FROM end_date) = ?", year)
+    "#{year.count}"
   end
 end

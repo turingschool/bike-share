@@ -11,6 +11,8 @@ class WeatherCondition < ActiveRecord::Base
   validates :precipitation_inches, presence: true
   validates :date, presence: true, uniqueness: true
 
+  scope :ordered, -> { order(:date) }
+
   def self.total
     WeatherCondition.count
   end

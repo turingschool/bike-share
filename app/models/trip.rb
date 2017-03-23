@@ -11,6 +11,8 @@ class Trip < ActiveRecord::Base
   validates :end_date, presence: true
   validates :subscription_type, presence: true
 
+  scope :ordered, -> { order(:start_date) }
+
   def make_name
     date = start_date.strftime('%-m/%-d/%Y')
     start_name = Station.find(start_station_id).name

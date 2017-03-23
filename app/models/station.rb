@@ -12,6 +12,8 @@ class Station < ActiveRecord::Base
   validates :lat, presence: true
   validates :long, presence: true
 
+  scope :ordered, -> { order(:name) }
+
   def self.total
     Station.count
   end

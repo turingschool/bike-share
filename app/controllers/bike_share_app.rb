@@ -1,6 +1,6 @@
 class BikeShareApp < Sinatra::Base
   get '/stations' do
-    @stations = Station.all # What's AR's sorting method?
+    @stations = Station.ordered # What's AR's sorting method?
 
     erb :"stations/index"
   end
@@ -53,7 +53,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/weather_conditions' do
-    @weather_conditions = WeatherCondition.all
+    @weather_conditions = WeatherCondition.ordered
 
     erb :"weather_conditions/index"
   end
@@ -106,7 +106,7 @@ class BikeShareApp < Sinatra::Base
 #----------------------------------------------------------------
   get '/trips' do
     if Trip.count < 31
-      @trips = Trip.all
+      @trips = Trip.ordered
       erb :"trips/index"
     else
       redirect '/trips/page/1'
@@ -159,10 +159,11 @@ class BikeShareApp < Sinatra::Base
   put '/trips/:id' do
     id = params['id']
     trip = params['trip']
+    bike = trip['bike']
 
-    trip.delete('weather') # Delete this when integrating weather!
     trip['start_station'] = Station.find_by(name: trip['start_station'])
     trip['end_station'] = Station.find_by(name: trip['end_station'])
+    trip['bike'] = Bike.find_by(bin: trip['bike'])
 
     Trip.update(id, params['trip'])
 

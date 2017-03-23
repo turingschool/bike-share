@@ -1,7 +1,9 @@
 <h2>Start Station: <%=@trip.start_station_name%></h2>
 <h2>Trip number: <%=@trip.id%></h2>
 
-
+<a href="/">
+  <button type="button" name="button">Home</button>
+  </a>
 <a href="/trips/<%=@trip.id%>/edit">
   <button type="button" name="button">Edit</button>
 </a>
@@ -9,7 +11,6 @@
         <input type="hidden" name="_method" value="DELETE" />
         <input type="submit" value="Delete" />
       </form>
-
 <ul>
   <li>Duration: <%=@trip.duration %></li>
   <li>Start Date: <%=@trip.start_date %></li>

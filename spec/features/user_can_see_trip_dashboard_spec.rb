@@ -1,4 +1,5 @@
 require_relative '../spec_helper'
+require 'pry'
 
 RSpec.describe "As a user visits trip dashboard" do
 
@@ -9,9 +10,8 @@ RSpec.describe "As a user visits trip dashboard" do
   end
 
   it "they can see content" do
-      visit '/trip-dashboard'
-
-      within('h2') do
+      visit '/trips-dashboard'
+      within('h2') do   
         expect(page).to have_content('Dashboard')
       end
 

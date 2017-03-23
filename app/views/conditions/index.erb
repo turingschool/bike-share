@@ -1,7 +1,13 @@
+<body class="weather_body">
+
 <h1>Weather Conditions</h1>
 
-<a href="/conditions-dashboard">View Weather Stats</a>  
+<button class="index_buttons">
+<a href="/conditions-dashboard">View Weather Stats</a>
+</button>
+<button class="index_buttons">
 <a href="/conditions/new">Create New</a>
+</button>
 
 
 <div class="model_index">
@@ -16,11 +22,11 @@
       <p>Mean Wind Speed (mph): <%= condition.mean_wind_speed_mph %></p><br>
       <p>Precipitation(inches): <%= condition.precipitation_inches %></p><br>
       <p>Zipcode: <%= condition.zip_code %></p>
-      <a href="/conditions/<%= condition.id %>/edit">Edit Weather</a>
+      <a class="station_button" href="/conditions/<%= condition.id %>/edit">Edit Weather</a>
 
       <form action="/conditions/<%= condition.id %>" method="post">
         <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Delete">
+        <input type="submit" class="station_button" value="Delete">
       </form>
     </div>
   <% end %>
@@ -28,3 +34,6 @@
 </div>
 
 <%= will_paginate @conditions %>
+
+
+</body>

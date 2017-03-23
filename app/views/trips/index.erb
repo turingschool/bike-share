@@ -1,7 +1,10 @@
 <h1>All Trips</h1>
-
-<a href="/trips-dashboard">Trip Stats</a>
+<button class="index_buttons">
 <a href="/trips/new">Create a New Trip</a>
+</button>
+<button class="index_buttons">
+  <a href="/trips-dashboard">Trip Stats</a>
+</button>
 
 
 <div class="model_index">
@@ -13,12 +16,14 @@
       <p>End Date: <%= trip.end_date %></p><br>
       <p>Subscription Type: <%= trip.subscription_type.try(:flavor)  %></p>
       <p>Zipcode: <%= trip.zip_code %></p><br>
-      <a href="/trips/<%= trip.id %>/edit">Edit Trip</a>
+      <a class="station_button" href="/trips/<%= trip.id %>/edit">Edit Trip</a>
 
       <form action="/trips/<%= trip.id %>" method="post">
         <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Delete">
+        <input class="station_button"type="submit" value="Delete">
       </form>
+
+
   </div>
   <% end %>
 

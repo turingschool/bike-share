@@ -1,3 +1,4 @@
+<body class="weather_body">
 <h1>Weather </h1>
 
 
@@ -12,12 +13,16 @@
   <p>Precipitation(inches): <%= @condition.precipitation_inches %></p><br>
   <p>Zipcode: <%= @condition.zip_code %></p>
 
+  <button>
+    <a href="/conditions">All Weather</a>
+  </button>
 
-  <a href="/conditions">All Weather</a>
-
-  <a href="/conditions/<%= @condition.id %>/edit">Edit Weather</a>
+  <button>
+    <a href="/conditions/<%= @condition.id %>/edit">Edit Weather</a>
+  </button>
 
   <form action="/conditions/<%= @condition.id %>" method="post">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete">
   </form>
+</body>

@@ -47,9 +47,10 @@ RSpec.describe Trip do
       expect(trip).to_not be_valid
     end
 
-    it 'is invalid if it has a duplicate bike' do
+    it 'is invalid if it has a duplicate start station, start date and bike.' do
       bike = Bike.create(bin: 22)
-      Trip.create(duration: 22, start_date: start_date, end_date: end_date, subscription_type: 'subscriber', bike: bike)
+
+      Trip.create(duration: 22, start_date: start_date, end_date: end_date, subscription_type: 'subscriber', bike: bike, start_station: start_station)
 
       trip = Trip.create(duration: 22, start_date: start_date, end_date: end_date, subscription_type: 'subscriber', bike: bike)
 

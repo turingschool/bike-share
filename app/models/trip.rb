@@ -7,10 +7,9 @@ class Trip < ActiveRecord::Base
   belongs_to :end_station, foreign_key: 'end_station_id', class_name: 'Station'
 
   validates :duration, presence: true
-  validates :start_date, presence: true
+  validates :start_date, presence: true, uniqueness: { scope: :start_station, scope: :bike }
   validates :end_date, presence: true
   validates :subscription_type, presence: true
-  validates :bike_id, uniqueness: true
 
   def make_name
     date = start_date.strftime('%-m/%-d/%Y')

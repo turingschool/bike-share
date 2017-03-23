@@ -10,7 +10,30 @@
       <li>Least Popular Bike: Bike <%= @trips.least_popular_bike %> Trips: <%= @trips.least_popular_bike_count %></li>
       <li>Subscription Breakdown: <%= @trips.subscription_breakdown %></li>
       <li>Busiest Day: <%= @trips.busiest_day %></li>
+        <p>Weater Conditions:</p>
+        <% condition = @conditions.conditions_for_busiest_day %>
+        <ul>
+          <li>Maximum Temperature: <%= condition.max_temp %></li>
+          <li>Mean Temperature: <%= condition.mean_temp %></li>
+          <li>Minimum Temperature: <%= condition.min_temp %></li>
+          <li>Mean Humidity: <%= condition.mean_humidity %></li>
+          <li>Mean Visibility (in miles): <%= condition.mean_visibility %></li>
+          <li>Mean Wind Speed (mph): <%= condition.mean_wind %></li>
+          <li>Precipitation (inches): <%= condition.precipitation %></li>
+        </ul>
+        <br>
       <li>Least Busy Day: <%= @trips.least_busy_day %></li>
+        <p>Weater Conditions:</p>
+        <% condition = @conditions.conditions_for_least_busy_day %>
+        <ul>
+          <li>Maximum Temperature: <%= condition.max_temp %></li>
+          <li>Mean Temperature: <%= condition.mean_temp %></li>
+          <li>Minimum Temperature: <%= condition.min_temp %></li>
+          <li>Mean Humidity: <%= condition.mean_humidity %></li>
+          <li>Mean Visibility (in miles): <%= condition.mean_visibility %></li>
+          <li>Mean Wind Speed (mph): <%= condition.mean_wind %></li>
+          <li>Precipitation (inches): <%= condition.precipitation %></li>
+        </ul>
     </ul>
 
 

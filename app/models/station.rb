@@ -1,3 +1,4 @@
+require 'pry'
 class Station < ActiveRecord::Base
 
   belongs_to :city
@@ -80,5 +81,48 @@ class Station < ActiveRecord::Base
     Station.all.select do |station|
       station.installation_date == self.newest_date
     end
+  end
+
+  def rides_started
+    start_trips.count
+  end
+
+  def rides_ended
+    end_trips.count
+  end
+
+  def most_frequent_destination
+    end_trips.count(id)
+  end
+
+  def most_frequent_origination
+    start_trips.count(id)
+  end
+
+  def most_frequent_zip_code
+    zip = start_trips.pluck(:zip_code)
+    zips = zip.each_with_object(Hash.new(0)) { |zip,counts| counts[zip] += 1 }
+
+    max_nums = zips.max_by do |k,v|
+      v
+  end
+    most_frequently_occuring_zip = zips.select do |k, v|
+      binding.pry
+      v == max_nums
+  end
+    most_frequently_occuring_zip.keys
+  end
+
+  def most_bikes_starting_here
+    bike = start_trips.pluck(:bike_id)
+    bikes = bike.each_with_object(Hash.new(0)) { |bike,counts| counts[bike] += 1 }
+
+    frequent_bikes = bikes.max_by do |k,v|
+      v
+  end
+    most_frequently_used_bikes = bikes.select do |k,v|
+      v == frequent_bikes
+    end
+    most_frequently_used_bikes.keys
   end
 end

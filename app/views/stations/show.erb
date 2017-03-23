@@ -4,7 +4,13 @@
 <p class='dock_count'>Dock Count: <%= @station.dock_count %></p>
 <p class='lat'>Latitude: <%= @station.lat %></p>
 <p class='long'>Longitude: <%= @station.long %></p>
-<p class='installation_date'>Installation Date: <%= @station.installation_date %></p>
+<p class='installation_date'>Installation Date: <%= @station.installation_date %></p><br>
+<p> Rides Started <%= @station.rides_started %></p>
+<p> Rides Ended <%= @station.rides_ended %></p>
+<p> Most End Locations <%= @station.most_frequent_destination %></p>
+<p> Most Started Locations <%= @station.most_frequent_origination %></p>
+<p> Highest Zip-Code Presence<%= @station.most_frequent_zip_code %></p>
+<p> Most Used Bike<%= @station.most_bikes_starting_here %></p>
 
 <form action="/stations/<%= @station.id %>/edit" method="POST">
   <input type="hidden" name="_method" value="GET">

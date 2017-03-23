@@ -5,6 +5,7 @@ require './app/models/condition.rb'
 require './app/models/subscription_type.rb'
 require './app/models/city.rb'
 require 'pry'
+require 'time_difference'
 
 
 
@@ -35,14 +36,11 @@ open_contents.each do |row|
   next if row[:zip_code].nil? || row[:zip_code].length < 5
 
 subscription = SubscriptionType.find_or_create_by(name: row[:subscription_type])
-start_date = row[:start_date]
-  row[:start_date] = Date.strptime(start_date, '%m/%d/%Y')
-end_date = row[:end_date]
-  row[:end_date] = Date.strptime(end_date, '%m/%d/%Y')
+
   Trip.create!(duration: row[:duration],
-              start_date: row[:start_date],
+              start_date: DateTime.strptime(row[:start_date], "%m/%d/%Y %H:%M"),
               start_station_name: row[:start_station_name],
-              end_date: row[:end_date],
+              end_date: DateTime.strptime(row[:end_date], "%m/%d/%Y %H:%M"),
               end_station_name: row[:end_station_name],
               bike_id: row[:bike_id],
               subscription_type_id: subscription.id,

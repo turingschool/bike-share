@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+      <link rel="stylesheet" href="/css/style.css">
+    </head>
+      <div id="container">
+        <body>
+          <!-- #### header #### -->
+          <div id="header">
+            <header>
+              <h3>The Bike Share App</h3>
+
+              <div class="global_nav" styles="text-align: center; font-family: 'Oswald', sans-serif; font-size: 20px; letter-spacing: 2px; margin: 0px 40px 10px 40px;  ">
+                <a href="/">Home</a>
+                <a href="/stations">Stations</a>
+                <a href="/trips">Trips</a>
+                <a href="/conditions">Weather</a></li>
+
+              </div>
+            </header>
+          </div>
+
+          <!-- ### embed erb template here ### -->
+          <div id="body">
+              <%= yield %>
+          </div>
+
+
+          <!-- #### footer #### -->
+        <div id="footer">
+          <footer>
+            <h3>Ride a Bike!</h3>
+          </footer>
+        </div>
+      </div>
+    </body>
+  </html>

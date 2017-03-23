@@ -75,6 +75,22 @@ class Trip < ActiveRecord::Base
       bike.trips.count
     end.trips.count
   end
+
+  def self.subscribers_count
+    Trip.select{|t|t.subscription_type == 'subscriber'}.count
+  end
+
+  def self.subscribers_percentage
+    self.subscribers_count / self.all.count.to_f
+  end
+
+  def self.customers_count
+    Trip.select{|t|t.subscription_type == 'customer'}.count
+  end
+
+  def self.customers_percentage
+    self.customers_count / self.all.count.to_f
+  end
 end
 
 #add trip-dashboard methods and trip dashboard file later

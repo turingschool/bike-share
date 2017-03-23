@@ -137,7 +137,11 @@ RSpec.describe Trip do
     end
 
     it 'knows about subscription types' do
+      expect(Trip.subscribers_count).to eq(1)
+      expect(Trip.subscribers_percentage).to eq(0.5)
 
+      expect(Trip.customers_count).to eq(1)
+      expect(Trip.customers_percentage).to eq(0.5)
     end
   end
 

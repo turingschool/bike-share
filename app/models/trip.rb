@@ -2,7 +2,6 @@ class Trip < ActiveRecord::Base
     belongs_to :zipcode
     belongs_to :subscription
     belongs_to :condition
-
     belongs_to :bike
 
     belongs_to :start_station, class_name: 'Station', foreign_key: :start_station_id

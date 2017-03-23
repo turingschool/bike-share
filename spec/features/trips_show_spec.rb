@@ -49,7 +49,7 @@ RSpec.describe "when a user visits /trips/1" do
     SubscriptionType.create(subscription_type: "Subscriber")
     visit '/trips/1'
 
-    within "#edit-button button" do
+    within "#edit-button" do
       click_on "Edit"
     end
 

@@ -1,1 +1,96 @@
-<!DOCTYPE html>
+<div class="row">
+  <div class="col-sm-16">
+    <h3><i class="glyphicon glyphicon-dashboard"></i> Trips Dashboard</h3>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-7">
+        <div class="well">“The advantages? Exercise, no parking problems, gas prices, it’s fun. An automobile is expensive. You have to find a place to park and it’s not fun. So why not ride a bicycle? I recommend it.” <em>– Stephen G. Breyer</em></div>
+          <hr>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4>Trip Stats</h4></div>
+          <div class="panel-body">
+            <small>Redwood City Caltrain Station  |  bike inventory status</small>
+            <div class="progress">
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%">
+                <span class="sr-only">72% full</span>
+              </div>
+            </div>
+
+            <small>Japantown Bike Station  |  bike inventory status</small>
+            <div class="progress">
+              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                <span class="sr-only">60% full</span>
+              </div>
+            </div>
+
+            <small>South Van Ness at Market  |  bike inventory status</small>
+            <div class="progress">
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 42%">
+              <span class="sr-only">42% full</span>
+              </div>
+            </div>
+
+            <small>2nd at Townsend  |  bike inventory status</small>
+            <div class="progress">
+              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 88%">
+              <span class="sr-only">88% full</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="btn-group btn-group-justified">
+          <a href="/stations/new" class="btn btn-info col-sm-3">
+            <i class="glyphicon glyphicon-plus"></i><br>
+            add a station
+          </a>
+          <a href="/stations" class="btn btn-info col-sm-3">
+            <i class="glyphicon glyphicon-cog"></i><br>
+            edit stations
+          </a>
+          <a href="#" class="btn btn-info col-sm-3">
+            <i class="glyphicon glyphicon-question-sign"></i><br>
+            help
+          </a>
+        </div>
+            <hr>
+          <p>
+          <img src="http://piximus.net/media/16892/just-horsing-around-39.jpg" width="473">
+          <h5 align="right"><em>"It's easier than riding a horse!"</em></h5>
+          </p>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<table>
+<tr>
+  <td>Total number of stations: <%= @station.total_stations %> </td>
+</tr>
+<tr>
+  <td>Average number of bikes available per station: <%= @station.average_bikes_per_station %> </td>
+</tr>
+<tr>
+  <td>Number of bikes available at the largest station(s): <%= @station.most_bikes_available_at_station %> </td>
+</tr>
+<tr>
+  <td>Station(s) where the most bikes are available: <%= @station.stations_where_the_most_bikes_are_available %> </td>
+</tr>
+<tr>
+  <td>Number of bikes available at the smallest station(s): <%= @station.fewest_bikes_available_at_station %> </td>
+</tr>
+<tr>
+  <td>Station(s) where the fewest bikes are available: <%= @station.stations_where_the_fewest_bikes_are_available %> </td>
+</tr>
+<tr>
+  <td>Newest station(s): <%= @station.newest_station %> </td>
+</tr>
+<tr>
+  <td>Oldest station(s): <%= @station.oldest_station %> </td>
+</tr>
+</table>

@@ -43,4 +43,24 @@ class Trip < ActiveRecord::Base
       start_date: params[:trip][:start_date],
       end_date: params[:trip][:end_date])
   end
+
+  def self.day_with_most_trips
+    most_trips = Trip.select("end_date").group("end_date").count
+
+    most_trips.invert[most_trips.values.max]
+  end
+
+  def self.day_with_least_trips
+    least_trips = Trip.select("end_date").group("end_date").count
+
+    least_trips.invert[least_trips.values.min]
+  end
+
+  def self.rides_by_month
+    
+  end
+
+  def self_rides_by_year
+
+  end
 end

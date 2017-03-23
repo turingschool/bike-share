@@ -116,8 +116,8 @@ RSpec.describe Trip do
                           bike_id: 1,
                           zipcode_id: 1,
                           subscription_id: 2,
-                          start_date: "2013-08-29 14:13:00",
-                          end_date: "2013-08-29 14:13:00" })
+                          start_date: "2013-12-05 14:13:00",
+                          end_date: "2013-12-05 14:13:00" })
 
       @trip_2 = Trip.create({duration: 63,
                             start_station_id: 2,
@@ -125,8 +125,8 @@ RSpec.describe Trip do
                             bike_id: 1,
                             zipcode_id: 1,
                             subscription_id: 2,
-                            start_date: "2013-08-29 14:13:00",
-                            end_date: "2013-08-29 14:13:00" })
+                            start_date: "2013-05-23 14:13:00",
+                            end_date: "2013-05-23 14:13:00" })
 
       @trip_3 = Trip.create({duration: 133,
                             start_station_id: 2,
@@ -134,8 +134,8 @@ RSpec.describe Trip do
                             bike_id: 2,
                             zipcode_id: 1,
                             subscription_id: 1,
-                            start_date: "2013-08-29 14:13:00",
-                            end_date: "2013-08-29 14:13:00" })
+                            start_date: "2013-05-23 14:13:00",
+                            end_date: "2013-05-23 14:13:00" })
 
       @bike_1 = Bike.create({bike_number: 520})
 
@@ -193,17 +193,59 @@ RSpec.describe Trip do
       expect(result).to eq(1)
     end
 
-    it "returns user Subscriber subscription type and it's count and it's percentage"
+    it "returns user Subscriber subscription total" do
 
-      result = Trip.
-      expect(result).to eq(2)
+      result = Subscription.subscriber_totals
+      expect(result).to eq(1)
 
     end
 
-    it "returns user Customer subscription type and it's count and it's percentage"
+    it "returns user Subscriber subscription percentage of total" do
 
-      result = Trip.
-      expect(result).to eq(2)
+      result = Subscription.subscriber_percentage
+      expect(result).to eq(34)
+
+    end
+
+    it "returns user Customer subscription total" do
+
+    result = Subscription.customer_totals
+    expect(result).to eq(2)
+
+    end
+
+    it "returns user Customer subscription percentage of total" do
+
+    result = Subscription.customer_percentage
+    expect(result).to eq(67)
+
+    end
+
+    it "returns the day with the most trips" do
+
+    result = Trip.day_with_most_trips
+    expect(result).to eq("2013-05-23 14:13:00")
+
+    end
+
+    it "returns the day with the least trips" do
+
+    result = Trip.day_with_least_trips
+    expect(result).to eq("2013-12-05 14:13:00")
+
+    end
+
+    it "returns the number of rides by month" do
+
+    result = Trip.rides_by_month
+    expect(result).to eq("2013-12-05 14:13:00")
+
+    end
+
+    it "returns the number of rides by year" do
+
+    result = Trip.rides_by_year
+    expect(result).to eq("2013-12-05 14:13:00")
 
     end
   end

@@ -1,7 +1,7 @@
 require_relative "../../spec_helper"
 
 RSpec.describe "as a user deletes an existing station from all stations page" do
-  xit "they can see existing station data and delete the station record" do
+  it "they can see existing station data and delete the station record" do
     city = City.create(city: "Denver")
     station = city.stations.create(name: "Japantown", dock_count: 15, city_id: 1, installation_date: "2013-08-05")
 

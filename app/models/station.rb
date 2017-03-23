@@ -53,23 +53,13 @@ class Station < ActiveRecord::Base
     stations_by_install_date.reverse.first
   end
 
+
   def all_trips_starting_at_id
     Trip.started_at(id)
   end
 
   def ending_ids
     all_trips_starting_at_id.map {|trip| trip.end_station_id}
-  end
-
-  def self.date_with_highest_number_of_trips
-    # this method needs work
-    # trip = Trip.find()
-    
-  end
-
-  def sorted_destination
-    trips = Trip.where(start_station_id: id)
-    trips.each_with_object(Hash.new(0)) { |trip, counts| counts[trip.id] += 1 }
 
   end
 
@@ -107,6 +97,7 @@ class Station < ActiveRecord::Base
   def zip_code_arr
     all_trips_starting_at_id.map {|trip| trip.zip_code}
   end
+
 
   def most_frequent_zip
     hash = count_per_attribute(zip_code_arr)

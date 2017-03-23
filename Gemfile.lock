@@ -15,8 +15,15 @@ GEM
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
+    ast (2.3.0)
     awesome_print (1.7.0)
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
     bond (0.5.1)
+    cane (3.0.0)
+      parallel
     capybara (2.13.0)
       addressable
       mime-types (>= 1.16)
@@ -24,12 +31,20 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    codeclimate-engine-rb (0.4.0)
+      virtus (~> 1.0)
     coderay (1.1.1)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.0.5)
     database_cleaner (1.5.3)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.3)
     docile (1.1.5)
+    equalizer (0.0.11)
     i18n (0.8.1)
+    ice_nine (0.11.2)
     json (2.0.3)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -41,6 +56,9 @@ GEM
     minitest (5.10.1)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
+    parallel (1.10.0)
+    parser (2.4.0.0)
+      ast (~> 2.2)
     pg (0.20.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -52,6 +70,11 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+    rainbow (2.2.1)
+    reek (4.5.6)
+      codeclimate-engine-rb (~> 0.4.0)
+      parser (>= 2.3.1.2, < 2.5)
+      rainbow (~> 2.0)
     ripl (0.7.1)
       bond (~> 0.5.1)
     ripl-multi_line (0.3.1)
@@ -98,6 +121,11 @@ GEM
       sinatra (>= 1.2.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    virtus (1.0.5)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
+      equalizer (~> 0.0, >= 0.0.9)
     will_paginate (3.1.5)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -108,6 +136,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   awesome_print
+  cane
   capybara
   database_cleaner
   launchy
@@ -115,6 +144,7 @@ DEPENDENCIES
   pg
   pry
   rack-test
+  reek
   rspec
   rspec-core
   shotgun

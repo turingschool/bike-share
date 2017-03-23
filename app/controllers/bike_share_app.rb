@@ -1,10 +1,11 @@
 class BikeShareApp < Sinatra::Base
 
+  get '/' do
+    erb :home
+  end
+
   get '/stations' do
-
-    @stations = Station.all.order(:name)
-
-    # if we want to extract order/sort from controller to the models look into this --> http://api.rubyonrails.org/classes/ActiveRecord/Scoping/Named/ClassMethods.html#method-i-scope
+    @stations = Station.ordered
 
     erb :"stations/index"
   end
@@ -45,7 +46,14 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations/:id' do
+    @trips = Trip
     @station = Station.find(params[:id])
+    @rides_started = @station.rides_started
+    @rides_ended = @station.rides_ended
+    @most_frequent_destination = @station.most_frequent_destination
+    @most_frequent_origination = @station.most_frequent_origination
+    @most_frequent_zip_code = @station.most_frequent_zip_code
+    @most_bikes_starting_here = @station.most_bikes_starting_here
 
     erb :"stations/show"
   end
@@ -56,13 +64,8 @@ class BikeShareApp < Sinatra::Base
     erb :"stations/dashboard"
   end
 
-  # ------------------------------------------------------------------
-  # ------------------------------------------------------------------
-  # ------------------------------------------------------------------
-  # ------------------------------------------------------------------
-
   get '/weather_conditions' do
-    @weather_conditions = WeatherCondition.all.order(:date)
+    @weather_conditions = WeatherCondition.ordered
 
     erb :"weather_conditions/index"
   end
@@ -102,6 +105,7 @@ class BikeShareApp < Sinatra::Base
     @trips_precip_data = WeatherCondition.trips_by_precipitation
     @trips_wind_speed_data = WeatherCondition.trips_by_wind_speed
     @trips_visibility_data = WeatherCondition.trips_by_visibility
+
     erb :"weather_conditions/dashboard"
   end
 
@@ -111,13 +115,29 @@ class BikeShareApp < Sinatra::Base
     erb :"weather_conditions/show"
   end
 
-#----------------------------------------------------------------
-#----------------------------------------------------------------
-#----Trips Controller medthods down below---------------------------
-#----------------------------------------------------------------
+
+  get '/trips-dashboard' do
+    @average_duration = Trip.average_duration
+    @longest_trips = Trip.longest_rides
+    @shortest_trips = Trip.shortest_rides
+    @popular_start_stations = Trip.most_popular_start_stations
+    @popular_end_stations = Trip.most_popular_end_stations
+    @pop_bike_trips_count = Trip.most_popular_bike_trips_count
+    @pop_bikes = Trip.most_popular_bikes
+    @least_pop_bike_trips_count = Trip.least_popular_bike_trips_count
+    @least_pop_bikes = Trip.least_popular_bikes
+    @total_subscribers = Trip.subscribers_count
+    @subscribers_percentage = (Trip.subscribers_percentage * 100).to_i
+    @total_customers = Trip.customers_count
+    @customers_percentage = (Trip.customers_percentage * 100).to_i
+
+    erb :"trips/dashboard"
+  end
+
   get '/trips' do
     if Trip.count < 31
-      @trips = Trip.all
+      @trips = Trip.ordered
+
       erb :"trips/index"
     else
       redirect '/trips/page/1'
@@ -148,7 +168,6 @@ class BikeShareApp < Sinatra::Base
     @page_number = params["page"].to_i
     batch_start = ((params["page"].to_i - 1) * 30) + 1
     @trips = Trip.find_each(batch_size: 30, start: batch_start, finish: batch_start + 29)
-
     erb :"trips/page"
   end
 
@@ -170,10 +189,14 @@ class BikeShareApp < Sinatra::Base
   put '/trips/:id' do
     id = params['id']
     trip = params['trip']
+    bike = trip['bike']
 
-    trip.delete('weather') # Delete this when integrating weather!
     trip['start_station'] = Station.find_by(name: trip['start_station'])
     trip['end_station'] = Station.find_by(name: trip['end_station'])
+    trip['bike'] = Bike.find_by(bin: trip['bike'])
+    date = trip['start_date'].to_date
+
+    trip['weather_condition'] = WeatherCondition.find_by(date: date)
 
     Trip.update(id, params['trip'])
 

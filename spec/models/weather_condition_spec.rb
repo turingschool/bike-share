@@ -99,6 +99,13 @@ RSpec.describe WeatherCondition do
 
       expect(condition).to_not be_valid
     end
+
+    it 'is invalid with a duplicate date' do
+
+      weather = WeatherCondition.create(max_temperature_f: 99.0, min_temperature_f: -121.9, mean_temperature_f: 55.0, mean_humidity: 62.5, mean_visibility_miles: 0.2, mean_wind_speed_mph: 20.0, precipitation_inches: 1.2, date: Date.parse('29/10/1986'))
+
+      expect(weather).to_not be_valid
+    end
   end
 
   describe "relationships between trips and weather" do
@@ -110,7 +117,6 @@ RSpec.describe WeatherCondition do
       trip1 = Trip.create(duration: 23, start_date: start_date, end_date: end_date, subscription_type: 'subscriber')
       trip2 = Trip.create(duration: 22, start_date: start_date, end_date: end_date, subscription_type: 'subscriber')
 
-      # require "pry"; binding.pry
       @weather.trips << trip1
       @weather.trips << trip2
 
@@ -118,11 +124,6 @@ RSpec.describe WeatherCondition do
       expect(@weather.trips).to include(trip2)
     end
   end
-
-  # -------------------------------------------------------
-  # -------------------------------------------------------
-  # -------------------------------------------------------
-  # -------------------------------------------------------
 
 
   describe "dashboard can show stats in 10 degree temp blocks" do
@@ -170,8 +171,5 @@ RSpec.describe WeatherCondition do
       expect(@weather.trips).to include(trip1)
       expect(@weather.trips).to include(trip2)
     end
-
   end
-
-
 end

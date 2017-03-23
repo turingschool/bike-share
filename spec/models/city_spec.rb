@@ -11,9 +11,16 @@ RSpec.describe City do
     end
 
     it "is invalid without a name" do
-    city = City.create(name: "")
+      city = City.create(name: "")
 
-    expect(city).to_not be_valid
+      expect(city).to_not be_valid
+    end
+
+    it 'is invalid with a duplicate name' do
+      City.create(name: "Sam Town")
+      city = City.create(name: "Sam Town")
+
+      expect(city).to_not be_valid
     end
   end
 

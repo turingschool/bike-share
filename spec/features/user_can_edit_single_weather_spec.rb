@@ -28,7 +28,6 @@ attr_reader :weather
     fill_in "weather_condition[mean_visibility_miles]", with: 3.14
     fill_in "weather_condition[mean_wind_speed_mph]", with: 3.14
     fill_in "weather_condition[precipitation_inches]", with: 3.14
-    # require "pry"; binding.pry
 
     click_on "Submit"
 

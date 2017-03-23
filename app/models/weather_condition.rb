@@ -9,7 +9,9 @@ class WeatherCondition < ActiveRecord::Base
   validates :mean_visibility_miles, presence: true
   validates :mean_wind_speed_mph, presence: true
   validates :precipitation_inches, presence: true
-  validates :date, presence: true
+  validates :date, presence: true, uniqueness: true
+
+  scope :ordered, -> { order(:date) }
 
     def self.trips_by_temperature
       temp_range = [[40,49],[50,59],[60,69],[70,79],[80,89],[90,99]]

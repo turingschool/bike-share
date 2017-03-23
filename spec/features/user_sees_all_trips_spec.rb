@@ -35,11 +35,11 @@ RSpec.describe "A user can view trip" do
     expect(current_path).to eq("/trips/new")
   end
 
-  # it "has an dashboard button" do
-  #   visit '/trips-dashboard'
-  #   expect(page).to have_button('Dashboard')
-  #   page.click_link('', :href => '/trips-dashboard')
-  #   expect(current_path).to eq('/trips-dashboard')
-  # end
+  it "has an dashboard button" do
+    visit '/trips'
+    expect(page).to have_button('Dashboard')
+    page.click_link('', :href => '/trips-dashboard')
+    expect(current_path).to eq('/trips-dashboard')
+  end
 
 end

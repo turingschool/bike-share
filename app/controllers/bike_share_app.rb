@@ -158,4 +158,12 @@ class BikeShareApp < Sinatra::Base
     @trip = Trip.destroy(params[:id])
     redirect '/trips'
   end
+
+  get '/trips-dashboard' do
+    @average_ride_duration = Trip.average_ride_duration
+    @longest_ride = Trip.longest_rid
+    @shortest_ride = Trip.shortest_ride
+    
+    erb :"trip/trips-dashboard"
+  end
 end

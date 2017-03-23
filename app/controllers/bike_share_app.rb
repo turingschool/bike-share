@@ -161,9 +161,9 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips-dashboard' do
     @average_ride_duration = Trip.average_ride_duration
-    @longest_ride = Trip.longest_rid
+    @longest_ride = Trip.longest_ride
     @shortest_ride = Trip.shortest_ride
     
-    erb :"trip/trips-dashboard"
+    erb :"trip/dashboard"
   end
 end

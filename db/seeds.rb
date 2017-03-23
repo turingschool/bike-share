@@ -3,7 +3,6 @@ require './app/models/city'
 require './app/models/trip'
 require './app/models/subscription_type'
 require './app/models/condition'
-# require './app/models/bike'
 require 'csv'
 require 'pry'
 
@@ -11,15 +10,14 @@ City.destroy_all
 Station.destroy_all
 SubscriptionType.destroy_all
 Condition.destroy_all
-# Bike.destroy_all
 
-stations = CSV.open 'db/csv/fixtures/stations_sample_data.csv',
+stations = CSV.open 'db/csv/station.csv',
 headers: true, header_converters: :symbol
 
-trips = CSV.open 'db/csv/fixtures/trip_sample_data.csv',
+trips = CSV.open 'db/csv/trip.csv',
 headers: true, header_converters: :symbol
 
-conditions = CSV.open 'db/csv/fixtures/weather_sample_data.csv',
+conditions = CSV.open 'db/csv/weather.csv',
 headers: true, header_converters: :symbol
 
 def format_date(date)
@@ -28,7 +26,6 @@ def format_date(date)
 end
 
 stations.each do |row|
-  puts "creating station: #{row}"
   city = City.find_or_create_by!(name: row[:city])
   city.stations.create(id: row[:id],
                  name: row[:name],
@@ -36,13 +33,11 @@ stations.each do |row|
                  dock_count: row[:dock_count],
                  lat: row[:lat],
                  long: row[:long],
-                 installation_date: Date.strptime(row[:installation_date], '%m/%e/%Y')
-                 )
+                 installation_date: Date.strptime(row[:installation_date], '%m/%e/%Y'))
 end
 
 
 trips.each do |row|
-  puts "creating trip: #{row}"
   subscriber_type = SubscriptionType.find_or_create_by!(flavor: row[:subscription_type])
   Trip.create!(id: row[:id],
               duration: row[:duration],
@@ -51,13 +46,11 @@ trips.each do |row|
               end_date: format_date(row[:end_date]),
               bike_id: row[:bike_id],
               end_station_id: row[:end_station_id],
-              subscription_type_id: subscriber_type.id
-              )
+              subscription_type_id: subscriber_type.id)
 end
 
 conditions.each do |row|
-  puts "creating condition: #{row}"
-  Condition.create!(id: row[:id],
+  Condition.create(id: row[:id],
                     date: format_date(row[:date]),
                     max_temperature_f: row[:max_temperature_f],
                     mean_temperature_f: row[:mean_temperature_f],
@@ -66,6 +59,5 @@ conditions.each do |row|
                     mean_visibility_miles: row[:mean_visibility_miles],
                     mean_wind_speed_mph: row[:mean_wind_speed_mph],
                     precipitation_inches: row[:precipitation_inches],
-                    zip_code: row[:zip_code]
-                    )
+                    zip_code: row[:zip_code])
 end

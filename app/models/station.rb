@@ -1,4 +1,3 @@
-require 'pry'
 class Station < ActiveRecord::Base
 
   belongs_to :city
@@ -107,7 +106,6 @@ class Station < ActiveRecord::Base
       v
   end
     most_frequently_occuring_zip = zips.select do |k, v|
-      binding.pry
       v == max_nums
   end
     most_frequently_occuring_zip.keys

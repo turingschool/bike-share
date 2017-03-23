@@ -49,7 +49,7 @@ class BikeShareApp < Sinatra::Base
     @most_frequent_origination = @station.most_frequent_origination
     @most_frequent_zip_code = @station.most_frequent_zip_code
     @most_bikes_starting_here = @station.most_bikes_starting_here
-    # binding.pry
+
     erb :"stations/show"
   end
 

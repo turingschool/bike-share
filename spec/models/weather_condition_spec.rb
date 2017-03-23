@@ -117,7 +117,6 @@ RSpec.describe WeatherCondition do
       trip1 = Trip.create(duration: 23, start_date: start_date, end_date: end_date, subscription_type: 'subscriber')
       trip2 = Trip.create(duration: 22, start_date: start_date, end_date: end_date, subscription_type: 'subscriber')
 
-      # require "pry"; binding.pry
       @weather.trips << trip1
       @weather.trips << trip2
 

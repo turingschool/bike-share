@@ -1,5 +1,5 @@
 require_relative '../spec_helper'
-require 'pry'
+
 RSpec.describe 'When a user visits /trips' do
 
   attr_reader :start_date, :end_date

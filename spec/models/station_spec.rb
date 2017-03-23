@@ -1,6 +1,6 @@
 require 'Date'
 require_relative '../spec_helper'
-require 'pry'
+
 RSpec.describe Station do
   describe 'validations' do
 
@@ -94,7 +94,6 @@ RSpec.describe Station do
     end
 
     it 'shows the total stations' do
-      binding.pry
       count = Station.total
 
       expect(count).to eq(4)
@@ -186,7 +185,6 @@ RSpec.describe Station do
   end
 
   it 'shows Most frequent origination station for rides that ended at this station' do
-    # binding.pry
 
     station_1 = Station.create(lat: 37.329732, long: -121.90178200000001, name: 'Turing Station', dock_count: 12, installation_date:  Date.parse('8/6/2013'))
 

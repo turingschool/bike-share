@@ -8,6 +8,7 @@
 <h4>Shortest ride: <%=@shortest_ride%></h4>
 <h4>Station with the most rides as a starting place: <%=@station_name_most_rides_start%> (<%=@station_count_most_rides_start%>)</h4>
 
+
 <h4>Most ridden bike with total number of rides for that bike: <%=@shortest_ride%></h4>
 <h4>Least ridden bike with total number of rides for that bike: <%=@shortest_ride%></h4>
 <h4>Shortest ride: <%=@shortest_ride%></h4>
@@ -18,3 +19,20 @@
 </ul>
 <h4>Single date with the highest number of trips with a count of those trips: <%=@shortest_ride%></h4>
 <h4>Single date with the lowest number of trips with a count of those trips: <%=@shortest_ride%></h4>
+
+<h4>Month By Month Breakdown</h4>
+
+<ul>
+  <% @month_by_month_breakdown.each do |k, v| %>
+    <li> <%=k%>: <%=v%> </li>
+  <% end %>
+</ul>
+
+<h4>Year Subtotals</h4>
+
+<ul>
+  <% @year_subtotals.each do |k, v| %>
+    <li> 20<%=k%>: <%=v%> </li>
+  <% end %>
+</ul>
+

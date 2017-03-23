@@ -1,0 +1,50 @@
+<h2>dashbard!</h2>
+<ul>
+  <li>Average trip length: <%= @average_duration %></li>
+  <li>
+    <ul> Longest trips
+      <% @longest_trips.each do |trip| %>
+      <li class='longest-trips'><a href="/trips/<%= trip.id %>"><%= trip.make_name %></a></li>
+      <% end %>
+    </ul>
+  </li>
+  <li>
+    <ul> Shortest trips
+      <% @shortest_trips.each do |trip| %>
+      <li class="shortest-trips"><a href="/trips/<%= trip.id %>"><%= trip.make_name %></a></li>
+    </ul>
+    <% end %>
+  </li>
+  <li>
+    <ul> Most popular start station(s)
+      <% @popular_start_stations.each do |station| %>
+      <li class="popular-start-stations"><a href="/stations/<%= station.id %>"><%= station.name %></a></li>
+      <% end %>
+    </ul>
+  </li>
+  <li>
+    <ul> Most popular end station(s)
+      <% @popular_end_stations.each do |station| %>
+      <li class="popular-end-stations"><a href="/stations/<%= station.id %>"><%= station.name %></a></li>
+      <% end %>
+    </ul>
+  </li>
+  <li>Highest number of times one bike was ridden: <%= @pop_bike_trips_count %>
+    <ul> Most popular bike(s)
+      <% @pop_bikes.each do |bike| %>
+      <li class="most-popular-bikes">Bike ID: <%= bike.bin %></li>
+      <% end %>
+    </ul>
+  </li>
+  <li>Fewest number of times one bike was ridden: <%= @least_pop_bike_trips_count %>
+    <ul> Least popular bike(s)
+      <% @least_pop_bikes.each do |bike| %>
+      <li class="least-popular-bikes">Bike ID: <%= bike.bin %></li>
+      <% end %>
+    </ul>
+  </li>
+  <li>Total subscribers: <%= @total_subscribers %></li>
+  <li>Percentage of subscribers: <%= @subscribers_percentage %>%</li>
+  <li>Total customers: <%= @total_customers %></li>
+  <li>Percentage of customers: <%= @customers_percentage %>%</li>
+</ul>

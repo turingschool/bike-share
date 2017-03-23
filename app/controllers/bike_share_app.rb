@@ -90,7 +90,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/weather-dashboard' do
     @station_total = Station.total
-# perform logic here before passing to the view
+
     erb :"weather_conditions/dashboard"
   end
 
@@ -100,10 +100,25 @@ class BikeShareApp < Sinatra::Base
     erb :"weather_conditions/show"
   end
 
-#----------------------------------------------------------------
-#----------------------------------------------------------------
-#----Trips Controller medthods down below---------------------------
-#----------------------------------------------------------------
+
+  get '/trips-dashboard' do
+    @average_duration = Trip.average_duration
+    @longest_trips = Trip.longest_rides
+    @shortest_trips = Trip.shortest_rides
+    @popular_start_stations = Trip.most_popular_start_stations
+    @popular_end_stations = Trip.most_popular_end_stations
+    @pop_bike_trips_count = Trip.most_popular_bike_trips_count
+    @pop_bikes = Trip.most_popular_bikes
+    @least_pop_bike_trips_count = Trip.least_popular_bike_trips_count
+    @least_pop_bikes = Trip.least_popular_bikes
+    @total_subscribers = Trip.subscribers_count
+    @subscribers_percentage = (Trip.subscribers_percentage * 100).to_i
+    @total_customers = Trip.customers_count
+    @customers_percentage = (Trip.customers_percentage * 100).to_i
+
+    erb :"trips/dashboard"
+  end
+
   get '/trips' do
     if Trip.count < 31
       @trips = Trip.ordered

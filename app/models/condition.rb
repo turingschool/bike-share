@@ -27,20 +27,37 @@ class Condition < ActiveRecord::Base
     total_range.each_slice(10)
   end
 
+  def self.trips_per_day(date)
+    Trip.where(start_date: date).count
+  end
+
   def self.date_in_temperature_ranges
     temperature_ranges.map do |range|
       where(max_temperature_f: range).map(&:date)
     end
-
   end
 
-  def self.rides_per_day
-    date_in_temperature_ranges.map do |range|
-      range.map do |date|
-        Trip.where(start_date: date)
-      end
+  def self.number_of_trips_per_temperature_range
+    range = date_in_temperature_ranges
+    range.group_by do |dates|
+      trips_per_day(dates)
     end
   end
+
+  def self.get_averages_from_range
+    trips = number_of_trips_per_temperature_range
+    trips.keys.map do |x|
+      x / trips[x].flatten.count.to_f if x != 0
+    end
+  end
+
+    # date_in_temperature_ranges.map do |range|
+    #   range.map do |date|
+    #     p "i just ran"
+    #     Trip.where(start_date: date)
+    #   end
+    # end
+
   # rides_per_day = For each date range, determine the number of rides
   # on those days
   # rides_per_day.max

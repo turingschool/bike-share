@@ -143,6 +143,24 @@ RSpec.describe Trip do
       expect(Trip.customers_count).to eq(1)
       expect(Trip.customers_percentage).to eq(0.5)
     end
+
+    it 'knows what days had the most and least trips' do
+      day1 = DateTime.strptime('8/27/2012 14:01', '%m/%d/%Y %k:%M')
+      day2 = DateTime.strptime('8/28/2012 14:23', '%m/%d/%Y %k:%M')
+      day3 = DateTime.strptime('8/29/2012 14:23', '%m/%d/%Y %k:%M')
+
+      trip1 = Trip.create(duration: 22, start_date: day1, end_date: end_date, subscription_type: 'subscriber')
+      trip2 = Trip.create(duration: 22, start_date: day1, end_date: end_date, subscription_type: 'subscriber')
+      trip3 = Trip.create(duration: 22, start_date: day1, end_date: end_date, subscription_type: 'subscriber')
+      trip4 = Trip.create(duration: 22, start_date: day2, end_date: end_date, subscription_type: 'subscriber')
+      trip5 = Trip.create(duration: 22, start_date: day2, end_date: end_date, subscription_type: 'subscriber')
+      trip6 = Trip.create(duration: 22, start_date: day3, end_date: end_date, subscription_type: 'subscriber')
+
+      expect(Trip.busiest_days).to eq([day1])
+      expect(Trip.busiest_day_trips_count).to eq(3)
+      expect(Trip.slowest_days).to eq([day3])
+      expect(Trip.slowest_day_trips_count).to eq(1)
+    end
   end
 
   describe "relationships" do
@@ -155,7 +173,6 @@ RSpec.describe Trip do
       trip1.weather_condition = weather
 
       expect(trip1.weather_condition).to eq(weather)
-
     end
   end
 

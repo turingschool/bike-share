@@ -91,6 +91,14 @@ class Trip < ActiveRecord::Base
   def self.customers_percentage
     self.customers_count / self.all.count.to_f
   end
+
+  # def self.busiest_days
+  #   trip_days = Trip.pluck(:start_date).map(&:to_date).uniq
+
+  #   max = trip_days.max_by do |day|
+
+  #   end
+  # end
 end
 
-#add trip-dashboard methods and trip dashboard file later
+#add trip-dashboard methods and trip dashboard file laters

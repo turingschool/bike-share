@@ -18,8 +18,10 @@ CSV.foreach("./db/csv/station.csv", :headers => true) do |row|
   row.delete("city")
   row.delete("id")
 
-  city.stations.create!(row.to_h)
+  city.stations.create!(row.to_h) unless Station.exists?(name: row['name'])
 end
+
+puts 'stations seeded'
 
 CSV.foreach("./db/csv/trips_truncated.csv", :headers => true) do |row|
   bin = row["bike_id"]
@@ -49,6 +51,8 @@ CSV.foreach("./db/csv/trips_truncated.csv", :headers => true) do |row|
 
   bike.trips.create!(row.to_h)
 end
+
+puts 'trips seeded'
 
 CSV.foreach("./db/csv/weather.csv", :headers => true) do |row|
 
@@ -81,4 +85,5 @@ CSV.foreach("./db/csv/weather.csv", :headers => true) do |row|
 
   end
 end
- puts "seeded"
+
+puts 'weather seeded'

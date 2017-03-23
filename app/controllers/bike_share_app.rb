@@ -143,6 +143,12 @@ class BikeShareApp < Sinatra::Base
     @end_trip_station_name = @trip.end_station_name
     @number_of_rides_started = Trip.number_of_rides_started_at_station(@start_trip_station_name)
     @number_of_rides_ended = Trip.number_of_rides_ended_at_station(@end_trip_station_name)
+    @most_frequent_destination = Trip.most_frequent_destination_for_station(@start_trip_station_name)
+    @most_frequent_origin = Trip.most_frequent_origin_for_station(@end_trip_station_name)
+    @highest_trips_by_date_for_station = Trip.highest_trips_by_date_for_station(@start_trip_station_name)
+    @most_frequent_zip = Trip.most_frequent_zipcode_for_start_station(@start_trip_station_name)
+    @most_frequent_bike_id_for_start_station = Trip.most_frequent_bike_id_for_start_station(@start_trip_station_name)
+
     erb :"trip/show"
   end
 
@@ -171,6 +177,8 @@ class BikeShareApp < Sinatra::Base
     @station_name_most_rides_start = @station_with_most_rides_start.first
     @station_count_most_rides_start = @station_with_most_rides_start.last
     @station_with_most_rides_end = Trip.station_with_most_rides_end_station
+    @month_by_month_breakdown = Trip.month_by_month_breakdown(Trip.get_month_set)
+    @year_subtotals = Trip.year_subtotals(Trip.get_year_set)
 
     erb :"trip/dashboard"
   end

@@ -28,7 +28,6 @@ class Trip < ActiveRecord::Base
   end
 
   def self.station_with_most_rides_start_station
-      binding.pry
       Trip.group(:start_station_name).count.max_by{|k,v| v}
     # station_counts = Hash.new(0)
     # self.all.each do |trip|
@@ -70,12 +69,86 @@ class Trip < ActiveRecord::Base
   end
 
   def self.number_of_rides_ended_at_station(station_name)
-    Trip.where(start_station_name: station_name).count
-  end
-
-  def self.number_of_rides_ended_at_station(station_name)
     Trip.where(end_station_name: station_name).count
   end
+
+  def self.most_frequent_destination_for_station(station_name)
+    found_trips = Trip.where(start_station_name: station_name)
+    trip_destination_counts = Hash.new(0)
+    found_trips.each do |trip|
+      trip_destination_counts[trip.end_station_name] += 1
+    end
+    trip_destination_counts.max_by{|k,v| v}.first
+   end
+
+
+    def self.most_frequent_origin_for_station(station_name)
+      found_trips = Trip.where(end_station_name: station_name)
+      trip_destination_counts = Hash.new(0)
+      found_trips.each do |trip|
+        trip_destination_counts[trip.start_station_name] += 1
+      end
+      trip_destination_counts.max_by{|k,v| v}.first
+    end
+
+    def self.highest_trips_by_date_for_station(station_name)
+      found_trips = Trip.where(start_station_name: station_name)
+      trip_destination_counts = Hash.new(0)
+      found_trips.each do |trip|
+        trip_destination_counts[trip.start_date] += 1
+      end
+      trip_destination_counts.max_by{|k,v| v}.first
+    end
+
+    def self.most_frequent_zipcode_for_start_station(station_name)
+      found_trips = Trip.where(start_station_name: station_name)
+      trip_destination_counts = Hash.new(0)
+      found_trips.each do |trip|
+        trip_destination_counts[trip.zip_code] += 1
+      end
+      trip_destination_counts.max_by{|k,v| v}.first
+    end
+
+
+    def self.most_frequent_bike_id_for_start_station(station_name)
+      found_trips = Trip.where(start_station_name: station_name)
+      trip_destination_counts = Hash.new(0)
+      found_trips.each do |trip|
+        trip_destination_counts[trip.bike_id] += 1
+      end
+      trip_destination_counts.max_by{|k,v| v}.first
+    end
+
+    def self.get_month_set
+      Trip.all.map do |trip|
+        trip.start_date.strftime("%B/%y")
+      end
+    end
+
+    def self.get_year_set
+      Trip.all.map do |trip|
+        trip.start_date.strftime("%y")
+      end
+
+    end
+
+    def self.month_by_month_breakdown(month_set)
+      month_counts = Hash.new(0)
+      month_set.each do |month|
+        month_counts[month] += 1
+      end
+      month_counts
+    end
+
+    def self.year_subtotals(year_set)
+      year_counts = Hash.new(0)
+      year_set.each do |year|
+        year_counts[year] += 1
+      end
+      year_counts
+    end
+
+
 
 
 #   def month_method

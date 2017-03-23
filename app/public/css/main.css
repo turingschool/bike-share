@@ -17,6 +17,7 @@ nav {
   float: right;
   font-size: 17px;
   padding-right: 30px;
+  text-decoration: none;
 }
 
 .nav-title {
@@ -26,8 +27,10 @@ nav {
 }
 
 .puppy {
-  text-align: center;
+  padding: 30px 30px;
   display: flex;
+  align-content: center;
+
 }
 
 .puppies {

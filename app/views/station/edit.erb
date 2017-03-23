@@ -1,0 +1,14 @@
+<h1>Edit Station</h1>
+
+<form action="/stations/<%=@station.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT" />
+  <label for="">Name:</label>
+  <input type="textfield" name="station[name]" value="<%= @station.name %>">
+  <label for="">City:</label>
+  <input type="textfield" name="city[name]" value="<%= @station.city.name %>">
+  <label for="">Dock Count:</label>
+  <input type="textfield" name="station[dock_count]" value="<%= @station.dock_count %>">
+  <label for="">Installation Date:</label>
+  <input type="textfield" name="station[installation_date]" value="<%= @station.installation_date %>">
+  <input type="submit" value="Update Station"/>
+</form>

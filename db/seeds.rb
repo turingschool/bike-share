@@ -6,6 +6,8 @@ require './app/models/bike.rb'
 require 'CSV'
 require 'Date'
 
+require 'active_support/core_ext'
+
 CSV.foreach("./db/csv/station.csv", :headers => true) do |row|
 
   city_name = row["city"]
@@ -23,36 +25,7 @@ end
 
 puts 'stations seeded'
 
-CSV.foreach("./db/csv/trips_truncated.csv", :headers => true) do |row|
-  bin = row["bike_id"]
-  start_date = row["start_date"]
-  end_date = row["end_date"]
 
-  row['start_date'] = DateTime.strptime(start_date, '%m/%d/%Y %k:%M')
-  row['end_date'] = DateTime.strptime(end_date, '%m/%d/%Y %k:%M')
-
-  row['subscription_type'] = row['subscription_type'].downcase
-
-  start_station = Station.find_by(name: row["start_station_name"])
-
-  end_station = Station.find_by(name: row["end_station_name"])
-
-  next if start_station.nil? || end_station.nil?
-
-  row["start_station_id"] = start_station.id
-  row["end_station_id"] = end_station.id
-
-  bike = Bike.find_or_create_by(bin: bin)
-
-  row.delete("start_station_name")
-  row.delete("end_station_name")
-  row.delete("bike_id")
-  row.delete("id")
-
-  bike.trips.create!(row.to_h)
-end
-
-puts 'trips seeded'
 
 CSV.foreach("./db/csv/weather.csv", :headers => true) do |row|
 
@@ -87,3 +60,35 @@ CSV.foreach("./db/csv/weather.csv", :headers => true) do |row|
 end
 
 puts 'weather seeded'
+
+CSV.foreach("./db/csv/trips_truncated.csv", :headers => true) do |row|
+  bin = row["bike_id"]
+  start_date = row["start_date"]
+  end_date = row["end_date"]
+
+  row['start_date'] = DateTime.strptime(start_date, '%m/%d/%Y %k:%M')
+  row['end_date'] = DateTime.strptime(end_date, '%m/%d/%Y %k:%M')
+
+  row['subscription_type'] = row['subscription_type'].downcase
+
+  start_station = Station.find_by(name: row["start_station_name"])
+
+  end_station = Station.find_by(name: row["end_station_name"])
+
+  next if start_station.nil? || end_station.nil?
+
+  row["start_station_id"] = start_station.id
+  row["end_station_id"] = end_station.id
+  row["weather_condition_id"] = WeatherCondition.find_by(date: row['start_date'].to_date).id
+
+  bike = Bike.find_or_create_by(bin: bin)
+
+  row.delete("start_station_name")
+  row.delete("end_station_name")
+  row.delete("bike_id")
+  row.delete("id")
+
+  bike.trips.create!(row.to_h)
+end
+
+puts 'trips seeded'

@@ -28,7 +28,6 @@ class Trip < ActiveRecord::Base
   end
 
   def self.station_with_most_rides_start_station
-      binding.pry
       Trip.group(:start_station_name).count.max_by{|k,v| v}
     # station_counts = Hash.new(0)
     # self.all.each do |trip|

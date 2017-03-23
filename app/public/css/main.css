@@ -3,14 +3,20 @@ body {
 }
 
 nav {
-  background-color: blue;
-  padding: 8px;
+  background-color: #009da4;
+  padding: 30px;
+  overflow: hidden;
+}
 
+.nav a {
+  padding: 14px 16px;
 }
 
 .nav-link {
   color: white;
-
+  float: left;
+  font-size: 17px;
+  padding-right: 30px;
 }
 
 .puppy {

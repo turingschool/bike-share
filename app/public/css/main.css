@@ -14,9 +14,15 @@ nav {
 
 .nav-link {
   color: white;
-  float: left;
+  float: right;
   font-size: 17px;
   padding-right: 30px;
+}
+
+.nav-title {
+  color: white;
+  float: left;
+  font-size: 30px;
 }
 
 .puppy {
@@ -27,4 +33,14 @@ nav {
 .puppies {
   display: flex;
   justify-content: center;
+}
+
+#footer {
+   position:absolute;
+   color: #009da4;
+   bottom:0;
+   width:100%;
+   height:30px;
+   text-align: right;
+   padding: 14px 16px;
 }

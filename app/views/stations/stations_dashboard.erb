@@ -12,23 +12,23 @@
           <div class="panel-body">
             <medium><strong>Total number of stations:</strong> <%= @station.total_stations %></medium><br><br>
             <medium><strong>Average number of bikes available per station:</strong> <%= @station.average_bikes_per_station %></medium><br><br>
+            <medium><strong>Newest station(s):</strong> <%= @station.newest_station %></medium><br><br>
+            <medium><strong>Oldest station(s):</strong> <%= @station.oldest_station %></medium><br><br>
 
 
             <medium><strong>Station(s) where the most bikes are available:</strong> <%= @station.stations_where_the_most_bikes_are_available %><br><br>Bike inventory at each station</medium>
             <div class="progress">
-              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @station.most_bikes_available_at_station %> " aria-valuemin="0" aria-valuemax="100" style="width: <%= @station.most_bikes_available_at_station %>%">
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @station.most_bikes_available_at_station %> " aria-valuemin="0" aria-valuemax="27" style="width: <%= @station.most_bikes_available_at_station %>%">
                 <%= @station.most_bikes_available_at_station %>
               </div>
             </div>
 
             <medium><strong>Station(s) where the fewest bikes are available:</strong> <%= @station.stations_where_the_fewest_bikes_are_available %><br><br>Bike inventory at each station</medium>
             <div class="progress">
-              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @station.fewest_bikes_available_at_station %> " aria-valuemin="0" aria-valuemax="100" style="width: <%= @station.fewest_bikes_available_at_station %>%">
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @station.fewest_bikes_available_at_station %> " aria-valuemin="0" aria-valuemax="27" style="width: <%= @station.fewest_bikes_available_at_station %>%">
                 <%= @station.fewest_bikes_available_at_station %>
               </div>
             </div>
-
-
 
           </div>
         </div>
@@ -58,31 +58,3 @@
       </div>
     </div>
 </div>
-
-
-<table>
-<tr>
-  <td> </td>
-</tr>
-<tr>
-  <td> </td>
-</tr>
-<tr>
-  <td></td>
-</tr>
-<tr>
-  <td></td>
-</tr>
-<tr>
-  <td> </td>
-</tr>
-<tr>
-  <td> </td>
-</tr>
-<tr>
-  <td>Newest station(s): <%= @station.newest_station %> </td>
-</tr>
-<tr>
-  <td>Oldest station(s): <%= @station.oldest_station %> </td>
-</tr>
-</table>

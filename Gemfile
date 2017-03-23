@@ -7,6 +7,7 @@ gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'will_paginate', '~> 3.1.1'
 gem 'awesome_print'
+
 group :development, :test do
   gem 'shotgun'
   gem 'tux'

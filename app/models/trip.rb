@@ -23,6 +23,16 @@ class Trip < ActiveRecord::Base
   def self.average_duration
     Trip.average(:duration).to_i
   end
+
+  def self.longest_rides
+    max = Trip.maximum(:duration)
+    Trip.select {|t| t.duration == max}
+  end
+
+  def self.shortest_rides
+    min = Trip.minimum(:duration)
+    Trip.select {|t| t.duration == min}
+  end
 end
 
 #add trip-dashboard methods and trip dashboard file later

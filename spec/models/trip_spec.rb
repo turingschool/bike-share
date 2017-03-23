@@ -75,12 +75,11 @@ RSpec.describe Trip do
   end
 
   describe 'model methods' do
-
     attr_reader :trip1, :trip2, :start_station, :end_station
 
     before do
       @trip1 = Trip.create(duration: 22, start_date: start_date, end_date: end_date, subscription_type: 'subscriber', bike_id: 1, start_station_id: 1, end_station_id: 2)
-      @trip2 = Trip.create(duration: 24, start_date: start_date, end_date: end_date, subscription_type: 'subscriber', bike_id: 1, start_station_id: 1, end_station_id: 2)
+      @trip2 = Trip.create(duration: 24, start_date: start_date, end_date: end_date, subscription_type: 'subscriber', start_station_id: 1, end_station_id: 2)
     end
 
     it 'can make its own name, with interpolation' do
@@ -96,7 +95,7 @@ RSpec.describe Trip do
     end
 
     it 'knows its shortest rides' do
-      expect(Trip.shortest_rides.to eq([trip1]))
+      expect(Trip.shortest_rides).to eq([trip1])
     end
 
     it 'knows the most popular starting station' do

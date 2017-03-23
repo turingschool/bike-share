@@ -12,7 +12,7 @@ RSpec.describe "when a user visits /stations/:id/edit" do
     Trip.create(duration: 40, start_date: "23/9/2014", start_station_id: 2, end_date: "23/9/2014", end_station_id: 2, bike_id: 2, subscription_type_id: 1, zip_code_id: 1)
     visit "stations/1/edit"
     fill_in "station[dock_count]", with: 10
-    click_on "submit"
+    click_on "Submit"
 
     expect(current_path).to eq("/stations/1")
 

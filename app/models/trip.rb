@@ -6,6 +6,8 @@ class Trip < ActiveRecord::Base
   belongs_to :zip_code
   belongs_to :subscription_type
 
+  belongs_to :condition 
+
   validates :duration, presence: true
   validates :start_date, presence: true
   validates :start_station_id, presence: true
@@ -132,15 +134,15 @@ class Trip < ActiveRecord::Base
   end
 
   def self.one_percentage
-    ((one_count / Trip.count.to_f) * 100).round(2) 
+    ((one_count / Trip.count.to_f) * 100).round(2)
   end
 
   def self.two_count
     group_subscription_types[2]
   end
-  
+
   def self.two_percentage
-    ((two_count / Trip.count.to_f) * 100).round(2) 
+    ((two_count / Trip.count.to_f) * 100).round(2)
   end
 
   def self.one_subscription_type

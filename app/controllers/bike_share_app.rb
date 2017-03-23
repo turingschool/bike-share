@@ -3,8 +3,6 @@ require 'will_paginate/active_record'
 class BikeShareApp < Sinatra::Base
   include WillPaginate::Sinatra::Helpers
 
-  set :method_override, true
-
   get '/' do
     erb :"home/dashboard"
   end
@@ -127,5 +125,10 @@ class BikeShareApp < Sinatra::Base
   delete '/conditions/:id' do
     @condition = Condition.destroy(params[:id])
     redirect "/conditions"
+  end
+
+  get '/conditions-dashboard' do
+    @conditions = Condition.all
+    erb :"conditions/dashboard"
   end
 end

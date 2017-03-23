@@ -1,7 +1,7 @@
 require_relative "../../spec_helper"
 
 RSpec.describe "when a user visits '/stations' " do
-  xit "they can see all stations" do
+  it "they can see all stations" do
     city = City.create(city: "Denver")
     station = city.stations.create(name: "Japantown", dock_count: 15, city_id: 1, installation_date: "2013-08-05")
 

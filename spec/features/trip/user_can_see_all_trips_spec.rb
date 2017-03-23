@@ -5,13 +5,13 @@ RSpec.describe "when a user visits '/trips' " do
 # show only 30 records per page limit(30) offset by 30 each page
 # module pagination
 
-  xit "they see welcome message" do
+  it "they see welcome message" do
     visit "/trips"
     # expect(page).to eq("/trips/page/1")
     expect(page).to have_content("All Trips")
   end
 
-  xit "they can see 30 trips" do
+  it "they can see 30 trips" do
     visit "/trips"
 
 
@@ -29,7 +29,7 @@ RSpec.describe "when a user visits '/trips' " do
     expect(page).to have_content("Zipcode")
   end
 
-  xit "and sees 30 trips on each page" do
+  it "and sees 30 trips on each page" do
 
     city = City.create(city: "Denver")
     start_station = Station.create(name: "Denver", dock_count: 15, city_id: 1, installation_date: "12/05/1987")

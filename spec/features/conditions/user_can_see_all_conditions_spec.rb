@@ -27,7 +27,7 @@ RSpec.describe "when a user visits '/conditions' " do
     condition = Condition.create(name: thing)
 
 
-    end
+
 
     visit('/conditions/page/1')
 

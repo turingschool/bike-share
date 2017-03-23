@@ -130,7 +130,7 @@ class BikeShareApp < Sinatra::Base
     erb :"conditions/new"
   end
 
-  post "/conditions" do
+  post "/conditions/:id" do
     @condition = Conditions.create(params[:condition])
     redirect "/conditions"
   end

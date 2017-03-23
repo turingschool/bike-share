@@ -1,6 +1,13 @@
 class BikeShareApp < Sinatra::Base
+
+  get '/' do
+
+    erb :home
+
+  end
+
   get '/stations' do
-    @stations = Station.ordered # What's AR's sorting method?
+    @stations = Station.ordered
 
     erb :"stations/index"
   end
@@ -129,6 +136,7 @@ class BikeShareApp < Sinatra::Base
   get '/trips' do
     if Trip.count < 31
       @trips = Trip.ordered
+
       erb :"trips/index"
     else
       redirect '/trips/page/1'

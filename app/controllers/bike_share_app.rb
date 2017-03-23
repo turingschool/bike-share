@@ -173,12 +173,19 @@ class BikeShareApp < Sinatra::Base
     @average_ride_duration = Trip.average_ride_duration
     @longest_ride = Trip.longest_ride
     @shortest_ride = Trip.shortest_ride
+    @bike_most_rides = Trip.bike_with_most_rides
+    @bike_least_rides = Trip.bike_with_least_rides
     @station_with_most_rides_start = Trip.station_with_most_rides_start_station
     @station_name_most_rides_start = @station_with_most_rides_start.first
     @station_count_most_rides_start = @station_with_most_rides_start.last
     @station_with_most_rides_end = Trip.station_with_most_rides_end_station
+    @station_name_most_rides_end = @station_with_most_rides_end.first
+    @station_count_most_rides_end = @station_with_most_rides_end.last
+    @station_with_most_rides_end = Trip.station_with_most_rides_end_station
     @month_by_month_breakdown = Trip.month_by_month_breakdown(Trip.get_month_set)
     @year_subtotals = Trip.year_subtotals(Trip.get_year_set)
+    @date_highest_trips = Trip.date_with_highest_trips
+    @date_lowest_trips = Trip.date_with_lowest_trips
 
     erb :"trip/dashboard"
   end

@@ -1,0 +1,146 @@
+<div class="page-header top">
+  <h1 class="title text-left">Conditions Dashboard</h1><br/>
+</div>
+
+
+  <div class="container all-stations">
+    <div class="panel">
+      <div class="panel-heading stations-panel">Breakdown of Trips by Max Temperature</div>
+        <table class="table table-striped table-hover table-condensed table-bordered">
+          <tr>
+            <th> </th>
+            <th>40 - 49 &#8457;</th>
+            <th>50 - 50 &#8457;</th>
+            <th>60 - 69 &#8457;</th>
+            <th>70 - 79 &#8457;</th>
+            <th>80 - 89 &#8457;</th>
+            <th>90 - 99 &#8457;</th>
+          </tr>
+          <tr>
+            <td>Average Number of Rides</td>
+          <% @conditions.average_rides_max_temp.each do |k, v| %>
+              <td><%= v %></td>
+          <% end %>
+          </tr>
+          <tr>
+            <td>Max Number of Rides</td>
+            <% @conditions.max_rides_max_temp.each do |k, v| %>
+              <td><%= v %></td>
+            <% end %>
+          </tr>
+          <tr>
+            <td>Min Number of Rides</td>
+            <% @conditions.min_rides_max_temp.each do |k, v| %>
+              <td><%= v %></td>
+            <% end %>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="container all-stations">
+    <div class="panel">
+      <div class="panel-heading stations-panel">Breakdown of Trips by Precipitation</div>
+        <table class="table table-striped table-hover table-condensed table-bordered">
+          <tr>
+            <th> </th>
+            <th>0.0 - 0.49 inches</th>
+            <th>0.5 - 0.99 inches</th>
+            <th>1.0 - 1.49 inches</th>
+            <th>1.5 - 1.99 inches</th>
+            <th>2.0 - 2.49 inches</th>
+            <th>2.5 - 2.99 inches</th>
+            <th>3.0 - 3.49 inches</th>
+          </tr>
+          <tr>
+            <td>Average Number of Rides</td>
+          <% @conditions.average_rides_precipitation.each do |k, v| %>
+              <td><%= v %></td>
+          <% end %>
+          </tr>
+          <tr>
+            <td>Max Number of Rides</td>
+            <% @conditions.max_rides_precipitation.each do |k, v| %>
+              <td><%= v %></td>
+            <% end %>
+          </tr>
+          <tr>
+            <td>Min Number of Rides</td>
+            <% @conditions.min_rides_precipitation.each do |k, v| %>
+              <td><%= v %></td>
+            <% end %>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="container all-stations">
+    <div class="panel">
+      <div class="panel-heading stations-panel">Breakdown of Trips by Wind Speed</div>
+        <table class="table table-striped table-hover table-condensed table-bordered">
+          <tr>
+            <th> </th>
+            <th>0.0 - 3.99 mph</th>
+            <th>4.0 - 7.99 mph</th>
+            <th>8.0 - 11.99 mph</th>
+            <th>12.0 - 15.99 mph</th>
+            <th>16.0 - 19.99 mph</th>
+            <th>20.0 - 23.99 mph</th>
+          </tr>
+          <tr>
+            <td>Average Number of Rides</td>
+          <% @conditions.average_rides_wind.each do |k, v| %>
+              <td><%= v %></td>
+          <% end %>
+          </tr>
+          <tr>
+            <td>Max Number of Rides</td>
+            <% @conditions.max_rides_wind.each do |k, v| %>
+              <td><%= v %></td>
+            <% end %>
+          </tr>
+          <tr>
+            <td>Min Number of Rides</td>
+            <% @conditions.min_rides_wind.each do |k, v| %>
+              <td><%= v %></td>
+            <% end %>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="container all-stations">
+    <div class="panel">
+      <div class="panel-heading stations-panel">Breakdown of Trips by Visibility</div>
+        <table class="table table-striped table-hover table-condensed table-bordered">
+          <tr>
+            <th> </th>
+            <th>0.0 - 3.99 miles</th>
+            <th>4.0 - 7.99 miles</th>
+            <th>8.0 - 11.99 miles</th>
+          </tr>
+          <tr>
+            <td>Average Number of Rides</td>
+          <% @conditions.average_rides_visibility.each do |k, v| %>
+              <td><%= v %></td>
+          <% end %>
+          </tr>
+          <tr>
+            <td>Max Number of Rides</td>
+            <% @conditions.max_rides_visibility.each do |k, v| %>
+              <td><%= v %></td>
+            <% end %>
+          </tr>
+          <tr>
+            <td>Min Number of Rides</td>
+            <% @conditions.min_rides_visibility.each do |k, v| %>
+              <td><%= v %></td>
+            <% end %>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>

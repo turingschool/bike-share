@@ -1,15 +1,16 @@
 class Condition < ActiveRecord::Base
   has_many :trips
 
+  attr_reader :temp_range
 
   def self.trips_by_max_temp
-    temp_range = {}
+    @temp_range ||= {}
     x = 40
     6.times do
-      temp_range[x] = Condition.where(max_temp: x..(x+9))
+      @temp_range[x] = Condition.where(max_temp: x..(x+9))
       x += 10
     end
-    temp_range
+    @temp_range
   end
 
   def self.ride_temp_analysis
@@ -59,8 +60,12 @@ class Condition < ActiveRecord::Base
   def self.precipitation_analysis
     ride_counts = {}
     conditions_by_precipitation.each do |k, v|
-      ride_counts[k] = v.to_a.map do |condition|
-        condition.trips.count
+        if v.count == 0
+          ride_counts[k] = 0
+        else
+        ride_counts[k] = v.to_a.map do |condition|
+          condition.trips.count
+        end
       end
     end
     ride_counts
@@ -69,16 +74,23 @@ class Condition < ActiveRecord::Base
   def self.average_rides_precipitation
     ride_average = {}
     precipitation_analysis.each do |k, v|
-      ride_average[k] = (v.reduce(:+).to_f / v.count).round(2)
+      if v == 0
+        ride_average[k] = 0
+      else
+        ride_average[k] = (v.reduce(:+).to_f / v.count).round(2)
+      end
     end
-
     ride_average
   end
 
   def self.max_rides_precipitation
     ride_max = {}
     precipitation_analysis.each do |k, v|
-      ride_max[k] = v.max
+      if v == 0
+        ride_max[k] = 0
+      else
+        ride_max[k] = v.max
+      end
     end
     ride_max
   end
@@ -86,7 +98,11 @@ class Condition < ActiveRecord::Base
   def self.min_rides_precipitation
     ride_min = {}
     precipitation_analysis.each do |k, v|
-      ride_min[k] = v.min
+      if v == 0
+        ride_min[k] = 0
+      else
+        ride_min[k] = v.min
+      end
     end
     ride_min
   end
@@ -104,8 +120,12 @@ class Condition < ActiveRecord::Base
   def self.wind_analysis
     ride_counts = {}
     conditions_by_wind.each do |k, v|
-      ride_counts[k] = v.to_a.map do |condition|
-        condition.trips.count
+      if v.count == 0
+        ride_counts[k] = 0
+      else
+        ride_counts[k] = v.to_a.map do |condition|
+          condition.trips.count
+        end
       end
     end
     ride_counts
@@ -114,7 +134,11 @@ class Condition < ActiveRecord::Base
   def self.average_rides_wind
     ride_average = {}
     wind_analysis.each do |k, v|
-      ride_average[k] = (v.reduce(:+).to_f / v.count).round(2)
+      if v == 0
+        ride_average[k] = 0
+      else
+        ride_average[k] = (v.reduce(:+).to_f / v.count).round(2)
+      end
     end
     ride_average
   end
@@ -122,7 +146,11 @@ class Condition < ActiveRecord::Base
   def self.max_rides_wind
     ride_max = {}
     wind_analysis.each do |k, v|
-      ride_max[k] = v.max
+      if v == 0
+        ride_max[k] = 0
+      else
+        ride_max[k] = v.max
+      end
     end
     ride_max
   end
@@ -130,7 +158,11 @@ class Condition < ActiveRecord::Base
   def self.min_rides_wind
     ride_min = {}
     wind_analysis.each do |k, v|
-      ride_min[k] = v.min
+      if v == 0
+        ride_min[k] = 0
+      else
+        ride_min[k] = v.min
+      end
     end
     ride_min
   end
@@ -146,28 +178,39 @@ class Condition < ActiveRecord::Base
   end
 
   def self.visibility_analysis
-    @ride_counts = {}
+    ride_counts = {}
     conditions_by_visibility.each do |k, v|
-      @ride_counts[k] = v.to_a.map do |condition|
-        condition.trips.count
+      if v.count == 0
+        ride_counts[k] = 0
+      else
+        ride_counts[k] = v.to_a.map do |condition|
+          condition.trips.count
+        end
       end
     end
-    @ride_counts
+    ride_counts
   end
 
   def self.average_rides_visibility
     ride_average = {}
     visibility_analysis.each do |k, v|
-      ride_average[k] = (v.reduce(:+).to_f / v.count).round(2)
+      if v == 0
+        ride_average[k] = 0
+      else
+        ride_average[k] = (v.reduce(:+).to_f / v.count).round(2)
+      end
     end
-
     ride_average
   end
 
   def self.max_rides_visibility
     ride_max = {}
     visibility_analysis.each do |k, v|
-      ride_max[k] = v.max
+      if v == 0
+        ride_max[k] = 0
+      else
+        ride_max[k] = v.max
+      end
     end
     ride_max
   end
@@ -175,7 +218,11 @@ class Condition < ActiveRecord::Base
   def self.min_rides_visibility
     ride_min = {}
     visibility_analysis.each do |k, v|
-      ride_min[k] = v.min
+      if v ==0
+        ride_min[k] = 0
+      else
+        ride_min[k] = v.min
+      end
     end
     ride_min
   end

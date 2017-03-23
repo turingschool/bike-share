@@ -3,7 +3,6 @@
 </div>
 
 <div class="container stations-dashboard">
-
   <ul>
     <li>Average Ride Duration: <span class="dashboard-value"><%= @trips.average_duration %> minutes</span></li>
     <li>Longest Ride: <span class="dashboard-value"><%= @trips.longest_trip.duration %> minutes</span></li>
@@ -14,7 +13,32 @@
     <li>Least Popular Bike: Bike <span class="dashboard-value"><%= @trips.least_popular_bike %> Trips: <%= @trips.least_popular_bike_count %></span></li>
     <li>Subscription Breakdown: <span class="dashboard-value"><%= @trips.subscription_breakdown %></span></li>
     <li>Busiest Day: <span class="dashboard-value"><%= @trips.busiest_day %></span></li>
-    <li>Least Busy Day: <span class="dashboard-value"><%= @trips.least_busy_day %></span></li>
+
+    <p>Weather Conditions:</p>
+      <% condition = @conditions.conditions_for_busiest_day %>
+      <ul>
+        <li>Maximum Temperature: <%= condition.max_temp %></li>
+        <li>Mean Temperature: <%= condition.mean_temp %></li>
+        <li>Minimum Temperature: <%= condition.min_temp %></li>
+        <li>Mean Humidity: <%= condition.mean_humidity %></li>
+        <li>Mean Visibility (in miles): <%= condition.mean_visibility %></li>
+        <li>Mean Wind Speed (mph): <%= condition.mean_wind %></li>
+        <li>Precipitation (inches): <%= condition.precipitation %></li>
+      </ul>
+      <br>
+      <li>Least Busy Day: <span class="dashboard-value"><%= @trips.least_busy_day %></span></li>
+
+      <p>Weather Conditions:</p>
+      <% condition = @conditions.conditions_for_least_busy_day %>
+      <ul>
+        <li>Maximum Temperature: <%= condition.max_temp %></li>
+        <li>Mean Temperature: <%= condition.mean_temp %></li>
+        <li>Minimum Temperature: <%= condition.min_temp %></li>
+        <li>Mean Humidity: <%= condition.mean_humidity %></li>
+        <li>Mean Visibility (in miles): <%= condition.mean_visibility %></li>
+        <li>Mean Wind Speed (mph): <%= condition.mean_wind %></li>
+        <li>Precipitation (inches): <%= condition.precipitation %></li>
+      </ul>
   </ul>
 
 </div>

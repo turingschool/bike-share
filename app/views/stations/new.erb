@@ -6,32 +6,30 @@
 
   <div class="container new-station">
 
-    <div class="container">
-      <form action="/stations" method="post">
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" name="station[name]" class="form-control" id="name" placeholder="Name">
-        </div>
+    <form action="/stations" method="post">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" name="station[name]" class="form-control" id="name" placeholder="Name">
+      </div>
 
-        <div class="form-group">
-          <label for="dock_count">Number of Docks:</label>
-          <input type="number" name="station[dock_count]" class="form-control" id="dock_count" placeholder="Number of Docks">
-        </div>
+      <div class="form-group">
+        <label for="dock_count">Number of Docks:</label>
+        <input type="number" name="station[dock_count]" class="form-control" id="dock_count" placeholder="Number of Docks">
+      </div>
 
-        <div class="form-group">
-          <label for="installation_date">Installation Date:</label>
-          <input type="date" name="station[installation_date]" class="form-control" id="installation_date" placeholder="Installation Date">
-        </div>
+      <div class="form-group">
+        <label for="installation_date">Installation Date:</label>
+        <input type="date" name="station[installation_date]" class="form-control" id="installation_date" placeholder="Installation Date">
+      </div>
 
-        <div class="form-group">
-          <label for="city">City:</label>
-          <input type="number" name="station[city_id]" class="form-control" id="city" placeholder="City">
-        </div>
+      <div class="form-group">
+        <label for="city">City:</label>
+        <input type="number" name="station[city_id]" class="form-control" id="city" placeholder="City">
+      </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
 
-      </form>
-    </div>
+    </form>
   </div>
-
+  
 </body>

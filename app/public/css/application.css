@@ -110,6 +110,7 @@ body {
 .panel-heading {
   background-color: #056571;
   color: #FFCE00;
+  text-align: left;
 }
 
 .stations-panel {
@@ -118,19 +119,13 @@ body {
 
 .all-stations .table th {
   font-size: 15px;
-  /*color: #FF6A5C;*/
   color: black;
   text-align: center;
 }
 
 #station-name-header {
   text-align: left;
-}
-
-#station-id {
-  text-align: center;
-  font-size: 15px;
-  color: #414141;
+  padding-left: 50px;
 }
 
 #edit-button {
@@ -144,6 +139,8 @@ body {
 .station-name {
   transition: all .2s ease-in-out;
   font-size: 18px;
+  text-align: left;
+  padding-left: 50px;
 }
 
 .station-name a {
@@ -174,7 +171,7 @@ body {
 
 /*
   ========================================
-  Stations Show
+  Station Show
   ========================================
 */
 
@@ -209,6 +206,121 @@ body {
   ========================================
 */
 
+.station-edit {
+  width: 80%;
+}
+
 .station-edit form {
+  text-align: left;
+}
+
+.station-edit h2 {
+  text-align: left;
+}
+
+
+/*
+  ========================================
+  Station New
+  ========================================
+*/
+
+.new-station {
+  margin-top: 100px;
+  margin: 0 auto;
+  background-color: rgba(255,255,255,0.9);
+  width: 60%;
+  padding: 30px;
+  border: 6px solid black;
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-bottom: 100px;
+  font-size: 20px;
+}
+
+.form-group input {
+  max-width: 58%;
+}
+
+
+/*
+  ========================================
+  Stations Dashboard
+  ========================================
+*/
+
+.stations-dashboard {
+  margin: 0 auto;
+  background-color: rgba(255,255,255,0.9);
+  width: 60%;
+  padding: 30px;
+  border: 6px solid black;
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-bottom: 100px;
+  font-size: 20px;
+}
+
+.stations-dashboard p {
+  text-align: left;
+}
+
+
+/*
+  ========================================
+  Trips Index
+  ========================================
+*/
+
+#trip-start-date {
+  transition: all .2s ease-in-out;
+  font-size: 12px;
+  text-align: left;
+  padding-left: 20px;
+}
+
+#trip-start-date a {
+  text-decoration: none;
+}
+
+#trip-start-date:hover {
+  color: #fa5e5b;
+  -webkit-transform: scaleX(1.1);
+  width: 80%;
+  text-decoration: none;
+}
+
+.all-trips {
+  width: 90%;
   text-align: center;
+}
+
+.all-trips .table th {
+  font-size: 15px;
+  color: black;
+  text-align: center;
+}
+
+.all-trips .table tr {
+    -webkit-animation: fadein 3s;
+}
+
+
+/*
+  ========================================
+  Trip Edit
+  ========================================
+*/
+
+.trip-edit {
+  width: 60%;
+}
+
+.trip-edit form {
+  text-align: left;
+  width: 640px;
+}
+
+.trip-edit h2 {
+  text-align: left;
 }

@@ -30,9 +30,33 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/stations">STATIONS</a></li>
-            <li><a href="/trips">TRIPS</a></li>
-            <li><a href="/conditions">WEATHER CONDITIONS</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="/stations">STATIONS<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/stations-dashboard">Dashboard</a></li>
+                <li><a href="/stations">View All Stations</a></li>
+                <li><a href="/stations/new">Create New Station</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="/trips">TRIPS<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/trips-dashboard">Dashboard</a></li>
+                <li><a href="/trips">View All Trips</a></li>
+                <li><a href="/trips/new">Create New Trip</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="/conditions">WEATHER CONDITIONS<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/conditions-dashboard">Dashboard</a></li>
+                <li><a href="/conditions">View All Conditions</a></li>
+                <li><a href="/conditions/new">Create New Condition</a></li>
+              </ul>
+            </li>
+
           </ul>
         </div>
       </div>

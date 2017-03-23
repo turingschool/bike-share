@@ -1,26 +1,26 @@
-<div class="page-header">
-  <h1 class="title text-right">Trips</h1><br/>
+<div class="page-header top">
+  <h1 class="title text-left">Trips</h1><br/>
 </div>
 
-<div class="container all-stations">
+<div class="container all-trips">
 
   <div class="panel">
     <div class="panel-heading stations-panel">All Trips</div>
     <%= will_paginate @trips %>
     <table class="table table-striped table-hover table-condensed">
       <tr>
-        <th>Trip ID</th>
-        <th>Trip Start Date</div></th>
+        <th>Trip Start Date</th>
         <th>Trip Duration</th>
         <th>Trip Start Station</th>
         <th>Trip End Station</th>
         <th>Bike ID</th>
+        <th>Edit Info</th>
+        <th>Delete Trip</th>
       </tr>
 
       <% @trips.each do |trip| %>
         <tr>
-          <td><div id="station-id"><%= trip.id %></div></td>
-          <td><div class="station-name"><a href="/trips/<%= trip.id %>"><%= trip.start_date %></a></div></td>
+          <td><div id="trip-start-date"><a href="/trips/<%= trip.id %>"><%= trip.start_date %></a></div></td>
           <td><%= trip.duration %> minutes</td>
           <td><%= trip.start_station.name %></td>
           <td><%= trip.end_station.name %></td>

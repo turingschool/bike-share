@@ -20,21 +20,6 @@ stations.each do |station|
                  city:              City.find_or_create_by(name: station[:city]))
 end
 
-trips = (CSV.open'db/fixtures/trips_fixture.csv', headers: true, header_converters: :symbol)
-
-trips.each do |trip|
-  next unless Station.find_by(name: trip[:start_station_name]) && Station.find_by(name: trip[:end_station_name])
-
-  Trip.create!(duration:            trip[:duration],
-              start_date:           Date.strptime(trip[:start_date], "%m/%d/%Y"),
-              start_station_id:     Station.find_by(name: trip[:start_station_name]).id,
-              end_date:             Date.strptime(trip[:end_date], "%m/%d/%Y"),
-              end_station_id:       Station.find_by(name: trip[:end_station_name]).id,
-              bike:                 Bike.find_or_create_by(bike_number: trip[:bike_id]),
-              subscription_type:    SubscriptionType.find_or_create_by(subscription_type: trip[:subscription_type]),
-              zip_code:             ZipCode.find_or_create_by(zip_code: trip[:zip_code]))
-end
-
 conditions = (CSV.open'db/csv/weather.csv', headers: true, header_converters: :symbol)
 
 conditions.each do |condition|
@@ -49,3 +34,20 @@ conditions.each do |condition|
                     mean_wind:        condition[:mean_wind_speed_mph],
                     precipitation:    condition[:precipitation_inches])
 end
+
+trips = (CSV.open'db/fixtures/big_trip_fixture.csv', headers: true, header_converters: :symbol)
+
+trips.each do |trip|
+  next unless Station.find_by(name: trip[:start_station_name]) && Station.find_by(name: trip[:end_station_name])
+
+  Trip.create!(duration:            trip[:duration],
+              start_date:           Date.strptime(trip[:start_date], "%m/%d/%Y"),
+              start_station_id:     Station.find_by(name: trip[:start_station_name]).id,
+              end_date:             Date.strptime(trip[:end_date], "%m/%d/%Y"),
+              end_station_id:       Station.find_by(name: trip[:end_station_name]).id,
+              bike:                 Bike.find_or_create_by(bike_number: trip[:bike_id]),
+              subscription_type:    SubscriptionType.find_or_create_by(subscription_type: trip[:subscription_type]),
+              zip_code:             ZipCode.find_or_create_by(zip_code: trip[:zip_code]),
+              condition_id:         Condition.find_by(date: trip[:start_date]).id)
+end
+

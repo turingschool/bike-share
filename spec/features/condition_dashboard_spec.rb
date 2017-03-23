@@ -1,21 +1,23 @@
 require_relative '../spec_helper'
 
-RSpec.describe "when a user visits /stations-dashboard" do
+RSpec.describe "when a user visits /conditions-dashboard" do
   it "they can see dashboard metrics" do
-    City.create(name:"San Jose")
-    Station.create(name: "Union Station", dock_count: 12, installation_date: "15/5/2016", city_id: 1)
-    Station.create(name: "Penn Station", dock_count: 10, installation_date: "17/5/2016", city_id: 1)
-    Station.create(name: "Grand Central Station", dock_count: 12, installation_date: "19/5/2016", city_id: 1)
-    visit "/stations-dashboard"
+    condition = Condition.create(date: "4/09/2014", max_temp: 75.0, mean_temp: 68.0, min_temp: 61.0, mean_humidity: 70.0, mean_visibility: 10.0, mean_wind: 11.0, precipitation: 0.0)
+    condition = Condition.create(date: "4/11/2014", max_temp: 76.0, mean_temp: 68.0, min_temp: 61.0, mean_humidity: 70.0, mean_visibility: 10.0, mean_wind: 11.0, precipitation: 1.0)
+    Trip.create(duration: 60, start_date: "Fri, 11 Apr 2014", start_station_id: 1, end_date: "Fri, 11 Apr 2014", end_station_id: 1, bike_id: 1, subscription_type_id: 1)
+    Trip.create(duration: 40, start_date: "Wed, 09 Apr 2014", start_station_id: 1, end_date: "Wed, 09 Apr 2014", end_station_id: 1, bike_id: 1, subscription_type_id: 1)
+    Trip.create(duration: 110, start_date: "Wed, 09 Apr 2014", start_station_id: 1, end_date: "Wed, 09 Apr 2014", end_station_id: 1, bike_id: 1, subscription_type_id: 1)
+    Trip.create(duration: 60, start_date: "Fri, 11 Apr 2014", start_station_id: 1, end_date: "Fri, 11 Apr 2014", end_station_id: 1, bike_id: 1, subscription_type_id: 1)
+    Trip.create(duration: 40, start_date: "Wed, 09 Apr 2014", start_station_id: 1, end_date: "Wed, 09 Apr 2014", end_station_id: 1, bike_id: 1, subscription_type_id: 1)
+    Trip.create(duration: 110, start_date: "Wed, 09 Apr 2014", start_station_id: 1, end_date: "Wed, 09 Apr 2014", end_station_id: 1, bike_id: 1, subscription_type_id: 1)
+    visit "/conditions-dashboard"
 
-    expect(page).to have_content("Total number of stations: 3")
-    expect(page).to have_content("Average bikes available per station: 11.3")
-    expect(page).to have_content("Most bikes available at a station: 12")
-    expect(page).to have_content("Station(s) where the most bikes are available: Union Station, Grand Central Station")
-    expect(page).to have_content("Fewest bikes available at a station: 10")
-    expect(page).to have_content("Station(s) where the fewest bikes are available: Penn Station")
-    expect(page).to have_content("Newest station: Grand Central Station")
-    expect(page).to have_content("Oldest station: Union Station")
+    expect(page).to have_content("Breakdown of Trips by Max Temperature")
+    expect(page).to have_content("6")
+    expect(page).to have_content("Breakdown of Trips by Precipitation")
+    expect(page).to have_content("2")
+    expect(page).to have_content("Breakdown of Trips by Wind Speed")
+    expect(page).to have_content("Breakdown of Trips by Visibility")
 
   end
 end

@@ -24,8 +24,7 @@ stations = CSV.open './db/csv/station.csv', headers:true, header_converters: :sy
 stations.each do |row|
   date = row[:installation_date]
   date = clean_date(date)
-  binding.pry
-  date = TheDate.find_or_create_by(date: date)
+  date = TheDate.find_or_create_by(name: date)
   city = City.find_or_create_by(name: row[:city])
   Station.create!(name: row[:name], dock_count: row[:dock_count], lat: row[:lat], long: row[:long], the_date_id: date.id, city_id: city.id)
 end

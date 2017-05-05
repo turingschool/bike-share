@@ -1,10 +1,9 @@
 require_relative '../spec_helper'
 
-RSpec.describe CSVReader do
+RSpec.describe CSVLoader do
   describe "parsing a csv file" do
     before(:each) do
-      dummy = Object.new
-      dummy.extend(CSVReader)
+      dummy = CSVLoader.new
       @file = dummy.parse_file('./db/csv/station.csv')
     end
 
@@ -14,10 +13,6 @@ RSpec.describe CSVReader do
 
     it 'has a count of 70' do
       expect(@file.readlines.size).to eq(70)
-    end
-
-    it 'returns specified record' do
-      expected = 'San Jose Diridon Caltrain Station'
     end
   end
 end

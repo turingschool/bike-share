@@ -8,7 +8,7 @@ RSpec.describe CSVReader do
     end
 
     it 'returns csv object' do
-      @dummy.parse_file('./db/csv/station.csv')
+      file = @dummy.parse_file('./db/csv/station.csv')
       expect(file).to be_instance_of(CSV)
     end
   end

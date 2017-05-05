@@ -11,5 +11,12 @@ RSpec.describe CSVReader do
       file = @dummy.parse_file('./db/csv/station.csv')
       expect(file).to be_instance_of(CSV)
     end
+
+    it 'has a count of 70' do
+      file = @dummy.parse_file('./db/csv/station.csv')
+      expect(file.readlines.size).to eq(70)
+    end
+
+    # it ''
   end
 end

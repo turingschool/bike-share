@@ -20,11 +20,19 @@ def clean_date(date)
   date.join('-')
 end
 
+def create_date(date)
+  if TheDate.find_by(name: date)
+    TheDate.find_by(name: date)
+  else
+    TheDate.create!(date: date, name: date)
+  end
+end
+
 stations = CSV.open './db/csv/station.csv', headers:true, header_converters: :symbol
 stations.each do |row|
   date = row[:installation_date]
   date = clean_date(date)
-  date = TheDate.find_or_create_by(name: date)
+  date = create_date(date)
   city = City.find_or_create_by(name: row[:city])
   Station.create!(name: row[:name], dock_count: row[:dock_count], lat: row[:lat], long: row[:long], the_date_id: date.id, city_id: city.id)
 end

@@ -1,4 +1,6 @@
 require 'bundler'
+require 'pry'
+
 Bundler.require
 
 # get the path of the root of the app

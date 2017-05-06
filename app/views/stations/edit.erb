@@ -1,0 +1,22 @@
+<h1>Editing <%= @station.name %></h1>
+
+<form action="/stations/<%= @station.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT" />
+  <label>Name: </label>
+  <input type="text" name="station[name]" value="<%= @station.name %>" />
+  <label>Dock Count: </label>
+  <input type="text" name="station[dock_count]" value="<%= @station.dock_count %>"/>
+  <label>City: </label>
+  <select name="station[city_id]">
+    <option value="city_1" selected>City 1</option>
+    <option value="city_2">City 2</option>
+    <option value="city_3">City 3</option>
+  </select>
+  <label>Installation Date: </label>
+  <input type="text" name="station[installation_date]" value="<%= @station.installation_date %>"/>
+  <label>Longitude: </label>
+  <input type="text" name="station[longitude]" value="<%= @station.longitude %>/>"/>
+  <label>Latitude: </label>
+  <input type="text" name="station[latitude]" value="<%= @station.latitude %>/>"/>
+  <input type="submit" value="Update Station"/>
+</form>

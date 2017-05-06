@@ -8,3 +8,11 @@
 <p>Installation Date: <%= @station.installation_date %></p>
 <p>Longitude: <%= @station.longitude %></p>
 <p>Latitude: <%= @station.latitude %></p>
+
+<form method="get" action="/station/:id/edit">
+  <button type="submit" class="btn-edit">Edit Station</button>
+</form>
+
+<form method="destroy" action="/stations">
+  <button type="submit" class="btn-delete">Delete</button>
+</form>

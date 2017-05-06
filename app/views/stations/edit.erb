@@ -1,0 +1,21 @@
+<h1>Create a New Stations</h1>
+
+<form action="/stations/<%= @stations.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT" />
+  <label for="">Name:</label>
+  <input type="textfield" name="stations[name]" value="<%= @stations.name %>">
+  <label for="">Dock Count:</label>
+  <input type="textfield" name="stations[dock_count]" value="<%= @stations.dock_count %>">
+  <label for="">Installation Date:</label>
+  <select name="stations[jockey_id]">
+    <% @jockeys.each do |jockey| %>
+      <option value=<%= jockey.id %>><%= jockey.name %></option>
+    <% end %>
+  </select>
+  <select name="stations[breed_id]">
+    <% @breeds.each do |breed| %>
+      <option value=<%= breed.id %>><%= breed.name %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Update stations" />
+</form>

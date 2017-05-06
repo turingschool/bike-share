@@ -1,8 +1,8 @@
 class BikeShareApp < Sinatra::Base
   
-  get '/' do
-    erb :"home/index"
-  end
+#   get '/' do
+#     erb :"home/index"
+#   end
 
 #station index landing page
   get '/stations' do
@@ -10,26 +10,34 @@ class BikeShareApp < Sinatra::Base
     erb :"stations/index"
   end
 
-#sinle station page
+#form for new stations
+  get '/stations/new' do  
+    @city = City.all
+    erb :"stations/new"
+  end
+
+#single station page
   get '/stations/:id' do
     @station = Station.find(params[:id])
     erb :"stations/show"
   end
 
-
-#form for new stations
-  get '/stations/new' do
-    erb :"stations/new"
-  end
-
 #route after filling new station form
   post '/stations' do
-    @station = Station.create(params[:station])
+    # binding.pry
+    date = DateRef.create_date(params[:station][:installation_date])
+    @station = Station.create(
+      name: params[:station][:name],
+      dock_count: params[:station][:dock_count],
+      city_id: (params[:station][:city_id]),
+      date_ref_id: date.id)
+      binding.pry
     redirect "/stations/#{@station.id}"
   end
 
 #form to edit station
   get '/stations/:id/edit' do
+    @dates = DateRef.all
     @horse = Station.find(params[:id])
     erb :"stations/edit"
   end
@@ -38,12 +46,6 @@ class BikeShareApp < Sinatra::Base
   put '/stations/:id' do
     @station = Station.update(params[:id], params[:station])
     redirect "/stations/#{@station.id}"
-  end
-
-#individual station page
-  get '/statiions/:id' do
-    @station = Station.find(params[:id])
-    erb :"stations/show"
   end
 
 #route to delete single station

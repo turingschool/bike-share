@@ -33,32 +33,5 @@ RSpec.describe Station, :type => :model do
                                        city: "Denver")
       expect(no_date_station).not_to be_valid
     end
-
-    it "requires the proper data types for each attribute" do
-      invalid_name_station = Station.create(name: 42,
-                                     dock_count: 42,
-                                     city: "Denver",
-                                     date: date)
-      expect(invalid_name_station).not_to be_valid
-
-      invalid_dock_count_station = Station.create(name: "stationicus",
-                                                  dock_count: "42",
-                                                  city: "Denver",
-                                                  date: date)
-      expect(invalid_dock_count_station).not_to be_valid
-
-      invalid_city_station = Station.create(name: "stationicus",
-                                            dock_count: 42,
-                                            city: 42,
-                                            date: date)
-      expect(invalid_city_station).not_to be_valid
-
-      invalid_date_station = Station.create(name: "stationicus",
-                                           dock_count: 42,
-                                           city: "Denver",
-                                           date: "88/6/2013")
-
-      expect(invalid_date_station).not_to be_valid
-    end
   end
 end

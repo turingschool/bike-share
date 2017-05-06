@@ -2,7 +2,7 @@ require './spec/spec_helper'
 
 RSpec.describe "When a user clicks delete" do
 
-  xit "deletes on the index" do
+  it "deletes on the index" do
     city_1 = City.create(name: "squeevillia")
     Station.create(
                   name: "Something",
@@ -14,14 +14,13 @@ RSpec.describe "When a user clicks delete" do
     )
 
     visit('/stations')
-    expect(page).to have_button("form .btn-delete")
+    expect(page).to have_button("Delete")
     expect(Station.all.count).to eq(1)
-    expect(page).to have_content("Name: Something")
     click_button("Delete")
 
     expect(Station.all.count).to eq(0)
     expect(page).to have_current_path("/stations")
-    expect(page).to_not have_content("Name: Something")
+    expect(page).to have_content("No stations available.")
   end
 
   it "deletes on the edit page" do

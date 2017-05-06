@@ -35,7 +35,7 @@ RSpec.describe "Station CRUD" do
       expect(page).to have_content("station 2")
 
       click_on "Details"
-      expect(page).to have_content("station 1")
+      expect(page).to have_content("station")
     end
   end
 end

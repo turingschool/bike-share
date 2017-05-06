@@ -1,5 +1,12 @@
+require 'pry'
+require 'time'
 class BikeShareApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
+
+  get '/stations' do
+    @stations = Station.all
+    erb :index
+  end
 
   get '/stations/new' do
     erb :new

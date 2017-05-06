@@ -2,6 +2,11 @@ require './spec/spec_helper'
 
 RSpec.describe "when a user visits the view station page" do
   before do
+    city_1 = City.create(name: "squeevillia")
+    city_2 = City.create(name: "rhondarhiffic")
+    city_3 = City.create(name: "chrissable")
+    city_4 = City.create(name: "adamtastic")
+    
     Station.create!(
                   name: "something",
                   dock_count: 1,

@@ -21,4 +21,9 @@ class CSVLoader
     end
     result
   end
+  # Might just need this method vvvvvv but saving ^ for later iterations
+  def self.sanitize(row)
+    CSV.delete(:lat)
+    CSV.delete(:long)
+  end
 end

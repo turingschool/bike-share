@@ -9,10 +9,11 @@
 <p>Longitude: <%= @station.longitude %></p>
 <p>Latitude: <%= @station.latitude %></p>
 
-<form method="get" action="/station/:id/edit">
-  <button type="submit" class="btn-edit">Edit Station</button>
-</form>
+<button class="btn-edit">
+  <a href="/station/<%= @station.id %>/edit">Edit Station</a>
+</button>
 
-<form method="destroy" action="/stations">
+<form method="post" action="/stations">
+  <input type="hidden" name="_method" value="DELETE" />
   <button type="submit" class="btn-delete">Delete</button>
 </form>

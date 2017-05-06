@@ -9,14 +9,14 @@ RSpec.describe "when a user visits the edit page" do
   it "displays an edit form" do
     City.create(name: "Denver")
     city = City.find(1)
-    station = city.stations.create(name: "MLK", dock_count: 22, installation_date: "9/19/1983")
+    station = city.stations.create!(name: "MLK", dock_count: 22, installation_date: "9/11/2013")
 
     visit("/stations/1")
 
     click_on "Edit"
-    expect(current_path).to eq("/stations/1/edit")
-    expect(page).to have_content("Submit")
-    expect(page).to have_content("MLK")
     save_and_open_page
+    expect(current_path).to eq("/stations/1/edit")
+    expect(page).to have_content("change")
+    expect(page).to have_content("MLK")
   end
 end

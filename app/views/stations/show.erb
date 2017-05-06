@@ -4,7 +4,7 @@
 <h3>Dock Count: <%= @station.dock_count %></h3>
 <h3>Installation Date: <%= @station.installation_date %></h3>
 
-<button><a href="/stations/<%=@station.id%>/edit">Edit</a></button>
+<a href="/stations/<%=@station.id%>/edit">Edit</a>
 <form action="/stations/<%=@station.id%>" method="post">
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete">

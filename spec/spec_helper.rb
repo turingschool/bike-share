@@ -6,6 +6,7 @@ require 'capybara/dsl'
 require 'pry'
 require 'database_cleaner'
 
+
 Capybara.app = BikeShareApp
 
 RSpec.configure do |c|

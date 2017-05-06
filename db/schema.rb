@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506144052) do
+ActiveRecord::Schema.define(version: 20170506154142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "stations", force: :cascade do |t|
-    t.text    "name"
-    t.integer "dock_count"
-    t.integer "city_id"
-    t.date    "installation_date"
-    t.integer "longitude"
-    t.integer "latitude"
+    t.text    "name",              null: false
+    t.integer "dock_count",        null: false
+    t.integer "city_id",           null: false
+    t.date    "installation_date", null: false
+    t.decimal "longitude",         null: false
+    t.decimal "latitude",          null: false
   end
 
 end

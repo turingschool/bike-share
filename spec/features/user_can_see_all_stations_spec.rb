@@ -13,7 +13,6 @@ RSpec.describe 'when a user visits the all stations page' do
 
     visit('/stations')
     click_on "View Stations"
-    save_and_open_page
 
     expect(page).to have_content("MLK")
     expect(current_path).to eq('/stations/view_all')

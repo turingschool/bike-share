@@ -10,10 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506175957) do
+ActiveRecord::Schema.define(version: 20170506182315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities", force: :cascade do |t|
+    t.text "name", null: false
+  end
 
   create_table "station_statuses", force: :cascade do |t|
     t.integer  "station_id",      null: false
@@ -29,6 +33,33 @@ ActiveRecord::Schema.define(version: 20170506175957) do
     t.integer "dock_count",        null: false
     t.date    "installation_date", null: false
     t.integer "city_id"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.integer  "duration",          null: false
+    t.datetime "start_date",        null: false
+    t.datetime "end_date",          null: false
+    t.integer  "start_station_id",  null: false
+    t.integer  "end_station_id",    null: false
+    t.integer  "bike_id",           null: false
+    t.text     "subscription_type", null: false
+    t.integer  "zip_code_id"
+  end
+
+  create_table "weathers", force: :cascade do |t|
+    t.date    "date",            null: false
+    t.float   "max_temp",        null: false
+    t.float   "mean_temp",       null: false
+    t.float   "min_temp",        null: false
+    t.float   "mean_humidity",   null: false
+    t.float   "mean_visibility", null: false
+    t.float   "mean_wind_speed", null: false
+    t.float   "precipitation",   null: false
+    t.integer "zip_code_id",     null: false
+  end
+
+  create_table "zip_codes", force: :cascade do |t|
+    t.integer "zip_code", null: false
   end
 
 end

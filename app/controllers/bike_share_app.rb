@@ -1,8 +1,4 @@
 class BikeShareApp < Sinatra::Base
-  
-#   get '/' do
-#     erb :"home/index"
-#   end
 
 #station index landing page
   get '/stations' do
@@ -24,7 +20,6 @@ class BikeShareApp < Sinatra::Base
 
 #route after filling new station form
   post '/stations' do
-    # binding.pry
     date = DateRef.create_date(params[:station][:installation_date])
     @station = Station.create(
       name: params[:station][:name],

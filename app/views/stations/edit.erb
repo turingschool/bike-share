@@ -20,3 +20,8 @@
   <input type="text" name="station[latitude]" value="<%= @station.latitude %>"/>
   <input type="submit" value="Update Station"/>
 </form>
+
+<form method="post" action="/stations/<%= @station.id %>">
+  <input type="hidden" name="_method" value="DELETE" />
+  <button type="submit" class="btn-delete">Delete</button>
+</form>

@@ -13,7 +13,7 @@
   <a href="/stations/<%= @station.id %>/edit">Edit Station</a>
 </button>
 
-<form method="post" action="/stations">
+<form method="post" action="/stations/<%= @station.id %>">
   <input type="hidden" name="_method" value="DELETE" />
   <button type="submit" class="btn-delete">Delete</button>
 </form>

@@ -14,11 +14,16 @@ class BikeShareApp < Sinatra::Base
     erb :"stations/show"
   end
 
+  put '/stations/:id' do
+    Station.update(params[:id], params[:station])
+    redirect '/stations'
+  end
+
   set :method_override, true
 
   delete '/stations/:id' do |id|
     Station.destroy(id.to_i)
-    redirect "/stations"
+    redirect "/stations/view_all"
   end
 
 end

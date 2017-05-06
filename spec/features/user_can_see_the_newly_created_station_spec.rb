@@ -13,7 +13,7 @@ RSpec.describe "user can click the submit button on a form" do
     fill_in "Name", with: "MLK"
     fill_in "Dock Count", with: 22
     fill_in "City", with: "Rockville"
-    fill_in "Installation Date", with: "3/12/1776"
+    fill_in "Installation Date", with: "1776-9-12"
     click_on "Submit"
 
     expect(current_path).to eq("/stations/1")

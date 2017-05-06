@@ -9,8 +9,8 @@ RSpec.describe "user can delete a station" do
   it "takes you to view all page and entry is deleted" do
     City.create(name: "Vancover")
     city = City.find(1)
-    city.stations.create(name: "MLK", dock_count: 35, installation_date: "9/12/2010")
-    city.stations.create(name: "Malcolm X", dock_count: 35, installation_date: "9/12/2011")
+    city.stations.create(name: "MLK", dock_count: 35, installation_date: "2010-11-12")
+    city.stations.create(name: "Malcolm X", dock_count: 35, installation_date: "2011-12-11")
 
     visit("/stations/1")
 

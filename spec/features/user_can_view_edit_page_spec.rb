@@ -9,7 +9,7 @@ RSpec.describe "when a user visits the edit page" do
   it "displays an edit form" do
     City.create(name: "Denver")
     city = City.find(1)
-    station = city.stations.create!(name: "MLK", dock_count: 22, installation_date: "9/11/2013")
+    station = city.stations.create!(name: "MLK", dock_count: 22, installation_date: "2013-11-12")
 
     visit("/stations/1")
 

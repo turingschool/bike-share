@@ -9,14 +9,14 @@ RSpec.describe "user can fill in form" do
 
       City.create(name: "Washington DC")
       city = City.find(1)
-      station = city.stations.create(name: "MLK", dock_count: 32, installation_date: "5/24/1984")
+      station = city.stations.create!(name: "MLK", dock_count: 32, installation_date: "1984-05-24")
 
       visit('/stations/1/edit')
-      fill_in "Name", with: "Malcolm X"
+      fill_in "station[name]", with: "Malcolm X"
+      save_and_open_page
 
-      click_on "Submit"
+      click_button "Submit changes"
       expect(current_path).to eq('/stations/1')
       expect(page).to have_content("Malcolm X")
-      save_and_open_page
   end
 end

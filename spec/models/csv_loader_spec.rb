@@ -1,10 +1,10 @@
 require_relative '../spec_helper'
 
 RSpec.describe CSVLoader do
-  describe "parsing a csv file" do
+  describe 'parsing a csv file' do
     before(:each) do
-      @dummy = CSVLoader.new
-      @file = CSVLoader.parse_file('./db/csv/station.csv')
+      dummy = CSVLoader.new
+      @file = dummy.parse_file('./db/csv/station.csv')
     end
 
     it 'returns csv object' do
@@ -24,5 +24,14 @@ RSpec.describe CSVLoader do
         expect(row).to be_instance_of(CSV::Row)
       end
     end
+  end
+
+  describe 'adding info to database' do
+    before(:each) do
+      dummy = CSVLoader.new
+      @file = dummy.parse_file('./db/csv/station.csv')
+    end
+
+    it ''
   end
 end

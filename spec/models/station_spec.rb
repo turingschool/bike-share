@@ -56,7 +56,7 @@ RSpec.describe Station, :type => :model do
       invalid_date_station = Station.create(name: "stationicus",
                                            dock_count: 42,
                                            city: "Denver",
-                                           date: "8-6")
+                                           date: "88/6/2013")
 
       expect(invalid_date_station).not_to be_valid
     end

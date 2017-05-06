@@ -20,8 +20,8 @@ class Station < ActiveRecord::Base
       max_bikes_stations: Station.where(dock_count: maximum_bikes),
       min_bikes: minimum_bikes,
       min_bikes_stations: Station.where(dock_count: minimum_bikes),
-      most_recent_station: Station.where(date_ref_id: earliest_date),
-      oldest_station: Station.where(date_ref_id: latest_date)
+      most_recent_stations: Station.where(date_ref_id: earliest_date),
+      oldest_stations: Station.where(date_ref_id: latest_date)
     }
   end
 end

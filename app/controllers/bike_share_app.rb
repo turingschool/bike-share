@@ -10,7 +10,9 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do |id|
-    @station = Station.update(id, params[:station])
+    station_details = params[:station]
+    station_details[:installation_date] = Date.strptime(station_details[:installation_date],'%m/%d/%Y')
+    @station = Station.update(id, station_details)
     redirect "/stations/#{id}"
   end
 

@@ -6,4 +6,8 @@ class Station < ActiveRecord::Base
   validates :installation_date, presence: true
   validates :longitude, presence: true
   validates :latitude, presence: true
+
+  def format_date
+    installation_date.strftime('%m/%d/%Y') 
+  end
 end

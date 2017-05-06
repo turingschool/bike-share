@@ -8,15 +8,15 @@
   <input type="text" name="station[dock_count]" value="<%= @station.dock_count %>"/>
   <label>City: </label>
   <select name="station[city_id]">
-    <option value="city_1" selected>City 1</option>
-    <option value="city_2">City 2</option>
-    <option value="city_3">City 3</option>
+    <% City.all.each do |city| %>
+      <option value="<%= city.id %>"><%= city.name %></option>
+    <% end %>
   </select>
   <label>Installation Date: </label>
-  <input type="text" name="station[installation_date]" value="<%= @station.installation_date %>"/>
+  <input type="text" name="station[installation_date]" value="<%= @station.format_date %>"/>
   <label>Longitude: </label>
-  <input type="text" name="station[longitude]" value="<%= @station.longitude %>/>"/>
+  <input type="text" name="station[longitude]" value="<%= @station.longitude %>"/>
   <label>Latitude: </label>
-  <input type="text" name="station[latitude]" value="<%= @station.latitude %>/>"/>
+  <input type="text" name="station[latitude]" value="<%= @station.latitude %>"/>
   <input type="submit" value="Update Station"/>
 </form>

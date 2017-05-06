@@ -19,4 +19,4 @@ RSpec.describe "when a user visits the edit page" do
     expect(page).to have_content("MLK")
     save_and_open_page
   end
-end 
+end

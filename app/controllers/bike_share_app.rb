@@ -22,28 +22,30 @@ class BikeShareApp < Sinatra::Base
   post '/stations' do
     date = DateRef.create_date(params[:station][:installation_date])
     @station = Station.create(
-      name: params[:station][:name],
-      dock_count: params[:station][:dock_count],
-      city_id: (params[:station][:city_id]),
-      date_ref_id: date.id)
+                              name: params[:station][:name],
+                              dock_count: params[:station][:dock_count],
+                              city_id: (params[:station][:city_id]),
+                              date_ref_id: date.id
+                             )
     redirect "/stations/#{@station.id}"
   end
 
 #form to edit station
   get '/stations/:id/edit' do
-    # @dates = DateRef.all
-    binding.pry
-    city = Station.find(params[:id]).city.id
-    @city = City.organize_array(city)
-    # binding.pry
+    @city = City.all
     @station = Station.find(params[:id])
-    # binding.pry
     erb :"stations/edit"
   end
 
 #route to update after editing station
   put '/stations/:id' do
-    @station = Station.update(params[:id], params[:station])
+    date = DateRef.create_date(params[:station][:installation_date])
+    @station = Station.update(params[:id],
+                              name: params[:station][:name],
+                              dock_count: params[:station][:dock_count],
+                              city_id: (params[:station][:city_id]),
+                              date_ref_id: date.id
+                             )
     redirect "/stations/#{@station.id}"
   end
 

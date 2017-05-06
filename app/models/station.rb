@@ -1,5 +1,5 @@
 class Station < ActiveRecord::Base
-  belongs_to :cities
+  belongs_to :city
 
   validates :name, presence: true
   validates :city_id, presence: true

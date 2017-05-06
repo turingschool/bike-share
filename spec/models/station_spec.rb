@@ -5,8 +5,8 @@ RSpec.describe Station do
   it "has all attributes" do
     station = Station.create(name: "something", dock_count: 1, city_id: 1, installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'), longitude: -121.9, latitude: 30.7)
 
-    expect(station.name).to eq "something"
     expect(station.id).to eq 1
+    expect(station.name).to eq "something"
     expect(station.dock_count).to eq 1
     expect(station.city_id).to eq 1
     expect(station.installation_date).to eq Date.strptime("08/30/2013",'%m/%d/%Y')

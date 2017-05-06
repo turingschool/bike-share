@@ -28,7 +28,7 @@ RSpec.describe "when a user visits the view all stations page (stations/index.er
       )
     end
     it "the page lists the added station's name" do
-      save_and_open_page
+      # save_and_open_page
       expect(page).to have_content("something")
       expect(page).to have_selector(".station-title")
     end

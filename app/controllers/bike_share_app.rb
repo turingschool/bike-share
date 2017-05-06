@@ -1,10 +1,10 @@
 class BikeShareApp < Sinatra::Base
 
-  get '/station_dashboard' do
-    @dashboard_data = Station.dashboard
-    erb :"stations/dashboard"
+#station dashboard with statistics
+  get '/stations-dashboard' do
+    erb :'stations/dashboard'
   end
-
+  
 #station index landing page
   get '/stations' do
     @stations = Station.all

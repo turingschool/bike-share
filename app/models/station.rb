@@ -14,7 +14,7 @@ class Station < ActiveRecord::Base
     latest_date = Station.includes(:date_ref).order("date_refs.date").last.date_ref.id
     
     {
-      total_count: Station.all.count,
+      total_count: Station.count,
       average_bikes: Station.average(:dock_count).to_i,
       max_bikes: maximum_bikes,
       max_bikes_stations: Station.where(dock_count: maximum_bikes),
@@ -23,5 +23,6 @@ class Station < ActiveRecord::Base
       most_recent_stations: Station.where(date_ref_id: earliest_date),
       oldest_stations: Station.where(date_ref_id: latest_date)
     }
+    
   end
 end

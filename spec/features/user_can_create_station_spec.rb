@@ -14,9 +14,9 @@ RSpec.describe "when a user visits the new station page" do
 
     click_button("Create Station")
 
-    #expect(Station.all.count).to eq(1)
-    expect(page).to have_current_path("/stations/1/")
-    expect(page).to have_content("Name: ")
+    expect(Station.all.count).to eq(1)
+    expect(page).to have_content("Name: Something")
+    expect(page).to have_current_path("/stations/1")
 
   end
 end

@@ -1,11 +1,13 @@
 require './spec/spec_helper'
 
-RSpec.describe "when a user visits the view stations page" do
+RSpec.describe "when a user visits the view all stations page (stations/index.erb)" do
   before do
     visit('/stations')
   end
   it "they can view an index of all stations" do
     expect(page).to have_content("All Stations")
+    expect(page).to have_content("Add New Station")
+    expect(page).to have_selector('a.btn-new')
   end
 
   context "when no stations exist yet" do
@@ -16,7 +18,7 @@ RSpec.describe "when a user visits the view stations page" do
 
   context "when stations have been added" do
     before do
-      Station.create(
+      Station.create!(
                     name: "something",
                     dock_count: 1,
                     city_id: 1,
@@ -26,10 +28,11 @@ RSpec.describe "when a user visits the view stations page" do
       )
     end
     it "the page lists the added station's name" do
+      save_and_open_page
       expect(page).to have_content("something")
       expect(page).to have_selector(".station-title")
     end
-    x it "the page lists the added station's city name" do
+    xit "the page lists the added station's city name" do
       expect(page).to have_content("San Francisco")
     end
     it "the page lists the added station's view link" do

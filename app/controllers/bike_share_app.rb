@@ -9,6 +9,16 @@ class BikeShareApp < Sinatra::Base
     erb :"stations/show"
   end
 
+  delete '/stations/:id' do |id|
+    Station.destroy(params[:id])
+    redirect "/stations"
+  end
+
+  get '/stations' do
+    @stations = Station.all
+    erb :"stations/index"
+  end
+
   post '/stations' do
     station_details = params[:station]
     station_details[:installation_date] = Date.strptime(station_details[:installation_date],'%m/%d/%Y')

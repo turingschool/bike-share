@@ -2,7 +2,7 @@ require './spec/spec_helper'
 
 RSpec.describe "when a user visits the view station page" do
   before do
-    Station.create(
+    Station.create!(
                   name: "something",
                   dock_count: 1,
                   city_id: 1,

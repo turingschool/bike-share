@@ -2,8 +2,15 @@ require 'pry'
 require 'csv'
 
 class CSVLoader
-  def self.parse_file(file_name)
+  def self.open(file_name)
     CSV.open file_name, headers:true, header_converters: :symbol
+  end
+
+  def to_array(file_name)
+    csv = CSV::parse(File.open(file_name, 'r') {|f| f.read })
+    fields = csv.shift
+    fields = fields.map {|f| f.downcase.gsub(" ", "_")}
+    csv.collect { |record| Hash[*fields.zip(record).flatten ] }
   end
 
   def find_records(contents, query)

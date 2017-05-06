@@ -6,7 +6,7 @@ RSpec.describe Station, :type => :model do
 
   date = Time.parse("08/06/2013")
   describe "creating a station with attributes" do
-    it "requires name, dock_count, city, and installation_date attributes" do
+    it "requires name, dock_count, city, and date attributes" do
       valid_station = Station.create(name: "stationicus",
                                      dock_count: 42,
                                      city: "Denver",

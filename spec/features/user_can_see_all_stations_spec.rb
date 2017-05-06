@@ -18,6 +18,7 @@ RSpec.describe "when a user visits the view all stations page (stations/index.er
 
   context "when stations have been added" do
     before do
+      city_1 = City.create(name: "squeevillia")
       Station.create!(
                     name: "something",
                     dock_count: 1,
@@ -26,14 +27,15 @@ RSpec.describe "when a user visits the view all stations page (stations/index.er
                     longitude: -121.9,
                     latitude: 30.7
       )
+      visit('/stations')
     end
     it "the page lists the added station's name" do
       # save_and_open_page
       expect(page).to have_content("something")
       expect(page).to have_selector(".station-title")
     end
-    xit "the page lists the added station's city name" do
-      expect(page).to have_content("San Francisco")
+    it "the page lists the added station's city name" do
+      expect(page).to have_content("squeevillia")
     end
     it "the page lists the added station's view link" do
       expect(page).to have_selector(".station-title a")

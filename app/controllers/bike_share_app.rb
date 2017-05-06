@@ -26,14 +26,18 @@ class BikeShareApp < Sinatra::Base
       dock_count: params[:station][:dock_count],
       city_id: (params[:station][:city_id]),
       date_ref_id: date.id)
-      binding.pry
     redirect "/stations/#{@station.id}"
   end
 
 #form to edit station
   get '/stations/:id/edit' do
-    @dates = DateRef.all
-    @horse = Station.find(params[:id])
+    # @dates = DateRef.all
+    binding.pry
+    city = Station.find(params[:id]).city.id
+    @city = City.organize_array(city)
+    # binding.pry
+    @station = Station.find(params[:id])
+    # binding.pry
     erb :"stations/edit"
   end
 

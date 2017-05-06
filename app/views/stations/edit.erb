@@ -1,21 +1,20 @@
-<h1>Create a New Stations</h1>
+<h1>Edit a Station</h1>
 
-<form action="/stations/<%= @stations.id %>" method="post">
+<form action="/stations/<%= @station.id %>" method="post">
   <input type="hidden" name="_method" value="PUT" />
   <label for="">Name:</label>
-  <input type="textfield" name="stations[name]" value="<%= @stations.name %>">
-  <label for="">Dock Count:</label>
-  <input type="textfield" name="stations[dock_count]" value="<%= @stations.dock_count %>">
+  <input type="textfield" name="station[name]" value="<%= @station.name %>">
+  <label for="">Dock count:</label>
+  <input type="textfield" name="station[dock_count]" value="<%= @station.dock_count %>">
   <label for="">Installation Date:</label>
-  <select name="stations[jockey_id]">
-    <% @jockeys.each do |jockey| %>
-      <option value=<%= jockey.id %>><%= jockey.name %></option>
+  <input type="date" name="station[installation_date]" value="<%= @station.date_ref.date %>">
+  <select name="station[city_id]">
+    <option value=<%=@station.city.id%> selected="selected"><%= @station.city.name%></option>
+    <% @city.each do |city| %>
+      <option value=<%= city.id %>>
+        <%= city.name %>
+      </option>
     <% end %>
   </select>
-  <select name="stations[breed_id]">
-    <% @breeds.each do |breed| %>
-      <option value=<%= breed.id %>><%= breed.name %></option>
-    <% end %>
-  </select>
-  <input type="submit" value="Update stations" />
+  <input type="submit" value="Edit Station" />
 </form>

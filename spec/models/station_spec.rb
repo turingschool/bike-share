@@ -58,7 +58,7 @@ RSpec.describe Station, :type => :model do
                        dock_count: 22,
                        city: Faker::Address.unique.city,
                        date: Faker::Date.backward(500))
-      expect(Station.average).to be(12)
+      expect(Station.average_bikes).to be(12)
     end
   end
 end

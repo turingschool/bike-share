@@ -15,5 +15,5 @@ group :development, :test do
   gem 'launchy'
   gem 'rack-test'
   gem 'nyan-cat-formatter'
+  gem 'database_cleaner'
 end
-

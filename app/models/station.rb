@@ -24,8 +24,11 @@ class Station < ActiveRecord::Base
     Station.order('dock_count ASC').limit(amount)
   end
 
-  # Most recently installed station
   def self.most_recent
     Station.order('date ASC').first
+  end
+
+  def self.oldest
+    Station.order('date DESC').first
   end
 end

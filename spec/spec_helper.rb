@@ -8,8 +8,11 @@ require 'database_cleaner'
 
 
 require_relative '../app/models/csv_loader'
+require_relative '../app/models/station'
 
 Capybara.app = BikeShareApp
+
+DatabaseCleaner.strategy = :truncation
 
 RSpec.configure do |c|
   c.include Capybara::DSL

@@ -13,11 +13,14 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations/new' do
+    @cities = City.all
     erb :new
   end
 
   post '/stations' do
+    city = City.find(params[:station][:city_id])
     @station = Station.create(params[:station])
+    city.stations << @station
     redirect "/stations/#{@station.id}"
   end
 
@@ -28,6 +31,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations/:id/edit' do
     @station = Station.find(params[:id])
+    @cities = City.all
     erb :edit
   end
 
@@ -40,5 +44,30 @@ class BikeShareApp < Sinatra::Base
   delete '/stations/:id' do |id|
     Station.destroy(id)
     redirect "/stations"
+  end
+
+  get '/cities' do
+    @cities = City.all
+    erb :'cities/index'
+  end
+
+  get '/cities/:id' do
+    @station = Station.all
+    @city = City.find(params[:id])
+    erb :'/cities/city'
+  end
+
+  get '/cities/new' do
+    erb :'/cities/new'
+  end
+
+  post '/cities' do
+    @city = City.create(params[:city])
+    redirect "/cities/#{@city.id}"
+  end
+
+  delete '/cities/:id' do |id|
+    City.destroy(id)
+    redirect "/cities"
   end
 end

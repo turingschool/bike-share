@@ -1,0 +1,7 @@
+<h3><a href="/cities/new">Create City</a></h3>
+<% @cities.each do |city| %>
+  <h3><a href="cities/<%= city.id %>"><%= city.name %></a></h3>
+  <span>City: <%= city.name %></span><br />
+  <span>Number of stations: <%= city.stations.count %></span>
+  <br />
+<% end %>

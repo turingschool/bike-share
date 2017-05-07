@@ -17,4 +17,5 @@ group :development, :test do
   gem 'rack-test'
   gem 'nyan-cat-formatter'
   gem 'database_cleaner'
+  gem 'faker'
 end

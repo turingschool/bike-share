@@ -5,14 +5,13 @@
 
 <form action="/stations" method="post">
   <p>Create A New Station</p>
-  Name<input type="text" name="station[name]"/><br/>
-  Number of Docks<input type="number" name="station[dock_count]"/><br/>
+  Name<input type="text" name="station[name]"/><br>
+  Number of Docks<input type="number" name="station[dock_count]"/><br>
   City<select name="city[name]">
     <% @cities.each do |city| %>
     <option value="<%= city.name %>"><%= city.name %></option>
     <% end %>
-  </select>
-  <input type="submit" value="Submit changes"><br/>
-  Installation Date<input type="date" name="station[installation_date]"/><br/>
+  </select><br>
+  Installation Date<input type="date" name="station[installation_date]"/><br>
   <input type="submit" value="Submit"/>
 </form>

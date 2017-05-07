@@ -54,7 +54,9 @@ trips.each do |row|
 
   end_station = Station.find_by(name: end_station)
 
-  Trip.create!(date_ref_id: start_date.id,
+  Trip.create!(
+              duration: row[:duration]
+              date_ref_id: start_date.id,
               end_date_id: end_date.id,
               start_station_id: start_station.id,
               end_station_id: end_station.id,

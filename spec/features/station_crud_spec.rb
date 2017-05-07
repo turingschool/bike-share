@@ -3,10 +3,11 @@ require_relative '../spec_helper'
 RSpec.describe "Station CRUD" do
   describe "creating a station" do
     it "allows the user to fill out a form to create a station" do
+      city = City.create(name: "San Jose")
       visit("/stations/new")
       fill_in "station[name]", with: "stationicus"
       fill_in "station[dock_count]", with: "42"
-      fill_in "station[city_id]", with: "Denver"
+      select "San Jose", :from => 'station[city_id]'
       fill_in "station[date]", with: "8/6/2013"
       click_on "Submit"
 
@@ -16,17 +17,18 @@ RSpec.describe "Station CRUD" do
 
   describe "reading stations" do
     it "allows the user to see an index of stations, and a single station" do
+      city = City.create(name: "San Jose")
       visit("/stations/new")
       fill_in "station[name]", with: "station 1"
       fill_in "station[dock_count]", with: "42"
-      fill_in "station[city_id]", with: "Denver"
+      select "San Jose", :from => 'station[city_id]'
       fill_in "station[date]", with: "8/6/2013"
       click_on "Submit"
 
       visit("/stations/new")
       fill_in "station[name]", with: "station 2"
       fill_in "station[dock_count]", with: "43"
-      fill_in "station[city_id]", with: "Denver"
+      select "San Jose", :from => 'station[city_id]'
       fill_in "station[date]", with: "8/6/2013"
       click_on "Submit"
 
@@ -45,12 +47,13 @@ RSpec.describe "Station CRUD" do
 
     describe "updating stations" do
       it "allows the user to update a station" do
-        station = Station.create(name: "stationary", dock_count: 42, city:
-        "Denver", date: "8/8/16")
+        city = City.create(name: "San Jose")
+        station = Station.create(name: "stationary", dock_count: 42, city_id:
+          city.id, date: "8/8/16")
         visit("/stations/#{station.id}/edit")
         fill_in "station[name]", with: "stationary 2"
         fill_in "station[dock_count]", with: "43"
-        fill_in "station[city_id]", with: "Colorado Springs"
+        select "San Jose", :from => 'station[city_id]'
         fill_in "station[date]", with: "8/6/2014"
         click_on "Submit"
 
@@ -61,8 +64,9 @@ RSpec.describe "Station CRUD" do
 
     describe "deleting stations" do
       it "allows the user to delete a station" do
-        station = Station.create(name: "DeleteThisStation", dock_count: 42, city:
-        "Denver", date: "8/8/16")
+        city = City.create(name: "San Jose")
+        station = Station.create(name: "DeleteThisStation", dock_count: 42, city_id:
+          city.id, date: "8/8/16")
         count_before_delete = Station.count
         visit("/stations/#{station.id}")
         click_on "Delete"

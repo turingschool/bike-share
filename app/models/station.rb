@@ -1,7 +1,7 @@
 class Station < ActiveRecord::Base
   belongs_to :city
   belongs_to :date_ref
-  has_many :trip
+  has_many :trips
 
   validates :name, presence: true
   validates :dock_count, presence: true

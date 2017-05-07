@@ -1,5 +1,9 @@
 class CreateInitialTables < ActiveRecord::Migration[5.0]
   def change
+    drop_table :stations
+    drop_table :cities
+
+
     create_table :stations do |t|
       t.text    :name
       t.integer :dock_count

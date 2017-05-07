@@ -61,4 +61,55 @@ class BikeShareApp < Sinatra::Base
     redirect "/stations"
   end
 
+  ###################################
+  ##TRIPS
+  ###################################
+
+#trip dashboard with statistics
+  get '/trips-dashboard' do
+    
+  end
+  
+#trips index landing page
+  get '/trips' do
+    @trips = Trip.limit(30)
+    erb :"/trips/index"
+  end
+
+# #form for new trips
+#   get '/trips/new' do  
+
+#     erb :"trips/new"
+#   end
+
+# #single trip page
+#   get '/trip/:id' do
+#     @trip = Trip.find(params[:id])
+#     # erb :
+#   end
+
+# #route after filling new trip form
+#   post '/trips' do
+                     
+#     redirect "/trips/#{  .id}"
+#   end
+
+# #form to edit trips
+#   get '/trips/:id/edit' do
+
+#     @trip = Trip.find(params[:id])
+#     # erb :
+#   end
+
+# #route to update after editing trip
+#   put '/trips/:id' do
+    
+#     redirect "/trips/#{ .id}"
+#   end
+
+# #route to delete single trip
+#   delete '/trips/:id' do
+#     @trip = Trip.destroy(params[:id])
+#     redirect "/trips"
+#   end
 end

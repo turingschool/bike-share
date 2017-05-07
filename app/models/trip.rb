@@ -2,8 +2,11 @@ class Trip<ActiveRecord::Base
   belongs_to :bike
   belongs_to :zipcode
   belongs_to :subscription_type
-  belongs_to :station
+  # belongs_to :station
   belongs_to :date_ref
+
+  belongs_to :start_station, :class_name => "Station"
+  belongs_to :end_station, :class_name => "Station"
 
   validates :bike_id, presence: true
   validates :subscription_type_id, presence: true

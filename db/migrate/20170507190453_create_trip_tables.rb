@@ -1,6 +1,10 @@
 class CreateTripTables < ActiveRecord::Migration[5.0]
   def change
 
+    drop_table :bikes
+    drop_table :zipcodes
+    drop_table :trips
+
     create_table :bikes do |t|
       t.integer  :bike
 

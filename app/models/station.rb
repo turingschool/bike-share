@@ -6,4 +6,8 @@ class Station < ActiveRecord::Base
     Station.all.count
   end
 
+  # average bikes per station
+  def self.average_bikes
+    Station.average(:dock_count).round
+  end
 end

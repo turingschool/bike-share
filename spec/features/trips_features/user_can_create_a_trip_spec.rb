@@ -10,12 +10,12 @@ RSpec.describe "when a user visits the new trip page" do
     #This should be calculated by end_date - start_date
     # fill_in("trip[duration]", with: 840)
     fill_in("trip[start_date]", with: "08/30/2013 12:45")
-    fill_in("trip[start_station_id]", with: "squeevillia")
+    select "squeevillia", :from => "trip[start_station_id]"
     fill_in("trip[end_date]", with: "08/30/2013 12:59")
-    fill_in("trip[end_station_id]", with: "squeevillia")
+    select "squeevillia", :from => "trip[end_station_id]"
     fill_in("trip[bike_id]", with: 500)
-    fill_in("trip[subscription_type]", with: "Subscriber")
-    fill_in("trip[zipcode_id]", with: 1)
+    select "Subscriber", :from => "trip[subscription_type]"
+    select 94127, :from => "trip[zipcode_id]"
 
     click_button("Create Trip")
 

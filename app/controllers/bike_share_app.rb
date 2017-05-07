@@ -3,6 +3,10 @@ require 'time'
 class BikeShareApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
 
+  get '/' do
+    erb :home
+  end
+
   get '/stations' do
     @stations = Station.all
     erb :index

@@ -4,7 +4,7 @@ RSpec.describe 'use can view an individual stations page' do
   it 'will display correct stations page' do
     City.create(name: "Perth")
     city = City.find(1)
-    station = city.stations.create(name: "MLK", dock_count: 22, installation_date: "7/12/2301")
+    station = city.stations.create(name: "MLK", dock_count: 22, installation_date: "2011-11-12")
 
 
     visit("/stations")

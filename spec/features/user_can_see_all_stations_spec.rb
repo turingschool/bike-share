@@ -9,7 +9,7 @@ RSpec.describe 'when a user visits the all stations page' do
   it 'they can see stations' do
     City.create(name: "San Jose")
     city = City.find(1)
-    station = city.stations.create(name: "MLK", dock_count: 22, installation_date: "8/12/1999")
+    station = city.stations.create!(name: "MLK", dock_count: 22, installation_date: "1999-9-11")
 
     visit('/stations')
     click_on "View Stations"

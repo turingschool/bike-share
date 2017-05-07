@@ -7,7 +7,7 @@ RSpec.describe "Station CRUD" do
       visit("/stations/new")
       fill_in "station[name]", with: "stationicus"
       fill_in "station[dock_count]", with: "42"
-      select "San Jose", :from => 'station[city_id]'
+      find('.city-selector').find(:xpath, 'option[1]').select_option
       fill_in "station[date]", with: "8/6/2013"
       click_on "Submit"
 
@@ -21,14 +21,15 @@ RSpec.describe "Station CRUD" do
       visit("/stations/new")
       fill_in "station[name]", with: "station 1"
       fill_in "station[dock_count]", with: "42"
-      select "San Jose", :from => 'station[city_id]'
+      find('.city-selector').find(:xpath, 'option[1]').select_option
       fill_in "station[date]", with: "8/6/2013"
       click_on "Submit"
 
       visit("/stations/new")
       fill_in "station[name]", with: "station 2"
       fill_in "station[dock_count]", with: "43"
-      select "San Jose", :from => 'station[city_id]'
+      # find('.city-selector').find(:xpath, 'option[1]').select_option
+      find('.city-selector').find(:xpath, 'option[1]').select_option
       fill_in "station[date]", with: "8/6/2013"
       click_on "Submit"
 
@@ -36,13 +37,11 @@ RSpec.describe "Station CRUD" do
       expect(page).to have_content("station 1")
       expect(page).to have_content("station 2")
 
-      # Need to figure out why database isn't being cleaned
-      # first(:link, 'station 1').click
-      # expect(page).to have_content("42")
-      #
-      # visit("/stations")
-      # first(:link, 'station 2').click
-      # expect(page).to have_content("43")
+      first(:link, 'station 1').click
+      expect(page).to have_content("42")
+      visit("/stations")
+      first(:link, 'station 2').click
+      expect(page).to have_content("43")
     end
 
     describe "updating stations" do
@@ -53,7 +52,7 @@ RSpec.describe "Station CRUD" do
         visit("/stations/#{station.id}/edit")
         fill_in "station[name]", with: "stationary 2"
         fill_in "station[dock_count]", with: "43"
-        select "San Jose", :from => 'station[city_id]'
+        find('.city-selector').find(:xpath, 'option[1]').select_option
         fill_in "station[date]", with: "8/6/2014"
         click_on "Submit"
 

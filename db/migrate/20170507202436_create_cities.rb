@@ -3,7 +3,7 @@ class CreateCities < ActiveRecord::Migration[5.0]
     create_table :cities do |t|
       t.text :name
 
-      table.timestamps null: false
+      t.timestamps null: false
     end
   end
 end

@@ -7,9 +7,9 @@
   <li><%= station.name %></li>
       <% end %></ul></li>
   <li>Fewest bikes available at a station: <%= @stations.minimum(:dock_count) %></li>
-  <li>Station(s) where the fewest bikes are available:<ul><%= @stations.where(dock_count: @stations.minimum(:dock_count)).each do |station| %>
+  <li>Station(s) where the fewest bikes are available:<ul><% @stations.where(dock_count: @stations.minimum(:dock_count)).each do |station| %>
   <li><%= station.name %></li>
       <% end %></ul></li>
-  <li>Most recently installed station: <%= %></li>
-  <li>Oldest station: <%= %></li>
+  <li>Most recently installed station: <%= @stations.order("installation_date DESC").first.name %></li>
+  <li>Oldest station: <%= @stations.order("installation_date DESC").last.name %></li>
 </ul>

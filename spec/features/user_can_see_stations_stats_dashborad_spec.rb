@@ -6,8 +6,8 @@ RSpec.describe "when user visits station dashboard" do
     city.stations.create(name: "MLK", dock_count: 30, installation_date: "1864-8-9")
     city.stations.create(name: "Milk", dock_count: 30, installation_date: "2012-4-12")
     city.stations.create(name: "OJ", dock_count: 9, installation_date: "2012-2-16")
-    city.stations.create(name: "PBJ", dock_count: 20, installation_date: "2012-5-23")
-    city.stations.create(name: "Simpson", dock_count: 1, installation_date: "2222-8-3")
+    city.stations.create(name: "PBJ", dock_count: 20, installation_date: "2222-8-24")
+    city.stations.create(name: "Simpson", dock_count: 1, installation_date: "2222-8-23")
 
     visit('/station-dashboard')
     save_and_open_page

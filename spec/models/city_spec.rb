@@ -17,9 +17,18 @@ RSpec.describe City, :type => :model do
       city = City.create(name: "Denver")
       station = Station.create(name: "stationicus",
                                dock_count: 42,
-                               city: "Denver",
+                               city: city,
                                date: date)
       expect(city.stations).to include(station)
+    end
+
+    it "can find all stations with correlating city_id" do
+      city = City.create(name: 'Denver')
+      Station.create(name: 'Station X',
+                     dock_count: 22,
+                     city_id: city.id,
+                     date: '12/16/1997')
+      expect(City.query_stations(city.id)).to be_instance_of(Array)
     end
   end
 end

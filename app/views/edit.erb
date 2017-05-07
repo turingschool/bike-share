@@ -3,7 +3,12 @@
   <input type="hidden" name="_method" value="PUT" />
   <input type='text' name='station[name]' value="<%= @station.name %>"/><br/>
   <input type='text' name='station[dock_count]' value="<%= @station.dock_count %>"/><br/>
-  <input type='text' name='station[city]' value="<%= @station.city %>"/><br/>
+  <label>City:</label>
+    <select class="city-selector" name="station[city_id]">
+      <% @cities.each do |city| %>
+      <option value="<%= city.id %>"><%= city.name %></option>
+      <% end %>
+    </select>
   <input type='text' name='station[date]' value="<%= @station.date %>"/><br/>
   <input type='submit' value="Submit">
 </form>

@@ -20,8 +20,8 @@ RSpec.describe SubscriptionType  do
     it "can access trip duration" do
       subscription = SubscriptionType.create(name: "Customer")
       subscription.trips.create(duration: 400,
-                                start_station: 1,
-                                end_station: 2,
+                                start_station_id: 1,
+                                end_station_id: 2,
                                 start_date: "2012-8-12",
                                 end_date: "2012-8-12",
                                 bike_id: 122,

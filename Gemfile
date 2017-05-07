@@ -18,4 +18,5 @@ group :development, :test do
   gem 'nyan-cat-formatter'
   gem 'database_cleaner'
   gem 'faker'
+  gem 'simplecov'
 end

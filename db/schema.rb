@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20170507190641) do
   end
 
   create_table "zipcodes", force: :cascade do |t|
-    t.integer "zipcode", null: false
+    t.integer "zipcode"
   end
 
 end

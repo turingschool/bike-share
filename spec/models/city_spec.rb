@@ -17,7 +17,7 @@ RSpec.describe City, :type => :model do
       city = City.create(name: "Denver")
       station = Station.create(name: "stationicus",
                                dock_count: 42,
-                               city: city,
+                               city_id: city.id,
                                date: date)
       expect(city.stations).to include(station)
     end

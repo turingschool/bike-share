@@ -41,7 +41,24 @@ RSpec.describe Station, :type => :model do
                        dock_count: rand(100),
                        city: Faker::Address.unique.city,
                        date: Faker::Date.backward(500))
+      end
       expect(Station.total).to be(50)
+    end
+
+    it "returns the average amount of bikes per station based on dock_count" do
+      Station.create(name: Faker::Name.unique.name,
+                       dock_count: 11,
+                       city: Faker::Address.unique.city,
+                       date: Faker::Date.backward(500))
+      Station.create(name: Faker::Name.unique.name,
+                       dock_count: 3,
+                       city: Faker::Address.unique.city,
+                       date: Faker::Date.backward(500))
+      Station.create(name: Faker::Name.unique.name,
+                       dock_count: 22,
+                       city: Faker::Address.unique.city,
+                       date: Faker::Date.backward(500))
+      expect(Station.average).to be(12)
     end
   end
 end

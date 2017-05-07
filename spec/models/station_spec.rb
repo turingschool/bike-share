@@ -74,7 +74,7 @@ RSpec.describe Station, :type => :model do
                        dock_count: 22,
                        city: Faker::Address.unique.city,
                        date: Faker::Date.backward(500))
-      expect(Station.most_bikes).to be("Big Ol' Station")
+      expect(Station.most_bikes[:dock_count]).to be(22)
     end
   end
 end

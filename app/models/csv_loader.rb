@@ -1,5 +1,6 @@
 require 'pry'
 require 'csv'
+require 'pry'
 
 class CSVLoader
   def self.open(file_name)
@@ -22,8 +23,12 @@ class CSVLoader
     result
   end
   # Might just need this method vvvvvv but saving ^ for later iterations
-  def self.sanitize(row)
-    CSV.delete(:lat)
-    CSV.delete(:long)
+  def sanitize_station(path)
+    data = CSV.open(path, headers: true, header_converters: :symbol)
+
+    data.each do |row|
+      row = row.to_hash
+      binding.pry
+    end
   end
 end

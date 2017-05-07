@@ -10,4 +10,9 @@ class Station < ActiveRecord::Base
   def self.average_bikes
     Station.average(:dock_count).round
   end
+
+  # Station(s) where the most bikes are available (based on docks).
+  def self.most_bikes
+    Station.order('dock_count DESC').first
+  end
 end

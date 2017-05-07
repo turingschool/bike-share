@@ -1,9 +1,8 @@
 require './spec/spec_helper'
 
-RSpec.describe "test bike share app" do
-
-  it 'routs to station index' do
-    Station.create(name: 'Lodo', city: 'Denver', dock_count: 56, install_date: '2010/08/13')
+RSpec.describe "user visits stations index" do
+  it 'shows all stations' do
+    Station.create(name: 'Lodo', city_id: 1, dock_count: "56", date_id: "17")
 
     visit('/stations')
 
@@ -12,12 +11,8 @@ RSpec.describe "test bike share app" do
     expect(page).to have_content("Stations")
     expect(page).to have_content("Lodo")
     expect(page).to have_content("56")
-    expect(page).to have_content("2010-08-13")
+    expect(page).to have_content("17")
+    expect(page).to have_content("1")
   end
-
-
-
-  # describe "validations" do 
-  #   it "is invalid without name"
 
 end

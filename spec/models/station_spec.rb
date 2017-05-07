@@ -32,5 +32,25 @@ RSpec.describe Station do
       expect(station).to_not be_valid
     end
   end
+
+  describe 'Dashboard' do
+    it "gives a dashboard data" do
+      city = City.create!(name: 'Denver')
+      date = DateRef.create!(date: '01-01-2016', name: '01-01-2016')
+      date1 = DateRef.create!(date: '02-01-2017', name: '02-01-2017')
+      station = Station.create!(name: "Broadway", dock_count: 12, lat: 1.2325, long: 12.54683, date_ref_id: date.id, city_id: city.id)
+      station_1 = Station.create!(name: "Denver", dock_count: 21, lat: 1.2325, long: 12.54683, date_ref_id: date1.id, city_id: city.id)
+
+
+      expect(Station.dashboard[:total_count]).to eq(2)
+      expect(Station.dashboard[:average_bikes]).to eq(16)
+      expect(Station.dashboard[:max_bikes]).to eq(21)
+      expect(Station.dashboard[:max_bikes_stations].first.name).to eq('Denver')
+      expect(Station.dashboard[:min_bikes]).to eq(12)
+      expect(Station.dashboard[:min_bikes_stations].first.name).to eq('Broadway')
+      expect(Station.dashboard[:most_recent_stations].first.name).to eq('Broadway')
+      expect(Station.dashboard[:oldest_stations].first.name).to eq('Denver')
+    end
+  end
 end
 

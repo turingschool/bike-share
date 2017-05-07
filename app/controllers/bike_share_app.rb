@@ -2,6 +2,7 @@ class BikeShareApp < Sinatra::Base
 
 #station dashboard with statistics
   get '/stations-dashboard' do
+    @dashboard_data = Station.dashboard
     erb :'stations/dashboard'
   end
   

@@ -1,0 +1,14 @@
+class CreateTrips < ActiveRecord::Migration[5.0]
+  def change
+    create_table :trips do |t|
+      t.integer :duration, null: false
+      t.date :start_date, null: false
+      t.integer :start_station_id, null: false
+      t.date :end_date, null: false
+      t.integer :end_station_id, null: false
+      t.integer :bike_id, null: false
+      t.text :subscription_type, null: false
+      t.integer :zipcode_id, null: false
+    end
+  end
+end

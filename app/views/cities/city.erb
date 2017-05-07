@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<h3><%= @city.name %></h3><br />
+<span>Stations: <% @city.stations.each do |station| %></span><br />
+<span><%= station.name %></span><br />
+<% end %>
+<h3><a href="/cities">All Cites</a></h3>
+<form action="/cities/<%= @city.id %>" method="post">
+  <input type="hidden" name="_method" value="DELETE" />
+  <input type="submit" value="Delete" />
+</form>

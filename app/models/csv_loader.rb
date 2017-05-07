@@ -26,9 +26,14 @@ class CSVLoader
   def sanitize_station(path)
     data = CSV.open(path, headers: true, header_converters: :symbol)
 
-    data.each do |row|
-      row = row.to_hash
-      binding.pry
+    data.map do |row|
+      # binding.pry
+      {
+        [:name] => row[:name],
+        [:dock_count] => row[:dock_count],
+        [:city] => row[:city],
+        [:date] => row[:installation_date] # Should we make this an integer for calcs?
+      }
     end
   end
 end

@@ -12,10 +12,11 @@ class DateRef < ActiveRecord::Base
 
   def self.create_date(date)
     date = format_date(date)
-    if DateRef.find_by(name: date)
-      DateRef.find_by(name: date)
-    else
-      DateRef.create!(date: date, name: date)
-    end
+    DateRef.find_or_create_by!(date: date)
+    # if DateRef.find_by(name: date)
+    #   # DateRef.find_by(name: date)
+    # else
+    #   # DateRef.create!(date: date, name: date)
+    # end
   end
 end

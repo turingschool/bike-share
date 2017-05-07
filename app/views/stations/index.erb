@@ -4,8 +4,8 @@
 <% @stations.each do |station| %>
   <ul> <%= station.name %>
   <ti> Number of Docks: <%= station.dock_count %> </ti>
-  <ti> City: <%= station.city %> </ti>
-  <ti> Install Date: <%= station.install_date %> </ti>
+  <ti> City: <%= station.city_id %> </ti>
+  <ti> Install Date: <%= station.date_id %> </ti>
   </ul>
   <a href='/stations/edit/<%=station.id%>'>Edit Station</a>
   <form action='/stations/delete/<%=station.id%>' method="POST" >

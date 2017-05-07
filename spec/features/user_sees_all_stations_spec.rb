@@ -2,7 +2,7 @@ require './spec/spec_helper'
 
 RSpec.describe "user visits stations index" do
   it 'shows all stations' do
-    Station.create(name: 'Lodo', city_id: 1, dock_count: "56", date_id: "17")
+    Station.create(name: 'Lodo', city_id: 1, dock_count: 56, date_id: 17)
 
     visit('/stations')
 

@@ -6,4 +6,6 @@ RSpec.describe "user wants to add station" do
       expect(page).to have_content("Add Station")
     end
   end
+
+  
 end

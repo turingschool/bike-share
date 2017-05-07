@@ -16,7 +16,10 @@
     <td><%= station.city.name %></td>
     <td><%= station.installation_date %></td>
     <td><a href="/stations/<%= station.id %>">Additional Info</a></td>
-    <td>Delete</td>
+    <td><form action="/stations/<%= station.id %>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete">
+    </form></td>
   <% end %>
   </tr>
 </table>

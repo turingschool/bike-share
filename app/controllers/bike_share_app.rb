@@ -52,6 +52,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/cities/:id' do
+    @station = Station.all
     @city = City.find(params[:id])
     erb :'/cities/city'
   end

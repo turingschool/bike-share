@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <h3><%= @city.name %></h3><br />
-<span>Stations: <% @station.query_stations.each do |station| %></span><br />
+<span>Stations: <% @city.stations.each do |station| %></span><br />
 <span><%= station.name %></span><br />
 <% end %>
 <h3><a href="/cities">All Cites</a></h3>

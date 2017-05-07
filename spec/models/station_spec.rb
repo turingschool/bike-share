@@ -121,5 +121,21 @@ RSpec.describe Station, :type => :model do
       expect(Station.lowest_station(5).first[:name]).to eq('No Bikes Station')
       expect(Station.lowest_station(5)[1][:name]).to eq('No Bikes Here')
     end
+
+    it "returns the most recently installed station" do
+      Station.create(name: Faker::Name.unique.name,
+                       dock_count: rand(100),
+                       city: Faker::Address.unique.city,
+                       date: Faker::Date.backward(100))
+      Station.create(name: 'New Station!',
+                       dock_count: rand(100),
+                       city: Faker::Address.unique.city,
+                       date: 5/6/2017)
+      Station.create(name: Faker::Name.unique.name,
+                       dock_count: rand(100),
+                       city: Faker::Address.unique.city,
+                       date: Faker::Date.backward(100))
+      expect(Station.most_recent.first[:name]).to eq('New Station!')
+    end
   end
 end

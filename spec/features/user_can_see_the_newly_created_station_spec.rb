@@ -8,16 +8,19 @@ require_relative '../spec_helper'
 RSpec.describe "user can click the submit button on a form" do
   it "will redirect to the page for that individual station" do
     City.create(name: "Rockville")
+    City.create(name: "Tokyo")
 
     visit('/stations/new')
-    fill_in "Name", with: "MLK"
-    fill_in "Dock Count", with: 22
-    fill_in "City", with: "Rockville"
-    fill_in "Installation Date", with: "1776-9-12"
+    fill_in "station[name]", with: "MLK"
+    fill_in "station[dock_count]", with: 22
+    select("Tokyo", :from => "city[name]")
+    fill_in "station[installation_date]", with: "1776-9-12"
     click_on "Submit"
 
+    save_and_open_page
+
     expect(current_path).to eq("/stations/1")
-    expect(page).to have_content("Rockville")
+    expect(page).to have_content("Tokyo")
     expect(page).to have_content("MLK")
   end
 end

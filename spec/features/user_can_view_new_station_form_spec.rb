@@ -9,7 +9,7 @@ RSpec.describe "user can see form for creating a new station" do
     visit('/stations')
     click_on "Create New Station"
 
-    expect(page).to have_content("Submit")
     save_and_open_page
+    expect(page).to have_content("Create A New Station")
   end
 end

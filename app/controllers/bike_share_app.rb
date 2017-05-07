@@ -7,6 +7,17 @@ class BikeShareApp < Sinatra::Base
     erb :"stations/index"
   end
 
+  get '/stations/new' do
+    @cities = City.all
+    erb :"stations/new"
+  end
+
+  post '/stations' do
+    city = City.find_by name: params[:city][:name]
+    station = city.stations.create(params[:station])
+    redirect "/stations/#{station.id}"
+  end
+
   get '/stations/view_all' do
     @stations = Station.all
     erb :"stations/view_all"

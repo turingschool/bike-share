@@ -87,5 +87,19 @@ RSpec.describe Station, :type => :model do
       end
       expect(Station.top_stations(10).all.count).to eq(10)
     end
+
+    it "returns lowest station based on dock_count" do
+      Station.create(name: 'No Bikes Station',
+                       dock_count: 0,
+                       city: Faker::Address.unique.city,
+                       date: Faker::Date.backward(500))
+      50.times do
+        Station.create(name: Faker::Name.unique.name,
+                       dock_count: rand(100),
+                       city: Faker::Address.unique.city,
+                       date: Faker::Date.backward(500))
+      end
+      expect(Station.lowest_station(1).first[:name]).to eq('No Bikes Station')
+    end
   end
 end

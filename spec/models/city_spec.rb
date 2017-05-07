@@ -13,6 +13,7 @@ RSpec.describe City, :type => :model do
 
   describe "city relationships" do
     it "has many stations" do
+      date = Time.parse("08/06/2013")
       city = City.create(name: "Denver")
       station = Station.create(name: "stationicus",
                                dock_count: 42,

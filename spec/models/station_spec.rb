@@ -154,4 +154,15 @@ RSpec.describe Station, :type => :model do
       expect(Station.oldest[:name]).to eq('Old Station!')
     end
   end
+
+  # describe "station relationships" do
+  #   it "belongs to a city" do
+  #     city = City.new(name: "Denver")
+  #     station = Station.create(name: "stationicus",
+  #                              dock_count: 42,
+  #                              city: "Denver",
+  #                              date: date)
+  #     expect(station.city_id).to eq(city.id)
+  #   end
+  # end
 end

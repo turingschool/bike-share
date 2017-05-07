@@ -135,7 +135,7 @@ RSpec.describe Station, :type => :model do
                        dock_count: rand(100),
                        city: Faker::Address.unique.city,
                        date: Faker::Date.backward(100))
-      expect(Station.most_recent.first[:name]).to eq('New Station!')
+      expect(Station.most_recent[:name]).to eq('New Station!')
     end
   end
 end

@@ -41,4 +41,23 @@ class BikeShareApp < Sinatra::Base
     Station.destroy(id)
     redirect "/stations"
   end
+
+  get '/cities' do
+    @cities = City.all
+    erb :'cities/index'
+  end
+
+  get '/cities/:id' do
+    @city = City.find(params[:id])
+    erb :'/cities/city'
+  end
+
+  get '/cities/new' do
+    erb :'/cities/new'
+  end
+
+  post '/cities' do
+    @city = City.create(params[:city])
+    redirect "/cities/#{@city.id}"
+  end
 end

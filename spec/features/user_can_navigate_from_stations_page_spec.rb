@@ -21,7 +21,11 @@ RSpec.describe "When a user visits '/stations'" do
       expect(current_path).to eq("/stations/1")
   end
 
-  # it "they can edit a station from '/stations'"
-  #
-  # end
+  it "they can edit a station from '/stations'" do
+    visit('/stations')
+    click_link 'Edit'
+
+    expect(current_path).to eq('/stations/1/edit')
+  end
+
 end

@@ -1,0 +1,21 @@
+<h1>Add a new station</h1>
+
+<form action="/stations" method="post">
+  <label>Name: </label>
+  <input type="text" name="station[name]" />
+  <label>Dock Count: </label>
+  <input type="text" name="station[dock_count]" />
+  <label>City: </label>
+  <select name="station[city_id]">
+    <% City.all.each do |city| %>
+      <option value="<%= city.id %>"><%= city.name %></option>
+    <% end %>
+  </select>
+  <label>Installation Date: </label>
+  <input type="text" name="station[installation_date]" />
+  <label>Longitude: </label>
+  <input type="text" name="station[longitude]" />
+  <label>Latitude: </label>
+  <input type="text" name="station[latitude]" />
+  <input type="submit" value="Create Station" />
+</form>

@@ -21,11 +21,34 @@ RSpec.describe "When a user visits '/stations'" do
       expect(current_path).to eq("/stations/1")
   end
 
+  it "takes you to dashboard page" do
+    visit('/stations')
+    click_link "Dashboard"
+
+    expect(current_path).to eq('/stations-dashboard')
+  end
+
   it "they can edit a station from '/stations'" do
     visit('/stations')
     click_link 'Edit'
 
     expect(current_path).to eq('/stations/1/edit')
+  end
+
+  it "deletes a station from '/stations'" do
+    expect(Station.count).to eq(1)
+    visit('/stations')
+    click_on 'Delete'
+
+    expect(current_path).to eq('/stations')
+    expect(Station.count).to eq(0)
+  end
+
+  it "takes you to new station page" do
+    visit('/stations')
+    click_link "Add Station"
+
+    expect(current_path).to eq('/stations/new')
   end
 
 end

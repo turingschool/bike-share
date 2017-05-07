@@ -77,5 +77,15 @@ RSpec.describe Station, :type => :model do
       expect(Station.most_bikes[:dock_count]).to be(22)
       expect(Station.most_bikes[:name]).to eq("Big Ol' Station")
     end
+
+    it "returns top 10 stations based on dock_count" do
+      50.times do
+        Station.create(name: Faker::Name.unique.name,
+                       dock_count: rand(100),
+                       city: Faker::Address.unique.city,
+                       date: Faker::Date.backward(500))
+      end
+      expect(Station.top_stations.all.count).to eq(10)
+    end
   end
 end

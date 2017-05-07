@@ -60,4 +60,9 @@ class BikeShareApp < Sinatra::Base
     @city = City.create(params[:city])
     redirect "/cities/#{@city.id}"
   end
+
+  delete '/cities/:id' do |id|
+    City.destroy(id)
+    redirect "/cities"
+  end
 end

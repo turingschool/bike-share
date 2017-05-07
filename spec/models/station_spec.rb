@@ -35,11 +35,14 @@ RSpec.describe Station, :type => :model do
   end
 
   describe "calculating station statistics" do
+    before(:each) do
+      @city = City.new(name: Faker::Address.unique.city)
+    end
     it "returns the total count of all stations" do
       50.times do
         Station.create(name: Faker::Name.unique.name,
                        dock_count: rand(100),
-                       city: Faker::Address.unique.city,
+                       city_id: @city.id,
                        date: Faker::Date.backward(500))
       end
       expect(Station.total).to be(50)
@@ -48,15 +51,15 @@ RSpec.describe Station, :type => :model do
     it "returns the average amount of bikes per station based on dock_count" do
       Station.create(name: Faker::Name.unique.name,
                        dock_count: 11,
-                       city: Faker::Address.unique.city,
+                       city: @city,
                        date: Faker::Date.backward(500))
       Station.create(name: Faker::Name.unique.name,
                        dock_count: 3,
-                       city: Faker::Address.unique.city,
+                       city: @city,
                        date: Faker::Date.backward(500))
       Station.create(name: Faker::Name.unique.name,
                        dock_count: 22,
-                       city: Faker::Address.unique.city,
+                       city: @city,
                        date: Faker::Date.backward(500))
       expect(Station.average_bikes).to be(12)
     end
@@ -64,15 +67,15 @@ RSpec.describe Station, :type => :model do
     it "returns the station with most bikes" do
       Station.create(name: Faker::Name.unique.name,
                        dock_count: 11,
-                       city: Faker::Address.unique.city,
+                       city: @city,
                        date: Faker::Date.backward(500))
       Station.create(name: Faker::Name.unique.name,
                        dock_count: 3,
-                       city: Faker::Address.unique.city,
+                       city: @city,
                        date: Faker::Date.backward(500))
       Station.create(name: "Big Ol' Station",
                        dock_count: 22,
-                       city: Faker::Address.unique.city,
+                       city: @city,
                        date: Faker::Date.backward(500))
       expect(Station.most_bikes[:dock_count]).to be(22)
       expect(Station.most_bikes[:name]).to eq("Big Ol' Station")

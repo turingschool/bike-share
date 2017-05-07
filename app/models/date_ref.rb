@@ -1,7 +1,8 @@
 class DateRef < ActiveRecord::Base
   has_many :stations
-  validates :date, presence: true
+  has_many :trips
 
+  validates :date, presence: true
 
   def self.clean_date(date)
     date = date.split("/").map do |date|

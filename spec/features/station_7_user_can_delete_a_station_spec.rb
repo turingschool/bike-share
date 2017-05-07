@@ -7,8 +7,7 @@ require_relative '../spec_helper'
 
 RSpec.describe "user can delete a station" do
   it "takes you to view all page and entry is deleted" do
-    City.create(name: "Vancover")
-    city = City.find(1)
+    city = City.create(name: "Vancover")
     city.stations.create(name: "MLK", dock_count: 35, installation_date: "2010-11-12")
     city.stations.create(name: "Malcolm X", dock_count: 35, installation_date: "2011-12-11")
 
@@ -17,6 +16,5 @@ RSpec.describe "user can delete a station" do
     click_on "Delete"
     expect(current_path).to eq("/stations/view_all")
     expect(page).to_not have_content("MLK")
-    save_and_open_page
   end
 end

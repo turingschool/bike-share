@@ -6,7 +6,6 @@ class Trip<ActiveRecord::Base
   belongs_to :date_ref
 
   validates :bike_id, presence: true
-  validates :zipcode_id, presence: true
   validates :subscription_type_id, presence: true
   validates :date_ref_id, presence: true
   validates :end_date_id, presence: true

@@ -8,10 +8,5 @@ RSpec.describe Zipcode do
       expect(zipcode).to be_valid
     end
 
-    it "is invalid without name" do
-      zipcode = Zipcode.new
-
-      expect(zipcode).to_not be_valid
-    end
   end
 end

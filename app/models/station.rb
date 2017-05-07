@@ -29,4 +29,19 @@ class Station < ActiveRecord::Base
         latest_date: Station.includes(:date_ref).order("date_refs.date").last.date_ref.id
     }
   end
+
+  def self.validate_name_change(name)
+    if equivalent_names[name]
+      equivalent_names[name]
+    else
+      name
+    end
+  end
+
+  def self.equivalent_names
+    {
+        "San Jose Government Center"=>"Santa Clara County Civic Center",
+       "Broadway at Main" =>"Stanford in Redwood City"
+    }
+  end
 end

@@ -60,5 +60,21 @@ RSpec.describe Station, :type => :model do
                        date: Faker::Date.backward(500))
       expect(Station.average_bikes).to be(12)
     end
+
+    it "returns the station with most bikes" do
+      Station.create(name: Faker::Name.unique.name,
+                       dock_count: 11,
+                       city: Faker::Address.unique.city,
+                       date: Faker::Date.backward(500))
+      Station.create(name: Faker::Name.unique.name,
+                       dock_count: 3,
+                       city: Faker::Address.unique.city,
+                       date: Faker::Date.backward(500))
+      Station.create(name: "Big Ol' Station",
+                       dock_count: 22,
+                       city: Faker::Address.unique.city,
+                       date: Faker::Date.backward(500))
+      expect(Station.most_bikes).to be("Big Ol' Station")
+    end
   end
 end

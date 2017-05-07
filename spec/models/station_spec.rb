@@ -1,6 +1,5 @@
 require_relative '../spec_helper'
 require 'time'
-require './app/models/station'
 
 RSpec.describe Station, :type => :model do
 
@@ -37,7 +36,12 @@ RSpec.describe Station, :type => :model do
 
   describe "calculating station statistics" do
     it "returns the total count of all stations" do
-      expect(Station.total).to be(70)
+      50.times do
+        Station.create(name: Faker::Name.unique.name,
+                       dock_count: rand(100),
+                       city: Faker::Address.unique.city,
+                       date: Faker::Date.backward(500))
+      expect(Station.total).to be(50)
     end
   end
 end

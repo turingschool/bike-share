@@ -36,11 +36,11 @@ ActiveRecord::Schema.define(version: 20170507190641) do
     t.integer "end_station_id",    null: false
     t.integer "bike_id",           null: false
     t.text    "subscription_type", null: false
-    t.integer "zipcode_id",        null: false
+    t.integer "zipcode_id"
   end
 
   create_table "zipcodes", force: :cascade do |t|
-    t.integer "zipcode"
+    t.integer "zipcode", null: false
   end
 
 end

@@ -8,6 +8,14 @@ class Station < ActiveRecord::Base
   validates :latitude, presence: true
 
   def format_date
-    installation_date.strftime('%m/%d/%Y') 
+    installation_date.strftime('%m/%d/%Y')
+  end
+
+  # def self.count
+  #   Station.all
+  # end
+
+  def self.average_bikes
+
   end
 end

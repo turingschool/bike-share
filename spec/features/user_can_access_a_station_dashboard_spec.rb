@@ -2,7 +2,6 @@ require './spec/spec_helper'
 
 RSpec.describe "When a user visit the stations dashboard (/stations-dashboard)" do
   it "loads the appropriate descriptions" do
-    visit('/stations-dashboard')
     city_1 = City.create(name: "squeevillia")
     Station.create(
                   name: "something",
@@ -20,6 +19,8 @@ RSpec.describe "When a user visit the stations dashboard (/stations-dashboard)" 
                   longitude: 1,
                   latitude: -2
     )
+    visit('/stations-dashboard')
+    save_and_open_page
 
     expect(page).to have_content("Total Stations: 2")
     expect(page).to have_content("Average Bikes per Station: 2")

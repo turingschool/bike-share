@@ -7,6 +7,7 @@ require 'pry'
 require 'database_cleaner'
 
 
+require 'faker'
 require_relative '../app/models/csv_loader'
 require_relative '../app/models/station'
 

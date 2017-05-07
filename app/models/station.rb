@@ -1,18 +1,22 @@
+require 'pry'
 class Station < ActiveRecord::Base
   validates :name, :dock_count, :city, :date, presence: true
 
-  # total count of stations
   def self.total
     Station.all.count
   end
 
-  # average bikes per station
   def self.average_bikes
     Station.average(:dock_count).round
   end
 
-  # Station(s) where the most bikes are available (based on docks).
+  # Should we be returning the entire station obj or just the dock_count/name field?
   def self.most_bikes
     Station.order('dock_count DESC').first
+  end
+
+  # Station objects or names?
+  def self.top_stations(amount)
+    Station.order('dock_count DESC').limit(amount)
   end
 end

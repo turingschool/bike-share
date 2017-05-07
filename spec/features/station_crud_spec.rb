@@ -58,5 +58,19 @@ RSpec.describe "Station CRUD" do
         expect(page).to have_content("stationary 2")
       end
     end
+
+    describe "deleting stations" do
+      it "allows the user to delete a station" do
+        station = Station.create(name: "DeleteThisStation", dock_count: 42, city:
+        "Denver", date: "8/8/16")
+        count_before_delete = Station.count
+        visit("/stations/#{station.id}")
+        click_on "Delete"
+        count_after_delete = Station.count
+
+        expect(count_before_delete - count_after_delete).to eq(1)
+        expect(page).to have_current_path("/stations")
+      end
+    end
   end
 end

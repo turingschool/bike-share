@@ -30,7 +30,7 @@ class CSVLoader
       # binding.pry
       {
         [:name] => row[:name],
-        [:dock_count] => row[:dock_count],
+        [:dock_count] => row[:dock_count].to_i,
         [:city] => row[:city],
         [:date] => row[:installation_date] # Should we make this an integer for calcs?
       }

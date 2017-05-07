@@ -34,4 +34,10 @@ RSpec.describe Station, :type => :model do
       expect(no_date_station).not_to be_valid
     end
   end
+
+  describe "calculating station statistics" do
+    it "returns the total count of all stations" do
+      expect(Station.total).to be(70)
+    end
+  end
 end

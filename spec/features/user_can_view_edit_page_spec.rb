@@ -8,6 +8,8 @@ require_relative '../spec_helper'
 RSpec.describe "when a user visits the edit page" do
   it "displays an edit form" do
     City.create(name: "Denver")
+    City.create(name: "DC")
+    City.create(name: "New York")
     city = City.find(1)
     station = city.stations.create!(name: "MLK", dock_count: 22, installation_date: "2013-11-12")
 

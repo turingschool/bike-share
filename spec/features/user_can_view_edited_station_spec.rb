@@ -6,9 +6,7 @@ require_relative '../spec_helper'
 
 RSpec.describe "user can fill in form" do
   it "it updates page with correct information" do
-
-      City.create(name: "Washington DC")
-      city = City.find(1)
+      city = City.create(name: "Washington DC")
       station = city.stations.create!(name: "MLK", dock_count: 32, installation_date: "1984-05-24")
 
       visit('/stations/1/edit')

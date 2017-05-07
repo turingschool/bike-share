@@ -1,3 +1,5 @@
+require 'pry'
+
 class Station < ActiveRecord::Base
   belongs_to :city
 
@@ -6,7 +8,8 @@ class Station < ActiveRecord::Base
   validates :dock_count, presence: true
   validates :installation_date, presence: true
 
-  # Station.find(params[:id]).update(params[:station])
-  # city = City.find_by name: params[:city]["name"]
-  # Station.find(params[:id]).update(city_id: city.id)
+  def update_city_id(city_name, station)
+    city = City.find_by name: city_name
+    station.update city_id: city.id
+  end
 end

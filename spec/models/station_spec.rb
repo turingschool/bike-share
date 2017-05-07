@@ -49,8 +49,7 @@ RSpec.describe Station do
       city_2 = City.create(name: "Paris")
       station = city_1.stations.create(name: "MLK Station", city_id: 1, dock_count: 19, installation_date: "2013-5-11")
 
-      expect(station.city_id).to eq(1)
-      station.update_city("Paris")
+      station.update_city_id("Paris", station)
       expect(station.city_id).to eq(2)
     end
   end

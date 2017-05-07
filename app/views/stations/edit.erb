@@ -5,11 +5,16 @@
   <input type="hidden" name="_method" value="PUT">
   <h2>Name</h2>
   <input type="text" name="station[name]" value="<%= @station.name %>">
-  <h2>City</h2>
-  <input type="text" name="city[name]" value="<%= @station.city.name %>">
+  <!-- <h2>City</h2>
+  <input type="text" name="city[name]" value="<%= @station.city.name %>"> -->
   <h2>Dock Count</h2>
   <input type="text" name="station[dock_count]" value="<%= @station.dock_count %>">
   <h2>Installation Date</h2>
   <input type="text" name="station[installation_date]" value="<%= @station.installation_date %>">
+  <select name="city[name]">
+    <% @cities.each do |city| %>
+    <option value="<%= city.name %>"><%= city.name %></option>
+    <% end %>
+  </select>
   <input type="submit" value="Submit changes">
 </form>

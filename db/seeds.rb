@@ -3,6 +3,7 @@ require './app/models/city.rb'
 require 'csv'
 
 Station.destroy_all
+City.destroy_all
 
 def read_csv(file)
   CSV.open(file, headers: true, header_converters: :symbol)

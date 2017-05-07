@@ -1,7 +1,7 @@
 require 'pry'
 
 class BikeShareApp < Sinatra::Base
-
+  
   get '/' do
     erb :"home/index"
   end
@@ -41,6 +41,5 @@ class BikeShareApp < Sinatra::Base
     station.destroy
     redirect '/stations'
   end
-
 
 end

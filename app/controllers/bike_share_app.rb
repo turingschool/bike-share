@@ -26,7 +26,7 @@ class BikeShareApp < Sinatra::Base
 
 #route after filling new station form
   post '/stations' do
-    date = DateRef.create_date(params[:station][:installation_date])
+    date = DateRef.find_or_create_by(date: params[:station][:installation_date])
     @station = Station.create(
                               name: params[:station][:name],
                               dock_count: params[:station][:dock_count],
@@ -45,7 +45,7 @@ class BikeShareApp < Sinatra::Base
 
 #route to update after editing station
   put '/stations/:id' do
-    date = DateRef.create_date(params[:station][:installation_date])
+    date = DateRef.find_or_create_by(date: params[:station][:installation_date])
     @station = Station.update(params[:id],
                               name: params[:station][:name],
                               dock_count: params[:station][:dock_count],

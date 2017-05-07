@@ -137,5 +137,21 @@ RSpec.describe Station, :type => :model do
                        date: Faker::Date.backward(100))
       expect(Station.most_recent[:name]).to eq('New Station!')
     end
+
+    it "returns the oldest station" do
+      Station.create(name: Faker::Name.unique.name,
+                       dock_count: rand(100),
+                       city: Faker::Address.unique.city,
+                       date: '12/16/1997')
+      Station.create(name: 'Old Station!',
+                       dock_count: rand(100),
+                       city: Faker::Address.unique.city,
+                       date: '5/6/1900')
+      Station.create(name: Faker::Name.unique.name,
+                       dock_count: rand(100),
+                       city: Faker::Address.unique.city,
+                       date: '4/7/2005')
+      expect(Station.oldest[:name]).to eq('Old Station!')
+    end
   end
 end

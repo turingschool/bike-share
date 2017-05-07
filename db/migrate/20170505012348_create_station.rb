@@ -1,12 +1,12 @@
 class CreateStation < ActiveRecord::Migration[5.0]
   def change
-    create_table :stations do |table|
-      table.text :name
-      table.integer :dock_count
-      table.text :city
-      table.datetime :install_date
+    create_table :stations do |t|
+      t.text :name
+      t.integer :dock_count
+      t.text :city
+      t.datetime :install_date
 
-      table.timestamps null: false
+      t.timestamps null: false
     end
   end
 end

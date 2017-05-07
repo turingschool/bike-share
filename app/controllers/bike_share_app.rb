@@ -83,17 +83,20 @@ class BikeShareApp < Sinatra::Base
     erb :"trips/new"
   end
 
+#route after filling new trip form
+  post '/trips' do
+    trip = Trip.update(params)
+    binding.pry
+    redirect "/trips/#{trip.id}"
+  end
+
+
 # #single trip page
 #   get '/trip/:id' do
 #     @trip = Trip.find(params[:id])
 #     # erb :
 #   end
 
-# #route after filling new trip form
-#   post '/trips' do
-                     
-#     redirect "/trips/#{  .id}"
-#   end
 
 # #form to edit trips
 #   get '/trips/:id/edit' do
@@ -102,11 +105,7 @@ class BikeShareApp < Sinatra::Base
 #     # erb :
 #   end
 
-# #route to update after editing trip
-#   put '/trips/:id' do
-    
-#     redirect "/trips/#{ .id}"
-#   end
+
 
 # #route to delete single trip
 #   delete '/trips/:id' do

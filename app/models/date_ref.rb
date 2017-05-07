@@ -15,4 +15,9 @@ class DateRef < ActiveRecord::Base
     date[0], date[1], date[2] = date[2], date[0], date[1]
     date.join('-')
   end
+
+  # def self.clean_datetime(date)
+  #   date = date.split('T')[0]
+
+  # end
 end

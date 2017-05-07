@@ -36,8 +36,8 @@ RSpec.describe Station do
   describe 'Dashboard' do
     it "gives a dashboard data" do
       city = City.create!(name: 'Denver')
-      date = DateRef.create!(date: '01-01-2016', name: '01-01-2016')
-      date1 = DateRef.create!(date: '02-01-2017', name: '02-01-2017')
+      date = DateRef.create!(date: '2016-01-01')
+      date1 = DateRef.create!(date: '2017-02-01')
       station = Station.create!(name: "Broadway", dock_count: 12, lat: 1.2325, long: 12.54683, date_ref_id: date.id, city_id: city.id)
       station_1 = Station.create!(name: "Denver", dock_count: 21, lat: 1.2325, long: 12.54683, date_ref_id: date1.id, city_id: city.id)
 
@@ -53,4 +53,3 @@ RSpec.describe Station do
     end
   end
 end
-

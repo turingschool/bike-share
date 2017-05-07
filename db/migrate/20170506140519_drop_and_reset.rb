@@ -1,8 +1,9 @@
 class DropAndReset < ActiveRecord::Migration[5.0]
   def change
-    # drop_table :stations
-    # drop_table :cities
-    
+    drop_table :stations
+    drop_table :cities
+    drop_table :the_dates
+
     create_table :stations do |t|
       t.text    :name
       t.integer :dock_count

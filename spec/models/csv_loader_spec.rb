@@ -37,10 +37,11 @@ RSpec.describe CSVLoader do
 
   describe 'adding info for seed file' do
     before(:each) do
-      dummy = CSVLoader.new
-      @file = dummy.open('./db/csv/station.csv')
+      @dummy = CSVLoader.new
     end
 
-    it ''
+    it 'sanitizes a station' do
+      puts @dummy.sanitize_station('./db/csv/station.csv')
+    end
   end
 end

@@ -1,3 +1,14 @@
 <h1>Stations</h1>
 
-<a href='/stations/new'>Add Station</a>
+
+<% @stations.each do |station| %>
+  <ul> <%= station.name %>
+  <ti> Number of Docks: <%= station.dock_count %> </ti>
+  <ti> City: <%= station.city %> </ti>
+  <ti> Install Date: <%= station.install_date %> </ti>
+  </ul>
+  <a href='/stations/edit/<%=station.id%>'>Edit Station</a>
+  <a href='/stations/delete/<%=station.id%>'>Delete Station</a>
+<%end%>
+
+<br><a href='/stations/new'>Add Station</a>

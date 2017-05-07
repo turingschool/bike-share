@@ -8,6 +8,7 @@ RSpec.describe "when a user visits the view all stations page (stations/index.er
     expect(page).to have_content("All Stations")
     expect(page).to have_content("Add New Station")
     expect(page).to have_selector('a.btn-new')
+    save_and_open_page
   end
 
   context "when no stations exist yet" do

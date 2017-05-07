@@ -10,7 +10,6 @@ RSpec.describe "when user visits station dashboard" do
     city.stations.create(name: "Simpson", dock_count: 1, installation_date: "2222-8-23")
 
     visit('/station-dashboard')
-    save_and_open_page
     expect(page).to have_content("Station Statistics")
     expect(page).to have_content("Total count of stations")
     expect(page).to have_content("Average bikes available per station")

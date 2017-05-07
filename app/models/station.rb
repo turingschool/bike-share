@@ -19,4 +19,9 @@ class Station < ActiveRecord::Base
   def self.top_stations(amount)
     Station.order('dock_count DESC').limit(amount)
   end
+
+  # Fewest bikes available at a station (based on docks).
+  def self.lowest_station(amount)
+    Station.order('dock_count ASC').limit(amount)
+  end
 end

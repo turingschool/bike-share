@@ -4,6 +4,7 @@ class Trip<ActiveRecord::Base
   belongs_to :subscription_type
   # belongs_to :station
   belongs_to :date_ref
+  belongs_to :end_date, :class_name => "DateRef"
 
   belongs_to :start_station, :class_name => "Station"
   belongs_to :end_station, :class_name => "Station"

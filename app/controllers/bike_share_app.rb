@@ -76,11 +76,12 @@ class BikeShareApp < Sinatra::Base
     erb :"/trips/index"
   end
 
-# #form for new trips
-#   get '/trips/new' do  
-
-#     erb :"trips/new"
-#   end
+#form for new trips
+  get '/trips/new' do  
+    @stations = Station.all
+    @subscriptions = SubscriptionType.all
+    erb :"trips/new"
+  end
 
 # #single trip page
 #   get '/trip/:id' do

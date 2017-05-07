@@ -8,7 +8,7 @@ class CreateTrips < ActiveRecord::Migration[5.0]
       t.integer :end_station_id, null: false
       t.integer :bike_id, null: false
       t.text :subscription_type, null: false
-      t.integer :zipcode_id, null: false
+      t.integer :zipcode_id
     end
   end
 end

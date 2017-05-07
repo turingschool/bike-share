@@ -1,4 +1,4 @@
 class SubscriptionType<ActiveRecord::Base
   has_many :trips
-  validates :subscription_type, presence: true
+  validates :sub_type, presence: true
 end

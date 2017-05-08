@@ -9,6 +9,7 @@
   <label for="">Installation Date:</label>
   <input type="date" name="station[installation_date]" value="<%= @station.date_ref.date %>">
   <select name="station[city_id]">
+
     <% @city.each do |city| %>
       <%if city.id == @station.city.id %>
         <option value="<%= city.id %>" selected ="selected">
@@ -16,6 +17,7 @@
         </option>
       <% else %>
          <option value="<%= city.id %>">
+
         <%= city.name %>
       </option>
         <% end %>

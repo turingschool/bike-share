@@ -3,6 +3,9 @@ class Station < ActiveRecord::Base
   belongs_to :date_ref
   has_many :trips
 
+  has_many :trip_starts, foreign_key: "start_station_id", class_name: "Trip"
+  has_many :trip_ends,   foreign_key: "end_station_id",   class_name: "Trip"
+
   validates :name, presence: true
   validates :dock_count, presence: true
   validates :city_id, presence: true
@@ -21,12 +24,24 @@ class Station < ActiveRecord::Base
     }
   end
 
+  def self.individual_dashboard(params)
+    {
+      rides_started: Trip.where(start_station_id: params[:id]).count,
+      rides_ended: Trip.where(end_station_id: params[:id]).count,
+      most_popular_destination: Trip.where(start_station_id: params[:id]).group(:end_station).order("count_id DESC").count(:id).first[0].name,
+      most_popular_origin: Trip.where(end_station_id: params[:id]).group(:start_station).order("count_id DESC").count(:id).first[0].name,
+      most_popular_date: Trip.where(start_station_id: params[:id]).group(:date_ref).order("count_id DESC").count(:id).first[0].date,
+      most_popular_zipcode: Trip.where(start_station_id: params[:id]).group(:zipcode).order("count_id DESC").count(:id).first[0].zipcode,
+      most_popular_bike: Trip.where(start_station_id: params[:id]).group(:bike).order("count_id DESC").count(:id).first[0].bike
+    }
+  end
+
   def self.dashboard_subdata
     {
-        maximum_bikes: Station.maximum(:dock_count),
-        minimum_bikes: Station.minimum(:dock_count),
-        earliest_date: Station.includes(:date_ref).order("date_refs.date").first.date_ref.id,
-        latest_date: Station.includes(:date_ref).order("date_refs.date").last.date_ref.id
+      maximum_bikes: Station.maximum(:dock_count),
+      minimum_bikes: Station.minimum(:dock_count),
+      earliest_date: Station.includes(:date_ref).order("date_refs.date").first.date_ref.id,
+      latest_date: Station.includes(:date_ref).order("date_refs.date").last.date_ref.id
     }
   end
 
@@ -40,8 +55,9 @@ class Station < ActiveRecord::Base
 
   def self.equivalent_names
     {
-        "San Jose Government Center"=>"Santa Clara County Civic Center",
-       "Broadway at Main" =>"Stanford in Redwood City"
+      "San Jose Government Center"=>"Santa Clara County Civic Center",
+      "Broadway at Main" =>"Stanford in Redwood City"
     }
   end
+
 end

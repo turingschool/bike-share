@@ -1,9 +1,9 @@
-<h1>Editing <%= @condition.date %></h1>
+<h1>Editing <%= @condition.format_date %></h1>
 
 <form action="/conditions/<%= @condition.id %>" method="post">
   <input type="hidden" name="_method" value="PUT" />
   <label>Date: </label>
-  <input type="text" name="condition[date]" value="<%= @condition.date %>" />
+  <input type="text" name="condition[date]" value="<%= @condition.format_date %>" />
   <label>Highest Temp: </label>
   <input type="text" name="condition[max_temp]" value="<%= @condition.max_temp %>" />
   <label>Mean Temp: </label>

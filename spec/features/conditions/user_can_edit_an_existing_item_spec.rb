@@ -14,7 +14,6 @@ RSpec.describe "When a user edits a condition" do
                                 )
 
     visit('/conditions/1/edit')
-    save_and_open_page
 
     fill_in("condition[date]", with: "07/20/2013")
     fill_in("condition[max_temp]", with: 83.0)
@@ -26,9 +25,8 @@ RSpec.describe "When a user edits a condition" do
     fill_in("condition[precipitation]", with: 0.01)
 
     click_button("Update Condition")
-    save_and_open_page
 
-    # expect(page).to have_content("Weather Conditions on 07/20/2013")
+    expect(page).to have_content("Weather Conditions on 07/20/2013")
     expect(page).to have_content("Highest Temperature: 83.0 F")
     expect(page).to have_content("Mean Temperature: 72.0 F ")
     expect(page).to have_content("Lowest Temperature: 62.0 F")

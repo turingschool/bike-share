@@ -101,7 +101,6 @@ class BikeShareApp < Sinatra::Base
     redirect "/conditions/#{@condition.id}"
   end
 
-
   get '/conditions/:id/edit' do |id|
     @condition = Condition.find(id)
     erb :"conditions/edit"
@@ -119,7 +118,7 @@ class BikeShareApp < Sinatra::Base
     redirect "/conditions/#{id}"
   end
 
-  delete 'conditions/:id' do |id|
+  delete '/conditions/:id' do |id|
     Condition.destroy(id)
     redirect "/conditions"
   end

@@ -10,8 +10,6 @@ RSpec.describe "When the user visits the Trips page" do
     expect(page).to have_content("All Trips")
     expect(page).to have_content("Add New Trip")
     expect(page).to have_selector("a.btn-new")
-    click_button "Add New Trip"
-    expect(page).to have_current_path('/trips/new')
   end
 
   context "when trips have been added" do

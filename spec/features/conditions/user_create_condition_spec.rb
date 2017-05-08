@@ -18,10 +18,14 @@ RSpec.describe "when a user visits the new condition page" do
     fill_in("condition[mean_temp]", with: 70.0)
     fill_in("condition[min_temp]", with: 45.0)
     fill_in("condition[mean_humidity]", with: 70.0)
+    fill_in("condition[mean_visibility]", with: 10.0)
     fill_in("condition[mean_wind_speed]", with: 10.0)
+    fill_in("condition[precipitation]", with: 0.0)
     # select "09000", :from => "condition[zipcode_id]"
 
     click_button("Create Weather Condition")
+    save_and_open_page
+    
 
     expect(Condition.count).to eq 1
     expect(page).to have_current_path('/conditions/1')

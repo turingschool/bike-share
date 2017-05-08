@@ -15,9 +15,6 @@
   <input type="number" name="condition[mean_wind_speed]" />
   <label for="condition[precipitation]">Precipitation: </label>
   <input type="number" name="condition[precipitation]" />
-  <select name="condition[zipcode_id]">
-    <% Zipcode.all.each do |zipcode| %>
-      <option value="<%= zipcode.id %>"><%= Zipcode.zipcode %></option>
-    <% end %>
-  </select>
+  <!-- zipcode select can go here -->
+  <input type="submit" value="Create Weather Condition" />
 </form>

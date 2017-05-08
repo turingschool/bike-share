@@ -20,6 +20,15 @@ def format_zip_code(zipcode)
   zipcode.to_s[0..4].to_i
 end
 
+def clean_station(station_input)
+  if station_input == "San Jose Government Center"
+    clean_station_name = "Santa Clara County Civic Center"
+  else 
+    clean_station_name = station_input
+  end
+  station_input
+end
+
 station_text = File.read('./db/csv/station.csv')
 station = CSV.parse(station_text, :headers => true, header_converters: :symbol)
 station.each do |row|
@@ -34,13 +43,14 @@ end
 trip_text = File.read('./db/csv/trip.csv')
 trip = CSV.parse(trip_text, :headers => true, header_converters: :symbol)
 trip.each do |row|
-  start_station = Station.find_by(name: row[:start_station_name])
-  end_station = Station.find_by(name: row[:end_station_name])
+  next if row[:start_station_name].nil? || row[:end_station_name].nil?
+  start_station = Station.find_by(name: clean_station(row[:start_station_name])).start_station.id
+  end_station = Station.find_by(name: clean_station(row[:end_station_name])).end_station.id
   next if start_station.nil? || end_station.nil?
   subscription = SubscriptionType.find_or_create_by!(name: row[:subscription_type])
   subscription.trips.create!(duration: row[:duration],
-                            start_station_id: Station.find_by(name: row[:start_station_name]).start_station.id,
-                            end_station_id: Station.find_by(name: row[:end_station_name]).end_station.id,
+                            start_station_id: start_station
+                            end_station_id: end_station
                             start_date: format_date(row[:start_date].split.first),
                             end_date: format_date(row[:end_date].split.first),
                             bike_id: row[:bike_id],

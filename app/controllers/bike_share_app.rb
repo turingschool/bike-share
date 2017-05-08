@@ -1,6 +1,10 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
 require 'pry'
 
 class BikeShareApp < Sinatra::Base
+  include WillPaginate::Sinatra::Helpers
+
   set :method_override, true
 
   get '/' do
@@ -23,7 +27,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations/view_all' do
-    @stations = Station.all
+    @stations = Station.all.paginate(:page => params[:page], :per_page => 30)
     erb :"stations/view_all"
   end
 
@@ -62,7 +66,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips/view_all' do
-    @trips = Trip.all
+    @trips = Trip.all.paginate(:page => params[:page], :per_page => 30)
     erb :"trips/view_all"
   end
 

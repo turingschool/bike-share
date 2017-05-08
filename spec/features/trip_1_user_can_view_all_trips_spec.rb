@@ -20,6 +20,5 @@ RSpec.describe 'when a user visits the all trips page' do
     click_on "View Trips"
 
     expect(page).to have_content("80218")
-    expect(current_path).to eq('/trips/view_all')
   end
 end

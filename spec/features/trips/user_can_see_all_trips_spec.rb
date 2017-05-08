@@ -2,14 +2,12 @@ require './spec/spec_helper'
 require './spec/features/trips/controller_helper'
 
 RSpec.describe "When the user visits the Trips page" do
-  before do
-    visit('/trips')
-  end
+  visit('/trips')
 
   it "they can view an index of all trips" do
     expect(page).to have_content("All Trips")
     expect(page).to have_content("Add New Trip")
-    expect(page).to have_content("a.btn-new")
+    expect(page).to have_content(".btn-new")
     click_button "Add New Trip"
     expect(page).to have_current_path('/trips/new')
   end
@@ -17,7 +15,7 @@ RSpec.describe "When the user visits the Trips page" do
   context "when trips have been added" do
     before do
       city_1 = City.create(name: "something")
-      zipcode1 = Zipcode.create(name: "99999")
+      zipcode1 = Zipcode.create(zipcode: "99999")
       Trip.create(
                     duration: 60,
                     start_date: DateTime.strptime("08/30/2013 11:11", "%m/%d/%Y %H:%M"),

@@ -1,0 +1,11 @@
+<h1>Complete all Required Fields</h1>
+<link rel="stylesheet" type="text/css" href="../../css/style" >
+
+<form action='/stations/<%=@station.id%>' method='post'>
+  <input type="hidden" name='_method' value='PUT' />
+  Name: <input type="textfield" name='station[name]' value="<%= @station.name %>"/>
+  Number of Docks: <input type="textfield" name='station[dock_count]' value="<%= @station.dock_count %>"/>
+  City: <input type="textfield" name='city' value="<%= @station.city.name %>"/>
+  Install Date: <input type="textfield" name='station[install_date]' value="<%= @station.install_date %>"/>
+  <input type="submit" value="Submit" />
+</form>

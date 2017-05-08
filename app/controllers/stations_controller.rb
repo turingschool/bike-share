@@ -42,15 +42,6 @@ class StationsController < BikeShareApp
 
   get '/stations-dashboard' do
     @stations = Station.all
-    erb :"dashboard", :locals => {
-      :count => Station.count,
-      :average_bikes => Station.average(:dock_count),
-      :most_bikes_count => Station.maximum(:dock_count),
-      :most_bikes_avail_at => Station.where(dock_count: Station.maximum(:dock_count)).pluck(:name).join(', '),
-      :fewest_bikes_count => Station.minimum(:dock_count),
-      :fewest_bikes_avail_at => Station.where(dock_count: Station.minimum(:dock_count)).pluck(:name).join(', '),
-      :newest_station => Station.where(installation_date: Station.maximum(:installation_date)).pluck(:name).join(', '),
-      :oldest_station => Station.where(installation_date: Station.minimum(:installation_date)).pluck(:name).join(', ')
-    }
+    erb :"dashboard"
   end
 end

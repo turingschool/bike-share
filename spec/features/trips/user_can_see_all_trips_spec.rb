@@ -1,4 +1,5 @@
 require './spec/spec_helper'
+require './spec/features/trips/controller_helper'
 
 RSpec.describe "When the user visits the Trips page" do
   before do
@@ -19,9 +20,9 @@ RSpec.describe "When the user visits the Trips page" do
       zipcode1 = Zipcode.create(name: "99999")
       Trip.create(
                     duration: 60,
-                    start_date: Date.strftime("08/30/2013 11:11", "%m/%d/%Y %H:%M"),
+                    start_date: DateTime.strftime("08/30/2013 11:11", "%m/%d/%Y %H:%M"),
                     start_station_id: 1,
-                    end_date: Date.strftime("08/30/2013 11:12", "%m/%d/%Y %H:%M"),
+                    end_date: DateTime.strftime("08/30/2013 11:12", "%m/%d/%Y %H:%M"),
                     end_station_id: 1,
                     bike_id: 1,
                     subscription_type: "Subscriber"

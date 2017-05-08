@@ -9,4 +9,12 @@ class Trip < ActiveRecord::Base
   validates :end_station_id, presence: true
   validates :bike_id, presence: true
   validates :subscription_type, presence: true
+
+  def format_start_date_time
+    start_date.strftime('%m/%d/%Y %H:%M')
+  end
+
+  def format_end_date_time
+    end_date.strftime('%m/%d/%Y %H:%M')
+  end
 end

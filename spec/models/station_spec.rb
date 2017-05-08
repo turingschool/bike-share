@@ -104,7 +104,6 @@ RSpec.describe Station, :type => :model do
                        city_id: @city.id,
                        date: Faker::Date.backward(500))
       end
-            binding.pry
       expect(Station.lowest_station(1).first[:name]).to eq('No Bikes Station')
     end
 

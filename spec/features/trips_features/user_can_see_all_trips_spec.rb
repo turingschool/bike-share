@@ -15,6 +15,7 @@ RSpec.describe "When the user visits the Trips page" do
 
   context "when trips have been added" do
     before do
+      city_1 = City.create(name: "something")
       zipcode1 = Zipcode.create(name: "99999")
       Trip.create!(
                     duration: 60,

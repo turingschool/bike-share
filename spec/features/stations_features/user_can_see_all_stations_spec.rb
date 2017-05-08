@@ -45,6 +45,7 @@ RSpec.describe "when a user visits the view all stations page (stations/index.er
     it "the page lists the added station's edit link" do
       expect(page).to have_content("Edit Station")
       expect(page).to have_selector(".btn-edit")
+      save_and_open_page
     end
     it "the page lists the added station's delete link" do
       expect(page).to have_selector("form .btn-delete")

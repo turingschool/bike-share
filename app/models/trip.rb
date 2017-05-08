@@ -61,11 +61,16 @@ class Trip<ActiveRecord::Base
   def self_dashboard
     {
       average_duration_ride: Trip.average(:duration).to_i,
-      longest_ride: Trip.maximum(:duration),
-      shortest_ride: Trip.minimum(:duration),
+      longest_ride: {Trip.where(duration: Trip.maximum(:duration)) => Trip.maximum(:duration)},
+      shortest_ride: {Trip.where(duration: Trip.minimum(:duration)) =>Trip.minimum(:duration)},
       popular_starting_station: Trip.group(:start_station).order("count_id DESC").count(:id).first[0].name,
       popular_ending_station: Trip.group(:end_station).order("count_id DESC").count(:id).first[0].name,
-      month_breakdown: 0,
+      month_breakdown: DateRef.distinct.pluck('extract(year from date)').map do |date|
+                        Trip.joins(:date_ref)
+                        .where('extract(year from date) = ?', date)
+                        .group('extract(month from date)')
+                        .order('count_id DESC').count(:id)
+                        end,
       most_ridden_bike: Trip.group(:bike).order("count_id DESC").count(:id).first[0].bike,
       least_ridden_bike: Trip.group(:bike).order("count_id ASC").count(:id).first[0].bike,
       subscription_breakout: Trip.group(:subscription_type).order("count_id DESC").count(:id).map{|k, v| {k.sub_type=> [v, (v/Trip.count.to_f).round(2)]}}.inject(:merge),

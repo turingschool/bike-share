@@ -24,7 +24,7 @@ class Station < ActiveRecord::Base
     }
   end
 
-  def self.individual_dashboard
+  def self.individual_dashboard(params)
     {
       rides_started: Trip.where(start_station_id: params[:id]).count,
       rides_ended: Trip.where(end_station_id: params[:id]).count,
@@ -33,7 +33,6 @@ class Station < ActiveRecord::Base
       most_popular_date: Trip.where(start_station_id: params[:id]).group(:date_ref).order("count_id DESC").count(:id).first[0].date,
       most_popular_zipcode: Trip.where(start_station_id: params[:id]).group(:zipcode).order("count_id DESC").count(:id).first[0].zipcode,
       most_popular_bike: Trip.where(start_station_id: params[:id]).group(:bike).order("count_id DESC").count(:id).first[0].bike
-
     }
   end
 

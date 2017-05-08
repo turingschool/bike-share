@@ -16,12 +16,10 @@
     <td><%= trip.id %></td>
     <td><%= trip.start_date %></td>
     <td><%= trip.end_date %></td>
-    <!-- These lines may need to be changed based on relation ship -->
-    <td><%= trip.start_station.name %></td>
-    <td><%= trip.end_station.name %></td>
-    <!-- ending here-->
+    <td><%= trip.start_station.station.name %></td>
+    <td><%= trip.end_station.station.name %></td>
     <td><%= trip.bike_id %></td>
-    <td><%= trip.subscriptions.name %></td>
+    <td><%= trip.subscription_type.name %></td>
     <td><form action="/trips/<%= trip.id %>" method="post">
       <input type="hidden" name="_method" value="DELETE">
       <input type="submit" value="Delete">

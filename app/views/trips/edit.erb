@@ -8,19 +8,19 @@
   <h2>Duration</h2>
   <input type="text" name="trip[duration]" value="<%= @trip.duration %>">
   <h2>Start Station</h2>
-  <input type="text" name="trip[start_station]" value="<%= @trip.start_station_id %>">
-  <select name="s_station[name]">
+  <input type="text" name="trip[start_station]" value="<%= @trip.start_station.station.name %>">
+  <select name="start_station[name]">
     <% @stations.each do |station| %>
-    <option value="<%= s_station.name %>"><%= city.name %></option>
+    <option value="<%= station.name %>"><%= station.name %></option>
     <% end %>
   </select>
   <h3>Start Date</h3>
   <input type="text" name="trip[start_date]" value="<%= @trip.start_date %>">
   <h2>End Station</h2>
-  <input type="text" name="trip[end_station]" value="<%= @trip.end_station_id %>">
-  <select name="e_station[name]">
+  <input type="text" name="trip[end_station]" value="<%= @trip.end_station.station.id %>">
+  <select name="end_station[name]">
     <% @stations.each do |station| %>
-    <option value="<%= e_station.name %>"><%= city.name %></option>
+    <option value="<%= station.name %>"><%= station.name %></option>
     <% end %>
   </select>
   <h3>End Date</h3>

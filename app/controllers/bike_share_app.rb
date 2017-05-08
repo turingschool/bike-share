@@ -3,6 +3,10 @@ require 'pry'
 class BikeShareApp < Sinatra::Base
   set :method_override, true
 
+  get '/' do
+     erb :dashboard
+  end
+
   get '/stations' do
     erb :"stations/index"
   end

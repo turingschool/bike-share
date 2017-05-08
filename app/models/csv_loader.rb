@@ -51,5 +51,6 @@ class CSVLoader
         [:subscription_type] => row[:subscription_type],
         [:zip_code] => row[:zip_code].to_i
       }
+    end
   end
 end

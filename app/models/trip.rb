@@ -1,7 +1,7 @@
 class Trip < ActiveRecord::Base
   belongs_to :start_station
   belongs_to :end_station
-  belongs_to :subscription_types
+  belongs_to :subscription_type
 
   validates :duration, presence: true
   validates :start_date, presence: true

@@ -2,26 +2,22 @@ require_relative '../spec_helper'
 
 RSpec.describe "user can delete a trip" do
   it "takes you to view all page and entry is deleted" do
-    city = City.create(name: "Washington DC")
-    City.create(name: "Frankfurt")
-    City.create(name: "Tokyo")
-    city.stations.create!(name: "MLK", dock_count: 32, installation_date: "1984-05-24")
-    city.stations.create!(name: "Malcom X", dock_count: 32, installation_date: "1984-05-24")
-    customer = Customer.create(name: "Customer")
-    customer.trips.create!(duration: 300,
-                           start_date: "2010-9-1",
-                           start_station_id: 1,
-                           end_date: "2010-9-1",
-                           end_station_id: 2,
-                           bike_id: 13,
-                           zip_code: 80220)
-    customer.trips.create!(duration: 200,
-                           start_date: "2000-8-12",
-                           start_station_id: 1,
-                           end_date: "2000-8-12",
-                           end_station_id: 2,
-                           bike_id: 13,
-                           zip_code: 80220)
+    city = City.create(name: "San Jose")
+    city.stations.create(name: "MLK Station", dock_count: 19, city_id: 1, installation_date: "2013-5-11")
+    city.stations.create(name: "Cesar Chavez Station", dock_count: 5, city_id: 1, installation_date: "2013-5-19")
+    StartStation.create(station_id: 2)
+    StartStation.create(station_id: 1)
+    EndStation.create(station_id: 2)
+    EndStation.create(station_id: 1)
+    SubscriptionType.create(name: "Subscriber")
+    subscription_type = SubscriptionType.create(name: "Customer")
+    trip = subscription_type.trips.create(duration: 400,
+                              start_station_id: 1,
+                              end_station_id: 2,
+                              start_date: "2012-8-12",
+                              end_date: "2012-8-12",
+                              bike_id: 122,
+                              zip_code: 80218)
     visit("/trips/1")
 
     click_on "Delete"

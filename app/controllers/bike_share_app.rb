@@ -97,7 +97,7 @@ class BikeShareApp < Sinatra::Base
 
 #route after filling new trip form
   post '/trips' do
-    trip = Trip.update(params)
+    trip = Trip.create_new(params)
     redirect "/trips/#{trip.id}"
   end
 
@@ -110,7 +110,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/trips/:id' do
-    trip = @trips = Trip.update(params)
+    trip = Trip.update_record(params)
+    binding.pry
     redirect "/trips/#{trip.id}"
   end
 

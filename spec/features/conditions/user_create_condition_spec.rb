@@ -24,8 +24,6 @@ RSpec.describe "when a user visits the new condition page" do
     # select "09000", :from => "condition[zipcode_id]"
 
     click_button("Create Weather Condition")
-    save_and_open_page
-
 
     expect(Condition.count).to eq 1
     expect(page).to have_current_path('/conditions/1')

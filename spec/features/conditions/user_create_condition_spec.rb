@@ -25,11 +25,12 @@ RSpec.describe "when a user visits the new condition page" do
 
     click_button("Create Weather Condition")
     save_and_open_page
-    
+
 
     expect(Condition.count).to eq 1
     expect(page).to have_current_path('/conditions/1')
-    expect(page).to have_content('Date: 08/30/2013')
+    expect(page).to have_content('Weather Conditions on ')
+    expect(page).to have_content('Precipitation: 0.0')
     # expect(page).to have_content('ZipCode: 09000')
   end
 end

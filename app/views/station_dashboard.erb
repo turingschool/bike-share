@@ -12,6 +12,10 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/overwrite.css" rel="stylesheet">
 
+    <!-- <script src="//www.google.com/jsapi"></script>
+    <script src="chartkick.js"></script>
+    <script src="scripts/app.js"></script> -->
+
 </head>
 
 <body>
@@ -32,10 +36,16 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
+                        <button class="btn btn-danger navbar-btn"><a href="/station-dashboard">Station Dashboard</a></button>
+                    </li>
+                    <li>
                         <button class="btn btn-danger navbar-btn"><a href="/stations">Station Index</a></button>
                     </li>
                     <li>
                         <button class="btn btn-danger navbar-btn"><a href="/stations/new">Create a Station</a></button>
+                    </li>
+                    <li>
+                        <button class="btn btn-danger navbar-btn"><a href="/cities">Cities Index</a></button>
                     </li>
                 </ul>
             </div>
@@ -46,11 +56,28 @@
 
         <div class="row">
             <div class="col-lg-12 text-center">
-                <img src="assets/bicycle.png" alt="logo" />
+                <img src="assets/bicycle.svg" alt="logo" />
                 <h1>Station Dashboard</h1>
                 <p class="lead">A comprehensive report.</p>
             </div>
         </div>
+       <!--  <center>
+            <h1>Test Chart</h1>
+            <p><%= column_chart @station.group_by(&:city).count %></p>
+        </center> -->
+        <span><p><b>Total Stations: </b><br><%= @station.total %></p></span>
+        <span><p><b>Average Amount of Bikes: </b><br><%= @station.average_bikes %></p></span>
+        <span><p><b>Station With the Most Bikes: </b><br><%= @station.most_bikes.name %></p></span>
+        <!-- Form with variabke for amount of stations? -->
+        <span><p><b>Top 5 Stations: </b><br><% @station.top_stations(5).each do |station| %></p>
+        <p><%= station.name %></p></span>
+        <% end %>
+        <span><p><b>Top 5 Lowest Stations: </b><br><% @station.lowest_station(5).each do |station| %></p>
+        <p><%= station.name %></p></span>
+        <% end %>
+
+        <span><p><b>Youngest Station: </b><br><%= @station.most_recent %></p></span>
+        <span><p><b>Oldest Station: </b><br><%= @station.oldest %></p></span>
 
     </div>
 

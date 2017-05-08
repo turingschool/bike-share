@@ -1,10 +1,17 @@
 require 'pry'
 require 'time'
+# require 'chartkick' - causing sinatra to crash, not sure if implementing right
 class BikeShareApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
 
   get '/' do
     erb :home
+  end
+
+  get '/station-dashboard' do
+    @station = Station.all
+    @city = City.all
+    erb :station_dashboard
   end
 
   get '/stations' do
@@ -57,14 +64,14 @@ class BikeShareApp < Sinatra::Base
     erb :'/cities/city'
   end
 
-  get '/cities/new' do
-    erb :'/cities/new'
-  end
+  # get '/cities/new' do
+  #   erb :'/cities/new'
+  # end
 
-  post '/cities' do
-    @city = City.create(params[:city])
-    redirect "/cities/#{@city.id}"
-  end
+  # post '/cities' do
+  #   @city = City.create(params[:city])
+  #   redirect "/cities/#{@city.id}"
+  # end
 
   delete '/cities/:id' do |id|
     City.destroy(id)

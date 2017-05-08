@@ -1,6 +1,8 @@
 ENV["RACK_ENV"] ||= "test"
 
 require File.expand_path("../../config/environment", __FILE__)
+require './db/loader'
+
 require 'rspec'
 require 'capybara/dsl'
 require 'database_cleaner'
@@ -17,5 +19,9 @@ RSpec.configure do |c|
   end
   c.after(:each) do
     DatabaseCleaner.clean
+  end
+
+  c.before(:example, :station_fixtures => true) do
+    load 'fixtures/station_fixtures.rb'
   end
 end

@@ -8,6 +8,10 @@ RSpec.describe "test bike share app" do
     visit('/stations')
 
     expect(page).to have_content("Stations")
+    expect(page).to have_content("Aaron")
+    expect(page).to have_content("Denver")
+    expect(page).to have_content("56")
+    expect(page).to have_content("2010/08/13")
 
   end
 

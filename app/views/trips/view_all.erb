@@ -1,0 +1,31 @@
+<h1>All Trips</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Starting Station</th>
+    <th>Ending Station</th>
+    <th>Bike ID</th>
+    <th>Subscription Type</th>
+    <th>Delete</th>
+  </tr>
+  <% @trips.each do |trip| %>
+  <tr>
+    <td><%= trip.id %></td>
+    <td><%= trip.start_date %></td>
+    <td><%= trip.end_date %></td>
+    <!-- These lines may need to be changed based on relation ship -->
+    <td><%= trip.start_station.name %></td>
+    <td><%= trip.end_station.name %></td>
+    <!-- ending here-->
+    <td><%= trip.bike_id %></td>
+    <td><%= trip.subscriptions.name %></td>
+    <td><form action="/trips/<%= trip.id %>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete">
+    </form></td>
+  <% end %>
+  </tr>
+</table>

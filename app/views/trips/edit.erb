@@ -1,0 +1,30 @@
+<h1>Edit Trip [<%= @trip.id %>]</h1>
+
+<form action="/trip/<%=@trip.id%>" method="post">
+  <p>Please fill in all fields with information you would like to change</p>
+  <input type="hidden" name="_method" value="PUT">
+  <h2>ID</h2>
+  <input type="text" name="trip[id]" value="<%= @trip.id %>">
+  <h2>Duration</h2>
+  <input type="text" name="trip[duration]" value="<%= @trip.duration %>">
+  <h2>Start Station</h2>
+  <input type="text" name="trip[start_station]" value="<%= @trip.start_station_id %>">
+  <select name="s_station[name]">
+    <% @stations.each do |station| %>
+    <option value="<%= s_station.name %>"><%= city.name %></option>
+    <% end %>
+  </select>
+  <h3>Start Date</h3>
+  <input type="text" name="trip[start_date]" value="<%= @trip.start_date %>">
+  <h2>End Station</h2>
+  <input type="text" name="trip[end_station]" value="<%= @trip.end_station_id %>">
+  <select name="e_station[name]">
+    <% @stations.each do |station| %>
+    <option value="<%= e_station.name %>"><%= city.name %></option>
+    <% end %>
+  </select>
+  <h3>End Date</h3>
+  <input type="text" name="trip[end_date]" value="<%= @trip.end_date %>">
+
+  <input type="submit" value="Submit changes">
+</form>

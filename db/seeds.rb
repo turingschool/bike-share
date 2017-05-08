@@ -1,4 +1,4 @@
-Require './app/models/city'
+require './app/models/city'
 require './app/models/station'
 require './app/models/date'
 require 'date'
@@ -15,4 +15,3 @@ stations.each do |row|
                  city_id:           city.id
                  )
 end
-

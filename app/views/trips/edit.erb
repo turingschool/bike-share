@@ -5,18 +5,18 @@
   <label>Duration: </label>
   <input type="text" name="trip[duration]" value="<%= @trip.duration %>" />
   <label>Start Date:</label>
-  <input type="text" name="trip[start_date]" value="<%= @trip.start_date" />
+  <input type="text" name="trip[start_date]" value="<%= @trip.start_date %>" />
   <label>Start Station: </label>
   <select name="trip[start_station_id]">
-    <% Station.all.each do |station|
+    <% Station.all.each do |station| %>
       <option value="<%= station.id %>"><%= station.name %></option>
     <% end %>
   </select>
   <label>End Date:</label>
-  <input type="text" name="trip[end_date]" value="<%= @trip.end_date" />
+  <input type="text" name="trip[end_date]" value="<%= @trip.end_date %>" />
   <label>End Station: </label>
   <select name="trip[end_station_id]">
-    <% Station.all.each do |station|
+    <% Station.all.each do |station| %>%
       <option value="<%= station.id %>"><%= station.name %></option>
     <% end %>
   </select>

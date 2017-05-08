@@ -19,9 +19,9 @@ RSpec.describe "When a user clicks delete" do
     zipcode = Zipcode.create(zipcode: 94127)
     trip = Trip.create(
                       duration: 240,
-                      start_date: Date.strptime("08/30/2013 11:11",'%m/%d/%Y %H:%M'),
+                      start_date: DateTime.strptime("08/30/2013 11:11",'%m/%d/%Y %H:%M'),
                       start_station_id: 1,
-                      end_date: Date.strptime("08/30/2013 11:15",'%m/%d/%Y %H:%M'),
+                      end_date: DateTime.strptime("08/30/2013 11:15",'%m/%d/%Y %H:%M'),
                       end_station_id: 1,
                       bike_id: 5,
                       subscription_type: "Subscriber",
@@ -54,16 +54,16 @@ RSpec.describe "When a user clicks delete" do
     zipcode = Zipcode.create(zipcode: 94127)
     trip = Trip.create(
                       duration: 240,
-                      start_date: Date.strptime("08/30/2013 11:11",'%m/%d/%Y %H:%M'),
+                      start_date: DateTime.strptime("08/30/2013 11:11",'%m/%d/%Y %H:%M'),
                       start_station_id: 1,
-                      end_date: Date.strptime("08/30/2013 11:15",'%m/%d/%Y %H:%M'),
+                      end_date: DateTime.strptime("08/30/2013 11:15",'%m/%d/%Y %H:%M'),
                       end_station_id: 1,
                       bike_id: 5,
                       subscription_type: "Subscriber",
                       zipcode_id: 1
     )
 
-    visit('/trips/1/edit')
+    visit("/trips/#{trip.id}/edit")
     expect(page).to have_button("Delete")
     expect(Trip.all.count).to eq(1)
     click_button("Delete")
@@ -88,9 +88,9 @@ RSpec.describe "When a user clicks delete" do
     zipcode = Zipcode.create(zipcode: 94127)
     trip = Trip.create(
                       duration: 240,
-                      start_date: Date.strptime("08/30/2013 11:11",'%m/%d/%Y %H:%M'),
+                      start_date: DateTime.strptime("08/30/2013 11:11",'%m/%d/%Y %H:%M'),
                       start_station_id: 1,
-                      end_date: Date.strptime("08/30/2013 11:15",'%m/%d/%Y %H:%M'),
+                      end_date: DateTime.strptime("08/30/2013 11:15",'%m/%d/%Y %H:%M'),
                       end_station_id: 1,
                       bike_id: 5,
                       subscription_type: "Subscriber",

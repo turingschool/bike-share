@@ -18,9 +18,9 @@ RSpec.describe "when a user visits the new trip page" do
     zipcode = Zipcode.create(zipcode: 94127)
     Trip.create(
                       duration: 240,
-                      start_date: Date.strptime("08/30/2013 11:11", "%m/%d/%Y %H:%M"),
+                      start_date: DateTime.strptime("08/30/2013 11:11", "%m/%d/%Y %H:%M"),
                       start_station_id: 1,
-                      end_date: Date.strptime("08/30/2013 11:15", "%m/%d/%Y %H:%M"),
+                      end_date: DateTime.strptime("08/30/2013 11:15", "%m/%d/%Y %H:%M"),
                       end_station_id: 1,
                       bike_id: 5,
                       subscription_type: "Subscriber",
@@ -42,7 +42,7 @@ RSpec.describe "when a user visits the new trip page" do
     click_button("Create Trip")
 
     expect(Trip.all.count).to eq(2)
-    expect(page).to have_current_path("/trips/1")
+    expect(page).to have_current_path("/trips/2")
     expect(page).to have_content("Start Station: something")
     expect(page).to have_content("Bike ID: 500")
   end

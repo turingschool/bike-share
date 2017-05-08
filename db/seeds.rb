@@ -56,4 +56,3 @@ trip.each do |row|
                             bike_id: row[:bike_id],
                             zip_code: format_zip_code(row[:zip_code]))
 end
-

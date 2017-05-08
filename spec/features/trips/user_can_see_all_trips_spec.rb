@@ -2,12 +2,14 @@ require './spec/spec_helper'
 require './spec/features/trips/controller_helper'
 
 RSpec.describe "When the user visits the Trips page" do
-  visit('/trips')
+  before do
+    visit('/trips')
+  end
 
   it "they can view an index of all trips" do
     expect(page).to have_content("All Trips")
     expect(page).to have_content("Add New Trip")
-    expect(page).to have_content(".btn-new")
+    expect(page).to have_selector("a.btn-new")
     click_button "Add New Trip"
     expect(page).to have_current_path('/trips/new')
   end

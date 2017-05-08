@@ -9,4 +9,8 @@ class Condition < ActiveRecord::Base
   validates :mean_visibility, presence:true
   validates :mean_wind_speed, presence:true
   validates :precipitation, presence:true
+
+  def format_date
+    date.strftime('%m/%d/%Y')
+  end
 end

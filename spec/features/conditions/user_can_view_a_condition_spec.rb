@@ -15,14 +15,14 @@ RSpec.describe "When a user views an individual condition" do
                                 )
     visit('/conditions/1')
   }
-  xit "they see the header with the date" do
+  it "they see the header with the date" do
     expect(page).to have_content("Weather Conditions on 08/30/2013")
   end
 
   it "they see details about condition" do
-    expect(page).to have_content("Maximum Temperature: 87.0")
+    expect(page).to have_content("Highest Temperature: 87.0")
     expect(page).to have_content("Mean Temperature: 76.0")
-    expect(page).to have_content("Minimum Temperature: 54.0")
+    expect(page).to have_content("Lowest Temperature: 54.0")
     expect(page).to have_content("Mean Humidity: 90.0")
     expect(page).to have_content("Mean Visibility: 10.0")
     expect(page).to have_content("Mean Wind Speed: 11.0")

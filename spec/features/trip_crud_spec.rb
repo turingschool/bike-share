@@ -16,9 +16,9 @@ RSpec.describe "Trip CRUD" do
       fill_in "trip[start_date]", with: "8/20/2015"
       fill_in "trip[end_date]", with: "8/21/2015"
       fill_in "trip[bike_id]", with: "1"
-      find(".subscription-type").find(:xpath, "option[1]").select_option
+      find(".subscription_type").find(:xpath, "option[1]").select_option
       fill_in "trip[zip_code]", with: "80223"
-      click_on "Submit"
+      click_on "Create Trip"
 
       expect(page).to have_content("station_1")
       expect(page).to have_content("station_2")

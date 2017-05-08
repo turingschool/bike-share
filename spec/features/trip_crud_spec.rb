@@ -24,4 +24,21 @@ RSpec.describe "Trip CRUD" do
       expect(page).to have_content("station_2")
     end
   end
+
+  # This spec is failing, even when it is equivalent to the passing spec above
+  # describe "trips index" do
+  #   it "shows all the trips" do
+  #     visit("trips/new")
+  #     fill_in "trip[duration]", with: "111"
+  #     find(".start-station-selector").find(:xpath, "option[1]").select_option
+  #     #consider replacing xpath argument of option[1] with label text of city.name
+  #     find(".end-station-selector").find(:xpath, "option[2]").select_option
+  #     fill_in "trip[start_date]", with: "8/20/2015"
+  #     fill_in "trip[end_date]", with: "8/21/2015"
+  #     fill_in "trip[bike_id]", with: "1"
+  #     find(".subscription_type").find(:xpath, "option[1]").select_option
+  #     fill_in "trip[zip_code]", with: "80223"
+  #     click_on "Create Trip"
+  #   end
+  # end
 end

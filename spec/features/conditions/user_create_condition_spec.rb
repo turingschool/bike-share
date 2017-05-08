@@ -1,5 +1,4 @@
 require './spec/spec_helper'
-require './spec/features/conditions/controller_helper'
 
 RSpec.describe "when a user visits the new condition page" do
   it "they see instructions" do

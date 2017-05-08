@@ -1,5 +1,4 @@
 require './spec/spec_helper'
-require './spec/features/conditions/controller_helper'
 
 RSpec.describe "When a user views an individual condition" do
   before {

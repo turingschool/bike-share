@@ -1,5 +1,4 @@
 require './spec/spec_helper'
-require './spec/features/conditions/controller_helper'
 
 RSpec.describe "When a user edits a condition" do
   it "can edit all feilds" do

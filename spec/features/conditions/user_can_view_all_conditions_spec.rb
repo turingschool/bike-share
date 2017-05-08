@@ -1,5 +1,4 @@
 require './spec/spec_helper'
-require './spec/features/conditions/controller_helper'
 
 RSpec.describe "When a user views conditions index" do
   it "they see the page header" do

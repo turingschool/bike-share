@@ -1,5 +1,4 @@
 require './spec/spec_helper'
-require './spec/features/conditions/controller_helper'
 
 RSpec.describe "When a user clicks delete" do
   it "on the index" do

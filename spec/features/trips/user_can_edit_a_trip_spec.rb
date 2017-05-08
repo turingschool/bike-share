@@ -5,7 +5,7 @@ RSpec.describe "When a user edits a trip" do
   before do
     city_1 = City.create(name: "something")
     city_2 = City.create(name: "else")
-    zipcode1 = Zipcode.create(zipcode: "99999")
+    zipcode1 = Zipcode.create(zipcode: 99999)
     @trip = Trip.create(
                   duration: 60,
                   start_date: DateTime.strptime("08/30/2013 11:11", "%m/%d/%Y %H:%M"),
@@ -17,6 +17,14 @@ RSpec.describe "When a user edits a trip" do
     )
     Station.create(
                   name: "something",
+                  dock_count: 1,
+                  city_id: 1,
+                  installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'),
+                  longitude: -121.9,
+                  latitude: 30.7
+    )
+    Station.create(
+                  name: "else",
                   dock_count: 1,
                   city_id: 1,
                   installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'),
@@ -36,7 +44,7 @@ RSpec.describe "When a user edits a trip" do
     select "else", :from => "trip[end_station_id]"
     fill_in("trip[bike_id]", with: 600)
     select "Subscriber", :from => "trip[subscription_type]"
-    select 94127, :from => "trip[zipcode_id]"
+    select "99999", :from => "trip[zipcode_id]"
 
     click_button("Update Trip")
 

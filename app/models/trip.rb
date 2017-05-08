@@ -84,25 +84,40 @@ class Trip<ActiveRecord::Base
     self.date_ref.date.year
   end
 
-  def self_dashboard
+  def self.dashboard
     {
       average_duration_ride: Trip.average(:duration).to_i,
       longest_ride: {Trip.where(duration: Trip.maximum(:duration)) => Trip.maximum(:duration)},
       shortest_ride: {Trip.where(duration: Trip.minimum(:duration)) =>Trip.minimum(:duration)},
       popular_starting_station: Trip.group(:start_station).order("count_id DESC").count(:id).first[0].name,
       popular_ending_station: Trip.group(:end_station).order("count_id DESC").count(:id).first[0].name,
-      month_breakdown: DateRef.distinct.pluck('extract(year from date)').map do |date|
-                        Trip.joins(:date_ref)
-                        .where('extract(year from date) = ?', date)
-                        .group('extract(month from date)')
-                        .order('count_id DESC').count(:id)
-                        end,
+      month_breakdown: DateRef.distinct.pluck('extract(year from date)').map{ |date| {date => Trip.sort_trips_by_date(date)}},
       most_ridden_bike: Trip.group(:bike).order("count_id DESC").count(:id).first[0].bike,
       least_ridden_bike: Trip.group(:bike).order("count_id ASC").count(:id).first[0].bike,
-      subscription_breakout: Trip.group(:subscription_type).order("count_id DESC").count(:id).map{|k, v| {k.sub_type=> [v, (v/Trip.count.to_f).round(2)]}}.inject(:merge),
-      top_trip_date: Trip.group(:date_ref).order("count_id DESC").count(:id).map{|k, v| {k.date => v}}.inject(:merge).first,
-      lowest_trip_date: Trip.group(:date_ref).order("count_id ASC").count(:id).map{|k, v| {k.date => v}}.inject(:merge).first
+      subscription_breakout: Trip.sort_subscription_breakout(subscription_query),
+      top_trip_date: Trip.sort_hash_merge(Trip.trip_date_query('DESC')),
+      lowest_trip_date:Trip.sort_hash_merge(Trip.trip_date_query('ASC'))
     }
+  end
+
+  def self.sort_trips_by_date(date)
+    Trip.joins(:date_ref).where('extract(year from date) = ?', date).group('extract(month from date)').order('count_id DESC').count(:id)
+  end
+
+  def self.sort_subscription_breakout(array)
+    array.map{|k, v| {k.sub_type=> [v, (v/Trip.count.to_f).round(2)]}}.inject(:merge)
+  end
+  
+  def self.subscription_query
+   Trip.group(:subscription_type).order("count_id DESC").count(:id) 
+  end
+
+  def self.sort_hash_merge(array)
+    array.map{|k, v| {k.date => v}}.inject(:merge).first
+  end
+
+  def self.trip_date_query(mode)
+    Trip.group(:date_ref).order("count_id #{mode}").count(:id)
   end
 
 

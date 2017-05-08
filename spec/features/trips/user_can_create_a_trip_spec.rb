@@ -45,5 +45,6 @@ RSpec.describe "when a user visits the new trip page" do
     expect(page).to have_current_path("/trips/2")
     expect(page).to have_content("Start Station: something")
     expect(page).to have_content("Bike ID: 500")
+    save_and_open_page
   end
 end

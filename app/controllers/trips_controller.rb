@@ -13,8 +13,8 @@ class TripsController < BikeShareApp
 
   put '/trips/:id' do |id|
     trip_details = params[:trip]
-    trip_details[:start_date] = Date.strptime(trip_details[:start_date],'%m/%d/%Y %H:%M')
-    trip_details[:end_date] = Date.strptime(trip_details[:end_date],'%m/%d/%Y %H:%M')
+    trip_details[:start_date] = DateTime.strptime(trip_details[:start_date],'%m/%d/%Y %H:%M')
+    trip_details[:end_date] = DateTime.strptime(trip_details[:end_date],'%m/%d/%Y %H:%M')
     @trip = Trip.update(id, trip_details)
     redirect "/trips/#{id}"
   end
@@ -36,8 +36,8 @@ class TripsController < BikeShareApp
 
   post '/trips' do
     trip_details = params[:trip]
-    trip_details[:start_date] = Date.strptime(trip_details[:start_date],'%m/%d/%Y %H:%M')
-    trip_details[:end_date] = Date.strptime(trip_details[:end_date],'%m/%d/%Y %H:%M')
+    trip_details[:start_date] = DateTime.strptime(trip_details[:start_date],'%m/%d/%Y %H:%M')
+    trip_details[:end_date] = DateTime.strptime(trip_details[:end_date],'%m/%d/%Y %H:%M')
     @trip = Trip.create!(trip_details)
     redirect "/trips/#{@trip.id}"
   end

@@ -1,5 +1,6 @@
 require 'pry'
 require 'time'
+require 'chartkick'
 class BikeShareApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
 
@@ -8,6 +9,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/station-dashboard' do
+    @station = Station.all
+    @city = City.all
     erb :station_dashboard
   end
 

@@ -25,6 +25,7 @@ RSpec.describe "When a user edits a condition" do
     fill_in("condition[mean_visibility]", with: 9.0)
     fill_in("condition[mean_wind_speed]", with: 12.0)
     fill_in("condition[precipitation]", with: 0.01)
+    select "09000", :from => "condition[zipcode_id]"
 
     click_button("Update Condition")
 
@@ -36,6 +37,6 @@ RSpec.describe "When a user edits a condition" do
     expect(page).to have_content("Mean Visibility: 9.0 miles")
     expect(page).to have_content("Mean Wind Speed: 12.0 mph")
     expect(page).to have_content("Precipitation: 0.01 inches")
-
+    expect(page).to have_content('Zipcode: 09000')
   end
 end

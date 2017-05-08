@@ -14,6 +14,7 @@
       <th>Mean Visibility (in Miles)</th>
       <th>Mean Wind Speed (mph)</th>
       <th>Precipitation (inches)</th>
+      <th>Zipcode</th>
       <th></th>
       <th></th>
     </tr>
@@ -29,6 +30,7 @@
       <td><%= condition.mean_visibility %></td>
       <td><%= condition.mean_wind_speed %></td>
       <td><%= condition.precipitation %></td>
+      <td><%= condition.zipcode.zipcode %></td>
       <td><a class="btn btn-edit" href="/conditions/<%= condition.id %>/edit">Edit Condition</a></td>
       <td>
         <form action="/conditions/<%= condition.id %>" method="post">

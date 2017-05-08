@@ -28,6 +28,7 @@ RSpec.describe "When a user views an individual condition" do
     expect(page).to have_content("Mean Visibility: 10.0")
     expect(page).to have_content("Mean Wind Speed: 11.0")
     expect(page).to have_content("Precipitation: 0")
+    expect(page).to have_content('Zipcode: 09000')
   end
 
   it "they see an edit button" do

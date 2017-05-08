@@ -36,7 +36,7 @@ RSpec.describe "When a user edits a trip" do
     select "else", :from => "trip[end_station_id]"
     fill_in("trip[bike_id]", with: 600)
     select "Subscriber", :from => "trip[subscription_type]"
-    select 94127, :from => "trip[zipcode_id]"
+    select "94127", :from => "trip[zipcode_id]"
 
     click_button("Update Trip")
 

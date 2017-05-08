@@ -30,7 +30,7 @@
     <% end %>
   </select>
   <label>Zipcode: </label>
-  <select name="zipcode[zipcode]">
+  <select name="trip[zipcode_id]">
     <% Zipcode.all.each do |zipcode| %>
       <option value="<%= zipcode.id %>"><%= zipcode.zipcode %></option>
     <% end %>

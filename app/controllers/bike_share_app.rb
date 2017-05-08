@@ -1,6 +1,6 @@
 require 'pry'
 require 'time'
-require 'chartkick'
+# require 'chartkick' - causing sinatra to crash, not sure if implementing right
 class BikeShareApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
 

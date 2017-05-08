@@ -12,6 +12,10 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/overwrite.css" rel="stylesheet">
 
+    <!-- <script src="//www.google.com/jsapi"></script>
+    <script src="chartkick.js"></script>
+    <script src="scripts/app.js"></script> -->
+
 </head>
 
 <body>
@@ -57,6 +61,23 @@
                 <p class="lead">A comprehensive report.</p>
             </div>
         </div>
+       <!--  <center>
+            <h1>Test Chart</h1>
+            <p><%= column_chart @station.group_by(&:city).count %></p>
+        </center> -->
+        <span><p><b>Total Stations: </b><br><%= @station.total %></p></span>
+        <span><p><b>Average Amount of Bikes: </b><br><%= @station.average_bikes %></p></span>
+        <span><p><b>Station With the Most Bikes: </b><br><%= @station.most_bikes.name %></p></span>
+        <!-- Form with variabke for amount of stations? -->
+        <span><p><b>Top 5 Stations: </b><br><% @station.top_stations(5).each do |station| %></p>
+        <p><%= station.name %></p></span>
+        <% end %>
+        <span><p><b>Top 5 Lowest Stations: </b><br><% @station.lowest_station(5).each do |station| %></p>
+        <p><%= station.name %></p></span>
+        <% end %>
+
+        <span><p><b>Youngest Station: </b><br><%= @station.most_recent %></p></span>
+        <span><p><b>Oldest Station: </b><br><%= @station.oldest %></p></span>
 
     </div>
 

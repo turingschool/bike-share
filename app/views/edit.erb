@@ -40,6 +40,9 @@
           <li>
             <button class="btn btn-danger navbar-btn"><a href="/stations/new">Create a Station</a></button>
           </li>
+          <li>
+            <button class="btn btn-danger navbar-btn"><a href="/cities">Cities Index</a></button>
+          </li>
         </ul>
       </div>
     </div>
@@ -55,9 +58,9 @@
           <input type='text' name='station[name]' value="<%= @station.name %>"/><br/>
           <input type='text' name='station[dock_count]' value="<%= @station.dock_count %>"/><br/>
           <select class="city-selector" name="station[city_id]">
-          <% @cities.each do |city| %>
+            <% @cities.each do |city| %>
             <option value="<%= city.id %>"><%= city.name %></option>
-          <% end %>
+            <% end %>
           </select><br>
           <input type='text' name='station[date]' value="<%= @station.date %>"/><br/>
           <input type='submit' value="Submit">

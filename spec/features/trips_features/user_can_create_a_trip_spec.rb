@@ -7,8 +7,7 @@ RSpec.describe "when a user visits the new trip page" do
 
     visit('/trips/new')
     expect(page).to have_content("Add a new trip")
-    #This should be calculated by end_date - start_date
-    # fill_in("trip[duration]", with: 840)
+    fill_in("trip[duration]", with: 840)
     fill_in("trip[start_date]", with: "08/30/2013 12:45")
     select "squeevillia", :from => "trip[start_station_id]"
     fill_in("trip[end_date]", with: "08/30/2013 12:59")
@@ -23,6 +22,5 @@ RSpec.describe "when a user visits the new trip page" do
     expect(page).to have_current_path("/trips/1")
     expect(page).to have_content("Start Station: squeevillia")
     expect(page).to have_content("Bike ID: 500")
-
   end
 end

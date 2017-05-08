@@ -17,7 +17,7 @@ RSpec.describe "When the user visits the Trips page" do
     before do
       city_1 = City.create(name: "something")
       zipcode1 = Zipcode.create(name: "99999")
-      Trip.create!(
+      Trip.create(
                     duration: 60,
                     start_date: Date.strftime("08/30/2013 11:11", "%m/%d/%Y %H:%M"),
                     start_station_id: 1,
@@ -26,7 +26,7 @@ RSpec.describe "When the user visits the Trips page" do
                     bike_id: 1,
                     subscription_type: "Subscriber"
       )
-      Station.create!(
+      Station.create(
                     name: "something",
                     dock_count: 1,
                     city_id: 1,

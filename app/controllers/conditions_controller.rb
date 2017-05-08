@@ -17,7 +17,8 @@ class ConditionsController < BikeShareApp
   end
 
   post '/conditions/new' do
-    Condition.create(params)
+    condition = Condition.create(params[:condition])
+    redirect "conditions/#{condition.id}"
   end
 
   get '/conditions/:id/edit' do
@@ -29,6 +30,13 @@ class ConditionsController < BikeShareApp
     condition = Condition.find(params[:id])
     condition.update(params[:condition])
     
+    redirect "conditions/#{condition.id}"
+  end
+
+  delete '/conditions/:id' do
+    condition = Condition.find(params[:id])
+    station.destroy
+
     redirect '/conditions'
   end
 

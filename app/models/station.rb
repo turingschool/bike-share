@@ -2,6 +2,8 @@ require 'pry'
 
 class Station < ActiveRecord::Base
   belongs_to :city
+  has_one :start_station
+  has_one :ending_station
 
   validates :name, presence: true
   validates :city_id, presence: true

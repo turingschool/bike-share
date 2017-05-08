@@ -5,7 +5,7 @@ RSpec.describe "When a user visits the view individual trip page" do
   before do
     city_1 = City.create(name: "something")
     zipcode1 = Zipcode.create(zipcode: 99999)
-    Trip.create(
+    @trip = Trip.create(
                   duration: 60,
                   start_date: DateTime.strptime("08/30/2013 11:11", "%m/%d/%Y %H:%M"),
                   start_station_id: 1,

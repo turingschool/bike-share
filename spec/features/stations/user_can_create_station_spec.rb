@@ -9,7 +9,7 @@ RSpec.describe "when a user visits the new station page" do
     city_4 = City.create(name: "adamtastic")
 
     expect(Station.all.count).to eq(0)
-
+    
     visit('/stations/new')
     expect(page).to have_content("Add a new station")
     fill_in("station[name]", with: "Something")

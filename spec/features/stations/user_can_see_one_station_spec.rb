@@ -1,4 +1,5 @@
 require './spec/spec_helper'
+require './spec/features/stations/controller_helper'
 
 RSpec.describe "when a user visits the view station page" do
   before do
@@ -6,7 +7,7 @@ RSpec.describe "when a user visits the view station page" do
     city_2 = City.create(name: "rhondarhiffic")
     city_3 = City.create(name: "chrissable")
     city_4 = City.create(name: "adamtastic")
-    
+
     Station.create!(
                   name: "something",
                   dock_count: 1,

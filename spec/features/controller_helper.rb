@@ -1,0 +1,1 @@
+Capybara.app = BikeShareApp

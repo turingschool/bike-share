@@ -1,5 +1,4 @@
 require './spec/spec_helper'
-require './spec/features/trips/controller_helper'
 
 RSpec.describe "When the user visits the Trips page" do
   before do

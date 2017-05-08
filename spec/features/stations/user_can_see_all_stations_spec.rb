@@ -1,5 +1,4 @@
 require './spec/spec_helper'
-require './spec/features/stations/controller_helper'
 
 RSpec.describe "when a user visits the view all stations page (stations/index.erb)" do
   before do

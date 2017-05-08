@@ -1,5 +1,4 @@
 require './spec/spec_helper'
-require './spec/features/stations/controller_helper'
 
 RSpec.describe "When a user clicks delete" do
 

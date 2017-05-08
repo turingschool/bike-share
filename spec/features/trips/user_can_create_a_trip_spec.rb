@@ -1,5 +1,4 @@
 require './spec/spec_helper'
-require './spec/features/trips/controller_helper'
 
 RSpec.describe "when a user visits the new trip page" do
   it "they can create a new trip" do

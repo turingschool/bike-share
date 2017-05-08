@@ -41,4 +41,26 @@ RSpec.describe "Trip CRUD" do
   #     click_on "Create Trip"
   #   end
   # end
+
+  describe "updating trips" do
+    it "allows the user to update a trip" do
+      city = City.create(name: "San Jose")
+      station_1 = Station.create(name: "station_1", dock_count: 32, date: "4/12/2013", city_id: city.id)
+      station_2 = Station.create(name: "station_2", dock_count: 42, date: "6/12/2013", city_id: city.id)
+      trip = Trip.create(duration: "111",
+                         start_date: "6/12/2015",
+                         start_station_id: station_1.id,
+                         end_date: "6/13/2015",
+                         end_station_id: station_2.id,
+                         bike_id: 1,
+                         subscription_type: "subscriber"
+                         )
+      visit("/trips/#{trip.id}/edit")
+      fill_in "trip[duration]", with: "222"
+      click_on "Update Trip"
+
+      expect(page).to have_current_path("/trips/#{ trip.id }")
+      expect(page).to have_content("222")
+    end
+  end
 end

@@ -1,5 +1,5 @@
 <h1>All Trips</h1>
-
+<a href="/"><button>Home</button></a>
 <a href="/trips/new"><button>Add Trips</button></a>
 <a href="/trips-dashboard"><button>Trips Dashboard</button></a>
 
@@ -18,7 +18,7 @@
   <% @trips.each do |trip| %>
     <tr class="trip">
       <td>
-      <a href="/trip/<%= trip.id %>">Trip <%=trip.id%>
+      <a href="/trips/<%= trip.id %>">Trip <%=trip.id%>
       </a>
       </td>
 

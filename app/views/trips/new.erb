@@ -2,7 +2,7 @@
 
 <form action="/trips" method="post">
     <label for="">Start Date:</label>
-    <input type="datetime-local" name="trip[start_date]">
+    <input type="date" name="trip[start_date]" class="start_date">
     </br>
 
     <label for="">Start Station:</label>
@@ -15,10 +15,10 @@
   </select>
     </br>
     <label for="">End Date:</label>
-    <input type="datetime-local" name="trip[end_date]">
+    <input type="date" name="trip[end_date]">
     </br>
     <label for="">End Station:</label>
-    <select name="trip[end_station]">
+    <select name="trip[end_station]" class="end_station">
     <% @stations.each do |station| %>
       <option value=<%= station.id %>>
         <%= station.name %>
@@ -29,7 +29,7 @@
     <label for="">Subscription:</label>
     <select name="trip[subscription]">
     <% @subscriptions.each do |subscription| %>
-      <option value=<%= subscription.id %>>
+      <option value=<%= subscription.sub_type %>>
         <%= subscription.sub_type %>
       </option>
     <% end %>

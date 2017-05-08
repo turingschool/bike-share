@@ -1,7 +1,7 @@
 class BikeShareApp < Sinatra::Base
 
   get '/' do
-    redirect '/stations'
+    erb :index
   end
 
 #station dashboard with statistics
@@ -56,6 +56,7 @@ class BikeShareApp < Sinatra::Base
                               city_id: (params[:station][:city_id]),
                               date_ref_id: date.id
                              )
+
     redirect "/stations/#{@station.id}"
   end
 
@@ -71,6 +72,7 @@ class BikeShareApp < Sinatra::Base
 
 #trip dashboard with statistics
   get '/trips-dashboard' do
+    erb :'trips/dashboard'
     
   end
   
@@ -87,33 +89,35 @@ class BikeShareApp < Sinatra::Base
     erb :"trips/new"
   end
 
+#single trip page
+  get '/trips/:id' do
+    @trip = Trip.find(params[:id])
+    erb :'trips/show'
+  end
+
 #route after filling new trip form
   post '/trips' do
-    trip = Trip.update(params)
+    trip = Trip.create_new(params)
+    redirect "/trips/#{trip.id}"
+  end
+
+#form to edit trips
+  get '/trips/:id/edit' do
+    @trip = Trip.find(params[:id])
+    @stations = Station.all
+    @subscriptions = SubscriptionType.all
+    erb :'trips/edit'
+  end
+
+  put '/trips/:id' do
+    trip = Trip.update_record(params)
     binding.pry
     redirect "/trips/#{trip.id}"
   end
 
-
-# #single trip page
-#   get '/trip/:id' do
-#     @trip = Trip.find(params[:id])
-#     # erb :
-#   end
-
-
-# #form to edit trips
-#   get '/trips/:id/edit' do
-
-#     @trip = Trip.find(params[:id])
-#     # erb :
-#   end
-
-
-
-# #route to delete single trip
-#   delete '/trips/:id' do
-#     @trip = Trip.destroy(params[:id])
-#     redirect "/trips"
-#   end
+#route to delete single trip
+  delete '/trips/:id' do
+    @trip = Trip.destroy(params[:id])
+    redirect "/trips"
+  end
 end

@@ -27,12 +27,4 @@ RSpec.describe "When a user visits '/stations-dashboard'" do
     expect(current_path).to eq('/stations/1')
   end
 
-  it "information matches queries" do
-    visit('/stations-dashboard')
-
-    expect(Station.dashboard[:max_bikes_stations].first.name).to eq("Market")
-    expect(Station.dashboard[:min_bikes_stations].first.name).to eq("Turing")
-    expect(Station.dashboard[:most_recent_stations].first.name).to eq("Broadway")
-    expect(Station.dashboard[:oldest_stations].first.name).to eq("Lawrence")
-  end
 end

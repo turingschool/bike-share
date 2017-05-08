@@ -49,7 +49,7 @@ class Trip<ActiveRecord::Base
                 zipcode_id: zipcode.nil? ? "00000" : zipcode.id,
                 subscription_type_id: subscription.id)
   end
-  
+
   def month
     self.date_ref.date.month
   end
@@ -68,9 +68,11 @@ class Trip<ActiveRecord::Base
       month_breakdown: 0,
       most_ridden_bike: Trip.group(:bike).order("count_id DESC").count(:id).first[0].bike,
       least_ridden_bike: Trip.group(:bike).order("count_id ASC").count(:id).first[0].bike,
-      subscription_breakout: Trip.group(:subscription_type).order("count_id DESC").count(:id).map{|k, v| {k.sub_type=> [v, (v/Trip.count.to_f).round(2)]}}.inject(:merge)
-      top_trip_date: Trip.group(:date_ref).order("count_id DESC").count(:id).map{|k, v| {k.date => v}}.inject(:merge).first
+      subscription_breakout: Trip.group(:subscription_type).order("count_id DESC").count(:id).map{|k, v| {k.sub_type=> [v, (v/Trip.count.to_f).round(2)]}}.inject(:merge),
+      top_trip_date: Trip.group(:date_ref).order("count_id DESC").count(:id).map{|k, v| {k.date => v}}.inject(:merge).first,
       lowest_trip_date: Trip.group(:date_ref).order("count_id ASC").count(:id).map{|k, v| {k.date => v}}.inject(:merge).first
     }
   end
+
+
 end

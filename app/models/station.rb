@@ -2,7 +2,6 @@ require 'pry'
 class Station < ActiveRecord::Base
   validates :name, :dock_count, :city_id, :date, presence: true
   belongs_to :city
-  belongs_to :trip
 
   def self.total
     Station.all.count

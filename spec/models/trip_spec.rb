@@ -85,4 +85,25 @@ RSpec.describe Trip, :type => :model do
       expect(no_subscription_type).not_to be_valid
     end
   end
+
+  describe "trip relationships" do
+    before(:each) do
+      @station_1 = Station.create(name: "station_1", dock_count: 32, date: "4/12/2013", city_id: 1)
+      @station_2 = Station.create(name: "station_2", dock_count: 42, date: "6/12/2013", city_id: 1)
+    end
+    it "has foreign station keys" do
+      trip = Trip.create(duration: "111",
+                                start_date: "6/12/2015",
+                                start_station: @station_1,
+                                end_date: "6/13/2015",
+                                end_station: @station_2,
+                                bike_id: 1,
+                                subscription_type: "subscriber"
+                                )
+
+      expect(trip.start_station).to eq(@station_1)
+      expect(trip.end_station).to eq(@station_2)
+    end
+  end
+
 end

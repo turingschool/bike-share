@@ -3,7 +3,7 @@ require './spec/features/conditions/controller_helper'
 
 RSpec.describe "When a user clicks delete" do
   it "on the index" do
-    condition = Condition.create(
+    condition = Condition.create!(
                                 date: Date.strptime("08/30/2013",'%m/%d/%Y'),
                                 max_temp: 87.0,
                                 mean_temp: 76.0,
@@ -25,7 +25,7 @@ RSpec.describe "When a user clicks delete" do
   end
 
   it "on the edit page" do
-    condition = Condition.create(
+    condition = Condition.create!(
                                 date: Date.strptime("08/30/2013",'%m/%d/%Y'),
                                 max_temp: 87.0,
                                 mean_temp: 76.0,
@@ -36,18 +36,18 @@ RSpec.describe "When a user clicks delete" do
                                 precipitation: 0,
                                 )
 
-    visit('/conditions/:id/edit')
+    visit('/conditions/1/edit')
 
     expect(page).to have_button("Delete")
     expect(Condition.all.count).to eq(1)
     click_button("Delete")
 
-    expect(Condition.all.count).to eq(0)
     expect(page).to have_current_path("/conditions")
+    expect(Condition.all.count).to eq(0)
   end
 
   it "on the show page" do
-    condition = Condition.create(
+    condition = Condition.create!(
                                 date: Date.strptime("08/30/2013",'%m/%d/%Y'),
                                 max_temp: 87.0,
                                 mean_temp: 76.0,
@@ -64,7 +64,7 @@ RSpec.describe "When a user clicks delete" do
     expect(Condition.all.count).to eq(1)
     click_button("Delete")
 
-    expect(Condition.all.count).to eq(0)
     expect(page).to have_current_path("/conditions")
+    expect(Condition.all.count).to eq(0)
   end
 end

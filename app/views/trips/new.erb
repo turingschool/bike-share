@@ -1,0 +1,37 @@
+<h2>Add a new trip</h1>
+
+<form action="/trips" method="post">
+  <label>Duration: </label>
+  <input type="text" name="trip[duration]" />
+  <label>Start Date: </label>
+  <input type="text" name="trip[start_date]" />
+  <label>Start Station: </label>
+  <select name="trip[start_station_id]">
+    <% Station.all.each do |station| %>
+      <option value="<%= station.id %>"><%= station.name %></option>
+    <% end %>
+  </select>
+  <label>End Date: </label>
+  <input type="text" name="trip[end_date]" />
+  <label>End Station: </label>
+  <select name="trip[end_station_id]">
+    <% Station.all.each do |station| %>
+      <option value="<%= station.id %>"><%= station.name %></option>
+    <% end %>
+  </select>
+  <label>Bike ID: </label>
+  <input type="text" name="trip[bike_id]" />
+  <label>Subscription Type: </label>
+  <select name="trip[subscription_type]">
+    <% Trip.all.each do |trip| %>
+      <option value="<%= trip.subscription_type %>"><%= trip.subscription_type %></option>
+    <% end %>
+  </select>
+  <label>Zipcode: </label>
+  <select name="trip[zipcode_id]">
+    <% Zipcode.all.each do |zipcode| %>
+      <option value="<%= zipcode.id %>"><%= zipcode.zipcode %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Create Trip" />
+</form>

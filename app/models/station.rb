@@ -2,11 +2,7 @@ class Station < ActiveRecord::Base
   belongs_to :city
 
   def self.average_available_bikes
-    sum = 0
-    self.all.each do |station|
-      sum += station.dock_count
-    end
-    (sum / self.count)
+    self.average(:dock_count).to_i
   end
 
   def self.max_available_bikes

@@ -58,7 +58,7 @@ RSpec.describe "When a user clicks delete" do
                                 precipitation: 0,
                                 )
 
-    visit('/conditions/:id')
+    visit('/conditions/1')
 
     expect(page).to have_button("Delete")
     expect(Condition.all.count).to eq(1)

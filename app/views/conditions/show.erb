@@ -1,0 +1,19 @@
+<h1>Weather Conditions on <%= @condition.date %></h1>
+
+<h2>Info</h2>
+Maximum Temperature: <%= @condition.max_temp %>
+Mean Temperature: <%= @condition.mean_temp %>
+Minimum Temperature: <%= @condition.min_temp %>
+Mean Humidity: <%= @condition.mean_humidity %>
+Mean Visibility: <%= @condition.mean_visibility %>
+Mean Wind Speed: <%= @condition.mean_wind_speed %>
+Precipitation: <%= @condition.precipitation %>
+
+<button class="btn-edit">
+  <a href="/conditions/<%= @condition.id %>/edit">Edit Station</a>
+</button>
+
+<form method="post" action="/conditions/<%= @condition.id %>">
+  <input type="hidden" name="_method" value="DELETE" />
+  <button type="submit" class="btn-delete">Delete</button>
+</form>

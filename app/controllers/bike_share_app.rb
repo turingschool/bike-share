@@ -40,15 +40,6 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations-dashboard' do
     @stations = Station.all
-    erb :"stations/dashboard", :locals => {
-      :count => Station.count,
-      :average_bikes => Station.average_bikes,
-      :most_bikes_count => Station.most_bikes_count,
-      :most_bikes_avail_at => Station.most_bikes_avail_at,
-      :fewest_bikes_count => Station.fewest_bikes_count,
-      :fewest_bikes_avail_at => Station.fewest_bikes_avail_at,
-      :newest_station => Station.newest_station,
-      :oldest_station => Station.oldest_station
-    }
+    erb :"stations/dashboard"
   end
 end

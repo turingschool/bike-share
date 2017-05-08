@@ -15,7 +15,7 @@ RSpec.describe "when a user visits the new trip page" do
     select "squeevillia", :from => "trip[end_station_id]"
     fill_in("trip[bike_id]", with: 500)
     select "Subscriber", :from => "trip[subscription_type]"
-    select 94127, :from => "trip[zipcode_id]"
+    select "94127", :from => "trip[zipcode_id]"
 
     click_button("Create Trip")
 

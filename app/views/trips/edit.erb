@@ -1,30 +1,33 @@
 <h1>Edit Trip [<%= @trip.id %>]</h1>
 
-<form action="/trip/<%=@trip.id%>" method="post">
+<form action="/trips/<%=@trip.id%>" method="post">
   <p>Please fill in all fields with information you would like to change</p>
   <input type="hidden" name="_method" value="PUT">
-  <h2>ID</h2>
-  <input type="text" name="trip[id]" value="<%= @trip.id %>">
+  Subscription Type<select name="subscription_type[name]">
+    <% @subscription_types.each do |subscription_type| %>
+    <option value="<%= subscription_type.name %>"><%= subscription_type.name %></option>
+    <% end %>
+  </select><br>
   <h2>Duration</h2>
   <input type="text" name="trip[duration]" value="<%= @trip.duration %>">
   <h2>Start Station</h2>
-  <input type="text" name="trip[start_station]" value="<%= @trip.start_station.station.name %>">
-  <select name="start_station[name]">
-    <% @stations.each do |station| %>
-    <option value="<%= station.name %>"><%= station.name %></option>
+  Starting Station<select name="trip[start_station_id]">
+    <% @start_stations.each do |start_station| %>
+    <option value="<%= start_station.id %>"><%= start_station.station.name %></option>
     <% end %>
-  </select>
+  </select><br>
+  Ending Station<select name="trip[end_station_id]">
+    <% @end_stations.each do |end_station| %>
+    <option value="<%= end_station.id %>"><%= end_station.station.name %></option>
+    <% end %>
+  </select><br>
   <h3>Start Date</h3>
-  <input type="text" name="trip[start_date]" value="<%= @trip.start_date %>">
-  <h2>End Station</h2>
-  <input type="text" name="trip[end_station]" value="<%= @trip.end_station.station.id %>">
-  <select name="end_station[name]">
-    <% @stations.each do |station| %>
-    <option value="<%= station.name %>"><%= station.name %></option>
-    <% end %>
-  </select>
+  <input type="date" name="trip[start_date]" value="<%= @trip.start_date %>">
   <h3>End Date</h3>
-  <input type="text" name="trip[end_date]" value="<%= @trip.end_date %>">
-
+  <input type="date" name="trip[end_date]" value="<%= @trip.end_date %>">
+  <h3>Bike ID</h3>
+  <input type="integer" name="trip[bike_id]" value="<%= @trip.bike_id %>"><br>
+  <h3>Zipcode</h3>
+  <input type="integer" name="trip[zip_code]" value="<%= @trip.zip_code %>"><br>
   <input type="submit" value="Submit changes">
 </form>

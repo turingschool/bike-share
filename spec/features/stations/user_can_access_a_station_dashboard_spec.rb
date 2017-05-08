@@ -1,5 +1,4 @@
 require './spec/spec_helper'
-require './spec/features/stations/controller_helper'
 
 RSpec.describe "When a user visit the stations dashboard (/stations-dashboard)" do
   it "loads the appropriate descriptions" do

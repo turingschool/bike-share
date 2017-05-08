@@ -15,7 +15,6 @@ GEM
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
-    awesome_print (1.7.0)
     bond (0.5.1)
     capybara (2.10.1)
       addressable
@@ -98,7 +97,6 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
-  awesome_print
   capybara
   database_cleaner
   launchy

@@ -61,14 +61,14 @@ class BikeShareApp < Sinatra::Base
     erb :'/cities/city'
   end
 
-  get '/cities/new' do
-    erb :'/cities/new'
-  end
+  # get '/cities/new' do
+  #   erb :'/cities/new'
+  # end
 
-  post '/cities' do
-    @city = City.create(params[:city])
-    redirect "/cities/#{@city.id}"
-  end
+  # post '/cities' do
+  #   @city = City.create(params[:city])
+  #   redirect "/cities/#{@city.id}"
+  # end
 
   delete '/cities/:id' do |id|
     City.destroy(id)

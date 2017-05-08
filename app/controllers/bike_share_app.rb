@@ -1,5 +1,9 @@
 class BikeShareApp < Sinatra::Base
 
+  get '/' do
+    redirect '/stations'
+  end
+
 #station dashboard with statistics
   get '/stations-dashboard' do
     @dashboard_data = Station.dashboard

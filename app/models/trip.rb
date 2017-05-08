@@ -2,7 +2,6 @@ class Trip<ActiveRecord::Base
   belongs_to :bike
   belongs_to :zipcode
   belongs_to :subscription_type
-  # belongs_to :station
   belongs_to :date_ref
   belongs_to :end_date, :class_name => "DateRef"
 
@@ -48,4 +47,11 @@ class Trip<ActiveRecord::Base
                 subscription_type_id: subscription.id)
   end
   
+  def month
+    self.date_ref.date.month
+  end
+
+  def year
+    self.date_ref.date.year
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507204225) do
+ActiveRecord::Schema.define(version: 20170508163527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,29 +38,16 @@ ActiveRecord::Schema.define(version: 20170507204225) do
     t.integer  "dock_count"
     t.integer  "date_ref_id"
     t.integer  "city_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
     t.float    "lat"
     t.float    "long"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "subscription_types", force: :cascade do |t|
     t.text     "sub_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "subscriptions", force: :cascade do |t|
-    t.text     "subscription_type"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-  end
-
-  create_table "the_dates", force: :cascade do |t|
-    t.date     "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text     "name"
   end
 
   create_table "trips", force: :cascade do |t|

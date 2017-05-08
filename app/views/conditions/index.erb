@@ -1,0 +1,44 @@
+<h1>All Weather Conditions</h1>
+<p><a class="btn btn-new" href="conditions/new">Add New Weather Condition</a></p>
+<% if @conditions.empty? %>
+  <p>No conditions available.</p>
+<% else %>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Max Temperature</th>
+      <th>Mean Temperature</th>
+      <th>Min Temperature</th>
+      <th>Mean Humidity</th>
+      <th>Mean Visibility (in Miles)</th>
+      <th>Mean Wind Speed (mph)</th>
+      <th>Precipitation (inches)</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @conditions.each do |condition| %>
+    <tr>
+      <td><h2 class="condition-title"><a href="/conditions/<%= condition.id %>"><%= condition.date %></a></h2></td>
+      <td><%= condition.max_temp %></td>
+      <td><%= condition.mean_temp %></td>
+      <td><%= condition.min_temp %></td>
+      <td><%= condition.mean_humidity %></td>
+      <td><%= condition.mean_visibility %></td>
+      <td><%= condition.mean_wind_speed %></td>
+      <td><%= condition.precipitation %></td>
+      <td><a class="btn btn-edit" href="/conditions/<%= condition.id %>/edit">Edit Condition</a></td>
+      <td>
+        <form action="/conditions/<%= condition.id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE" />
+          <input type="submit" class="btn btn-delete" value="Delete"/>
+        </form>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>

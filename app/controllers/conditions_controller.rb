@@ -33,4 +33,9 @@ class ConditionsController < BikeShareApp
     Condition.destroy(id)
     redirect "/conditions"
   end
+
+  get "/conditions" do
+    @conditions = Condition.all
+    erb :"index"
+  end
 end

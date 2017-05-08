@@ -1,7 +1,7 @@
 require './spec/spec_helper'
 require './spec/features/conditions/controller_helper'
 
-RSpec.describe "When a user views an individual station" do
+RSpec.describe "When a user views an individual condition" do
   before {
     condition = Condition.create(
                                 date: Date.strptime("08/30/2013",'%m/%d/%Y'),

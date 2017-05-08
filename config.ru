@@ -5,5 +5,5 @@ require File.expand_path('../config/environment',  __FILE__)
 
 use StationsController
 # use TripsController
-# use ConditionsController
+use ConditionsController
 run BikeShareApp

@@ -21,6 +21,7 @@ RSpec.describe "When a user views conditions index" do
 
   context "when conditions exist" do
     before {
+      zip = Zipcode.create(zipcode: "09000")
       Condition.create(
                         date: Date.strptime("08/30/2013",'%m/%d/%Y'),
                         max_temp: 87.0,
@@ -30,6 +31,7 @@ RSpec.describe "When a user views conditions index" do
                         mean_visibility: 10.0,
                         mean_wind_speed: 11.0,
                         precipitation: 0,
+                        zipcode_id: 1
                       )
       Condition.create(
                         date: Date.strptime("08/30/2014",'%m/%d/%Y'),
@@ -40,6 +42,7 @@ RSpec.describe "When a user views conditions index" do
                         mean_visibility: 20.0,
                         mean_wind_speed: 21.0,
                         precipitation: 10.0,
+                        zipcode_id: 1
                       )
       visit('/conditions')
     }

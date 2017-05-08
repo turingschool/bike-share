@@ -2,6 +2,7 @@ require './spec/spec_helper'
 
 RSpec.describe "When a user clicks delete" do
   it "on the index" do
+    zip = Zipcode.create(zipcode: "09000")
     condition = Condition.create!(
                                 date: Date.strptime("08/30/2013",'%m/%d/%Y'),
                                 max_temp: 87.0,
@@ -11,6 +12,7 @@ RSpec.describe "When a user clicks delete" do
                                 mean_visibility: 10.0,
                                 mean_wind_speed: 11.0,
                                 precipitation: 0,
+                                zipcode_id: 1
                                 )
 
     visit('/conditions')
@@ -24,6 +26,7 @@ RSpec.describe "When a user clicks delete" do
   end
 
   it "on the edit page" do
+    zip = Zipcode.create(zipcode: "09000")
     condition = Condition.create!(
                                 date: Date.strptime("08/30/2013",'%m/%d/%Y'),
                                 max_temp: 87.0,
@@ -33,6 +36,7 @@ RSpec.describe "When a user clicks delete" do
                                 mean_visibility: 10.0,
                                 mean_wind_speed: 11.0,
                                 precipitation: 0,
+                                zipcode_id: 1
                                 )
 
     visit('/conditions/1/edit')
@@ -46,6 +50,7 @@ RSpec.describe "When a user clicks delete" do
   end
 
   it "on the show page" do
+    zip = Zipcode.create(zipcode: "09000")
     condition = Condition.create!(
                                 date: Date.strptime("08/30/2013",'%m/%d/%Y'),
                                 max_temp: 87.0,
@@ -55,6 +60,7 @@ RSpec.describe "When a user clicks delete" do
                                 mean_visibility: 10.0,
                                 mean_wind_speed: 11.0,
                                 precipitation: 0,
+                                zipcode_id: 1
                                 )
 
     visit('/conditions/1')

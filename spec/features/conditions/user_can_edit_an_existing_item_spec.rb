@@ -2,6 +2,7 @@ require './spec/spec_helper'
 
 RSpec.describe "When a user edits a condition" do
   it "can edit all feilds" do
+    zip = Zipcode.create(zipcode: "09000")
     condition = Condition.create(
                                 date: Date.strptime("08/30/2013",'%m/%d/%Y'),
                                 max_temp: 87.0,
@@ -11,6 +12,7 @@ RSpec.describe "When a user edits a condition" do
                                 mean_visibility: 10.0,
                                 mean_wind_speed: 11.0,
                                 precipitation: 0,
+                                zipcode_id: 1
                                 )
 
     visit('/conditions/1/edit')

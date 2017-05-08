@@ -1,5 +1,5 @@
 class Condition < ActiveRecord::Base
-  # belongs_to :zipcode
+  belongs_to :zipcode
 
   validates :date, presence:true
   validates :max_temp, presence:true

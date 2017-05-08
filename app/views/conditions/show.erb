@@ -8,6 +8,7 @@
 <p>Mean Visibility: <%= @condition.mean_visibility %> miles</p>
 <p>Mean Wind Speed: <%= @condition.mean_wind_speed %> mph</p>
 <p>Precipitation: <%= @condition.precipitation %> inches</p>
+<p>Zipcode: <%= @condition.zipcode.zipcode %></p>
 
 <button class="btn-edit">
   <a href="/conditions/<%= @condition.id %>/edit">Edit Condition</a>

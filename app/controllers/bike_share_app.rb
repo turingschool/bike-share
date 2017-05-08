@@ -42,13 +42,13 @@ class BikeShareApp < Sinatra::Base
     @stations = Station.all
     erb :"stations/dashboard", :locals => {
       :count => Station.count,
-      :average_bikes => Station.average(:dock_count),
-      :most_bikes_count => Station.maximum(:dock_count),
-      :most_bikes_avail_at => Station.where(dock_count: Station.maximum(:dock_count)).pluck(:name).join(', '),
-      :fewest_bikes_count => Station.minimum(:dock_count),
-      :fewest_bikes_avail_at => Station.where(dock_count: Station.minimum(:dock_count)).pluck(:name).join(', '),
-      :newest_station => Station.where(installation_date: Station.maximum(:installation_date)).pluck(:name).join(', '),
-      :oldest_station => Station.where(installation_date: Station.minimum(:installation_date)).pluck(:name).join(', ')
+      :average_bikes => Station.average_bikes,
+      :most_bikes_count => Station.most_bikes_count,
+      :most_bikes_avail_at => Station.most_bikes_avail_at,
+      :fewest_bikes_count => Station.fewest_bikes_count,
+      :fewest_bikes_avail_at => Station.fewest_bikes_avail_at,
+      :newest_station => Station.newest_station,
+      :oldest_station => Station.oldest_station
     }
   end
 end

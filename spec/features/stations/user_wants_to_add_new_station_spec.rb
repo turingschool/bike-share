@@ -2,16 +2,6 @@ require './spec/spec_helper'
 
 RSpec.describe "user wants to add station" do
 
-  it "visits new station page" do
-    visit('/stations/new')
-
-    expect(page).to have_content("Add Station")
-    expect(page).to have_content("Name:")
-    expect(page).to have_content("Number of Docks")
-    expect(page).to have_content("City")
-    expect(page).to have_content("Install Date")
-  end
-
   it "adds a station" do
     visit('/stations/new')
 
@@ -21,6 +11,9 @@ RSpec.describe "user wants to add station" do
       fill_in "station[install_date]", with: '2008/10/21'
 
       click_button "Add Station"
+      station = Station.last
+
+      expect(current_path).to eq("/stations/#{station.id}")
 
       expect(page).to have_content("Fluppydo")
       expect(page).to have_content("Denver")

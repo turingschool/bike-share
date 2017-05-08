@@ -5,12 +5,12 @@ RSpec.describe "When a user edits a trip" do
   before do
     city_1 = City.create(name: "something")
     city_2 = City.create(name: "else")
-    zipcode1 = Zipcode.create(name: "99999")
-    Trip.create(
+    zipcode1 = Zipcode.create(zipcode: "99999")
+    @trip = Trip.create(
                   duration: 60,
-                  start_date: Date.strftime("08/30/2013 11:11", "%m/%d/%Y %H:%M"),
+                  start_date: DateTime.strptime("08/30/2013 11:11", "%m/%d/%Y %H:%M"),
                   start_station_id: 1,
-                  end_date: Date.strftime("08/30/2013 11:12", "%m/%d/%Y %H:%M"),
+                  end_date: DateTime.strptime("08/30/2013 11:12", "%m/%d/%Y %H:%M"),
                   end_station_id: 1,
                   bike_id: 1,
                   subscription_type: "Subscriber"
@@ -23,10 +23,10 @@ RSpec.describe "When a user edits a trip" do
                   longitude: -121.9,
                   latitude: 30.7
     )
-  end
+ end
 
   it "can edit the trip" do
-    visit('/trips/1/edit')
+    visit("/trips/#{@trip.id}/edit")
     expect(page).to have_content("Edit This Trip")
     fill_in("trip[duration]", with: 60)
     select "else", :from => "trip[start_station_id]"

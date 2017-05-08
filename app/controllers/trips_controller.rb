@@ -24,7 +24,7 @@ class TripsController < BikeShareApp
     redirect "/trips"
   end
 
-  get 'trips/:id/edit' do |id|
+  get '/trips/:id/edit' do |id|
     @trip = Trip.find(id)
     erb :"edit"
   end

@@ -25,7 +25,7 @@ RSpec.describe "When a user visits the view individual trip page" do
   end
 
   it "they can view information about a trip" do
-    visit('/trips/1')
+    visit("/trips/#{@trip.id}")
   save_and_open_page
     expect(page).to have_content("Trip Info")
     expect(page).to have_content("Duration: 60")

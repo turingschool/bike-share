@@ -5,8 +5,11 @@ class Trip<ActiveRecord::Base
   belongs_to :date_ref
   belongs_to :end_date, :class_name => "DateRef"
 
-  belongs_to :start_station, :class_name => "Station"
-  belongs_to :end_station, :class_name => "Station"
+  # belongs_to :start_station, :class_name => "Station"
+  # belongs_to :end_station, :class_name => "Station"
+
+  belongs_to :start_station, foreign_key: "start_station_id", class_name: "Station"
+  belongs_to :end_station, foreign_key: "end_station_id", class_name: "Station"
 
   validates :bike_id, presence: true
   validates :subscription_type_id, presence: true
@@ -53,5 +56,21 @@ class Trip<ActiveRecord::Base
 
   def year
     self.date_ref.date.year
+  end
+
+  def self_dashboard
+    {
+      average_duration_ride: Trip.average(:duration).to_i,
+      longest_ride: Trip.maximum(:duration),
+      shortest_ride: Trip.minimum(:duration),
+      popular_starting_station: Trip.group(:start_station).order("count_id DESC").count(:id).first[0].name,
+      popular_ending_station: Trip.group(:end_station).order("count_id DESC").count(:id).first[0].name,
+      month_breakdown: 0,
+      most_ridden_bike: Trip.group(:bike).order("count_id DESC").count(:id).first[0].bike,
+      least_ridden_bike: Trip.group(:bike).order("count_id ASC").count(:id).first[0].bike,
+      subscription_breakout: Trip.group(:subscription_type).order("count_id DESC").count(:id).map{|k, v| {k.sub_type=> [v, (v/Trip.count.to_f).round(2)]}}.inject(:merge)
+      top_trip_date: Trip.group(:date_ref).order("count_id DESC").count(:id).map{|k, v| {k.date => v}}.inject(:merge).first
+      lowest_trip_date: Trip.group(:date_ref).order("count_id ASC").count(:id).map{|k, v| {k.date => v}}.inject(:merge).first
+    }
   end
 end

@@ -14,6 +14,7 @@ RSpec.describe "user wants to add station" do
 
   it "adds a station" do
     visit('/stations/new')
+
       fill_in "station[name]", with: 'Fluppydo'
       fill_in "station[dock_count]", with: 1981
       fill_in "city", with: 'Denver'

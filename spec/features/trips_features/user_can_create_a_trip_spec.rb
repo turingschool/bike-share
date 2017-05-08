@@ -23,6 +23,6 @@ RSpec.describe "when a user visits the new trip page" do
     expect(page).to have_current_path("/trips/1")
     expect(page).to have_content("Start Station: squeevillia")
     expect(page).to have_content("Bike ID: 500")
-    
+
   end
 end

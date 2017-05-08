@@ -28,4 +28,9 @@ class ConditionsController < BikeShareApp
     @condition = Condition.update(id)
     redirect "/conditions/#{id}"
   end
+
+  delete 'conditions/:id' do |id|
+    Condition.destroy(id)
+    redirect "/conditions"
+  end
 end

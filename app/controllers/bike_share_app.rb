@@ -25,6 +25,7 @@ class BikeShareApp < Sinatra::Base
 #single station page
   get '/stations/:id' do
     @station = Station.find(params[:id])
+    @trip_individual_data = Station.individual_dashboard(params[:id])
     erb :"stations/show"
   end
 
@@ -72,6 +73,7 @@ class BikeShareApp < Sinatra::Base
 
 #trip dashboard with statistics
   get '/trips-dashboard' do
+    @trips_dashboard_data = Trip.dashboard
     erb :'trips/dashboard'
     
   end

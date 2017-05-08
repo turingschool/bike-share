@@ -84,7 +84,7 @@ class Trip<ActiveRecord::Base
     self.date_ref.date.year
   end
 
-  def self_dashboard
+  def self.dashboard
     {
       average_duration_ride: Trip.average(:duration).to_i,
       longest_ride: {Trip.where(duration: Trip.maximum(:duration)) => Trip.maximum(:duration)},

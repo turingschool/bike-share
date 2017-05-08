@@ -23,10 +23,10 @@
     <% @trips.each do |trip| %>
     <tr>
       <td><%= trip.duration %></td>
-      <td><%= trip.start_date %></td>
+      <td><%= trip.format_start_date_time %></td>
       <!-- <td><%= trip.start_station_id.name %></td> -->
       <!-- Methods may be chained in incorrect order -->
-      <td><%= trip.end_date %></td>
+      <td><%= trip.format_start_end_date_time %></td>
       <!-- <td><%= trip.end_station_id.name %></td> -->
       <!-- Methods may be chained in incorrect order -->
       <td><%= trip.bike_id %></td>

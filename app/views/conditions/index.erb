@@ -1,0 +1,23 @@
+<h1>Conditions</h1>
+
+<% @conditions.each do |condition| %>
+  <h3><ul> Date: <%= condition.date %></h3>
+  <h4>Zip Code: <%= condition.zip_code %></h4>
+  <br>
+  <ti> Max Temperature: <%= condition.maximum_temperature %></ti>
+  <ti> Mean Temperature: <%= condition.mean_temperature %></ti>
+  <ti> Min Temperature: <%= condition.minimum_temperature %></ti>
+  <ti> Mean Temperature: <%= condition.mean_temperature %></ti>
+  <ti> Mean Visibility (in Miles): <%= condition.mean_visibility %></ti>
+  <ti> Mean Wind Speed (mph): <%= condition.mean_wind_speed %></ti>
+  <ti> Precipitation (inches): <%= condition.percipitation %></ti>
+  </ul>
+
+  <a href="/conditions/edit/<%= condition.id %>">Edit Weather Conditions</a>
+  <form action="/stations/delete/<%= station.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE" />
+    <input type="submit" value="Delete" />
+  </form>
+<% end %>
+
+<br><a href="/stations/new">Add Station</a>

@@ -6,8 +6,13 @@ RSpec.describe "user clicks delete" do
     Loader.new('./spec/fixtures/station_fixtures_small.csv').load_stations
     visit('/stations')
 
+    expect(Station.count).to eq(2)
+
     first(:button, "Delete").click
+    expect(Station.count).to eq(1)
+
     first(:button, "Delete").click
+    expect(Station.count).to eq(0)
 
     expect(page).not_to have_content("Name: San Jose Diridon Caltrain Station")
     expect(page).not_to have_content("Number of Docks: 27")

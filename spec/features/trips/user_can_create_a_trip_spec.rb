@@ -15,6 +15,14 @@ RSpec.describe "when a user visits the new trip page" do
                   longitude: -121.9,
                   latitude: 30.7
     )
+    Station.create(
+                  name: "else",
+                  dock_count: 1,
+                  city_id: 1,
+                  installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'),
+                  longitude: -121.9,
+                  latitude: 30.7
+    )
     zipcode = Zipcode.create(zipcode: 94127)
     Trip.create(
                       duration: 240,
@@ -34,17 +42,16 @@ RSpec.describe "when a user visits the new trip page" do
     fill_in("trip[start_date]", with: "08/30/2013 12:45")
     select "something", :from => "trip[start_station_id]"
     fill_in("trip[end_date]", with: "08/30/2013 12:59")
-    select "something", :from => "trip[end_station_id]"
+    select "else", :from => "trip[end_station_id]"
     fill_in("trip[bike_id]", with: 500)
     select "Subscriber", :from => "trip[subscription_type]"
     select "94127", :from => "trip[zipcode_id]"
-
     click_button("Create Trip")
 
     expect(Trip.all.count).to eq(2)
     expect(page).to have_current_path("/trips/2")
+    save_and_open_page
     expect(page).to have_content("Start Station: something")
     expect(page).to have_content("Bike ID: 500")
-    save_and_open_page
   end
 end

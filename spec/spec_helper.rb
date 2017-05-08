@@ -5,6 +5,7 @@ require 'rspec'
 require 'database_cleaner'
 require 'capybara/dsl'
 require 'date'
+require 'pry'
 
 DatabaseCleaner.strategy = :truncation
 

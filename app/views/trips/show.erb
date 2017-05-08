@@ -1,0 +1,17 @@
+<h1>Trip: <%= @trip.id %></h1>
+
+<h2>Info</h2>
+      <p>Start Date: <%= @trip.date_ref.date %></p>
+      <p>Start Station: <%= @trip.start_station.name%></p>
+      <p>End Date: <%= @trip.end_date.date %></p>
+      <p>End Station: <%= @trip.end_station.name %></p>
+      <p>Bike ID: <%= @trip.bike.bike %></p>
+      <p>Subscripton Type: <%= @trip.subscription_type.sub_type %></p>
+      <p>Zipcode <%= @trip.zipcode.zipcode %></p>
+<input class="button_active" onclick="location.href='/trips/<%= @trip.id %>/edit';" type="button" value="Edit">
+<form action="/trips/<%= @trip.id %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete">
+</form>
+
+

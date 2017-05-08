@@ -24,12 +24,4 @@ class DateRef < ActiveRecord::Base
     self.date.month
   end
   
-  # def self.august
-  #   where(month: 8)
-  # end
-
-  # def self.clean_datetime(date)
-  #   date = date.split('T')[0]
-
-  # end
 end

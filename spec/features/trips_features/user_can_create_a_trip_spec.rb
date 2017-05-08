@@ -2,6 +2,18 @@ require './spec/spec_helper'
 
 RSpec.describe "when a user visits the new trip page" do
   it "they can create a new trip" do
+    city_1 = City.create(name: "squeevillia")
+    city_2 = City.create(name: "rhondarhiffic")
+    city_3 = City.create(name: "chrissable")
+    city_4 = City.create(name: "adamtastic")
+    Station.create(
+                  name: "something",
+                  dock_count: 1,
+                  city_id: 1,
+                  installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'),
+                  longitude: -121.9,
+                  latitude: 30.7
+    )
     zipcode = Zipcode.create(zipcode: 94127)
     expect(Trip.all.count).to eq(0)
 

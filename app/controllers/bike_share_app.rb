@@ -37,4 +37,9 @@ class BikeShareApp < Sinatra::Base
     @station = Station.create!(station_details)
     redirect "/stations/#{@station.id}"
   end
+
+  get '/stations-dashboard' do
+    @stations = Station.all
+    erb :"stations/dashboard"
+  end
 end

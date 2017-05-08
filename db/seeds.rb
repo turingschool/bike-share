@@ -1,4 +1,4 @@
-require './app/models/city'
+Require './app/models/city'
 require './app/models/station'
 require './app/models/date'
 require 'date'

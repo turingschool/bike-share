@@ -51,7 +51,7 @@
           <img src="/assets/bicycle.svg"/>
           <h2>Viewing Station: <i><%= @station.name %></i></h2>
           <span>Dock Count: <%= @station.dock_count %></span><br />
-          <span>City: <%= @station.city.name %></span><br />
+          <span>City: <a href="/cities/<%= @station.city.id %>"><%= @station.city.name %></a></span><br />
           <span>Installation Date: <%= @station.date %></span><br />
           <span>
             <form action="/stations/<%= @station.id %>" method="post">

@@ -20,3 +20,8 @@
   <input type="text" name="condition[precipitation]" value="<%= @condition.precipitation %>" />
   <input type="submit" value="Update Condition" />
 </form>
+
+<form method="post" action="/conditions/<%= @condition.id %>">
+  <input type="hidden" name="_method" value="DELETE" />
+  <input type="submit" class="btn-delete">Delete</button>
+</form>

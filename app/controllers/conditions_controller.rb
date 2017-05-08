@@ -1,3 +1,4 @@
+require 'pry'
 class ConditionsController < BikeShareApp
   set :views, File.join(APP_ROOT, "app", "views", "conditions")
 
@@ -25,7 +26,9 @@ class ConditionsController < BikeShareApp
   end
 
   put '/conditions/:id' do |id|
-    @condition = Condition.update(id)
+    condition_details = params[:condition]
+    condition_details[:date] = Date.strptime(condition_details[:date],'%m/%d/%Y')
+    @condition = Condition.update(id, condition_details)
     redirect "/conditions/#{id}"
   end
 

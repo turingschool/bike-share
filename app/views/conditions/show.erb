@@ -1,13 +1,13 @@
 <h1>Weather Conditions on <%= @condition.date %></h1>
 
 <h2>Info</h2>
-Maximum Temperature: <%= @condition.max_temp %>
-Mean Temperature: <%= @condition.mean_temp %>
-Minimum Temperature: <%= @condition.min_temp %>
-Mean Humidity: <%= @condition.mean_humidity %>
-Mean Visibility: <%= @condition.mean_visibility %>
-Mean Wind Speed: <%= @condition.mean_wind_speed %>
-Precipitation: <%= @condition.precipitation %>
+<p>Highest Temperature: <%= @condition.max_temp %> F</p>
+<p>Mean Temperature: <%= @condition.mean_temp %> F</p>
+<p>Lowest Temperature: <%= @condition.min_temp %> F</p>
+<p>Mean Humidity: <%= @condition.mean_humidity %></p>
+<p>Mean Visibility: <%= @condition.mean_visibility %> miles</p>
+<p>Mean Wind Speed: <%= @condition.mean_wind_speed %> mph</p>
+<p>Precipitation: <%= @condition.precipitation %> inches</p>
 
 <button class="btn-edit">
   <a href="/conditions/<%= @condition.id %>/edit">Edit Condition</a>

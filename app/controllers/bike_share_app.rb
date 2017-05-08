@@ -96,7 +96,6 @@ class BikeShareApp < Sinatra::Base
 #route after filling new trip form
   post '/trips' do
     trip = Trip.update(params)
-    binding.pry
     redirect "/trips/#{trip.id}"
   end
 
@@ -108,6 +107,10 @@ class BikeShareApp < Sinatra::Base
     erb :'trips/edit'
   end
 
+  put '/trips/:id' do
+    trip = @trips = Trip.update(params)
+    redirect "/trips/#{trip.id}"
+  end
 
 
 # #route to delete single trip

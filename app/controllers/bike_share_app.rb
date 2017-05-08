@@ -113,9 +113,9 @@ class BikeShareApp < Sinatra::Base
   end
 
 
-# #route to delete single trip
-#   delete '/trips/:id' do
-#     @trip = Trip.destroy(params[:id])
-#     redirect "/trips"
-#   end
+#route to delete single trip
+  delete '/trips/:id' do
+    @trip = Trip.destroy(params[:id])
+    redirect "/trips"
+  end
 end

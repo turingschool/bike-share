@@ -1,4 +1,5 @@
 require './spec/spec_helper'
+require './spec/features/stations/controller_helper'
 
 RSpec.describe "when a user visits the new station page" do
   it "they can create a new station" do

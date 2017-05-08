@@ -7,9 +7,29 @@ class ConditionsController < BikeShareApp
     erb :"conditions/index"
   end
 
-  get 'contitions/:id' do
+  get '/contitions/:id' do
     @condition = Condition.find(params[:id])
     erb :"conditions/show"
+  end
+
+  get '/conditions/new' do 
+    erb :"conditions/new"
+  end
+
+  post '/conditions/new' do
+    Condition.create(params)
+  end
+
+  get '/conditions/:id/edit' do
+    @condition = Condition.find(params[:id])
+    erb :"conditions/edit"
+  end
+
+  put '/conditions/:id' do
+    condition = Condition.find(params[:id])
+    condition.update(params[:condition])
+    
+    redirect '/conditions'
   end
 
 end

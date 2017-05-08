@@ -24,11 +24,9 @@
     <tr>
       <td><%= trip.duration %></td>
       <td><%= trip.format_start_date_time %></td>
-      <!-- <td><%= trip.start_station_id.name %></td> -->
-      <!-- Methods may be chained in incorrect order -->
+      <td><%= trip.station.name %></td>
       <td><%= trip.format_start_end_date_time %></td>
-      <!-- <td><%= trip.end_station_id.name %></td> -->
-      <!-- Methods may be chained in incorrect order -->
+      <td><%= trip.station.name %></td>
       <td><%= trip.bike_id %></td>
       <td><%= trip.subscription_type %></td>
       <td><%= trip.zipcode %></td>

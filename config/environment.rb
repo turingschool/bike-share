@@ -20,24 +20,3 @@ class BikeShareApp < Sinatra::Base
   set :views, File.join(APP_ROOT, "app", "views")
   set :public_folder, File.join(APP_ROOT, "app", "public")
 end
-
-class StationsController < Sinatra::Base
-  set :method_override, true
-  set :root, APP_ROOT
-  set :views, File.join(APP_ROOT, "app", "views", "stations")
-  set :public_folder, File.join(APP_ROOT, "app", "public")
-end
-
-# class TripsController < Sinatra::Base
-#   set :method_override, true
-#   set :root, APP_ROOT
-#   set :views, File.join(APP_ROOT, "app", "views", "trips")
-#   set :public_folder, File.join(APP_ROOT, "app", "public")
-# end
-
-# class TripsController < Sinatra::Base
-#   set :method_override, true
-#   set :root, APP_ROOT
-#   set :views, File.join(APP_ROOT, "app", "views", "conditions")
-#   set :public_folder, File.join(APP_ROOT, "app", "public")
-# end

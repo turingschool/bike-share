@@ -1,4 +1,6 @@
-class StationsController < Sinatra::Base
+class StationsController < BikeShareApp
+  set :views, File.join(APP_ROOT, "app", "views", "stations")
+  
   get '/stations/new' do
     @station = Station.new
     erb :'new'

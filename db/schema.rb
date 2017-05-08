@@ -40,4 +40,19 @@ ActiveRecord::Schema.define(version: 20170508182056) do
     t.decimal "latitude",          null: false
   end
 
+  create_table "trips", force: :cascade do |t|
+    t.integer  "duration",          null: false
+    t.datetime "start_date",        null: false
+    t.integer  "start_station_id",  null: false
+    t.datetime "end_date",          null: false
+    t.integer  "end_station_id",    null: false
+    t.integer  "bike_id",           null: false
+    t.text     "subscription_type", null: false
+    t.integer  "zipcode_id"
+  end
+
+  create_table "zipcodes", force: :cascade do |t|
+    t.integer "zipcode", null: false
+  end
+
 end

@@ -15,5 +15,7 @@ group :development, :test do
   gem 'rack-test'
   gem 'database_cleaner'
   gem 'pry'
+  gem "nyan-cat-formatter"
+  gem "rspec-pride"
 end
 

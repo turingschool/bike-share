@@ -2,6 +2,7 @@ require './spec/spec_helper'
 
 RSpec.describe "When a user visits the view individual trip page" do
   before do
+    city_1 = City.create(name: "something")
     zipcode1 = Zipcode.create(name: "99999")
     Trip.create!(
                   duration: 60,

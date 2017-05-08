@@ -2,6 +2,8 @@ require './spec/spec_helper'
 
 RSpec.describe "When a user edits a trip" do
   before do
+    city_1 = City.create(name: "something")
+    city_2 = City.create(name: "else")
     zipcode1 = Zipcode.create(name: "99999")
     Trip.create!(
                   duration: 60,
@@ -22,10 +24,23 @@ RSpec.describe "When a user edits a trip" do
     )
   end
 
-  it "can edit the duration" do
+  it "can edit the trip" do
     visit('/trips/1/edit')
-    expect(page)
+    expect(page).to have_content("Edit This Trip")
+    fill_in("trip[duration]", with: 60)
+    select "else", :from => "trip[start_station_id]"
+    fill_in("trip[start_date]", with: "09/30/2013 12:40")
+    select "else", :from => "trip[start_station_id]"
+    fill_in("trip[end_date]", with: "09/30/2013 12:41")
+    select "else", :from => "trip[end_station_id]"
+    fill_in("trip[bike_id]", with: 600)
+    select "Subscriber", :from => "trip[subscription_type]"
+    select 94127, :from => "trip[zipcode_id]"
 
+    click_button("Update Trip")
+
+    expect(page).to have_current_path("/trips/1")
+    expect(page).to have_content("Start Station: else")
+    expect(page).to have_content("Bike ID: 600")
   end
-
 end

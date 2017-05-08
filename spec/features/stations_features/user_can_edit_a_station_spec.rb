@@ -17,7 +17,7 @@ RSpec.describe "when a user edits a station" do
 
   end
 
-  it "can edit the name" do
+  it "can edit the station" do
     visit('/stations/1/edit')
 
     fill_in("station[name]", with: "Else")

@@ -8,7 +8,7 @@ RSpec.describe 'use can view an individual stations page' do
     visit("/stations/view_all")
     click_on "Additional Info"
 
-    expect(current_path).to eq("/stations/#{station.id}")
+    expect(current_path).to eq("/stations/1")
     expect(page).to have_content("MLK")
     expect(page).to have_content("Edit")
   end

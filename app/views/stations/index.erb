@@ -8,8 +8,8 @@
   <ti> Install Date: <%= station.install_date %> </ti>
 
   </ul>
-  <a href='/stations/edit/<%=station.id%>'>Edit Station</a>
-  <form action='/stations/delete/<%=station.id%>' method="POST" >
+  <a href='/stations/<%=station.id%>/edit'>Edit Station</a>
+  <form action='/stations/<%=station.id%>' method="POST" >
     <input type='hidden' name='_method' value="DELETE" />
     <input type='submit' value='Delete' />
   </form>

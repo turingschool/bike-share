@@ -21,7 +21,4 @@ RSpec.configure do |c|
     DatabaseCleaner.clean
   end
 
-  c.before(:example, :station_fixtures => true) do
-    load 'fixtures/station_fixtures.rb'
-  end
 end

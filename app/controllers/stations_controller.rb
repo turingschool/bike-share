@@ -7,11 +7,6 @@ class StationsController < BikeShareApp
     erb :"stations/index"
   end
 
-  get '/stations/:id' do
-    @station = Station.find(params[:id])
-    erb :"stations/show"
-  end
-
   get '/stations/new' do
     erb :"stations/new"
   end
@@ -19,7 +14,12 @@ class StationsController < BikeShareApp
   post '/stations/new' do
     city = City.find_or_create_by(name: params[:city])
     station = city.stations.create(params[:station])
-    redirect "stations/show/#{station.id}"
+    redirect "stations/#{station.id}"
+  end
+
+  get '/stations/:id' do
+    @station = Station.find(params[:id])
+    erb :"stations/show"
   end
 
   get '/stations/:id/edit' do

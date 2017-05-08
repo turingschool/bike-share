@@ -55,11 +55,11 @@
     <select name="trip[subscription]">
     <% @subscriptions.each do |subscription| %>
       <% if subscription.id == @trip.subscription_type.id %>
-          <option value="<%= subscription.id %>" selected="selected">
+          <option value="<%= subscription.sub_type %>" selected="selected">
           <%= subscription.sub_type %>
           </option>
       <%else%>
-          <option value="<%= subscription.id%>">
+          <option value="<%= subscription.sub_type%>">
           <%= subscription.sub_type %>
           </option>
         <% end %>

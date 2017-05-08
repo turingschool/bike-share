@@ -1,7 +1,7 @@
 class BikeShareApp < Sinatra::Base
 
   get '/' do
-    redirect '/stations'
+    erb :index
   end
 
 #station dashboard with statistics
@@ -56,6 +56,7 @@ class BikeShareApp < Sinatra::Base
                               city_id: (params[:station][:city_id]),
                               date_ref_id: date.id
                              )
+
     redirect "/stations/#{@station.id}"
   end
 
@@ -71,6 +72,7 @@ class BikeShareApp < Sinatra::Base
 
 #trip dashboard with statistics
   get '/trips-dashboard' do
+    erb :'trips/dashboard'
     
   end
   
@@ -111,7 +113,6 @@ class BikeShareApp < Sinatra::Base
     trip = @trips = Trip.update(params)
     redirect "/trips/#{trip.id}"
   end
-
 
 #route to delete single trip
   delete '/trips/:id' do

@@ -38,12 +38,13 @@ class Trip<ActiveRecord::Base
     start_station = Station.find(trip[:start_station].to_i)
     end_station = Station.find(trip[:end_station].to_i)
 
-    Trip.create!(date_ref_id: start_date.id,
+    Trip.create!(
+                date_ref_id: start_date.id,
                 end_date_id: end_date.id,
                 start_station_id: start_station.id,
                 end_station_id: end_station.id,
                 bike_id: bike.id,
-                zipcode_id: zipcode.nil? ? "00000" : zipcode.id,
+                zipcode_id: zipcode.nil? ? zipcode : zipcode.id,
                 subscription_type_id: subscription.id)
   end
   

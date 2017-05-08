@@ -4,7 +4,7 @@ RSpec.describe "Trip CRUD" do
   before(:each) do
     @city = City.create(name: "San Jose")
     @station_1 = Station.create(name: "station_1", dock_count: 32, date: "4/12/2013", city_id: @city.id)
-    @station_1 = Station.create(name: "station_2", dock_count: 42, date: "6/12/2013", city_id: @city.id)
+    @station_2 = Station.create(name: "station_2", dock_count: 42, date: "6/12/2013", city_id: @city.id)
   end
   describe "creating a trip" do
     it "allows the user to fill out a form to create a trip" do

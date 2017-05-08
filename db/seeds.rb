@@ -1,3 +1,4 @@
+require 'pry'
 require './app/models/city'
 require './app/models/station'
 require './app/models/date'
@@ -43,6 +44,7 @@ weathers.each do |row|
 								 mean_temperature:		row[:mean_temperature_f],
 								 minimum_temperature: row[:min_temperature_f],
 								 mean_visibility:			row[:mean_visibility_miles],
+								 mean_humidity:				row[:mean_humidity],
 								 mean_wind_speed:			row[:mean_wind_speed_mph],
 								 percipitation:				row[:precipitation_inches],
 								 zip_code:						row[:zip_code],

@@ -1,0 +1,7 @@
+<h1>Edit Weather</h1>
+
+<form action="/conditions/edit/<%= condition.id %>" method="post">
+  <input type="hidden" name='_method' value='PUT' />
+  Date:  <input type="textfield" name='condition[name]' value="<%= @condition.name %>"/>
+  Zip Code: <input type="textfield" name="condition[zip_code]" value="<%= @condition.zip_code %>"/>
+</form>

@@ -7,14 +7,14 @@
   <ti> Max Temperature: <%= condition.maximum_temperature %></ti>
   <ti> Mean Temperature: <%= condition.mean_temperature %></ti>
   <ti> Min Temperature: <%= condition.minimum_temperature %></ti>
-  <ti> Mean Temperature: <%= condition.mean_temperature %></ti>
+  <ti> Mean Humidity: <%= condition.mean_humidity %> %</ti>
   <ti> Mean Visibility (in Miles): <%= condition.mean_visibility %></ti>
   <ti> Mean Wind Speed (mph): <%= condition.mean_wind_speed %></ti>
   <ti> Precipitation (inches): <%= condition.percipitation %></ti>
   </ul>
 
-  <a href="/conditions/edit/<%= condition.id %>">Edit Weather Conditions</a>
-  <form action="/stations/delete/<%= station.id %>" method="POST">
+  <a href="/conditions/<%= condition.id %>/edit">Edit Weather Conditions</a>
+  <form action="/conditions/<%= condition.id %>" method="POST">
     <input type="hidden" name="_method" value="DELETE" />
     <input type="submit" value="Delete" />
   </form>

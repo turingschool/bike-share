@@ -3,12 +3,13 @@ require './app/controllers/bike_share_app'
 class ConditionsController < BikeShareApp
 
   get '/conditions' do
-    @conditions = Condition.all
+    @conditions = Weather.all
     erb :"conditions/index"
   end
 
   get '/contitions/:id' do
-    @condition = Condition.find(params[:id])
+    @condition = Weather.find(params[:id])
+		"test"
     erb :"conditions/show"
   end
 
@@ -17,24 +18,24 @@ class ConditionsController < BikeShareApp
   end
 
   post '/conditions/new' do
-    condition = Condition.create(params[:condition])
+    condition = Weather.create(params[:condition])
     redirect "conditions/#{condition.id}"
   end
 
   get '/conditions/:id/edit' do
-    @condition = Condition.find(params[:id])
+    @condition = Weather.find(params[:id])
     erb :"conditions/edit"
   end
 
   put '/conditions/:id' do
-    condition = Condition.find(params[:id])
+    condition = Weather.find(params[:id])
     condition.update(params[:condition])
     
     redirect "conditions/#{condition.id}"
   end
 
   delete '/conditions/:id' do
-    condition = Condition.find(params[:id])
+    condition = Weather.find(params[:id])
     station.destroy
 
     redirect '/conditions'

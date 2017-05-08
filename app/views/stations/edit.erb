@@ -1,7 +1,7 @@
 <h1>Edit Station</h1>
-<linke rel="stylesheet" type="text/css" href="../../css/style"
+<link rel="stylesheet" type="text/css" href="../../css/style" >
 
-<form action='/stations/edit/<%=@station.id%>' method='post'>
+<form action='/stations/<%=@station.id%>' method='post'>
   <input type="hidden" name='_method' value='PUT' />
   Name: <input type="textfield" name='station[name]' value="<%= @station.name %>"/>
   Number of Docks: <input type="textfield" name='station[dock_count]' value="<%= @station.dock_count %>"/>

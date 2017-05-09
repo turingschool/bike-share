@@ -60,6 +60,11 @@
           <span>Mean Visibility: <%= @condition.mean_visibility %></span><br />
           <span>Mean Wind Speed: <%= @condition.mean_wind_speed %></span><br />
           <span>Precipitation: <%= @condition.precipitation %></span><br />
+          <span>
+            <form action="/conditions/<%= @condition.id %>/edit">
+              <input type="submit" value="Edit" />
+            </form>
+          </span>
         </div>
       </div>
     </div>

@@ -114,4 +114,8 @@ class BikeShareApp < Sinatra::Base
     Trip.destroy(params[:id])
     redirect "/trips"
   end
+
+  get '/trips-dashboard' do
+    erb :'trips/trip_dashboard'
+  end
 end

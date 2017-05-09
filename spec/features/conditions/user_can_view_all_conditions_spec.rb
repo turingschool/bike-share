@@ -102,4 +102,27 @@ RSpec.describe "When a user views conditions index" do
       expect(page).to have_content("Next Page")
     end
   end
+
+  it "the user can see a previous button when on a page past 1" do
+    40.times do
+      Condition.create(
+                        date: Date.strptime("08/30/2014",'%m/%d/%Y'),
+                        max_temp: 77.0,
+                        mean_temp: 66.0,
+                        min_temp: 44.0,
+                        mean_humidity: 80.0,
+                        mean_visibility: 20.0,
+                        mean_wind_speed: 21.0,
+                        precipitation: 10.0,
+                        zipcode_id: 1
+                      )
+    end
+    visit('/conditions?page=2')
+    expect(page).to have_css('.btn.btn-prev')
+    expect(page).to have_content("Previous Page")
+    expect(page).to have_content("Page 2 of 2")
+    expect(page).to have_css('.btn.btn-next')
+    expect(page).to have_content("Next Page")
+  end
+end
 end

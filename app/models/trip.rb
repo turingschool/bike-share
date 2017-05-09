@@ -24,7 +24,7 @@ class Trip < ActiveRecord::Base
   end
 
   def self.shortest_ride
-    minimum(:duration).to_i / 60
+    minimum(:duration).to_i
   end
 
   def self.station_with_most_starting_place_rides

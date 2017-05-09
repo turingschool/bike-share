@@ -10,7 +10,6 @@ class WeatherStatistic < ActiveRecord::Base
       '94041'=> 'Mountain View', 
       '95113'=> 'San Jose'
     }
-  
   end
 
 end

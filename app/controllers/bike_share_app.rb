@@ -67,20 +67,13 @@ class BikeShareApp < Sinatra::Base
 
 #trips index landing page
   get '/trips' do
-    # binding.pry
-    if params[:page].nil? || params[:page] == "1"
-      @page = 1  
-      @trips = Trip.limit(30)
-      erb :"/trips/index"
-    else
-      @page = params[:page].to_i
-      @trips = Trip.limit(30).offset(@page*30)
-      if @trips.count == 30
-        erb :"/trips/index_b"
-      else
-        erb :"/trips/index_c"
-      end
-    end
+    @params = {
+      page: params['page'].to_i,
+      status: true
+    }
+    @trips = Trip.limit(30).offset(@params[:page].to_i * 30)
+    @params[:status] = false if @trips.count < 30
+    erb :"/trips/index"
   end
 
   #trips index landing page

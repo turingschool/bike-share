@@ -73,7 +73,7 @@ class Trip<ActiveRecord::Base
   def self.dashboard
     {
       average_duration_ride: Trip.average(:duration).to_i,
-      longest_ride: {Trip.where(duration: Trip.maximum(:duration)) => Trip.maximum(:duration)},
+      longest_ride: Trip.longest_ride_data,
       shortest_ride: {Trip.where(duration: Trip.minimum(:duration)) =>Trip.minimum(:duration)},
       popular_starting_station: Trip.group(:start_station).order("count_id DESC").count(:id).first[0].name,
       popular_ending_station: Trip.group(:end_station).order("count_id DESC").count(:id).first[0].name,
@@ -84,6 +84,27 @@ class Trip<ActiveRecord::Base
       top_trip_date: Trip.sort_hash_merge(Trip.trip_date_query('DESC')),
       lowest_trip_date:Trip.sort_hash_merge(Trip.trip_date_query('ASC'))
     }
+  end
+
+
+  def self.longest_ride_data
+    trip = Trip.where(duration: Trip.maximum(:duration))
+    duration = Trip.maximum(:duration)
+    {
+      start: trip.first.start_station.name,
+      end: trip.first.end_station.name,
+      duration: Trip.convert_duration(duration)
+    }
+  end
+
+  def self.convert_duration(duration)
+    if duration > 60
+      hr = duration % 60
+      mn = (duration/60).round
+      "#{hr}:#{mn}"
+    else
+      "00:#{duration}"
+    end
   end
 
   def self.sort_trips_by_date(date)

@@ -1,9 +1,20 @@
-<a href="/trips"><button>All Trips</button></a>
 </br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<a href="/trips"><button>All Trips</button></a>
 
 <p>Average duration of ride: <%= @trips_dashboard_data[:average_duration_ride] %></p>
-<p>Longest ride: <%= @trips_dashboard_data[:longest_ride] %></p>
+<p>Longest ride: </p>
+<p>Started at: <%= @trips_dashboard_data[:longest_ride][:start]%>, Ended at: <%= @trips_dashboard_data[:longest_ride][:end]%></p> 
+<p>Duration: <%= @trips_dashboard_data[:longest_ride][:duration]%>  </p>
+
 <p>Shortest ride: <%=	 @trips_dashboard_data[:shortest_ride] %> </p>
+
 <p>Stations with the most ride as a starting place: <%= @trips_dashboard_data[:popular_starting_station] %></p>
 <p>Station with the most ride as an ending place: <%=	@trips_dashboard_data[:popular_ending_station]  %></p>
 <p>Month by month breakdown of number of rides with subtotals for each year:</p></<br>

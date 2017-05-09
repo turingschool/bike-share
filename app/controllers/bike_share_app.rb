@@ -105,5 +105,4 @@ class BikeShareApp < Sinatra::Base
 
     redirect '/conditions'
   end
-.find
 end

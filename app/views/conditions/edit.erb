@@ -21,7 +21,7 @@
   <label for="condition[zipcode_id]">Zipcode: </label>
   <select name="condition[zipcode_id]">
     <% Zipcode.all.each do |zipcode| %>
-      <option value="<%= zipcode.id %>"><%= zipcode.zipcode %></option>
+      <option value="<%= zipcode.id %>" <%= @condition.zipcode_selected?(zipcode.id) %>><%= zipcode.zipcode %></option>
     <% end %>
   </select>
   <input type="submit" value="Update Condition" />

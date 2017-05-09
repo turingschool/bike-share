@@ -1,8 +1,10 @@
 require './spec/spec_helper'
 
 RSpec.describe "When a user edits a condition" do
-  it "can edit all feilds" do
+  before {
     zip = Zipcode.create(zipcode: "09000")
+    zip_2 = Zipcode.create(zipcode: "90000")
+    zip_3 = Zipcode.create(zipcode: "99000")
     condition = Condition.create(
                                 date: Date.strptime("08/30/2013",'%m/%d/%Y'),
                                 max_temp: 87.0,
@@ -12,9 +14,10 @@ RSpec.describe "When a user edits a condition" do
                                 mean_visibility: 10.0,
                                 mean_wind_speed: 11.0,
                                 precipitation: 0,
-                                zipcode_id: 1
+                                zipcode_id: zip_2.id
                                 )
-
+  }
+  it "can edit all feilds" do
     visit('/conditions/1/edit')
 
     fill_in("condition[date]", with: "07/20/2013")
@@ -38,5 +41,12 @@ RSpec.describe "When a user edits a condition" do
     expect(page).to have_content("Mean Wind Speed: 12.0 mph")
     expect(page).to have_content("Precipitation: 0.01 inches")
     expect(page).to have_content('Zipcode: 09000')
+  end
+  it "can skip editing zipcode field" do
+    visit('/conditions/1/edit')
+
+    click_button("Update Condition")
+
+    expect(page).to have_content('Zipcode: 90000')
   end
 end

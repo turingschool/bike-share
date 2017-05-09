@@ -20,8 +20,4 @@ RSpec.configure do |c|
   c.after(:each) do
     DatabaseCleaner.clean
   end
-
-  c.before(:example, :station_fixtures => true) do
-    load 'fixtures/station_fixtures.rb'
-  end
 end

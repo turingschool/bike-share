@@ -6,6 +6,7 @@ require './app/models/weather'
 require 'time'
 require 'date'
 require 'CSV'
+
 total_start_time = Time.now
 
 stations = CSV.open './db/csv/station.csv', headers: true, header_converters: :symbol
@@ -21,6 +22,7 @@ stations.each do |row|
                  city_id:           city.id
                  )
 end
+
 end_time = Time.now
 duration = (end_time - start_time)
 puts "stations.csv file upload complete! #{Weather.count} records in #{duration} seconds!"

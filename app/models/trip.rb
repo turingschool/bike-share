@@ -15,6 +15,10 @@ class Trip<ActiveRecord::Base
   validates :start_station_id, presence: true
   validates :end_station_id, presence: true
 
+  def name
+    "Trip: #{self.id}"
+  end
+
   def self.sterilize(params)
     trip = params[:trip]
 

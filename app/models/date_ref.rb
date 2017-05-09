@@ -24,4 +24,7 @@ class DateRef < ActiveRecord::Base
     self.date.month
   end
   
+  def name
+    self.date.to_s
+  end
 end

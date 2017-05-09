@@ -28,15 +28,15 @@ class Station < ActiveRecord::Base
     {
       rides_started: Trip.where(start_station_id: id).count,
       rides_ended: Trip.where(end_station_id: id).count,
-      most_popular_destination: Station.most_popular_station(id, :end_station),
-      most_popular_origin: Station.most_popular_station(id, :start_station),
-      most_popular_date: Station.most_popular_date(id),
-      most_popular_zipcode: Station.most_popular_zipcode(id),
-      most_popular_bike: Station.most_popular_bike(id),
+      most_popular_destination: Station.most_popular(id, :end_station),
+      most_popular_origin: Station.most_popular(id, :start_station),
+      most_popular_date: Station.most_popular(id, :date_ref),
+      most_popular_zipcode: Station.most_popular(id, :zipcode),
+      most_popular_bike: Station.most_popular(id, :bike),
     }
   end
 
-  def self.most_popular_station(id, group)
+  def self.most_popular(id, group)
     most_pop = Trip.where(start_station_id: id).group(group).order("count_id DESC").count(:id)
     if most_pop.empty?
       "n/a"
@@ -44,35 +44,6 @@ class Station < ActiveRecord::Base
       most_pop.first[0].name
     end
   end
-
-  def self.most_popular_date(id)
-    most_pop = Trip.where(start_station_id: id).group(:date_ref).order("count_id DESC").count(:id)
-    if most_pop.empty?
-      "n/a"
-    else
-      most_pop.first[0].date
-    end
-  end
-
-  def self.most_popular_zipcode(id)
-    most_pop = Trip.where(start_station_id: id).group(:zipcode).order("count_id DESC").count(:id)
-    if most_pop.empty?
-      "n/a"
-    else
-      most_pop.first[0].zipcode
-    end
-  end
-  
-  def self.most_popular_bike(id)
-    most_pop = Trip.where(start_station_id: id).group(:bike).order("count_id DESC").count(:id)
-    if most_pop.empty?
-      "n/a"
-    else
-      most_pop.first[0].bike
-    end
-  end
-
-
 
   def self.dashboard_subdata
     {

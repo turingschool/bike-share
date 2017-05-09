@@ -17,4 +17,24 @@ class Trip < ActiveRecord::Base
   def format_end_date_time
     end_date.strftime('%m/%d/%Y %H:%M')
   end
+
+  def self.average_duration
+    Trip.average(:duration)
+  end
+
+  def self.longest_ride
+    Trip.maximum(:duration)
+  end
+
+  def self.shortest_ride
+    Trip.minimum(:duration)
+  end
+
+  def self.starting_station_most_rides
+    (Station.find_by(id: (Trip.group(:start_station_id)).order('count_id DESC').count(:id).first)).name
+  end
+
+  def self.ending_station_most_rides
+    (Station.find_by(id: (Trip.group(:end_station_id)).order('count_id DESC').count(:id).first)).name
+  end
 end

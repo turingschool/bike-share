@@ -28,7 +28,7 @@
       <td><%= trip.end_station.name %></td>
       <td><%= trip.bike.bike %></td>
       <td><%= trip.subscription_type.sub_type %></td>
-      <td><%= trip.zipcode.zipcode %></td>
+      <td><%= trip.zipcode.zipcode unless trip.zipcode.nil? %></td>
       
       <td><a href="/trips/<%= trip.id %>/edit"><button>Edit</button></a></td>
       <td>

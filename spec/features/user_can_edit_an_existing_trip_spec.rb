@@ -22,7 +22,7 @@ RSpec.describe "When a user visits '/trips/{id}/edit'" do
 
     click_on "Edit Trip"
 
-    expect(current_path).to eq("/trips/2")
+    expect(current_path).to eq("/trips/1")
 
     expect(page).to have_content("Broadway")
     expect(page).to have_content("Monthly")

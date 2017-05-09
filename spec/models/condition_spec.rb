@@ -120,4 +120,32 @@ RSpec.describe Condition do
                                 )
     expect(condition).to be_invalid
   end
+
+  it "returns 'selected' when passed its zipcode id" do
+    condition = Condition.create(
+                                date: Date.strptime("08/30/2013",'%m/%d/%Y'),
+                                max_temp: 87.0,
+                                mean_temp: 76.0,
+                                min_temp: 54.0,
+                                mean_humidity: 90.0,
+                                mean_visibility: 10.0,
+                                mean_wind_speed: 11.0,
+                                zipcode_id: 1
+                                )
+      expect(condition.zipcode_selected?(1)).to eq "selected"
+  end
+
+  it "returns '' when passed a different zipcode id" do
+    condition = Condition.create(
+                                date: Date.strptime("08/30/2013",'%m/%d/%Y'),
+                                max_temp: 87.0,
+                                mean_temp: 76.0,
+                                min_temp: 54.0,
+                                mean_humidity: 90.0,
+                                mean_visibility: 10.0,
+                                mean_wind_speed: 11.0,
+                                zipcode_id: 1
+                                )
+      expect(condition.zipcode_selected?(2)).to eq ""
+  end
 end

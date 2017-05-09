@@ -58,7 +58,7 @@ class Trip < ActiveRecord::Base
   end
 
   def self.user_subscription_type_count
-    group(:bike_id).count("id").max_by do |bike, count|
+    group(:subscription_type).count("id").max_by do |bike, count|
       count
     end
   end

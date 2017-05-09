@@ -27,6 +27,7 @@ end
 conditions = read_csv('./db/csv/weather.csv')
 conditions.each do |condition|
   puts condition[:mean_humidity]
+  #don't accept rows that have blanks in their data
   zip = Zipcode.find_or_create_by(zipcode: condition[:zip_code])
   Condition.create!(date: Date.strptime(condition[:date],'%m/%d/%Y'),
                     max_temp: condition[:max_temperature_f],

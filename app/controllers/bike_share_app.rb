@@ -132,4 +132,9 @@ class BikeShareApp < Sinatra::Base
     @condition = Condition.find(params[:id])
     erb :'/conditions/show'
   end
+
+  get '/conditions' do
+    @conditions = Condition.get_paginated_conditions(params)
+    erb :'/conditions/index'
+  end
 end

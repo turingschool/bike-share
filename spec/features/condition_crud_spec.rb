@@ -19,31 +19,31 @@ RSpec.describe "Condition CRUD" do
 
   describe "weather condition index" do
     it "shows all weather conditions" do
-      visit("conditions/new")
-      fill_in "condition[max_temperature]", with: "75"
-      fill_in "condition[mean_temperature]", with: "76"
-      fill_in "condition[min_temperature]", with: "64"
-      fill_in "condition[mean_humidity]", with: "78.0"
-      fill_in "condition[mean_visibility]", with: "10.0"
-      fill_in "condition[mean_wind_speed]", with: "9.0"
-      fill_in "condition[precipitation]", with: ".41"
-      fill_in "condition[date]", with: "1/13/13"
-      click_on "Create Weather Condition"
+      condition = Condition.create(
+                                   max_temperature: "75",
+                                   mean_temperature: "76",
+                                   min_temperature: "64",
+                                   mean_humidity: "78.0",
+                                   mean_visibility: "10.0",
+                                   mean_wind_speed: "9.0",
+                                   precipitation: ".41",
+                                   date: "1/1/13"
+                                   )
 
-      visit("conditions/new")
-      fill_in "condition[max_temperature]", with: "75"
-      fill_in "condition[mean_temperature]", with: "76"
-      fill_in "condition[min_temperature]", with: "64"
-      fill_in "condition[mean_humidity]", with: "78.0"
-      fill_in "condition[mean_visibility]", with: "10.0"
-      fill_in "condition[mean_wind_speed]", with: "9.0"
-      fill_in "condition[precipitation]", with: ".41"
-      fill_in "condition[date]", with: "1/14/13"
-      click_on "Create Weather Condition"
+       condition = Condition.create(
+                                    max_temperature: "75",
+                                    mean_temperature: "76",
+                                    min_temperature: "64",
+                                    mean_humidity: "78.0",
+                                    mean_visibility: "10.0",
+                                    mean_wind_speed: "9.0",
+                                    precipitation: ".41",
+                                    date: "1/2/13"
+                                    )
 
       visit("/conditions")
-      expect(page).to have_content("1/13/13")
-      expect(page).to have_content("1/14/13")
+      expect(page).to have_content("1/2/13")
+      expect(page).to have_content("1/2/13")
     end
   end
   # describe "updating conditions" do

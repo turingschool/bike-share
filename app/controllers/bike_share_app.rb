@@ -116,6 +116,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips-dashboard' do
-    erb :'trips/trips_dashboard'
+    erb :'trips/trip_dashboard'
   end
 end

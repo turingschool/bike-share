@@ -55,11 +55,16 @@
 				<h2>Trips Index</h2>
 			</div>
 		</div>
-    <% @trips.each do |trip| %>
-      <h3><a href="trips/<%= trip.id %>">Trip ID: <%= trip.id %></a></h3>
-      <span>Start Station: <%= trip.start_station.name %></span><br />
-      <span>End Station: <%= trip.end_station.name %></span>
-    <% end %>
+		<%= will_paginate @trips %>
+	    <% @trips.each do |trip| %>
+	      <h3><a href="trips/<%= trip.id %>">Trip ID: <%= trip.id %></a></h3>
+	      <span>Start Station: <%= trip.start_station.name %></span><br />
+	      <span>Start Date: <%= trip.start_date %></span><br />
+				<br />
+	      <span>End Station: <%= trip.end_station.name %></span><br />
+	      <span>End Date: <%= trip.end_date %></span><br />
+				<br />
+	    <% end %>
 	</div>
 
 	<script src="js/jquery.js"></script>

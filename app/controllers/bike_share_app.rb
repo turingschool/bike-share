@@ -1,7 +1,11 @@
 require 'pry'
 require 'time'
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 # require 'chartkick' - causing sinatra to crash, not sure if implementing right
 class BikeShareApp < Sinatra::Base
+  include WillPaginate::Sinatra::Helpers
   set :root, File.expand_path("..", __dir__)
 
   get '/' do
@@ -94,7 +98,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trips = Trip.get_first_30
+    @trips = Trip.get_paginated_trips(params)
     erb :'trips/index'
   end
 

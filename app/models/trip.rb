@@ -1,5 +1,5 @@
 class Trip < ActiveRecord::Base
-  validates :duration, :start_date, :start_station_id, :end_date, :end_station_id, :bike_id, :subscription_type, presence: true
+  validates :duration, :start_date, :start_station_id, :end_date, :end_station_id, :bike_id, :subscription_type, :zip_code, presence: true
 
   belongs_to :start_station, :class_name => "Station"
   belongs_to :end_station, :class_name => "Station"
@@ -91,7 +91,6 @@ class Trip < ActiveRecord::Base
   def self.most_frequest_starting_station
     station = group(:start_station).count
     top_station = station.max_by { |station, count| count }
-    #station.first.name
   end
 
   def self.least_frequest_starting_station
@@ -100,15 +99,18 @@ class Trip < ActiveRecord::Base
   end
 
   def self.highest_number_of_trips_of_stations_by_date
-
+    date = where(start_station_id: id).group(:start_date).count("id")
+    highest_date = date.max_by { |date, count| date}
   end
 
   def self.most_frequesnt_zip_code_for_starting_station
-
+    zipcode = where(start_station_id: id).group(:zip_code).count("id")
+    highest_zip_code = zipcode.max_by { |zipcode, count| zipcode}
   end
 
   def self.most_frequenst_bike_id_for_starting_station
-
+    bike = where(start_station_id: id).group(:bike_id).count("id")
+    highest_bike = bike.max_by { |bike, count| bike}
   end
 
 end

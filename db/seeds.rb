@@ -19,3 +19,18 @@ stations.each do |station|
                 longitude: station[:long],
                 latitude: station[:lat])
 end
+
+conditions = read_csv('./db/csv/weather.csv')
+conditions.each do |condition|
+  zip = Zipcode.find_or_create_by(zipcode: condition[:zip_code])
+  Condition.create!(date: Date.strptime(condition[:date],'%m/%d/%Y'),
+                    max_temp: condition[:maximum_temperature_f],
+                    mean_temp: condition[:mean_temperature_f],
+                    min_temp: condition[:min_temperature_f],
+                    mean_humidity: condition[:mean_humidity],
+                    mean_visibility: condition[:mean_visibility_miles],
+                    mean_wind_speed: condition[:mean_wind_speed_mph],
+                    precipitation: condition[:precipitation_inches],
+                    zipcode: zip.id
+                    )
+end

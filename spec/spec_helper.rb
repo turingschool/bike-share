@@ -6,6 +6,7 @@ require './db/loader'
 require 'rspec'
 require 'capybara/dsl'
 require 'database_cleaner'
+require 'pry'
 
 DatabaseCleaner.strategy = :truncation
 

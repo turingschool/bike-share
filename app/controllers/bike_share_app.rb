@@ -12,17 +12,22 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations/new' do
+    @city = City.new()
+    @station = Station.new()
     erb :"stations/new"
+
   end
 
   post '/stations/new' do
     @city = City.find_or_create_by(name: params[:city])
-    @station = Station.create(params[:station])
-    binding.pry
-    if @city.invalid? || @station.invalid?
+    @station = Station.new(params[:station])
+    if @station.invalid? || @city.invalid?
+      @city.invalid? 
       erb :"stations/new"
     else
-      redirect "stations/#{station.id}"
+      @station.save
+      @city.stations << @station
+      redirect "stations/#{@station.id}"
     end 
 
   end

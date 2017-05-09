@@ -126,4 +126,43 @@ RSpec.describe "When a user views conditions index" do
     expect(page).to have_content("Previous Page")
     expect(page).to have_content("Page 2 of 2")
   end
+
+  it "the user does not see more than 30 records per page" do
+    zip = Zipcode.create(zipcode: "09000")
+    40.times do
+      Condition.create(
+                        date: Date.strptime("08/30/2014",'%m/%d/%Y'),
+                        max_temp: 77.0,
+                        mean_temp: 66.0,
+                        min_temp: 44.0,
+                        mean_humidity: 80.0,
+                        mean_visibility: 20.0,
+                        mean_wind_speed: 21.0,
+                        precipitation: 10.0,
+                        zipcode_id: 1
+                      )
+    end
+    visit('/conditions')
+    expect(page).to have_selector('tr.row', count: 30)
+  end
+
+  it "offset properly shows the 'next' set of records" do
+    zip = Zipcode.create(zipcode: "09000")
+    40.times do
+      Condition.create(
+                        date: Date.strptime("08/30/2014",'%m/%d/%Y'),
+                        max_temp: 77.0,
+                        mean_temp: 66.0,
+                        min_temp: 44.0,
+                        mean_humidity: 80.0,
+                        mean_visibility: 20.0,
+                        mean_wind_speed: 21.0,
+                        precipitation: 10.0,
+                        zipcode_id: 1
+                      )
+    end
+    visit('/conditions')
+    click_link('Next Page')
+    expect(page).to have_selector('tr.row', count: 10)
+  end
 end

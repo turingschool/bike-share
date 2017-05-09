@@ -23,5 +23,8 @@ class Condition < ActiveRecord::Base
     (Condition.count / 30) + 1
   end
 
-  
+  def self.paginate(page)
+    offset = ( page - 1 ) * 30
+    Condition.limit(30).offset(offset)
+  end
 end

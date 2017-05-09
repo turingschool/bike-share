@@ -37,7 +37,7 @@ class Trip < ActiveRecord::Base
 
   def self.station_with_most_ending_place_rides
     group(:end_station).count("id").max_by do |station, count|
-      count
+      station
     end
   end
 

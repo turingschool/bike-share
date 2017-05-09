@@ -98,7 +98,6 @@ class BikeShareApp < Sinatra::Base
     # @start_stations = StartStation.all
     # @end_stations = EndStation.all
     # @subscription_type = SubscriptionType.all
-    binding.pry
     @trip = Trip.find(params[:id])
     trip_details = params[:trip]
     start_d = trip_details[:start_date].split("-")

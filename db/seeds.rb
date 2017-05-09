@@ -64,3 +64,8 @@ trips.each do |row|
               zipcode_id: zipcode.id,
               subscription_type_id: subscription.id)
 end
+
+weather_statistics = CSV.open './db/csv/weather.csv', headers:true, header_converters: :symbol
+weather_statistics.each do |row|
+
+end

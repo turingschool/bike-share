@@ -1,3 +1,5 @@
+require 'pry'
+
 class Trip < ActiveRecord::Base
   validates :duration, :start_date, :start_station_id, :end_date, :end_station_id, :bike_id, :subscription_type, presence: true
 
@@ -29,7 +31,7 @@ class Trip < ActiveRecord::Base
 
   def self.station_with_most_starting_place_rides
     group(:start_station).count("id").max_by do |station, count|
-      count
+      station
     end
   end
 

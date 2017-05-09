@@ -95,8 +95,8 @@ RSpec.describe Condition do
     expect(condition).to be_invalid
   end
 
-   it "doesn't work without a mean_wind_speed" do
-     condition = Condition.create(
+  it "doesn't work without a mean_wind_speed" do
+    condition = Condition.create(
                                 date: Date.strptime("08/30/2013",'%m/%d/%Y'),
                                 max_temp: 87.0,
                                 mean_temp: 76.0,

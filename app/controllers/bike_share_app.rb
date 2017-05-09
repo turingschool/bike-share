@@ -32,10 +32,16 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
-    city = City.find_or_create_by(name: params[:city])
-    city.stations.find(params[:id]).update(params[:station])
+    @city = City.find_or_create_by(name: params[:city])
+    @station = Station.create(params[:station])
 
-    redirect '/stations'
+    if @city.invalid? || @station.invalid?
+      erb :"stations/edit"
+    else
+      city.stations.find(params[:id]).update(params[:station])
+      redirect '/stations'
+    end
+
   end
 
   delete '/stations/:id' do

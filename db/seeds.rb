@@ -1,6 +1,5 @@
 require './app/models/city'
 require './app/models/station'
-require './app/models/date'
 require 'date'
 require 'CSV'
 

@@ -100,10 +100,10 @@ class BikeShareApp < Sinatra::Base
     # @subscription_type = SubscriptionType.all
     @trip = Trip.find(params[:id])
     trip_details = params[:trip]
-    start_d = trip_details[:start_date].split("-")
-    end_d   = trip_details[:end_date].split("-")
-    trip_details[:start_date] = RideDate.create(day: start_d[2].to_i, month: start_d[1].to_i, year: start_d[0].to_i)
-    trip_details[:end_date] = RideDate.create(day: end_d[2].to_i, month: end_d[1].to_i, year: end_d[0].to_i)
+    ride_start_date = RideDate.find_or_create_by(RideDate.format_date_hash(trip_details["start_date_id"]))
+    ride_end_date = RideDate.find_or_create_by(RideDate.format_date_hash(trip_details["end_date_id"]))
+    trip_details["start_date_id"] = (StartDate.find_or_create_by(ride_date_id: ride_start_date.id)).id
+    trip_details["end_date_id"] = (EndDate.find_or_create_by(ride_date_id: ride_end_date.id)).id
     @trip.update(trip_details)
     redirect "trips/#{@trip.id}"
   end
@@ -111,12 +111,12 @@ class BikeShareApp < Sinatra::Base
   post '/trips' do
     subscription_type = SubscriptionType.find_by(name: params[:subscription_type][:name])
     trip_details = params[:trip]
-    # start_d = trip_details[:start_date].split("-")
-    # end_d   = trip_details[:end_date].split("-")
-    # trip_details[:start_date] = RideDate.create(day: start_d[2].to_i, month: start_d[1].to_i, year: start_d[0].to_i)
-    # trip_details[:end_date] = RideDate.create(day: end_d[2].to_i, month: end_d[1].to_i, year: end_d[0].to_i)
-    trip_details[:start_date] = RideDate.find_or_create_by(RideDate.format_date_hash(trip_details[:start_date]))
-    trip_details[:end_date] = RideDate.find_or_create_by(RideDate.format_date_hash(trip_details[:end_date]))
+    ride_start_date = RideDate.find_or_create_by(RideDate.format_date_hash(trip_details["start_date_id"]))
+    ride_end_date = RideDate.find_or_create_by(RideDate.format_date_hash(trip_details["end_date_id"]))
+    trip_details["start_date"] = (StartDate.find_or_create_by(ride_date_id: ride_start_date.id)).id
+    trip_details["end_date"] = (EndDate.find_or_create_by(ride_date_id: ride_end_date.id)).id
+    trip_details["start_date_id"] = trip_details.delete("start_date")
+    trip_details["end_date_id"] = trip_details.delete("end_date")
     @trip = subscription_type.trips.create(trip_details)
 
     redirect "/trips/#{@trip.id}"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170508233741) do
+ActiveRecord::Schema.define(version: 20170509204208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,21 @@ ActiveRecord::Schema.define(version: 20170508233741) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "conditions", force: :cascade do |t|
+    t.integer "ride_date_id"
+    t.integer "max_temperature"
+    t.integer "mean_temperature"
+    t.integer "min_temperature"
+    t.integer "mean_humidity"
+    t.integer "mean_visibility"
+    t.integer "mean_wind_speed"
+    t.string  "precipitation"
+  end
+
+  create_table "end_dates", force: :cascade do |t|
+    t.integer "ride_date_id"
   end
 
   create_table "end_stations", force: :cascade do |t|
@@ -33,6 +48,10 @@ ActiveRecord::Schema.define(version: 20170508233741) do
     t.integer  "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "start_dates", force: :cascade do |t|
+    t.integer "ride_date_id"
   end
 
   create_table "start_stations", force: :cascade do |t|

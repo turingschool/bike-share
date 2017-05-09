@@ -18,4 +18,8 @@ class Condition < ActiveRecord::Base
     return "selected" if id == zipcode_id
     ""
   end
+
+  def self.all_pages
+    (Condition.count / 30) + 1
+  end
 end

@@ -45,9 +45,9 @@ RSpec.describe "When a user views conditions index" do
                         precipitation: 10.0,
                         zipcode_id: zip_2.id
                       )
-      visit('/conditions')
     }
     it "the user sees information about entered weather conditions" do
+      visit('/conditions')
       expect(page).to have_content("Date")
       expect(page).to have_content("08/30/2013")
       expect(page).to have_content("08/30/2014")
@@ -77,9 +77,29 @@ RSpec.describe "When a user views conditions index" do
       expect(page).to have_content('90000')
     end
 
-    it "the user can see total number of pages and current page number" do
+    it "the user can see total number of pages and current page number when less than 30" do
+      visit('/conditions')
       expect(page).to have_content('Page 1 of 1')
-      
+    end
+
+    it "the user can see total number of pages and current page number when more than 30" do
+      40.times do
+        Condition.create(
+                          date: Date.strptime("08/30/2014",'%m/%d/%Y'),
+                          max_temp: 77.0,
+                          mean_temp: 66.0,
+                          min_temp: 44.0,
+                          mean_humidity: 80.0,
+                          mean_visibility: 20.0,
+                          mean_wind_speed: 21.0,
+                          precipitation: 10.0,
+                          zipcode_id: 1
+                        )
+      end
+      visit('/conditions')
+      expect(page).to have_content("Page 1 of 2")
+      expect(page).to have_css('.btn.btn-next')
+      expect(page).to have_content("Next Page")
     end
   end
 end

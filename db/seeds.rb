@@ -40,7 +40,7 @@ trips.each do |row|
 
   zipcode =
     if  row[:zip_code].nil?
-      nil
+      Zipcode.find_or_create_by!(zipcode: "n/a")
     else
       Zipcode.find_or_create_by!(zipcode: (row[:zip_code][0..4]))
     end
@@ -61,7 +61,7 @@ trips.each do |row|
               start_station_id: start_station.id,
               end_station_id: end_station.id,
               bike_id: bike.id,
-              zipcode_id: zipcode.nil? ? zipcode : zipcode.id,
+              zipcode_id: zipcode.id,
               subscription_type_id: subscription.id)
 end
 

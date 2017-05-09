@@ -15,6 +15,10 @@ class Trip<ActiveRecord::Base
   validates :start_station_id, presence: true
   validates :end_station_id, presence: true
 
+  def name
+    "Trip: #{self.id}"
+  end
+
   def self.sterilize(params)
     trip = params[:trip]
 
@@ -35,10 +39,10 @@ class Trip<ActiveRecord::Base
   end
 
   def self.zip_validate(zipcode)
-    if  zipcode.nil?
-      nil
+    if  zipcode.empty?
+      Zipcode.find_or_create_by!(zipcode: "n/a")
     else
-      Zipcode.find_or_create_by!(zipcode: zipcode[0..4])
+      Zipcode.find_or_create_by!(zipcode: (zipcode[0..4]))
     end
   end
 
@@ -50,7 +54,7 @@ class Trip<ActiveRecord::Base
             start_station_id: trip_data[:start_station].id,
             end_station_id: trip_data[:end_station].id,
             bike_id: trip_data[:bike].id,
-            zipcode_id: trip_data[:zipcode].nil? ? trip_data[:zipcode] : trip_data[:zipcode].id,
+            zipcode_id: trip_data[:zipcode].id,
             subscription_type_id: trip_data[:subscription].id)
   end
 
@@ -62,7 +66,7 @@ class Trip<ActiveRecord::Base
         start_station_id: trip_data[:start_station].id,
         end_station_id: trip_data[:end_station].id,
         bike_id: trip_data[:bike].id,
-        zipcode_id: trip_data[:zipcode].nil? ? trip_data[:zipcode] : trip_data[:zipcode].id,
+        zipcode_id: trip_data[:zipcode].id,
         subscription_type_id: trip_data[:subscription].id)
   end
 

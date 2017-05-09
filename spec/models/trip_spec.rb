@@ -148,8 +148,6 @@ RSpec.describe Trip do
       bike1 = Bike.create(bike: 670)
       bike2 = Bike.create(bike: 571)
       bike3 = Bike.create(bike: 272)
-      
-
 
       subscription_type1 = SubscriptionType.create(sub_type: "Customer")
       subscription_type2 = SubscriptionType.create(sub_type: "Subscriber")
@@ -180,7 +178,6 @@ RSpec.describe Trip do
       expect(dashboard[:subscription_breakout]).to eq({"Customer"=>[5, 0.56], "Subscriber"=>[3, 0.33], "Monthly"=>[1, 0.11]})
       expect(dashboard[:top_trip_date][0].to_s).to eq("2011-02-02")
       expect(dashboard[:lowest_trip_date][0].to_s).to eq("2013-08-05")
- 
     end
   end
 end

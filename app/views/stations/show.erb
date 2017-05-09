@@ -12,5 +12,11 @@
 
 <h2>Station trends</h2>
 <p>Total rides started at this stations: <%=	 @trip_individual_data[:rides_started] %> </p>
+<p>Total rides ended and this station: <%=	 @trip_individual_data[:rides_ended] %></p>
+<p>Most frequent destination at this station: <%=	 @trip_individual_data[:most_popular_destination] %></p>
+<p>Most frequent origin station: <%=	 @trip_individual_data[:most_popular_origin] %></p>
+<p>Date with highest number of trips started at this station: <%=	 @trip_individual_data[:most_popular_date] %></p>
+<p>Most Frequent Zipcode for users starting trips at this station: <%= @trip_individual_data[:most_popular_zipcode] %></p>
+<p>Bike id most frequently starting a trip at this station: <%= @trip_individual_data[:most_popular_bike] %></p>
 
 

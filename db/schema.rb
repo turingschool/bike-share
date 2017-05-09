@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20170508234241) do
 
   # These are extensions that must be enabled in order to support this database
@@ -72,13 +73,15 @@ ActiveRecord::Schema.define(version: 20170508234241) do
     t.float    "mean_visibility"
     t.float    "mean_wind_speed"
     t.float    "precipitation"
+
     t.integer  "zipcode_id"
+
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
 
   create_table "zipcodes", force: :cascade do |t|
-    t.integer  "zipcode"
+    t.string   "zipcode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -63,4 +63,28 @@ RSpec.describe "Trip CRUD" do
       expect(page).to have_content("222")
     end
   end
+
+  describe "deleting trips" do
+    it "allows the user to delete a trip" do
+      city = City.create(name: "San Jose")
+      station_1 = Station.create(name: "station_1", dock_count: 32, date: "4/12/2013", city_id: city.id)
+      station_2 = Station.create(name: "station_2", dock_count: 42, date: "6/12/2013", city_id: city.id)
+      trip = Trip.create(duration: "111",
+                         start_date: "6/12/2015",
+                         start_station_id: station_1.id,
+                         end_date: "6/13/2015",
+                         end_station_id: station_2.id,
+                         bike_id: 1,
+                         subscription_type: "subscriber"
+                         )
+
+      count_before_delete = Trip.count
+      visit("/trips/#{trip.id}")
+      click_on "Delete Trip"
+      count_after_delete = Trip.count
+
+      expect(count_before_delete - count_after_delete).to eq(1)
+      expect(page).to have_current_path("/trips")
+    end
+  end
 end

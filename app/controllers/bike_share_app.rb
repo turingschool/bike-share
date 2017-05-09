@@ -1,7 +1,11 @@
 require 'pry'
 require 'time'
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 # require 'chartkick' - causing sinatra to crash, not sure if implementing right
 class BikeShareApp < Sinatra::Base
+  include WillPaginate::Sinatra::Helpers
   set :root, File.expand_path("..", __dir__)
 
   get '/' do
@@ -11,17 +15,17 @@ class BikeShareApp < Sinatra::Base
   get '/station-dashboard' do
     @station = Station.all
     @city = City.all
-    erb :station_dashboard
+    erb :'stations/station_dashboard'
   end
 
   get '/stations' do
     @stations = Station.all
-    erb :index
+    erb :'stations/index'
   end
 
   get '/stations/new' do
     @cities = City.all
-    erb :new
+    erb :'stations/new'
   end
 
   post '/stations' do
@@ -33,13 +37,13 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations/:id' do
     @station = Station.find(params[:id])
-    erb :station
+    erb :'stations/show'
   end
 
   get '/stations/:id/edit' do
     @station = Station.find(params[:id])
     @cities = City.all
-    erb :edit
+    erb :'stations/edit'
   end
 
   put '/stations/:id' do |id|
@@ -94,11 +98,12 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trips = Trip.get_first_30
+    @trips = Trip.get_paginated_trips(params)
     erb :'trips/index'
   end
 
   get '/trips/:id/edit' do
+    @stations = Station.all
     @trip = Trip.find(params[:id])
     erb :'trips/edit'
   end
@@ -107,5 +112,14 @@ class BikeShareApp < Sinatra::Base
     trip = Trip.find(params[:id])
     trip.update(params[:trip])
     redirect "/trips/#{params[:id]}"
+  end
+
+  delete '/trips/:id' do
+    Trip.destroy(params[:id])
+    redirect "/trips"
+  end
+
+  get '/trips-dashboard' do
+    erb :'trips/trip_dashboard'
   end
 end

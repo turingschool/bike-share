@@ -1,5 +1,3 @@
-require "zlib"
-
 require "bundler"
 require "zlib"
 require "pry"

@@ -7,12 +7,6 @@ class ConditionsController < BikeShareApp
     erb :"conditions/index"
   end
 
-  get '/contitions/:id' do
-    @condition = Weather.find(params[:id])
-		"test"
-    erb :"conditions/show"
-  end
-
   get '/conditions/new' do 
     erb :"conditions/new"
   end
@@ -22,12 +16,17 @@ class ConditionsController < BikeShareApp
     redirect "conditions/#{condition.id}"
   end
 
+  get '/conditions/:id' do
+    @condition = Weather.find(params[:id])
+    erb :"conditions/show"
+  end
+
   get '/conditions/:id/edit' do
     @condition = Weather.find(params[:id])
     erb :"conditions/edit"
   end
 
-  put '/conditions/:id' do
+  put '/conditions/:id/edit' do
     condition = Weather.find(params[:id])
     condition.update(params[:condition])
     

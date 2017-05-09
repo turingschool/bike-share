@@ -18,7 +18,7 @@ stations.each do |row|
 
   Station.create(name:              row[:name],
                  dock_count:        row[:dock_count],
-                 install_date: Date.strptime(row[:installation_date], "%m/%d/%Y"),
+                 install_date:      Date.strptime(row[:installation_date], "%m/%d/%Y"),
                  city_id:           city.id
                  )
 end
@@ -41,16 +41,16 @@ weathers.each do |row|
 					"94063" => City.where(name: "Redwood City"),
 					"94041" => City.where(name: "Mountain View")
 				 }
-	Weather.create(date:								Date.strptime(row[:date], "%m/%d/%Y" ),
+	Weather.create(date:                Date.strptime(row[:date], "%m/%d/%Y" ),
 								 maximum_temperature: row[:max_temperature_f],
-								 mean_temperature:		row[:mean_temperature_f],
+								 mean_temperature:    row[:mean_temperature_f],
 								 minimum_temperature: row[:min_temperature_f],
-								 mean_visibility:			row[:mean_visibility_miles],
-								 mean_humidity:				row[:mean_humidity],
-								 mean_wind_speed:			row[:mean_wind_speed_mph],
-								 percipitation:				row[:precipitation_inches],
-								 zip_code:						row[:zip_code],
-								 city_id:							zips[row[:zip_code]][0].id
+								 mean_visibility:     row[:mean_visibility_miles],
+								 mean_humidity:       row[:mean_humidity],
+								 mean_wind_speed:     row[:mean_wind_speed_mph],
+								 percipitation:       row[:precipitation_inches],
+								 zip_code:            row[:zip_code],
+								 city_id:             zips[row[:zip_code]][0].id
 								)
 end
 

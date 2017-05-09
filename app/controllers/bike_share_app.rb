@@ -132,40 +132,50 @@ class BikeShareApp < Sinatra::Base
 ##WEATHER
 ###################################
 
+#weather dashboard with statistics
   get '/weather-dashboard' do
+    @dashboard_data = WeatherStatistic.dashboard
     erb :'weather/dashboard'
   end
 
+#weather index landing page
   get "/conditions" do
     @weather = WeatherStatistic.all
     erb :'weather/index'
   end
 
+#form for new weather
   get '/conditions/new' do
+    @city = City.all
     erb :'weather/new'
   end
 
+#single weather page
   get '/conditions/:id' do
     @weather = WeatherStatistic.find(params[:id])
     erb :'weather/show'
   end
 
+#route after filling new weather form
   post '/conditions' do
-    @weather = WeatherStatistic.create(params)
+    @weather = WeatherStatistic.create_new(params)
     redirect "/conditions/#{@weather.id}"
   end
 
+#form to edit weather
   get '/conditions/:id/edit' do
     @city = City.all
     @weather = WeatherStatistic.find(params[:id])
     erb :"weather/edit"
   end
 
+#route to update after editing weather
   put '/conditions/:id' do
     @weather = WeatherStatistic.update_record(params)
     redirect "/conditions/#{@weather.id}"
   end
 
+#route to delete single weather record
   delete 'conditions/:id' do
     @weather = WeatherStatistic.destroy(params[:id])
     redirect "/conditions"

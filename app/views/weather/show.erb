@@ -1,0 +1,20 @@
+<h1><%= @weather.id %></h1>
+
+
+<h2>Info</h2>
+<p>Date: <%= @weather.date_ref.date%></p>
+<p>Maximum Temperature: <%= @weather.max_temperature%></p>
+<p>Minimum Temperature: <%= @weather.min_temperature%></p>
+<p>Average Temperature: <%= @weather.mean_temperature%></p>
+<p>Average Humidity: <%= @weather.mean_humidity%></p>
+<p>Average Visibility: <%= @weather.mean_visibility%></p>
+<p>Average Wind Speed: <%= @weather.mean_wind_speed%></p>
+<p>Precipitation: <%= @weather.precipitation%></p>
+<p>City: <%= @weather.city.name%></p>
+
+
+<input class="button_active" onclick="location.href='/conditions/<%= @weather.id %>/edit';" type="button" value="Edit">
+<form action="/conditions/<%= @weather.id %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete">
+</form>

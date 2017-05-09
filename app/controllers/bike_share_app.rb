@@ -113,7 +113,6 @@ class BikeShareApp < Sinatra::Base
 
   put '/trips/:id' do
     trip = Trip.update_record(params)
-    binding.pry
     redirect "/trips/#{trip.id}"
   end
 

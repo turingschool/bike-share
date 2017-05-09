@@ -9,29 +9,44 @@
 <a href="/trips"><button>All Trips</button></a>
 
 <p>Average duration of ride: <%= @trips_dashboard_data[:average_duration_ride] %></p>
+
 <p>Longest ride: </p>
 <p>Started at: <%= @trips_dashboard_data[:longest_ride][:start]%>, Ended at: <%= @trips_dashboard_data[:longest_ride][:end]%></p> 
 <p>Duration: <%= @trips_dashboard_data[:longest_ride][:duration]%>  </p>
 
-<p>Shortest ride: <%=	 @trips_dashboard_data[:shortest_ride] %> </p>
+
+
+<p>Shortest ride:</p>
+<p>Started at: <%= @trips_dashboard_data[:shortest_ride][:start]%>, Ended at: <%= @trips_dashboard_data[:shortest_ride][:end]%></p> 
+<p>Duration: <%= @trips_dashboard_data[:shortest_ride][:duration]%>  </p>
+
+
+
+
+
+
+
+
+
 
 <p>Stations with the most ride as a starting place: <%= @trips_dashboard_data[:popular_starting_station] %></p>
 <p>Station with the most ride as an ending place: <%=	@trips_dashboard_data[:popular_ending_station]  %></p>
 <p>Month by month breakdown of number of rides with subtotals for each year:</p></<br>
+<% @trips_dashboard_data[:month_breakdown].each do |year, months|%>
+<h3><%= year.to_i %><h3>
 <table>
   <tr>
     <th>Month</th>
     <th>Value</th>
   </tr>
+  <% months.each do |month| %>
   <tr>
-    <td><%=	 @trips_dashboard_data[:month_breakdown][0].keys.first %></td>
-    <td><%=	 @trips_dashboard_data[:month_breakdown][0].values.first %></td>
+    <td><%=	 month[0] %></td>
+    <td><%=	 month[1]%></td>
   </tr>
-  <tr>
-    <td><%=	 @trips_dashboard_data[:month_breakdown][0].keys.last %></td>
-    <td><%=	 @trips_dashboard_data[:month_breakdown][0].values.last %></td>
-  </tr>
+  <%end%>
 </table>
+<%end%>
 
 <p>Most ridden bike with total number of rides: <%=	@trips_dashboard_data[:most_ridden_bike]  %></p>
 <p>Least ridden bike with total number of rides: <%=	 @trips_dashboard_data[:least_ridden_bike] %></p>
@@ -55,5 +70,9 @@
   </tr>
 </table>
 
-<p>Single date with highest number of trips: <%= @trips_dashboard_data[:top_trip_date]	  %></p>
-<p>Single date with lowest number of trips: <%= @trips_dashboard_data[:lowest_trip_date]	  %></p>
+<p>Single date with highest number of trips:</p>
+<p>Date: <%= @trips_dashboard_data[:top_trip_date][0].strftime("%B %d, %Y")%> </p>
+<p>Trips: <%= @trips_dashboard_data[:top_trip_date][1]%></p>
+<p>Single date with lowest number of trips:</p>
+<p>Date: <%= @trips_dashboard_data[:lowest_trip_date][0].strftime("%B %d, %Y")%> </p>
+<p>Trips: <%= @trips_dashboard_data[:lowest_trip_date][1]%></p>

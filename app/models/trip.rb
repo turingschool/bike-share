@@ -1,3 +1,4 @@
+require 'date'
 class Trip<ActiveRecord::Base
   belongs_to :bike
   belongs_to :zipcode
@@ -74,10 +75,10 @@ class Trip<ActiveRecord::Base
     {
       average_duration_ride: Trip.average(:duration).to_i,
       longest_ride: Trip.longest_ride_data,
-      shortest_ride: {Trip.where(duration: Trip.minimum(:duration)) =>Trip.minimum(:duration)},
+      shortest_ride: Trip.shortest_ride_data,
       popular_starting_station: Trip.group(:start_station).order("count_id DESC").count(:id).first[0].name,
       popular_ending_station: Trip.group(:end_station).order("count_id DESC").count(:id).first[0].name,
-      month_breakdown: DateRef.distinct.pluck('extract(year from date)').map{ |date| {date => Trip.sort_trips_by_date(date)}},
+      month_breakdown: Trip.month_breakdown_data,
       most_ridden_bike: Trip.group(:bike).order("count_id DESC").count(:id).first[0].bike,
       least_ridden_bike: Trip.group(:bike).order("count_id ASC").count(:id).first[0].bike,
       subscription_breakout: Trip.sort_subscription_breakout(subscription_query),
@@ -86,6 +87,21 @@ class Trip<ActiveRecord::Base
     }
   end
 
+  def self.month_breakdown_data
+    break_down = DateRef.distinct.pluck('extract(year from date)').map{ |date| {date => Trip.sort_trips_by_date(date)}}
+    break_down.reduce Hash.new, :merge
+    
+  end
+
+  def self.shortest_ride_data
+    trip = Trip.where(duration: Trip.minimum(:duration))
+    duration = Trip.minimum(:duration)
+    {
+      start: trip.first.start_station.name,
+      end: trip.first.end_station.name,
+      duration: Trip.convert_duration(duration)
+    }
+  end
 
   def self.longest_ride_data
     trip = Trip.where(duration: Trip.maximum(:duration))
@@ -98,18 +114,39 @@ class Trip<ActiveRecord::Base
   end
 
   def self.convert_duration(duration)
-    if duration > 60
-      hr = duration % 60
-      mn = (duration/60).round
-      "#{hr}:#{mn}"
-    else
-      "00:#{duration}"
+    if duration <= 60
+      "Hours: 00 Min: 00 Sec:#{duration}"
+    elsif ((duration/60)/60) > 23
+      days = (((duration/60)/60))/24
+      hr = ((duration/60)/60) % 24
+      mn = (duration/60) % 60
+      sc = duration % 60
+      "Days: #{days} Hours: #{hr} Min: #{mn} Sec: #{sc}"
+    elsif (duration/60) > 59
+      hr = ((duration/60)/60)
+      mn = (duration/60) % 60
+      sc = duration % 60
+      "Hours: #{hr} Min: #{mn} Sec:#{sc}"
+    elsif  
+      sc = duration % 60
+      mn = (duration/60).to_i
+      "Hours: 00 Min: #{mn} Sec: #{sc}"
     end
   end
 
   def self.sort_trips_by_date(date)
-    Trip.joins(:date_ref).where('extract(year from date) = ?', date).group('extract(month from date)').order('count_id DESC').count(:id)
+    trip = Trip.joins(:date_ref)
+        .where('extract(year from date) = ?', date)
+        .group('extract(month from date)')
+        .order('count_id DESC')
+        .count(:id)
+    trip = trip.sort.to_h
+    trip.transform_keys do |key|
+      Date::MONTHNAMES[key]
+    end
+    
   end
+
 
   def self.sort_subscription_breakout(array)
     array.map{|k, v| {k.sub_type=> [v, (v/Trip.count.to_f).round(2)]}}.inject(:merge)

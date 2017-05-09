@@ -11,17 +11,17 @@ class BikeShareApp < Sinatra::Base
   get '/station-dashboard' do
     @station = Station.all
     @city = City.all
-    erb :station_dashboard
+    erb :'stations/station_dashboard'
   end
 
   get '/stations' do
     @stations = Station.all
-    erb :index
+    erb :'stations/index'
   end
 
   get '/stations/new' do
     @cities = City.all
-    erb :new
+    erb :'stations/new'
   end
 
   post '/stations' do
@@ -33,13 +33,13 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations/:id' do
     @station = Station.find(params[:id])
-    erb :station
+    erb :'stations/show'
   end
 
   get '/stations/:id/edit' do
     @station = Station.find(params[:id])
     @cities = City.all
-    erb :edit
+    erb :'stations/edit'
   end
 
   put '/stations/:id' do |id|

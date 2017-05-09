@@ -9,7 +9,7 @@ RSpec.describe Trip, :type => :model do
       @station_2 = Station.create(name: "station_2", dock_count: 42, date: "6/12/2013", city_id: @city.id)
     end
 
-    it "requires duration, start date,start station, end date, end station, bike id, subscription-type" do
+    it "requires duration, start date,start station, end date, end station, bike id, subscription_type" do
       valid_trip = Trip.create(duration: "111",
                                 start_date: "6/12/2015",
                                 start_station_id: @station_1.id,

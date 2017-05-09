@@ -9,7 +9,7 @@ RSpec.describe "Station CRUD" do
       fill_in "station[dock_count]", with: "42"
       find('.city-selector').find(:xpath, 'option[1]').select_option
       fill_in "station[date]", with: "8/6/2013"
-      click_on "Submit"
+      click_on "Create Station"
 
       expect(page).to have_content("stationicus")
     end
@@ -23,7 +23,7 @@ RSpec.describe "Station CRUD" do
       fill_in "station[dock_count]", with: "42"
       find('.city-selector').find(:xpath, 'option[1]').select_option
       fill_in "station[date]", with: "8/6/2013"
-      click_on "Submit"
+      click_on "Create Station"
 
       visit("/stations/new")
       fill_in "station[name]", with: "station 2"
@@ -31,7 +31,7 @@ RSpec.describe "Station CRUD" do
       # find('.city-selector').find(:xpath, 'option[1]').select_option
       find('.city-selector').find(:xpath, 'option[1]').select_option
       fill_in "station[date]", with: "8/6/2013"
-      click_on "Submit"
+      click_on "Create Station"
 
       visit("/stations")
       expect(page).to have_content("station 1")
@@ -54,7 +54,7 @@ RSpec.describe "Station CRUD" do
         fill_in "station[dock_count]", with: "43"
         find('.city-selector').find(:xpath, 'option[1]').select_option
         fill_in "station[date]", with: "8/6/2014"
-        click_on "Submit"
+        click_on "Update Station"
 
         expect(page).to have_current_path("/stations/#{ station.id }")
         expect(page).to have_content("stationary 2")

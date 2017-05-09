@@ -4,7 +4,6 @@ require './app/models/zipcode.rb'
 require './app/models/condition.rb'
 require './app/models/trip.rb'
 require 'csv'
-require 'pry'
 
 Station.destroy_all
 City.destroy_all

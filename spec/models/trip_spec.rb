@@ -153,5 +153,9 @@ RSpec.describe Trip, :type => :model do
     it 'calculates the shortest ride' do
       expect(Trip.shortest_ride).to eq(63)
     end
+
+    it 'finds the station with most starting rides' do
+      expect(Trip.station_with_most_starting_place_rides.first.name).to eq('Market at Sansome')
+    end
   end
 end

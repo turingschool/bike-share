@@ -28,20 +28,58 @@ class Station < ActiveRecord::Base
     {
       rides_started: Trip.where(start_station_id: id).count,
       rides_ended: Trip.where(end_station_id: id).count,
-      most_popular_destination: Trip.where(start_station_id: id).group(:end_station).order("count_id DESC").count(:id).first[0].name,
-      most_popular_origin: Trip.where(end_station_id: id).group(:start_station).order("count_id DESC").count(:id).first[0].name,
-      most_popular_date: Trip.where(start_station_id: id).group(:date_ref).order("count_id DESC").count(:id).first[0].date,
-      most_popular_zipcode: Trip.where(start_station_id: id).group(:zipcode).order("count_id DESC").count(:id).first[0].zipcode,
-      most_popular_bike: Trip.where(start_station_id: id).group(:bike).order("count_id DESC").count(:id).first[0].bike
+      most_popular_destination: Station.most_popular_station(id, :end_station),
+      most_popular_origin: Station.most_popular_station(id, :start_station),
+      most_popular_date: Station.most_popular_date(id),
+      most_popular_zipcode: Station.most_popular_zipcode(id),
+      most_popular_bike: Station.most_popular_bike(id),
     }
   end
+
+  def self.most_popular_station(id, group)
+    most_pop = Trip.where(start_station_id: id).group(group).order("count_id DESC").count(:id)
+    if most_pop.empty?
+      "n/a"
+    else
+      most_pop.first[0].name
+    end
+  end
+
+  def self.most_popular_date(id)
+    most_pop = Trip.where(start_station_id: id).group(:date_ref).order("count_id DESC").count(:id)
+    if most_pop.empty?
+      "n/a"
+    else
+      most_pop.first[0].date
+    end
+  end
+
+  def self.most_popular_zipcode(id)
+    most_pop = Trip.where(start_station_id: id).group(:zipcode).order("count_id DESC").count(:id)
+    if most_pop.empty?
+      "n/a"
+    else
+      most_pop.first[0].zipcode
+    end
+  end
+  
+  def self.most_popular_bike(id)
+    most_pop = Trip.where(start_station_id: id).group(:bike).order("count_id DESC").count(:id)
+    if most_pop.empty?
+      "n/a"
+    else
+      most_pop.first[0].bike
+    end
+  end
+
+
 
   def self.dashboard_subdata
     {
       maximum_bikes: Station.maximum(:dock_count),
       minimum_bikes: Station.minimum(:dock_count),
-      earliest_date: Station.includes(:date_ref).order("date_refs.date").first.date_ref.id,
-      latest_date: Station.includes(:date_ref).order("date_refs.date").last.date_ref.id
+      earliest_date: Station.includes(:date_ref).order("date_refs.date ASC").first.date_ref.id,
+      latest_date: Station.includes(:date_ref).order("date_refs.date DESC").first.date_ref.id
     }
   end
 

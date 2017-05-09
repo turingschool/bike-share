@@ -25,7 +25,7 @@ class BikeShareApp < Sinatra::Base
 #single station page
   get '/stations/:id' do
     @station = Station.find(params[:id])
-    @trip_individual_data = Station.individual_dashboard(params[:id])
+    @trip_individual_data = Station.individual_dashboard(params[:id].to_i)
     erb :"stations/show"
   end
 

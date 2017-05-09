@@ -174,7 +174,7 @@ RSpec.describe Trip, :type => :model do
 
     it 'finds the most used subscription type' do
       expect(Trip.user_subscription_type_count.first).to eq('subscriber')
-      expect(Trip.user_subscription_type_count[1]).to eq('70')
+      expect(Trip.user_subscription_type_count[1]).to eq(70)
     end
   end
 end

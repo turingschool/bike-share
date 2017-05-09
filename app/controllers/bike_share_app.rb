@@ -108,4 +108,9 @@ class BikeShareApp < Sinatra::Base
     trip.update(params[:trip])
     redirect "/trips/#{params[:id]}"
   end
+
+  delete '/trips/:id' do
+    Trip.destroy(params[:id])
+    redirect "/trips"
+  end
 end

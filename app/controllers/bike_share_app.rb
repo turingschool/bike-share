@@ -75,13 +75,31 @@ class BikeShareApp < Sinatra::Base
   get '/trips-dashboard' do
     @trips_dashboard_data = Trip.dashboard
     erb :'trips/dashboard'
-    
+  end
+
+
+  get '/trips' do
+    redirect 'trips/page/back/0'
   end
   
 #trips index landing page
-  get '/trips' do
-    @trips = Trip.limit(30)
+  get '/trips/page/back/0' do
+    @page_index = 0
+    @trips = Trip.page_load(0)
     erb :"/trips/index"
+  end
+
+  #trips index landing page
+  get '/trips/page/:id' do
+    @page_index = (params[:id].to_i + 1)
+    @trips = Trip.limit(30).offset(@page_index * 30)
+    erb :"/trips/index_b"
+  end
+
+  get '/trips/page/back/:id' do
+    @page_index = (params[:id].to_i - 1)
+    @trips = Trip.limit(30).offset(@page_index * 30)
+    erb :"/trips/index_b"
   end
 
 #form for new trips
@@ -93,6 +111,7 @@ class BikeShareApp < Sinatra::Base
 
 #single trip page
   get '/trips/:id' do
+
     @trip = Trip.find(params[:id])
     erb :'trips/show'
   end

@@ -106,5 +106,9 @@ class Trip<ActiveRecord::Base
     Trip.group(:date_ref).order("count_id #{mode}").count(:id)
   end
 
+  def self.page_load(id)
+    Trip.limit(30).offset(id.to_i * 30)
+  end
+
 
 end

@@ -9,7 +9,7 @@ class BikeShareApp < Sinatra::Base
     @dashboard_data = Station.dashboard
     erb :'stations/dashboard'
   end
-  
+
 #station index landing page
   get '/stations' do
     @stations = Station.all
@@ -17,7 +17,7 @@ class BikeShareApp < Sinatra::Base
   end
 
 #form for new stations
-  get '/stations/new' do  
+  get '/stations/new' do
     @city = City.all
     erb :"stations/new"
   end
@@ -32,7 +32,6 @@ class BikeShareApp < Sinatra::Base
 #route after filling new station form
   post '/stations' do
     @station = Station.create_new(params)
-    binding.pry
     redirect "/stations/#{@station.id}"
   end
 
@@ -69,7 +68,7 @@ class BikeShareApp < Sinatra::Base
   get '/trips' do
     # binding.pry
     if params[:page].nil? || params[:page] == "1"
-      @page = 1  
+      @page = 1
       @trips = Trip.limit(30)
       erb :"/trips/index"
     else
@@ -90,7 +89,7 @@ class BikeShareApp < Sinatra::Base
   end
 
 #form for new trips
-  get '/trips/new' do  
+  get '/trips/new' do
     @stations = Station.all
     @subscriptions = SubscriptionType.all
     erb :"trips/new"
@@ -127,4 +126,48 @@ class BikeShareApp < Sinatra::Base
     @trip = Trip.destroy(params[:id])
     redirect "/trips"
   end
+
+
+###################################
+##WEATHER
+###################################
+
+  get '/weather-dashboard' do
+    erb :'weather/dashboard'
+  end
+
+  get "/conditions" do
+    @weather = WeatherStatistic.all
+    erb :'weather/index'
+  end
+
+  get '/conditions/new' do
+    erb :'weather/new'
+  end
+
+  get '/conditions/:id' do
+    @weather = WeatherStatistic.find(params[:id])
+    erb :'weather/show'
+  end
+
+  post '/conditions' do
+    @weather = WeatherStatistic.create(params)
+    redirect "/conditions/#{@weather.id}"
+  end
+
+  get '/conditions/:id/edit' do
+    @weather = WeatherStatistic.find(params[:id])
+    erb :"weather/edit"
+  end
+
+  put '/conditions/:id' do
+    @weather = WeatherStatistic.update_record(params)
+    redirect "/conditions/#{@weather.id}"
+  end
+
+  delete 'conditions/:id' do
+    @weather = WeatherStatistic.destroy(params[:id])
+    redirect "/conditions"
+  end
+
 end

@@ -9,7 +9,6 @@ class ConditionsController < BikeShareApp
 
   get '/contitions/:id' do
     @condition = Weather.find(params[:id])
-		"test"
     erb :"conditions/show"
   end
 

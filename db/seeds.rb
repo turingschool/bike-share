@@ -3,6 +3,7 @@ require_relative '../app/models/csv_loader'
 require_relative '../app/models/station'
 require_relative '../app/models/city'
 require_relative '../app/models/trip'
+require_relative '../app/models/weather'
 
 loader = CSVLoader.new
 
@@ -43,4 +44,18 @@ trip_data.each do |trip|
               subscription_type: trip[:subscription_type],
               zip_code: trip[:zip_code]
               )
+end
+
+CSV.foreach("db/csv/weather.csv", headers: true, header_converters: :symbol) do |row|
+  weather_info = {}
+  weather_info[:date] = Date.strptime(row[:date], "%m/%d/%y")
+  weather_info[:max_temperature] = row[:max_temperature]
+  weather_info[:mean_temperature] = row[:mean_temperature]
+  weather_info[:min_temperature] = row[:min_temperature]
+  weather_info[:mean_humidity] = row[:mean_humidity]
+  weather_info[:mean_visibility] = row[:mean_visibility]
+  weather_info[:mean_wind_speed] = row[:mean_wind_speed]
+  weather_info[:precipitation] = row[:precipitation_inches]
+  Weather.create(weather_info)
+
 end

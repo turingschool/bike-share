@@ -21,5 +21,4 @@ RSpec.configure do |c|
   c.after(:each) do
     DatabaseCleaner.clean
   end
-
 end

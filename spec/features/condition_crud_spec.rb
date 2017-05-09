@@ -46,25 +46,26 @@ RSpec.describe "Condition CRUD" do
       expect(page).to have_content("1/2/13")
     end
   end
-  # describe "updating conditions" do
-  #   it "allows the user to update a weather condition" do
-  #     condition = Condition.create(
-  #                                  max_temperature: "75",
-  #                                  mean_temperature: "76",
-  #                                  min_temperature: "64",
-  #                                  mean_humidity: "78.0",
-  #                                  mean_visibility: "10.0",
-  #                                  mean_wind_speed: "9.0",
-  #                                  precipitation: ".41",
-  #                                  date: "1/1/13"
-  #                                  )
-  #
-  #     visit("conditions/#{condition.id}/edit")
-  #     fill_in "condition[min_temp]", with: "58"
-  #     expect(page).to have_current_path("/condition/#{ condition.id }")
-  #     expect(page).to have_content("58")
-  #   end
-  # end
+  describe "updating conditions" do
+    it "allows the user to update a weather condition" do
+      condition = Condition.create(
+                                   max_temperature: "75",
+                                   mean_temperature: "76",
+                                   min_temperature: "64",
+                                   mean_humidity: "78.0",
+                                   mean_visibility: "10.0",
+                                   mean_wind_speed: "9.0",
+                                   precipitation: ".41",
+                                   date: "1/1/13"
+                                   )
+
+      visit("conditions/#{ condition.id }/edit")
+      fill_in "condition[min_temperature]", with: "58"
+      click_on "Update Weather Condition"
+      expect(page).to have_current_path("/conditions/#{ condition.id }")
+      expect(page).to have_content("58")
+    end
+  end
   # describe "deleting conditions" do
   #   it "allows the user to delete a condition" do
   #     condition = Condition.create(

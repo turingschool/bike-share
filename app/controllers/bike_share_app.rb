@@ -137,4 +137,15 @@ class BikeShareApp < Sinatra::Base
     @conditions = Condition.get_paginated_conditions(params)
     erb :'/conditions/index'
   end
+
+  get '/conditions/:id/edit' do
+    @condition = Condition.find(params[:id])
+    erb :'/conditions/edit'
+  end
+
+  put '/conditions/:id' do
+    condition = Condition.find(params[:id])
+    condition.update(params[:condition])
+    redirect "/conditions/#{params[:id]}"
+  end
 end

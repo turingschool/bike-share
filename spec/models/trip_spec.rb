@@ -149,5 +149,9 @@ RSpec.describe Trip, :type => :model do
     it 'calculates the longest ride' do
       expect(Trip.longest_ride).to eq(528)
     end
+
+    it 'calculates the shortest ride' do
+      expect(Trip.shortest_ride).to eq(63)
+    end
   end
 end

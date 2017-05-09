@@ -153,4 +153,8 @@ class BikeShareApp < Sinatra::Base
     Condition.destroy(params[:id])
     redirect "/conditions"
   end
+
+  get '/trips-dashboard' do
+    erb :'trips/trip_dashboard'
+  end
 end

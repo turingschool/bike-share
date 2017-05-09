@@ -6,11 +6,43 @@
 <p>Shortest ride: <%=	 @trips_dashboard_data[:shortest_ride] %> </p>
 <p>Stations with the most ride as a starting place: <%= @trips_dashboard_data[:popular_starting_station] %></p>
 <p>Station with the most ride as an ending place: <%=	@trips_dashboard_data[:popular_ending_station]  %></p>
-<p>Month by month breakdown of number of rides with subtotals for each year: <%= @trips_dashboard_data[:month_breakdown][0]   %> </p>
-<p>August: <%= @trips_dashboard_data[:month_breakdown][0].values.first 	  %> </p>
-<p>September: <%= @trips_dashboard_data[:month_breakdown][0].values.last 	  %> </p>
+<p>Month by month breakdown of number of rides with subtotals for each year:</p></<br>
+<table>
+  <tr>
+    <th>Month</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td><%=	 @trips_dashboard_data[:month_breakdown][0].keys.first %></td>
+    <td><%=	 @trips_dashboard_data[:month_breakdown][0].values.first %></td>
+  </tr>
+  <tr>
+    <td><%=	 @trips_dashboard_data[:month_breakdown][0].keys.last %></td>
+    <td><%=	 @trips_dashboard_data[:month_breakdown][0].values.last %></td>
+  </tr>
+</table>
+
 <p>Most ridden bike with total number of rides: <%=	@trips_dashboard_data[:most_ridden_bike]  %></p>
 <p>Least ridden bike with total number of rides: <%=	 @trips_dashboard_data[:least_ridden_bike] %></p>
-<p>User subscription type: <%=	 @trips_dashboard_data[:subscription_breakout] %></p>
+<p>User subscription type:</p>
+<table>
+  <tr>
+    <th>Items</th>
+    <th>Customer</th>
+    <th>Subscriber</th>
+  </tr>
+  <tr>
+    <td>Total customers:</td>
+    <td><%=	 @trips_dashboard_data[:subscription_breakout].values[0][0] %></td>
+    <td><%=	 @trips_dashboard_data[:subscription_breakout].values[1][0] %></td>
+
+  </tr>
+  <tr>
+    <td>Percentage: </td>
+    <td><%=	 @trips_dashboard_data[:subscription_breakout].values[0][1] %></td>
+    <td><%=	 @trips_dashboard_data[:subscription_breakout].values[1][1] %></td>
+  </tr>
+</table>
+
 <p>Single date with highest number of trips: <%= @trips_dashboard_data[:top_trip_date]	  %></p>
 <p>Single date with lowest number of trips: <%= @trips_dashboard_data[:lowest_trip_date]	  %></p>

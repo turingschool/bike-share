@@ -10,4 +10,10 @@ class Trip < ActiveRecord::Base
   validates :end_station_id, presence: true
   validates :bike_id, presence: true
   validates :subscription_type_id, presence: true
+
+  def self.subscription_type_percentage(subscription_id)
+    total_subscribers = Trip.where(subscription_type_id: subscription_id).count
+    percentage = (total_subscribers / Trip.all.count.to_f) * 100
+    percentage.to_i.to_s + "%"
+  end
 end

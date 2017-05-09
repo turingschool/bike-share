@@ -16,6 +16,36 @@ RSpec.describe "Condition CRUD" do
       expect(page).to have_content(".41")
     end
   end
+
+  describe "weather condition index" do
+    it "shows all weather conditions" do
+      visit("conditions/new")
+      fill_in "condition[max_temperature]", with: "75"
+      fill_in "condition[mean_temperature]", with: "76"
+      fill_in "condition[min_temperature]", with: "64"
+      fill_in "condition[mean_humidity]", with: "78.0"
+      fill_in "condition[mean_visibility]", with: "10.0"
+      fill_in "condition[mean_wind_speed]", with: "9.0"
+      fill_in "condition[precipitation]", with: ".41"
+      fill_in "condition[date]", with: "1/13/13"
+      click_on "Create Weather Condition"
+
+      visit("conditions/new")
+      fill_in "condition[max_temperature]", with: "75"
+      fill_in "condition[mean_temperature]", with: "76"
+      fill_in "condition[min_temperature]", with: "64"
+      fill_in "condition[mean_humidity]", with: "78.0"
+      fill_in "condition[mean_visibility]", with: "10.0"
+      fill_in "condition[mean_wind_speed]", with: "9.0"
+      fill_in "condition[precipitation]", with: ".41"
+      fill_in "condition[date]", with: "1/14/13"
+      click_on "Create Weather Condition"
+
+      visit("/conditions")
+      expect(page).to have_content("1/13/13")
+      expect(page).to have_content("1/14/13")
+    end
+  end
   # describe "updating conditions" do
   #   it "allows the user to update a weather condition" do
   #     condition = Condition.create(

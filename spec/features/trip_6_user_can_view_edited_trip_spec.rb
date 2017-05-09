@@ -11,7 +11,7 @@ RSpec.describe "user can fill in form" do
     EndStation.create(station_id: 1)
     SubscriptionType.create(name: "Subscriber")
     subscription_type = SubscriptionType.create(name: "Customer")
-    ride_date = RideDate.create(day: 12, month: 8, year: 2012)
+    ride_date = RideDate.find_or_create_by(day: 12, month: 8, year: 2012)
     trip = subscription_type.trips.create(duration: 400,
                               start_station_id: 1,
                               end_station_id: 2,

@@ -4,6 +4,20 @@
 <h3>Dock Count: <%= @station.dock_count %></h3>
 <h3>Installation Date: <%= @station.installation_date %></h3>
 
+<h3>Number of rides started at this station</h3>
+<h6></h6>
+<h3>Number of rides ended at this station</h3>
+<h6></h6>
+<h3>Most frequent destination station (for rides that began at this station)</h3>
+<h6></h6>
+<h3>Most freuqnet origination station (for rides that ended at this station)</h3>
+<h6></h6>
+<h3>Date with the highest number of trips started at this station</h3>
+<h6></h6>
+<h3>Most frequent zip code for users starting trips at this station</h3>
+<h6></h6>
+<h3>Bike ID most frequently starting a trip at this station</h3>
+<h6></h6>
 <a href="/stations/<%=@station.id%>/edit">Edit</a>
 <form action="/stations/<%=@station.id%>" method="post">
   <input type="hidden" name="_method" value="DELETE">

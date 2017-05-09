@@ -8,7 +8,7 @@ RSpec.describe 'use can view an individual trips page' do
     start_station = StartStation.create(station_id: 2)
     end_station = EndStation.create(station_id: 1)
     subscription_type = SubscriptionType.create(name: "Customer")
-    ride_date = RideDate.create(day: 12, month: 8, year: 2012)
+    ride_date = RideDate.find_or_create_by(day: 12, month: 8, year: 2012)
     trip = subscription_type.trips.create(duration: 400,
                               start_station_id: 1,
                               end_station_id: 1,

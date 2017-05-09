@@ -1,0 +1,27 @@
+<h1>Add a new weather condition</h1>
+
+<form action="/conditions" method="post">
+  <label for="condition[date]">Date: </label>
+  <input type="text" name="condition[date]">
+  <label for="condition[max_temp]">Maximum Temperature: </label>
+  <input type="number" name="condition[max_temp]" />
+  <label for="condition[mean_temp]">Mean Temperature: </label>
+  <input type="number" name="condition[mean_temp]" />
+  <label for="condition[min_temp]">Minimum Temperature: </label>
+  <input type="number" name="condition[min_temp]" />
+  <label for="condition[mean_humidity]">Mean Humidity: </label>
+  <input type="number" name="condition[mean_humidity]" />
+  <label for="condition[mean_visibility]">Mean Visibility: </label>
+  <input type="number" name="condition[mean_visibility]" />
+  <label for="condition[mean_wind_speed]">Mean Wind Speed: </label>
+  <input type="number" name="condition[mean_wind_speed]" />
+  <label for="condition[precipitation]">Precipitation: </label>
+  <input type="number" name="condition[precipitation]" />
+  <label for="condition[zipcode_id]">Zipcode: </label>
+  <select name="condition[zipcode_id]">
+    <% Zipcode.all.each do |zipcode| %>
+      <option value="<%= zipcode.id %>"><%= zipcode.zipcode %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Create Weather Condition" />
+</form>

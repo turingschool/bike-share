@@ -1,0 +1,38 @@
+<h1>All Conditions</h1>
+<a href="/"><button>Home</button></a>
+<a href="/conditions/new"><button>Add Weather</button></a>
+<a href="/weather-dashboard"><button>Weather Dashboard</button></a>
+
+<table>
+  <tr>
+    <th>Weather ID</th>
+    <th>Maximum Temperature</th>
+    <th>Minimum Temperature</th>
+    <th>Average Temperature</th>
+    <th>Average Humidity</th>
+    <th>Average Visibility</th>
+    <th>Average Wind Speed</th>
+    <th>Precipitation</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <% @weather.each do |weather| %>
+    <tr class="weather">
+      <td><a href="/conditions/<%= weather.id %>"><%= weather.id %></a></td>
+      <td><%= weather.max_temperature %></td>
+      <td><%= weather.min_temperature %></td>
+      <td><%= weather.mean_temperature %></td>
+      <td><%= weather.mean_humidity %></td>
+      <td><%= weather.mean_visibility %></td>
+      <td><%= weather.mean_wind_speed %></td>
+      <td><%= weather.precipitation %></td>
+      <td><a href="/conditions/<%= weather.id %>/edit"><button>Edit</button></a></td>
+      <td>
+        <form action="/conditions/<%= weather.id %>" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Delete">
+        </form>
+      </td>
+    </tr>
+  <% end %>
+</table>

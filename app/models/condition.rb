@@ -22,4 +22,6 @@ class Condition < ActiveRecord::Base
   def self.all_pages
     (Condition.count / 30) + 1
   end
+
+  
 end

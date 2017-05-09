@@ -80,9 +80,12 @@ RSpec.describe "When a user views conditions index" do
     it "the user can see total number of pages and current page number when less than 30" do
       visit('/conditions')
       expect(page).to have_content('Page 1 of 1')
+      expect(page).not_to have_content('Previous Page')
+      expect(page).not_to have_content('Next Page')
     end
 
     it "the user can see total number of pages and current page number when more than 30" do
+      zip = Zipcode.create(zipcode: "09000")
       40.times do
         Condition.create(
                           date: Date.strptime("08/30/2014",'%m/%d/%Y'),
@@ -104,6 +107,7 @@ RSpec.describe "When a user views conditions index" do
   end
 
   it "the user can see a previous button when on a page past 1" do
+    zip = Zipcode.create(zipcode: "09000")
     40.times do
       Condition.create(
                         date: Date.strptime("08/30/2014",'%m/%d/%Y'),
@@ -121,8 +125,5 @@ RSpec.describe "When a user views conditions index" do
     expect(page).to have_css('.btn.btn-prev')
     expect(page).to have_content("Previous Page")
     expect(page).to have_content("Page 2 of 2")
-    expect(page).to have_css('.btn.btn-next')
-    expect(page).to have_content("Next Page")
   end
-end
 end

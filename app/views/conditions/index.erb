@@ -44,7 +44,15 @@
 </table>
 
 <section class="pagination">
-  <p><a href="#" class="btn btn-prev">Previous Page</a> | Page 1 of <%= Condition.all_pages %> | <a href="#" class="btn btn-next">Next Page</a></p>
+  <p>
+    <% if @page != 1 %>
+      <a href="#" class="btn btn-prev">Previous Page</a>
+    <% end %>
+     | Page <%= @page %> of <%= Condition.all_pages %> |
+     <% if @page != Condition.all_pages %>
+       <a href="#" class="btn btn-next">Next Page</a>
+     <% end %>
+   </p>
 </section>
 
 <% end %>

@@ -19,6 +19,6 @@
       <ul><li>Total users: <%= @trips.where(subscription_type_id: subscription_type.id).count%></li>
       <li>Percentage of users: <%= @trips.subscription_type_percentage(subscription_type.id) %></li></ul>
       <% end %></ul></li>
-  <li>Single date with the highest number of trips with a count of those trips: <%= @trips.count %></li>
+  <li>Single date with the highest number of trips with a count of those trips: <%= @trips.group(:bike_id).order('count_id asc').count("id").keys.last %></li>
   <li>Single date with the lowest number of trips with a count of those trips: <%= @trips.count %></li>
 </ul>

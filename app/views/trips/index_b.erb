@@ -7,5 +7,5 @@
  <%= erb(:'trips/form') %>
 
 
-<a href="/trips/page/back/<%=@page_index%>"><button>previous page</button></a>
-<a href="/trips/page/<%=@page_index%>"><button>next page</button></a>
+<a href="/trips?page=<%=@page-1%>"><button>previous page</button></a>
+<a href="/trips?page=<%=@page+1%>"><button>next page</button></a>

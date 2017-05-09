@@ -6,6 +6,8 @@ require 'csv'
 
 Station.destroy_all
 City.destroy_all
+Condition.destroy_all
+Zipcode.destroy_all
 
 def read_csv(file)
   CSV.open(file, headers: true, header_converters: :symbol)
@@ -24,9 +26,10 @@ end
 
 conditions = read_csv('./db/csv/weather.csv')
 conditions.each do |condition|
+  puts condition[:mean_humidity]
   zip = Zipcode.find_or_create_by(zipcode: condition[:zip_code])
   Condition.create!(date: Date.strptime(condition[:date],'%m/%d/%Y'),
-                    max_temp: condition[:maximum_temperature_f],
+                    max_temp: condition[:max_temperature_f],
                     mean_temp: condition[:mean_temperature_f],
                     min_temp: condition[:min_temperature_f],
                     mean_humidity: condition[:mean_humidity],

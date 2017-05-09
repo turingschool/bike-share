@@ -1,0 +1,20 @@
+<h1>Weather Conditions on <%= @condition.format_date %></h1>
+
+<h2>Info</h2>
+<p>Highest Temperature: <%= @condition.max_temp %> F</p>
+<p>Mean Temperature: <%= @condition.mean_temp %> F</p>
+<p>Lowest Temperature: <%= @condition.min_temp %> F</p>
+<p>Mean Humidity: <%= @condition.mean_humidity %></p>
+<p>Mean Visibility: <%= @condition.mean_visibility %> miles</p>
+<p>Mean Wind Speed: <%= @condition.mean_wind_speed %> mph</p>
+<p>Precipitation: <%= @condition.precipitation %> inches</p>
+<p>Zipcode: <%= @condition.zipcode.zipcode %></p>
+
+<button class="btn-edit">
+  <a href="/conditions/<%= @condition.id %>/edit">Edit Condition</a>
+</button>
+
+<form method="post" action="/conditions/<%= @condition.id %>">
+  <input type="hidden" name="_method" value="DELETE" />
+  <button type="submit" class="btn-delete">Delete</button>
+</form>

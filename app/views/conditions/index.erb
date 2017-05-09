@@ -1,0 +1,58 @@
+<h1>All Weather Conditions</h1>
+<p><a class="btn btn-new" href="conditions/new">Add New Weather Condition</a></p>
+<% if @conditions.empty? %>
+  <p>No conditions available.</p>
+<% else %>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Max Temperature</th>
+      <th>Mean Temperature</th>
+      <th>Min Temperature</th>
+      <th>Mean Humidity</th>
+      <th>Mean Visibility (in Miles)</th>
+      <th>Mean Wind Speed (mph)</th>
+      <th>Precipitation (inches)</th>
+      <th>Zipcode</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @conditions.each do |condition| %>
+    <tr class="row">
+      <td><h2 class="condition-title"><a href="/conditions/<%= condition.id %>"><%= condition.format_date %></a></h2></td>
+      <td><%= condition.max_temp %></td>
+      <td><%= condition.mean_temp %></td>
+      <td><%= condition.min_temp %></td>
+      <td><%= condition.mean_humidity %></td>
+      <td><%= condition.mean_visibility %></td>
+      <td><%= condition.mean_wind_speed %></td>
+      <td><%= condition.precipitation %></td>
+      <td><%= condition.zipcode.zipcode %></td>
+      <td><a class="btn btn-edit" href="/conditions/<%= condition.id %>/edit">Edit Condition</a></td>
+      <td>
+        <form action="/conditions/<%= condition.id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE" />
+          <input type="submit" class="btn btn-delete" value="Delete"/>
+        </form>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<section class="pagination">
+  <p>
+    <% if @page != 1 %>
+      <a href="?page=<%= @page - 1 %>" class="btn btn-prev">Previous Page</a> |
+    <% end %>
+    Page <%= @page %> of <%= Condition.all_pages %>
+     <% if @page != Condition.all_pages %>
+        | <a href="?page=<%= @page + 1 %>" class="btn btn-next">Next Page</a>
+     <% end %>
+   </p>
+</section>
+
+<% end %>

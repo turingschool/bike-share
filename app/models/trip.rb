@@ -31,6 +31,10 @@ class Trip < ActiveRecord::Base
   end
 
   def self.starting_station_most_rides
-    Trip.where(start_station_name: Trip.maximum(:start_station_name))
+    (Station.find_by(id: (Trip.group(:start_station_id)).order('count_id DESC').count(:id).first)).name
+  end
+
+  def self.ending_station_most_rides
+    (Station.find_by(id: (Trip.group(:end_station_id)).order('count_id DESC').count(:id).first)).name
   end
 end

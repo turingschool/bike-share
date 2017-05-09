@@ -14,7 +14,7 @@ RSpec.describe "user wants to add station" do
       station = Station.last
 
       expect(current_path).to eq("/stations/#{station.id}")
-      
+
       expect(page).to have_content("Fluppydo")
       expect(page).to have_content("Denver")
       expect(page).to have_content(1981)

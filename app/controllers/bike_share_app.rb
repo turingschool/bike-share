@@ -97,4 +97,15 @@ class BikeShareApp < Sinatra::Base
     @trips = Trip.get_first_30
     erb :'trips/index'
   end
+
+  get '/trips/:id/edit' do
+    @trip = Trip.find(params[:id])
+    erb :'trips/edit'
+  end
+
+  put '/trips/:id' do
+    trip = Trip.find(params[:id])
+    trip.update(params[:trip])
+    redirect "/trips/#{params[:id]}"
+  end
 end

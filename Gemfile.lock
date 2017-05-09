@@ -23,11 +23,19 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    chartkick (2.2.3)
+    coderay (1.1.1)
     concurrent-ruby (1.0.2)
+    database_cleaner (1.5.3)
     diff-lcs (1.2.5)
+    docile (1.1.5)
+    faker (1.7.3)
+      i18n (~> 0.5)
     i18n (0.7.0)
+    json (2.0.3)
     launchy (2.4.3)
       addressable (~> 2.3)
+    method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
@@ -35,13 +43,20 @@ GEM
     minitest (5.9.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
+    nyan-cat-formatter (0.12.0)
+      rspec (>= 2.99, >= 2.14.2, < 4)
     pg (0.19.0)
+    pry (0.10.4)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     public_suffix (2.0.4)
     rack (1.6.5)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+    rake (12.0.0)
     ripl (0.7.1)
       bond (~> 0.5.1)
     ripl-multi_line (0.3.1)
@@ -65,6 +80,11 @@ GEM
     rspec-support (3.5.0)
     shotgun (0.9.2)
       rack (>= 1.0)
+    simplecov (0.14.1)
+      docile (~> 1.1.0)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -72,6 +92,7 @@ GEM
     sinatra-activerecord (2.0.11)
       activerecord (>= 3.2)
       sinatra (~> 1.0)
+    slop (3.6.0)
     thread_safe (0.3.5)
     tilt (2.0.5)
     tux (0.3.0)
@@ -90,15 +111,22 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   capybara
+  chartkick
+  database_cleaner
+  faker
   launchy
+  nyan-cat-formatter
   pg
+  pry
   rack-test
+  rake
   rspec
   rspec-core
   shotgun
+  simplecov
   sinatra
   sinatra-activerecord
   tux
 
 BUNDLED WITH
-   1.12.5
+   1.14.6

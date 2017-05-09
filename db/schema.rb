@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170508230401) do
+ActiveRecord::Schema.define(version: 20170509174345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boardgame_categories", force: :cascade do |t|
+    t.integer "boardgames_id"
+    t.integer "categories_id"
+    t.index ["boardgames_id"], name: "index_boardgame_categories_on_boardgames_id", using: :btree
+    t.index ["categories_id"], name: "index_boardgame_categories_on_categories_id", using: :btree
+  end
+
+  create_table "boardgame_users", force: :cascade do |t|
+    t.integer "boardgames_id"
+    t.integer "users_id"
+    t.index ["boardgames_id"], name: "index_boardgame_users_on_boardgames_id", using: :btree
+    t.index ["users_id"], name: "index_boardgame_users_on_users_id", using: :btree
+  end
+
+  create_table "boardgames", force: :cascade do |t|
+    t.text    "name",        null: false
+    t.text    "description", null: false
+    t.integer "year",        null: false
+    t.integer "user_id",     null: false
+    t.integer "category_id", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.text "name", null: false
+  end
 
   create_table "cities", force: :cascade do |t|
     t.text "name", null: false
@@ -21,13 +47,13 @@ ActiveRecord::Schema.define(version: 20170508230401) do
 
   create_table "conditions", force: :cascade do |t|
     t.date    "date",            null: false
-    t.float   "max_temp",        null: false
-    t.float   "mean_temp",       null: false
-    t.float   "min_temp",        null: false
-    t.float   "mean_humidity",   null: false
-    t.float   "mean_visibility", null: false
-    t.float   "mean_wind_speed", null: false
-    t.float   "precipitation",   null: false
+    t.float   "max_temp"
+    t.float   "mean_temp"
+    t.float   "min_temp"
+    t.float   "mean_humidity"
+    t.float   "mean_visibility"
+    t.float   "mean_wind_speed"
+    t.float   "precipitation"
     t.integer "zipcode_id"
   end
 
@@ -49,6 +75,11 @@ ActiveRecord::Schema.define(version: 20170508230401) do
     t.integer  "bike_id",           null: false
     t.text     "subscription_type", null: false
     t.integer  "zipcode_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.text "first_name", null: false
+    t.text "last_name",  null: false
   end
 
   create_table "zipcodes", force: :cascade do |t|

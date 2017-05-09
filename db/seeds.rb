@@ -1,5 +1,7 @@
 require './app/models/station.rb'
 require './app/models/city.rb'
+require './app/models/zipcode.rb'
+require './app/models/condition.rb'
 require 'csv'
 
 Station.destroy_all
@@ -31,6 +33,6 @@ conditions.each do |condition|
                     mean_visibility: condition[:mean_visibility_miles],
                     mean_wind_speed: condition[:mean_wind_speed_mph],
                     precipitation: condition[:precipitation_inches],
-                    zipcode: zip.id
+                    zipcode_id: zip.id
                     )
 end

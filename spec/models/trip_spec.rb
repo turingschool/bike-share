@@ -166,5 +166,10 @@ RSpec.describe Trip, :type => :model do
       expect(Trip.most_ridden_bike.first).to eq(270)
       expect(Trip.most_ridden_bike[1]).to eq(3)
     end
+
+    it 'finds the least ridden bike' do
+      expect(Trip.least_ridden_bike.first).to eq(664)
+      expect(Trip.least_ridden_bike[1]).to eq(1)
+    end
   end
 end

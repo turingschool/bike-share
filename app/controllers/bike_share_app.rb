@@ -126,7 +126,6 @@ class BikeShareApp < Sinatra::Base
   get "/conditions" do
     @page = (params[:page] || 1 ).to_i
     @conditions = Condition.paginate(@page)
-    # @conditions = Condition.all
     erb :"conditions/index"
   end
 

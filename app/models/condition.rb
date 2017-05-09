@@ -18,4 +18,13 @@ class Condition < ActiveRecord::Base
     return "selected" if id == zipcode_id
     ""
   end
+
+  def self.all_pages
+    (Condition.count / 30.0).ceil
+  end
+
+  def self.paginate(page)
+    offset = ( page - 1 ) * 30
+    Condition.limit(30).offset(offset)
+  end
 end

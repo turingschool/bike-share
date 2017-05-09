@@ -20,7 +20,7 @@ class Condition < ActiveRecord::Base
   end
 
   def self.all_pages
-    (Condition.count / 30) + 1
+    (Condition.count / 30.0).ceil
   end
 
   def self.paginate(page)

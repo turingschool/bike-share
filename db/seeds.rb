@@ -3,7 +3,6 @@ require './app/models/city.rb'
 require './app/models/trip.rb'
 require './app/models/zipcode.rb'
 require 'csv'
-require 'pry'
 
 Station.destroy_all
 City.destroy_all
@@ -15,7 +14,6 @@ def read_csv(file)
 end
 
 def address_kearny_misspelling(station)
-# Change  Kearney/Kearny and convert wrong to right
   if station[:name] == "Washington at Kearney"
     station[:name] = "Washington at Kearny"
   elsif station[:name] == "Post at Kearney"
@@ -25,7 +23,6 @@ def address_kearny_misspelling(station)
 end
 
 def address_kearny_start_misspelling(trip)
-# Change  Kearney/Kearny and convert wrong to right
   if trip[:start_station_name] == "Washington at Kearney"
     trip[:start_station_name] = "Washington at Kearny"
   elsif trip[:start_station_name] == "Post at Kearney"
@@ -35,7 +32,6 @@ def address_kearny_start_misspelling(trip)
 end
 
 def address_kearny_end_misspelling(trip)
-# Change  Kearney/Kearny and convert wrong to right
   if trip[:end_station_name] == "Washington at Kearney"
     trip[:end_station_name] = "Washington at Kearny"
   elsif trip[:end_station_name] == "Post at Kearney"
@@ -45,8 +41,6 @@ def address_kearny_end_misspelling(trip)
 end
 
 def lookup_start_trips(trip)
-# need to change Broadway at Main to Stanford in Redwood City
-# need to change San Jose Government Center to Santa Clara County Civic Center
   if trip[:start_station_name] == "Broadway at Main"
     trip[:start_station_name] = "Stanford in Redwood City"
   elsif trip[:start_station_name] == "San Jose Government Center"
@@ -56,8 +50,6 @@ def lookup_start_trips(trip)
 end
 
 def lookup_end_trips(trip)
-# need to change Broadway at Main to Stanford in Redwood City
-# need to change San Jose Government Center to Santa Clara County Civic Center
   if trip[:end_station_name] == "Broadway at Main"
     trip[:end_station_name] = "Stanford in Redwood City"
   elsif trip[:end_station_name] == "San Jose Government Center"
@@ -89,24 +81,10 @@ trips.each do |trip|
   lookup_end_trips(trip)
   address_kearny_start_misspelling(trip)
   address_kearny_end_misspelling(trip)
-  
-  if trip[:end_station_name] == "Broadway at Main" || trip[:start_station_name] == "Broadway at Main"
-    binding.pry
-  end
-  if trip[:end_station_name] == "San Jose Government Center" || trip[:start_station_name] == "San Jose Government Center"
-    binding.pry
-  end  
-  if trip[:end_station_name] == "Post at Kearney" || trip[:start_station_name] == "Post at Kearney"
-    binding.pry
-  end
-  if trip[:end_station_name] == "Washington at Kearney" || trip[:start_station_name] == "Washington at Kearney"
-    binding.pry
-  end
 
   start_station = Station.find_by(name: trip[:start_station_name])
   end_station = Station.find_by(name: trip[:end_station_name])
 
-  #next if start_station.nil? || end_station.nil?
   Trip.create!(
               duration: trip[:duration],
               start_date: DateTime.strptime(trip[:start_date],'%m/%d/%Y %H:%M'),

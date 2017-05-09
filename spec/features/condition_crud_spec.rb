@@ -46,6 +46,7 @@ RSpec.describe "Condition CRUD" do
       expect(page).to have_content("1/2/13")
     end
   end
+
   describe "updating conditions" do
     it "allows the user to update a weather condition" do
       condition = Condition.create(
@@ -66,24 +67,26 @@ RSpec.describe "Condition CRUD" do
       expect(page).to have_content("58")
     end
   end
-  # describe "deleting conditions" do
-  #   it "allows the user to delete a condition" do
-  #     condition = Condition.create(
-  #                                  max_temperature: "75",
-  #                                  mean_temperature: "76",
-  #                                  min_temperature: "64",
-  #                                  mean_humidity: "78.0",
-  #                                  mean_visibility: "10.0",
-  #                                  mean_wind_speed: "9.0",
-  #                                  precipitation: ".41",
-  #                                  date: "1/1/13"
-  #                                  )
-  #
-  #     count_before_delete = Condition.count
-  #     visit("/conditions/#{condition.id}")
-  #     click_on "Delete Condition"
-  #     count_after_delete = Condition.count
-  #     expect(count_before_delete - count_after_delete)
-  #   end
-  # end
+
+  describe "deleting conditions" do
+    it "allows the user to delete a condition" do
+      condition = Condition.create(
+                                   max_temperature: "75",
+                                   mean_temperature: "76",
+                                   min_temperature: "64",
+                                   mean_humidity: "78.0",
+                                   mean_visibility: "10.0",
+                                   mean_wind_speed: "9.0",
+                                   precipitation: ".41",
+                                   date: "1/1/13"
+                                   )
+
+      count_before_delete = Condition.count
+      visit("/conditions/#{condition.id}")
+      click_on "Delete Condition"
+      count_after_delete = Condition.count
+      expect(count_before_delete - count_after_delete).to eq(1)
+      expect(page).to have_current_path("/conditions")
+    end
+  end
 end

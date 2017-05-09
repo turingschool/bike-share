@@ -65,6 +65,12 @@
               <input type="submit" value="Edit" />
             </form>
           </span>
+          <span>
+            <form action="/conditions/<%= @condition.id %>" method="post">
+              <input type="hidden" name="_method" value="DELETE" />
+              <input type="submit" value="Delete Condition" />
+            </form>
+          </span>
         </div>
       </div>
     </div>

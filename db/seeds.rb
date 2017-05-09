@@ -53,8 +53,8 @@ trips.each do |row|
   start_station = Station.find_by(name: start_station)
 
   end_station = Station.validate_name_change(row[:end_station_name])
-
   end_station = Station.find_by(name: end_station)
+  # binding.pry
 
   Trip.create!(
               duration: row[:duration],

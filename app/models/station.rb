@@ -11,6 +11,27 @@ class Station < ActiveRecord::Base
   validates :city_id, presence: true
   validates :date_ref_id, presence: true
 
+
+  def self.create_new(params)
+    date = DateRef.find_or_create_by(date: params[:station][:installation_date])
+    Station.create(name: params[:station][:name],
+                   dock_count: params[:station][:dock_count],
+                   city_id: (params[:station][:city_id]),
+                   date_ref_id: date.id
+                  )
+  end
+
+  def self.udpate_record(params)
+    date = DateRef.find_or_create_by(date: params[:station][:installation_date])
+    Station.update(params[:id],
+                   name: params[:station][:name],
+                   dock_count: params[:station][:dock_count],
+                   city_id: (params[:station][:city_id]),
+                   date_ref_id: date.id
+                   )
+    
+  end
+
   def self.dashboard
     {
       total_count: Station.count,
@@ -56,7 +77,9 @@ class Station < ActiveRecord::Base
   def self.equivalent_names
     {
       "San Jose Government Center"=>"Santa Clara County Civic Center",
-      "Broadway at Main" =>"Stanford in Redwood City"
+      "Broadway at Main" =>"Stanford in Redwood City",
+      "Post at Kearny" => "Post at Kearney",
+      "Washington at Kearny" => "Washington at Kearney"
     }
   end
 

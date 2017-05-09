@@ -66,6 +66,17 @@
         <span>Mean Wind Speed: <%= condition.mean_wind_speed %></span><br />
         <span>Precipitation: <%= condition.precipitation %></span><br />
 				<br />
+				<span>
+					<form action="/conditions/<%= condition.id %>/edit">
+						<input type="submit" value="Edit Condition" />
+					</form>
+				</span>
+				<span>
+					<form action="/conditions/<%= condition.id %>" method="post">
+						<input type="hidden" name="_method" value="DELETE" />
+						<input type="submit" value="Delete Condition" />
+					</form>
+				</span>
 	    <% end %>
 	</div>
 

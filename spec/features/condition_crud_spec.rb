@@ -65,6 +65,13 @@ RSpec.describe "Condition CRUD" do
       click_on "Update Weather Condition"
       expect(page).to have_current_path("/conditions/#{ condition.id }")
       expect(page).to have_content("58")
+
+      visit("/conditions")
+      click_on("Edit Condition")
+      fill_in "condition[min_temperature]", with: "59"
+      click_on "Update Weather Condition"
+      expect(page).to have_current_path("/conditions/#{ condition.id }")
+      expect(page).to have_content("59")
     end
   end
 
@@ -80,9 +87,25 @@ RSpec.describe "Condition CRUD" do
                                    precipitation: ".41",
                                    date: "1/1/13"
                                    )
-
       count_before_delete = Condition.count
       visit("/conditions/#{condition.id}")
+      click_on "Delete Condition"
+      count_after_delete = Condition.count
+      expect(count_before_delete - count_after_delete).to eq(1)
+      expect(page).to have_current_path("/conditions")
+
+      condition = Condition.create(
+                                   max_temperature: "75",
+                                   mean_temperature: "76",
+                                   min_temperature: "64",
+                                   mean_humidity: "78.0",
+                                   mean_visibility: "10.0",
+                                   mean_wind_speed: "9.0",
+                                   precipitation: ".41",
+                                   date: "1/1/13"
+                                   )
+      visit("/conditions")
+      count_before_delete = Condition.count
       click_on "Delete Condition"
       count_after_delete = Condition.count
       expect(count_before_delete - count_after_delete).to eq(1)

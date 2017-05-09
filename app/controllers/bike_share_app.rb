@@ -88,6 +88,9 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips/:id' do
     @trip = Trip.find(params[:id])
+    @start_date = RideDate.find(@trip[:start_date_id])
+    @end_date = RideDate.find(@trip[:end_date_id])
+
     erb :"trips/show"
   end
 
@@ -95,8 +98,14 @@ class BikeShareApp < Sinatra::Base
     # @start_stations = StartStation.all
     # @end_stations = EndStation.all
     # @subscription_type = SubscriptionType.all
+    binding.pry
     @trip = Trip.find(params[:id])
-    @trip.update(params[:trip])
+    trip_details = params[:trip]
+    start_d = trip_details[:start_date].split("-")
+    end_d   = trip_details[:end_date].split("-")
+    trip_details[:start_date] = RideDate.create(day: start_d[2].to_i, month: start_d[1].to_i, year: start_d[0].to_i)
+    trip_details[:end_date] = RideDate.create(day: end_d[2].to_i, month: end_d[1].to_i, year: end_d[0].to_i)
+    @trip.update(trip_details)
     redirect "trips/#{@trip.id}"
   end
 

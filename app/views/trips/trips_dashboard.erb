@@ -63,21 +63,26 @@
         </div>
        <!--  <center>
             <h1>Test Chart</h1>
-            <p><%= column_chart @station.group_by(&:city).count %></p>
+            <p><%= column_chart @trip.group_by(&:city).count %></p>
         </center> -->
         <span><p><b>Total Trips: </b><br><%= @trip.total %></p></span>
-        <span><p><b>Average Amount of Bikes: </b><br><%= @station.average_bikes %></p></span>
-        <span><p><b>Station With the Most Bikes: </b><br><%= @station.most_bikes.name %></p></span>
-        <!-- Form with variabke for amount of stations? -->
-        <span><p><b>Top 5 Stations: </b><br><% @station.top_stations(5).each do |station| %></p>
-        <p><%= station.name %></p></span>
-        <% end %>
-        <span><p><b>Top 5 Lowest Stations: </b><br><% @station.lowest_station(5).each do |station| %></p>
-        <p><%= station.name %></p></span>
-        <% end %>
+        <span><p><b>Average Ride Duration: </b><br><%= @trip.average_duration %></p></span>
+        <span><p><b>Longest Ride: </b><br><%= @trip.longest_ride %></p></span>
+        <span><p><b>Shortest Ride:</b><br><%= @trip.shortest_ride %></p></span>
+        <span><p><b>Most Popular Start Station:</b><br><%= @trip.most_popular_station %></p></span>
+        <span><p><b>Most Popular End Station:</b><br><%= @trip.least_popular_station %></p></span>
+        <span><p><b>Month by Month Breakdown for YEAR:</b><br><%= @trip.rides_in(MONTH_NAME) %></p></span>
 
-        <span><p><b>Youngest Station: </b><br><%= @station.most_recent %></p></span>
-        <span><p><b>Oldest Station: </b><br><%= @station.oldest %></p></span>
+        <span><p><b>Most Ridden Bike:</b><br><%= @trip.most_popular_bike.id %>, with <%= @trip.most_popular_bike %> total rides</p></span>
+
+        <span><p><b>Least Ridden Bike:</b><br><%= @trip.least_popular_bike.id %>, with <%= @trip.least_popular_bike %> total rides</p></span>
+
+        <span><p><b>Subscriber Count: </b><br><%= @trip.subscriber_count %></p></span>
+        <span><p><b>Customer Count: </b><br><%= @trip.customer_count %></p></span>
+
+        <span><p><b>Most Popular Date:</b><br><%= @trip.most_popular_date %> with <%= @trip.most_popular_date_trip_count %> trips</p></span>
+
+        <span><p><b>Least Popular Date:</b><br><%= @trip.least_popular_date %> with <%= @trip.least_popular_date_trip_count %> trips</p></span>
 
     </div>
 

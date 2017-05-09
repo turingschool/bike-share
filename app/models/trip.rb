@@ -16,11 +16,11 @@ class Trip < ActiveRecord::Base
   #Trips Dashboard methods for Info
 
   def self.average_duration_of_a_ride
-    average(:duration).to_i / 60
+    average(:duration).to_i
   end
 
   def self.longest_ride
-    maximum(:duration).to_i / 60
+    maximum(:duration).to_i
   end
 
   def self.shortest_ride

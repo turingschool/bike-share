@@ -157,5 +157,9 @@ RSpec.describe Trip, :type => :model do
     it 'finds the station with most starting rides' do
       expect(Trip.station_with_most_starting_place_rides.first.name).to eq('Market at Sansome')
     end
+
+    it 'finds the station with most end rides' do
+      expect(Trip.station_with_most_ending_place_rides.first.name).to eq('Market at Sansome')
+    end
   end
 end

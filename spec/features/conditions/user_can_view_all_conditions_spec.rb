@@ -76,5 +76,10 @@ RSpec.describe "When a user views conditions index" do
       expect(page).to have_content('09000')
       expect(page).to have_content('90000')
     end
+
+    it "the user can see total number of pages and current page number" do
+      expect(page).to have_content('Page 1 of 1')
+      
+    end
   end
 end

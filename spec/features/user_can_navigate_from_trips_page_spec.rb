@@ -10,7 +10,11 @@ RSpec.describe "When a user visits '/stations'" do
     bike = Bike.create!(bike: 100)
     zipcode = Zipcode.create!(zipcode: 10010)
     subscription = SubscriptionType.create!(sub_type: "Weekly")
+    subscription1 = SubscriptionType.create!(sub_type: "Monthly")
     Trip.create!(duration: 5000, date_ref_id: date.id, end_date_id: date1.id, start_station_id: station.id, end_station_id: station.id, zipcode_id: zipcode.id, bike_id: bike.id, subscription_type_id: subscription.id)
+    Trip.create!(duration: 5000, date_ref_id: date.id, end_date_id: date1.id, start_station_id: station.id, end_station_id: station.id, zipcode_id: zipcode.id, bike_id: bike.id, subscription_type_id: subscription1.id)  
+    Trip.create!(duration: 5000, date_ref_id: date.id, end_date_id: date1.id, start_station_id: station.id, end_station_id: station.id, zipcode_id: zipcode.id, bike_id: bike.id, subscription_type_id: subscription1.id)  
+
 
       # As a user
       # When I visit /stations
@@ -39,18 +43,18 @@ RSpec.describe "When a user visits '/stations'" do
 
   it "they can edit a station from '/trips'" do
     visit('/trips')
-    click_link 'Edit'
-
+    # save_and_open_page
+    first('.edit').click
     expect(current_path).to eq('/trips/1/edit')
   end
 
   it "deletes a station from '/trips'" do
-    expect(Trip.count).to eq(1)
+    expect(Trip.count).to eq(3)
     visit('/trips')
-    click_on 'Delete'
+    first("input[type='submit']").click
 
     expect(current_path).to eq('/trips')
-    expect(Trip.count).to eq(0)
+    expect(Trip.count).to eq(2)
   end
 
   it "takes you to new trip page" do

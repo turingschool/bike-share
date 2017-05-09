@@ -31,7 +31,7 @@
       <td><%= trip.subscription_type.sub_type %></td>
       <td><%= trip.zipcode.zipcode unless trip.zipcode.nil? %></td>
       
-      <td><a href="/trips/<%= trip.id %>/edit"><button>Edit</button></a></td>
+      <td><a href="/trips/<%= trip.id %>/edit" class='edit'><button>Edit</button></a></td>
       <td>
         <form action="/trips/<%= trip.id %>" method="POST">
           <input type="hidden" name="_method" value="DELETE">

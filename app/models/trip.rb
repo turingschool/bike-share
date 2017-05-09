@@ -87,6 +87,9 @@ class Trip<ActiveRecord::Base
     }
   end
 
+
+  
+
   def self.month_breakdown_data
     break_down = DateRef.distinct.pluck('extract(year from date)').map{ |date| {date => Trip.sort_trips_by_date(date)}}
     break_down.reduce Hash.new, :merge

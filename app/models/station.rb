@@ -21,7 +21,7 @@ class Station < ActiveRecord::Base
                   )
   end
 
-  def self.udpate_record(params)
+  def self.update_record(params)
     date = DateRef.find_or_create_by(date: params[:station][:installation_date])
     Station.update(params[:id],
                    name: params[:station][:name],

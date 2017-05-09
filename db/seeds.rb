@@ -3,6 +3,7 @@ require './app/models/city.rb'
 require './app/models/zipcode.rb'
 require './app/models/condition.rb'
 require 'csv'
+require 'pry'
 
 Station.destroy_all
 City.destroy_all
@@ -26,10 +27,19 @@ end
 
 conditions = read_csv('./db/csv/weather.csv')
 conditions.each do |condition|
-  puts condition[:mean_humidity]
-  #don't accept rows that have blanks in their data
+  elements = [:date,
+              :max_temperature_f,
+              :mean_temperature_f,
+              :min_temperature_f,
+              :mean_humidity,
+              :mean_visibility_miles,
+              :mean_wind_speed_mph,
+              :precipitation_inches]
+
+  next unless elements.all? { |element| condition[element] }
+
   zip = Zipcode.find_or_create_by(zipcode: condition[:zip_code])
-  Condition.create!(date: Date.strptime(condition[:date],'%m/%d/%Y'),
+  Condition.create(date: Date.strptime(condition[:date],'%m/%d/%Y'),
                     max_temp: condition[:max_temperature_f],
                     mean_temp: condition[:mean_temperature_f],
                     min_temp: condition[:min_temperature_f],

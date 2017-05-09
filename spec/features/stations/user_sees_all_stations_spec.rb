@@ -10,7 +10,7 @@ RSpec.describe "user visits stations index" do
     expect(page).not_to have_content("Name:")
     expect(page).not_to have_content("Number of Docks")
     expect(page).not_to have_content("City")
-    expect(page).not_to have_content("Istall Date")
+    expect(page).not_to have_content("Install Date")
   end
 
   it 'sees all stations with database' do

@@ -102,7 +102,13 @@ class BikeShareApp < Sinatra::Base
 
   post '/trips' do
     subscription_type = SubscriptionType.find_by(name: params[:subscription_type][:name])
-    @trip = subscription_type.trips.create(params[:trip])
+    trip_details = params[:trip]
+    start_d = trip_details[:start_date].split("-")
+    end_d   = trip_details[:end_date].split("-")
+    trip_details[:start_date] = RideDate.create(day: start_d[2].to_i, month: start_d[1].to_i, year: start_d[0].to_i)
+    trip_details[:end_date] = RideDate.create(day: end_d[2].to_i, month: end_d[1].to_i, year: end_d[0].to_i)
+
+    @trip = subscription_type.trips.create(trip_details)
 
     redirect "/trips/#{@trip.id}"
   end
@@ -114,6 +120,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips-dashboard' do
     @subscription_types = SubscriptionType.all
+    @ride_date = RideDate.all
     @trips = Trip.all
     @start_stations = StartStation.all
     @end_stations = EndStation.all

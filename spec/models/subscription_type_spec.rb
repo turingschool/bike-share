@@ -22,8 +22,8 @@ RSpec.describe SubscriptionType  do
       subscription.trips.create(duration: 400,
                                 start_station_id: 1,
                                 end_station_id: 2,
-                                start_date: "2012-8-12",
-                                end_date: "2012-8-12",
+                                start_date: ride_date,
+                                end_date: ride_date,
                                 bike_id: 122,
                                 zip_code: 80218)
       expect(subscription.trips.first.duration).to eq(400)

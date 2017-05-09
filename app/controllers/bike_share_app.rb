@@ -1,7 +1,15 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
 require 'pry'
 
 class BikeShareApp < Sinatra::Base
+  include WillPaginate::Sinatra::Helpers
+
   set :method_override, true
+
+  get '/' do
+     erb :dashboard
+  end
 
   get '/stations' do
     erb :"stations/index"
@@ -19,7 +27,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations/view_all' do
-    @stations = Station.all
+    @stations = Station.all.paginate(:page => params[:page], :per_page => 30)
     erb :"stations/view_all"
   end
 
@@ -53,4 +61,62 @@ class BikeShareApp < Sinatra::Base
     erb :"station-dashboard"
   end
 
+  get '/trips' do
+    erb :"trips/index"
+  end
+
+  get '/trips/view_all' do
+    @trips = Trip.all.paginate(:page => params[:page], :per_page => 30)
+    erb :"trips/view_all"
+  end
+
+  get '/trips/new' do
+    @start_stations = StartStation.all
+    @end_stations = EndStation.all
+    @subscription_types = SubscriptionType.all
+    erb :"trips/new"
+  end
+
+  get '/trips/:id/edit' do
+    @stations = Station.all
+    @subscription_types = SubscriptionType.all
+    @start_stations = StartStation.all
+    @end_stations = EndStation.all
+    @trip = Trip.find(params[:id])
+    erb :"/trips/edit"
+  end
+
+  get '/trips/:id' do
+    @trip = Trip.find(params[:id])
+    erb :"trips/show"
+  end
+
+  put '/trips/:id' do |id|
+    # @start_stations = StartStation.all
+    # @end_stations = EndStation.all
+    # @subscription_type = SubscriptionType.all
+    @trip = Trip.find(params[:id])
+    @trip.update(params[:trip])
+    redirect "trips/#{@trip.id}"
+  end
+
+  post '/trips' do
+    subscription_type = SubscriptionType.find_by(name: params[:subscription_type][:name])
+    @trip = subscription_type.trips.create(params[:trip])
+
+    redirect "/trips/#{@trip.id}"
+  end
+
+  delete '/trips/:id' do |id|
+    Trip.destroy(id.to_i)
+    redirect "/trips/view_all"
+  end
+
+  get '/trips-dashboard' do
+    @subscription_types = SubscriptionType.all
+    @trips = Trip.all
+    @start_stations = StartStation.all
+    @end_stations = EndStation.all
+    erb :"trips-dashboard"
+  end
 end

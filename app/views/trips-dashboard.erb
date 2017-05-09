@@ -1,0 +1,24 @@
+<h1>Station Statistics</h1>
+<ul>
+  <li>Average duration of a ride: <%= @trips.average(:duration).round %></li>
+  <li>Longest ride: <a href="/trips/<%= @trips.order("duration DESC").first.id %>">ID# <%= @trips.order("duration DESC").first.id %></a></li>
+  <li>Shortest ride: <a href="/trips/<%= @trips.order("duration DESC").last.id %>">ID# <%= @trips.order("duration DESC").last.id %></a></li>
+  <li>Station with the most rides as a starting place: <%= @start_stations.find(@trips.group(:start_station_id).order('count_id asc').count('id').keys.last).station.name %></li>
+  <li>Station with the most rides as an ending place: <%= @end_stations.find(@trips.group(:start_station_id).order('count_id asc').count('id').keys.first).station.name %></li>
+  <li>Month by Month breakdown of number of rides with subtotals for each year: !!!!!!!!    Data currently in progress   !!!!!!!!</li>
+  <li>Most ridden bike with total number of rides for that bike:<ul>
+    <li>Bike ID: <%= @trips.group(:bike_id).order('count_id asc').count("id").keys.last %></li>
+    <li>Trips Taken: <%= @trips.group(:bike_id).order('count_id asc').count("id").values.last %></li></ul></li>
+  <li>Least ridden bike with total number of rides for that bike:<ul>
+    <li>Bike ID: <% all_bikes = @trips.pluck(:bike_id) %>
+    <% bike_ids = all_bikes.group_by { |id| all_bikes.count(id) }.min.last.uniq %>
+    <%= bike_ids %></li>
+    <li>Trips Taken: <%= @trips.group(:bike_id).order('count_id asc').count("id").values.first %></li></ul></li>
+    <li>User subscription type breakout with both count and percentage:<ul><% @subscription_types.all.each do |subscription_type| %>
+      <li><%= subscription_type.name %></li>
+      <ul><li>Total users: <%= @trips.where(subscription_type_id: subscription_type.id).count%></li>
+      <li>Percentage of users: <%= @trips.subscription_type_percentage(subscription_type.id) %></li></ul>
+      <% end %></ul></li>
+  <li>Single date with the highest number of trips with a count of those trips: <%= @trips.count %></li>
+  <li>Single date with the lowest number of trips with a count of those trips: <%= @trips.count %></li>
+</ul>

@@ -17,8 +17,6 @@ RSpec.describe "user can click the submit button on a form" do
     fill_in "station[installation_date]", with: "1776-9-12"
     click_on "Submit"
 
-    save_and_open_page
-
     expect(current_path).to eq("/stations/1")
     expect(page).to have_content("Tokyo")
     expect(page).to have_content("MLK")

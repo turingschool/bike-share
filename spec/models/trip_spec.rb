@@ -1,6 +1,5 @@
 require './spec/spec_helper'
 
-
 RSpec.describe Trip do
   describe "trip can return all attributes" do
     it "has all attributes" do
@@ -141,40 +140,107 @@ RSpec.describe Trip do
     end
   end
 
-  # describe "station can calculate dashboard information" do
-  #   before {
-  #     Station.create(name: "something", dock_count: 1, city_id: 1, installation_date: Date.strptime("08/30/2015",'%m/%d/%Y'), longitude: -121.9, latitude: 30.7)
-  #     Station.create(name: "else", dock_count: 2, city_id: 1, installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'), longitude: -121.9, latitude: 30.7)
-  #     Station.create(name: "other", dock_count: 3, city_id: 1, installation_date: Date.strptime("08/30/2014",'%m/%d/%Y'), longitude: -121.9, latitude: 30.7)
-  #     Station.create(name: "and again", dock_count: 4, city_id: 1, installation_date: Date.strptime("08/30/2014",'%m/%d/%Y'), longitude: -121.9, latitude: 30.7)
-  #   }
-  #   it "can calculate the average number of bikes for all stations" do
-  #     expect(Station.average_bikes).to eq(2.5)
-  #   end
+  describe "trip can calculate dashboard information" do
+    before {
+      zipcode = Zipcode.create(zipcode: 94127)
+      station_1 = Station.create(
+                      name: "something",
+                      dock_count: 1, 
+                      city_id: 1, 
+                      installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'), 
+                      longitude: -121.9, 
+                      latitude: 30.7)
+      station_2 = Station.create(
+                      name: "else",
+                      dock_count: 2, 
+                      city_id: 1, 
+                      installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'), 
+                      longitude: -120.9, 
+                      latitude: 30.9)                      
+      trip_1 = Trip.create(
+                      duration: 239,
+                      start_date: DateTime.strptime("08/30/2013 11:11", "%m/%d/%Y %H:%M"),
+                      start_station_id: 1,
+                      end_date: DateTime.strptime("08/30/2013 11:15", "%m/%d/%Y %H:%M"),
+                      end_station_id: 1,
+                      bike_id: 5,
+                      subscription_type: "Customer",
+                      zipcode_id: 1
+    )
+      trip_2 = Trip.create(
+                      duration: 241,
+                      start_date: DateTime.strptime("08/30/2013 11:11", "%m/%d/%Y %H:%M"),
+                      start_station_id: 2,
+                      end_date: DateTime.strptime("08/30/2013 11:15", "%m/%d/%Y %H:%M"),
+                      end_station_id: 1,
+                      bike_id: 6,
+                      subscription_type: "Subscriber",
+                      zipcode_id: 1
+    )
+      trip_3 = Trip.create(
+                      duration: 243,
+                      start_date: DateTime.strptime("09/30/2013 11:11", "%m/%d/%Y %H:%M"),
+                      start_station_id: 2,
+                      end_date: DateTime.strptime("09/30/2013 11:15", "%m/%d/%Y %H:%M"),
+                      end_station_id: 2,
+                      bike_id: 6,
+                      subscription_type: "Subscriber",
+                      zipcode_id: 1
+    )
+    }
+    it "can calculate the average number of duration for all rides" do
+      expect(Trip.average_duration).to eq(241)
+    end
 
-  #   it "can calculate the most bikes at any stations" do
-  #     expect(Station.most_bikes_count).to eq(4)
-  #   end
+    it "can calculate the longest ride" do
+      expect(Trip.longest_ride).to eq(243)
+    end
 
-  #   it "can calculate which stations have the most bikes" do
-  #     expect(Station.most_bikes_avail_at).to eq('and again')
-  #   end
+    it "can calculate the shortest ride" do
+      expect(Trip.shortest_ride).to eq(239)
+    end
 
-  #   it "can calculate the fewest bikes at any stations" do
-  #     expect(Station.fewest_bikes_count).to eq(1)
-  #   end
+    it "can calculate the station with the most rides as a starting place" do
+      expect(Trip.starting_station_most_rides).to eq("else")
+    end
 
-  #   it "can calculate which stations have the fewest bikes" do
-  #     expect(Station.fewest_bikes_avail_at).to eq('something')
-  #   end
+    it "can calculate the station with the most rides as a ending place" do
+      expect(Trip.ending_station_most_rides).to eq("something")
+    end
+  
+     it "can calculate month by month breakdown of number of rides for August 2013" do
+      expect(Trip.monthly_breakdown_of_rides(2013, 8)).to eq(2)
+    end
 
-  #   it "can find the oldest station created" do
-  #     expect(Station.oldest_station).to eq('else')
-  #   end
+    it "can calculate month by month breakdown of number of rides for September 2013" do
+      expect(Trip.monthly_breakdown_of_rides(2013, 9)).to eq(1)
+    end
 
-  #   it "can find the newewst station created" do
-  #     expect(Station.newest_station).to eq('something')
-  #   end
-  # end
+    it "can calculate most ridden bike with total number of rides for that bike" do
+      expect(Trip.most_ridden_bike_id).to eq(6)
+      expect(Trip.most_ridden_bike_rides).to eq(2)
+    end
 
+    it "can calculate least ridden bike with total number of rides for that bike" do
+      expect(Trip.least_ridden_bike_id).to eq(5)
+      expect(Trip.least_ridden_bike_rides).to eq(1)
+    end
+
+    it "can calculate user subscription type breakout with both count and percentage" do
+      expect(Trip.customer_subscription_count).to eq(1)
+      expect(Trip.subscriber_subscription_count).to eq(2)
+      expect(Trip.customer_subscription_percentage).to eq(33.33)
+      expect(Trip.subscriber_subscription_percentage).to eq(66.67)
+    end
+
+    it "can calculate single date with the highest number of trips with a count of those trips" do
+      expect(Trip.highest_number_of_trips_date).to eq("08/30/2013")
+      expect(Trip.highest_number_of_trips_total).to eq(2)
+    end
+
+    it "can calculate single date with the least number of trips with a count of those trips" do
+      expect(Trip.lowest_number_of_trips_date).to eq("09/30/2013")
+      expect(Trip.lowest_number_of_trips_total).to eq(2)
+    end    
+  end
 end

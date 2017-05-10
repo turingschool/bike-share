@@ -40,6 +40,10 @@ class Trip < ActiveRecord::Base
     (Station.find_by(id: (Trip.group(:end_station_id)).order('count_id DESC').count(:id).first)).name
   end
 
+  def self.monthly_breakdown_of_rides(year, month)
+    Trip.where('extract(year from start_date)=?', year).where('extract(month from start_date)=?', month).count
+  end
+
   def self.most_ridden_bike_id
     Trip.group(:bike_id).count.max_by{|bike, count| count}[0]
   end
@@ -120,10 +124,6 @@ class Trip < ActiveRecord::Base
   def self.frequent_starting_user_zipcode(id)
     zip_id = Trip.where(start_station_id: id).group(:zipcode_id).count.max_by{|zip, count| count}
     Zipcode.find_by(id: zip_id).zipcode
-  end
-
-  def self.monthly_breakdown_of_rides(year, month)
-    Trip.where('extract(year from start_date)=?', year).where('extract(month from start_date)=?', month).count
   end
 
   def self.frequent_origin_bike_id(id)

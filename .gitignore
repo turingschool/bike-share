@@ -3,3 +3,4 @@ db/csv/*.csv
 *.swp
 *.swo
 .rspec
+capybara-*

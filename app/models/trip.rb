@@ -91,24 +91,31 @@ class Trip < ActiveRecord::Base
   end
 
   def self.frequent_destination_station
+    #This is the same result on all show pages, need to pull in station info
     (Trip.group(:start_station).count.max_by{|station, count| count}).first.name
   end
 
   def self.frequent_origination_station
+    #This is the same result on all show pages, need to pull in station info
     (Trip.group(:end_station).count.max_by{|station, count| count}).first.name
   end
 
-  def self.busiest_origination_date
-    date = Trip.where(start_station_id: 40).group(:start_date).count.max_by{|date, count| count}
-    DateTime.parse(date).strftime("%m/%d/%Y")
-  end
+  # def self.busiest_origination_date
+  #   date = Trip.where(start_station_id: 40).group(:start_date).count.max_by{|date, count| count}
+  #   DateTime.parse(date).strftime("%m/%d/%Y")
+  # end
 
   # def self.frequent_starting_user_zipcode
   #   utilize zipcode id?
   # end
 
   def self.frequent_origin_bike_id
+    #This is the same result on all show pages, need to pull in station info
     (Trip.where(start_station_id: 40).group(:bike_id).count.max_by{|bike, count| count}).first
   end
 
 end
+
+# Trip.where(start_date: (Date.strptime("2013-01-01", "%Y-%m-%d"))..(Date.strptime("2013-01-31", "%Y-%m-%d")))
+ 
+Trip.where('extract(year from start_date)=?', 2014).where('extract(month from start_date)=?', 9)

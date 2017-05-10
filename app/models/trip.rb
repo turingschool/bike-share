@@ -78,7 +78,7 @@ class Trip < ActiveRecord::Base
   def self.total_subscription_count
     customer_subscription_count + subscriber_subscription_count
   end
-  
+
 
   # SHOW STATION METHODS
 
@@ -98,8 +98,8 @@ class Trip < ActiveRecord::Base
     (Trip.group(:end_station).count.max_by{|station, count| count}).first.name
   end
 
-  def self.busiest_origination_date
-    date = Trip.where(start_station_id: 40).group(:start_date).count.max_by{|date, count| count}
+  def self.busiest_origination_date(id)
+    date = Trip.where(start_station_id: id).group(:start_date).count.max_by{|date, count| count}
     DateTime.parse(date).strftime("%m/%d/%Y")
   end
 
@@ -107,8 +107,8 @@ class Trip < ActiveRecord::Base
   #   utilize zipcode id?
   # end
 
-  def self.frequent_origin_bike_id
-    (Trip.where(start_station_id: 40).group(:bike_id).count.max_by{|bike, count| count}).first
+  def self.frequent_origin_bike_id(id)
+    (Trip.where(start_station_id: id).group(:bike_id).count.max_by{|bike, count| count}).first
   end
 
 end

@@ -72,6 +72,13 @@ condition_text = File.read('./db/csv/weather.csv')
 condition = CSV.parse(condition_text, :headers => true, header_converters: :symbol)
 condition.each do |row|
   ride_date_id = RideDate.find_or_create_by!(format_date_hash(row[:date])).id
+  next if row[:max_temperature_f].nil?
+  next if row[:mean_temperature_f].nil?
+  next if row[:min_temperature_f].nil?
+  next if row[:mean_humidity].nil?
+  next if row[:mean_visibility_miles].nil?
+  next if row[:mean_wind_speed_mph].nil?
+  next if row[:precipitation_inches].nil?
 
   condition = Condition.create!(ride_date_id: ride_date_id,
                                   max_temperature: row[:max_temperature_f],

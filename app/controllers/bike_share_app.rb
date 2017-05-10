@@ -1,8 +1,11 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
 require 'pry'
 
 class BikeShareApp < Sinatra::Base
 
   configure do
+    register WillPaginate::Sinatra
     register Sinatra::Partial
     set :partial_template_engine, :erb
   end
@@ -14,7 +17,7 @@ class BikeShareApp < Sinatra::Base
 # Station App
 
   get '/stations' do
-    @stations = Station.all
+    @stations = Station.all.paginate(:page => params[:page], :per_page => 30)
     erb :"stations/index"
   end
 

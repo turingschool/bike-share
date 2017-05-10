@@ -102,6 +102,40 @@ tr {
   padding-bottom: 5px%;
 }
 
+.show {
+  width: 90%;
+  background-color: #006ec9;
+  opacity: .8;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  background-color: #006ec9;
+  color: white;
+  font-family: 'Fjalla One', sans-serif;
+}
+
+h1 {
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 2em;
+  color: white;
+}
+
+p {
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 1.5em;
+  color: white;
+}
+.show-attribute {
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 1em;
+  color: #84DCC4;
+}
+
+.edit-delete {
+  float: right;
+}
+
 footer {
   position: relative;
   bottom: -40px;

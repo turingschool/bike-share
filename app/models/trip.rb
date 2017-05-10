@@ -20,10 +20,6 @@ class Trip < ActiveRecord::Base
     end_date.strftime('%m/%d/%Y %H:%M')
   end
 
-  def format_date(date_time)
-    date_time.strftime('%m/%d/%Y')
-  end
-
   def self.average_duration
     Trip.average(:duration).to_f
   end
@@ -106,10 +102,8 @@ class Trip < ActiveRecord::Base
   end
 
   def self.busiest_origination_date(id)
-    date = Trip.where(start_station_id: id).group(:start_date).count.max_by{|date, count| count}
-    format_date(date)
-    # parsed_date = DateTime.parse(date).strftime("%m/%d/%Y")
-    # parsed_date
+    date = Trip.where(start_station_id: 2).group('DATE(start_date)').count.max_by{|date, count| count}
+    date[0].strftime('%m/%d/%Y')
   end
 
   # def self.frequent_starting_user_zipcode

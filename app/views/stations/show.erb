@@ -16,31 +16,13 @@
 <p><span class="show-attribute">Installation Date: </span><%= @station.installation_date %></p>
 
 <p><span class="show-attribute">Number of rides started at this station: </span>
-<% if @station.start_station.nil? %>
-<%= rides = 0 %>
-<% else %>
-<%= rides = @station.start_station.trips.count %>
-<% end %>
-</p>
+    <%= @station_data[:rides_started_at_station] %></p>
 <p><span class="show-attribute">Number of rides ended at this station: </span>
-<% if @station.end_station.nil? %>
-<%= rides = 0 %>
-<% else %>
-<%= rides = @station.end_station.trips.count %>
-<% end %>
+    <%= @station_data[:rides_ended_at_station] %>
 <p><span class="show-attribute">Most frequent destination station (for rides that began at this station): </span>
-<% if @station.end_station.nil? %>
-<%= "No rides have begun at this station" %>
-<% else %>
- <% end_station_id = @station.start_station.trips.group(:end_station_id).order('count_id asc').count('id').keys.last %>
-  <%= @end_station.find(end_station_id).station.name %></p>
-<% end %>
+    <%= @station_data[:most_frequent_destination_station] %></p>
 <p><span class="show-attribute">Most frequent origination station (for rides that ended at this station): </span>
-<% if @station.start_station.nil? %>
-<%= "No rides have ended at this station" %>
-<% else %>
-<% start_station_id = @station.end_station.trips.group(:start_station_id).order('count_id asc').count('id').keys.last %>
-<%= @start_station.find(start_station_id).station.name %><% end %></p>
+    <%= @station_data[:most_frequent_origination_station] %></p>
 <p><span class="show-attribute">Date with the highest number of trips started at this station: </span>
 <% if @station.start_station.nil? %>
 <%= "No rides have started at this station" %>

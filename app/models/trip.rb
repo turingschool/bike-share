@@ -109,7 +109,7 @@ class Trip < ActiveRecord::Base
   #   utilize zipcode id?
   # end
 
-  def montly_breakdown_of_rides
+  def monthly_breakdown_of_rides
     Trip.where('extract(year from start_date)=?', 2014).where('extract(month from start_date)=?', 9)
   end
 

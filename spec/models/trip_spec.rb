@@ -168,7 +168,7 @@ RSpec.describe Trip, :type => :model do
     end
 
     it 'finds the least ridden bike' do
-      expect(Trip.least_ridden_bike.first).to eq(664)
+      expect(Trip.least_ridden_bike.first).to eq(539)
       expect(Trip.least_ridden_bike[1]).to eq(1)
     end
 
@@ -177,8 +177,14 @@ RSpec.describe Trip, :type => :model do
       expect(Trip.user_subscription_type_count[1]).to eq(70)
     end
 
-    it 'finds number of rides started at a station'
-    station = Station.create(id: 2, name: "test station", dock_count: 37, date: "8/6/2013", city_id: City.find_by(name: 'San Jose Diridon Caltrain Station'))
-    expect(Trip.number_of_rides_started_at_station(station.id))
+    it 'finds number of rides started at a station' do
+      station = Station.create(id: 2, name: "test station", dock_count: 37, date: "8/6/2013", city_id: City.find_by(name: 'San Jose Diridon Caltrain Station'))
+      expect(Trip.number_of_rides_started_at_station(station.id)).to be(2)
+    end
+
+    it 'finds number of rides ended at a station' do
+      station = Station.create(id: 2, name: "test station", dock_count: 37, date: "8/6/2013", city_id: City.find_by(name: 'San Jose Diridon Caltrain Station'))
+      expect(Trip.number_of_rides_ended_at_station(station.id)).to be(2)
+    end
   end
 end

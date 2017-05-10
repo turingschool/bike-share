@@ -59,4 +59,34 @@ class Trip < ActiveRecord::Base
     Trip.group(:bike_id).count.min_by{|bike, count| count}[1]
   end
 
+  # SHOW STATION METHODS
+
+  def self.rides_started_at_station(id)
+    Trip.where(start_station_id: id).count
+  end
+
+  def self.rides_ended_at_station(id)
+    Trip.where(end_station_id: id).count
+  end
+
+  def self.frequent_destination_station
+    (Trip.group(:start_station).count.max_by{|station, count| count}).first.name
+  end
+
+  def self.frequent_origination_station
+    (Trip.group(:end_station).count.max_by{|station, count| count}).first.name
+  end
+
+  def self.busiest_origination_date
+    date = Trip.where(start_station_id: 40).group(:start_date).count.max_by{|date, count| count}
+    DateTime.parse(date).strftime("%m/%d/%Y")
+  end
+
+  # def self.frequent_starting_user_zipcode
+  #   utilize zipcode id?
+  # end
+
+  def self.frequent_origin_bike_id
+    (Trip.where(start_station_id: 40).group(:bike_id).count.max_by{|bike, count| count}).first
+  end
 end

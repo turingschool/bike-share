@@ -40,7 +40,7 @@ RSpec.describe "user visits stations index" do
     visit('/stations')
 
     visit('/stations?page=2')
-    expect(first('.station-card')).to not_have_content("San Jose Diridon Caltrain Station")
+    expect(first('.station-card')).not_to have_content("San Jose Diridon Caltrain Station")
     expect(first('.station-card')).to have_content("Cowper at University")
 
     visit('/stations?page=3')

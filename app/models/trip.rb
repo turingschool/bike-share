@@ -120,8 +120,9 @@ class Trip < ActiveRecord::Base
     Trip.where(start_station_id: id).group('DATE(start_date)').count.max_by{|date, count| count}.first.strftime('%m/%d/%Y')
   end
 
-  def self.frequent_starting_user_zipcode
-    utilize zipcode id?
+  def self.frequent_starting_user_zipcode(id)
+    zip_id = Trip.where(start_station_id: id).group(:zipcode_id).count.max_by{|zip, count| count}
+    Zipcode.find_by(id: zip_id).zipcode
   end
 
   def monthly_breakdown_of_rides()

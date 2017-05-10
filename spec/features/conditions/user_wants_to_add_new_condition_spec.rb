@@ -13,7 +13,7 @@ RSpec.describe "user wants to add condition" do
       fill_in "condition[mean_humidity]", with: 205
       fill_in "condition[mean_visibility]", with: 69
       fill_in "condition[mean_wind_speed]", with: 102
-      fill_in "condition[percipitation]", with: 9.56
+      fill_in "condition[precipitation]", with: 9.56
       fill_in "city", with: 'Denver'
 
       click_button "Submit"
@@ -43,7 +43,7 @@ RSpec.describe "user wants to add condition" do
       fill_in "condition[minimum_temperature]", with: 20
       fill_in "condition[mean_humidity]", with: 205
       fill_in "condition[mean_wind_speed]", with: 102
-      fill_in "condition[percipitation]", with: 9.56
+      fill_in "condition[precipitation]", with: 9.56
       fill_in "city", with: 'Denver'
       click_button "Submit"
     
@@ -60,7 +60,7 @@ RSpec.describe "user wants to add condition" do
       expect(page).to have_field("condition[mean_humidity]", with: "205")
       expect(page).to have_field("condition[mean_visibility]", with: "can't be blank")
       expect(page).to have_field("condition[mean_wind_speed]", with: "102")
-      expect(page).to have_field("condition[percipitation]", with: "9.56")
+      expect(page).to have_field("condition[precipitation]", with: "9.56")
   end
 
 end

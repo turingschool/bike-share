@@ -17,8 +17,8 @@
   <% @trips.each do |trip| %>
   <tr>
     <td><%= trip.id %></td>
-    <td><%= trip.start_date %></td>
-    <td><%= trip.end_date %></td>
+    <td><%= trip.start_date.day %>-<%= trip.start_date.month %>-<%= trip.start_date.year %></td>
+    <td><%= trip.end_date.day %>-<%= trip.end_date.month %>-<%= trip.end_date.year %></td>
     <td><%= trip.start_station.station.name %></td>
     <td><%= trip.end_station.station.name %></td>
     <td><%= trip.zip_code %></td>

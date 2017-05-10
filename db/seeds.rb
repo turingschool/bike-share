@@ -5,6 +5,8 @@ require './app/models/end_station.rb'
 require './app/models/subscription_type.rb'
 require './app/models/trip.rb'
 require './app/models/ride_date.rb'
+require './app/models/start_date.rb'
+require './app/models/end_date.rb'
 require 'csv'
 require 'pry'
 
@@ -14,6 +16,9 @@ StartStation.destroy_all
 EndStation.destroy_all
 SubscriptionType.destroy_all
 Trip.destroy_all
+StartDate.destroy_all
+EndDate.destroy_all
+RideDate.destroy_all
 
 def format_date(unformatted_date)
   date_elements = unformatted_date.split("/")
@@ -47,7 +52,8 @@ trip = CSV.parse(trip_text, :headers => true, header_converters: :symbol)
 trip.each do |row|
   ride_date_start = RideDate.find_or_create_by!(format_date_hash(row[:start_date]))
   ride_date_end = RideDate.find_or_create_by!(format_date_hash(row[:start_date]))
-  
+  start_date = StartDate.find_or_create_by!(ride_date_id: ride_date_start.id)
+  end_date = EndDate.find_or_create_by!(ride_date_id: ride_date_end.id)
   start_station = Station.find_by(name: row[:start_station_name])
   end_station = Station.find_by(name: row[:end_station_name])
   next if start_station.nil? || end_station.nil?
@@ -55,8 +61,8 @@ trip.each do |row|
   subscription.trips.create!(duration: row[:duration],
                             start_station_id: Station.find_by(name: row[:start_station_name]).start_station.id,
                             end_station_id: Station.find_by(name: row[:end_station_name]).end_station.id,
-                            start_date_id: ride_date_start.id,
-                            end_date_id: ride_date_end.id,
+                            start_date_id: start_date.id,
+                            end_date_id: end_date.id,
                             bike_id: row[:bike_id],
                             zip_code: format_zip_code(row[:zip_code]))
 end

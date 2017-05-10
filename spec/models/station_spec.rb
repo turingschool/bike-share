@@ -24,5 +24,11 @@ RSpec.describe Station do
       expect(Station.max_bike_station).to eq("San Jose Diridon Caltrain Station")
     end
   end
-  
+
+  describe ".min_avaiable_bikes" do
+    it "returns the smallest number of bikes available at a station" do
+      Loader.new('./spec/fixtures/station_fixtures.csv').load_stations
+
+      expect(Station.min_available_bikes).to eq(11)
+    end
 end

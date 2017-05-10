@@ -117,15 +117,12 @@ class Trip < ActiveRecord::Base
   end
 
   def self.busiest_origination_date(id)
-    parsed_date = Trip.where(start_station_id: 2).group(:start_date).count.max_by{|date, count| count}
-    parsed_date[0].to_s.strptime('%m/%d/%Y')
-    # parsed_date = DateTime.parse(date).strftime("%m/%d/%Y")
-    # parsed_date
+    Trip.where(start_station_id: id).group('DATE(start_date)').count.max_by{|date, count| count}.first.strftime('%m/%d/%Y')
   end
 
-  # def self.frequent_starting_user_zipcode
-  #   utilize zipcode id?
-  # end
+  def self.frequent_starting_user_zipcode
+    utilize zipcode id?
+  end
 
   def monthly_breakdown_of_rides()
     Trip.where('extract(year from start_date)=?', 2014).where('extract(month from start_date)=?', 9)

@@ -1,0 +1,21 @@
+<h1>Create New Trip Weather</h1>
+
+<form action="/conditions" method="post">
+  <label for="">Maximum Temperature (deg F):</label>
+  <input type="float" name="weather[max_temperature]">
+  <label for="">Average Temperature (deg F):</label>
+  <input type="float" name="weather[mean_temperature]">
+  <label for="">Minimum Temperature (deg F):</label>
+  <input type="float" name="weather[min_temperature]">
+  <label for="">Average Humidity (percentage):</label>
+  <input type="float" name="weather[mean_humidity]">
+  <label for="">Average Visibility (miles):</label>
+  <input type="float" name="weather[mean_visibility]">
+  <label for="">Average Wind Speed (mph):</label>
+  <input type="float" name="weather[mean_wind_speed]">
+  <label for="">Precipitation (inches):</label>
+  <input type="float" name="weather[precipitation]">
+  <label for="">Date:</label>
+  <input type="date" name="weather[date_ref_id]">
+  <input type="submit" value="Create New Weather"/>
+</form>

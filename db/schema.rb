@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170510000551) do
-=======
-ActiveRecord::Schema.define(version: 20170509145003) do
->>>>>>> development
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,7 +75,6 @@ ActiveRecord::Schema.define(version: 20170509145003) do
     t.float    "mean_visibility"
     t.float    "mean_wind_speed"
     t.float    "precipitation"
-
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end

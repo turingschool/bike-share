@@ -93,7 +93,7 @@ RSpec.describe Station do
       expect(dashboard[:most_popular_destination]).to eq("Broadway")
       expect(dashboard[:most_popular_origin]).to eq("Broadway")
       expect(dashboard[:most_popular_date].to_s).to eq("2011-02-02")
-      expect(dashboard[:most_popular_zipcode]).to eq(31220)
+      expect(dashboard[:most_popular_zipcode]).to eq('31220')
       expect(dashboard[:most_popular_bike]).to eq(571)
     end
   end

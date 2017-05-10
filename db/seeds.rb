@@ -74,7 +74,6 @@ weather_statistics.each do |row|
   date = row[:date]
   date = DateRef.clean_date(date)
   date = DateRef.find_or_create_by!(date: date)
-  city = WeatherStatistic.key_zip_to_city[row[:zip_code]]
   city = City.find_by(name: city)
 
   WeatherStatistic.create!(

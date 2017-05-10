@@ -37,7 +37,6 @@ class BikeShareApp < Sinatra::Base
     else
       redirect "/stations/new?errors=#{@station[1].errors.full_messages}"
     end
-  
   end
 
 #form to edit station
@@ -107,8 +106,12 @@ class BikeShareApp < Sinatra::Base
 
 #route after filling new trip form
   post '/trips' do
-    trip = Trip.create_new(params)
-    redirect "/trips/#{trip.id}"
+    @trip = Trip.create_new(params)
+    if @trip[0]
+      redirect "/trips/#{@trip[1].id}"
+    else
+      redirect "/trips/new?errors=#{@trip[1].errors.full_messages}"
+    end
   end
 
 #form to edit trips

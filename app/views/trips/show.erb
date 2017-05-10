@@ -7,7 +7,9 @@
       <p>End Station: <%= @trip.end_station.name %></p>
       <p>Bike ID: <%= @trip.bike.bike %></p>
       <p>Subscripton Type: <%= @trip.subscription_type.sub_type %></p>
+      <% if @trip.zipcode %>
       <p>Zipcode <%= @trip.zipcode.zipcode %></p>
+      <%end%>
 <input class="button_active" onclick="location.href='/trips/<%= @trip.id %>/edit';" type="button" value="Edit">
 <form action="/trips/<%= @trip.id %>" method="POST">
   <input type="hidden" name="_method" value="DELETE">

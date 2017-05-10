@@ -1,3 +1,5 @@
+require 'date'
+
 class Trip < ActiveRecord::Base
   belongs_to :zipcode
   belongs_to :start_station, :foreign_key => :start_station_id, :class_name => 'Station'
@@ -16,6 +18,10 @@ class Trip < ActiveRecord::Base
 
   def format_end_date_time
     end_date.strftime('%m/%d/%Y %H:%M')
+  end
+
+  def format_date(date_time)
+    date_time.strftime('%m/%d/%Y')
   end
 
   def self.average_duration
@@ -90,19 +96,20 @@ class Trip < ActiveRecord::Base
     Trip.where(end_station_id: id).count
   end
 
-  def self.frequent_destination_station
-    #This is the same result on all show pages, need to pull in station info
-    (Trip.group(:start_station).count.max_by{|station, count| count}).first.name
+
+  def self.frequent_destination_station(id)
+    (Trip.where(start_station_id: id).group(:end_station).count.max_by{|station, count| count}).first.name
   end
 
-  def self.frequent_origination_station
-    #This is the same result on all show pages, need to pull in station info
-    (Trip.group(:end_station).count.max_by{|station, count| count}).first.name
+  def self.frequent_origination_station(id)
+    (Trip.where(end_station_id: id).group(:start_station).count.max_by{|station, count| count}).first.name
   end
 
   def self.busiest_origination_date(id)
     date = Trip.where(start_station_id: id).group(:start_date).count.max_by{|date, count| count}
-    DateTime.parse(date).strftime("%m/%d/%Y")
+    format_date(date)
+    # parsed_date = DateTime.parse(date).strftime("%m/%d/%Y")
+    # parsed_date
   end
 
   # def self.frequent_starting_user_zipcode

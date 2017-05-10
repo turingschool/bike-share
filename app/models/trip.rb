@@ -1,4 +1,5 @@
 require 'pry'
+require 'Date'
 
 class Trip < ActiveRecord::Base
   validates :duration, :start_date, :start_station_id, :end_date, :end_station_id, :bike_id, :subscription_type, presence: true
@@ -36,12 +37,24 @@ class Trip < ActiveRecord::Base
   end
 
 
-  # TODO: CONVERT DATE TO DATETYPE NOT STRING
-  # def self.month_by_month_breakdown_with_subtotals_by_year
-  #   trips = where('start_date')
-  #   breakdown = trips.group(:start_date).count
-  #   breakdown[:total] = breakdown.values.reduce(:+)
-  # end
+  def self.month_by_month_breakdown
+    start_year = 2013
+    month = 1
+    months = {}
+    years= {}
+    12.times do
+      # binding.pry
+      months[month] = where("extract(month from start_date) = ?", month).count
+      month += 1
+    end
+
+    (Time.new.year - start_year).times do
+      years[start_year] = where('extract(year from start_date) = ?', start_year).count
+      start_year += 1
+    end
+
+    {months: months, years: years}
+  end
 
   def self.most_ridden_bike
     group(:bike_id).order('count_id DESC').limit(1).count(:id)

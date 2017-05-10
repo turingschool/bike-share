@@ -83,7 +83,7 @@ RSpec.describe "When a user views conditions dashboard" do
                                 mean_humidity: 90.0,
                                 mean_visibility: 10.0,
                                 mean_wind_speed: 8.0,
-                                precipitation: 1.4,
+                                precipitation: 0.7,
                                 zipcode_id: zip.id
                                 )
     condition_1 = Condition.create(
@@ -105,7 +105,7 @@ RSpec.describe "When a user views conditions dashboard" do
                                 mean_humidity: 90.0,
                                 mean_visibility: 10.0,
                                 mean_wind_speed: 10.0,
-                                precipitation: 1.0,
+                                precipitation: 0.6,
                                 zipcode_id: zip.id
                                 )
     condition_3 = Condition.create(

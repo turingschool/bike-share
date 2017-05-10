@@ -30,7 +30,7 @@
       <td><%= trip.bike_id %></td>
       <td><%= trip.subscription_type %></td>
       <td><%= trip.zipcode %></td>
-      <td><a class="btn btn-view" href="/trips/<%= trip.id %>/show">View Trip</a></td>
+      <td><a class="btn btn-view" href="/trips/<%= trip.id %>">View Trip</a></td>
       <td><a class="btn btn-edit" href="/trips/<%= trip.id %>/edit">Edit Trip</a></td>
       <td>
         <form action="/trips/<%= trip.id %>" method="post">

@@ -116,5 +116,4 @@ class Trip < ActiveRecord::Base
   def self.frequent_origin_bike_id(id)
     (Trip.where(start_station_id: id).group(:bike_id).count.max_by{|bike, count| count}).first
   end
-
 end

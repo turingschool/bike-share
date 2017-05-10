@@ -76,8 +76,11 @@
         <p><%= station.name %></p></span>
         <% end %>
 
-        <span><p><b>Youngest Station: </b><br><%= @station.most_recent %></p></span>
-        <span><p><b>Oldest Station: </b><br><%= @station.oldest %></p></span>
+        <span><p><b>Youngest Station: </b><br><%= @station.most_recent.name %></p></span>
+        <span><p><b>Oldest Station: </b><br><%= @station.oldest.name %></p></span>
+        <br>
+        <br>
+        <br>
 
     </div>
 

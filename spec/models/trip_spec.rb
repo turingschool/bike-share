@@ -11,9 +11,9 @@ RSpec.describe Trip, :type => :model do
 
     it "requires duration, start date,start station, end date, end station, bike id, subscription_type" do
       valid_trip = Trip.create(duration: "111",
-                                start_date: "6/12/2015",
+                                start_date: Date.today,
                                 start_station_id: @station_1.id,
-                                end_date: "6/13/2015",
+                                end_date: Date.today,
                                 end_station_id: @station_2.id,
                                 bike_id: 1,
                                 subscription_type: "subscriber"
@@ -21,9 +21,9 @@ RSpec.describe Trip, :type => :model do
       expect(valid_trip).to be_valid
 
       no_duration = Trip.create(
-                                start_date: "6/12/2015",
+                                start_date: Date.today,
                                 start_station_id: @station_1.id,
-                                end_date: "6/13/2015",
+                                end_date: Date.today,
                                 end_station_id: @station_2.id,
                                 bike_id: 1,
                                 subscription_type: "subscriber"
@@ -32,7 +32,7 @@ RSpec.describe Trip, :type => :model do
 
       no_start_date = Trip.create(duration: "111",
                                   start_station_id: @station_1.id,
-                                  end_date: "6/13/2015",
+                                  end_date: Date.today,
                                   end_station_id: @station_2.id,
                                   bike_id: 1,
                                   subscription_type: "subscriber"
@@ -40,8 +40,8 @@ RSpec.describe Trip, :type => :model do
       expect(no_start_date).not_to be_valid
 
       no_start_station = Trip.create(duration: "111",
-                                start_date: "6/12/2015",
-                                end_date: "6/13/2015",
+                                start_date: Date.today,
+                                end_date: Date.today,
                                 end_station_id: @station_2.id,
                                 bike_id: 1,
                                 subscription_type: "subscriber"
@@ -49,7 +49,7 @@ RSpec.describe Trip, :type => :model do
       expect(no_start_station).not_to be_valid
 
       no_end_date = Trip.create(duration: "111",
-                                start_date: "6/12/2015",
+                                start_date: Date.today,
                                 start_station_id: @station_1.id,
                                 end_station_id: @station_2.id,
                                 bike_id: 1,
@@ -58,27 +58,27 @@ RSpec.describe Trip, :type => :model do
       expect(no_end_date).not_to be_valid
 
       no_end_station = Trip.create(duration: "111",
-                                   start_date: "6/12/2015",
+                                   start_date: Date.today,
                                    start_station_id: @station_1.id,
-                                   end_date: "6/13/2015",
+                                   end_date: Date.today,
                                    bike_id: 1,
                                    subscription_type: "subscriber"
                                    )
       expect(no_end_station).not_to be_valid
 
       no_bike = Trip.create(duration: "111",
-                            start_date: "6/12/2015",
+                            start_date: Date.today,
                             start_station_id: @station_1.id,
-                            end_date: "6/13/2015",
+                            end_date: Date.today,
                             end_station_id: @station_2.id,
                             subscription_type: "subscriber"
                             )
       expect(no_bike).not_to be_valid
 
       no_subscription_type = Trip.create(duration: "111",
-                                         start_date: "6/12/2015",
+                                         start_date: Date.today,
                                          start_station_id: @station_1.id,
-                                         end_date: "6/13/2015",
+                                         end_date: Date.today,
                                          end_station_id: @station_2.id,
                                          bike_id: 1,
                                          )
@@ -93,9 +93,9 @@ RSpec.describe Trip, :type => :model do
     end
     it "has foreign station keys" do
       trip = Trip.create(duration: "111",
-                                start_date: "6/12/2015",
+                                start_date: Date.today,
                                 start_station: @station_1,
-                                end_date: "6/13/2015",
+                                end_date: Date.today,
                                 end_station: @station_2,
                                 bike_id: 1,
                                 subscription_type: "subscriber"
@@ -131,9 +131,9 @@ RSpec.describe Trip, :type => :model do
 
         Trip.create(id: trip[:id],
           duration: trip[:duration],
-          start_date: trip[:start_date],
+          start_date: Date.strptime(trip[:start_date], '%m/%d/%Y %H:%M'),
           start_station: start_station,
-          end_date: trip[:end_date],
+          end_date: Date.strptime(trip[:end_date], '%m/%d/%Y %H:%M'),
           end_station: end_station,
           bike_id: trip[:bike_id],
           subscription_type: trip[:subscription_type],
@@ -167,7 +167,7 @@ RSpec.describe Trip, :type => :model do
     end
 
     it 'finds the least ridden bike' do
-      expect(Trip.least_ridden_bike).to eq({664=>1})
+      expect(Trip.least_ridden_bike).to eq({539=>1})
     end
 
     it 'finds subscription stats' do
@@ -178,11 +178,11 @@ RSpec.describe Trip, :type => :model do
     end
 
     it 'finds busiest day' do
-      expect(Trip.busiest_day.first).to eq('8/30/2013 11:12')
+      expect(Trip.busiest_day.first).to be_instance_of(Date)
     end
 
     it 'finds loneliest day' do
-      expect(Trip.least_busy_day.first).to eq('8/30/2013 12:28')
+      expect(Trip.least_busy_day.first).to be_instance_of(Date)
     end
 
     it 'finds number of rides started at a station' do
@@ -203,16 +203,16 @@ RSpec.describe Trip, :type => :model do
       expect(Trip.most_frequent_starting_station.first).to be_instance_of(Station)
     end
 
-    # it 'returns month by month breakdown' do
-    #   expect(Trip.month_by_month_breakdown_with_subtotals_by_year).to eq(3)
-    # end
+    it 'returns month by month breakdown' do
+      expect(Trip.month_by_month_breakdown).to eq({:months=>{1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>0, 8=>115, 9=>0, 10=>0, 11=>0, 12=>0}, :years=>{2013=>115, 2014=>0, 2015=>0, 2016=>0}})
+    end
 
     it 'finds highest_number_of_trips_of_stations_by_date' do
-      expect(Trip.highest_number_of_trips_of_stations_by_date.first).to eq('8/30/2013 11:12')
+      expect(Trip.highest_number_of_trips_of_stations_by_date.first).to be_instance_of(Date)
     end
 
     it 'finds lowest_number_of_trips_of_stations_by_date' do
-      expect(Trip.lowest_number_of_trips_of_stations_by_date.first).to eq('8/30/2013 9:36')
+      expect(Trip.lowest_number_of_trips_of_stations_by_date.first).to be_instance_of(Date)
     end
   end
 end

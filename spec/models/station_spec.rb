@@ -41,4 +41,20 @@ RSpec.describe Station do
     end
   end
 
+  describe ".newest_station" do 
+    it "returns the name of the station that was installed most recently" do
+      Loader.new('./spec/fixtures/station_fixtures.csv').load_stations
+
+      expect(Station.newest_station).to eq("San Pedro Square")
+    end
+  end
+
+  describe ".oldest_station" do 
+    it "returns the name of the station with the oldest install date" do
+      Loader.new('./spec/fixtures/station_fixtures.csv').load_stations
+
+      expect(Station.oldest_station).to eq("San Jose Civic Center")
+    end
+  end
+  
 end

@@ -36,18 +36,21 @@ class Condition < ActiveRecord::Base
   def self.ave_rides_per_condition(column, low, high)
     x = determine_date_range(column,low,high)
     y = Trip.determine_trips_on_specific_dates(x)
+    return 0 if x == 0
     (y.count.to_f/x.count.to_f).round(2)
   end
 
   def self.most_rides_per_condition(column, low, high)
     x = determine_date_range(column, low, high)
     y = Trip.determine_trips_on_specific_dates(x)
+    return 0 if y.empty?
     y.group(:start_date).count.max_by{|start_date, count| count}[1]
   end
 
   def self.fewest_rides_per_condition(column, low, high)
     x = determine_date_range(column, low, high)
     y = Trip.determine_trips_on_specific_dates(x)
+    return 0 if y.empty?
     y.group(:start_date).count.min_by{|start_date, count| count}[1]
   end
 

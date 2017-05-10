@@ -16,31 +16,55 @@
 <p><span class="show-attribute">Installation Date: </span><%= @station.installation_date %></p>
 
 <p><span class="show-attribute">Number of rides started at this station: </span>
-<%= @station.start_station.trips.count %></p>
+<% if @station.start_station.nil? %>
+<%= rides = 0 %>
+<% else %>
+<%= rides = @station.start_station.trips.count %>
+<% end %>
+</p>
 <p><span class="show-attribute">Number of rides ended at this station: </span>
-<%= @station.end_station.trips.count %></p>
+<% if @station.end_station.nil? %>
+<%= rides = 0 %>
+<% else %>
+<%= rides = @station.end_station.trips.count %>
+<% end %>
 <p><span class="show-attribute">Most frequent destination station (for rides that began at this station): </span>
+<% if @station.end_station.nil? %>
+<%= "No rides have begun at this station" %>
+<% else %>
  <% end_station_id = @station.start_station.trips.group(:end_station_id).order('count_id asc').count('id').keys.last %>
   <%= @end_station.find(end_station_id).station.name %></p>
-
+<% end %>
 <p><span class="show-attribute">Most frequent origination station (for rides that ended at this station): </span>
+<% if @station.start_station.nil? %>
+<%= "No rides have ended at this station" %>
+<% else %>
 <% start_station_id = @station.end_station.trips.group(:start_station_id).order('count_id asc').count('id').keys.last %>
-<%= @start_station.find(start_station_id).station.name %></p>
+<%= @start_station.find(start_station_id).station.name %><% end %></p>
 <p><span class="show-attribute">Date with the highest number of trips started at this station: </span>
+<% if @station.start_station.nil? %>
+<%= "No rides have started at this station" %>
+<% else %>
 <% trips = @station.start_station.trips %>
   <% start_date_id = trips.group(:start_date_id).order("count_id asc").count('id').keys.last %>
   <% start_date = @start_date.find(start_date_id) %>
-  <%= start_date.ride_date.month %>-<%= start_date.ride_date.day %>-<%= start_date.ride_date.year %></p>
+  <%= start_date.ride_date.month %>-<%= start_date.ride_date.day %>-<%= start_date.ride_date.year %><% end %></p>
 <p><span class="show-attribute">Most frequent zip code for users starting trips at this station: </span>
+<% if @station.start_station.nil? %>
+<%= "No rides have started at this station" %>
+<% else %>
 <% trips = @station.start_station.trips %>
 <% zip = trips.group(:zip_code).order("count_id asc").count('id').keys.last %>
 <% if zip.nil? %>
   <%  zip = trips.group(:zip_code).order("count_id asc").count('id').keys[-2] %>
 <% end %>
-<%= zip %></p>
+<%= zip %><% end %></p>
 <p><span class="show-attribute">Bike ID most frequently starting a trip at this station: </span>
+<% if @station.start_station.nil? %>
+<%= "No rides have started at this station" %>
+<% else %>
 <% trips = @station.start_station.trips %>
-  <%= trips.group(:bike_id).order("count_id asc").count('id').keys.last %></p>
+  <%= trips.group(:bike_id).order("count_id asc").count('id').keys.last %><% end %></p>
 <div class="edit-delete>"
   <button type="button"><a href="/stations/<%=@station.id%>/edit">Edit</a></button>
   <form action="/stations/<%=@station.id%>" method="post">

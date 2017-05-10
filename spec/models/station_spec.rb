@@ -109,7 +109,7 @@ RSpec.describe Station do
     end
 
     describe ".newest_station" do
-      it "can find the newewst station created" do
+      it "can find the newest station created" do
         expect(Station.newest_station).to eq('something')
       end
     end

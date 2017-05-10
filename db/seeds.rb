@@ -37,7 +37,7 @@ start_time = Time.now
 trips.each do |row|
   start_station = station.find(name: row[:start_station_name])
   end_station = station.find(name: row[:end_station_name])
-  
+
   Trip.create(duration:                 row[:duration],
                   start_date:           Date.strptime(row[:start_date], "%m/%d/%Y"),
                   start_station:        start_station.id,

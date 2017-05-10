@@ -77,7 +77,7 @@ conditions.each do |row|
 								 mean_visibility:     row[:mean_visibility_miles],
 								 mean_humidity:       row[:mean_humidity],
 								 mean_wind_speed:     row[:mean_wind_speed_mph],
-								 percipitation:       row[:precipitation_inches],
+								 precipitation:       row[:precipitation_inches],
 								 zip_code:            row[:zip_code],
 								 city_id:             zips[row[:zip_code]][0].id
 								)

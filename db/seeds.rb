@@ -1,7 +1,6 @@
 require 'pry'
 require './app/models/city'
 require './app/models/station'
-require './app/models/date'
 require './app/models/condition'
 require 'time'
 require 'date'

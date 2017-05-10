@@ -18,7 +18,7 @@ RSpec.describe Station do
   end
 
   describe ".max_bike_station" do
-    it "returns the station with maximum number available bikes" do
+    it "returns the name of the station with maximum number available bikes" do
       Loader.new('./spec/fixtures/station_fixtures.csv').load_stations
 
       expect(Station.max_bike_station).to eq("San Jose Diridon Caltrain Station")
@@ -31,4 +31,14 @@ RSpec.describe Station do
 
       expect(Station.min_available_bikes).to eq(11)
     end
+  end
+
+  describe ".min_bike_station"
+    it "returns the name of the station with minimum number of bikes availble bikes" do
+      Loader.new('./spec/fixtures/station_fixtures.csv').load_stations
+
+      expect(Station.min_bike_station).to eq("Santa Clara at Almaden")
+    end
+  end
+  
 end

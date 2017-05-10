@@ -80,11 +80,11 @@ RSpec.describe Trip do
 
       result = Trip.sterilize(params)  
 
-      expect(result[:start_date].date.to_s).to eq('2013-05-05')
-      expect(result[:end_date].date.to_s).to eq('2013-05-05')
-      expect(result[:bike].bike).to eq(1001)
-      expect(result[:zipcode].zipcode).to eq('10010')
-      expect(result[:subscription].sub_type).to eq("weekly")
+      expect(result[:start_date]).to eq(3)
+      expect(result[:end_date]).to eq(3)
+      expect(result[:bike]).to eq(2)
+      expect(result[:zipcode]).to eq(2)
+      expect(result[:subscription]).to eq(1)
       expect(result[:start_station].name).to eq('Broadway')
       expect(result[:end_station].name).to eq('Broadway')
     end
@@ -120,13 +120,13 @@ RSpec.describe Trip do
       trip = Trip.update_record(params)  
 
       
-      expect(trip.date_ref.date.to_s).to eq('2013-08-05')
-      expect(trip.end_date.date.to_s).to eq('2013-05-04')
-      expect(trip.bike.bike).to eq(10012)
-      expect(trip.zipcode.zipcode).to eq('10012')
-      expect(trip.subscription_type.sub_type).to eq("Monthly")
-      expect(trip.start_station.name).to eq('Lawrence')
-      expect(trip.end_station.name).to eq('Lawrence')
+      expect(trip[1].date_ref.date.to_s).to eq('2013-08-05')
+      expect(trip[1].end_date.date.to_s).to eq('2013-05-04')
+      expect(trip[1].bike.bike).to eq(10012)
+      expect(trip[1].zipcode.zipcode).to eq('10012')
+      expect(trip[1].subscription_type.sub_type).to eq("Monthly")
+      expect(trip[1].start_station.name).to eq('Lawrence')
+      expect(trip[1].end_station.name).to eq('Lawrence')
     end
   end
   

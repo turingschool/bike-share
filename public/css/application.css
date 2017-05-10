@@ -379,3 +379,12 @@ body {
   width: 80%;
   padding-bottom: 50px;
 }
+
+/*
+  ========================================
+  Weather
+  ========================================
+*/
+input, button, select, textarea {
+    color: #555;
+}

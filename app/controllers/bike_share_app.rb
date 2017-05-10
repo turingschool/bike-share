@@ -1,5 +1,6 @@
 require 'will_paginate'
 require 'will_paginate/active_record'
+
 require 'pry'
 
 class BikeShareApp < Sinatra::Base
@@ -37,7 +38,7 @@ class BikeShareApp < Sinatra::Base
       @station.save
       @city.stations << @station
       redirect "stations/#{@station.id}"
-    end 
+    end
   end
 
   get '/stations/:id' do
@@ -94,13 +95,13 @@ class BikeShareApp < Sinatra::Base
     @city = City.find_or_create_by(name: params[:city])
     @condition = Condition.new(params[:condition])
     if @condition.invalid? || @city.invalid?
-      @city.invalid? 
+      @city.invalid?
       erb :"conditions/new"
     else
       @condition.save
       @city.conditions << @condition
       redirect "conditions/#{@condition.id}"
-    end 
+    end
   end
 
   get '/conditions/:id' do

@@ -20,10 +20,6 @@ class Trip < ActiveRecord::Base
     end_date.strftime('%m/%d/%Y %H:%M')
   end
 
-  def format_date(date_time)
-    date_time.strftime('%m/%d/%Y')
-  end
-
   def self.average_duration
     Trip.average(:duration).to_f
   end
@@ -74,17 +70,32 @@ class Trip < ActiveRecord::Base
   end
 
   def self.customer_subscription_percentage
-    customer_subscription_count / total_subscription_count
+    (customer_subscription_count / total_subscription_count).to_f
   end
 
   def self.subscriber_subscription_percentage
-    subscriber_subscription_count / total_subscription_count
+    (subscriber_subscription_count / total_subscription_count).to_f
   end
 
   def self.total_subscription_count
     customer_subscription_count + subscriber_subscription_count
   end
 
+  def self.highest_number_of_trips_date
+    Trip.group('DATE(start_date)').count.max_by{|date, count| count}.first.strftime('%m/%d/%Y')
+  end
+
+  def self.highest_number_of_trips_total
+    Trip.group('DATE(start_date)').count.max_by{|date, count| count}[1]
+  end
+
+  def self.lowest_number_of_trips_date
+    Trip.group('DATE(start_date)').count.min_by{|date, count| count}.first.strftime('%m/%d/%Y')
+  end
+
+  def self.lowest_number_of_trips_total
+    Trip.group('DATE(start_date)').count.min_by{|date, count| count}[1]
+  end
 
   # SHOW STATION METHODS
 
@@ -106,8 +117,8 @@ class Trip < ActiveRecord::Base
   end
 
   def self.busiest_origination_date(id)
-    date = Trip.where(start_station_id: id).group(:start_date).count.max_by{|date, count| count}
-    format_date(date)
+    parsed_date = Trip.where(start_station_id: 2).group(:start_date).count.max_by{|date, count| count}
+    parsed_date[0].to_s.strptime('%m/%d/%Y')
     # parsed_date = DateTime.parse(date).strftime("%m/%d/%Y")
     # parsed_date
   end
@@ -116,7 +127,7 @@ class Trip < ActiveRecord::Base
   #   utilize zipcode id?
   # end
 
-  def monthly_breakdown_of_rides
+  def monthly_breakdown_of_rides()
     Trip.where('extract(year from start_date)=?', 2014).where('extract(month from start_date)=?', 9)
   end
 

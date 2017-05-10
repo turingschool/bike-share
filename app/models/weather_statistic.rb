@@ -53,7 +53,6 @@ class WeatherStatistic < ActiveRecord::Base
 
   end
 
-
   def self.high_temp
     range = range_high_temp
     stat = trips_by_weather(range, 10, "max_temperature")
@@ -88,8 +87,12 @@ class WeatherStatistic < ActiveRecord::Base
   end
 
   def self.range_high_temp
-    (((WeatherStatistic.minimum(:max_temperature)/10).floor*10)..((WeatherStatistic.maximum(:max_temperature)/10).floor * 10)).step(10).to_a
+    (((WeatherStatistic.minimum(:max_temperature)/10).floor*10)..((WeatherStatistic.maximum(:max_temperature)/10).ceil * 10)).step(10).to_a
   end
+
+  # def self.range_high_temp(tag, div, inc)
+  #   (((WeatherStatistic.minimum(tag)/div).floor*div)..((WeatherStatistic.maximum(tag)/div).ceil * div)).step(div).to_a
+  # end
 
   def self.trips_by_weather(range, increment, statistic)
     range.each_with_index.map do |stat, index|
@@ -99,7 +102,8 @@ class WeatherStatistic < ActiveRecord::Base
         {"#{stat-increment} - #{stat}" => 
           WeatherStatistic.joins(:trips)
                     .where("#{statistic} between ? and ?", range[index-1], range[index])
-                    .group(:date).order('count_id ASC')
+                    .group(:date)
+                    .order('count_id ASC')
                     .count(:id).values
           
         }
@@ -111,7 +115,7 @@ class WeatherStatistic < ActiveRecord::Base
     hash.map do |ranges| 
       ranges.each do |k, v| 
         if v.empty? 
-          next 
+          ranges[k] = [0, 0, 0] 
         else 
           ranges[k] = [v.max, v.min, (v.inject(:+)/v.length)] 
         end 

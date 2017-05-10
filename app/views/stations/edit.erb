@@ -25,3 +25,7 @@
   </select>
   <input type="submit" value="Edit Station" />
 </form>
+
+<% if params['errors'] %>
+<%= erb :'stations/error'%>
+<%end%>

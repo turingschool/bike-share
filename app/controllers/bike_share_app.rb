@@ -32,7 +32,12 @@ class BikeShareApp < Sinatra::Base
 #route after filling new station form
   post '/stations' do
     @station = Station.create_new(params)
-    redirect "/stations/#{@station.id}"
+    if @station[0]
+      redirect "/stations/#{@station[1].id}"
+    else
+      redirect "/stations/new?errors=#{@station[1].errors.full_messages}"
+    end
+  
   end
 
 #form to edit station
@@ -45,7 +50,12 @@ class BikeShareApp < Sinatra::Base
 #route to update after editing station
   put '/stations/:id' do
     @station = Station.update_record(params)
-    redirect "/stations/#{@station.id}"
+    if @station[0]
+      redirect "/stations/#{@station[1].id}"
+    else
+      redirect "/stations/#{params[:id]}/edit?errors=#{@station[1]  .errors.full_messages}"
+    end
+  
   end
 
 #route to delete single station
@@ -61,7 +71,6 @@ class BikeShareApp < Sinatra::Base
 #trip dashboard with statistics
   get '/trips-dashboard' do
     @trips_dashboard_data = Trip.dashboard
-    # binding.pry
     erb :'trips/dashboard'
   end
 

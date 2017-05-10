@@ -59,37 +59,29 @@ class Trip < ActiveRecord::Base
   end
 
   def self.most_ridden_bike
-    group(:bike_id).count("id").max_by do |bike, count|
-      count
-    end
+    group(:bike_id).order('count_id DESC').limit(1).count(:id)
   end
 
   def self.least_ridden_bike
-    group(:bike_id).count("id").min_by do |bike, count|
-      count
-    end
+    group(:bike_id).order('count_id ASC').limit(1).count(:id)
   end
 
   def self.user_subscription_type_count
-    group(:subscription_type).count("id").max_by do |bike, count|
-      count
-    end
+    output = {}
+    output[:customers] = where(subscription_type: "customer").count
+    output[:subscribers] = where(subscription_type: "subscriber").count
+
+    output[:customers_percentage] = ((output[:customers].to_f / count) * 100).round(2)
+    output[:subscribers_percentage]  = ((output[:subscribers].to_f / count) * 100).round(2)
+    output
   end
 
-  def self.user_subscription_type_with_percentage
-
+  def self.busiest_day
+    group(:start_date).count("id").max_by{|date, count| count }
   end
 
-  def self.highest_number_of_trips
-    group(:start_date).count("id").max_by do |date, count|
-      count
-    end
-  end
-
-  def self.lowest_number_of_trips
-    group(:start_date).count("id").min_by do |date, count|
-      count
-    end
+  def self.least_busy_day
+    group(:end_date).count("id").min_by{|date, count| count }
   end
 
   #Individual station methods for Info

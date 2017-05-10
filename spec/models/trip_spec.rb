@@ -163,18 +163,26 @@ RSpec.describe Trip, :type => :model do
     end
 
     it 'finds the most ridden bike' do
-      expect(Trip.most_ridden_bike.first).to eq(270)
-      expect(Trip.most_ridden_bike[1]).to eq(3)
+      expect(Trip.most_ridden_bike).to eq({270=>3})
     end
 
     it 'finds the least ridden bike' do
-      expect(Trip.least_ridden_bike.first).to eq(539)
-      expect(Trip.least_ridden_bike[1]).to eq(1)
+      expect(Trip.least_ridden_bike).to eq({539=>1})
     end
 
-    it 'finds the most used subscription type' do
-      expect(Trip.user_subscription_type_count.first).to eq('subscriber')
-      expect(Trip.user_subscription_type_count[1]).to eq(70)
+    it 'finds subscription stats' do
+      expect(Trip.user_subscription_type_count[:customers]).to eq(45)
+      expect(Trip.user_subscription_type_count[:subscribers]).to eq(70)
+      expect(Trip.user_subscription_type_count[:customers_percentage]).to eq(39.13)
+      expect(Trip.user_subscription_type_count[:subscribers_percentage]).to eq(60.87)
+    end
+
+    it 'finds busiest day' do
+      expect(Trip.busiest_day.first).to eq('8/30/2013 14:20')
+    end
+
+    it 'finds loneliest day' do
+      expect(Trip.least_busy_day.first).to eq('8/30/2013 12:28')
     end
 
     it 'finds number of rides started at a station' do
@@ -185,6 +193,10 @@ RSpec.describe Trip, :type => :model do
     it 'finds number of rides ended at a station' do
       station = Station.create(id: 2, name: "test station", dock_count: 37, date: "8/6/2013", city_id: City.find_by(name: 'San Jose Diridon Caltrain Station'))
       expect(Trip.number_of_rides_ended_at_station(station.id)).to be(2)
+    end
+
+    it 'finds most frequent starting station' do
+      
     end
   end
 end

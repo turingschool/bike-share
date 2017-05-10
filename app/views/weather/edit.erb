@@ -24,3 +24,7 @@
   <input type="date" name="weather[date_ref_id]" value="<%= @weather.date_ref.date %>">
   <input type="submit" value="Edit Weather"/>
 </form>
+
+<% if params['errors'] %>
+<%= erb :'errors/error'%>
+<%end%>

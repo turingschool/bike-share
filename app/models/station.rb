@@ -31,7 +31,7 @@ class Station < ActiveRecord::Base
         city_id: (params[:station][:city_id]),
         date_ref_id: date
        )
-       [status, station]
+    [status, station]
   end
 
   def self.validate_date(params)

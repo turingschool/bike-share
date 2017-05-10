@@ -48,9 +48,17 @@ RSpec.describe "When a user visits '/trips-dashboard'" do
   it "they can click on all trips" do
     visit('/trips-dashboard')
 
-    click_on('All Trips')
+    click_link('All Trips')
 
     expect(current_path).to eq("/trips")
+  end
+
+  it "they can click on new trips" do
+    visit('/trips-dashboard')
+
+    click_link('Create New Trip')
+
+    expect(current_path).to eq("/trips/new")
   end
 
 end

@@ -36,7 +36,14 @@ class Condition < ActiveRecord::Base
   def self.determine_ave_rides_per_day_in_temp_range(low, high)
     x = determine_temp_range_dates(low,high)
     y = Trip.determine_trips_on_specific_dates(x)
-    y.count/x.count
+    return 0 if x.count == 0
+    (y.count.to_f/x.count.to_f).round(2)
+  end
+
+  def self.determine_most_rides_in_a_temp_range(low, high)
+    x = determine_temp_range_dates(low,high)
+    y = Trip.determine_trips_on_specific_dates(x)
+    y.group(:start_date).count.max_by{|start_date, count| count}[1]
   end
 
   def self.get_mean_temp_intervals

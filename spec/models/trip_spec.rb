@@ -176,5 +176,9 @@ RSpec.describe Trip, :type => :model do
       expect(Trip.user_subscription_type_count.first).to eq('subscriber')
       expect(Trip.user_subscription_type_count[1]).to eq(70)
     end
+
+    it 'finds number of rides started at a station'
+    station = Station.create(id: 2, name: "test station", dock_count: 37, date: "8/6/2013", city_id: City.find_by(name: 'San Jose Diridon Caltrain Station'))
+    expect(Trip.number_of_rides_started_at_station(station.id))
   end
 end

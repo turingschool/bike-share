@@ -95,8 +95,14 @@ class Trip < ActiveRecord::Base
   #Individual station methods for Info
   # For these, edit them so they look up the info of a provided station_id
 
-  def self.number_of_rides_started_at_station(station_id) # <---- example
-    where(start_station_id: id).count
+  def self.number_of_rides_started_at_station # <---- example
+    output = {}
+    output[:customers] = where(subscription_type: "Customer").count
+    output[:subscribers] = where(subscription_type: "Subscriber").count
+
+    output[:customers_percentage] = ((output[:customers].to_f / count) * 100).round(2)
+    output[:subscribers_percentage]  = ((output[:subscribers].to_f / count) * 100).round(2)
+    output
   end
 
   def self.number_of_rides_ended_at_station

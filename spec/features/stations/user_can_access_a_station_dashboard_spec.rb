@@ -20,7 +20,6 @@ RSpec.describe "When a user visit the stations dashboard (/stations-dashboard)" 
                   latitude: -2
     )
     visit('/stations-dashboard')
-    # save_and_open_page
 
     expect(page).to have_content("Total Stations: 2")
     expect(page).to have_content("Average Bikes per Station: 2")

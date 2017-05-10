@@ -8,8 +8,7 @@ class Station < ActiveRecord::Base
   end
 
   def self.max_available_bikes
-    all.max_by(3) do |station|
-      station.dock_count
+    maximum(:dock_count).to_i
     end
   end
 

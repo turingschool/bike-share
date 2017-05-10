@@ -95,8 +95,11 @@ class Trip < ActiveRecord::Base
   end
 
   def self.highest_number_of_trips_of_stations_by_date
-    date = where(start_station_id: id).group(:start_date).count("id")
-    highest_date = date.max_by { |date, count| date}
+    group(:start_date).count("id").max_by{|date, count| count }
+  end
+
+  def self.lowest_number_of_trips_of_stations_by_date
+    group(:start_date).count("id").min_by{|date, count| count }
   end
 
   def self.most_frequesnt_zip_code_for_starting_station

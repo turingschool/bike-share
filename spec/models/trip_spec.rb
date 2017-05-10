@@ -167,7 +167,7 @@ RSpec.describe Trip, :type => :model do
     end
 
     it 'finds the least ridden bike' do
-      expect(Trip.least_ridden_bike).to eq({539=>1})
+      expect(Trip.least_ridden_bike).to eq({664=>1})
     end
 
     it 'finds subscription stats' do
@@ -178,7 +178,7 @@ RSpec.describe Trip, :type => :model do
     end
 
     it 'finds busiest day' do
-      expect(Trip.busiest_day.first).to eq('8/30/2013 14:20')
+      expect(Trip.busiest_day.first).to eq('8/30/2013 11:12')
     end
 
     it 'finds loneliest day' do
@@ -206,5 +206,13 @@ RSpec.describe Trip, :type => :model do
     # it 'returns month by month breakdown' do
     #   expect(Trip.month_by_month_breakdown_with_subtotals_by_year).to eq(3)
     # end
+
+    it 'finds highest_number_of_trips_of_stations_by_date' do
+      expect(Trip.highest_number_of_trips_of_stations_by_date.first).to eq('8/30/2013 11:12')
+    end
+
+    it 'finds lowest_number_of_trips_of_stations_by_date' do
+      expect(Trip.lowest_number_of_trips_of_stations_by_date.first).to eq('8/30/2013 9:36')
+    end
   end
 end

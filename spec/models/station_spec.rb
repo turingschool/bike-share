@@ -33,12 +33,12 @@ RSpec.describe Station do
     end
   end
 
-  describe ".min_bike_station"
+  describe ".min_bike_station" do
     it "returns the name of the station with minimum number of bikes availble bikes" do
       Loader.new('./spec/fixtures/station_fixtures.csv').load_stations
 
       expect(Station.min_bike_station).to eq("Santa Clara at Almaden")
     end
   end
-  
+
 end

@@ -231,4 +231,100 @@ RSpec.describe "user visits conditions index" do
 
     expect(page).to have_field("condition[date]", :with => "can't be blank")
   end
+
+  it "edits with invalid precipitation" do
+    Loader.new('./spec/fixtures/station_fixtures.csv').load_stations
+    Loader.new('./spec/fixtures/weather_fixture.csv').load_conditions
+
+    visit('/conditions/1/edit')
+    fill_in "condition[precipitation]", with: ''
+
+    click_button "Submit"
+
+    expect(page).to have_field("condition[precipitation]", :with => "can't be blank")
+  end
+  
+  it "edits with invalid zip" do
+    Loader.new('./spec/fixtures/station_fixtures.csv').load_stations
+    Loader.new('./spec/fixtures/weather_fixture.csv').load_conditions
+
+    visit('/conditions/1/edit')
+    fill_in "condition[zip_code]", with: ''
+
+    click_button "Submit"
+
+    expect(page).to have_field("condition[zip_code]", :with => "can't be blank")
+  end
+
+  it "edits with invalid city" do
+    Loader.new('./spec/fixtures/station_fixtures.csv').load_stations
+    Loader.new('./spec/fixtures/weather_fixture.csv').load_conditions
+
+    visit('/conditions/1/edit')
+    fill_in "city", with: ''
+
+    click_button "Submit"
+
+    expect(page).to have_field("city", :with => "can't be blank")
+  end
+
+  it "edits with invalid maximum temperature" do
+    Loader.new('./spec/fixtures/station_fixtures.csv').load_stations
+    Loader.new('./spec/fixtures/weather_fixture.csv').load_conditions
+
+    visit('/conditions/1/edit')
+    fill_in "condition[maximum_temperature]", with: ''
+
+    click_button "Submit"
+
+    expect(page).to have_field("condition[maximum_temperature]", :with => "can't be blank")
+  end
+
+  it "edits with invalid minimum temperature" do
+    Loader.new('./spec/fixtures/station_fixtures.csv').load_stations
+    Loader.new('./spec/fixtures/weather_fixture.csv').load_conditions
+
+    visit('/conditions/1/edit')
+    fill_in "condition[minimum_temperature]", with: ''
+
+    click_button "Submit"
+
+    expect(page).to have_field("condition[minimum_temperature]", :with => "can't be blank")
+  end
+
+  it "edits with invalid mean temperature" do
+    Loader.new('./spec/fixtures/station_fixtures.csv').load_stations
+    Loader.new('./spec/fixtures/weather_fixture.csv').load_conditions
+
+    visit('/conditions/1/edit')
+    fill_in "condition[mean_temperature]", with: ''
+
+    click_button "Submit"
+
+    expect(page).to have_field("condition[mean_temperature]", :with => "can't be blank")
+  end
+
+  it "edits with invalid mean humidity" do
+    Loader.new('./spec/fixtures/station_fixtures.csv').load_stations
+    Loader.new('./spec/fixtures/weather_fixture.csv').load_conditions
+
+    visit('/conditions/1/edit')
+    fill_in "condition[mean_humidity]", with: ''
+
+    click_button "Submit"
+
+    expect(page).to have_field("condition[mean_humidity]", :with => "can't be blank")
+  end
+
+  it "edits with invalid mean wind speed" do
+    Loader.new('./spec/fixtures/station_fixtures.csv').load_stations
+    Loader.new('./spec/fixtures/weather_fixture.csv').load_conditions
+
+    visit('/conditions/1/edit')
+    fill_in "condition[mean_wind_speed]", with: ''
+
+    click_button "Submit"
+
+    expect(page).to have_field("condition[mean_wind_speed]", :with => "can't be blank")
+  end
 end

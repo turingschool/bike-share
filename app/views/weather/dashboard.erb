@@ -4,29 +4,79 @@
 </br>
 </br>
 </br>
-<h3>Ride Stats Based on Temperature
-</h3>
+<h3>Ride Stats Based on Temperature</h3>
 
-<h2>  
-<%=@dashboard_data[:breakout_avg_max_min_rides_days_high_temp]%>
-</h2>
+<table>
+  <tr>
+    <th>Temperature Range (in degree F)</th>
+    <th>Maximum Rides</th>
+    <th>Average Rides</th>
+    <th>Minimum Rides</th>
+  </tr>
+  <% @dashboard_data[:breakout_avg_max_min_rides_days_high_temp].each do |range, rides| %>
+    <tr class="conditions">
+      <td><%= range %></td>
+      <td><%= rides[0] %></td>
+      <td><%= rides[2] %></td>
+      <td><%= rides[1] %></td>
+    </tr>
+  <% end %>
+</table>
 
 <h3>Ride Stats Based on Precipitation
 </h3>
 
-<h2>  
-<%=@dashboard_data[:breakout_avg_max_min_rides_days_precipitation]%>
-</h2>
+<table>
+  <tr>
+    <th>Precipitation Range (in inches)</th>
+    <th>Maximum Rides</th>
+    <th>Average Rides</th>
+    <th>Minimum Rides</th>
+  </tr>
+  <% @dashboard_data[:breakout_avg_max_min_rides_days_precipitation].each do |range, rides| %>
+    <tr class="conditions">
+      <td><%= range %></td>
+      <td><%= rides[0] %></td>
+      <td><%= rides[2] %></td>
+      <td><%= rides[1] %></td>
+    </tr>
+  <% end %>
+</table>
 
 <h3>Ride Stats Based on Wind Speed
 </h3>
-<h2>
-<%=@dashboard_data[:breakout_avg_max_min_rides_days_wind_speed]%>
-</h2>
+<table>
+  <tr>
+    <th>Wind Speed Range (in mph)</th>
+    <th>Maximum Rides</th>
+    <th>Average Rides</th>
+    <th>Minimum Rides</th>
+  </tr>
+  <% @dashboard_data[:breakout_avg_max_min_rides_days_wind_speed].each do |range, rides| %>
+    <tr class="conditions">
+      <td><%= range %></td>
+      <td><%= rides[0] %></td>
+      <td><%= rides[2] %></td>
+      <td><%= rides[1] %></td>
+    </tr>
+  <% end %>
+</table>
 
 <h3>Ride Stats Based on Visibility
 </h3>
-
-<h2>  
-<%=@dashboard_data[:breakout_avg_max_min_rides_days_visibility]%>
-</h2>
+<table>
+  <tr>
+    <th>Visibility Range (in miles)</th>
+    <th>Maximum Rides</th>
+    <th>Average Rides</th>
+    <th>Minimum Rides</th>
+  </tr>
+  <% @dashboard_data[:breakout_avg_max_min_rides_days_visibility].each do |range, rides| %>
+    <tr class="conditions">
+      <td><%= range %></td>
+      <td><%= rides[0] %></td>
+      <td><%= rides[2] %></td>
+      <td><%= rides[1] %></td>
+    </tr>
+  <% end %>
+</table>

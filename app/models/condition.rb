@@ -1,3 +1,4 @@
+require 'pry'
 class Condition < ActiveRecord::Base
   belongs_to :zipcode
 
@@ -26,5 +27,15 @@ class Condition < ActiveRecord::Base
   def self.paginate(page)
     offset = ( page - 1 ) * 30
     Condition.limit(30).offset(offset)
+  end
+
+  def self.determine_temp_range_dates(low, high)
+    where("mean_temp >= #{low} and mean_temp < #{high}").select(:date)
+  end
+
+  def self.determine_ave_rides_per_day_in_temp_range(low, high)
+    x = determine_temp_range_dates(low,high)
+    y = Trip.determine_trips_on_specific_dates(x)
+    y.count/x.count
   end
 end

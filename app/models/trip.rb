@@ -19,7 +19,7 @@ class Trip < ActiveRecord::Base
   end
 
   def self.average_duration
-    Trip.average(:duration)
+    Trip.average(:duration).to_f
   end
 
   def self.longest_ride

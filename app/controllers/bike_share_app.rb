@@ -158,7 +158,6 @@ class BikeShareApp < Sinatra::Base
     @trip = Trip.create(params[:trip])
     redirect '/trips'
   end
->>>>>>> 3bfe85358712f2b29230a709132ef9a923f07124
 
   # Conditions App
 

@@ -149,9 +149,9 @@ RSpec.describe Condition do
       expect(condition.zipcode_selected?(2)).to eq ""
   end
 
-  describe ".get_mean_temp_intervals" do
+  describe ".get_intervals" do
     it "returns an array" do
-      expect(described_class.get_mean_temp_intervals.class).to be Array
+      expect(described_class.get_intervals('mean_temp').class).to be Array
     end
     before {
       condition = Condition.create(
@@ -186,7 +186,7 @@ RSpec.describe Condition do
                                   )
     }
     it "returns the 10 deg ranges" do
-      expect(described_class.get_mean_temp_intervals).to match ["70-79", "60-69", "50-59"]
+      expect(described_class.get_intervals('mean_temp')).to match [["70","79"], ["60","69"], ["50","59"]]
     end
   end
 end

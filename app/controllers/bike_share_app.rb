@@ -127,7 +127,7 @@ class BikeShareApp < Sinatra::Base
 ###################################
 
 #weather dashboard with statistics
-  get '/weather-dashboard' do
+  get '/conditions-dashboard' do
     @dashboard_data = WeatherStatistic.dashboard
     erb :'weather/dashboard'
   end
@@ -168,7 +168,7 @@ class BikeShareApp < Sinatra::Base
   end
 
 #route to delete single weather record
-  delete 'conditions/:id' do
+  delete '/conditions/:id' do
     @weather = WeatherStatistic.destroy(params[:id])
     redirect "/conditions"
   end

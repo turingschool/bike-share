@@ -1,7 +1,7 @@
 class WeatherStatistic < ActiveRecord::Base
   belongs_to :date_ref
   belongs_to :city
-  
+
   has_many :trips, through: :date_ref
 
 
@@ -28,7 +28,7 @@ class WeatherStatistic < ActiveRecord::Base
                           )
   end
 
-  def self.udpate_record(params)
+  def self.update_record(params)
     date = DateRef.find_or_create_by(date: params[:weather][:date_ref_id])
     WeatherStatistic.update(params[:id],
                   max_temperature: params[:weather][:max_temperature],
@@ -44,7 +44,7 @@ class WeatherStatistic < ActiveRecord::Base
   end
 
   def self.dashboard
-    { 
+    {
     breakout_avg_max_min_rides_days_high_temp: ""
     }
 

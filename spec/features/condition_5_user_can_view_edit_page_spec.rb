@@ -2,15 +2,15 @@ require_relative '../spec_helper'
 
 RSpec.describe "when a user visits the edit page" do
   it "displays an edit form" do
-    Condition.create(date: "2013-11-22",
-                                 max_temperature: 70,
-                                 mean_temperature: 60,
-                                 min_temperature: 50,
-                                 mean_humidity: 20,
-                                 mean_visibility: 2,
-                                 mean_wind_speed: 10,
-                                 precipitation: 12)
-
+    RideDate.create(day: 12, month: 8, year: 2012)
+    Condition.create(ride_date_id:      1,
+                                 max_temperature:   95,
+                                 mean_temperature:  80,
+                                 min_temperature:   60,
+                                 mean_humidity:     70,
+                                 mean_visibility:   12,
+                                 mean_wind_speed:   11,
+                                 precipitation:     "T")
     visit("/conditions/1")
     click_on "Edit"
 

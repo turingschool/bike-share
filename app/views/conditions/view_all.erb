@@ -11,11 +11,11 @@
     <th>Mean Wind Speed (mph)</th>
     <th>Precipitation (inches)</th>
   </tr>
-  <% @conditions.each do |conditions| %>
+  <% @conditions.each do |condition| %>
   <tr>
-    <td><%= condition.date %></td>
+    <td><%= condition.ride_date.month %>-<%= condition.ride_date.day %>-<%= condition.ride_date.year %></td>
     <td><%= condition.max_temperature %></td>
-    <td><%= condition.mean_temeprature %></td>
+    <td><%= condition.mean_temperature %></td>
     <td><%= condition.min_temperature %></td>
     <td><%= condition.mean_humidity %></td>
     <td><%= condition.mean_visibility %></td>

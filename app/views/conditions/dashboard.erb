@@ -21,14 +21,14 @@
       <td>70-79</td>
       <td><%= Condition.determine_ave_rides_per_day_in_temp_range(70, 79) %></td>
       <td><%= Condition.determine_most_rides_in_a_temp_range(70,79) %></td>
-      <td>0</td>
+      <td><%= Condition.determine_fewest_rides_in_a_temp_range(70,79) %></td>
       <td>0</td>
     </tr>
     <tr>
       <td>60-69</td>
       <td><%= Condition.determine_ave_rides_per_day_in_temp_range(60, 69) %></td>
       <td><%= Condition.determine_most_rides_in_a_temp_range(60,69) %></td>
-      <td>3</td>
+      <td><%= Condition.determine_fewest_rides_in_a_temp_range(60,69) %></td>
     </tr>
   </tbody>
 </table>

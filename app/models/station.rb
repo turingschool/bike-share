@@ -43,7 +43,6 @@ class Station < ActiveRecord::Base
     end
   end
 
-
   def self.dashboard
     {
       total_count: Station.count,

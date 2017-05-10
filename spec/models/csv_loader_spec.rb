@@ -57,7 +57,11 @@ RSpec.describe CSVLoader do
     end
 
     it 'sanitizes a weather record' do
-      output = @dummy.sanitze_Weather('')
+      output = @dummy.sanitze_weather('./db/csv/weather.csv')
+      expect(output).to be_instance_of(Array)
+      output.each do |row|
+        expect(row).to be_instance_of(Hash)
+      end
     end
   end
 end

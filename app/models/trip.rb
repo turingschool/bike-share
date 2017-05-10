@@ -40,11 +40,6 @@ class Trip < ActiveRecord::Base
     (Station.find_by(id: (Trip.group(:end_station_id)).order('count_id DESC').count(:id).first)).name
   end
 
-  def self.monthly_ride_breakdown
-    year = Trip.
-    Trip.where(:start_date.year )
-  end
-
   def self.most_ridden_bike_id
     Trip.group(:bike_id).count.max_by{|bike, count| count}[0]
   end

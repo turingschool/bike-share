@@ -16,21 +16,23 @@ class WeatherStatistic < ActiveRecord::Base
 
 
   def self.create_new(params)
-    date = DateRef.find_or_create_by(date: params[:weather][:date_ref_id])
-    WeatherStatistic.create(max_temperature: params[:weather][:max_temperature],
+    date = WeatherStatistic.validate_date(params[:weather][:date_ref_id])
+    ws = WeatherStatistic.create(max_temperature: params[:weather][:max_temperature],
                             min_temperature: params[:weather][:min_temperature],
                             mean_temperature: params[:weather][:mean_temperature],
                             mean_visibility: params[:weather][:mean_visibility],
                             mean_humidity: params[:weather][:mean_humidity],
                             mean_wind_speed: params[:weather][:mean_wind_speed],
                             precipitation: params[:weather][:precipitation],
-                            date_ref_id: date.id,
+                            date_ref_id: date,
                           )
+    [ws.save, ws]
   end
 
   def self.update_record(params)
-    date = DateRef.find_or_create_by(date: params[:weather][:date_ref_id])
-    WeatherStatistic.update(params[:id],
+    date = WeatherStatistic.validate_date(params[:weather][:date_ref_id])
+    ws = WeatherStatistic.find(params[:id])
+    status = ws.update(
                   max_temperature: params[:weather][:max_temperature],
                   min_temperature: params[:weather][:min_temperature],
                   mean_temperature: params[:weather][:mean_temperature],
@@ -38,10 +40,22 @@ class WeatherStatistic < ActiveRecord::Base
                   mean_humidity: params[:weather][:mean_humidity],
                   mean_wind_speed: params[:weather][:mean_wind_speed],
                   precipitation: params[:weather][:precipitation],
-                  date_ref_id: date.id,
+                  date_ref_id: date,
                 )
+      [status, ws]
 
   end
+
+  def self.validate_date(date)
+    if date.empty?
+      ''
+    else
+      date = DateRef.find_or_create_by(date: date)
+      date.id
+    end
+  end
+
+
 
   def self.dashboard
     { 

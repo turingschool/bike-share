@@ -28,49 +28,79 @@ class Trip<ActiveRecord::Base
     { 
       start_date: Trip.validate_date(trip[:start_date]), 
       end_date: Trip.validate_date(trip[:end_date]), 
-      bike: Bike.find_or_create_by!(bike: trip[:bike]), 
+      bike: Trip.validate_bike(trip[:bike]),
       zipcode: Trip.zip_validate(trip[:zipcode]), 
-      subscription: SubscriptionType.find_or_create_by!(sub_type: trip[:subscription]), 
-      start_station: Station.find(trip[:start_station].to_i) , 
+      subscription: Trip.validate_subscription(trip[:subscription]), 
+      start_station: Station.find(trip[:start_station].to_i), 
       end_station: Station.find(trip[:end_station].to_i) 
     }
   end
 
-  def self.validate_date(date)
-    date = date.split('T')[0]
-    DateRef.find_or_create_by!(date: date)
+  def self.validate_subscription(subscription)
+    if subscription.empty?
+      ''
+    else
+      subscription = SubscriptionType.find_or_create_by!(sub_type: subscription)
+      subscription.id
+    end
+    
+  end
+
+  def self.validate_bike(bike)
+    if bike.empty?
+      ''
+    else
+      bike = Bike.find_or_create_by!(bike: bike) 
+      bike.id
+    end
+  end
+
+  def self.validate_date(date)  
+    if date.empty?
+      ''
+    else
+      date = date.split('T')[0]
+      date = DateRef.find_or_create_by!(date: date)
+      date.id
+    end
+    
   end
 
   def self.zip_validate(zipcode)
-    if  zipcode.empty?
+    if  zipcode.nil? || zipcode.empty?
       Zipcode.find_or_create_by!(zipcode: "n/a")
     else
       Zipcode.find_or_create_by!(zipcode: (zipcode[0..4]))
     end
+    
   end
 
   def self.create_new(params)
     trip_data = sterilize(params)
-    Trip.create!(
-            date_ref_id: trip_data[:start_date].id,
-            end_date_id: trip_data[:end_date].id,
+    trip = Trip.new(
+            date_ref_id: trip_data[:start_date],
+            end_date_id: trip_data[:end_date],
             start_station_id: trip_data[:start_station].id,
             end_station_id: trip_data[:end_station].id,
-            bike_id: trip_data[:bike].id,
-            zipcode_id: trip_data[:zipcode].id,
-            subscription_type_id: trip_data[:subscription].id)
+            bike_id: trip_data[:bike],
+            zipcode_id: trip_data[:zipcode],
+            subscription_type_id: trip_data[:subscription])
+            binding.pry
+      [trip.save, trip]
   end
 
   def self.update_record(params)
     trip_data = sterilize(params)
-    Trip.update(params[:id],
-        date_ref_id: trip_data[:start_date].id,
-        end_date_id: trip_data[:end_date].id,
+    trip = Trip.find(params[:id])
+    status = trip.update(
+        date_ref_id: trip_data[:start_date],
+        end_date_id: trip_data[:end_date],
         start_station_id: trip_data[:start_station].id,
         end_station_id: trip_data[:end_station].id,
-        bike_id: trip_data[:bike].id,
-        zipcode_id: trip_data[:zipcode].id,
-        subscription_type_id: trip_data[:subscription].id)
+        bike_id: trip_data[:bike],
+        zipcode_id: trip_data[:zipcode],
+        subscription_type_id: trip_data[:subscription])
+        [status, trip]
   end
 
   def self.dashboard

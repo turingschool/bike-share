@@ -14,7 +14,7 @@ class Condition < ActiveRecord::Base
     date.strftime('%m/%d/%Y')
   end
 
-  def zipcode_selected?(id)
+  def zipcode_selected(id)
     return "selected" if id == zipcode_id
     ""
   end

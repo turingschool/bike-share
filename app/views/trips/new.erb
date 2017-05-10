@@ -73,3 +73,9 @@
      </div>
   </form>
 </div>
+
+
+<% if params['errors'] %>
+<%= erb :'errors/error'%>
+<%end%>
+

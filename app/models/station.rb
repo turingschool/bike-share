@@ -13,23 +13,34 @@ class Station < ActiveRecord::Base
 
 
   def self.create_new(params)
-    date = DateRef.find_or_create_by(date: params[:station][:installation_date])
-    Station.create(name: params[:station][:name],
+    date = Station.validate_date(params)
+    station = Station.new(name: params[:station][:name],
                    dock_count: params[:station][:dock_count],
                    city_id: (params[:station][:city_id]),
-                   date_ref_id: date.id
+                   date_ref_id: date
                   )
+    [station.save, station]
   end
 
   def self.update_record(params)
-    date = DateRef.find_or_create_by(date: params[:station][:installation_date])
-    Station.update(params[:id],
-                   name: params[:station][:name],
-                   dock_count: params[:station][:dock_count],
-                   city_id: (params[:station][:city_id]),
-                   date_ref_id: date.id
-                   )
-    
+    date = Station.validate_date(params)
+    station = Station.find(params[:id])
+    status = station.update(
+        name: params[:station][:name],
+        dock_count: params[:station][:dock_count],
+        city_id: (params[:station][:city_id]),
+        date_ref_id: date
+       )
+    [status, station]
+  end
+
+  def self.validate_date(params)
+    if params[:station][:installation_date].empty?
+      ''
+    else
+      date = DateRef.find_or_create_by(date: params[:station][:installation_date])
+      date.id
+    end
   end
 
   def self.dashboard

@@ -32,7 +32,11 @@ class BikeShareApp < Sinatra::Base
 #route after filling new station form
   post '/stations' do
     @station = Station.create_new(params)
-    redirect "/stations/#{@station.id}"
+    if @station[0]
+      redirect "/stations/#{@station[1].id}"
+    else
+      redirect "/stations/new?errors=#{@station[1].errors.full_messages}"
+    end
   end
 
 #form to edit station
@@ -45,7 +49,12 @@ class BikeShareApp < Sinatra::Base
 #route to update after editing station
   put '/stations/:id' do
     @station = Station.update_record(params)
-    redirect "/stations/#{@station.id}"
+    if @station[0]
+      redirect "/stations/#{@station[1].id}"
+    else
+      redirect "/stations/#{params[:id]}/edit?errors=#{@station[1]  .errors.full_messages}"
+    end
+  
   end
 
 #route to delete single station
@@ -61,7 +70,6 @@ class BikeShareApp < Sinatra::Base
 #trip dashboard with statistics
   get '/trips-dashboard' do
     @trips_dashboard_data = Trip.dashboard
-    # binding.pry
     erb :'trips/dashboard'
   end
 
@@ -98,8 +106,12 @@ class BikeShareApp < Sinatra::Base
 
 #route after filling new trip form
   post '/trips' do
-    trip = Trip.create_new(params)
-    redirect "/trips/#{trip.id}"
+    @trip = Trip.create_new(params)
+    if @trip[0]
+      redirect "/trips/#{@trip[1].id}"
+    else
+      redirect "/trips/new?errors=#{@trip[1].errors.full_messages}"
+    end
   end
 
 #form to edit trips
@@ -110,9 +122,14 @@ class BikeShareApp < Sinatra::Base
     erb :'trips/edit'
   end
 
+#path to update trip
   put '/trips/:id' do
-    trip = Trip.update_record(params)
-    redirect "/trips/#{trip.id}"
+    @trip = Trip.update_record(params)
+    if @trip[0]
+      redirect "/trips/#{@trip[1].id}"
+    else
+      redirect "/trips/#{params[:id]}/edit?errors=#{@trip[1]  .errors.full_messages}"
+    end
   end
 
 #route to delete single trip
@@ -127,7 +144,7 @@ class BikeShareApp < Sinatra::Base
 ###################################
 
 #weather dashboard with statistics
-  get '/weather-dashboard' do
+  get '/conditions-dashboard' do
     @dashboard_data = WeatherStatistic.dashboard
     erb :'weather/dashboard'
   end
@@ -151,8 +168,13 @@ class BikeShareApp < Sinatra::Base
 
 #route after filling new weather form
   post '/conditions' do
+
     @weather = WeatherStatistic.create_new(params)
-    redirect "/conditions/#{@weather.id}"
+    if @weather[0]
+      redirect "/conditions/#{@weather[1].id}"
+    else
+      redirect "/conditions/new?errors=#{@weather[1].errors.full_messages}"
+    end
   end
 
 #form to edit weather
@@ -163,12 +185,17 @@ class BikeShareApp < Sinatra::Base
 
 #route to update after editing weather
   put '/conditions/:id' do
+
     @weather = WeatherStatistic.update_record(params)
-    redirect "/conditions/#{@weather.id}"
+    if @weather[0]
+      redirect "/conditions/#{@weather[1].id}"
+    else
+      redirect "/conditions/#{params[:id]}/edit?errors=#{@weather[1]  .errors.full_messages}"
+    end
   end
 
 #route to delete single weather record
-  delete 'conditions/:id' do
+  delete '/conditions/:id' do
     @weather = WeatherStatistic.destroy(params[:id])
     redirect "/conditions"
   end

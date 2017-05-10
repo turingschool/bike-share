@@ -2,6 +2,7 @@ require 'pry'
 require './app/models/city'
 require './app/models/station'
 require './app/models/condition'
+require './app/models/trip'
 require 'time'
 require 'date'
 require 'CSV'
@@ -35,8 +36,8 @@ puts "Seeding trips now!"
 start_time = Time.now
 
 trips.each do |row|
-  start_station = station.find(name: row[:start_station_name])
-  end_station = station.find(name: row[:end_station_name])
+  start_station = Station.find_by(name: row[:start_station_name])
+  end_station = Station.find_by(name: row[:end_station_name])
 
   Trip.create(duration:                 row[:duration],
                   start_date:           Date.strptime(row[:start_date], "%m/%d/%Y"),

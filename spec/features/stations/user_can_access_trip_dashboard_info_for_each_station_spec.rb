@@ -1,8 +1,11 @@
 require './spec/spec_helper'
 
-RSpec.describe "When a user visits the trips dashboard (/trips-dashboard)" do
+RSpec.describe "when a user visits the view station page" do
   before do
     city_1 = City.create(name: "squeevillia")
+    zipcode_1 = Zipcode.create(zipcode: "11111")
+    zipcode_2 = Zipcode.create(zipcode: "22222")
+    zipcode_3 = Zipcode.create(zipcode: "33333")
     Station.create(
                   name: "something",
                   dock_count: 1,
@@ -60,25 +63,14 @@ RSpec.describe "When a user visits the trips dashboard (/trips-dashboard)" do
   end
 
   it "loads the appropriate descriptions and calculations" do
-    visit('/trips-dashboard')
+    visit('/stations/1')
 
-    expect(page).to have_content("Average Duration of a Ride: 68 seconds")
-    expect(page).to have_content("Longest Ride: 71 seconds")
-    expect(page).to have_content("Shortest Ride: 63 seconds")
-    expect(page).to have_content("Starting Station With the Most Rides: something")
-    expect(page).to have_content("Ending Station With the Most Rides: something else")
-    expect(page).to have_content("August 2013: 1")
-    expect(page).to have_content("May 2014: 1")
-    expect(page).to have_content("January 2015: 1")
-    expect(page).to have_content("Most Ridden Bike: 1")
-    expect(page).to have_content("Total Number of Rides: 2")
-    expect(page).to have_content("Least Ridden Bike: 2")
-    expect(page).to have_content("Total Number of Rides: 1")
-    expect(page).to have_content("Number of Subscribers: 2")
-    expect(page).to have_content("Percent of Subscribers: 66.67%")
-    expect(page).to have_content("Number of Customers: 1")
-    expect(page).to have_content("Percent of Customers: 33.33%")
-    expect(page).to have_content("Date With Highest Number of Trips: 08/30/2013: 1")
-    expect(page).to have_content("Date With Lowest Number of Trips: 08/30/2013: 1")
+    expect(page).to have_content("Number of Rides Started Here: 2")
+    expect(page).to have_content("Number of Rides Ended Here: 1")
+    expect(page).to have_content("Most Frequent Destination From Here: something")
+    expect(page).to have_content("Most Frequent Origination To Here: something")
+    expect(page).to have_content("Busiest Trip Origination Date: 08/30/2013")
+    expect(page).to have_content("Most Frequent Zip Code of Users Starting Here: 11111")
+    expect(page).to have_content("Most Frequent Bike ID Starting Here: 1")
   end
 end

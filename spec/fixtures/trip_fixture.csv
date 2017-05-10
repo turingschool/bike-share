@@ -113,4 +113,4 @@ id,duration,start_date,start_station_name,start_station_id,end_date,end_station_
 5261,527,8/30/2013 10:28,San Francisco Caltrain 2 (330 Townsend),69,8/30/2013 10:37,2nd at Townsend,61,487,Customer,85327
 5920,527,8/30/2013 15:16,Market at 4th,76,8/30/2013 15:25,San Francisco City Hall,58,508,Customer,94103
 5536,528,8/30/2013 12:29,Golden Gate at Polk,59,8/30/2013 12:38,South Van Ness at Market,66,388,Subscriber,94114
-5595,528,8/30/2013 13:05,Beale at Market,56,8/30/2013 13:14,2nd at South Park,64,557,Customer,
+5595,528,8/30/2013 13:05,Beale at Market,56,8/30/2013 13:14,2nd at South Park,64,557,Customer

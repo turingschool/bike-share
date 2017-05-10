@@ -1,7 +1,11 @@
 require 'pry'
 require 'time'
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 # require 'chartkick' - causing sinatra to crash, not sure if implementing right
 class BikeShareApp < Sinatra::Base
+  include WillPaginate::Sinatra::Helpers
   set :root, File.expand_path("..", __dir__)
 
   get '/' do
@@ -94,7 +98,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trips = Trip.get_first_30
+    @trips = Trip.get_paginated_trips(params)
     erb :'trips/index'
   end
 
@@ -119,5 +123,39 @@ class BikeShareApp < Sinatra::Base
     @trip = Trip.all
     @station = Station.all
     erb :'/trips/trip_dashboard'
+
+  get '/conditions/new' do
+    erb :'conditions/new'
+  end
+
+  post '/conditions' do
+    condition = Condition.create(params[:condition])
+    redirect "/conditions/#{ condition.id }"
+  end
+
+  get '/conditions/:id' do
+    @condition = Condition.find(params[:id])
+    erb :'/conditions/show'
+  end
+
+  get '/conditions' do
+    @conditions = Condition.get_paginated_conditions(params)
+    erb :'/conditions/index'
+  end
+
+  get '/conditions/:id/edit' do
+    @condition = Condition.find(params[:id])
+    erb :'/conditions/edit'
+  end
+
+  put '/conditions/:id' do
+    condition = Condition.find(params[:id])
+    condition.update(params[:condition])
+    redirect "/conditions/#{params[:id]}"
+  end
+
+  delete '/conditions/:id' do
+    Condition.destroy(params[:id])
+    redirect "/conditions"
   end
 end

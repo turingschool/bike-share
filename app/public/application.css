@@ -21,6 +21,12 @@ a {
   color: white;
 }
 
+a.current_page {
+  color:	#84DCC4;
+  padding: 4px;
+  border: solid 2px #84DCC4;
+}
+
 ul, li {
   list-style: none;
   display: inline;
@@ -66,4 +72,32 @@ div.element {
   height: 100%;
   padding-bottom: 100%;
   margin-bottom: -100%;
+}
+
+table {
+  width: 90%;
+  background-color: #006ec9;
+  opacity: .8;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+th, tr {
+  text-align: left;
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 1.25em;
+  color: white;
+}
+
+th {
+  color: #84DCC4;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+tr {
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px%;
 }

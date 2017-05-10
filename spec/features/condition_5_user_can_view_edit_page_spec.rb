@@ -16,6 +16,6 @@ RSpec.describe "when a user visits the edit page" do
 
     expect(current_path).to eq("/conditions/1/edit")
     expect(page).to have_content("change")
-    expect(page).to have_content("10mph")
+    expect(page).to have_content("Max Temperature")
   end
 end

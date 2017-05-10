@@ -11,7 +11,7 @@ RSpec.describe "user can fill in form" do
                                  mean_visibility:   12,
                                  mean_wind_speed:   11,
                                  precipitation:     "T")
-                                   
+
     visit('/conditions/1/edit')
 
     fill_in "condition[max_temperature]", with: "70"
@@ -21,7 +21,7 @@ RSpec.describe "user can fill in form" do
     click_button "Submit changes"
 
     expect(current_path).to eq('/conditions/1')
-    expect(page).to have_content("22mph")
+    expect(page).to have_content("22")
     expect(page).to have_content("70")
   end
 end

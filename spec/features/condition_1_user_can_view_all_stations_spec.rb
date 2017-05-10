@@ -11,7 +11,6 @@ RSpec.describe 'when a user visits the all conditions page' do
                                  mean_visibility:   12,
                                  mean_wind_speed:   11,
                                  precipitation:     "T")
-    save_and_open_page
 
     visit('/conditions')
     click_on "View Conditions"

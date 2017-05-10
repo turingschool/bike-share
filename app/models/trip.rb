@@ -1,10 +1,12 @@
-class Trips < ActiveRecord::Base
+class Trip < ActiveRecord::Base
   belongs_to :subscription_type
+  belongs_to :station, foreign_key: "end_station_id"
+  belongs_to :station, foreign_key: "start_station_id"
   validates :duration, presence: true
   validates :start_date, presence: true
-  validates :start_station_name, presence: true
+  validates :start_station_id, presence: true
   validates :end_date, presence: true
-  validates :end_station_name, presence: true
+  validates :end_station_id, presence: true
   validates :bike_id, presence: true
   validates :subscription_type_id, presence: true
   validates :zip_code, presence: true
@@ -25,12 +27,12 @@ class Trips < ActiveRecord::Base
     self.minimum(:duration)
   end
 
-  def self.station_with_most_rides_start_station
-    Trip.group(:start_station_name).count.max_by{|k,v| v}
+  def self.station_with_most_rides_start_station_id
+    Trip.group(:start_station_id).count.max_by{|k,v| v}
   end
 
-  def self.station_with_most_rides_end_station
-    Trip.group(:end_station_name).count.max_by{|k,v| v}
+  def self.station_with_most_rides_end_station_id
+    Trip.group(:end_station_id).count.max_by{|k,v| v}
   end
 
   def self.bike_with_most_rides
@@ -50,33 +52,33 @@ class Trips < ActiveRecord::Base
   end
 
   def self.number_of_rides_started_at_station(station_name)
-    Trip.where(start_station_name: station_name).count
+    Trip.where(start_station_id: station_name).count
   end
 
   def self.number_of_rides_ended_at_station(station_name)
-    Trip.where(end_station_name: station_name).count
+    Trip.where(end_station_id: station_name).count
   end
 
   def self.most_frequent_destination_for_station(station_name)
-    found_trips = Trip.where(start_station_name: station_name)
+    found_trips = Trip.start_station_id.where(name: station_name)
     trip_destination_counts = Hash.new(0)
     found_trips.each do |trip|
-      trip_destination_counts[trip.end_station_name] += 1
+      trip_destination_counts[trip.end_station_id] += 1
     end
     trip_destination_counts.max_by{|k,v| v}.first
    end
 
   def self.most_frequent_origin_for_station(station_name)
-    found_trips = Trip.where(end_station_name: station_name)
+    found_trips = Trip.where(end_station_id: station_name)
     trip_destination_counts = Hash.new(0)
     found_trips.each do |trip|
-      trip_destination_counts[trip.start_station_name] += 1
+      trip_destination_counts[trip.start_station_id] += 1
     end
     trip_destination_counts.max_by{|k,v| v}.first
   end
 
   def self.highest_trips_by_date_for_station(station_name)
-    found_trips = Trip.where(start_station_name: station_name)
+    found_trips = Trip.where(start_station_id: station_name)
     trip_destination_counts = Hash.new(0)
     found_trips.each do |trip|
       trip_destination_counts[trip.start_date] += 1
@@ -84,8 +86,8 @@ class Trips < ActiveRecord::Base
     trip_destination_counts.max_by{|k,v| v}.first
   end
 
-  def self.most_frequent_zipcode_for_start_station(station_name)
-    found_trips = Trip.where(start_station_name: station_name)
+  def self.most_frequent_zipcode_for_start_station_id(station_name)
+    found_trips = Trip.where(start_station_id: station_name)
     trip_destination_counts = Hash.new(0)
     found_trips.each do |trip|
       trip_destination_counts[trip.zip_code] += 1
@@ -93,8 +95,8 @@ class Trips < ActiveRecord::Base
     trip_destination_counts.max_by{|k,v| v}.first
   end
 
-  def self.most_frequent_bike_id_for_start_station(station_name)
-    found_trips = Trip.where(start_station_name: station_name)
+  def self.most_frequent_bike_id_for_start_station_id(station_name)
+    found_trips = Trip.where(start_station_id: station_name)
     trip_destination_counts = Hash.new(0)
     found_trips.each do |trip|
       trip_destination_counts[trip.bike_id] += 1

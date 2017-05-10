@@ -52,8 +52,8 @@ class Condition < ActiveRecord::Base
     y.group(:start_date).count.min_by{|start_date, count| count}[1]
   end
 
-  def self.get_mean_temp_intervals
-    temps = group('CAST(mean_temp AS int)/10*10 || \'-\' || CAST(mean_temp AS int)/10*10+9').count(:mean_temp)
-    temps.keys.sort.reverse
+  def self.get_intervals(measure)
+    temps = group('CAST( '+measure+' AS int)/10*10 || \' \' || CAST( '+measure+' AS int)/10*10+9').count(measure)
+    temps.keys.sort.reverse.map(&:split)
   end
 end

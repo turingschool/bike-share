@@ -2,7 +2,7 @@ require 'pry'
 require './app/models/city'
 require './app/models/station'
 require './app/models/date'
-require './app/models/weather'
+require './app/models/condition'
 require 'time'
 require 'date'
 require 'CSV'
@@ -25,23 +25,24 @@ end
 
 end_time = Time.now
 duration = (end_time - start_time)
-puts "stations.csv file upload complete! #{Weather.count} records in #{duration} seconds!"
 
-weathers = CSV.open './db/csv/weather.csv', headers: true, header_converters: :symbol
+puts "station.csv upload complete! #{Station.count + City.count} records seeded in #{duration} seconds!"
+
+conditions = CSV.open './db/csv/weather.csv', headers: true, header_converters: :symbol
 
 
-puts "seeding weathers db now!"
+puts "seeding conditions db now!"
 
 start_time = Time.now
 
-weathers.each do |row|
+conditions.each do |row|
 	zips = {"95113" => City.where(name: "San Jose"),
 				  "94301" => City.where(name: "Palo Alto"),
 					"94107" => City.where(name: "San Francisco"),
 					"94063" => City.where(name: "Redwood City"),
 					"94041" => City.where(name: "Mountain View")
 				 }
-	Weather.create(date:                Date.strptime(row[:date], "%m/%d/%Y" ),
+	Condition.create(date:                Date.strptime(row[:date], "%m/%d/%Y" ),
 								 maximum_temperature: row[:max_temperature_f],
 								 mean_temperature:    row[:mean_temperature_f],
 								 minimum_temperature: row[:min_temperature_f],
@@ -57,7 +58,7 @@ end
 end_time = Time.now
 
 duration = (end_time - start_time)
-puts "weather.csv file upload complete! #{Weather.count} records in #{duration} seconds!"
+puts "weather.csv file upload complete! #{Condition.count} records in #{duration} seconds!"
 
 # put any new seeds above this line
 total_end_time = Time.now

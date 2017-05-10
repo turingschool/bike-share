@@ -25,7 +25,6 @@ class BikeShareApp < Sinatra::Base
     @city = City.new()
     @station = Station.new()
     erb :"stations/new"
-
   end
 
   post '/stations/new' do
@@ -38,8 +37,7 @@ class BikeShareApp < Sinatra::Base
       @station.save
       @city.stations << @station
       redirect "stations/#{@station.id}"
-    end
-
+    end 
   end
 
   get '/stations/:id' do
@@ -76,40 +74,63 @@ class BikeShareApp < Sinatra::Base
 
   # Conditions App
 
+  get '/conditions/' do
+    redirect '/conditions'
+  end
+
   get '/conditions' do
-    @conditions = Weather.all
+    @conditions = Condition.all
     erb :"conditions/index"
   end
 
   get '/conditions/new' do
+    @city = City.new()
+    @condition = Condition.new()
+
     erb :"conditions/new"
   end
 
   post '/conditions/new' do
-    condition = Weather.create(params[:condition])
-    redirect "conditions/#{condition.id}"
+    @city = City.find_or_create_by(name: params[:city])
+    @condition = Condition.new(params[:condition])
+    if @condition.invalid? || @city.invalid?
+      @city.invalid? 
+      erb :"conditions/new"
+    else
+      @condition.save
+      @city.conditions << @condition
+      redirect "conditions/#{@condition.id}"
+    end 
   end
 
   get '/conditions/:id' do
-    @condition = Weather.find(params[:id])
+    @condition = Condition.find(params[:id])
     erb :"conditions/show"
   end
 
   get '/conditions/:id/edit' do
-    @condition = Weather.find(params[:id])
+    @condition = Condition.find(params[:id])
+    @city = @condition.city
     erb :"conditions/edit"
   end
 
-  put '/conditions/:id/edit' do
-    condition = Weather.find(params[:id])
-    condition.update(params[:condition])
+  put '/conditions/:id' do
+    @city = City.find_or_create_by(name: params[:city])
+    @condition = Condition.new(params[:station])
 
-    redirect "conditions/#{condition.id}"
+    if @city.invalid? || @condition.invalid?
+      @condition.invalid?
+      erb :"stations/edit"
+    else
+      params[:condition][:city_id] = @city.id
+      Condition.find(params[:id]).update(params[:condition])
+      redirect "conditions/#{params[:id]}"
+    end
   end
 
   delete '/conditions/:id' do
-    condition = Weather.find(params[:id])
-    station.destroy
+    condition = Condition.find(params[:id])
+    condition.destroy
 
     redirect '/conditions'
   end

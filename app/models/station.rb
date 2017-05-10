@@ -102,5 +102,4 @@ class Station < ActiveRecord::Base
       "Washington at Kearny" => "Washington at Kearney"
     }
   end
-
 end

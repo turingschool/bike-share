@@ -7,14 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">\
 
-    <title>BikeShare - SF Bay Area</title>
+    <title>Create Trip</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/overwrite.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/overwrite.css" rel="stylesheet">
 
 </head>
 
-<body class="home">
+<body class="new-trip">
 
 
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -51,57 +51,42 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <img src="assets/bicycle.svg"/>
-          <h2>Bike Share - SF Bay Area</h2>
+          <img src="/assets/bicycle.svg"/>
+          <h2>Create New Trip</h2>
         </div>
       </div>
+        <form action="/conditions" method="post">
+          <span><label>Date: </label>
+            <input type="text" name="condition[date]"/>
+          </span></br>
+          <span><label>Max Temperature: </label>
+            <input type="text" name="condition[max_temperature]"/>
+          </span></br>
+          <span><label>Mean Temperature: </label>
+            <input type="text" name="condition[mean_temperature]"/>
+          </span></br>
+          <span><label>Min Temperature: </label>
+            <input type="text" name="condition[min_temperature]"/>
+          </span></br>
+          <span><label>Mean Humidity: </label>
+            <input type="text" name="condition[mean_humidity]"/>
+          </span></br>
+          <span><label>Mean Visibility: </label>
+            <input type="text" name="condition[mean_visibility]"/>
+          </span></br>
+          <span><label>Mean Wind Speed: </label>
+            <input type="text" name="condition[mean_wind_speed]"/>
+          </span></br>
+          <span><label>Precipitation</label>
+            <input type="text" name="condition[precipitation]"/>
+          </span></br>
+          <input type="submit" value="Create Weather Condition" />
+        </form>
     </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 col-md-offset-2">
-          <div class="text-center">
-            <i class='glyphicon glyphicon-pencil'></i><br>
-            <button type = 'button' class='btn btn-default'><a href="/stations/new">Create New Station</a></button>
-          </div>
-          <br />
 
-          <div class="text-center">
-            <i class='glyphicon glyphicon-list'></i><br>
-            <button type = 'button' class='btn btn-default'><a href="/stations">View All Stations</a></button>
-          </div>
-          <br />
-
-          <div class="text-center">
-            <i class='glyphicon glyphicon-eye-open'></i><br>
-            <button type = 'button' class='btn btn-default'><a href="/station-dashboard">View Station Dashboard</a></button>
-          </div>
-        </div>
-
-        <div class="col-md-3 col-md-offset-2">
-          <div class="text-center">
-            <i class='glyphicon glyphicon-pencil'></i><br>
-            <button type = 'button' class='btn btn-default'><a href="/trips/new">Create New Trip</a></button>
-          </div>
-          <br />
-
-          <div class="text-center">
-            <i class='glyphicon glyphicon-list'></i><br>
-            <button type = 'button' class='btn btn-default'><a href="/trips">View All Trips</a></button>
-          </div>
-          <br />
-
-          <!-- Uncomment this section once the trip dashboard is ready -->
-          <!-- <div class="text-center">
-            <i class='glyphicon glyphicon-eye-open'></i><br>
-            <button type = 'button' class='btn btn-default'><a href="/trip-dashboard">View Trip Dashboard</a></button>
-          </div> -->
-        </div>
-      </div>
-    </div>
-
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
 </body>
 

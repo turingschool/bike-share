@@ -28,4 +28,12 @@ RSpec.describe "user visits stations index" do
     expect(page).to have_content("Install Date: Aug 5 2013")
   end
 
+  it 'sees only 30 stations per_page' do
+    Loader.new('./db/csv/station.csv').load_stations
+    visit('/stations')
+
+    expect(page).to have_css('station-card', count: 30)
+  end
+
+
 end

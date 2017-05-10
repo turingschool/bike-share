@@ -27,7 +27,7 @@ a.current_page {
   border: solid 2px #84DCC4;
 }
 
-ul, li {
+header ul, li {
   list-style: none;
   display: inline;
   padding: 5px;
@@ -115,6 +115,12 @@ tr {
   font-family: 'Fjalla One', sans-serif;
 }
 
+.show li {
+ font-family: 'Fjalla One', sans-serif;
+  font-size: 1.5em;
+  color: white; 
+}
+
 h1 {
   font-family: 'Fjalla One', sans-serif;
   font-size: 2em;
@@ -132,6 +138,11 @@ p {
   color: #84DCC4;
 }
 
+.nested-list {
+  font-family: 'Fjalla One', sans-serif;
+  font-size: .5em;
+  color: white;
+}
 .edit-delete {
   float: right;
 }

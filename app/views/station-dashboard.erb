@@ -1,15 +1,29 @@
+<header>
+  <a href="/"><img src="/bike_share_logo.jpg"></a>
+  <nav>
+    <ul>
+      <li><a class="current_page" href="/stations">Stations</a></li>
+      <li><a href="/trips">Trips</a></li>
+      <li><a href="/conditions">Weather</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="show">
 <h1>Station Statistics</h1>
 <ul>
-  <li>Total count of stations: <%= @stations.count %></li>
-  <li>Average bikes available per station: <%= @stations.average(:dock_count).round %></li>
-  <li>Most bikes available at a station: <%= @stations.maximum(:dock_count) %></li>
-  <li>Station(s) where the most bikes are available:<ul><% @stations.where(dock_count: @stations.maximum(:dock_count)).each do |station| %>
-  <li><%= station.name %></li>
-      <% end %></ul></li>
-  <li>Fewest bikes available at a station: <%= @stations.minimum(:dock_count) %></li>
-  <li>Station(s) where the fewest bikes are available:<ul><% @stations.where(dock_count: @stations.minimum(:dock_count)).each do |station| %>
-  <li><%= station.name %></li>
-      <% end %></ul></li>
-  <li>Most recently installed station: <%= @stations.order("installation_date DESC").first.name %></li>
-  <li>Oldest station: <%= @stations.order("installation_date DESC").last.name %></li>
+  <li><span class="show-attribute">Total count of stations: </span><%= @stations.count %></li><br><br>
+  <li><span class="show-attribute">Average bikes available per station: </span><%= @stations.average(:dock_count).round %></li><br>
+  <li><span class="show-attribute">Most bikes available at a station: </span><%= @stations.maximum(:dock_count) %></li><br>
+  <li><span class="show-attribute">Station(s) where the most bikes are available:</span><br><ul class="nested-list"><% @stations.where(dock_count: @stations.maximum(:dock_count)).each do |station| %>
+  <li><%= station.name %></li><br>
+      <% end %></ul></li><br>
+  <li><span class="show-attribute">Fewest bikes available at a station: </span><%= @stations.minimum(:dock_count) %></li><br>
+  <li><span class="show-attribute">Station(s) where the fewest bikes are available:</span><br><ul class="nested-list"><% @stations.where(dock_count: @stations.minimum(:dock_count)).each do |station| %>
+  <li><%= station.name %></li><br>
+      <% end %></ul></li><br>
+  <li><span class="show-attribute">Most recently installed station: </span><%= @stations.order("installation_date DESC").first.name %></li><br>
+  <li><span class="show-attribute">Oldest station: </span><%= @stations.order("installation_date DESC").last.name %></li><br>
 </ul>
+<p><a href="/stations">Back to Stations</a></p>
+</div>

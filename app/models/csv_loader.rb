@@ -45,9 +45,9 @@ class CSVLoader
       {
         :id => row[:id],
         :duration => row[:duration],
-        :start_date => row[:start_date],
+        :start_date => row[:start_date].split(" ").first,
         :start_station_id => row[:start_station_id].to_i,
-        :end_date => row[:end_date],
+        :end_date => row[:end_date].split(" ").first,
         :end_station_id => row[:end_station_id].to_i,
         :bike_id => row[:bike_id].to_i,
         :subscription_type => row[:subscription_type].downcase,

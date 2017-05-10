@@ -1,23 +1,34 @@
+require './app/models/trip'
+
 class Condition < ActiveRecord::Base
 
   def self.get_paginated_conditions(params)
     self.order(:date).paginate(:page => params[:page], :per_page => 30)
   end
 
-  def self.average_number_of_rides(rides)
-    rides.reduce(:+) / rides.count
+  def self.average_rides_per_temperature_range(degrees)
+    days = Condition.days_with_high_temps(degrees)
+    ride_count = Trip.total_trip_count_on_dates(days)
+    average_number_of_rides(ride_count, days)
   end
 
-  def self.highest_number_of_rides(rides)
-      rides.max.to_i
+  def self.highest_rides_per_temperature_range(degrees)
+    days = Condition.days_with_high_temps(degrees)
+    Trip.max_trip_count_by_dates(days)
   end
 
-  def self.lowest_number_of_rides
-    rides.min.to_i
+  def self.lowest_rides_per_temperature_range(degrees)
+    days = Condition.days_with_high_temps(degrees)
+    Trip.min_trip_count_by_dates(days)
+  end
+
+  def self.average_number_of_rides(ride_count, days)
+    ride_count / days.length
   end
 
   def self.days_with_high_temps(degrees)
-    where(max_temperature: [degrees..degrees + 9])
+    conditions_in_a_temperature_range = Condition.where(max_temperature: [degrees..degrees + 9])
+    conditions_in_a_temperature_range.map { |condition| condition.date }
   end
 
   def self.precipitation_increments(inch)

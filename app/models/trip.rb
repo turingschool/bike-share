@@ -108,4 +108,29 @@ class Trip < ActiveRecord::Base
     highest_bike = bike.max_by { |bike, count| bike}
   end
 
+  def self.total_trip_count_on_dates(dates)
+    count = 0
+    dates.each do |date|
+      count += Trip.where(start_date: date).length
+    end
+    count
+  end
+
+  def self.max_trip_count_by_dates(dates)
+    trip_counts = []
+    dates.each do |date|
+      count = Trip.where(start_date: date).length
+      trip_counts << count
+    end
+    trip_counts.max
+  end
+
+  def self.min_trip_count_by_dates(dates)
+    trip_counts = []
+    dates.each do |date|
+      count = Trip.where(start_date: date).length
+      trip_counts << count
+    end
+    trip_counts.min
+  end
 end

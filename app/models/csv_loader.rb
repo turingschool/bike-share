@@ -69,7 +69,7 @@ class CSVLoader
         :mean_humidity => row[:mean_humidity],
         :mean_visibility => row[:mean_visibility],
         :mean_wind_speed => row[:mean_wind_speed],
-        :precipitation => row[:precipitation_inches],
+        :precipitation => row[:precipitation],
       }
     end
   end

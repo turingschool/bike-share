@@ -27,7 +27,7 @@ duration = (end_time - start_time)
 
 puts "station.csv upload complete! #{Station.count + City.count} records seeded in #{duration} seconds!"
 
-put "Seeding trips db now!"
+puts "Seeding trips db now!"
 total_start_time = Time.now
 
 trips = CSV.open './db/csv/trip.csv', headers: true, header_converters: :symbol

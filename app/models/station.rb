@@ -23,5 +23,13 @@ class Station < ActiveRecord::Base
     order(:dock_count).first.name
   end 
 
+  def self.newest_station
+    order(:install_date).last.name
+  end 
+
+  def self.oldest_station
+    order(:install_date).first.name
+  end 
+
 end
 

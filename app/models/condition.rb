@@ -36,7 +36,6 @@ class Condition < ActiveRecord::Base
   def self.ave_rides_per_condition(column, low, high)
     x = determine_date_range(column,low,high)
     y = Trip.determine_trips_on_specific_dates(x)
-    return 0 if x.count == 0
     (y.count.to_f/x.count.to_f).round(2)
   end
 

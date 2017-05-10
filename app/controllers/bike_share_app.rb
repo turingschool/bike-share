@@ -75,8 +75,8 @@ class BikeShareApp < Sinatra::Base
 
   get '/station-dashboard' do
     erb :"stations/station-dashboard"
-  end
-
+  end 
+  
   # Trips App
 
   get '/trips' do

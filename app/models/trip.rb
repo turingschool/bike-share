@@ -62,11 +62,19 @@ class Trip < ActiveRecord::Base
   end
 
   def self.busiest_day
-    group(:start_date).count("id").max_by{|date, count| count }
+    group(:start_date).count("id").max_by{|date, count| count }.first
   end
 
   def self.least_busy_day
-    group(:end_date).count("id").min_by{|date, count| count }
+    group(:start_date).count("id").min_by{|date, count| count }.first
+  end
+
+  def self.busiest_day_trip_count
+    where(:start_date, busiest_day).count
+  end
+  
+  def self.least_busy_day_trip_count
+    where(:start_date, least_busy_day).count
   end
 
   #Individual station methods for Info

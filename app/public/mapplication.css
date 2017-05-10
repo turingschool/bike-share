@@ -13,6 +13,10 @@ nav {
   float: left;
   text-align: center;
 }
+a {
+  text-decoration: none;
+  color: white;
+}
 
 ul, li {
   list-style: none;
@@ -21,7 +25,7 @@ ul, li {
 }
 
 body {
-  background-image: url("bike-background-mobile.png");
+  background-image: url("/bike-background-mobile.png");
   background-size: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;

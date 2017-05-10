@@ -36,6 +36,7 @@ class BikeShareApp < Sinatra::Base
     @start_station = StartStation.all
     @end_station = EndStation.all
     @station = Station.find(params[:id])
+    @station_data = Station.data_analysis(@station.id)
     erb :"stations/show"
   end
 
@@ -61,6 +62,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/station-dashboard' do
     @stations = Station.all
+    @station_dashboard = Station.dashboard_analysis
     erb :"station-dashboard"
   end
 
@@ -131,6 +133,7 @@ class BikeShareApp < Sinatra::Base
     @trips = Trip.all
     @start_stations = StartStation.all
     @end_stations = EndStation.all
+    @trip_dashboard = Trip.dashboard_analysis
     erb :"trips-dashboard"
   end
 

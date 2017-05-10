@@ -18,4 +18,13 @@ class Trip < ActiveRecord::Base
     percentage = (total_subscribers / Trip.all.count.to_f) * 100
     percentage.to_i.to_s + "%"
   end
+
+  def self.dashboard_analysis
+    {average_duration: Trip.average(:duration).round
+
+
+    }
+  end
+
+  
 end

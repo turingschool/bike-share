@@ -12,7 +12,8 @@
 <div class="show">
 <h1>Trip Statistics</h1>
 <ul>
-  <li><span class="show-attribute">Average duration of a ride: </span><%= @trips.average(:duration).round %></li><br>
+  <li><span class="show-attribute">Average duration of a ride: </span>
+    <%= @trip_dashboard[:average_duration] %></li><br>
   <li><span class="show-attribute">Longest ride: </span><a href="/trips/<%= @trips.order("duration DESC").first.id %>"> ID# <%= @trips.order("duration DESC").first.id %></a></li><br>
   <li><span class="show-attribute">Shortest ride: </span><a href="/trips/<%= @trips.order("duration DESC").last.id %>">ID# <%= @trips.order("duration DESC").last.id %></a></li><br>
   <li><span class="show-attribute">Station with the most rides as a starting place: </span><%= @start_stations.find(@trips.group(:start_station_id).order('count_id asc').count('id').keys.last).station.name %></li><br>

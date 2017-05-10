@@ -1,17 +1,15 @@
 class WeatherStatistic < ActiveRecord::Base
   belongs_to :date_ref
-  belongs_to :city
 
-  def self.key_zip_to_city
-    {
-      '94107'=> 'San Francisco',
-      '94063'=> 'Redwood City',
-      '94301'=> 'Palo Alto',
-      '94041'=> 'Mountain View',
-      '95113'=> 'San Jose'
-    }
+  validates :max_temperature, presence: true
+  validates :mean_temperature, presence: true
+  validates :min_temperature, presence: true
+  validates :mean_visibility, presence: true
+  validates :mean_humidity, presence: true
+  validates :mean_wind_speed, presence: true
+  validates :precipitation, presence: true
+  validates :date_ref_id, presence: true
 
-  end
 
   def self.create_new(params)
     date = DateRef.find_or_create_by(date: params[:weather][:date_ref_id])
@@ -23,7 +21,6 @@ class WeatherStatistic < ActiveRecord::Base
                             mean_wind_speed: params[:weather][:mean_wind_speed],
                             precipitation: params[:weather][:precipitation],
                             date_ref_id: date.id,
-                            city_id: params[:weather][:city_id]
                           )
   end
 
@@ -38,7 +35,6 @@ class WeatherStatistic < ActiveRecord::Base
                   mean_wind_speed: params[:weather][:mean_wind_speed],
                   precipitation: params[:weather][:precipitation],
                   date_ref_id: date.id,
-                  city_id: params[:weather][:city_id]
                 )
 
   end

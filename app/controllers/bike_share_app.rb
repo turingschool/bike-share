@@ -75,7 +75,90 @@ class BikeShareApp < Sinatra::Base
 
   get '/station-dashboard' do
     erb :"stations/station-dashboard"
-  end 
+  end
+
+  # Trips App
+
+  get '/trips' do
+    @trips = Trip.all.paginate(:page => params[:page], :per_page => 30)
+    erb :"trips/index"
+  end
+
+  get '/trips/new' do
+    # @station = Station.new()
+    # @trip = Trip.new()
+    erb :"trips/new"
+  end
+
+  post '/trips/new' do
+    @station = Station.find_or_create_by(name: params[:city])
+    @trip = Trip.new(params[:trip])
+    if @trip.invalid? || @station.invalid?
+      @station.invalid?
+      erb :"trips/new"
+    else
+      @trip.save
+      @station.trips << @trip
+      redirect "trips/#{@trip.id}"
+    end
+  end
+
+  get '/trips/:id' do
+    @trip = Trip.find(params[:id])
+    @start_trip_station_name = @trip.start_station_name
+    @end_trip_station_name = @trip.end_station_name
+    @number_of_rides_started = Trip.number_of_rides_started_at_station(@start_trip_station_name)
+    @number_of_rides_ended = Trip.number_of_rides_ended_at_station(@end_trip_station_name)
+    @most_frequent_destination = Trip.most_frequent_destination_for_station(@start_trip_station_name)
+    @most_frequent_origin = Trip.most_frequent_origin_for_station(@end_trip_station_name)
+    @highest_trips_by_date_for_station = Trip.highest_trips_by_date_for_station(@start_trip_station_name)
+    @most_frequent_zip = Trip.most_frequent_zipcode_for_start_station(@start_trip_station_name)
+    @most_frequent_bike_id_for_start_station = Trip.most_frequent_bike_id_for_start_station(@start_trip_station_name)
+
+    erb :"trips/show"
+  end
+
+  get '/trips/:id/edit' do
+    @trip = Trip.find(params[:id])
+    @station = @trip.station
+    erb :"trips/edit"
+  end
+
+  put '/trips/:id' do
+    @station = Station.find_or_create_by(name: params[:station])
+    @trip = trip.new(params[:trip])
+
+    if @station.invalid? || @trip.invalid?
+      erb :"trips/edit"
+    else
+      params[:trip][:station_id] = @station.id
+      Trip.find(params[:id]).update(params[:trip])
+
+      redirect "/trips/#{params[:id]}"
+    end
+
+  end
+
+  delete '/trips/:id' do
+    trip = Trip.destroy(params[:id])
+    redirect '/trips'
+  end
+
+  put '/trips/:id' do
+    @sub_type = SubscriptionType.find_or_create_by(params["subscription_type"])
+    params[:trip]["subscription_type_id"] = @sub_type.id
+    @trip = Trip.update(params[:id].to_i, params[:trip])
+    redirect '/trips'
+    #redirect '/trips/#{@trip.id}' isn't working
+  end
+
+  post '/trips' do
+    @sub_type = SubscriptionType.find_or_create_by(params["subscription_type"])
+    params[:trip]["subscription_type_id"] = @sub_type.id
+    @trip = Trip.create(params[:trip])
+    redirect '/trips'
+  end
+>>>>>>> 3bfe85358712f2b29230a709132ef9a923f07124
 
   # Conditions App
 
@@ -84,7 +167,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/conditions' do
-    @conditions = Condition.all
+    @conditions = Condition.all.paginate(:page => params[:page], :per_page => 30)
     erb :"conditions/index"
   end
 

@@ -45,9 +45,37 @@ class WeatherStatistic < ActiveRecord::Base
 
   def self.dashboard
     { 
-    breakout_avg_max_min_rides_days_high_temp: ""
+    breakout_avg_max_min_rides_days_high_temp:''
     }
 
   end
 
+  def self.high_temp
+    range = (((WeatherStatistic.minimum(:max_temperature)/10).floor*10)..((WeatherStatistic.maximum(:max_temperature)/10).floor * 10)).step(10).to_a
+    range.each_with_index.map do |temp, i|
+      if i == 0 || i == (range.length-1)
+        next
+      else
+      {"#{temp-10} - #{temp}" => 
+        WeatherStatistic.joins(:trips)
+                  .where("mean_temperature between ? and ?", range[i-1], range[i])
+                  .group(:date).order('count_id ASC')
+                  .count(:id).values
+        
+      }
+      end
+    end.compact
+  end
+
+  def format(hash)
+    hash.map do |ranges| 
+      ranges.each do |k, v| 
+        if v.empty? 
+          next 
+        else 
+          ranges[k] = [v.max, v.min, (v.inject(:+)/v.length)] 
+        end 
+      end 
+    end
+  end
 end

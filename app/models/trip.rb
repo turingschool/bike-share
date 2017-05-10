@@ -68,9 +68,11 @@ class Trip<ActiveRecord::Base
 
   def self.zip_validate(zipcode)
     if  zipcode.nil? || zipcode.empty?
-      Zipcode.find_or_create_by!(zipcode: "n/a")
+      # Zipcode.find_or_create_by!(zipcode: "n/a")
+      ''
     else
-      Zipcode.find_or_create_by!(zipcode: (zipcode[0..4]))
+      zip = Zipcode.find_or_create_by!(zipcode: (zipcode[0..4]))
+      zip.id
     end
     
   end

@@ -42,7 +42,20 @@ class Trip < ActiveRecord::Base
   end
 
   def self.month_by_month_breakdown_with_subtotals_by_year
-
+    # Return hash, keys are years, and they values are hashes with they key being a month and val a total
+    # Example output:
+    # {
+    #   2012 => {
+    #             :January => 45,
+    #             :February => 87,
+    #             :March => 37,
+    #             etc......
+    #           },
+    #   2013 => {
+    #             :January => 44,
+    #             etc........
+    #           }
+    # }
   end
 
   def self.most_ridden_bike

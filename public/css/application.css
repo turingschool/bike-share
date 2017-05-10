@@ -368,16 +368,16 @@ a button{
   ========================================
 */
 
+
 .new-trip {
   margin: 0 auto;
-  background-color: rgba(33, 33, 33, 0.9);
-  width: 40%;
+  background-color: rgba(255,255,255,0.9);
+  width: 60%;
   padding: 30px;
-  border: 2px solid black;
+  border: 6px solid black;
   border-radius: 10px;
   margin-bottom: 100px;
-  font-size: 1.3rem;
-
+  font-size: 20px;
 }
 
 .form-horizontal .control-label{
@@ -386,6 +386,8 @@ a button{
 
 .form-group .form-control {
   max-width: 100%;
+  background-color: #1e1e1e;
+  color: whitesmoke;
 }
 
 

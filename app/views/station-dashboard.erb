@@ -12,7 +12,7 @@
 <div class="show">
 <h1>Station Statistics</h1>
 <ul>
-  <li><span class="show-attribute">Total count of stations: </span><%= @stations.count %></li><br><br>
+  <li><span class="show-attribute">Total count of stations: </span><%= @stations.count %></li><br>
   <li><span class="show-attribute">Average bikes available per station: </span><%= @stations.average(:dock_count).round %></li><br>
   <li><span class="show-attribute">Most bikes available at a station: </span><%= @stations.maximum(:dock_count) %></li><br>
   <li><span class="show-attribute">Station(s) where the most bikes are available:</span><br><ul class="nested-list"><% @stations.where(dock_count: @stations.maximum(:dock_count)).each do |station| %>

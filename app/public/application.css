@@ -148,6 +148,12 @@ p {
   font-size: .5em;
   color: white;
 }
+
+.nested-list2 {
+  font-family: 'Fjalla One', sans-serif;
+  font-size: .75em;
+  color: white;
+}
 .edit-delete {
   float: right;
 }

@@ -32,6 +32,9 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations/:id' do
+    @start_date = StartDate.all
+    @start_station = StartStation.all
+    @end_station = EndStation.all
     @station = Station.find(params[:id])
     erb :"stations/show"
   end
@@ -88,22 +91,32 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips/:id' do
     @trip = Trip.find(params[:id])
+
     erb :"trips/show"
   end
 
   put '/trips/:id' do |id|
-    # @start_stations = StartStation.all
-    # @end_stations = EndStation.all
-    # @subscription_type = SubscriptionType.all
     @trip = Trip.find(params[:id])
-    @trip.update(params[:trip])
+    trip_details = params[:trip]
+    ride_start_date = RideDate.find_or_create_by(RideDate.format_date_hash(trip_details["start_date_id"]))
+    ride_end_date = RideDate.find_or_create_by(RideDate.format_date_hash(trip_details["end_date_id"]))
+    trip_details["start_date_id"] = ride_start_date.id
+    trip_details["end_date_id"] = ride_end_date.id
+    @trip.update(trip_details)
+
     redirect "trips/#{@trip.id}"
   end
 
   post '/trips' do
     subscription_type = SubscriptionType.find_by(name: params[:subscription_type][:name])
-    @trip = subscription_type.trips.create(params[:trip])
-
+    trip_details = params[:trip]
+    ride_start_date = RideDate.find_or_create_by(RideDate.format_date_hash(trip_details["start_date_id"]))
+    ride_end_date = RideDate.find_or_create_by(RideDate.format_date_hash(trip_details["end_date_id"]))
+    trip_details["start_date"] = (StartDate.find_or_create_by(ride_date_id: ride_start_date.id)).id
+    trip_details["end_date"] = (EndDate.find_or_create_by(ride_date_id: ride_end_date.id)).id
+    trip_details["start_date_id"] = trip_details.delete("start_date")
+    trip_details["end_date_id"] = trip_details.delete("end_date")
+    @trip = subscription_type.trips.create(trip_details)
     redirect "/trips/#{@trip.id}"
   end
 
@@ -114,9 +127,49 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips-dashboard' do
     @subscription_types = SubscriptionType.all
+    @ride_date = RideDate.all
     @trips = Trip.all
     @start_stations = StartStation.all
     @end_stations = EndStation.all
     erb :"trips-dashboard"
   end
+
+  get '/conditions' do
+    erb :"conditions/index"
+  end
+
+  get '/conditions/new' do
+    erb :"conditions/new"
+  end
+
+  post '/conditions' do
+    Condition.create(params[:condition])
+    redirect "/conditions/#{condition.id}"
+  end
+
+  get '/conditions/view_all' do
+    @conditions = Condition.all.paginate(:page => params[:page], :per_page => 30)
+    erb :"conditions/view_all"
+  end
+
+  get '/conditions/:id' do
+    @station = Station.find(params[:id])
+    erb :"conditions/show"
+  end
+
+  get '/conditions/:id/edit' do
+    @conditions = Condition.all
+    erb :"conditions/edit"
+  end
+
+  put '/conditions/:id' do |id|
+    @condition = Condition.find(params[:id])
+    redirect "conditions/#{@condition.id}"
+  end
+
+  delete '/conditions/:id' do |id|
+    Condition.destroy(id.to_i)
+    redirect "/conditions/view_all"
+  end
+
 end

@@ -3,10 +3,10 @@
 <h3>Duration: <%= @trip.duration %></h3>
 <h3>Starting Station: <%= @trip.start_station.station.name %></h3>
 <h3>Ending Station: <%= @trip.end_station.station.name %></h3>
-<h3>Zipcode: <%= @trip.zip_code %></h3> 
+<h3>Zipcode: <%= @trip.zip_code %></h3>
 <h3>Bike ID: <%= @trip.bike_id %></h3>
-<h3>Start Date: <%= @trip.start_date %></h3>
-<h3>End Date: <%= @trip.end_date %></h3>
+<h3>Start Date: <%= @trip.start_date.day %>/<%= @trip.start_date.month %>/<%= @trip.start_date.year %></h3>
+<h3>End Date: <%= @trip.end_date.day %>/<%= @trip.end_date.month %>/<%= @trip.end_date.year %></h3>
 <h3>Subscription Type: <%= @trip.subscription_type.name %></h3>
 
 <a href="/trips/<%=@trip.id%>/edit">Edit</a>

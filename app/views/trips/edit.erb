@@ -21,10 +21,10 @@
     <option value="<%= end_station.id %>"><%= end_station.station.name %></option>
     <% end %>
   </select><br>
-  <h3>Start Date</h3>
-  <input type="date" name="trip[start_date]" value="<%= @trip.start_date %>">
-  <h3>End Date</h3>
-  <input type="date" name="trip[end_date]" value="<%= @trip.end_date %>">
+  <h3>Start Date(Format: YYYY-MM-DD)</h3>
+  <input type="text" name="trip[start_date_id]" value="<%= @trip.start_date_id %>">
+  <h3>End Date(Format: YYYY-MM-DD)</h3>
+  <input type="text" name="trip[end_date_id]" value="<%= @trip.end_date_id %>">
   <h3>Bike ID</h3>
   <input type="integer" name="trip[bike_id]" value="<%= @trip.bike_id %>"><br>
   <h3>Zipcode</h3>

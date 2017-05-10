@@ -218,8 +218,15 @@ RSpec.describe Trip do
     end
 
     it "can calculate most ridden bike with total number of rides for that bike" do
-      expect(Trip.monthly_breakdown_of_rides(2013, 9)).to eq(1)
+      expect(Trip.most_ridden_bike_id).to eq(6)
+      expect(Trip.most_ridden_bike_rides).to eq(2)
     end
+
+    it "can calculate least ridden bike with total number of rides for that bike" do
+      expect(Trip.least_ridden_bike_id).to eq(5)
+      expect(Trip.least_ridden_bike_rides).to eq(1)
+    end
+
     
 
   end

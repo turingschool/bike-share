@@ -17,4 +17,8 @@ class Trip < ActiveRecord::Base
   def format_end_date_time
     end_date.strftime('%m/%d/%Y %H:%M')
   end
+
+  def self.determine_trips_on_specific_dates(date_range)
+    where('Date(start_date) IN (?)', date_range)
+  end
 end

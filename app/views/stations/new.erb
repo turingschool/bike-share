@@ -16,3 +16,7 @@
   </select>
   <input type="submit" value="Create New Station" />
 </form>
+
+<% if params['errors'] %>
+<%= erb :'stations/error'%>
+<%end%>

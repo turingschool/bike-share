@@ -1,6 +1,5 @@
 require './spec/spec_helper'
 
-
 RSpec.describe Trip do
   describe "trip can return all attributes" do
     it "has all attributes" do
@@ -165,7 +164,7 @@ RSpec.describe Trip do
                       end_date: DateTime.strptime("08/30/2013 11:15", "%m/%d/%Y %H:%M"),
                       end_station_id: 1,
                       bike_id: 5,
-                      subscription_type: "Subscriber",
+                      subscription_type: "Customer",
                       zipcode_id: 1
     )
       trip_2 = Trip.create(
@@ -227,9 +226,21 @@ RSpec.describe Trip do
       expect(Trip.least_ridden_bike_rides).to eq(1)
     end
 
-    
+    it "can calculate user subscription type breakout with both count and percentage" do
+      expect(Trip.customer_subscription_count).to eq(1)
+      expect(Trip.subscriber_subscription_count).to eq(2)
+      expect(Trip.customer_subscription_percentage).to eq(33.33)
+      expect(Trip.subscriber_subscription_percentage).to eq(66.67)
+    end
 
+    it "can calculate single date with the highest number of trips with a count of those trips" do
+      expect(Trip.highest_number_of_trips_date).to eq("08/30/2013")
+      expect(Trip.highest_number_of_trips_total).to eq(2)
+    end
+
+    it "can calculate single date with the least number of trips with a count of those trips" do
+      expect(Trip.lowest_number_of_trips_date).to eq("09/30/2013")
+      expect(Trip.lowest_number_of_trips_total).to eq(2)
+    end    
   end
-  
-
 end

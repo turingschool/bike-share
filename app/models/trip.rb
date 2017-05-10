@@ -93,8 +93,9 @@ class Trip < ActiveRecord::Base
   end
 
   #Individual station methods for Info
+  # For these, edit them so they look up the info of a provided station_id
 
-  def self.number_of_rides_started_at_station
+  def self.number_of_rides_started_at_station(station_id) # <---- example
     where(start_station_id: id).count
   end
 

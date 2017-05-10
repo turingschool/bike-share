@@ -9,7 +9,7 @@ require 'CSV'
 total_start_time = Time.now
 
 stations = CSV.open './db/csv/station.csv', headers: true, header_converters: :symbol
-puts "seeding stations and cities now!"
+puts "Seeding stations and cities now!"
 start_time = Time.now
 
 stations.each do |row|
@@ -27,10 +27,38 @@ duration = (end_time - start_time)
 
 puts "station.csv upload complete! #{Station.count + City.count} records seeded in #{duration} seconds!"
 
+put "Seeding trips db now!"
+total_start_time = Time.now
+
+trips = CSV.open './db/csv/trip.csv', headers: true, header_converters: :symbol
+puts "Seeding trips now!"
+start_time = Time.now
+
+trips.each do |row|
+  start_station = station.find(name: row[:start_station_name])
+  end_station = station.find(name: row[:end_station_name])
+  
+  Trip.create(duration:                 row[:duration],
+                  start_date:           Date.strptime(row[:start_date], "%m/%d/%Y"),
+                  start_station:        start_station.id,
+                  end_date:             Date.strptime(row[:end_date], "%m/%d/%Y"),
+                  end_station:          end_station.id,
+                  bike_id:              row[:bike_id],
+                  subscripton_type_id:  subscripton.id,
+                  zip_code:             row[:zip_code]
+                 )
+end
+
+end_time = Time.now
+duration = (end_time - start_time)
+
+puts "trip.csv upload complete! #{Trip.count} records seeded in #{duration} seconds!"
+
+
 conditions = CSV.open './db/csv/weather.csv', headers: true, header_converters: :symbol
 
 
-puts "seeding conditions db now!"
+puts "Seeding conditions db now!"
 
 start_time = Time.now
 

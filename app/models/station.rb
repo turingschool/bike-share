@@ -9,7 +9,10 @@ class Station < ActiveRecord::Base
 
   def self.max_available_bikes
     maximum(:dock_count).to_i
-    end
+  end
+
+  def self.max_bike_station
+    order(:dock_count).last.name
   end
 
 end

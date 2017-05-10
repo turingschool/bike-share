@@ -59,4 +59,28 @@ class Trip < ActiveRecord::Base
     Trip.group(:bike_id).count.min_by{|bike, count| count}[1]
   end
 
+  def self.customer_subscription_count
+    Trip.group(:subscription_type).count["Customer"]
+  end
+
+  def self.subscriber_subscription_count
+    Trip.group(:subscription_type).count["Subscriber"]
+  end
+
+  def self.customer_subscription_percentage
+    customer_subscription_count / total_subscription_count
+  end
+
+  def self.subscriber_subscription_percentage
+    subscriber_subscription_count / total_subscription_count
+  end
+
+  def self.total_subscription_count
+    customer_subscription_count + subscriber_subscription_count
+  end
+  
+
 end
+
+
+Trip.where(start_date: (Time.new(2013, 01, 01))..(Time.new(2013, 01, 31)))

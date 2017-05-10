@@ -51,8 +51,13 @@
 <p>Total Number of Rides: <%= @trips.most_ridden_bike_rides %></p>
 <p>Least Ridden Bike: <%= @trips.least_ridden_bike_id %></p>
 <p>Total Number of Rides: <%= @trips.least_ridden_bike_rides %></p>
-<p>User Subscription Type: </p>
-<!-- with both count and percentage -->
+<ul>
+  <h2>User Subscription Type: </h2>
+  <li>Number of Subscribers: <%= @trips.subscriber_subscription_count %></li>
+  <li>Percent of Subscribers: <%= @trips.subscriber_subscription_percentage %></li>
+  <li>Number of Customers: <%= @trips.customer_subscription_count %></li>
+  <li>Percent of Customers: <%= @trips.customer_subscription_percentage %></li>
+</ul>
 <p>Date With Highest Number of Trips: </p>
 <!-- include trip count -->
 <p>Date With Lowest Number of Trips: </p>

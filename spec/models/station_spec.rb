@@ -2,10 +2,9 @@ require './spec/spec_helper'
 
 
 RSpec.describe Station do
+  let(:station) {station = Station.create(name: "something", dock_count: 1, city_id: 1, installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'), longitude: -121.9, latitude: 30.7)}
   describe "station can return all attributes" do
     it "has all attributes" do
-      station = Station.create(name: "something", dock_count: 1, city_id: 1, installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'), longitude: -121.9, latitude: 30.7)
-
       expect(station.id).to eq 1
       expect(station.name).to eq "something"
       expect(station.dock_count).to eq 1

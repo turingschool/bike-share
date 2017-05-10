@@ -32,6 +32,9 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations/:id' do
+    @start_date = StartDate.all
+    @start_station = StartStation.all
+    @end_station = EndStation.all
     @station = Station.find(params[:id])
     erb :"stations/show"
   end
@@ -93,9 +96,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/trips/:id' do |id|
-    # @start_stations = StartStation.all
-    # @end_stations = EndStation.all
-    # @subscription_type = SubscriptionType.all
     @trip = Trip.find(params[:id])
     trip_details = params[:trip]
     ride_start_date = RideDate.find_or_create_by(RideDate.format_date_hash(trip_details["start_date_id"]))

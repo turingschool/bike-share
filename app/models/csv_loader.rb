@@ -65,12 +65,12 @@ class CSVLoader
       end
       {
         :date => row[:date],
-        :max_temperature => row[:max_temperature],
-        :mean_temperature => row[:mean_temperature],
-        :min_temperature => row[:min_temperature],
+        :max_temperature => row[:max_temperature_f],
+        :mean_temperature => row[:mean_temperature_f],
+        :min_temperature => row[:min_temperature_f],
         :mean_humidity => row[:mean_humidity],
-        :mean_visibility => row[:mean_visibility],
-        :mean_wind_speed => row[:mean_wind_speed],
+        :mean_visibility => row[:mean_visibility_miles],
+        :mean_wind_speed => row[:mean_wind_speed_mph],
         :precipitation => row[:precipitation_inches]
       }
     end

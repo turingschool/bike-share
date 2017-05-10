@@ -139,4 +139,45 @@ RSpec.describe Condition do
       end
     end
   end
+
+  describe ".get_mean_temp_intervals" do
+    it "returns an array" do
+      expect(described_class.get_mean_temp_intervals.class).to be Array
+    end
+    before {
+      condition = Condition.create(
+                                  date: Date.strptime("08/30/2013",'%m/%d/%Y'),
+                                  max_temp: 87.0,
+                                  mean_temp: 76.0,
+                                  min_temp: 54.0,
+                                  mean_humidity: 90.0,
+                                  mean_visibility: 10.0,
+                                  mean_wind_speed: 11.0,
+                                  precipitation: 0,
+                                  )
+      condition = Condition.create(
+                                  date: Date.strptime("08/30/2013",'%m/%d/%Y'),
+                                  max_temp: 87.0,
+                                  mean_temp: 66.0,
+                                  min_temp: 54.0,
+                                  mean_humidity: 90.0,
+                                  mean_visibility: 10.0,
+                                  mean_wind_speed: 11.0,
+                                  precipitation: 0,
+                                  )
+      condition = Condition.create(
+                                  date: Date.strptime("08/30/2013",'%m/%d/%Y'),
+                                  max_temp: 87.0,
+                                  mean_temp: 56.0,
+                                  min_temp: 54.0,
+                                  mean_humidity: 90.0,
+                                  mean_visibility: 10.0,
+                                  mean_wind_speed: 11.0,
+                                  precipitation: 0,
+                                  )
+    }
+    it "returns the 10 deg ranges" do
+      expect(described_class.get_mean_temp_intervals).to match ["70-79", "60-69", "50-59"]
+    end
+  end
 end

@@ -9,6 +9,8 @@ class Trip<ActiveRecord::Base
   belongs_to :start_station, foreign_key: "start_station_id", class_name: "Station"
   belongs_to :end_station, foreign_key: "end_station_id", class_name: "Station"
 
+  belongs_to :weather_statistic
+
   validates :bike_id, presence: true
   validates :subscription_type_id, presence: true
   validates :date_ref_id, presence: true

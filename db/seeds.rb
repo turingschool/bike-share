@@ -69,6 +69,8 @@ end
 
 weather_statistics = CSV.open './db/csv/weather.csv', headers:true, header_converters: :symbol
 weather_statistics.each do |row|
+  # binding.pry
+  if row[:zip_code] == '94107'
   date = row[:date]
   date = DateRef.clean_date(date)
   date = DateRef.find_or_create_by!(date: date)
@@ -84,9 +86,10 @@ weather_statistics.each do |row|
     mean_visibility: row[:mean_visibility_miles],
     mean_wind_speed: row[:mean_wind_speed_mph],
     precipitation: row[:precipitation_inches],
-    city_id: city.id
   )
-
+  else
+    next
+  end
 end
 
 

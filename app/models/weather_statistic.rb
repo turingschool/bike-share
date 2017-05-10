@@ -1,6 +1,8 @@
 class WeatherStatistic < ActiveRecord::Base
   belongs_to :date_ref
   belongs_to :city
+  
+  has_many :trips, through: :date_ref
 
   def self.key_zip_to_city
     {

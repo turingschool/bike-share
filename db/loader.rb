@@ -27,7 +27,7 @@ class Loader
   end
 
   def load_conditions
-    # Loader.new('./spec/fixtures/station_fixtures_small.csv').load_stations
+    Loader.new('./db/csv/station.csv').load_stations
     @data.each do |row|
       zips = {"95113" => City.where(name: "San Jose"),
               "94301" => City.where(name: "Palo Alto"),

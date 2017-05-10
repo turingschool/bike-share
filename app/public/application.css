@@ -102,6 +102,10 @@ tr {
   padding-bottom: 5px%;
 }
 
+trips-table th, tr {
+  font-size: .9em;
+}
+
 .show {
   width: 90%;
   background-color: #006ec9;
@@ -110,6 +114,7 @@ tr {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
+  margin-top: 20px;
   background-color: #006ec9;
   color: white;
   font-family: 'Fjalla One', sans-serif;

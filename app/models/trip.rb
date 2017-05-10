@@ -70,11 +70,13 @@ class Trip < ActiveRecord::Base
   end
 
   def self.customer_subscription_percentage
-    (customer_subscription_count.to_f / total_subscription_count) * 100
+    customer_percentage = (customer_subscription_count.to_f / total_subscription_count) * 100
+    customer_percentage.round(2)
   end
 
   def self.subscriber_subscription_percentage
-    (subscriber_subscription_count.to_f / total_subscription_count) * 100
+    subscriber_percentage = (subscriber_subscription_count.to_f / total_subscription_count) * 100
+    subscriber_percentage.round(2)
   end
 
   def self.total_subscription_count

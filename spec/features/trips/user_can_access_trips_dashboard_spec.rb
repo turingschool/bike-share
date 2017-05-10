@@ -66,8 +66,9 @@ RSpec describe "When a user visits the trips dashboard (/trips-dashboard)" do
     expect(page).to have_content("Least Ridden Bike: 2")
     expect(page).to have_content("Total Number of Rides: 1")
     expect(page).to have_content("Number of Subscribers: 2")
-    expect(page).to have_content("Percent of Subscribers: 2")
+    expect(page).to have_content("Percent of Subscribers: 66.67%")
 
+    expect(page).to have_content("Percent of Customers: 33.33%")
 
   end
 end

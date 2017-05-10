@@ -46,3 +46,5 @@ RSpec.describe 'test condition model' do
 
   it 'finds lowest number of rides on days with mean visibility in miles in four mile increments.' do
   end
+
+end

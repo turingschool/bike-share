@@ -49,7 +49,15 @@ RSpec.describe CSVLoader do
     end
 
     it 'sanitizes a trip' do
-      output = @dummy.sanitize_trips('./db/csv/trip.csv')
+      output = @dummy.sanitize_trips('./spec/fixtures/trip_fixture.csv')
+      expect(output).to be_instance_of(Array)
+      output.each do |row|
+        expect(row).to be_instance_of(Hash)
+      end
+    end
+
+    it 'sanitizes a weather record' do
+      output = @dummy.sanitize_weather('./db/csv/weather.csv')
       expect(output).to be_instance_of(Array)
       output.each do |row|
         expect(row).to be_instance_of(Hash)

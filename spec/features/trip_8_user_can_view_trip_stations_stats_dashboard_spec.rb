@@ -30,7 +30,6 @@ RSpec.describe "when user visits station dashboard" do
                                   zip_code: 80219)
 
     visit('/trips-dashboard')
-    save_and_open_page
     expect(page).to have_content("Average duration of a ride: 203")
     expect(page).to have_content("Longest ride: ID# 1")
     expect(page).to have_content("Shortest ride: ID# 2")

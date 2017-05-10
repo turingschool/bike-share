@@ -196,7 +196,11 @@ RSpec.describe Trip, :type => :model do
     end
 
     it 'finds most frequent starting station' do
-      
+      expect(Trip.most_frequent_starting_station.first).to be_instance_of(Station)
+    end
+
+    it 'finds most frequent ending station' do
+      expect(Trip.most_frequent_starting_station.first).to be_instance_of(Station)
     end
   end
 end

@@ -95,14 +95,12 @@ class Trip < ActiveRecord::Base
     where(end_station_id: station_id).count
   end
 
-  def self.most_frequest_starting_station
-    station = group(:start_station).count
-    top_station = station.max_by { |station, count| count }
+  def self.most_frequent_starting_station
+    group(:start_station).count("id").max_by{|station, count| count }
   end
 
-  def self.least_frequest_starting_station
-    station = group(start_station).count
-    lowest_station = station.min_by
+  def self.most_frequent_ending_station
+    group(:end_station).count("id").max_by{|station, count| count }
   end
 
   def self.highest_number_of_trips_of_stations_by_date

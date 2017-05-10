@@ -143,9 +143,11 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/conditions' do
-    binding.pry
+    @conditions = params[:condition]
+    @conditions[:ride_date_id] = RideDate.find_or_create_by(RideDate.format_date_hash(@conditions[:ride_date_id])).id
+    @ride_date = RideDate.find_or_create_by(params[:date])
     @condition = Condition.create(params[:condition])
-    redirect "/conditions/#{params[:id]}"
+    redirect "/conditions/#{@condition.id}"
   end
 
   get '/conditions/view_all' do
@@ -155,6 +157,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/conditions/:id' do
     @condition = Condition.find(params[:id])
+    
     erb :"conditions/show"
   end
 

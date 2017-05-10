@@ -2,8 +2,8 @@ require_relative '../spec_helper'
 
 RSpec.describe "user can click the submit button on a form" do
   it "will redirect to the page for that individual condition" do
-    RideDate.create(day: 12, month: 8, year: 2012)
     visit('/conditions/new')
+    fill_in "condition[ride_date_id]", with: "2017-5-12"
     fill_in "condition[max_temperature]", with: "70"
     fill_in "condition[mean_temperature]", with: "60"
     fill_in "condition[min_temperature]", with: "50"

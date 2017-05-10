@@ -14,7 +14,7 @@ RSpec.describe "user wants to add station" do
       station = Station.last
 
       expect(current_path).to eq("/stations/#{station.id}")
-      
+
       expect(page).to have_content("Fluppydo")
       expect(page).to have_content("Denver")
       expect(page).to have_content(1981)
@@ -29,7 +29,7 @@ RSpec.describe "user wants to add station" do
     fill_in "station[install_date]", with: '2008/10/21'
 
     click_button "Add Station"
-    save_and_open_page
+    
     station = Station.last
 
     expect(current_path).to eq("/stations/new")
@@ -37,7 +37,7 @@ RSpec.describe "user wants to add station" do
     expect(page).to have_field("station[name]", with: "can't be blank")
     expect(page).to have_field('city', with: "Denver")
     expect(page).to have_field("station[dock_count]", with: "19")
-    expect(page).to have_field("station[install_date]", with: "2008-10-21 00:00:00 UTC") 
+    expect(page).to have_field("station[install_date]", with: "2008-10-21 00:00:00 UTC")
   end
 
 end

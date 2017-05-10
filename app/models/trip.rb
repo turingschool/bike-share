@@ -125,8 +125,8 @@ class Trip < ActiveRecord::Base
     Zipcode.find_by(id: zip_id).zipcode
   end
 
-  def monthly_breakdown_of_rides()
-    Trip.where('extract(year from start_date)=?', 2014).where('extract(month from start_date)=?', 9)
+  def self.monthly_breakdown_of_rides(year, month)
+    Trip.where('extract(year from start_date)=?', year).where('extract(month from start_date)=?', month).count
   end
 
   def self.frequent_origin_bike_id(id)

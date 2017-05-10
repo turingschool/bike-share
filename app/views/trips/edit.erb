@@ -71,11 +71,16 @@
     </br>
     <input type="textfield" name="trip[bike]" value="<%= @trip.bike.bike %>">
     </br>
-
+    <%if @trip.zipcode%>
     <label for="">Zipcode:</label>
     </br>
     <input type="textfield" name="trip[zipcode]" value="<%= @trip.zipcode.zipcode%>">
+    <%end%>
     </br>
     </br>
     <input type="submit" value="Edit Trip" />
 </form>
+
+<% if params['errors'] %>
+<%= erb :'errors/error'%>
+<%end%>

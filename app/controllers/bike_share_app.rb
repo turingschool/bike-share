@@ -123,8 +123,12 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/trips/:id' do
-    trip = Trip.update_record(params)
-    redirect "/trips/#{trip.id}"
+    @trip = Trip.update_record(params)
+    if @trip[0]
+      redirect "/trips/#{@trip[1].id}"
+    else
+      redirect "/trips/#{params[:id]}/edit?errors=#{@trip[1]  .errors.full_messages}"
+    end
   end
 
 #route to delete single trip

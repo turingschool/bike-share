@@ -67,7 +67,7 @@ class Trip<ActiveRecord::Base
   end
 
   def self.zip_validate(zipcode)
-    if  zipcode.empty?
+    if  zipcode.nil? || zipcode.empty?
       Zipcode.find_or_create_by!(zipcode: "n/a")
     else
       Zipcode.find_or_create_by!(zipcode: (zipcode[0..4]))
@@ -91,14 +91,16 @@ class Trip<ActiveRecord::Base
 
   def self.update_record(params)
     trip_data = sterilize(params)
-    Trip.update(params[:id],
-        date_ref_id: trip_data[:start_date].id,
-        end_date_id: trip_data[:end_date].id,
+    trip = Trip.find(params[:id])
+    status = trip.update(
+        date_ref_id: trip_data[:start_date],
+        end_date_id: trip_data[:end_date],
         start_station_id: trip_data[:start_station].id,
         end_station_id: trip_data[:end_station].id,
-        bike_id: trip_data[:bike].id,
-        zipcode_id: trip_data[:zipcode].id,
-        subscription_type_id: trip_data[:subscription].id)
+        bike_id: trip_data[:bike],
+        zipcode_id: trip_data[:zipcode],
+        subscription_type_id: trip_data[:subscription])
+        [status, trip]
   end
 
   def self.dashboard

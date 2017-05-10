@@ -202,5 +202,9 @@ RSpec.describe Trip, :type => :model do
     it 'finds most frequent ending station' do
       expect(Trip.most_frequent_starting_station.first).to be_instance_of(Station)
     end
+
+    # it 'returns month by month breakdown' do
+    #   expect(Trip.month_by_month_breakdown_with_subtotals_by_year).to eq(3)
+    # end
   end
 end

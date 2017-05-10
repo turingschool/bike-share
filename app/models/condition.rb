@@ -38,4 +38,9 @@ class Condition < ActiveRecord::Base
     y = Trip.determine_trips_on_specific_dates(x)
     y.count/x.count
   end
+
+  def self.get_mean_temp_intervals
+    temps = group('CAST(mean_temp AS int)/10*10 || \'-\' || CAST(mean_temp AS int)/10*10+9').count(:mean_temp)
+    temps.keys.sort.reverse
+  end
 end

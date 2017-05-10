@@ -1,5 +1,4 @@
 <h1>Add Station</h1>
-<link rel="stylesheet" type="text/css" href="../../css/style" >
 
 <form action='/stations/new' method='post'>
   Name: <input type="textfield" name='station[name]' value="<%= @station.errors[:name][0] || @station.name %>" />
@@ -7,5 +6,4 @@
   City: <input type="textfield" name='city' value="<%= @city.errors[:name][0] || @city.name %>" />
   Install Date: <input type="textfield" name='station[install_date]' value="<%= @station.errors[:install_date][0] || @station.install_date %>" />
   <input type="submit" value="Add Station" />
-
 </form>

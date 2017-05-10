@@ -55,8 +55,6 @@ class WeatherStatistic < ActiveRecord::Base
     end
   end
 
-
-
   def self.dashboard
     { 
     breakout_avg_max_min_rides_days_high_temp: WeatherStatistic.high_temp,

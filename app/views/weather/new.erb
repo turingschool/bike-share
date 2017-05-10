@@ -17,13 +17,5 @@
   <input type="float" name="weather[precipitation]">
   <label for="">Date:</label>
   <input type="date" name="weather[date_ref_id]">
-  <label for="">City:</label>
-  <select name="weather[city_id]">
-    <% @city.each do |city| %>
-        <option value="<%= city.id %>">
-          <%= city.name %>
-        </option>
-        <% end %>
-    </select>
-    <input type="submit" value="Create New Weather"/>
+  <input type="submit" value="Create New Weather"/>
 </form>

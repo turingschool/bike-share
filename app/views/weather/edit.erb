@@ -22,21 +22,5 @@
   <input type="float" name="weather[precipitation]" value="<%= @weather.precipitation %>"
   <label for="">Date:</label>
   <input type="date" name="weather[date_ref_id]" value="<%= @weather.date_ref.date %>">
-  <label for="">City:</label>
-  <select name="weather[city_id]">
-
-    <% @city.each do |city| %>
-      <% if city.id == @weather.city_id %>
-      <option value="<%= city.id %>" selected="selected">
-        <%= city.name %>
-      </option>
-      <%else %>
-        <option value="<%= city.id %>">
-
-          <%= city.name %>
-        </option>
-        <% end %>
-      <% end %>
-    </select>
-    <input type="submit" value="Edit Weather"/>
+  <input type="submit" value="Edit Weather"/>
 </form>

@@ -146,7 +146,6 @@ class BikeShareApp < Sinatra::Base
 
 #form for new weather
   get '/conditions/new' do
-    @city = City.all
     erb :'weather/new'
   end
 
@@ -164,7 +163,6 @@ class BikeShareApp < Sinatra::Base
 
 #form to edit weather
   get '/conditions/:id/edit' do
-    @city = City.all
     @weather = WeatherStatistic.find(params[:id])
     erb :"weather/edit"
   end

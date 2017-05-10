@@ -11,6 +11,7 @@ require 'pry'
 DatabaseCleaner.strategy = :truncation
 
 Capybara.app = BikeShareApp
+Capybara.save_path = './db/temp'
 
 RSpec.configure do |c|
   c.include Capybara::DSL

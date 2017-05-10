@@ -17,7 +17,6 @@ RSpec.describe "user visits stations index" do
     Loader.new('./spec/fixtures/station_fixtures_small.csv').load_stations
     visit('/stations')
 
-    save_and_open_page
     expect(page).to have_content("Name: San Jose Diridon Caltrain Station")
     expect(page).to have_content("Number of Docks: 27")
     expect(page).to have_content("City: San Jose")

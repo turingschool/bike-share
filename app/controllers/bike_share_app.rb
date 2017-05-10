@@ -1,6 +1,14 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
 require 'pry'
 
 class BikeShareApp < Sinatra::Base
+
+  configure do
+    register WillPaginate::Sinatra
+    register Sinatra::Partial
+    set :partial_template_engine, :erb
+  end
 
   get '/' do
     erb :"home/index"
@@ -9,7 +17,7 @@ class BikeShareApp < Sinatra::Base
 # Station App
 
   get '/stations' do
-    @stations = Station.all
+    @stations = Station.all.paginate(:page => params[:page], :per_page => 30)
     erb :"stations/index"
   end
 
@@ -24,13 +32,13 @@ class BikeShareApp < Sinatra::Base
     @city = City.find_or_create_by(name: params[:city])
     @station = Station.new(params[:station])
     if @station.invalid? || @city.invalid?
-      @city.invalid? 
+      @city.invalid?
       erb :"stations/new"
     else
       @station.save
       @city.stations << @station
       redirect "stations/#{@station.id}"
-    end 
+    end
 
   end
 

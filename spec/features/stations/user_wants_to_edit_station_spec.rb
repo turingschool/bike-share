@@ -13,14 +13,63 @@ RSpec.describe "user visits stations index" do
     expect(page).to have_field("station[install_date]", :with => "Aug 6 2013")
   end
 
-  it "edits a station" do
+  it "edits name of station" do
     Loader.new('./spec/fixtures/station_fixtures_small.csv').load_stations
 
     visit('/stations/1/edit')
     fill_in "station[name]", with: 'Fluppydo'
 
     click_button "Submit"
-    expect(page).to have_field("station[name]", :with => "Fluppydo")
+
+    expect(page).to have_content("Fluppydo")
+    expect(page).to have_content(27)
+    expect(page).to have_content("San Jose")
+    expect(page).to have_content("Aug 6 2013")
+  end
+
+  it "edits dock count of station" do
+    Loader.new('./spec/fixtures/station_fixtures_small.csv').load_stations
+
+    visit('/stations/1/edit')
+    fill_in "station[dock_count]", with: 56
+
+
+    click_button "Submit"
+
+    expect(page).to have_content("San Jose Diridon Caltrain Station")
+    expect(page).to have_content(56)
+    expect(page).to have_content("San Jose")
+    expect(page).to have_content("Aug 6 2013")
+  end
+
+  it "edits city of station" do
+    Loader.new('./spec/fixtures/station_fixtures_small.csv').load_stations
+
+    visit('/stations/1/edit')
+    fill_in "city", with: "Missoula"
+
+
+    click_button "Submit"
+
+    expect(page).to have_content("San Jose Diridon Caltrain Station")
+    expect(page).to have_content(27)
+    expect(page).to have_content("Missoula")
+    expect(page).to have_content("Aug 6 2013")
+  end
+
+  it "edits date of station" do
+    Loader.new('./spec/fixtures/station_fixtures_small.csv').load_stations
+
+    visit('/stations/1/edit')
+    fill_in "station[install_date]", with: "2007/10/6"
+
+
+    click_button "Submit"
+
+    expect(page).to have_content("San Jose Diridon Caltrain Station")
+    expect(page).to have_content(27)
+    expect(page).to have_content("San Jose")
+    expect(page).to have_content("Oct 6 2007")
   end
 
   it "edits with no name" do

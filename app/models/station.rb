@@ -15,5 +15,13 @@ class Station < ActiveRecord::Base
     order(:dock_count).last.name
   end
 
+  def self.min_available_bikes
+    minimum(:dock_count).to_i
+  end
+
+  def self.min_bike_station
+    order(:dock_count).first.name
+  end 
+
 end
 

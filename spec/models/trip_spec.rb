@@ -165,14 +165,11 @@ RSpec.describe Trip do
 
       
       expect(dashboard[:average_duration_ride]).to eq(138130)
-      expect(dashboard[:longest_ride].values).to eq([1000000])
-      expect(dashboard[:shortest_ride].values).to eq([10])
+      expect(dashboard[:longest_ride].values).to eq(["Broadway", "Broadway", "Days: 11 Hours: 13 Min: 46 Sec: 40"])
+      expect(dashboard[:shortest_ride].values).to eq(["Blake", "Lawrence", "Hours: 00 Min: 00 Sec:10"])
       expect(dashboard[:popular_starting_station]).to eq('Blake')
       expect(dashboard[:popular_ending_station]).to eq('Lawrence')
-      expect(dashboard[:month_breakdown]).to eq([{2012.0=>{3.0=>2}}, 
-                                                 {2013.0=>{8.0=>1}}, 
-                                                 {2011.0=>{2.0=>4}}, 
-                                                 {2010.0=>{1.0=>2}}])
+      expect(dashboard[:month_breakdown]).to eq({2012.0=>{"March"=>2}, 2011.0=>{"February"=>4}, 2010.0=>{"January"=>2}, 2013.0=>{"August"=>1}})
       expect(dashboard[:most_ridden_bike]).to eq(670)
       expect(dashboard[:least_ridden_bike]).to eq(10012)
       expect(dashboard[:subscription_breakout]).to eq({"Customer"=>[5, 0.56], "Subscriber"=>[3, 0.33], "Monthly"=>[1, 0.11]})

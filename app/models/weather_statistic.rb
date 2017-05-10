@@ -1,5 +1,9 @@
 class WeatherStatistic < ActiveRecord::Base
   belongs_to :date_ref
+  belongs_to :city
+  
+  has_many :trips, through: :date_ref
+
 
   validates :max_temperature, presence: true
   validates :mean_temperature, presence: true
@@ -36,6 +40,13 @@ class WeatherStatistic < ActiveRecord::Base
                   precipitation: params[:weather][:precipitation],
                   date_ref_id: date.id,
                 )
+
+  end
+
+  def self.dashboard
+    { 
+    breakout_avg_max_min_rides_days_high_temp: ""
+    }
 
   end
 

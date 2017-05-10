@@ -61,6 +61,7 @@ class BikeShareApp < Sinatra::Base
 #trip dashboard with statistics
   get '/trips-dashboard' do
     @trips_dashboard_data = Trip.dashboard
+    # binding.pry
     erb :'trips/dashboard'
   end
 

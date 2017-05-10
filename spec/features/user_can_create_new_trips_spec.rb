@@ -21,7 +21,7 @@ RSpec.describe "When a user visits '/trips/new'" do
     fill_in 'trip[bike]', with: bike.bike
     fill_in 'trip[zipcode]', with: 10010
 
-    click_on "Create New Trip"
+     find("input[type='submit']").click
     
     expect(current_path).to eq("/trips/2")
     expect(page).to have_content("Broadway")

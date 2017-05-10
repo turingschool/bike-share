@@ -20,7 +20,8 @@ RSpec.describe "When a user visits '/stations/new'" do
     fill_in("station[dock_count]", with: 13)
     fill_in("station[installation_date]", with: "2017-10-01")
     select("Denver", from: "station[city_id]")
-    click_on "Create New Station"
+    
+    find("input[type='submit']").click
 
     expect(current_path).to eq("/stations/3")
 

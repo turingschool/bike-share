@@ -55,4 +55,24 @@ class CSVLoader
       }
     end
   end
+
+  def sanitize_weather(path)
+    data = CSV.open(path, headers: true, header_converters: :symbol)
+
+    data.map do |row|
+      if row[:precipitation_inches] == 'T'
+        row[:precipitation_inches] = 0
+      end
+      {
+        :date => row[:date],
+        :max_temperature => row[:max_temperature],
+        :mean_temperature => row[:mean_temperature],
+        :min_temperature => row[:min_temperature],
+        :mean_humidity => row[:mean_humidity],
+        :mean_visibility => row[:mean_visibility],
+        :mean_wind_speed => row[:mean_wind_speed],
+        :precipitation => row[:precipitation_inches]
+      }
+    end
+  end
 end

@@ -85,7 +85,6 @@ class Trip<ActiveRecord::Base
             bike_id: trip_data[:bike],
             zipcode_id: trip_data[:zipcode],
             subscription_type_id: trip_data[:subscription])
-            binding.pry
       [trip.save, trip]
   end
 

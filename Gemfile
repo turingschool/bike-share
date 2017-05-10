@@ -5,7 +5,7 @@ gem 'pg'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'sinatra-partial', require: 'sinatra/partial'
-gem 'will_paginate', '~> 3.1.0', :require => nil
+gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
   gem 'shotgun'

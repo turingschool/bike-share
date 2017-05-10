@@ -1,5 +1,6 @@
 require 'will_paginate'
 require 'will_paginate/active_record'
+
 require 'pry'
 
 class BikeShareApp < Sinatra::Base
@@ -70,6 +71,10 @@ class BikeShareApp < Sinatra::Base
     station = Station.find(params[:id])
     station.destroy
     redirect '/stations'
+  end
+
+  get '/station-dashboard' do
+    erb :"stations/station-dashboard"
   end
 
   # Trips App
@@ -153,6 +158,7 @@ class BikeShareApp < Sinatra::Base
     @trip = Trip.create(params[:trip])
     redirect '/trips'
   end
+>>>>>>> 3bfe85358712f2b29230a709132ef9a923f07124
 
   # Conditions App
 

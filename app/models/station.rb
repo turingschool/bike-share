@@ -8,10 +8,28 @@ class Station < ActiveRecord::Base
   end
 
   def self.max_available_bikes
-    all.max_by(3) do |station|
-      station.dock_count
-    end
+    maximum(:dock_count).to_i
   end
+
+  def self.max_bike_station
+    order(:dock_count).last.name
+  end
+
+  def self.min_available_bikes
+    minimum(:dock_count).to_i
+  end
+
+  def self.min_bike_station
+    order(:dock_count).first.name
+  end 
+
+  def self.newest_station
+    order(:install_date).last.name
+  end 
+
+  def self.oldest_station
+    order(:install_date).first.name
+  end 
 
 end
 

@@ -14,7 +14,6 @@ RSpec.describe "user can click the submit button on a form" do
 
     visit('/trips/new')
     fill_in "trip[duration]", with: 300
-    save_and_open_page
     fill_in "trip[start_date_id]", with: "2013-5-11"
     fill_in "trip[end_date_id]", with: "2013-5-11"
     select("Cesar Chavez Station", :from => "trip[end_station_id]")

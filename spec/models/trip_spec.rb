@@ -240,7 +240,87 @@ RSpec.describe Trip do
 
     it "can calculate single date with the least number of trips with a count of those trips" do
       expect(Trip.lowest_number_of_trips_date).to eq("09/30/2013")
-      expect(Trip.lowest_number_of_trips_total).to eq(2)
+      expect(Trip.lowest_number_of_trips_total).to eq(1)
     end    
+  end
+  
+  describe "trip can calculate dashboard information on station show page" do
+    before {
+      zipcode = Zipcode.create(zipcode: 94127)
+      station_1 = Station.create(
+                      name: "something",
+                      dock_count: 1, 
+                      city_id: 1, 
+                      installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'), 
+                      longitude: -121.9, 
+                      latitude: 30.7)
+      station_2 = Station.create(
+                      name: "else",
+                      dock_count: 2, 
+                      city_id: 1, 
+                      installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'), 
+                      longitude: -120.9, 
+                      latitude: 30.9)                      
+      trip_1 = Trip.create(
+                      duration: 239,
+                      start_date: DateTime.strptime("08/30/2013 11:11", "%m/%d/%Y %H:%M"),
+                      start_station_id: 1,
+                      end_date: DateTime.strptime("08/30/2013 11:15", "%m/%d/%Y %H:%M"),
+                      end_station_id: 1,
+                      bike_id: 5,
+                      subscription_type: "Customer",
+                      zipcode_id: 1
+    )
+      trip_2 = Trip.create(
+                      duration: 241,
+                      start_date: DateTime.strptime("08/30/2013 11:11", "%m/%d/%Y %H:%M"),
+                      start_station_id: 2,
+                      end_date: DateTime.strptime("08/30/2013 11:15", "%m/%d/%Y %H:%M"),
+                      end_station_id: 1,
+                      bike_id: 6,
+                      subscription_type: "Subscriber",
+                      zipcode_id: 1
+    )
+      trip_3 = Trip.create(
+                      duration: 243,
+                      start_date: DateTime.strptime("09/30/2013 11:11", "%m/%d/%Y %H:%M"),
+                      start_station_id: 2,
+                      end_date: DateTime.strptime("09/30/2013 11:15", "%m/%d/%Y %H:%M"),
+                      end_station_id: 2,
+                      bike_id: 6,
+                      subscription_type: "Subscriber",
+                      zipcode_id: 1
+    )
+  }
+    it "can calculate number of rides started at this station" do
+      expect(Trip.rides_started_at_station(2)).to eq(2)
+      expect(Trip.rides_started_at_station(1)).to eq(1)
+    end
+
+    it "can calculate number of rides ended at this station" do
+      expect(Trip.rides_ended_at_station(1)).to eq(2)
+      expect(Trip.rides_ended_at_station(2)).to eq(1)
+    end
+
+    it "can calculate most frequent destination station for rides from this station" do
+      expect(Trip.frequent_destination_station(1)).to eq("something")
+    end
+
+    it "can calculate most frequent origination station for rides to this station" do
+      expect(Trip.frequent_origination_station(2)).to eq("else")
+    end
+
+    it "can calculate date with the highest number of trips started at this station" do
+      expect(Trip.busiest_origination_date(1)).to eq("08/30/2013")
+    end
+
+    it "can calculate most frequent zip code for users starting trips at this station" do
+      expect(Trip.frequent_starting_user_zipcode(1)).to eq("94127")
+    end
+
+    it "can calculate Bike ID most frequently starting a trip at this station" do
+      expect(Trip.frequent_origin_bike_id(1)).to eq(5)
+    end
+
   end
 end

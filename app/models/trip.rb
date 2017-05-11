@@ -20,15 +20,15 @@ class Trip < ActiveRecord::Base
   end
 
   def self.average_ride_duration
-    (self.sum(:duration) / self.count).to_i
+    ((self.sum(:duration) / self.count).to_i / 60)
   end
 
   def self.longest_ride
-     self.maximum(:duration)
+     (self.maximum(:duration) / 60)
   end
 
   def self.shortest_ride
-    self.minimum(:duration)
+    (self.minimum(:duration) /60)
   end
 
   def self.station_with_most_rides_start_station_id

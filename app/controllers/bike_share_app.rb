@@ -48,9 +48,9 @@ class BikeShareApp < Sinatra::Base
     @number_of_rides_ended = Trip.number_of_rides_ended_at_station(params[:id])
     @most_frequent_destination = Trip.most_frequent_destination_for_station(params[:id])
     @most_frequent_origin = Trip.most_frequent_origin_for_station(params[:id])
-    @highest_trips_by_date_for_station = Trip.highest_trips_by_date_for_station(@start_trip_station_name)
-    @most_frequent_zip = Trip.most_frequent_zipcode_for_start_station(@start_trip_station_name)
-    @most_frequent_bike_id_for_start_station = Trip.most_frequent_bike_id_for_start_station(@start_trip_station_name)
+    @highest_trips_by_date_for_station = Trip.highest_trips_by_date_for_station(params[:id])[:date].strftime("%b %e %Y")
+    @most_frequent_zip = Trip.most_frequent_zipcode_for_start_station(params[:id])[:zip_code]
+    @most_frequent_bike_id_for_start_station = Trip.most_frequent_bike_id_for_start_station(params[:id])[:bike_id]
 
     erb :"stations/show"
   end
@@ -84,12 +84,13 @@ class BikeShareApp < Sinatra::Base
 
   get '/station-dashboard' do
     erb :"stations/station-dashboard"
-  end 
-  
+  end
+
   # Trips App
 
   get '/trips' do
     @trips = Trip.all.paginate(:page => params[:page], :per_page => 30)
+    binding.pry
     erb :"trips/index"
   end
 
@@ -114,7 +115,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips-dashboard' do
     erb :"trips/trips-dashboard"
-  end 
+  end
 
   get '/trips/:id' do
     @trip = Trip.find(params[:id])
@@ -207,7 +208,7 @@ class BikeShareApp < Sinatra::Base
   put '/conditions/:id' do
     @city = City.find_or_create_by(name: params[:city])
     @condition = Condition.new(params[:condition])
-    
+
     if @city.invalid? || @condition.invalid?
       erb :"conditions/edit"
     else

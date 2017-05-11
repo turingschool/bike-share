@@ -323,7 +323,7 @@ RSpec.describe Condition do
                                   )
     }
     it "returns the 4 mph ranges" do
-      expect(described_class.get_intervals_4('mean_wind_speed')).to match [["8","11"], ["4","7"], ["0","3"]]
+      expect(described_class.get_intervals_4('mean_wind_speed')).to match [[8,11], [4,7], [0,3]]
     end
   end
 end

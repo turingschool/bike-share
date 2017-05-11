@@ -72,7 +72,7 @@ class Condition < ActiveRecord::Base
   def self.convert_to_4_interval(measure)
     lower = reduce_to_modulo(measure, 4)
     upper = increase_to_modulo(measure, 4) - 1
-    [lower.to_i.to_s, upper.to_i.to_s]
+    [lower.to_i, upper.to_i]
   end
 
   def self.reduce_to_modulo(start, mod)

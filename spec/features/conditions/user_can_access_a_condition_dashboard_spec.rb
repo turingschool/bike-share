@@ -92,7 +92,7 @@ RSpec.describe "When a user views conditions dashboard" do
                                 mean_temp: 76.0,
                                 min_temp: 54.0,
                                 mean_humidity: 90.0,
-                                mean_visibility: 10.0,
+                                mean_visibility: 7.0,
                                 mean_wind_speed: 8.0,
                                 precipitation: 1.4,
                                 zipcode_id: zip.id
@@ -103,7 +103,7 @@ RSpec.describe "When a user views conditions dashboard" do
                                 mean_temp: 75.0,
                                 min_temp: 54.0,
                                 mean_humidity: 90.0,
-                                mean_visibility: 10.0,
+                                mean_visibility: 8.0,
                                 mean_wind_speed: 10.0,
                                 precipitation: 0.6,
                                 zipcode_id: zip.id
@@ -114,7 +114,7 @@ RSpec.describe "When a user views conditions dashboard" do
                                 mean_temp:66.0,
                                 min_temp: 54.0,
                                 mean_humidity: 90.0,
-                                mean_visibility: 10.0,
+                                mean_visibility: 2.0,
                                 mean_wind_speed: 2.0,
                                 precipitation: 0.3,
                                 zipcode_id: zip.id

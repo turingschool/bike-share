@@ -26,8 +26,9 @@ class BikeShareApp < Sinatra::Base
     erb :"stations/edit"
   end
 
-  get '/stations' do
-    @stations = Station.all
+  get "/stations" do
+    @page = (params[:page] || 1 ).to_i
+    @stations = Station.paginate(@page)
     erb :"stations/index"
   end
 

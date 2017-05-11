@@ -58,4 +58,14 @@ class Station < ActiveRecord::Base
   def self.min_install_date
     Station.where(installation_date: Station.minimum(:installation_date) )
   end
+
+  def self.all_pages
+    (Station.count / 30.0).ceil
+  end
+
+  def self.paginate(page)
+    offset = ( page - 1 ) * 30
+    Station.limit(30).offset(offset)
+  end
+
 end

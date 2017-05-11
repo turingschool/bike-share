@@ -15,4 +15,16 @@ RSpec.describe DateRef do
     end
   end
 
+  describe "clean date" do 
+    it "can correctly format date" do
+      date = "8/20/2013"
+      date = DateRef.clean_date(date)
+      expect(date).to eq("2013-08-20")
+
+      date = "10/2/2016"
+      date = DateRef.clean_date(date)
+      expect(date).to eq("2016-10-02")
+    end
+  end
+  
 end

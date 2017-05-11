@@ -133,4 +133,16 @@ class Trip < ActiveRecord::Base
     end
     trip_counts.min
   end
+
+  def self.day_with_highest_rides
+    date_and_number_of_rides = Trip.all.group(:start_date).count
+    max_value = date_and_number_of_rides.max_by { |k, v| v }
+    max_value[0]
+  end
+
+  def self.day_with_lowest_rides
+    date_and_number_of_rides = Trip.all.group(:start_date).count
+    min_value = date_and_number_of_rides.min_by { |k, v| v }
+    min_value[0]
+  end
 end

@@ -44,4 +44,16 @@
   </tbody>
 </table>
 
+<section class="pagination">
+  <p>
+    <% if @page != 1 %>
+      <a href="?page=<%= @page - 1 %>" class="btn btn-prev">Previous Page</a> |
+    <% end %>
+    Page <%= @page %> of <%= Trip.all_pages %>
+     <% if @page != Trip.all_pages %>
+        | <a href="?page=<%= @page + 1 %>" class="btn btn-next">Next Page</a>
+     <% end %>
+   </p>
+</section>
+
 <% end %>

@@ -71,8 +71,9 @@ class BikeShareApp < Sinatra::Base
     erb :"trips/edit"
   end
 
-  get '/trips' do
-    @trips = Trip.all
+  get "/trips" do
+    @page = (params[:page] || 1 ).to_i
+    @trips = Trip.paginate(@page)
     erb :"trips/index"
   end
 
@@ -130,6 +131,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/' do
-    redirect('/stations')
+    erb :"/index"
   end
 end

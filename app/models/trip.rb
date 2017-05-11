@@ -24,13 +24,12 @@ class Trip<ActiveRecord::Base
 
   def self.sterilize(params)
     trip = params[:trip]
-
     { 
-      start_date: Trip.validate_date(trip[:start_date]), 
-      end_date: Trip.validate_date(trip[:end_date]), 
-      bike: Trip.validate_bike(trip[:bike]),
-      zipcode: Trip.zip_validate(trip[:zipcode]), 
-      subscription: Trip.validate_subscription(trip[:subscription]), 
+      start_date: validate_date(trip[:start_date]), 
+      end_date: validate_date(trip[:end_date]), 
+      bike: validate_bike(trip[:bike]),
+      zipcode: zip_validate(trip[:zipcode]), 
+      subscription: validate_subscription(trip[:subscription]), 
       start_station: Station.find(trip[:start_station].to_i), 
       end_station: Station.find(trip[:end_station].to_i) 
     }
@@ -43,7 +42,6 @@ class Trip<ActiveRecord::Base
       subscription = SubscriptionType.find_or_create_by!(sub_type: subscription)
       subscription.id
     end
-    
   end
 
   def self.validate_bike(bike)
@@ -73,7 +71,6 @@ class Trip<ActiveRecord::Base
       zip = Zipcode.find_or_create_by!(zipcode: (zipcode[0..4]))
       zip.id
     end
-    
   end
 
   def self.create_new(params)
@@ -100,22 +97,22 @@ class Trip<ActiveRecord::Base
         bike_id: trip_data[:bike],
         zipcode_id: trip_data[:zipcode],
         subscription_type_id: trip_data[:subscription])
-        [status, trip]
+    [status, trip]
   end
 
   def self.dashboard
     {
       average_duration_ride: Trip.average(:duration).to_i,
-      longest_ride: Trip.longest_ride_data,
-      shortest_ride: Trip.shortest_ride_data,
+      longest_ride: ride_data(:maximum),
+      shortest_ride: ride_data(:minimum),
       popular_starting_station: Trip.group(:start_station).order("count_id DESC").count(:id).first[0].name,
       popular_ending_station: Trip.group(:end_station).order("count_id DESC").count(:id).first[0].name,
-      month_breakdown: Trip.month_breakdown_data,
+      month_breakdown: month_breakdown_data,
       most_ridden_bike: Trip.group(:bike).order("count_id DESC").count(:id).first[0].bike,
       least_ridden_bike: Trip.group(:bike).order("count_id ASC").count(:id).first[0].bike,
-      subscription_breakout: Trip.sort_subscription_breakout(subscription_query),
-      top_trip_date: Trip.sort_hash_merge(Trip.trip_date_query('DESC')),
-      lowest_trip_date:Trip.sort_hash_merge(Trip.trip_date_query('ASC'))
+      subscription_breakout: sort_subscription_breakout(subscription_query),
+      top_trip_date: sort_hash_merge(trip_date_query('DESC')),
+      lowest_trip_date: sort_hash_merge(trip_date_query('ASC'))
     }
   end
 
@@ -124,23 +121,14 @@ class Trip<ActiveRecord::Base
     break_down.reduce Hash.new, :merge
   end
 
-  def self.shortest_ride_data
-    trip = Trip.where(duration: Trip.minimum(:duration))
-    duration = Trip.minimum(:duration)
-    {
-      start: trip.first.start_station.name,
-      end: trip.first.end_station.name,
-      duration: Trip.convert_duration(duration)
-    }
-  end
 
-  def self.longest_ride_data
-    trip = Trip.where(duration: Trip.maximum(:duration))
-    duration = Trip.maximum(:duration)
-    {
+  def self.ride_data(direction)
+    duration = Trip.send(direction, :duration)
+    trip = Trip.where(duration: duration)
+    { 
       start: trip.first.start_station.name,
       end: trip.first.end_station.name,
-      duration: Trip.convert_duration(duration)
+      duration: convert_duration(duration)
     }
   end
 
@@ -148,33 +136,48 @@ class Trip<ActiveRecord::Base
     if duration <= 60
       "Hours: 00 Min: 00 Sec:#{duration}"
     elsif ((duration/60)/60) > 23
-      days = (((duration/60)/60))/24
-      hr = ((duration/60)/60) % 24
-      mn = (duration/60) % 60
-      sc = duration % 60
-      "Days: #{days} Hours: #{hr} Min: #{mn} Sec: #{sc}"
+      days(duration)
     elsif (duration/60) > 59
-      hr = ((duration/60)/60)
-      mn = (duration/60) % 60
-      sc = duration % 60
-      "Hours: #{hr} Min: #{mn} Sec:#{sc}"
+      hours(duration)
     elsif  
-      sc = duration % 60
-      mn = (duration/60).to_i
-      "Hours: 00 Min: #{mn} Sec: #{sc}"
+      minutes(duration)
     end
+  end
+  
+  def self.days(duration)
+    days = (((duration/60)/60))/24
+    hr = ((duration/60)/60) % 24
+    mn = (duration/60) % 60
+    sc = duration % 60
+    "Days: #{days} Hours: #{hr} Min: #{mn} Sec: #{sc}"
+  end
+
+  def self.hours(duration)
+    hr = ((duration/60)/60)
+    mn = (duration/60) % 60
+    sc = duration % 60
+    "Hours: #{hr} Min: #{mn} Sec:#{sc}"
+  end
+
+  def self.minutes(duration)
+    sc = duration % 60
+    mn = (duration/60).to_i
+    "Hours: 00 Min: #{mn} Sec: #{sc}"
   end
 
   def self.sort_trips_by_date(date)
-    trip = Trip.joins(:date_ref)
+    trip = query_trips_by_date(date).sort.to_h
+    trip.transform_keys do |key|
+      Date::MONTHNAMES[key]
+    end
+  end
+
+  def self.query_trips_by_date(date)
+    Trip.joins(:date_ref)
         .where('extract(year from date) = ?', date)
         .group('extract(month from date)')
         .order('count_id DESC')
         .count(:id)
-    trip = trip.sort.to_h
-    trip.transform_keys do |key|
-      Date::MONTHNAMES[key]
-    end
   end
 
   def self.sort_subscription_breakout(array)

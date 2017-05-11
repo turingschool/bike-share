@@ -19,29 +19,48 @@ class Trip < ActiveRecord::Base
     percentage.to_i.to_s + "%"
   end
 
-  def self.dashboard_analysis
-    {average_duration: Trip.average(:duration).round,
-    longest_ride_id: Trip.order("duration DESC").first.id,
-    shortest_ride_id: Trip.order("duration DESC").last.id,
-    most_common_starting_station: Trip.most_common_starting_station,
-    most_common_ending_station: Trip.most_common_ending_station,
-    most_ridden_bike_id: Trip.most_ridden_bike_id,
-    most_ridden_bike_trips: Trip.most_ridden_bike_trips,
-    least_ridden_bike_id: Trip.least_ridden_bike_id,
-    least_ridden_bike_trips: Trip.least_ridden_bike_trips,
-    subscription_customers_name: Trip.subscription_customers_name,
-    subscription_subscribers_name: Trip.subscription_subscribers_name,
-    subscription_customers_count: Trip.subscription_customers_count,
-    subscription_subscribers_count: Trip.subscription_subscribers_count,
-    subscription_subscribers_percentage: Trip.subscription_subscribers_percentage,
-    subscription_customers_percentage: Trip.subscription_customers_percentage,
-    date_with_highest_trips_date: Trip.date_with_highest_trips_date,
-    date_with_highest_trips_count: Trip.date_with_highest_trips_count,
-    date_with_lowest_trips_date: Trip.date_with_lowest_trips_date,
-    date_with_lowest_trips_count: Trip.date_with_lowest_trips_count
+  def self.dashboard_duration
+    {
+      average_duration: Trip.average(:duration).round,
+      longest_ride_id: Trip.order("duration DESC").first.id,
+      shortest_ride_id: Trip.order("duration DESC").last.id
     }
+  end
+  
+  def self.dashboard_station
+    {
+      most_common_starting_station: Trip.most_common_starting_station,
+      most_common_ending_station: Trip.most_common_ending_station
+    }
+  end
 
+  def self.dashboard_bikes
+    {
+      most_ridden_bike_id: Trip.most_ridden_bike_id,
+      most_ridden_bike_trips: Trip.most_ridden_bike_trips,
+      least_ridden_bike_id: Trip.least_ridden_bike_id,
+      least_ridden_bike_trips: Trip.least_ridden_bike_trips
+    }
+  end
 
+  def self.dashboard_subscriptions
+    {
+      subscription_customers_name: Trip.subscription_customers_name,
+      subscription_subscribers_name: Trip.subscription_subscribers_name,
+      subscription_customers_count: Trip.subscription_customers_count,
+      subscription_subscribers_count: Trip.subscription_subscribers_count,
+      subscription_subscribers_percentage: Trip.subscription_subscribers_percentage,
+      subscription_customers_percentage: Trip.subscription_customers_percentage
+    }
+  end
+
+  def self.dashboard_dates
+    {
+      date_with_highest_trips_date: Trip.date_with_highest_trips_date,
+      date_with_highest_trips_count: Trip.date_with_highest_trips_count,
+      date_with_lowest_trips_date: Trip.date_with_lowest_trips_date,
+      date_with_lowest_trips_count: Trip.date_with_lowest_trips_count
+    }
   end
 
   def self.most_common_starting_station

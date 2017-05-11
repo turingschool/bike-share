@@ -1,20 +1,29 @@
-h3 {
-  font-weight: 600;
-  display: flex;
-  background-image: url("images/bike_share.jpg");
+* {
+  font-family: verdana;
 }
 
+h3 {
+  font-weight: 600;
+}
+
+
 img {
-  width: 100%;
-  height: auto;
+  background: rgba(76, 175, 80, 0.3)
 }
 
 ul {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
 }
 
 li {
-  display: in-line;
+  float: right;
+  border-left: 1px solid #bbb;
+  font-size: 63%
 }
+
+a {
+    display: block;
+    padding: 8px;
+    background-color: #dddddd;
+}
+

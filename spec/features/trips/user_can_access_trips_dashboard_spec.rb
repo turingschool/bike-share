@@ -74,8 +74,8 @@ RSpec.describe "When a user visits the trips dashboard (/trips-dashboard)" do
   it "loads the appropriate descriptions and calculations" do
     visit('/trips-dashboard')
 
-    expect(page).to have_content("Average Duration of a Ride: 68 seconds")
-    expect(page).to have_content("Longest Ride: 71 seconds")
+    expect(page).to have_content("Average Duration of a Ride: 1 minutes")
+    expect(page).to have_content("Longest Ride: 1 minutes")
     expect(page).to have_content("Shortest Ride: 63 seconds")
     expect(page).to have_content("Starting Station With the Most Rides: something")
     expect(page).to have_content("Ending Station With the Most Rides: something else")

@@ -5,10 +5,10 @@ RSpec.describe Trip do
     it "has all attributes" do
       zipcode = Zipcode.create(zipcode: 94127)
       station = Station.create(
-                      dock_count: 1, 
-                      city_id: 1, 
-                      installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'), 
-                      longitude: -121.9, 
+                      dock_count: 1,
+                      city_id: 1,
+                      installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'),
+                      longitude: -121.9,
                       latitude: 30.7)
       trip = Trip.create(
                       duration: 240,
@@ -145,18 +145,18 @@ RSpec.describe Trip do
       zipcode = Zipcode.create(zipcode: 94127)
       station_1 = Station.create(
                       name: "something",
-                      dock_count: 1, 
-                      city_id: 1, 
-                      installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'), 
-                      longitude: -121.9, 
+                      dock_count: 1,
+                      city_id: 1,
+                      installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'),
+                      longitude: -121.9,
                       latitude: 30.7)
       station_2 = Station.create(
                       name: "else",
-                      dock_count: 2, 
-                      city_id: 1, 
-                      installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'), 
-                      longitude: -120.9, 
-                      latitude: 30.9)                      
+                      dock_count: 2,
+                      city_id: 1,
+                      installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'),
+                      longitude: -120.9,
+                      latitude: 30.9)
       trip_1 = Trip.create(
                       duration: 239,
                       start_date: DateTime.strptime("08/30/2013 11:11", "%m/%d/%Y %H:%M"),
@@ -189,11 +189,11 @@ RSpec.describe Trip do
     )
     }
     it "can calculate the average number of duration for all rides" do
-      expect(Trip.average_duration).to eq(241)
+      expect(Trip.average_duration).to eq(4)
     end
 
     it "can calculate the longest ride" do
-      expect(Trip.longest_ride).to eq(243)
+      expect(Trip.longest_ride).to eq(4)
     end
 
     it "can calculate the shortest ride" do
@@ -207,7 +207,7 @@ RSpec.describe Trip do
     it "can calculate the station with the most rides as a ending place" do
       expect(Trip.ending_station_most_rides).to eq("something")
     end
-  
+
      it "can calculate month by month breakdown of number of rides for August 2013" do
       expect(Trip.monthly_breakdown_of_rides(2013, 8)).to eq(2)
     end
@@ -241,26 +241,26 @@ RSpec.describe Trip do
     it "can calculate single date with the least number of trips with a count of those trips" do
       expect(Trip.lowest_number_of_trips_date).to eq("09/30/2013")
       expect(Trip.lowest_number_of_trips_total).to eq(1)
-    end    
+    end
   end
-  
+
   describe "trip can calculate dashboard information on station show page" do
     before {
       zipcode = Zipcode.create(zipcode: 94127)
       station_1 = Station.create(
                       name: "something",
-                      dock_count: 1, 
-                      city_id: 1, 
-                      installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'), 
-                      longitude: -121.9, 
+                      dock_count: 1,
+                      city_id: 1,
+                      installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'),
+                      longitude: -121.9,
                       latitude: 30.7)
       station_2 = Station.create(
                       name: "else",
-                      dock_count: 2, 
-                      city_id: 1, 
-                      installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'), 
-                      longitude: -120.9, 
-                      latitude: 30.9)                      
+                      dock_count: 2,
+                      city_id: 1,
+                      installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'),
+                      longitude: -120.9,
+                      latitude: 30.9)
       trip_1 = Trip.create(
                       duration: 239,
                       start_date: DateTime.strptime("08/30/2013 11:11", "%m/%d/%Y %H:%M"),

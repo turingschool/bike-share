@@ -1,5 +1,6 @@
 <h1>All Weather Conditions</h1>
-<p><a class="btn btn-new" href="conditions/new">Add New Weather Condition</a></p>
+<p><a class="btn btn-new" href="/conditions/new">Add New Weather Condition</a></p>
+<p><a class="btn btn-new" href="/conditions-dashboard">View Condition Dashboard</a></p>
 <% if @conditions.empty? %>
   <p>No conditions available.</p>
 <% else %>
@@ -31,7 +32,7 @@
       <td><%= condition.mean_wind_speed %></td>
       <td><%= condition.precipitation %></td>
       <td><%= condition.zipcode.zipcode %></td>
-      <td><a class="btn btn-edit" href="/conditions/<%= condition.id %>/edit">Edit Condition</a></td>
+      <td><button><a class="btn btn-edit" href="/conditions/<%= condition.id %>/edit">Edit Condition</a></button></td>
       <td>
         <form action="/conditions/<%= condition.id %>" method="post">
           <input type="hidden" name="_method" value="DELETE" />

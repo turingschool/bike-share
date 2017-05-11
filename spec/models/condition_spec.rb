@@ -149,9 +149,9 @@ RSpec.describe Condition do
       expect(condition.zipcode_selected?(2)).to eq ""
   end
 
-  describe ".get_intervals" do
+  describe ".get_intervals_10" do
     it "returns an array" do
-      expect(described_class.get_intervals('mean_temp').class).to be Array
+      expect(described_class.get_intervals_10('mean_temp').class).to be Array
     end
     before {
       condition = Condition.create(
@@ -186,7 +186,66 @@ RSpec.describe Condition do
                                   )
     }
     it "returns the 10 deg ranges" do
-      expect(described_class.get_intervals('mean_temp')).to match [["70","79"], ["60","69"], ["50","59"]]
+      expect(described_class.get_intervals_10('mean_temp')).to match [["70","79"], ["60","69"], ["50","59"]]
     end
+  end
+  describe ".get_intervals_0_50" do
+    it "returns an array" do
+      expect(described_class.get_intervals_0_50('precipitation').class).to be Array
+    end
+    before {
+      zip = Zipcode.create(zipcode: "09000")
+      condition = Condition.create(
+                                  date: Date.strptime("08/31/2013",'%m/%d/%Y'),
+                                  max_temp: 87.0,
+                                  mean_temp: 86.0,
+                                  min_temp: 54.0,
+                                  mean_humidity: 90.0,
+                                  mean_visibility: 10.0,
+                                  mean_wind_speed: 8.0,
+                                  precipitation: 0.7,
+                                  zipcode_id: zip.id
+                                  )
+      condition_1 = Condition.create(
+                                  date: Date.strptime("08/30/2013",'%m/%d/%Y'),
+                                  max_temp: 87.0,
+                                  mean_temp: 76.0,
+                                  min_temp: 54.0,
+                                  mean_humidity: 90.0,
+                                  mean_visibility: 10.0,
+                                  mean_wind_speed: 8.0,
+                                  precipitation: 1.4,
+                                  zipcode_id: zip.id
+                                  )
+      condition_2 = Condition.create(
+                                  date: Date.strptime("08/29/2013",'%m/%d/%Y'),
+                                  max_temp: 82.0,
+                                  mean_temp: 75.0,
+                                  min_temp: 54.0,
+                                  mean_humidity: 90.0,
+                                  mean_visibility: 10.0,
+                                  mean_wind_speed: 10.0,
+                                  precipitation: 0.6,
+                                  zipcode_id: zip.id
+                                  )
+      condition_3 = Condition.create(
+                                  date: Date.strptime("08/28/2013",'%m/%d/%Y'),
+                                  max_temp: 67.0,
+                                  mean_temp:66.0,
+                                  min_temp: 54.0,
+                                  mean_humidity: 90.0,
+                                  mean_visibility: 10.0,
+                                  mean_wind_speed: 2.0,
+                                  precipitation: 0.3,
+                                  zipcode_id: zip.id
+                                  )
+    }
+    it "returns the 10 deg ranges" do
+      expect(described_class.get_intervals_0_50('precipitation')).to match [["1.00","1.49"], ["0.50","0.99"], ["0.00","0.49"]]
+    end
+  end
+
+  describe '.reduce_to_modulo' do
+    
   end
 end

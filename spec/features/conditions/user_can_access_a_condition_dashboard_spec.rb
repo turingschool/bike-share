@@ -189,15 +189,15 @@ RSpec.describe "When a user views conditions dashboard" do
     expect(page).to_not have_css('table:nth-of-type(2) tbody tr td', text: "0.5-1.9")
 
     within ('table:nth-of-type(2) tbody tr:first-child td:nth-child(1)') do
-      have_content("1.0-1.4")
+      have_content("1.00-1.49")
     end
 
     within ('table:nth-of-type(2) tbody tr:nth-child(2) td:nth-child(1)') do
-      have_content("0.5-0.9")
+      have_content("0.50-0.99")
     end
 
     within ('table:nth-of-type(2) tbody tr:nth-child(2) td:nth-child(1)') do
-      have_content("0.0-0.4")
+      have_content("0.00-0.49")
     end
   end
 

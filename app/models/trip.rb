@@ -52,16 +52,16 @@ class Trip < ActiveRecord::Base
     Trip.group(:bike_id).count.max_by{|bike, count| count}[0]
   end
 
-  def self.most_ridden_bike_rides
-    Trip.group(:bike_id).count.max_by{|bike, count| count}[1]
+  def self.most_bike_rides(column)
+    Trip.group(column).count.max_by{|bike, count| count}[1]
   end
 
   def self.least_ridden_bike_id
     Trip.group(:bike_id).count.min_by{|bike, count| count}[0]
   end
 
-  def self.least_ridden_bike_rides
-    Trip.group(:bike_id).count.min_by{|bike, count| count}[1]
+  def self.least_bike_rides(column)
+    Trip.group(column).count.min_by{|bike, count| count}[1]
   end
 
   def self.customer_subscription_count
@@ -73,13 +73,11 @@ class Trip < ActiveRecord::Base
   end
 
   def self.customer_subscription_percentage
-    customer_percentage = (customer_subscription_count.to_f / total_subscription_count) * 100
-    customer_percentage.round(2)
+    ((customer_subscription_count.to_f / total_subscription_count) * 100).round(2)
   end
 
   def self.subscriber_subscription_percentage
-    subscriber_percentage = (subscriber_subscription_count.to_f / total_subscription_count) * 100
-    subscriber_percentage.round(2)
+    ((subscriber_subscription_count.to_f / total_subscription_count) * 100).round(2)
   end
 
   def self.total_subscription_count

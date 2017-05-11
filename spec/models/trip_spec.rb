@@ -188,34 +188,8 @@ RSpec.describe Trip, :type => :model do
       expect(Trip.least_busy_day[0]).to be_instance_of(Date)
     end
 
-    it 'finds number of rides started at a station' do
-      station = Station.create(id: 2, name: "test station", dock_count: 37, date: "8/6/2013", city_id: City.find_by(name: 'San Jose Diridon Caltrain Station'))
-      expect(Trip.number_of_rides_started_at_station(station.id)).to be(2)
-    end
-
-    it 'finds number of rides ended at a station' do
-      station = Station.create(id: 2, name: "test station", dock_count: 37, date: "8/6/2013", city_id: City.find_by(name: 'San Jose Diridon Caltrain Station'))
-      expect(Trip.number_of_rides_ended_at_station(station.id)).to be(2)
-    end
-
-    it 'finds most frequent starting station' do
-      expect(Trip.most_frequent_starting_station.first).to be_instance_of(Station)
-    end
-
-    it 'finds most frequent ending station' do
-      expect(Trip.most_frequent_starting_station.first).to be_instance_of(Station)
-    end
-
     it 'returns month by month breakdown' do
-      expect(Trip.month_by_month).to eq({:months=>{1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>0, 8=>115, 9=>0, 10=>0, 11=>0, 12=>0}, :years=>{2013=>115, 2014=>0, 2015=>0, 2016=>0}})
-    end
-
-    it 'finds highest_number_of_trips_of_stations_by_date' do
-      expect(Trip.highest_number_of_trips_of_stations_by_date.first).to be_instance_of(Date)
-    end
-
-    it 'finds lowest_number_of_trips_of_stations_by_date' do
-      expect(Trip.lowest_number_of_trips_of_stations_by_date.first).to be_instance_of(Date)
+      expect(Trip.month_by_month_breakdown).to eq({:months=>{1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>0, 8=>115, 9=>0, 10=>0, 11=>0, 12=>0}, :years=>{2013=>115, 2014=>0, 2015=>0, 2016=>0}})
     end
   end
 end

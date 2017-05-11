@@ -61,39 +61,24 @@ body {
   ========================================
 */
 
-#home-header {
-  color: #1e1e1e;
-  font-size: 200px;
-  line-height: 1;
-  font-weight: 700;
-  text-align: left;
-  text-transform: uppercase;
-  text-shadow: 0 0 10px white;
-  margin-top: 90px;
-}
+/*h1#home-header {*/
+  /*display: flex;*/
+  /*flex-direction: row;*/
+  /*justify-content: center;*/
+  /*margin: 10%;*/
+  /*align-items: center;*/
+  /*color: whitesmoke;*/
+  /*font-size: 5rem;*/
+/*}*/
 
-.home-link {
-  display: inline;
-  border: 3px solid black;
-  border-radius: 10px;
-  padding: 5px;
-  background: lightblue;
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  text-shadow: 0 0 10px black;
-  font-weight: 400;
-  font-size: 25px;
+img#home-header {
+  /*display: flex;*/
+  /*flex-direction: row;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  display: block;
+  margin: 10% auto;
 }
-
-.home-link a {
-  color: #FFFFFF;
-  text-decoration: none;
-}
-
-.home-link a:hover {
-  color: black;
-}
-
 
 /*
   ========================================

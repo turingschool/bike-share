@@ -45,9 +45,9 @@ class CSVLoader
       {
         :id => row[:id],
         :duration => row[:duration],
-        :start_date => row[:start_date],
+        :start_date => row[:start_date].split(" ").first,
         :start_station_id => row[:start_station_id].to_i,
-        :end_date => row[:end_date],
+        :end_date => row[:end_date].split(" ").first,
         :end_station_id => row[:end_station_id].to_i,
         :bike_id => row[:bike_id].to_i,
         :subscription_type => row[:subscription_type].downcase,
@@ -65,12 +65,12 @@ class CSVLoader
       end
       {
         :date => row[:date],
-        :max_temperature => row[:max_temperature],
-        :mean_temperature => row[:mean_temperature],
-        :min_temperature => row[:min_temperature],
+        :max_temperature => row[:max_temperature_f],
+        :mean_temperature => row[:mean_temperature_f],
+        :min_temperature => row[:min_temperature_f],
         :mean_humidity => row[:mean_humidity],
-        :mean_visibility => row[:mean_visibility],
-        :mean_wind_speed => row[:mean_wind_speed],
+        :mean_visibility => row[:mean_visibility_miles],
+        :mean_wind_speed => row[:mean_wind_speed_mph],
         :precipitation => row[:precipitation_inches]
       }
     end

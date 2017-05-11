@@ -46,6 +46,7 @@ trip_data.each do |trip|
               )
 end
 
+
 weather_data = loader.sanitize_weather('./db/csv/weather.csv')
 count = 0
 weather_data.each do |condition|
@@ -57,6 +58,7 @@ weather_data.each do |condition|
                    mean_humidity: condition[:mean_humidity],
                    mean_visibility: condition[:mean_visibility],
                    mean_wind_speed: condition[:mean_wind_speed],
-                   precipitation: condition[:precipitation]
+                   precipitation: condition[:precipitation],
+                   date: condition[:date]
                    )
 end

@@ -1,5 +1,6 @@
 <h1>All Trips</h1>
 <p><a class="btn btn-new" href="trips/new">Add New Trip</a></p>
+<p><a class="btn btn-new" href="trips-dashboard">View Trips Dashboard</a></p>
 <% if @trips.empty? %>
   <p>No trips available.</p>
 <% else %>
@@ -29,8 +30,8 @@
       <td><%= trip.end_station.name %></td>
       <td><%= trip.bike_id %></td>
       <td><%= trip.subscription_type %></td>
-      <td><%= trip.zipcode %></td>
-      <td><a class="btn btn-view" href="/trips/<%= trip.id %>/show">View Trip</a></td>
+      <td><%= trip.zipcode.zipcode if trip.zipcode  %></td>
+      <td><a class="btn btn-view" href="/trips/<%= trip.id %>">View Trip</a></td>
       <td><a class="btn btn-edit" href="/trips/<%= trip.id %>/edit">Edit Trip</a></td>
       <td>
         <form action="/trips/<%= trip.id %>" method="post">
@@ -42,5 +43,17 @@
     <% end %>
   </tbody>
 </table>
+
+<section class="pagination">
+  <p>
+    <% if @page != 1 %>
+      <a href="?page=<%= @page - 1 %>" class="btn btn-prev">Previous Page</a> |
+    <% end %>
+    Page <%= @page %> of <%= Trip.all_pages %>
+     <% if @page != Trip.all_pages %>
+        | <a href="?page=<%= @page + 1 %>" class="btn btn-next">Next Page</a>
+     <% end %>
+   </p>
+</section>
 
 <% end %>

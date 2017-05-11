@@ -24,6 +24,7 @@ RSpec.describe "When a user visits the view individual trip page" do
   end
 
   it "they can view information about a trip" do
+    #visit("/trips") Click Button view trip...
     visit("/trips/#{@trip.id}")
     expect(page).to have_content("Trip Info")
     expect(page).to have_content("Duration: 60")

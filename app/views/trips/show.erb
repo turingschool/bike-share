@@ -1,4 +1,4 @@
-<h2>Start Station: <%= @trip.start_station_name %></h2>
+<h2>Start Station: <%= @trip.start_station.name %></h2>
 <h2>Trip number: <%= @trip.id %></h2>
 
 <a href="/">
@@ -11,20 +11,11 @@
         <input type="hidden" name="_method" value="DELETE" />
         <input type="submit" value="Delete" />
       </form>
-<ul>
-  <li>Duration: <%=@trip.duration %></li>
-  <li>Start Date: <%=@trip.start_date %></li>
-  <li>Start Station Name: <%=@trip.start_station_name %></li>
-  <li>End Date: <%=@trip.end_date %></li>
-  <li>End Station Name: <%=@trip.end_station_name %></li>
-  <li>Bike ID: <%=@trip.bike_id %></li>
-  <li>Subscription type: <%=@trip.subscription_type.name %></li>
-  <li>Zip Code: <%=@trip.zip_code %></li>
-  <li>Number of Rides Started Here: <%=@number_of_rides_started%> </li>
-  <li>Number of Rides Ended Here: <%=@number_of_rides_ended%> </li>
-  <li>Most Frequent Destination: <%=@most_frequent_destination%> </li>
-  <li>Most Frequent Origin: <%=@most_frequent_origin%> </li>
-  <li>Most Frequented Date for Start Station: <%=@highest_trips_by_date_for_station  %> </li>
-  <li>Most Frequented Zip Code for Users at Start Station: <%=@most_frequent_zip %> </li>
-  <li>Most Frequented Bike ID for Start Station: <%=@most_frequent_bike_id_for_start_station %> </li>
-</ul>
+      Duration: <%=@trip.duration %> <br>
+      Start Date: <%=@trip.start_date %> <br>
+      Start Station Name: <%=@trip.start_station.name %><br>
+      End Date: <%=@trip.end_date %><br>
+      End Station Name: <%=@trip.end_station.name %><br>
+      Bike ID: <%=@trip.bike_id %><br>
+      Subscription type: <%=@trip.subscription_type.name %><br>
+      Zip Code: <%=@trip.zip_code %><br>

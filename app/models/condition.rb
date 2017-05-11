@@ -30,7 +30,7 @@ class Condition < ActiveRecord::Base
   end
 
   def self.determine_date_range(column, low, high)
-    where("#{column} >= #{low} and #{column} < #{high}").select(:date)
+    where("#{column} >= #{low}").where("#{column} < #{high}").select(:date)
   end
 
   def self.ave_rides_per_condition(column, low, high)

@@ -4,6 +4,16 @@ class BikeShareApp < Sinatra::Base
     erb :index
   end
 
+  get '/location' do
+    erb :location
+  end
+
+  post '/go' do
+      @lat = params[:lat]
+      @lon = params[:lon]
+      erb :index
+
+  end
 #station dashboard with statistics
   get '/stations-dashboard' do
     @dashboard_data = Station.dashboard

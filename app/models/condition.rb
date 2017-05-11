@@ -1,4 +1,5 @@
 require './app/models/trip'
+require 'pry'
 
 class Condition < ActiveRecord::Base
 
@@ -7,6 +8,30 @@ class Condition < ActiveRecord::Base
   end
 
   # Analytics for temperature ranges
+  def self.sort_temp(range)
+    array = where(max_temperature: range).all.map {|condition| condition.date}
+    trip_nums = array.map do |date|
+      Trip.where(start_date: date.beginning_of_day...date.end_of_day).count
+    end
+    output = {}
+    output[:max] = trip_nums.sort.last
+    output[:min] = trip_nums.sort.reverse.last
+    output[:avg] = trip_nums.inject(:+) / trip_nums.length unless trip_nums.length == 0
+    output
+  end
+
+  def self.sort_precip(range)
+    array = where(precipitation: range).all.map {|condition| condition.date}
+    trip_nums = array.map do |date|
+      Trip.where(start_date: date.beginning_of_day...date.end_of_day).count
+    end
+    output = {}
+    output[:max] = trip_nums.sort.last
+    output[:min] = trip_nums.sort.reverse.last
+    output[:avg] = trip_nums.inject(:+) / trip_nums.length unless trip_nums.length == 0
+    output
+  end
+
   def self.average_rides_per_temperature_range(degrees)
     days = Condition.days_with_high_temps(degrees)
     ride_count = Trip.total_trip_count_on_dates(days)
@@ -27,8 +52,8 @@ class Condition < ActiveRecord::Base
     ride_count / days.length
   end
 
-  def self.days_with_high_temps(degrees)
-    conditions_in_a_temperature_range = Condition.where(max_temperature: [degrees..degrees + 9])
+  def self.days_with_high_temps(degrees = 10)
+    conditions_in_a_temperature_range = where(max_temperature: [degrees..degrees + 9])
     conditions_in_a_temperature_range.map { |condition| condition.date }
   end
 

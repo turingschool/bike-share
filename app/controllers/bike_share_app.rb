@@ -160,4 +160,10 @@ class BikeShareApp < Sinatra::Base
     Condition.destroy(params[:id])
     redirect "/conditions"
   end
+
+  get '/weather-dashboard' do
+    @condition = Condition.all
+    @temp_range = params[:temp_range].to_i
+    erb :'/conditions/weather_dashboard'
+  end
 end

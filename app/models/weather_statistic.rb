@@ -14,7 +14,7 @@ class WeatherStatistic < ActiveRecord::Base
   validates :date_ref_id, presence: true
 
   def self.create_new(params)
-    date = WeatherStatistic.validate_date(params[:weather][:date_ref_id])
+    date = validate_date(params[:weather][:date_ref_id])
     ws = WeatherStatistic.create(max_temperature: params[:weather][:max_temperature],
                             min_temperature: params[:weather][:max_temperature],
                             mean_temperature: params[:weather][:max_temperature],
@@ -28,7 +28,7 @@ class WeatherStatistic < ActiveRecord::Base
   end
 
   def self.update_record(params)
-    date = WeatherStatistic.validate_date(params[:weather][:date_ref_id])
+    date = validate_date(params[:weather][:date_ref_id])
     ws = WeatherStatistic.find(params[:id])
     status = ws.update(
                   max_temperature: params[:weather][:max_temperature],
@@ -40,18 +40,17 @@ class WeatherStatistic < ActiveRecord::Base
                   precipitation: params[:weather][:precipitation],
                   date_ref_id: date,
                 )
-      [status, ws]
+    [status, ws]
   end
 
   def self.dashboard
     { 
-    breakout_avg_max_min_rides_days_high_temp: WeatherStatistic.breakout_alt(:max_temperature, 10, 10),
-    breakout_avg_max_min_rides_days_precipitation: WeatherStatistic.breakout_alt(:precipitation, 1, 0.5),
-    breakout_avg_max_min_rides_days_wind_speed: WeatherStatistic.mean_wind_speed,
-    breakout_avg_max_min_rides_days_visibility: WeatherStatistic.mean_visibility
+    breakout_avg_max_min_rides_days_high_temp: breakout_alt(:max_temperature, 10, 10),
+    breakout_avg_max_min_rides_days_precipitation: breakout_alt(:precipitation, 1, 0.5),
+    breakout_avg_max_min_rides_days_wind_speed: breakout(:mean_wind_speed, 4),
+    breakout_avg_max_min_rides_days_visibility: breakout(:mean_visibility, 4)
     }
   end
-
 
   def self.breakout_alt(column, div, inc)
     range = range_alt(column, div, inc)
@@ -59,20 +58,11 @@ class WeatherStatistic < ActiveRecord::Base
     format(stat).reduce Hash.new, :merge
   end
 
-  
-
-  def self.mean_wind_speed
-    range = range(:mean_wind_speed, 4)
-    stat = trips_by_weather(range, 4, "mean_wind_speed")
+  def self.breakout(column, div)
+    range = range(column, div)
+    stat = trips_by_weather(range, div, column.to_s)
     format(stat).reduce Hash.new, :merge
   end
-
-  def self.mean_visibility
-    range = range(:mean_visibility, 4)
-    stat = trips_by_weather(range, 4.0, "mean_visibility")
-    format(stat).reduce Hash.new, :merge
-  end
-  
 
   def self.range(stat, inc)
     max = WeatherStatistic.maximum(stat)
@@ -88,7 +78,7 @@ class WeatherStatistic < ActiveRecord::Base
       if index == 0
         next
       else
-        {"#{stat-increment} - #{stat}" => WeatherStatistic.query_weather(statistic, index, range)}
+        {"#{stat-increment} - #{stat}" => query_weather(statistic, index, range)}
       end
     end.compact
   end
@@ -103,7 +93,7 @@ class WeatherStatistic < ActiveRecord::Base
 
   def self.format(hash)
     hash.map do |ranges| 
-      WeatherStatistic.max_min_avg(ranges)
+      max_min_avg(ranges)
     end
   end
 
@@ -112,10 +102,14 @@ class WeatherStatistic < ActiveRecord::Base
       if v.empty? 
         ranges[k] = [0, 0, 0] 
       else 
-        ranges[k] = [v.max, v.min, (v.inject(:+)/v.length)] 
+        calc(ranges, k, v)
       end  
     end
     ranges
+  end
+
+  def self.calc(hash, k, v)
+    hash[k] = [v.max, v.min, (v.inject(:+)/v.length)] 
   end
 
   def self.validate_date(date)

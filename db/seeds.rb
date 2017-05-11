@@ -103,7 +103,7 @@ conditions.each do |condition|
                     )
 end
 
-trips = read_csv('./db/csv/trip_fixture.csv')
+trips = read_csv('./db/csv/trip.csv')
 trips.each do |trip|
 	zipcode = Zipcode.find_or_create_by(zipcode: trip[:zip_code])
 

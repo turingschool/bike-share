@@ -82,7 +82,7 @@ RSpec.describe "When a user views conditions dashboard" do
                                 min_temp: 54.0,
                                 mean_humidity: 90.0,
                                 mean_visibility: 10.0,
-                                mean_wind_speed: 8.0,
+                                mean_wind_speed: 7.0,
                                 precipitation: 0.7,
                                 zipcode_id: zip.id
                                 )
@@ -92,7 +92,7 @@ RSpec.describe "When a user views conditions dashboard" do
                                 mean_temp: 76.0,
                                 min_temp: 54.0,
                                 mean_humidity: 90.0,
-                                mean_visibility: 10.0,
+                                mean_visibility: 7.0,
                                 mean_wind_speed: 8.0,
                                 precipitation: 1.4,
                                 zipcode_id: zip.id
@@ -103,7 +103,7 @@ RSpec.describe "When a user views conditions dashboard" do
                                 mean_temp: 75.0,
                                 min_temp: 54.0,
                                 mean_humidity: 90.0,
-                                mean_visibility: 10.0,
+                                mean_visibility: 8.0,
                                 mean_wind_speed: 10.0,
                                 precipitation: 0.6,
                                 zipcode_id: zip.id
@@ -114,7 +114,7 @@ RSpec.describe "When a user views conditions dashboard" do
                                 mean_temp:66.0,
                                 min_temp: 54.0,
                                 mean_humidity: 90.0,
-                                mean_visibility: 10.0,
+                                mean_visibility: 2.0,
                                 mean_wind_speed: 2.0,
                                 precipitation: 0.3,
                                 zipcode_id: zip.id
@@ -189,15 +189,15 @@ RSpec.describe "When a user views conditions dashboard" do
     expect(page).to_not have_css('table:nth-of-type(2) tbody tr td', text: "0.5-1.9")
 
     within ('table:nth-of-type(2) tbody tr:first-child td:nth-child(1)') do
-      have_content("1.0-1.4")
+      have_content("1.00-1.49")
     end
 
     within ('table:nth-of-type(2) tbody tr:nth-child(2) td:nth-child(1)') do
-      have_content("0.5-0.9")
+      have_content("0.50-0.99")
     end
 
     within ('table:nth-of-type(2) tbody tr:nth-child(2) td:nth-child(1)') do
-      have_content("0.0-0.4")
+      have_content("0.00-0.49")
     end
   end
 

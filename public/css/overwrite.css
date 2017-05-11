@@ -50,3 +50,30 @@ body > div > div > div > h1 {
 	height: 170px;
 	margin-top: 5%
 }
+
+.centered-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+	width: 33%;
+
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+	width: 33%;
+	
+
+
+}
+
+
+.tryptics {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

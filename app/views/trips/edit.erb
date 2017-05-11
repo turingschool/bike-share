@@ -1,0 +1,44 @@
+<h1>Edit This Trip</h1>
+
+<form action="/trips/<%= @trip.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT" />
+  <label>Duration: </label>
+  <input type="text" name="trip[duration]" value="<%= @trip.duration %>" />
+  <label>Start Date:</label>
+  <input type="text" name="trip[start_date]" value="<%= @trip.format_start_date_time %>" />
+  <label>Start Station: </label>
+  <select name="trip[start_station_id]">
+    <% Station.all.each do |station| %>
+      <option value="<%= station.id %>"><%= station.name %></option>
+    <% end %>
+  </select>
+  <label>End Date:</label>
+
+  <input type="text" name="trip[end_date]" value="<%= @trip.format_end_date_time %>" />
+  <label>End Station: </label>
+  <select name="trip[end_station_id]">
+    <% Station.all.each do |station| %>
+      <option value="<%= station.id %>"><%= station.name %></option>
+    <% end %>
+  </select>
+  <label>Bike ID: </label>
+  <input type="text" name="trip[bike_id]" value="<%= @trip.bike_id %>" />
+  <label>Subscription Type:</label>
+  <select name="trip[subscription_type]">
+    <% Trip.all.each do |trip| %>
+      <option value="<%= trip.subscription_type %>"><%= trip.subscription_type %></option>
+    <% end %>
+  </select>
+  <label>Zipcode: </label>
+  <select name="trip[zipcode_id]">
+    <% Zipcode.all.each do |zipcode| %>
+      <option value="<%= zipcode.id %>"><%= zipcode.zipcode %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Update Trip"/>
+</form>
+
+<form method="post" action="/trips/<%= @trip.id %>">
+  <input type="hidden" name="_method" value="DELETE" />
+  <button type="submit" class="btn-delete">Delete</button>
+</form>

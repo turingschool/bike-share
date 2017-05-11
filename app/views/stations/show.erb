@@ -1,0 +1,19 @@
+<h1><%= @station.name %></h1>
+
+<h2>Info</h2>
+
+<p>Name: <%= @station.name %></p>
+<p>Dock Count: <%= @station.dock_count %></p>
+<p>City: <%= @station.city.name %></p>
+<p>Installation Date: <%= @station.format_date %></p>
+<p>Longitude: <%= @station.longitude %></p>
+<p>Latitude: <%= @station.latitude %></p>
+
+<button class="btn-edit">
+  <a href="/stations/<%= @station.id %>/edit">Edit Station</a>
+</button>
+
+<form method="post" action="/stations/<%= @station.id %>">
+  <input type="hidden" name="_method" value="DELETE" />
+  <button type="submit" class="btn-delete">Delete</button>
+</form>

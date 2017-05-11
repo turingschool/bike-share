@@ -61,29 +61,96 @@
                 <p class="lead">A comprehensive report.</p>
             </div>
         </div>
-        <span><p><b>Total Trips: </b><br><%= @trip.total %></p></span>
+        <span><p><b>Total Trips: </b><br><%= @trip.count %></p></span>
         <span><p><b>Average Ride Duration: </b><br><%= @trip.average_duration_of_a_ride %></p></span>
         <span><p><b>Longest Ride: </b><br><%= @trip.longest_ride %></p></span>
         <span><p><b>Shortest Ride:</b><br><%= @trip.shortest_ride %></p></span>
-        <span><p><b>Most Popular Start Station:</b><br><%= @trip.station_with_most_starting_place_rides %></p></span>
-        <span><p><b>Most Popular End Station:</b><br><%= @trip.station_with_most_ending_place_rides %></p></span>
+        <span><p><b>Most Popular Start Station:</b><br><%= @trip.station_with_most_starting_place_rides.first.name %></p></span>
+        <span><p><b>Most Popular End Station:</b><br><%= @trip.station_with_most_ending_place_rides.first.name %></p></span>
 
-        <span><p><b>Most Ridden Bike:</b><br><%= @trip.most_ridden_bike.id %>, with <%= @trip.most_ridden_bike %> total rides</p></span>
+        <table cellspacing="10">
+            <h3>Month by Month Breakdown:</h3>
+            <th><p>Month</p></th>
+            <th><p>Rides</p></th>
+            <tr> <% months=@trip.month_by_month_breakdown %>
+              <td><strong>January:</strong></td>
+              <td><%= months[:months][1] %></td>
+          </tr>
+          <tr>
+            <td><strong>February:</strong></td>
+            <td><%= months[:months][2] %></td>
+        </tr>
+        <tr>
+            <td><strong>March:</strong></td>
+            <td><%= months[:months][3] %></td>
+        </tr>
+        <tr>
+            <td><strong>April:</strong></td>
+            <td><%= months[:months][4] %></td>
+        </tr>
+        <tr>
+            <td><strong>May:</strong></td>
+            <td><%= months[:months][5] %></td>
+        </tr>
+        <tr>
+            <td><strong>June:</strong></td>
+            <td><%= months[:months][6] %></td>
+        </tr>
+        <tr>
+            <td><strong>July:</strong></td>
+            <td><%= months[:months][7] %></td>
+        </tr>
+        <tr>
+            <td><strong>August:</strong></td>
+            <td><%= months[:months][8] %></td>
+        </tr>
+        <tr>
+            <td><strong>September:</strong></td>
+            <td><%= months[:months][9] %></td>
+        </tr>
+        <tr>
+            <td><strong>October:</strong></td>
+            <td><%= months[:months][10] %></td>
+        </tr>
+        <tr>
+            <td><strong>November:</strong></td>
+            <td><%= months[:months][11] %></td>
+        </tr>
+        <tr>
+            <td><strong>December:</strong></td>
+            <td><%= months[:months][12] %></td>
+        </tr>
+    </table><br>
 
-        <span><p><b>Least Ridden Bike:</b><br><%= @trip.least_ridden_bike.id %>, with <%= @trip.least_ridden_bike %> total rides</p></span>
+    <h3>Rides by Year: </h3>
+    <table cellspacing="10">
+        <th><b>Year</b></th>
+        <th><b>Rides</b></th>
+        <% months[:years].each do |year| %>
+        <tr>
+          <td><strong><%= year[0] %>:</strong></td>
+          <td><%= year[1] %></td>
+      </tr>
+      <% end %>
+    </table><br>
 
-        <span><p><b>Subscriber Count: </b><br><%= @trip.user_subscription_type_count[:subscribers]) %></p></span>
-        <span><p><b>Subscriber Percentage:</b><br><%= @trip.user_subscription_type_count[:subscribers_percentage]) %></p></span>
-        <span><p><b>Customer Count: </b><br><%= @trip.user_subscription_type_count[:customers] %></p></span>
-        <span><p><b>Customer Percentage:</b><br><%= @trip.user_subscription_type_count[:customers_percentage]) %></p></span>
-        <span><p><b>Most Popular Date:</b><br><%= @trip.busiest_day %> with <%= @trip.busiest_day_trip_count %> trips</p></span>
+  <span><p><b>Most Ridden Bike:</b><br>Bike ID: <%= @trip.most_ridden_bike.keys.first %>, with <%= @trip.most_ridden_bike.values.first %> total rides</p></span>
 
-        <span><p><b>Least Popular Date:</b><br><%= @trip.least_busy_day %> with <%= @trip.least_busy_day_trip_count %> trips</p></span>
+  <span><p><b>Least Ridden Bike:</b><br>Bike ID: <%= @trip.least_ridden_bike.keys.first %>, with <%= @trip.least_ridden_bike.values.first %> total rides</p></span>
 
-    </div>
+  <span><p><b>Subscriber Count: </b><br><%= @trip.user_subscription_type_count[:subscribers] %></p></span>
 
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+  <span><p><b>Subscriber Percentage:</b><br><%= @trip.user_subscription_type_count[:subscribers_percentage] %></p></span>
+  <span><p><b>Customer Count: </b><br><%= @trip.user_subscription_type_count[:customers] %></p></span>
+  <span><p><b>Customer Percentage:</b><br><%= @trip.user_subscription_type_count[:customers_percentage] %></p></span>
+  <span><p><b>Most Popular Date:</b><br><%= @trip.busiest_day.first %> with <%= @trip.busiest_day.last %> trips</p></span>
+
+  <span><p><b>Least Popular Date:</b><br><%= @trip.least_busy_day.first %> with <%= @trip.least_busy_day.last %> trips</p></span>
+</div>
+<br><br><br>
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 </body>
 

@@ -207,7 +207,7 @@ RSpec.describe Trip, :type => :model do
     end
 
     it 'returns month by month breakdown' do
-      expect(Trip.month_by_month_breakdown).to eq({:months=>{1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>0, 8=>115, 9=>0, 10=>0, 11=>0, 12=>0}, :years=>{2013=>115, 2014=>0, 2015=>0, 2016=>0}})
+      expect(Trip.month_by_month).to eq({:months=>{1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>0, 8=>115, 9=>0, 10=>0, 11=>0, 12=>0}, :years=>{2013=>115, 2014=>0, 2015=>0, 2016=>0}})
     end
 
     it 'finds highest_number_of_trips_of_stations_by_date' do

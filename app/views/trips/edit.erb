@@ -5,6 +5,7 @@
 
 <div class="container new-station">
   <form class="form-horizontal" action="/trips/<%= @trip.id %>" method="post">
+    <input type="hidden" name="_method" value="PUT" />
     <div class="form-group" id="form-group">
     <label for="start_date" class="col-sm-2 control-label">Start Date:</label>
       <div class="col-sm-10">

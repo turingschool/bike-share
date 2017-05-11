@@ -68,7 +68,6 @@ class Trip<ActiveRecord::Base
 
   def self.zip_validate(zipcode)
     if  zipcode.nil? || zipcode.empty?
-      # Zipcode.find_or_create_by!(zipcode: "n/a")
       ''
     else
       zip = Zipcode.find_or_create_by!(zipcode: (zipcode[0..4]))
@@ -120,13 +119,9 @@ class Trip<ActiveRecord::Base
     }
   end
 
-
-  
-
   def self.month_breakdown_data
     break_down = DateRef.distinct.pluck('extract(year from date)').map{ |date| {date => Trip.sort_trips_by_date(date)}}
     break_down.reduce Hash.new, :merge
-    
   end
 
   def self.shortest_ride_data
@@ -180,9 +175,7 @@ class Trip<ActiveRecord::Base
     trip.transform_keys do |key|
       Date::MONTHNAMES[key]
     end
-    
   end
-
 
   def self.sort_subscription_breakout(array)
     array.map{|k, v| {k.sub_type=> [v, (v/Trip.count.to_f).round(2)]}}.inject(:merge)
@@ -203,6 +196,4 @@ class Trip<ActiveRecord::Base
   def self.page_load(id)
     Trip.limit(30).offset(id.to_i * 30)
   end
-
-
 end

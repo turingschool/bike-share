@@ -31,15 +31,15 @@ RSpec.describe "When a user visits '/conditions-dashboard'" do
 
     visit('/conditions-dashboard')
     expect(page).to have_content("Ride Stats Based on Temperature")
-    expect(page).to have_content("Temperature Range (in degree F)")
+    expect(page).to have_content("Temperature Range (degree F)")
     expect(page).to have_content("Maximum Rides")
     expect(page).to have_content("Average Rides")
     expect(page).to have_content("Minimum Rides")
     expect(page).to have_content("Ride Stats Based on Precipitation")
-    expect(page).to have_content("Precipitation Range (in inches)")
+    expect(page).to have_content("Precipitation Range (inches)")
     expect(page).to have_content("Ride Stats Based on Wind Speed")
-    expect(page).to have_content("Wind Speed Range (in mph)")
+    expect(page).to have_content("Wind Speed Range (mph)")
     expect(page).to have_content("Ride Stats Based on Visibility")
-    expect(page).to have_content("Visibility Range (in miles)")
+    expect(page).to have_content("Visibility Range (miles)")
   end
 end

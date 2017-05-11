@@ -146,6 +146,18 @@
   <span><p><b>Most Popular Date:</b><br><%= @trip.busiest_day.first %> with <%= @trip.busiest_day.last %> trips</p></span>
 
   <span><p><b>Least Popular Date:</b><br><%= @trip.least_busy_day.first %> with <%= @trip.least_busy_day.last %> trips</p></span>
+  <br>
+  <h3>Weather Report:</h3>
+  <div>
+      <h4>Weather on day with highest rides:</h4>
+      <p><b>High</b> of <i><%=@condition.condition_on_day_with_highest_rides.max_temperature %> degrees F</i></p>
+      <p><b>Low</b> of <i><%=@condition.condition_on_day_with_highest_rides.min_temperature %> degrees F</i></p>
+      <p><b>Average</b> of <i><%=@condition.condition_on_day_with_highest_rides.mean_temperature %> degrees F</i></p>
+      <p><b>Humidity: </b><i><%=@condition.condition_on_day_with_highest_rides.mean_humidity %>%</i></p>
+      <p><b>Visibility: </b><i><%=@condition.condition_on_day_with_highest_rides.mean_visibility %> miles</i></p>
+      <p><b>Wind Speed: </b><i><%=@condition.condition_on_day_with_highest_rides.mean_wind_speed %> miles</i></p>
+      <p><b>Precipitation: </b><i><%=@condition.condition_on_day_with_highest_rides.precipitation %> inches</i></p>
+  </div>
 </div>
 <br><br><br>
 

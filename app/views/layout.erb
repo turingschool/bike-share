@@ -2,14 +2,18 @@
 <html>
   <head>
     <link rel="stylesheet" href="/application.css">
+    <link href=“https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister” rel=“stylesheet”>
     <title>Bike Share</title>
   </head>
   <body>
-    <nav>
-      <a href="/stations"><h1>Stations</h1></a>
-      <a href="/trips"><h1>Trips</h1></a>
-      <a href="/conditions"><h1>Weather Conditions</h1></a>
-    </nav>
+    <header>
+      <h1 class="logo"><a href="/">BIKE SHARE</a></h1>
+      <nav>
+        <h1><a href="/stations">Stations</a></h1>
+        <h1><a href="/trips">Trips</a></h1>
+        <h1><a href="/conditions">Conditions</a></h1>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>

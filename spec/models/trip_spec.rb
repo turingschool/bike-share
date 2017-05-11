@@ -181,11 +181,11 @@ RSpec.describe Trip, :type => :model do
     end
 
     it 'finds busiest day' do
-      expect(Trip.busiest_day).to be_instance_of(Date)
+      expect(Trip.busiest_day[0]).to be_instance_of(Date)
     end
 
     it 'finds loneliest day' do
-      expect(Trip.least_busy_day).to be_instance_of(Date)
+      expect(Trip.least_busy_day[0]).to be_instance_of(Date)
     end
 
     it 'finds number of rides started at a station' do

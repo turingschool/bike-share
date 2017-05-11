@@ -15,53 +15,64 @@ class Trip < ActiveRecord::Base
   #Trips Dashboard methods for Info
 
   def self.average_duration_of_a_ride
-    average(:duration).to_i / 60
+    average(:duration).to_i
   end
 
   def self.longest_ride
-    maximum(:duration).to_i / 60
+    maximum(:duration).to_i
   end
 
   def self.shortest_ride
-    minimum(:duration).to_i / 60
+    minimum(:duration).to_i
   end
 
   def self.station_with_most_starting_place_rides
     group(:start_station).count("id").max_by do |station, count|
-      count
+      station
     end
   end
 
   def self.station_with_most_ending_place_rides
     group(:end_station).count("id").max_by do |station, count|
-      count
+      station
     end
   end
 
-  def self.month_by_month_breakdown_with_subtotals_by_year
+  def self.month_by_month_breakdown
+    start_year = 2013
+    month = 1
+    months = {}
+    years= {}
+    12.times do
+      # binding.pry
+      months[month] = where("extract(month from start_date) = ?", month).count
+      month += 1
+    end
 
+    (Time.new.year - start_year).times do
+      years[start_year] = where('extract(year from start_date) = ?', start_year).count
+      start_year += 1
+    end
+
+    {months: months, years: years}
   end
 
   def self.most_ridden_bike
-    group(:bike_id).count("id").max_by do |bike, count|
-      count
-    end
+    group(:bike_id).order('count_id DESC').limit(1).count(:id)
   end
 
   def self.least_ridden_bike
-    group(:bike_id).count("id").min_by do |bike, count|
-      count
-    end
+    group(:bike_id).order('count_id ASC').limit(1).count(:id)
   end
 
   def self.user_subscription_type_count
-    group(:bike_id).count("id").max_by do |bike, count|
-      count
-    end
-  end
+    output = {}
+    output[:customers] = where(subscription_type: "customer").count
+    output[:subscribers] = where(subscription_type: "subscriber").count
 
-  def self.user_subscription_type_with_percentage
-
+    output[:customers_percentage] = ((output[:customers].to_f / count) * 100).round(2)
+    output[:subscribers_percentage]  = ((output[:subscribers].to_f / count) * 100).round(2)
+    output
   end
 
   def self.highest_number_of_trips
@@ -78,15 +89,15 @@ class Trip < ActiveRecord::Base
 
   #Individual station methods for Info
 
-  def self.number_of_rides_started_at_station
+  def self.number_of_rides_started_at_station(id)
     where(start_station_id: id).count
   end
 
-  def self.number_of_rides_ended_at_station
+  def self.number_of_rides_ended_at_station(id)
     where(end_station_id: id).count
   end
 
-  def self.most_frequest_starting_station
+  def self.most_frequent_starting_station
     station = group(:start_station).count
     top_station = station.max_by { |station, count| count }
   end
@@ -97,11 +108,14 @@ class Trip < ActiveRecord::Base
   end
 
   def self.highest_number_of_trips_of_stations_by_date
-    date = where(start_station_id: id).group(:start_date).count("id")
-    highest_date = date.max_by { |date, count| date}
+    group(:start_date).count("id").max_by{|date, count| count }
   end
 
-  def self.most_frequesnt_zip_code_for_starting_station
+  def self.lowest_number_of_trips_of_stations_by_date
+    group(:start_date).count("id").min_by{|date, count| count }
+  end
+
+  def self.most_frequent_zip_code_for_starting_station
     zipcode = where(start_station_id: id).group(:zip_code).count("id")
     highest_zip_code = zipcode.max_by { |zipcode, count| zipcode}
   end
@@ -109,6 +123,14 @@ class Trip < ActiveRecord::Base
   def self.most_frequenst_bike_id_for_starting_station
     bike = where(start_station_id: id).group(:bike_id).count("id")
     highest_bike = bike.max_by { |bike, count| bike}
+  end
+
+  def self.busiest_day
+    group(:start_date).count("id").max_by{|date, count| count }
+  end
+
+  def self.least_busy_day
+    group(:end_date).count("id").min_by{|date, count| count }
   end
 
   def self.total_trip_count_on_dates(dates)

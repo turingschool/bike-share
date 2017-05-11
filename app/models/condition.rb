@@ -40,18 +40,21 @@ class Condition < ActiveRecord::Base
     (y.count.to_f/x.count.to_f).round(2)
   end
 
-  def self.most_rides_per_condition(column, low, high)
+  def self.determine_rides_on_dates(column, low, high)
     x = determine_date_range(column, low, high)
-    y = Trip.determine_trips_on_specific_dates(x)
+    Trip.determine_trips_on_specific_dates(x)
+  end
+
+  def self.most_rides_per_condition(column, low, high)
+    y = determine_rides_on_dates(column, low, high)
     return 0 if y.empty?
-    y.group(:start_date).count.max_by{|start_date, count| count}[1]
+    y.most_bike_rides(:start_date)
   end
 
   def self.fewest_rides_per_condition(column, low, high)
-    x = determine_date_range(column, low, high)
-    y = Trip.determine_trips_on_specific_dates(x)
+    y = determine_rides_on_dates(column, low, high)
     return 0 if y.empty?
-    y.group(:start_date).count.min_by{|start_date, count| count}[1]
+    y.least_bike_rides(:start_date)
   end
 
   def self.get_intervals_10(measure)

@@ -218,12 +218,12 @@ RSpec.describe Trip do
 
     it "can calculate most ridden bike with total number of rides for that bike" do
       expect(Trip.most_ridden_bike_id).to eq(6)
-      expect(Trip.most_ridden_bike_rides).to eq(2)
+      expect(Trip.most_bike_rides(:bike_id)).to eq(2)
     end
 
     it "can calculate least ridden bike with total number of rides for that bike" do
       expect(Trip.least_ridden_bike_id).to eq(5)
-      expect(Trip.least_ridden_bike_rides).to eq(1)
+      expect(Trip.least_bike_rides(:bike_id)).to eq(1)
     end
 
     it "can calculate user subscription type breakout with both count and percentage" do

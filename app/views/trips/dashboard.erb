@@ -40,9 +40,9 @@
   <li>August 2015: <%= @trips.monthly_breakdown_of_rides(2015, 8) %></li>
 </ul>
 <p>Most Ridden Bike: <%= @trips.most_ridden_bike_id %></p>
-<p>Total Number of Rides: <%= @trips.most_ridden_bike_rides %></p>
+<p>Total Number of Rides: <%= @trips.most_bike_rides(:bike_id) %></p>
 <p>Least Ridden Bike: <%= @trips.least_ridden_bike_id %></p>
-<p>Total Number of Rides: <%= @trips.least_ridden_bike_rides %></p>
+<p>Total Number of Rides: <%= @trips.least_bike_rides(:bike_id) %></p>
 <ul>
   <h2>User Subscription Type: </h2>
   <li>Number of Subscribers: <%= @trips.subscriber_subscription_count %></li>

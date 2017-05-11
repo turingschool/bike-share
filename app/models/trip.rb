@@ -30,19 +30,28 @@ class Trip < ActiveRecord::Base
   end
 
   def self.station_with_most_rides_start_station_id
-    Trip.group(:start_station_id).count.max_by{|k,v| v}
+    id = Trip.group(:start_station_id).count.max_by{|k,v| v}.first
+    Station.find(id).name
   end
 
   def self.station_with_most_rides_end_station_id
-    Trip.group(:end_station_id).count.max_by{|k,v| v}
+    Station.find(Trip.group(:end_station_id).count.max_by{|k,v| v}.first.to_i).name 
   end
 
   def self.bike_with_most_rides
     Trip.group(:bike_id).count.max_by{|k,v| v}.first
   end
 
+  def self.most_number_of_rides
+    Trip.group(:bike_id).count.max_by{|k,v| v}.last
+  end
+
   def self.bike_with_least_rides
     Trip.group(:bike_id).count.min_by{|k,v| v}.first
+  end
+
+  def self.least_number_of_rides
+    Trip.group(:bike_id).count.min_by{|k,v| v}.last
   end
 
   def self.date_with_highest_trips

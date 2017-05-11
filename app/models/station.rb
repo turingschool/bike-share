@@ -17,9 +17,10 @@ class Station < ActiveRecord::Base
     {rides_started_at_station: Station.rides_started_at_station(station_id),
     rides_ended_at_station: Station.rides_ended_at_station(station_id),
     most_frequent_destination_station: Station.most_frequent_destination_station(station_id),
-    most_frequent_origination_station: Station.most_frequent_origination_station(station_id)
-
-
+    most_frequent_origination_station: Station.most_frequent_origination_station(station_id),
+    date_with_most_trips: Station.date_with_most_trips(station_id),
+    most_frequent_zip_at_station: Station.most_frequent_zip_at_station(station_id),
+    most_frequent_bike_id_at_station: Station.most_frequent_bike_id_at_station(station_id)
     }
   end
 
@@ -55,6 +56,38 @@ class Station < ActiveRecord::Base
       start_station_id = Station.find(station_id).end_station.trips.group(:start_station_id).order('count_id asc').count('id').keys.last
     end
     StartStation.find(start_station_id).station.name
+  end
+
+  def self.date_with_most_trips(station_id)
+    if Station.find(station_id).start_station.nil?
+      "No rides have started at this station"
+    else
+      trips = Station.find(station_id).start_station.trips
+      start_date_id = trips.group(:start_date_id).order("count_id asc").count('id').keys.last
+      start_date = StartDate.find(start_date_id)
+      "#{start_date.ride_date.month}-#{start_date.ride_date.day}-#{start_date.ride_date.year}"
+      end
+    end
+
+  def self.most_frequent_zip_at_station(station_id)
+    if Station.find(station_id).start_station.nil?
+     "No rides have started at this station"
+    else
+      trips = Station.find(station_id).start_station.trips
+      zip = trips.group(:zip_code).order("count_id asc").count('id').keys.last
+      if zip.nil?
+        zip = trips.group(:zip_code).order("count_id asc").count('id').keys[-2]
+      end
+     zip
+    end
+  end
+  def self.most_frequent_bike_id_at_station(station_id)
+    if Station.find(station_id).start_station.nil?
+      "No rides have started at this station"
+    else
+      trips = Station.find(station_id).start_station.trips
+      trips.group(:bike_id).order("count_id asc").count('id').keys.last
+    end
   end
 
   def self.dashboard_analysis

@@ -129,4 +129,13 @@ class Trip < ActiveRecord::Base
   def self.frequent_origin_bike_id(id)
     (Trip.where(start_station_id: id).group(:bike_id).count.max_by{|bike, count| count}).first
   end
+
+  def self.all_pages
+    (Trip.count / 30.0).ceil
+  end
+
+  def self.paginate(page)
+    offset = ( page - 1 ) * 30
+    Trip.limit(30).offset(offset)
+  end
 end

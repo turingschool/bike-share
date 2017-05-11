@@ -3,13 +3,13 @@
 <% @stations.each do |station| %>
   <div class='station-card'>
 
-    <ul> Name: <%= station.name %>
-    <ti> Number of Docks: <%= station.dock_count %> </ti>
-    <ti> City: <%= station.city.name %> </ti>
-
-    <ti> Install Date: <%= station.install_date.strftime("%b%e %Y") %> </ti>
+    <ul> Name: <a href="/stations/<%= station.id %>"><%= station.name %><br></a>
+    <ti> Number of Docks: <%= station.dock_count %> </ti><br>
+    <ti> City: <%= station.city.name %> </ti><br>
+    <ti> Install Date: <%= station.install_date.strftime("%b%e %Y") %> </ti><br>
 
     </ul>
+
     <a href='/stations/<%=station.id%>/edit'>Edit Station</a>
     <form action='/stations/<%=station.id%>' method="POST" >
       <input type='hidden' name='_method' value="DELETE" />

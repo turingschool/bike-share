@@ -1,8 +1,18 @@
 <h1>Station</h1>
 
-Name: <%= @station.name %>
-Number of Docks: <%= @station.dock_count %>
-City: <%= @station.city.name %>
-Install Date: <%= @station.install_date.strftime("%b%e %Y")  %>
+Name: <%= @station.name %> <br>
+Number of Docks: <%= @station.dock_count %> <br>
+City: <%= @station.city.name %> <br>
+Install Date: <%= @station.install_date.strftime("%b%e %Y")  %> <br>
+<br>
+
+
+ Number of Rides Started Here: <%=@number_of_rides_started%> <br>
+ Number of Rides Ended Here: <%=@number_of_rides_ended%> <br>
+ Most Frequent Destination: <%=@most_frequent_destination%> <br>
+ Most Frequent Origin: <%=@most_frequent_origin%> <br>
+ Most Frequented Date for Start Station: <%=@highest_trips_by_date_for_station  %> <br>
+ Most Frequented Zip Code for Users at Start Station: <%=@most_frequent_zip %> <br>
+ Most Frequented Bike ID for Start Station: <%=@most_frequent_bike_id_for_start_station %> <br>
 
 <br><a href="/stations">All Stations</a>

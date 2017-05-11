@@ -37,6 +37,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations/:id' do
     @station = Station.find(params[:id])
+    @trip = Trip.all
     erb :'stations/show'
   end
 

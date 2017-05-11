@@ -97,32 +97,34 @@ class Trip < ActiveRecord::Base
     where(end_station_id: id).count
   end
 
-  def self.most_frequent_starting_station
-    station = group(:start_station).count
-    top_station = station.max_by { |station, count| count }
+  def self.most_frequent_starting_station(id)
+    station_counts = group(:start_station).count
+    station_counts.max_by { |station, count| count }
   end
 
-  def self.least_frequest_starting_station
-    station = group(start_station).count
-    lowest_station = station.min_by
+  def self.least_frequent_starting_station(id)
+    station_counts = group(:end_station).count
+    station_counts.max_by { |station, count| count }
   end
 
-  def self.highest_number_of_trips_of_stations_by_date
-    group(:start_date).count("id").max_by{|date, count| count }
+  def self.highest_number_of_trips_of_stations_by_date(id)
+    date_counts = where(start_station_id: id).group(:start_date).count("id")
+    date_counts.max_by { |date, count| count }
   end
 
-  def self.lowest_number_of_trips_of_stations_by_date
-    group(:start_date).count("id").min_by{|date, count| count }
+  def self.lowest_number_of_trips_of_stations_by_date(id)
+    date_counts = where(start_station_id: id).group(:start_date).count("id")
+    date_counts.min_by { |date, count| count }
   end
 
-  def self.most_frequent_zip_code_for_starting_station
+  def self.most_frequent_zip_code_for_starting_station(id)
     zipcode = where(start_station_id: id).group(:zip_code).count("id")
-    highest_zip_code = zipcode.max_by { |zipcode, count| zipcode}
+    zipcode.max_by{|zip_code, count| count }
   end
 
-  def self.most_frequenst_bike_id_for_starting_station
+  def self.most_frequent_bike_id_for_starting_station(id)
     bike = where(start_station_id: id).group(:bike_id).count("id")
-    highest_bike = bike.max_by { |bike, count| bike}
+    bike.max_by{|bike, count| count }
   end
 
   def self.busiest_day

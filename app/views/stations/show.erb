@@ -56,7 +56,15 @@
           <span>Dock Count: <%= @station.dock_count %></span><br />
           <span>City: <a href="/cities/<%= @station.city.id %>"><%= @station.city.name %></a></span><br />
           <span>Installation Date: <%= @station.date %></span><br />
-          <span>
+          <span>Number of Rides Started at this Station: <%= @trip.number_of_rides_started_at_station(@station.id) %></span><br />
+          <span>Number of Rides Ended at this Station: <%= @trip.number_of_rides_ended_at_station(@station.id) %></span><br />
+          <span>Most Frequent Destination Station (Start): Station <%= @trip.most_frequent_starting_station(@station.id).first.name %>, with <%= @trip.most_frequent_starting_station(@station.id).last %> rides</span><br />
+          <span>Most Frequent Destination Station (Ending): Station <%= @trip.least_frequent_starting_station(@station.id).first.name %>, with <%= @trip.least_frequent_starting_station(@station.id).last %> rides</span><br />
+          <span>Date With Highest Number of Trips: <%= @trip.highest_number_of_trips_of_stations_by_date(@station.id) %></span><br />
+          <span>Date With Lowest Number of Trips: <%= @trip.lowest_number_of_trips_of_stations_by_date(@station.id) %></span><br />
+          <span>Most Frequent Zip Code: <%= @trip.most_frequent_zip_code_for_starting_station(@station.id).first %></span><br />
+          <span>Most Frequent Bike: <%= @trip.most_frequent_bike_id_for_starting_station(@station.id).first %></span><br />
+
             <form action="/stations/<%= @station.id %>" method="post">
               <input type="hidden" name="_method" value="DELETE" />
               <input type="submit" value="Delete" />

@@ -1,5 +1,6 @@
 require 'date'
 class Trip<ActiveRecord::Base
+
   belongs_to :bike
   belongs_to :zipcode
   belongs_to :subscription_type

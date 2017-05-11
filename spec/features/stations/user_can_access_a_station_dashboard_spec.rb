@@ -1,12 +1,12 @@
 require './spec/spec_helper'
 
 RSpec.describe "When a user visit the stations dashboard (/stations-dashboard)" do
-  it "loads the appropriate descriptions" do
-    city_1 = City.create(name: "squeevillia")
+  before {
+    city = City.create(name: "squeevillia")
     Station.create(
                   name: "something",
                   dock_count: 1,
-                  city_id: 1,
+                  city_id: city.id,
                   installation_date: Date.strptime("08/30/2013",'%m/%d/%Y'),
                   longitude: 1.1,
                   latitude: -1.1
@@ -14,11 +14,13 @@ RSpec.describe "When a user visit the stations dashboard (/stations-dashboard)" 
     Station.create(
                   name: "something else",
                   dock_count: 3,
-                  city_id: 1,
+                  city_id: city.id,
                   installation_date: Date.strptime("08/30/2015",'%m/%d/%Y'),
                   longitude: 1,
                   latitude: -2
     )
+  }
+  it "loads the appropriate descriptions" do
     visit('/stations-dashboard')
 
     expect(page).to have_content("Total Stations: 2")

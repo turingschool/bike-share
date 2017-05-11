@@ -4,6 +4,7 @@ require './app/models/zipcode.rb'
 require './app/models/condition.rb'
 require './app/models/trip.rb'
 require 'csv'
+require 'pry'
 
 Station.destroy_all
 City.destroy_all
@@ -85,8 +86,11 @@ conditions.each do |condition|
               :precipitation_inches]
 
   next unless elements.all? { |element| condition[element] }
+  next unless condition[:zip_code] == "94107"
 
   zip = Zipcode.find_or_create_by(zipcode: condition[:zip_code])
+  condition[:precipitation_inches] = 0.005 if condition[:precipitation_inches] =='T'
+
   Condition.create(date: Date.strptime(condition[:date],'%m/%d/%Y'),
                     max_temp: condition[:max_temperature_f],
                     mean_temp: condition[:mean_temperature_f],

@@ -46,6 +46,19 @@ tbody {
   text-align: center;
 }
 
+thead tr {
+  background: rgba(250, 128, 114, 0.75);
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+tr:nth-child(2n) {
+  background: rgba(250, 128, 114, 0.25);
+}
+
 .full-width {
   width:100%;
 }

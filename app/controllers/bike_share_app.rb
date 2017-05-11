@@ -69,6 +69,9 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips/:id/edit' do |id|
     @trip = Trip.find(id)
+    @trips = Trip.all
+    @stations = Station.all
+    @zipcode = Zipcode.all
     erb :"trips/edit"
   end
 

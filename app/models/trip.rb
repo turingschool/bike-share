@@ -140,4 +140,8 @@ class Trip < ActiveRecord::Base
     offset = ( page - 1 ) * 30
     Trip.limit(30).offset(offset)
   end
+
+  def self.subscription_list
+    Trip.all.pluck(:subscription_type).uniq
+  end
 end

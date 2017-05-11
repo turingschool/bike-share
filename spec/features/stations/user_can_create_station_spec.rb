@@ -25,7 +25,6 @@ RSpec.describe "when a user visits the new station page" do
     fill_in("station[name]", with: "Something")
     select "squeevillia", :from => "station[city_id]"
     fill_in("station[dock_count]", with: 1)
-    # installation date (should eventually be a datepicker)
     fill_in("station[installation_date]", with: "08/30/2013")
     fill_in("station[latitude]", with: -1.1)
     fill_in("station[longitude]", with: 1.1)

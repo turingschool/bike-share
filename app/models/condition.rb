@@ -70,9 +70,9 @@ class Condition < ActiveRecord::Base
   end
 
   def self.convert_to_4_interval(measure)
-    lower = # next number less than this that is modulo 4
-    upper = # next number more than this that is modulo 4 -1
-    [lower, upper]
+    lower = reduce_to_modulo(measure, 4)
+    upper = increase_to_modulo(measure, 4) - 1
+    [lower.to_i.to_s, upper.to_i.to_s]
   end
 
   def self.reduce_to_modulo(start, mod)
@@ -83,6 +83,7 @@ class Condition < ActiveRecord::Base
   end
 
   def self.increase_to_modulo(start, mod)
+    start += 1 if start % mod == 0
     until start % mod == 0
       start += 1
     end

@@ -55,24 +55,14 @@
     </tr>
   </thead>
   <tbody>
+    <% Condition.get_intervals_4('mean_wind_speed').each do |intervals| %>
     <tr>
-      <td>8-11</td>
-      <td><%= Condition.ave_rides_per_condition(:mean_wind_speed, 8, 11) %></td>
-      <td><%= Condition.most_rides_per_condition(:mean_wind_speed, 8, 11) %></td>
-      <td><%= Condition.fewest_rides_per_condition(:mean_wind_speed, 8, 11) %></td>
+      <td><%= intervals[0] %>-<%= intervals[1] %></td>
+      <td><%= Condition.ave_rides_per_condition(:mean_wind_speed, intervals[0], intervals[1]) %></td>
+      <td><%= Condition.most_rides_per_condition(:mean_wind_speed, intervals[0], intervals[1]) %></td>
+      <td><%= Condition.fewest_rides_per_condition(:mean_wind_speed, intervals[0], intervals[1]) %></td>
     </tr>
-    <tr>
-      <td>4-7</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>0-3</td>
-      <td>3</td>
-      <td>3</td>
-      <td>3</td>
-    </tr>
+    <% end %>
   </tbody>
 </table>
 

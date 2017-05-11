@@ -35,7 +35,7 @@ class Trip < ActiveRecord::Base
   end
 
   def self.station_with_most_rides_end_station_id
-    id = Trip.group(:end_station_id).count.max_by{|k,v| v}.first 
+    id = Trip.group(:end_station_id).count.max_by{|k,v| v}.first
     Station.find(id).name
   end
 
@@ -80,30 +80,18 @@ class Trip < ActiveRecord::Base
   end
 
   def self.highest_trips_by_date_for_station(station_name)
-    found_trips = Trip.where(start_station_id: station_name)
-    trip_destination_counts = Hash.new(0)
-    found_trips.each do |trip|
-      trip_destination_counts[trip.start_date] += 1
-    end
-    trip_destination_counts.max_by{|k,v| v}.first
+    date = Trip.where('start_station_id = ?', station_id).group(:start_date).order('count_start_date DESC').count(:start_date).first
+    {date: bike_id[0], frequency: zip_code[1]}
   end
 
-  def self.most_frequent_zipcode_for_start_station_id(station_name)
-    found_trips = Trip.where(start_station_id: station_name)
-    trip_destination_counts = Hash.new(0)
-    found_trips.each do |trip|
-      trip_destination_counts[trip.zip_code] += 1
-    end
-    trip_destination_counts.max_by{|k,v| v}.first
+  def self.most_frequent_zipcode_for_start_station_id(station_id)
+    zip_code = Trip.where('start_station_id = ?', station_id).group(:zip_code).order('count_zip DESC').count(:zip_code).first
+    {zip_code: bike_id[0], frequency: zip_code[1]}
   end
 
-  def self.most_frequent_bike_id_for_start_station_id(station_name)
-    found_trips = Trip.where(start_station_id: station_name)
-    trip_destination_counts = Hash.new(0)
-    found_trips.each do |trip|
-      trip_destination_counts[trip.bike_id] += 1
-    end
-    trip_destination_counts.max_by{|k,v| v}.first
+  def self.most_frequent_bike_id_for_start_station_id(station_id)
+    bike_id = Trip.where('start_station_id = ?', station_id).group(:bike_id).order('count_bike_id DESC').count(:bike_id).first
+    {bike_id: bike_id[0], frequency: bike_id[1]}
   end
 
   def self.get_month_set

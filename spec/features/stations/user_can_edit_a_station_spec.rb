@@ -6,6 +6,7 @@ RSpec.describe "when a user edits a station" do
     city_2 = City.create(name: "rhondarhiffic")
     city_3 = City.create(name: "chrissable")
     city_4 = City.create(name: "adamtastic")
+    zipcode_1 = Zipcode.create(zipcode: "11111")
     Station.create(
                   name: "something",
                   dock_count: 1,
@@ -14,10 +15,19 @@ RSpec.describe "when a user edits a station" do
                   longitude: 1.1,
                   latitude: -1.1
     )
-
+    Trip.create(
+                duration: 63,
+                start_date: DateTime.strptime("08/30/2013 11:11", "%m/%d/%Y %H:%M"),
+                start_station_id: 1,
+                end_date: DateTime.strptime("08/30/2013 11:12", "%m/%d/%Y %H:%M"),
+                end_station_id: 1,
+                bike_id: 1,
+                subscription_type: "Subscriber",
+                zipcode_id: 1
+    )
   end
 
-  it "can edit all feilds" do
+  it "can edit all fields" do
     visit('/stations/1/edit')
 
     fill_in("station[name]", with: "Else")

@@ -101,7 +101,7 @@ end
 
 trips = read_csv('./db/csv/trip_fixture.csv')
 trips.each do |trip|
-	zipcode = Zipcode.find_or_create_by(zipcode: trip[:zipcode])
+	zipcode = Zipcode.find_or_create_by(zipcode: trip[:zip_code])
 
   lookup_start_trips(trip)
   lookup_end_trips(trip)

@@ -25,8 +25,9 @@
   <input type="text" name="trip[bike_id]" value="<%= @trip.bike_id %>" />
   <label>Subscription Type:</label>
   <select name="trip[subscription_type]">
-    <% Trip.all.each do |trip| %>
-      <option value="<%= trip.subscription_type %>"><%= trip.subscription_type %></option>
+    <% subscriptions = Trip.all.pluck(:subscription_type) %>
+    <% subscriptions.uniq.each do |trip| %>
+      <option value="<%= trip %>"><%= trip %></option>
     <% end %>
   </select>
   <label>Zipcode: </label>

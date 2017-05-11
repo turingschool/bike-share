@@ -32,6 +32,40 @@ class Condition < ActiveRecord::Base
     output
   end
 
+  def self.sort_wind(range)
+    array = Condition.where(mean_wind_speed: range).all.map {|condition| condition.date}
+    trip_nums = array.map do |date|
+      Trip.where(start_date: date.beginning_of_day...date.end_of_day).count
+    end
+    output = {}
+    output[:max] = trip_nums.sort.last
+    output[:min] = trip_nums.sort.first
+    output[:avg] = trip_nums.inject(:+) / trip_nums.length unless trip_nums.length == 0
+    output
+  end
+
+  def self.sort_sight(range)
+    array = Condition.where(mean_visibility: range).all.map {|condition| condition.date}
+    trip_nums = array.map do |date|
+      Trip.where(start_date: date.beginning_of_day...date.end_of_day).count
+    end
+    output = {}
+    output[:max] = trip_nums.sort.last
+    output[:min] = trip_nums.sort.first
+    output[:avg] = trip_nums.inject(:+) / trip_nums.length unless trip_nums.length == 0
+    output
+  end
+
+  def self.condition_on_day_with_highest_rides
+    day_with_highest_rides = Trip.day_with_highest_rides
+    Condition.find_by(date: day_with_highest_rides)
+  end
+
+  def self.condition_on_day_with_lowest_rides
+    day_with_lowest_rides = Trip.day_with_lowest_rides
+    Condition.find_by(date: day_with_lowest_rides)
+  end
+
   def self.average_rides_per_temperature_range(degrees)
     days = Condition.days_with_high_temps(degrees)
     ride_count = Trip.total_trip_count_on_dates(days)
@@ -121,15 +155,5 @@ class Condition < ActiveRecord::Base
   def self.days_by_visibility_in_four_mile_increments(mile)
     conditions_in_a_visibility_range = Condition.where(mean_visibility: [mile..mile + 3])
     conditions_in_a_visibility_range.map { |condition| condition.date }
-  end
-
-  def self.condition_on_day_with_highest_rides
-    day_with_highest_rides = Trip.day_with_highest_rides
-    Condition.find_by(date: day_with_highest_rides)
-  end
-
-  def self.condition_on_day_with_lowest_rides
-    day_with_lowest_rides = Trip.day_with_lowest_rides
-    Condition.find_by(date: day_with_lowest_rides)
   end
 end

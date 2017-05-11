@@ -20,6 +20,10 @@ class Trip < ActiveRecord::Base
     end_date.strftime('%m/%d/%Y %H:%M')
   end
 
+  def self.determine_trips_on_specific_dates(date_range)
+    where('Date(start_date) IN (?)', date_range)
+  end
+
   def self.average_duration
     Trip.average(:duration).to_i
   end

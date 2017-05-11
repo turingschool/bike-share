@@ -1,5 +1,9 @@
+require './app/models/trip'
+
 class Station < ActiveRecord::Base
   belongs_to :city
+  has_many :trips, :class_name => Trip, foreign_key: 'station_id'
+
   validates :name, :dock_count, :install_date, presence: true
   validates :dock_count, numericality: { greater_than: 0, only_integer: true }
 
@@ -21,15 +25,15 @@ class Station < ActiveRecord::Base
 
   def self.min_bike_station
     order(:dock_count).first.name
-  end 
+  end
 
   def self.newest_station
     order(:install_date).last.name
-  end 
+  end
 
   def self.oldest_station
     order(:install_date).first.name
-  end 
+  end
 
 end
 

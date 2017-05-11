@@ -91,11 +91,27 @@ class Station < ActiveRecord::Base
   end
 
   def self.dashboard_analysis
-    {count: Station.all.count
-
-
+    {count: Station.all.count,
+    average_available_bikes_per_station: Station.average(:dock_count).round,
+    most_bikes_available_at_a_station: Station.maximum(:dock_count),
+    station_where_most_bikes_available: Station.station_where_most_bikes_available,
+    fewest_bikes_available_at_station: Station.minimum(:dock_count),
+    station_where_fewest_bikes_available: Station.station_where_fewest_bikes_available,
+    newest_station: Station.order("installation_date DESC").first.name,
+    oldest_station: Station.order("installation_date DESC").last.name
     }
   end
 
+  def self.station_where_most_bikes_available
+    Station.where(dock_count: Station.maximum(:dock_count)).map do |station|
+      station.name
+    end
+  end
+
+  def self.station_where_fewest_bikes_available
+    Station.where(dock_count: Station.minimum(:dock_count)).map do |station|
+      station.name
+    end
+  end
 
 end

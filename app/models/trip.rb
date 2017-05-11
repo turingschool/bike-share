@@ -13,6 +13,8 @@ class Trip < ActiveRecord::Base
   validates :subscription_type_id, presence: true
   validates :zip_code, presence: true
 
+  validates :zip_code, numericality: { greater_than: 10000, less_than: 999999, only_integer: true }
+
   def self.order_by_date
     self.order(:start_date).reverse
   end

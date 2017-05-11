@@ -60,5 +60,55 @@
 </ul>
 <p>Date With Highest Number of Trips: <%= @trips.highest_number_of_trips_date %>:
     <%= @trips.highest_number_of_trips_total %></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Highest Temp.</th>
+          <th>Mean Temp.</th>
+          <th>Lowest Temp.</th>
+          <th>Mean Humidity</th>
+          <th>Mean Visibility</th>
+          <th>Mean Wind Speed</th>
+          <th>Precipitation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <% high_condition = Condition.find_by(date:@trips.highest_number_of_trips_date) %>
+          <td><%= high_condition.max_temp %></td>
+          <td><%= high_condition.mean_temp %></td>
+          <td><%= high_condition.min_temp %></td>
+          <td><%= high_condition.mean_humidity %></td>
+          <td><%= high_condition.mean_visibility %></td>
+          <td><%= high_condition.mean_wind_speed %></td>
+          <td><%= high_condition.precipitation %></td>
+        </tr>
+      </tbody>
+    </table>
 <p>Date With Lowest Number of Trips: <%= @trips.lowest_number_of_trips_date %>:
     <%= @trips.lowest_number_of_trips_total %></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Highest Temp.</th>
+          <th>Mean Temp.</th>
+          <th>Lowest Temp.</th>
+          <th>Mean Humidity</th>
+          <th>Mean Visibility</th>
+          <th>Mean Wind Speed</th>
+          <th>Precipitation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <% low_condition = Condition.find_by(date:@trips.lowest_number_of_trips_date) %>
+          <td><%= low_condition.max_temp %></td>
+          <td><%= low_condition.mean_temp %></td>
+          <td><%= low_condition.min_temp %></td>
+          <td><%= low_condition.mean_humidity %></td>
+          <td><%= low_condition.mean_visibility %></td>
+          <td><%= low_condition.mean_wind_speed %></td>
+          <td><%= low_condition.precipitation %></td>
+        </tr>
+      </tbody>
+    </table>

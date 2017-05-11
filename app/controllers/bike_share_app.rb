@@ -103,6 +103,10 @@ class BikeShareApp < Sinatra::Base
     end
   end
 
+  get '/trips-dashboard' do
+    erb :"trips/trips-dashboard"
+  end 
+
   get '/trips/:id' do
     @trip = Trip.find(params[:id])
     @start_trip_station_name = @trip.start_station_name

@@ -1,0 +1,17 @@
+<h1>Trips Dashboard</h1>
+
+<br/>Average Ride Duration: <%= Trip.average_ride_duration %><br/>
+<br/>Longest Ride: <%= Trip.longest_ride %><br/>
+<br/>Shortest Ride: <%= Trip.shortest_ride %><br/>
+<br/>Station where most rides start: <%= Trip.station_with_most_rides_start_station_id  %><br/>
+<br/>Station where most rides end : <%= Trip.station_with_most_rides_end_station_id %><br/>
+<!--<br/>Monthly Breakdown with Subtotals: <%= Station.min_bike_station %><br/>-->
+<br/>Most Ridden Bike (by ID): <%= Trip.bike_with_most_rides %><br/>
+<br/>Number of Rides: <%= Trip.most_number_of_rides %><br/>
+
+<br/>Least Ridden Bike (by ID): <%= Trip.bike_with_least_rides %><br/>
+<br/>Number of Rides: <%= Trip.least_number_of_rides %><br/>
+
+
+<br><a href="/trips/show">Show Trip</a>
+<a href="/stations">All Stations</a>

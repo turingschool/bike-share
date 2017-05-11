@@ -2,12 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
     <title>Bike Share</title>
   </head>
-  <%= partial :'partials/header' %>
+  
   <body>
+    <%= partial :'partials/header' %>
     <%= yield %>
+    <%= partial :'partials/footer' %>
   </body>
-  <%= partial :'partials/footer' %>
+  
 </html>

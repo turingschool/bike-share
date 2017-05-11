@@ -189,4 +189,64 @@ RSpec.describe Condition do
       expect(described_class.get_intervals('mean_temp')).to match [["70","79"], ["60","69"], ["50","59"]]
     end
   end
+
+  describe "getting trip stats" do
+    before {
+      condition_1 = Condition.create(
+                                  date: Date.strptime("08/31/2013",'%m/%d/%Y'),
+                                  max_temp: 87.0,
+                                  mean_temp: 57.0,
+                                  min_temp: 54.0,
+                                  mean_humidity: 90.0,
+                                  mean_visibility: 1.2,
+                                  mean_wind_speed: 11.0,
+                                  precipitation: 1.0,
+                                  )
+      condition_2 = Condition.create(
+                                  date: Date.strptime("08/30/2013",'%m/%d/%Y'),
+                                  max_temp: 87.0,
+                                  mean_temp: 66.0,
+                                  min_temp: 54.0,
+                                  mean_humidity: 90.0,
+                                  mean_visibility: 3.4,
+                                  mean_wind_speed: 5.6,
+                                  precipitation: 0.25,
+                                  )
+      condition_3 = Condition.create(
+                                  date: Date.strptime("08/29/2013",'%m/%d/%Y'),
+                                  max_temp: 87.0,
+                                  mean_temp: 56.0,
+                                  min_temp: 54.0,
+                                  mean_humidity: 90.0,
+                                  mean_visibility: 2.0,
+                                  mean_wind_speed: 1.0,
+                                  precipitation: 0,
+                                  )
+    }
+    it "can determine a date range for mean temp" do
+      expect(Condition.determine_date_range(:mean_temp, 50.0, 59.0).count).to eq(2)
+      expect(Condition.determine_date_range(:mean_temp, 60.0, 69.0).count).to eq(1)
+    end
+
+    it "can determine the average rides by mean temp" do
+      expect(Condition.ave_rides_per_condition(:mean_temp, 50, 59)).to eq(1)
+      expect(Condition.ave_rides_per_condition(:mean_temp, 60, 69)).to eq(0.5)
+    end
+
+    it "can determine a date range for precipitation" do
+      expect(Condition.determine_date_range(:precipitation, 0.0, 0.5).count).to eq(2)
+      expect(Condition.determine_date_range(:precipitation, 1.0, 1.5).count).to eq(1)
+    end
+
+    it "can determine a date range for wind speed" do
+      expect(Condition.determine_date_range(:mean_wind_speed, 0, 4).count).to eq(1)
+      expect(Condition.determine_date_range(:mean_wind_speed, 5, 8).count).to eq(1)
+      expect(Condition.determine_date_range(:mean_wind_speed, 9, 12).count).to eq(1)
+    end
+
+    it "can determine a date range for visibility" do
+      expect(Condition.determine_date_range(:mean_visibility, 0, 4).count).to eq(3)
+    end
+
+  end
 end

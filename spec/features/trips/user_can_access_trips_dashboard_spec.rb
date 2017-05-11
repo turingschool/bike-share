@@ -57,6 +57,18 @@ RSpec.describe "When a user visits the trips dashboard (/trips-dashboard)" do
                 subscription_type: "Subscriber",
                 zipcode_id: 3
     )
+    zip = Zipcode.create(zipcode: "09000")
+    Condition.create(
+                                date: Date.strptime("08/30/2013",'%m/%d/%Y'),
+                                max_temp: 87.0,
+                                mean_temp: 76.0,
+                                min_temp: 54.0,
+                                mean_humidity: 90.0,
+                                mean_visibility: 7.0,
+                                mean_wind_speed: 8.0,
+                                precipitation: 1.4,
+                                zipcode_id: zip.id
+                                )
   end
 
   it "loads the appropriate descriptions and calculations" do

@@ -22,7 +22,7 @@
   <tbody>
     <% @conditions.each do |condition| %>
     <tr class="row">
-      <td><h2 class="condition-title"><a href="/conditions/<%= condition.id %>"><%= condition.format_date %></a></h2></td>
+      <td><p class="condition-title"><a href="/conditions/<%= condition.id %>"><%= condition.format_date %></a></p></td>
       <td><%= condition.max_temp %></td>
       <td><%= condition.mean_temp %></td>
       <td><%= condition.min_temp %></td>

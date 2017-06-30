@@ -1,10 +1,6 @@
-require 'pry'
+require './app/controllers/bike_share_app'
 
-class BikeShareApp < Sinatra::Base
-
-  get '/' do
-    erb :"home/index"
-  end
+class StationsController < BikeShareApp
 
   get '/stations' do
     @stations = Station.all

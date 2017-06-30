@@ -5,13 +5,17 @@ gem 'pg'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 
+
 group :development, :test do
   gem 'shotgun'
+  gem 'pry'
   gem 'rspec'
   gem 'rspec-core'
   gem 'tux'
   gem 'capybara'
   gem 'launchy'
   gem 'rack-test'
+  gem 'database_cleaner'
+  gem 'awesome_print'
+  gem 'rake'
 end
-

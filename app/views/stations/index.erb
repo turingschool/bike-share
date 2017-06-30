@@ -1,0 +1,12 @@
+<h2 class="title">Stations</h2>
+
+<form action="/stations/new" method="POST">
+  <input type="hidden" name="_method" value="GET">
+  <input type="submit" value="Add New Station"/>
+</form>
+
+<ol>
+  <% @stations.each do |station| %>
+  <li><a href="/stations/<%= station.id %>"><%= station.name %></a></li>
+  <% end %>
+</ol>

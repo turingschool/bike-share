@@ -1,0 +1,36 @@
+<form action='/trips' method='post'>
+  Duration<br>
+  <input type='number' name='trip[duration]' value=10></input><br>
+  Start date (and time)<br>
+  <input type='datetime' value='8/29/2222 13:43' name='trip[start_date]'></input><br>
+  End date (and time)<br>
+  <input type='datetime' name='trip[end_date]' value='8/29/2222 13:53'></input><br>
+  Subscription<br>
+  <input id='subscriber' type="radio" name='trip[subscription_type]' value="subscriber"> Subscriber</input><br>
+  <input id='customer' type="radio" name='trip[subscription_type]' value="customer"> Customer</input><br>
+  Bike<br>
+  <select id='bike_select' name='trip[bike]'>
+    <% @bikes.each do |bike| %>
+      <option><%= 'Fake bike' %></option>
+    <% end %>
+  </select><br>
+  Weather<br>
+  <select id='weather_select' name='trip[weather]'>
+    <% @weatherconditions.each do |condition| %>
+      <option><%= 'Fake weather' %></option>
+    <% end %>
+  </select><br>
+  Start station <br>
+  <select id='start_station_select' name='trip[start_station]'>
+    <% @stations.each do |station| %>
+      <option><%= station.name %></option>
+    <% end %>
+  </select><br>
+  End station <br>
+  <select id='end_station_select' name='trip[end_station]'>
+    <% @stations.each do |station| %>
+      <option><%= station.name %></option>
+    <% end %>
+  </select>
+  <input type='submit' value='Create'></input>
+</form>

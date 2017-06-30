@@ -1,0 +1,12 @@
+<h2 class="title">Weather Conditions</h2>
+
+<form action="/weather_conditions/new" method="POST">
+  <input type="hidden" name="_method" value="GET">
+  <input type="submit" value="Add New Weather Data"/>
+</form>
+
+<ol>
+  <% @weather_conditions.each do |condition| %>
+  <li><a href="/weather_conditions/<%= condition.id %>"><%= condition.date %></a></li>
+  <% end %>
+</ol>

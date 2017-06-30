@@ -1,0 +1,38 @@
+<header>
+  <a href="/"><img src="/bike_share_logo.jpg"></a>
+  <nav>
+    <ul>
+      <li><a class="current_page" href="/trips">Trips</a></li>
+      <li><a href="/stations">Stations</a></li>
+      <li><a href="/conditions">Weather</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="show">
+<h1>Trip Statistics</h1>
+<ul>
+  <li><span class="show-attribute">Average duration of a ride: </span><%= @trips.average(:duration).round %></li><br>
+  <li><span class="show-attribute">Longest ride: </span><a href="/trips/<%= @trips.order("duration DESC").first.id %>"> ID# <%= @trips.order("duration DESC").first.id %></a></li><br>
+  <li><span class="show-attribute">Shortest ride: </span><a href="/trips/<%= @trips.order("duration DESC").last.id %>">ID# <%= @trips.order("duration DESC").last.id %></a></li><br>
+  <li><span class="show-attribute">Station with the most rides as a starting place: </span><%= @start_stations.find(@trips.group(:start_station_id).order('count_id asc').count('id').keys.last).station.name %></li><br>
+  <li><span class="show-attribute">Station with the most rides as an ending place: </span><%= @end_stations.find(@trips.group(:start_station_id).order('count_id asc').count('id').keys.first).station.name %></li><br>
+  <li><span class="show-attribute">Month by Month breakdown of number of rides with subtotals for each year: </span><em>Data Currently Unavailable</em></li><br>
+  <li><span class="show-attribute">Most ridden bike with total number of rides for that bike:<ul class="nested-list">
+    <li>Bike ID: <%= @trips.group(:bike_id).order('count_id asc').count("id").keys.last %></li><br>
+    <li>Trips Taken: <%= @trips.group(:bike_id).order('count_id asc').count("id").values.last %></li></ul></li>
+  <li><span class="show-attribute">Least ridden bike with total number of rides for that bike:<ul class="nested-list"><br>
+    <li>Bike ID: <% all_bikes = @trips.pluck(:bike_id) %>
+    <% bike_ids = all_bikes.group_by { |id| all_bikes.count(id) }.min.last.uniq %>
+    <%= bike_ids %></li><br>
+    <li>Trips Taken: <%= @trips.group(:bike_id).order('count_id asc').count("id").values.first %></li></ul></li>
+    <li><span class="show-attribute">User subscription type breakout with both count and percentage: </span><ul class="nested-list2"><% @subscription_types.all.each do |subscription_type| %>
+      <li><span class="show-attribute"><%= subscription_type.name %> </span></li><br>
+      <ul class="nested-list2"><li><span class="show-attribute">Total users: </span><%= @trips.where(subscription_type_id: subscription_type.id).count%></li><br>
+      <li><span class="show-attribute">Percentage of users: </span><%= @trips.subscription_type_percentage(subscription_type.id) %></li><br></ul>
+      <% end %></ul></li>
+  <li><span class="show-attribute">Single date with the highest number of trips with a count of those trips: </span><%= @trips.group(:bike_id).order('count_id asc').count("id").keys.last %></li><br>
+  <li><span class="show-attribute">Single date with the lowest number of trips with a count of those trips: </span><%= @trips.count %></li><br>
+</ul>
+<p><a href="/trips">Back to Trips</a></p>
+</div>

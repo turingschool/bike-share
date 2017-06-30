@@ -14,4 +14,3 @@ group :development, :test do
   gem 'launchy'
   gem 'rack-test'
 end
-

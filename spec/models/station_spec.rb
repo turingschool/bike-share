@@ -27,8 +27,16 @@ RSpec.describe Station do
 
         expect(station2).to_not be_valid
       end
+  end
 
+  describe 'Attributes' do
+    it "will have a name, dock count, city and installation date" do
+      st = Station.new
 
-
+      expect(st).to respond_to(:name)
+      expect(st).to respond_to(:dock_count)
+      expect(st).to respond_to(:city)
+      expect(st).to respond_to(:installation_date)
+    end
   end
 end

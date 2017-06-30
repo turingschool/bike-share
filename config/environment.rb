@@ -1,5 +1,5 @@
 require 'bundler'
-require 'zlib'
+
 Bundler.require
 
 # get the path of the root of the app

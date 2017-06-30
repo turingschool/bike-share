@@ -1,0 +1,9 @@
+<h1>Add Station</h1>
+
+<form action='/stations/new' method='post'>
+  Name: <input type="textfield" name='station[name]' value="<%= @station.errors[:name][0] || @station.name %>" />
+  Number of Docks: <input type="textfield" name='station[dock_count]' value="<%= @station.errors[:dock_count][0] || @station.dock_count %>" />
+  City: <input type="textfield" name='city' value="<%= @city.errors[:name][0] || @city.name %>" />
+  Install Date: <input type="textfield" name='station[install_date]' value="<%= @station.errors[:install_date][0] || @station.install_date %>" />
+  <input type="submit" value="Add Station" />
+</form>

@@ -3,6 +3,10 @@
   <% @stations.each do |station| %>
     <h2><%= station.name %></h2>
     <a href="/stations/<%= station.id  %>/edit">Edit</a>
+<form action="/stations/<%= station.id%>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="delete"/>
+</form>
   <% end %>
   <h2>Test</h2>
 </html>

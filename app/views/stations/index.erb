@@ -1,0 +1,18 @@
+<h1>Stations</h1>
+
+<% @stations.each do |station| %>
+  <ul> Name: <%= station.name %>
+  <ti> Number of Docks: <%= station.dock_count %> </ti>
+  <ti> City: <%= station.city.name %> </ti>
+
+  <ti> Install Date: <%= station.install_date.strftime("%b%e %Y") %> </ti>
+
+  </ul>
+  <a href='/stations/<%=station.id%>/edit'>Edit Station</a>
+  <form action='/stations/<%=station.id%>' method="POST" >
+    <input type='hidden' name='_method' value="DELETE" />
+    <input type='submit' value='Delete' />
+  </form>
+<%end%>
+
+<br><a href='/stations/new'>Add Station</a>

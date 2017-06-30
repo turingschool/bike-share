@@ -13,5 +13,9 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'rack-test'
+  gem 'database_cleaner'
+  gem 'pry'
+  gem "nyan-cat-formatter"
+  gem "rspec-pride"
 end
 

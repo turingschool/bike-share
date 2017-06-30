@@ -21,6 +21,13 @@ RSpec.describe Station do
         expect(station).to_not be_valid
       end
 
+      it "is invalid if created with the same name" do
+        station = Station.create(name: "Penn Station", dock_count: 32, city: "New York", installation_date: 'Sat, 08 Jun 2013')
+        station2 = Station.create(name: "Penn Station", dock_count: 34, city: "Chicago", installation_date: 'Sat, 08 Jun 2013')
+
+        expect(station2).to_not be_valid
+      end
+
 
 
   end

@@ -1,0 +1,27 @@
+<h1>Editing <%= @station.name %></h1>
+
+<form action="/stations/<%= @station.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT" />
+  <label>Name: </label>
+  <input type="text" name="station[name]" value="<%= @station.name %>" />
+  <label>Dock Count: </label>
+  <input type="text" name="station[dock_count]" value="<%= @station.dock_count %>"/>
+  <label>City: </label>
+  <select name="station[city_id]">
+    <% City.all.each do |city| %>
+      <option value="<%= city.id %>"><%= city.name %></option>
+    <% end %>
+  </select>
+  <label>Installation Date: </label>
+  <input type="text" name="station[installation_date]" value="<%= @station.format_date %>"/>
+  <label>Longitude: </label>
+  <input type="text" name="station[longitude]" value="<%= @station.longitude %>"/>
+  <label>Latitude: </label>
+  <input type="text" name="station[latitude]" value="<%= @station.latitude %>"/>
+  <input type="submit" value="Update Station"/>
+</form>
+
+<form method="post" action="/stations/<%= @station.id %>">
+  <input type="hidden" name="_method" value="DELETE" />
+  <button type="submit" class="btn-delete">Delete</button>
+</form>

@@ -1,0 +1,47 @@
+<header>
+  <a href="/"><img src="/bike_share_logo.jpg"></a>
+  <nav>
+    <ul>
+      <li><a class="current_page" href="/trips">Trips</a></li>
+      <li><a href="/stations">Stations</a></li>
+      <li><a href="/conditions">Weather</a></li>
+    </ul>
+  </nav>
+</header>
+
+<table class="trips-table">
+  <tr>
+    <th>ID</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Starting Station</th>
+    <th>Ending Station</th>
+    <th>Zipcode</th>
+    <th>Bike ID</th>
+    <th>Subscription Type</th>
+    <th>Additional Info</th>
+    <th>Delete</th>
+
+  </tr>
+  <% @trips.each do |trip| %>
+  <tr>
+    <td><%= trip.id %></td>
+    <td><%= trip.start_date.day %>-<%= trip.start_date.month %>-<%= trip.start_date.year %></td>
+    <td><%= trip.end_date.day %>-<%= trip.end_date.month %>-<%= trip.end_date.year %></td>
+    <td><%= trip.start_station.station.name %></td>
+    <td><%= trip.end_station.station.name %></td>
+    <td><%= trip.zip_code %></td>
+    <td><%= trip.bike_id %></td>
+    <td><%= trip.subscription_type.name %></td>
+    <td><a href="/trips/<%= trip.id %>">Additional Info</a></td>
+    <td><form action="/trips/<%= trip.id %>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete">
+    </form></td>
+  <% end %>
+  </tr>
+</table>
+
+<footer></footer>
+
+<%= will_paginate @trips %>

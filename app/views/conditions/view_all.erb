@@ -1,0 +1,33 @@
+<h1>All Conditions</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Max Temperature</th>
+    <th>Mean Temperature</th>
+    <th>Min Temperature</th>
+    <th>Mean Humidity</th>
+    <th>Mean Visibility (in Miles)</th>
+    <th>Mean Wind Speed (mph)</th>
+    <th>Precipitation (inches)</th>
+  </tr>
+  <% @conditions.each do |condition| %>
+  <tr>
+    <td><%= condition.ride_date.month %>-<%= condition.ride_date.day %>-<%= condition.ride_date.year %></td>
+    <td><%= condition.max_temperature %></td>
+    <td><%= condition.mean_temperature %></td>
+    <td><%= condition.min_temperature %></td>
+    <td><%= condition.mean_humidity %></td>
+    <td><%= condition.mean_visibility %></td>
+    <td><%= condition.mean_wind_speed %></td>
+    <td><%= condition.precipitation %></td>
+    <td><a href="/conditions/<%= condition.id %>">Additional Info</a></td>
+    <td><form action="/conditions/<%= condition.id %>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete">
+    </form></td>
+  <% end %>
+  </tr>
+</table>
+
+<%= will_paginate @conditions %>

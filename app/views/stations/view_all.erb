@@ -1,0 +1,37 @@
+<header>
+      <a href="/"><img src="/bike_share_logo.jpg"></a>
+      <nav>
+        <ul>
+          <li><a class="current_page" href="/stations">Stations</a></li>
+          <li><a href="/trips">Trips</a></li>
+          <li><a href="/conditions">Weather</a></li>
+        </ul>
+      </nav>
+    </header>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Dock Count</th>
+    <th>City</th>
+    <th>Installation Date</th>
+    <th>Additional Info</th>
+    <th>Delete</th>
+  </tr>
+  <% @stations.each do |station| %>
+  <tr>
+    <td><%= station.name %></td>
+    <td><%= station.dock_count %></td>
+    <td><%= station.city.name %></td>
+    <td><%= station.installation_date %></td>
+    <td><a href="/stations/<%= station.id %>">Additional Info</a></td>
+    <td><form action="/stations/<%= station.id %>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete">
+    </form></td>
+  <% end %>
+  </tr>
+</table>
+
+<footer></footer>
+
+<%= will_paginate @stations %>

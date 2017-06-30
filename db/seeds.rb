@@ -1,6 +1,7 @@
 require 'csv'
 require './app/models/station'
 require './app/models/city'
+
 def from_csv(file_path)
   values = []
   contents = CSV.open(file_path, headers: true, header_converters: :symbol)
@@ -19,12 +20,11 @@ end
 def seed_station_database(file_path)
   stations = from_csv(file_path)
   stations.each do |station|
-    city = City.find_by(city: station["city"])
-    puts station["city"]
+    city = City.find_by(city: station[:city])
     station.delete_if { |k,v| k == :lat || k == :long || k == :city}
     city.stations.create(station)
   end
 end
 
-seed_city_database("/Users/jimmytruong/turing/2module/projects/bike-share/db/csv/station.csv")
-seed_station_database("/Users/jimmytruong/turing/2module/projects/bike-share/db/csv/station.csv")
+seed_city_database("db/csv/station.csv")
+seed_station_database("db/csv/station.csv")

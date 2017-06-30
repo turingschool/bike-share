@@ -1,0 +1,18 @@
+<h1>Trips</h1>
+
+
+<% @trips.each do |trip| %>
+  <ul> Duration: <%= trip.duration %>
+  <ti> Start Date: <%= trip.start_date %> </ti>
+  <ti> Start Station Name: <%= trip.start_station_name %> </ti>
+  <ti> End Date: <%= trip.end_date %> </ti>
+  <ti> End Station Name: <%= trip.end_station_name %> </ti>
+  <ti> Bike ID: <%= trip.bike_id %> </ti>
+  <ti> Subscription Type: <%= trip.subscription_type %> </ti>
+  <ti> Zip Code: <%= trip.zip_code %> </ti>
+
+  <ti> Install Date: <%= station.install_date %> </ti>
+
+  </ul>
+
+<%end%>

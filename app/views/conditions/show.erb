@@ -1,0 +1,14 @@
+<h1>Condition</h1>
+
+  Date:  <%= @condition.date %>
+  Zip Code: <%= @condition.zip_code %>
+  Max Temperature: <%= @condition.maximum_temperature %>
+  Mean Temperature: <%= @condition.mean_temperature %>
+  Min Temperature: <%= @condition.minimum_temperature %>
+  Mean Humidity:  <%= @condition.mean_humidity %> %
+  Mean Visibility (in Miles): <%= @condition.mean_visibility %>
+  Mean Wind Speed (mph): <%= @condition.mean_wind_speed %>
+  Precipitation (inches): <%= @condition.percipitation %>
+  City: <%= @condition.city.name %>
+
+<br><a href="/conditions">All Conditions</a>

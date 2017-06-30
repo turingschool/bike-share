@@ -282,3 +282,5 @@ The project will be assessed with the following rubric:
 * 3: Good use of branches, pull requests, and a project-management tool.
 * 2: Sporadic use of branches, pull requests, and/or project-management tool.
 * 1: Little use of branches, pull requests, and/or a project-management tool.
+
+[![Stories in Ready](https://badge.waffle.io/TomSoucie/bike-share.png?label=ready&title=Ready)](http://waffle.io/TomSoucie/bike-share)

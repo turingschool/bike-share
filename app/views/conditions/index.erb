@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col-sm-16">
+    <h3><i class="glyphicon glyphicon-list"></i> All Weather Conditions</h3>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="well">“Give a woman a fish and feed her for a day. Teach a woman to fish and feed her for a lifetime. Teach a woman to cycle and she will realize fishing is stupid and boring.” <em>– Desmond Tutu</em></div>
+      </div>
+      <div class="col-md-9">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4>Station Index</h4></div>
+          <div class="panel-body">
+          <p>
+          We hope to be able to sort the index below by its headers. Until then, scroll down; there are only 70 stations. Soon, you'll be able to edit a station from this page as well. Standby! Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet.
+          </p>
+        </div>
+      </div>
+    </div>
+
+      <div class="col-md-3">
+        <div class="btn-group btn-group-justified">
+          <a href="/conditions/new" class="btn btn-info col-sm-3">
+            <i class="glyphicon glyphicon-plus"></i><br>
+            add a report
+          </a>
+          <a href="#" class="btn btn-info col-sm-3">
+            <i class="glyphicon glyphicon-question-sign"></i><br>
+            help
+          </a>
+        </div>
+
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-16">
+    <hr>
+    <table class="table table-striped">
+      <thead>
+        <tr><th>Date</th><th>Max Temperature</th><th>Min Temperature</th><th>Mean Temperature</th><th>Mean Humidity</th><th>Mean Humidity</th><th>Mean Visibility</th><th>Mean Windspeed</th><th>Precipitation</th><th>&nbsp;</th></tr>
+      </thead>
+      <tbody>
+        <% @conditions.each do |condition| %>
+        <tr>
+          <td><%= condition.date %></td>
+          <td><%= condition.max_temperature %></td>
+          <td><%= condition.min_temperature %></td>
+          <td><%= condition.mean_temperature %></td>
+          <td><%= condition.mean_humidity %></td>
+          <td><%= condition.mean_visibility %></td>
+          <td><%= condition.mean_windspeed %></td>
+          <td><%= condition.precipitation %></td>
+          <td><a href="/conditions/<%= condition.id %>/edit"><button type="button" class="btn btn-info">Edit Report</button></a>
+
+          <td><form action="/conditions/<%= condition.id %>" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            <input class="btn btn-info" type="submit" value="Delete Weather Report" />
+          </form></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div>
+      <ul>
+        <li><a href="conditions/page/<%= @previous %>"></a>Previous</li>
+        <li><a href="conditions/page/<%= @next %>"></a>Next</li>
+      </ul>
+    </div>
+
+    <hr>
+
+    </div>
+  </div>
+</div>

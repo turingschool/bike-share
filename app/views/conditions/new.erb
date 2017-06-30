@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-sm-16">
+    <h3><i class="glyphicon glyphicon-plus"></i> Add a Weather Report</h3>
+    <hr>
+      <div class="row">
+        <div class="col-md-12">
+  			  <div class="well">Please complete all fields to add the new report.</div>
+        </div>
+        <div class="col-md-9">
+          <div class="panel panel-default">
+            <div class="panel-heading"><h4>Weather Index</h4></div>
+            <div class="panel-body">
+            <p>
+            Today we have a 50% chance of awesome sauce.
+            </p>
+          </div>
+        </div>
+      </div>
+
+        <div class="col-md-3">
+          <div class="btn-group btn-group-justified">
+            <a href="#" class="btn btn-info col-sm-3">
+              <i class="glyphicon glyphicon-question-sign"></i><br>
+              help
+            </a>
+          </div>
+
+			    </div>
+        </div>
+      </div>
+  </div>
+
+    <div class="row">
+      <div class="col-md-16">
+        <hr>
+        <form action="/conditions" method="post">
+          <label for="">Date:&nbsp; </label>
+          <input type="textfield" name="conditions[date]">
+          <label for="">&nbsp;&nbsp;Max Temperature:&nbsp; </label>
+          <input type="textfield" name="condtions[max_temp]">
+          <label for="">&nbsp;&nbsp;Mean Temperature:&nbsp;</label>
+          <input type="textfield" name="conditions[mean_temp]">
+          <label for="">&nbsp;&nbsp;Min Temperature:&nbsp; </label>
+          <input type="textfield" name="conditions[min_temp]"><br><br>
+          <label for="">&nbsp;&nbsp;Mean Humidity:&nbsp; </label>
+          <input type="textfield" name="conditions[mean_humidity]">
+          <label for="">&nbsp;&nbsp;Mean Visibility:&nbsp; </label>
+          <input type="textfield" name="conditions[mean_visibility]">
+          <label for="">&nbsp;&nbsp;Mean Windspead:&nbsp; </label>
+          <input type="textfield" name="conditions[mean_windspeed]">
+          <label for="">&nbsp;&nbsp;Precipitation:&nbsp; </label>
+          <input type="textfield" name="conditions[precipitation]"><br><br>
+          <input class="btn btn-info" type="submit" value="Create Report" />
+        </form>
+        </div>
+      </div>
+    </div>

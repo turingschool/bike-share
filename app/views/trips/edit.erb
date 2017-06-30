@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<h1>Edit Trip</h1>
+
+<table>
+  <tr>
+    <th>Duration</th>
+    <th>Start Station</th>
+    <th>End Station</th>
+    <th>Bike ID</th>
+    <th>Zipcode</th>
+    <th>Subscription Type</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+  </tr>
+
+  <tr>
+    <td>Duration: <%= @trip.duration %> </td>
+    <td>Start Station: <%= @trip.start_station.name %> </td>
+    <td>End Station: <%= @trip.end_station.name %> </td>
+    <td>Bike ID: <%= @trip.bike_id %> </td>
+    <td>Zipcode: <%= @trip.zipcode.zip_code %> </td>
+    <td>Subscription Type: <%= @trip.subscription.subscription %> </td>
+    <td>Start Date: <%= @trip.start_date %> </td>
+    <td>End Date: <%= @trip.end_date %> </td>  </tr>
+</table>
+
+<form action="/trips/<%= @trip.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT" />
+  <label for="">Duration: </label>
+  <input type="textfield" name="trip[duration]">
+  <label for="">Starting Station: </label>
+  <input type="textfield" name="trip[start_station]">
+  <label for="">End Station: </label>
+  <input type="textfield" name="trip[end_station]">
+  <label for="">Zipcode: </label>
+  <input type="textfield" name="trip[zip_code]">
+  <label for="">Bike ID: </label>
+  <input type="textfield" name="trip[bike_id]">
+  <label for="">Subsciption Type: </label>
+  <input type="textfield" name="trip[subscription]">
+  <label for="">Start Date: </label>
+  <input type="textfield" name="trip[start_date]">
+  <label for="">End Date: </label>
+  <input type="textfield" name="trip[end_date]">
+  <input class="btn btn-info" type="submit" value="Update Trip" />
+</form>

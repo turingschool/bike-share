@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-sm-16">
+    <h3><i class="glyphicon glyphicon-dashboard"></i> Stations Dashboard</h3>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-7">
+        <div class="well">“Nothing compares to the simple pleasure of riding a bike” <em>– John F Kennedy</em></div>
+          <hr>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4>Station Stats</h4></div>
+          <div class="panel-body">
+            <medium><strong>Total number of stations:</strong> <%= @station.total_stations %></medium><br><br>
+            <medium><strong>Average number of bikes available per station:</strong> <%= @station.average_bikes_per_station %></medium><br><br>
+            <medium><strong>Newest station(s):</strong> <%= @station.newest_station %></medium><br><br>
+            <medium><strong>Oldest station(s):</strong> <%= @station.oldest_station %></medium><br><br>
+
+
+            <medium><strong>Station(s) where the most bikes are available:</strong> <%= @station.stations_where_the_most_bikes_are_available %><br><br>Bike inventory at each station</medium>
+            <div class="progress">
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @station.most_bikes_available_at_station %> " aria-valuemin="0" aria-valuemax="27" style="width: <%= @station.most_bikes_available_at_station %>%">
+                <%= @station.most_bikes_available_at_station %>
+              </div>
+            </div>
+
+            <medium><strong>Station(s) where the fewest bikes are available:</strong> <%= @station.stations_where_the_fewest_bikes_are_available %><br><br>Bike inventory at each station</medium>
+            <div class="progress">
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @station.fewest_bikes_available_at_station %> " aria-valuemin="0" aria-valuemax="27" style="width: <%= @station.fewest_bikes_available_at_station %>%">
+                <%= @station.fewest_bikes_available_at_station %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="btn-group btn-group-justified">
+          <a href="/stations/new" class="btn btn-info col-sm-3">
+            <i class="glyphicon glyphicon-plus"></i><br>
+            add a station
+          </a>
+          <a href="/stations" class="btn btn-info col-sm-3">
+            <i class="glyphicon glyphicon-cog"></i><br>
+            edit stations
+          </a>
+          <a href="#" class="btn btn-info col-sm-3">
+            <i class="glyphicon glyphicon-question-sign"></i><br>
+            help
+          </a>
+        </div>
+            <hr>
+          <p>
+          <img src="http://piximus.net/media/16892/just-horsing-around-39.jpg" width="473">
+          <h5 align="right"><em>"It's easier than riding a horse!"</em></h5>
+          </p>
+        </div>
+      </div>
+    </div>
+</div>

@@ -6,5 +6,9 @@ RSpec.describe Station do
 
       expect(station.name).to eq("Penn")
     end
+
+    describe "city" do
+      
+    end
   end
 end

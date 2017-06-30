@@ -1,0 +1,44 @@
+<h1>All Stations</h1>
+<p><a class="btn btn-new" href="/stations/new">Add New Station</a></p>
+<p><a class="btn btn-new" href="/stations-dashboard">View Station Dashboard</a></p>
+<% if @stations.empty? %>
+  <p>No stations available.</p>
+<% else %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>City</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @stations.each do |station| %>
+    <tr>
+      <td><h2 class="station-title"><a href="/stations/<%= station.id %>"><%= station.name %></a></h2></td>
+      <td><%= station.city.name %></td>
+      <td><button><a class="btn btn-edit" href="/stations/<%= station.id %>/edit">Edit Station</a></button></td>
+      <td>
+        <form action="/stations/<%= station.id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE" />
+          <input type="submit" class="btn btn-delete" value="Delete"/>
+        </form>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<section class="pagination">
+  <p>
+    <% if @page != 1 %>
+      <a href="?page=<%= @page - 1 %>" class="btn btn-prev">Previous Page</a> |
+    <% end %>
+    Page <%= @page %> of <%= Station.all_pages %>
+     <% if @page != Station.all_pages %>
+        | <a href="?page=<%= @page + 1 %>" class="btn btn-next">Next Page</a>
+     <% end %>
+   </p>
+</section>
+<% end %>

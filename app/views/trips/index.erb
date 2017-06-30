@@ -1,0 +1,60 @@
+  <h1>All Trips</h1>
+<p><a class="btn btn-new" href="trips/new">Add New Trip</a></p>
+<p><a class="btn btn-new" href="trips-dashboard">View Trips Dashboard</a></p>
+<% if @trips.empty? %>
+  <p>No trips available.</p>
+<% else %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Duration</th>
+      <th>Start Date</th>
+      <th>Start Station</th>
+      <th>End Date</th>
+      <th>End Station</th>
+      <th>Bike ID</th>
+      <th>Subscription Type</th>
+      <th>Zip Code</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @trips.each do |trip| %>
+    <tr>
+      <td><%= trip.duration %></td>
+      <td><%= trip.format_start_date_time %></td>
+      <td><%= trip.start_station.name %></td>
+      <td><%= trip.format_end_date_time %></td>
+      <td><%= trip.end_station.name %></td>
+      <td><%= trip.bike_id %></td>
+      <td><%= trip.subscription_type %></td>
+      <td><%= trip.zipcode.zipcode if trip.zipcode  %></td>
+      <td><button><a class="btn btn-view" href="/trips/<%= trip.id %>">View Trip</a></button></td>
+      <td><button><a class="btn btn-edit" href="/trips/<%= trip.id %>/edit">Edit Trip</a></button></td>
+      <td>
+        <form action="/trips/<%= trip.id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE" />
+          <input type="submit" class="btn btn-delete" value="Delete"/>
+        </form>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<section class="pagination">
+  <p>
+    <% if @page != 1 %>
+      <a href="?page=<%= @page - 1 %>" class="btn btn-prev">Previous Page</a> |
+    <% end %>
+    Page <%= @page %> of <%= Trip.all_pages %>
+     <% if @page != Trip.all_pages %>
+        | <a href="?page=<%= @page + 1 %>" class="btn btn-next">Next Page</a>
+     <% end %>
+   </p>
+</section>
+
+<% end %>

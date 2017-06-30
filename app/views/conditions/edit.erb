@@ -1,0 +1,33 @@
+<h1>Editing <%= @condition.format_date %></h1>
+
+<form action="/conditions/<%= @condition.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT" />
+  <label>Date: </label>
+  <input type="text" name="condition[date]" value="<%= @condition.format_date %>" />
+  <label>Highest Temp: </label>
+  <input type="text" name="condition[max_temp]" value="<%= @condition.max_temp %>" />
+  <label>Mean Temp: </label>
+  <input type="text" name="condition[mean_temp]" value="<%= @condition.mean_temp %>" />
+  <label>Lowest Temp: </label>
+  <input type="text" name="condition[min_temp]" value="<%= @condition.min_temp %>" />
+  <label>Mean Humidity: </label>
+  <input type="text" name="condition[mean_humidity]" value="<%= @condition.mean_humidity %>" />
+  <label>Mean Visibility: </label>
+  <input type="text" name="condition[mean_visibility]" value="<%= @condition.mean_visibility %>" />
+  <label>Mean Wind Speed: </label>
+  <input type="text" name="condition[mean_wind_speed]" value="<%= @condition.mean_wind_speed %>" />
+  <label>Precipitation: </label>
+  <input type="text" name="condition[precipitation]" value="<%= @condition.precipitation %>" />
+  <label for="condition[zipcode_id]">Zipcode: </label>
+  <select name="condition[zipcode_id]">
+    <% Zipcode.all.each do |zipcode| %>
+      <option value="<%= zipcode.id %>" <%= @condition.zipcode_selected(zipcode.id) %>><%= zipcode.zipcode %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Update Condition" />
+</form>
+
+<form method="post" action="/conditions/<%= @condition.id %>">
+  <input type="hidden" name="_method" value="DELETE" />
+  <button type="submit" class="btn-delete">Delete</button>
+</form>

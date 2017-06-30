@@ -1,0 +1,27 @@
+<h1><%= @station.name %></h1>
+
+<h2>Info</h2>
+
+<p>Name: <%= @station.name %></p>
+<p>Dock Count: <%= @station.dock_count %></p>
+<p>City: <%= @station.city.name %></p>
+<p>Installation Date: <%= @station.format_date %></p>
+<p>Longitude: <%= @station.longitude %></p>
+<p>Latitude: <%= @station.latitude %></p>
+
+<p>Number of Rides Started Here: <%= Trip.rides_started_at_station(@station.id) %></p>
+<p>Number of Rides Ended Here: <%= Trip.rides_ended_at_station(@station.id) %></p>
+<p>Most Frequent Destination From Here: <%= Trip.frequent_destination_station(@station.id) %></p>
+<p>Most Frequent Origination To Here: <%= Trip.frequent_destination_station(@station.id) %></p>
+<p>Busiest Trip Origination Date: <%= Trip.busiest_origination_date(@station.id) %></p>
+<p>Most Frequent Zip Code of Users Starting Here: <%= Trip.frequent_starting_user_zipcode(@station.id) %></p>
+<p>Most Frequent Bike ID Starting Here: <%= Trip.frequent_origin_bike_id(@station.id) %></p>
+
+<button class="btn-edit">
+  <a href="/stations/<%= @station.id %>/edit">Edit Station</a>
+</button>
+
+<form method="post" action="/stations/<%= @station.id %>">
+  <input type="hidden" name="_method" value="DELETE" />
+  <button type="submit" class="btn-delete">Delete</button>
+</form>

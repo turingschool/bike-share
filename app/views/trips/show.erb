@@ -1,0 +1,18 @@
+<h2>Trip Info</h2>
+
+<p>Duration: <%= @trip.duration %></p>
+<p>Start Date: <%= @trip.format_start_date_time %></p>
+<p>Start Station: <%= @trip.start_station.name %></p>
+<p>End Date: <%= @trip.format_end_date_time %></p>
+<p>End Station: <%= @trip.end_station.name %></p>
+<p>Bike ID: <%= @trip.bike_id %></p>
+<p>Subscription Type: <%= @trip.subscription_type %></p>
+
+<button class="btn-edit">
+  <a href="/trips/<%= @trip.id %>/edit">Edit Trip</a>
+</button>
+
+<form method="post" action="/trips/<%= @trip.id %>">
+  <input type="hidden" name="_method" value="DELETE" />
+  <button type="submit" class="btn-delete">Delete</button>
+</form>

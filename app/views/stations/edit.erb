@@ -1,0 +1,10 @@
+<h1>Edit Station</h1>
+
+<form action='/stations/<%=params[:id]%>' method='post'>
+  <input type="hidden" name='_method' value='PUT' />
+  Name: <input type="textfield" name='station[name]' value="<%= @station.errors[:name][0] || @station.name %>"/>
+  Number of Docks: <input type="textfield" name='station[dock_count]' value="<%= @station.errors[:dock_count][0] || @station.dock_count %>"/>
+  City: <input type="textfield" name='city' value="<%= @city.errors[:name][0] || @city.name %>"/>
+  Install Date: <input type="textfield" name='station[install_date]' value="<%= @station.errors[:install_date][0] || @station.install_date.strftime("%b%e %Y") %>"/>
+  <input type="submit" value="Submit" />
+</form>

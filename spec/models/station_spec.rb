@@ -8,7 +8,8 @@ RSpec.describe Station do
     end
 
     describe "city" do
-      
+      it "returns cities for stations"
+
     end
   end
 end

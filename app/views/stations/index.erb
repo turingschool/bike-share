@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<h1>Stations</h1>
+<a href="/stations/new">Add Station</a>
   <% @stations.each do |station| %>
     <h2><%= station.name %></h2>
     <a href="/stations/<%= station.id  %>/edit">Edit</a>

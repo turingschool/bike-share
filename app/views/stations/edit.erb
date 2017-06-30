@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="/application.css">
     <title>Bike World</title>
   </head>
   <body>
+    <a href="/stations">Go Back</a>
     <form action="/stations/<%= @station.id %>" method="post">
       <input type="hidden" name="_method" value="PUT" />
       <input name='station[name]' value="<%= @station.name %>"/><br/>

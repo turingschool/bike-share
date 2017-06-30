@@ -1,15 +1,18 @@
 RSpec.describe Station do
-  describe "Class Methods" do
-    describe "name" do
-      it "returns names for stations"
-      station = Station.create(name: "Penn", dock_count: 32, city: "New York", installation_date: "8/6/2013")
+  describe "Validations" do
 
-      expect(station.name).to eq("Penn")
+      it "is valid with name, dock count, city and installation date" do
+      station = Station.new(name: "Penn Station", dock_count: 32, city: "New York")
+
+      expect(station).to be_valid
     end
 
-    describe "city" do
-      it "returns cities for stations"
+      it "is invalid if missing name" do
+        station = Station.new(dock_count: 32, city: "New York")
 
-    end
+        expect(station).to_not be_valid
+      end
+
+
   end
 end

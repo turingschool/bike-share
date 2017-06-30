@@ -1,0 +1,35 @@
+<h2>Dashboard</h2>
+
+<a href="/">
+  <button type="button" name="button">Home</button>
+  </a>
+<h4>Average duration of a ride: <%=@average_ride_duration%></h4>
+<h4>Longest ride: <%=@longest_ride%></h4>
+<h4>Shortest ride: <%=@shortest_ride%></h4>
+<h4>Station with the most rides as a starting place: <%=@station_name_most_rides_start%> (<%=@station_count_most_rides_start%>)</h4>
+<h4>Station with the most rides as an ending place: <%=@station_name_most_rides_end%> (<%=@station_count_most_rides_end%>)</h4>
+<h4>Most ridden bike with total number of rides for that bike: <%=@bike_most_rides%></h4>
+<h4>Least ridden bike with total number of rides for that bike: <%=@bike_least_rides%></h4>
+<!-- <h4>User subscription type: <%=@shortest_ride%></h4>
+<ul class="user_subscription">
+ <li>Subscriber Count: 2 Percentage: 60%</li>
+<li>Customer Count: 1 Percentage: 40%</li>
+</ul> -->
+<h4>Single date with the highest number of trips with a count of those trips: <%=@date_highest_trips%></h4>
+<h4>Single date with the lowest number of trips with a count of those trips: <%=@date_lowest_trips%></h4>
+
+<h4>Month By Month Breakdown</h4>
+
+<ul>
+  <% @month_by_month_breakdown.each do |k, v| %>
+    <li> <%=k%>: <%=v%> </li>
+  <% end %>
+</ul>
+
+<h4>Year Subtotals</h4>
+
+<ul>
+  <% @year_subtotals.each do |k, v| %>
+    <li> 20<%=k%>: <%=v%> </li>
+  <% end %>
+</ul>

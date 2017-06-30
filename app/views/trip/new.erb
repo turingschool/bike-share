@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bike Share Project</title>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<body style="background-color:gold;">
+<h1 style="font-size:46px; color:#d35400">Create a New Trip</h1>
+
+<form action="/trips" method="post">
+  <label for="">Duration:</label>
+  <input type="textfield" name="trip[duration]"><br>
+  <label for="">Start Date:</label>
+  <input type="textfield" name="trip[start_date]"><br>
+  <label for="">Start Station Name:</label>
+  <input type="textfield" name="trip[start_station_name]"><br>
+  <label for="">End Date:</label>
+  <input type="textfield" name="trip[end_date]"><br>
+  <label for="">End Station Name:</label>
+  <input type="textfield" name="trip[end_station_name]"><br>
+  <label for="">Bike ID:</label>
+  <input type="textfield" name="trip[bike_id]"><br>
+  <label for="">Subscription Type:</label>
+  <input type="textfield" name="subscription_type[name]"><br>
+  <label for="">Zip Code:</label>
+  <input type="textfield" name="trip[zip_code]"><br>
+  <input type="submit" value="Submit"/>
+</form>
+<a href="/trips/page/<%=@previous_page%>">
+  <button class="btn warning">Previous</button>
+  <!-- <button type="button" name="button">Previous</button> -->
+</a>
+<a href="/trips/page/<%=@next_page%>">
+<button class="btn warning">Next</button>
+<!-- <button type="button" name="button">Next</button> -->
+</a>
+</div>
+</body>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+</div>
+</body>
+</html>

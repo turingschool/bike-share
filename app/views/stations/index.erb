@@ -1,0 +1,6 @@
+<h2 class="title">Stations</h2>
+<ol>
+  <% @stations.each do |station| %>
+  <li><a href="/stations/<%= station.id %>"><%= station.name %></a></li>
+  <% end %>
+</ol>

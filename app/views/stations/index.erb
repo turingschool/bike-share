@@ -2,5 +2,7 @@
 <html>
   <% @stations.each do |station| %>
     <h2><%= station.name %></h2>
+    <a href="/stations/<%= station.id  %>/edit">Edit</a>
   <% end %>
+  <h2>Test</h2>
 </html>

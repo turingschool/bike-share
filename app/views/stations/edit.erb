@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/application.css">
+    <title>Bike World</title>
+  </head>
+  <body>
+    <form action="/stations/<%= @station.id %>" method="post">
+      <input type="hidden" name="_method" value="PUT" />
+      <input name='station[name]' value="<%= @station.name %>"/><br/>
+      <input name='station[city]' value="<%= @station.city %>"</input><br/>
+      <input name='station[dock_count]' value="<%= @station.dock_count %>"</input><br/>
+      <input name='station[installation_date]' value="<%= @station.installation_date %>"</input><br/>
+      <input type='submit'/>
+    </form>
+  </body>
+</html>

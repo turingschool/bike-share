@@ -17,4 +17,16 @@ class BikeShareApp < Sinatra::Base
     station.save
     redirect "/stations"
   end
+
+  get "/stations/:id" do |id|
+    Station.find(params[:id])
+    redirect "/stations/#{id}"
+  end
+
+  get "/stations/:id/edit" do
+    @station = Station.find(params[:id].to_i)
+    erb :"stations/edit"
+  end
+
+
 end

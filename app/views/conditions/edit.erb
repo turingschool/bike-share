@@ -1,0 +1,18 @@
+<h1>Edit Weather</h1>
+
+<form action="/conditions/<%= @condition.id %>" method="post">
+  <input type="hidden" name='_method' value='PUT' />
+  Date:  <input type="textfield" name='condition[date]' value="<%= @condition.errors[:date][0] || @condition.date %>" />
+  Zip Code: <input type="textfield" name="condition[zip_code]" value="<%= @condition.errors[:zip_code][0] || @condition.zip_code %>" />
+  Max Temperature: <input type="textfield" name="condition[maximum_temperature]" value="<%= @condition.errors[:maximum_temperature][0] || @condition.maximum_temperature %>" />
+  Mean Temperature: <input type="textfield" name="condition[mean_temperature]" value="<%= @condition.errors[:mean_temperature][0] || @condition.mean_temperature %>" />
+  Min Temperature: <input type="textfield" name="condition[minimum_temperature]" value="<%= @condition.errors[:minimum_temperature][0] || @condition.minimum_temperature %>" />
+  Mean Humidity: <input type="textfield" name="condition[mean_humidity]" value="<%= @condition.errors[:mean_humidity][0] || @condition.mean_humidity %>" />
+  Mean Visibility (in Miles): <input type="textfield" name="condition[mean_visibility]" value="<%= @condition.errors[:mean_visibility][0] || @condition.mean_visibility %>"  />
+  Mean Wind Speed (mph): <input type="textfield" name="condition[mean_wind_speed]" value="<%= @condition.errors[:mean_wind_speed][0] || @condition.mean_wind_speed %>" />
+  Precipitation (inches): <input type="textfield" name="condition[precipitation]" value="<%= @condition.errors[:precipitation][0] || @condition.precipitation %>" />
+  City: <input type="textfield" name="city" value="<%= @city.errors[:name][0] || @city.name %>" />
+  <input type="submit" value="Submit" />
+</form>
+
+

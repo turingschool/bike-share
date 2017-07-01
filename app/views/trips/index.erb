@@ -2,4 +2,10 @@
 <% @trips.each do |trip| %>
   <h3>Trip ID: <%= trip.id %></h3>
   <p>Duration: <%= trip.duration  %></p>
+  <p>Start Date: <%= trip.start_date  %></p>
+  <p>Start Station ID: <%= trip.start_station_id  %></p>
+  <p>End Date: <%= trip.end_date  %></p>
+  <p>End Station ID: <%= trip.end_station_id  %></p>
+  <p>Bike ID: <%= trip.bike_id  %></p>
+  <p>Subscription Type ID: <%= trip.subscription_type_id  %></p>
 <% end %>

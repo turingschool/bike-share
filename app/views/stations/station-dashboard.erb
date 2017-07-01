@@ -1,8 +1,14 @@
 
 <h1>Station Dashboard</h1>
 <p>Total Stations: <%= Station.count %></p>
-<p>Average Bikes per Station: <%=  %></p>
-<p>Most bikes at a Station: <%=  %></p>
-<p>Station with most Bikes: <%=  %></p>
-<p>Least bikes at Station: <%=  %></p>
-<p>Station with Least Bikes: <%=  %></p>
+<p>Average Bikes per Station: <%= Station.average("dock_count").round %></p>
+<p>Most bikes at a Station: <%= Station.most_bikes %></p>
+<p>Station with most Bikes: <%= Station.stations_with_most_bikes %></p>
+<p>Least bikes at Station: <%= Station.least_bikes  %></p><br>
+
+<p>Station with Least Bikes:</p>
+<% Station.stations_with_least_bikes.each do |station| %>
+  <p><%= station %></p>
+<% end %>
+<p>Most Recently Installed: <%= Station.newest_stations %></p>
+<p>Oldest Station: <%= Station.oldest_stations %></p>

@@ -26,7 +26,7 @@ RSpec.describe "User visits '/station-dashboard'" do
     expect(page).to have_content("Station with Least Bikes: Rockridge")
   end
   it "and sees most recently installed station" do
-    expect(page).to have_content("Station with Least Bikes: Rockridge")
+    expect(page).to have_content("Most Recently Installed: Rockridge")
   end
   it "and sees oldest station" do
     expect(page).to have_content("Oldest Station: Mission")

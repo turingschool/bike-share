@@ -7,7 +7,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'capybara/dsl'
 
 Capybara.app = BikeShareApp
-Capybara.save_and_open_page_path = 'tmp/capybara'
+Capybara.save_path = 'tmp/capybara'
 
 DatabaseCleaner.strategy = :truncation
 

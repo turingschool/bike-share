@@ -2,6 +2,7 @@ require 'csv'
 require './app/models/station'
 require './app/models/city'
 require './app/models/subscription'
+require './app/models/trip'
 
 def from_csv(file_path)
   values = []
@@ -39,8 +40,9 @@ def seed_trips_database(file_path)
   trips = from_csv(file_path)
   trips.each do |trip|
     subscription = Subscription.find_by(subscription_type: trip[:subscription_type])
-    trip.delete_if {|k,v| k == :zipcode || k == :subscription_type}
-    trip.subscriptions.create(trip)
+    trip.delete_if {|k,v| k == :subscription_type || k == :start_station_name || k == :end_station_name}
+    next if trip[:zip_code] == '' || trip[:zip_code] == nil
+    subscription.trips.create!(trip)
   end
 end
 

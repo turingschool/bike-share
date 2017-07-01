@@ -12,7 +12,6 @@ RSpec.describe "user edits station" do
     fill_in("station[city]", with: "new_city")
 
     click_button("Edit Station")
-    save_and_open_page
     station = Station.last
     expect(current_path).to eq("/stations/#{station.id}")
     expect(page).to have_content("new_city")

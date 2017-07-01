@@ -7,7 +7,7 @@ RSpec.describe "user creates station" do
     fill_in("station[city]", with: "city")
 
     click_button("Create Station")
-    save_and_open_page
+    #save_and_open_page
     station = Station.last
     expect(current_path).to eq("/stations/#{station.id}")
     expect(page).to have_content("fifth")

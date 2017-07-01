@@ -1,0 +1,29 @@
+<h1>All Stations</h1>
+
+<h3><a href="/stations/new">Create New Station</a></h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>City</th>
+    <th>Dock Count</th>
+    <th>Installation Date</th>
+  </tr>
+
+  <% @stations.each do |station| %>
+  <tr>
+    <td><%= station.name %></td>
+    <td><%= station.city %></td>
+    <td><%= station.dock_count %></td>
+    <td><%= station.installation_date %></td>
+    <td><a href="/stations/<%= station.id %>">Station Info</a></td>
+
+      <td>
+      <form class="" action="/stations" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" name="" value="delete">
+      </form>
+      </td>
+    </tr>
+  <% end %>
+
+</table>

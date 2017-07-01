@@ -5,8 +5,6 @@
   <link rel="stylesheet" href="/css/custom.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <title>BIKE SHARE</title>
-  <!-- <img class="img-circle heavy-border" src="http://www.paper-bicycle.com/hustle/wp-content/uploads/2013/08/basket.jpg" alt=""> -->
 </head>
 <body>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -14,7 +12,9 @@
 <script>src="/js/bootstrap.min.js"</script>
 <script>src="/js/.js"</script> -->
   <header>
-    <!-- <h3>BIKE SHARE - FABULOUS 4</h3> -->
+    <div class="bike-pic-header-container">
+      <img class="bike-pic-header" src="http://3ab5c52de8e71c1d8a88-7f01c3d006ad95dfe2d675a67d0797ae.r42.cf2.rackcdn.com/650cb9ea784beae0b75afede62fdd0d9-615322df681a0d74c4207049db8fb366.jpg" alt="">  
+    </div>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -53,10 +53,17 @@
       </div><!-- /.container-fluid -->
     </nav>
   </header>
+
   <%= yield %>
 </body>
-<footer>
+<nav class="navbar navbar-default navbar-bottom" role="navigation">
+  <div class="container">
+    <h5 class"tight-text" > Bikeshare is owned by ElJiJiJo Corp.</h5>
+    <p class"tight-text"> ® BringDaFunk Development group of Denver. All rights reserved. Data is freely shared.</p>
+  </div>
+</nav>
+<!-- <footer class="footer">
   <p>----------------------------------------------------------</p>
   <p>................    UNIVERSAL  FOOTER    .................</p>
-</footer>
+</footer> -->
 </html>

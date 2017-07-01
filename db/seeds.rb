@@ -1,6 +1,7 @@
 require 'csv'
 require './app/models/station'
 require './app/models/city'
+require './app/models/subscription'
 
 def from_csv(file_path)
   values = []
@@ -22,29 +23,28 @@ def seed_station_database(file_path)
   stations.each do |station|
     city = City.find_by(city: station[:city])
     station.delete_if { |k,v| k == :lat || k == :long || k == :city}
-    city.stations.create(station)
+    city.stations.create!(station)
   end
 end
 
-def seed_dates_database(file_path)
-  dates = from_csv(file_path)
-  dates.each do |date|
-    date.keep_if {|k,v| k == :date}
+def seed_subscriptions_database(file_path)
+  subscriptions = from_csv(file_path)
+  subscriptions.each do |subscription_type|
+    subscription_type.keep_if {|k,v| k == :subscription_type}
   end
-  dates.each do |date|
-    list = date.values
-    date[list]
-
+  subscriptions.uniq.each {|sub_type| Subscription.create!(sub_type)}
 end
 
 def seed_trips_database(file_path)
   trips = from_csv(file_path)
   trips.each do |trip|
-    trip.delete_if {|k,v| k == :zipcode}
+    subscription = Subscription.find_by(subscription_type: trip[:subscription_type])
+    trip.delete_if {|k,v| k == :zipcode || k == :subscription_type}
+    trip.subscriptions.create(trip)
   end
 end
 
-seed_city_database("db/csv/station.csv")
-seed_station_database("db/csv/station.csv")
-seed_dates_database("")
-seed_trips_database("db/csv/trip.csv")
+# seed_city_database("db/csv/station.csv")
+# seed_station_database("db/csv/station.csv")
+seed_subscriptions_database("db/csv/trip.csv")
+# seed_trips_database("db/csv/trip.csv")

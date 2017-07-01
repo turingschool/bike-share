@@ -46,5 +46,5 @@ end
 
 # seed_city_database("db/csv/station.csv")
 # seed_station_database("db/csv/station.csv")
-seed_subscriptions_database("db/csv/trip.csv")
-# seed_trips_database("db/csv/trip.csv")
+# seed_subscriptions_database("db/csv/trip.csv")
+seed_trips_database("db/csv/trip.csv")

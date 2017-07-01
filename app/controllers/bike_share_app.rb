@@ -34,4 +34,9 @@ class BikeShareApp < Sinatra::Base
     Station.destroy(params[:id])
     redirect "/stations"
   end
+
+  get '/trips' do
+    @trips = Trip.all
+    erb :"trips/index"
+  end
 end

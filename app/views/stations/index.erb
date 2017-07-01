@@ -9,18 +9,17 @@
       <p><%= station.dock_count %></p>
       <p><%= station.city %></p>
       <p><%= station.installation_date %></p>
-
-      <form action="/station/<%= station.id %>/edit" method="get">
-        <input type="submit" value="edit" name="Edit"/>
+      <form class="form-inline inline-group" action="/stations/<%= station.id %>/edit" method="get">
+        <input type="submit" value="edit"/>
       </form>
 
-      <form action="/station/<%= station.id %>" method="POST">
+      <form class="form-inline inline-group" action="/stations/<%= station.id %>" method="POST">
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="delete"/>
-        <form>
-        </fieldset>
-        <br/>
-          <% end %>
-        </div>
+      </form>
+      </fieldset>
+      <br/>
+      <% end %>
+      </div>
         <div class="col-md-2"></div>
-    </div>
+</div>

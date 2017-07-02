@@ -3,6 +3,8 @@ RSpec.describe "User creates a trip" do
 
     visit('/trips/new')
 
+    save_and_open_page
+
     fill_in("trip[duration]", with: 30)
     fill_in("trip[start_date]", with: "6/12/16")
     fill_in("trip[start_station_id]", with: 34)

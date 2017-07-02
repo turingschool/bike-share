@@ -25,14 +25,14 @@
           <td><%= trip.zip_code %></td>
           <td>
             <form action="/trips/<%= trip.id %>/edit" method="get">
-              <button type="submit" class="btn btn-primary btn active" role="button" aria-pressed="true" value="edit">Edit</a>
+              <button type="submit" class="btn btn-primary btn active btn-sm" role="button" aria-pressed="true" value="edit">Edit</a>
             </form>
           </td>
 
           <td>
             <form action="/trips/<%= trip.id %>" method="POST">
               <input type="hidden" name="_method" value="DELETE">
-              <button type="submit" class="btn btn-primary btn active" role="button" aria-pressed="true" value="delete">Delete</a>
+              <button type="submit" class="btn btn-primary btn active btn-sm" role="button" aria-pressed="true" value="delete">Delete</a>
             </form>
           </td>
         </tr>

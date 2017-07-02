@@ -4,6 +4,14 @@ class Station < ActiveRecord::Base
   def self.total_count
     Station.count
   end
+  
+  def self.most_number_of_available_bikes
+    Station.pluck(:dock_count).max
+  end
+
+  def self.least_number_of_available_bikes
+    Station.pluck(:dock_count).min
+  end
 
   def self.oldest_station
     Station.order(:installation_date).first

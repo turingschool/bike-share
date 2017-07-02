@@ -3,14 +3,13 @@
 </div>
 <form action="/stations/new" method="post">
   <label for="name">Name</label></br>
-  <input type="text" name="station[name]" value="<%= @station.name %>" id="name"></br>
+  <input type="text" name="station[name]" id="name"></br>
   <label for="dock_count">Dock Count<br/>
-  <input type="text" name="station[dock_count]" value="<%= @station.dock_count %>" id="dock_count"><br/>
+  <input type="text" name="station[dock_count]" id="dock_count"><br/>
   <label for="city">City<br/>
-  <input type="text" name="station[city]" value= "<%= @station.city %>" id="city"><br/>
+  <input type="text" name="station[city]" id="city"><br/>
   <label for="installation_date">Installation Date<br/>
-  <input type="text" name="station[installation_date]" value="<%= @station.installation_date %>" id="installation_date"><br/>
+  <input type="text" name="station[installation_date]" id="installation_date"><br/>
   <button type="submit" class="btn btn-primary btn active" role="button" aria-pressed="true">Submit</a>
-    <!-- <button type="submit"> -->
     <button type="submit" class="btn btn-primary btn active" role="button" aria-pressed="true">Create Trip</button>
   </form>

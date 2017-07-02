@@ -38,4 +38,38 @@ class BikeShareApp < Sinatra::Base
     Station.destroy(params[:id])
     redirect "/stations"
   end
+
+  get '/trips' do
+    @trips = Trip.all
+    erb :"trips/index"
+  end
+
+  get '/trips/new' do
+    erb :"trips/new"
+  end
+
+  post '/trips' do
+    Trip.create(params[:trip])
+    redirect '/trips'
+  end
+
+  get '/trips/:id' do
+    @trip = Trip.find(params[:id])
+    erb :"trips/show"
+  end
+
+  get '/trips/:id/edit' do
+    @trip = Trip.find(params[:id])
+    erb :"trips/edit"
+  end
+
+  put '/trips/:id' do
+    trip = Trip.update(params[:trip])
+    redirect "/trips"
+  end
+
+  delete '/trips/:id' do
+    Trip.destroy(params[:id])
+    redirect "/trips"
+  end
 end

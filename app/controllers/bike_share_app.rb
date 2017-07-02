@@ -25,7 +25,6 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations/:id/edit' do |id|
     @station = Station.find(id)
-
     erb :"/stations/edit"
   end
 
@@ -36,7 +35,6 @@ class BikeShareApp < Sinatra::Base
 
   delete '/stations/:id' do |id|
     @station = Station.destroy(id)
-
     redirect '/stations'
   end
 end

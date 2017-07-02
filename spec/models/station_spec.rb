@@ -1,5 +1,4 @@
 RSpec.describe Station do
-
   describe "Validations" do
     it "is invalid without a name" do
       station = Station.new(dock_count: 1, city: "Boston", installation_date: Time.now)

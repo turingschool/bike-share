@@ -31,8 +31,8 @@ RSpec.describe Station do
     end
   end
 
-    describe "Class Methods" do
-      describe ".fewest_bikes_available" do
+  describe "Class Methods" do
+    describe ".fewest_bikes_available" do
       it "returns the station with the fewest bikes available based on docks" do
         Station.create(name: "Mod2BEE", dock_count: 1, installation_date: "11/4/13", city: "Chicago")
         Station.create(name: "Mod1BEE", dock_count: 5, installation_date: "12/7/14", city: "Chicago")

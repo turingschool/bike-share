@@ -18,13 +18,13 @@ def seed_city_database(file_path)
   cities = csv.each do |row|
     row.keep_if {|k,v| k == :city}
   end
-  row.uniq.each {|city| City.create!(city)}
+  cities.uniq.each {|city| City.create!(city)}
 end
 
 def seed_station_database(file_path)
   stations = from_csv(file_path)
   stations.each do |row|
-    city = City.find_by(city: station[:city])
+    city = City.find_by(city: row[:city])
     row.delete_if { |k,v| k == :lat || k == :long || k == :city}
     city.stations.create!(row)
   end
@@ -52,6 +52,6 @@ end
 
 
 # seed_city_database("db/csv/station.csv")
-seed_station_database("db/csv/station.csv")
+# seed_station_database("db/csv/station.csv")
 # seed_subscriptions_database("db/csv/trip.csv")
 # seed_trips_database("db/csv/trip.csv")

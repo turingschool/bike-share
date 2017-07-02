@@ -1,0 +1,112 @@
+<div class="container">
+  <h1>Bike Station Stats </h1>
+  <div class="row text-center">
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h2> total stations: </h2>
+            <h3> <%= @total_stations %> </h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h2> average # bikes per station: </h2>
+            <h3> <%= @average_bikes %> </h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h2> most available bikes per station: </h2>
+            <h3> <%= @most_bikes %> </h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h2> least available bikes per station: </h2>
+            <h3> <%= @least_bikes %> </h3>
+        </div>
+      </div>
+    </div>
+  </div> <!-- first  row -->
+
+  <div class="row text-center">
+    <div class="col-md-6">
+      <h3>Stations with Most Bikes</h3>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>City</th>
+          <th>Dock Count</th>
+          <th>Installation Date</th>
+        </tr>
+
+        <% @most_bikes_station.each do |station| %>
+        <tr>
+          <td><%= station.name %></td>
+          <td><%= station.city %></td>
+          <td><%= station.dock_count %></td>
+          <td><%= station.installation_date %></td>
+          <td><a href="/stations/<%= station.id %>">Station Info</a></td>
+        </tr>
+        <% end %>
+
+      </table>
+    </div>
+
+    <div class="col-md-6">
+      <h3>Stations with Fewest Bikes</h3>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>City</th>
+          <th>Dock Count</th>
+          <th>Installation Date</th>
+        </tr>
+
+        <% @fewest_bikes_station.each do |station| %>
+        <tr>
+          <td><%= station.name %></td>
+          <td><%= station.city %></td>
+          <td><%= station.dock_count %></td>
+          <td><%= station.installation_date %></td>
+          <td><a href="/stations/<%= station.id %>">Station Info</a></td>
+        </tr>
+        <% end %>
+
+      </table>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-header"><h3>Newest Station</div>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <li><%= @newest_station.name %></li>
+          <li><%= @newest_station.city %></li>
+          <li><%= @newest_station.installation_date %></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="panel panel-default"> 
+        <div class="panel-header"><h3>Oldest Station</div>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <li><%= @oldest_station.name %></li>
+          <li><%= @oldest_station.city %></li>
+          <li><%= @oldest_station.installation_date %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

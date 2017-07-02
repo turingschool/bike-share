@@ -53,5 +53,29 @@ RSpec.describe Station do
         expect(result[0].class).to eq(Station)
       end
     end
+
+    describe ".average_bikes_available_per_station" do
+      it "finds average number of bikes rounded to whole number" do
+        station = Station.create(name: "Gary", city:"Denver", dock_count: 2, installation_date: Time.now)
+        station2 = Station.create(name: "Lex", city:"Chicago", dock_count: 6, installation_date: Time.now)
+        station3 = Station.create(name: "Jim", city:"San Diego", dock_count: 8, installation_date: Time.now)
+        station4 = Station.create(name: "Glop", city:"Seattle", dock_count: 2, installation_date: Time.now)
+
+        average_bikes = Station.average_bikes_available_per_station
+
+        expect(average_bikes.class).to eq(Fixnum)
+        expect(average_bikes).to eq(5)
+      end
+      it "returns most recently made station" do
+        station1 = Station.create(name: "Gary", city:"Denver", dock_count: 2, installation_date: "8/12/2013")
+        station2 = Station.create(name: "Lex", city:"Chicago", dock_count: 6, installation_date: "8/6/2017")
+        station3 = Station.create(name: "Jim", city:"San Diego", dock_count: 8, installation_date: "9/6/2013")
+
+        station = Station.most_recently_installed
+
+        expect(station.class).to eq(Station)
+        expect(station).to eq(station2)
+     end
+   end
   end
 end

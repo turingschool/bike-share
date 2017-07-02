@@ -8,4 +8,9 @@ class Station < ActiveRecord::Base
   def self.oldest_station
     Station.order(:installation_date).first
   end
+
+  def self.station_with_most_bikes
+    most_bikes = Station.maximum(:dock_count)
+    Station.where(dock_count: with_most_bikes)
+  end
 end

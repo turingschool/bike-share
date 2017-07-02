@@ -24,6 +24,18 @@ RSpec.describe Station do
       end
     end
 
+    describe ".station_with_most_bikes" do
+      it "returns the station with the greatest bike count" do
+        station_1 = Station.create(name: "A", city: "Boston", dock_count: 2, installation_date: Time.now)
+        station_2 = Station.create(name: "B", city: "Denver", dock_count: 1, installation_date: Time.now)
+        station_3 = Station.create(name: "C", city: "Denver", dock_count: 3, installation_date: Time.now)
+
+        matching_station = Station.station_with_most_bikes
+
+        expect(mathcing_station[0].id).to eq(station_3.id)
+      end
+    end
+
     describe "Validations" do
       it "is invalid without a name" do
         station = Station.new(dock_count: 1, city: "Boston", installation_date: Time.now)

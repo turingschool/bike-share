@@ -9,7 +9,8 @@ class Station < ActiveRecord::Base
   end
 
   def self.total_station_count
-    sql("SELECT COUNT(id) FROM stations").first["count"].to_i
+    Station.all.count
+    #sql("SELECT COUNT(id) FROM stations").first["count"].to_i
   end
 
   def self.average_bikes_per_station

@@ -18,12 +18,12 @@
       <td><%= station.city %></td>
       <td><%= station.installation_date %></td>
       <td><form action="/stations/<%= station.id %>/edit" method="get">
-        <input type="submit" value="edit"/>
+        <button type="submit" class="btn btn-primary btn active" role="button" aria-pressed="true" value="edit">Edit</a>
       </form></td>
 
       <td><form action="/stations/<%= station.id %>" method="POST">
         <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="delete"/>
+        <button type="submit" class="btn btn-primary btn active" role="button" aria-pressed="true" value="delete">Delete</a>
       </form></td>
     </tr>
   <% end %>

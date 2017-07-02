@@ -11,6 +11,6 @@ class Station < ActiveRecord::Base
 
   def self.station_with_most_bikes
     most_bikes = Station.maximum(:dock_count)
-    Station.where(dock_count: with_most_bikes)
+    Station.where(dock_count: most_bikes)
   end
 end

@@ -29,10 +29,11 @@ RSpec.describe Station do
         station_1 = Station.create(name: "A", city: "Boston", dock_count: 2, installation_date: Time.now)
         station_2 = Station.create(name: "B", city: "Denver", dock_count: 1, installation_date: Time.now)
         station_3 = Station.create(name: "C", city: "Denver", dock_count: 3, installation_date: Time.now)
+        station_4 = Station.create(name: "D", city: "Denver", dock_count: 3, installation_date: Time.now)
 
         matching_station = Station.station_with_most_bikes
 
-        expect(mathcing_station[0].id).to eq(station_3.id)
+        expect(matching_station.sample.dock_count).to eq(station_3.dock_count)
       end
     end
 

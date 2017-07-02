@@ -37,4 +37,16 @@ class BikeShareApp < Sinatra::Base
     @station = Station.destroy(id)
     redirect '/stations'
   end
+
+  get '/station-dashboard' do
+    @total_stations = Station.total_count
+    @most_bikes_station = Station.station_with_most_bikes
+    @fewest_bikes_station = Station.stations_with_fewest_bikes_available
+    @average_bikes = Station.average_bikes_available_per_station
+    @newest_station = Station.most_recently_installed
+    @oldest_station = Station.oldest_station
+    @most_bikes = Station.most_number_of_available_bikes
+    @least_bikes = Station.least_number_of_available_bikes
+    erb :"/stations/dashboard"
+  end
 end

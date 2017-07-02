@@ -1,4 +1,17 @@
 RSpec.describe Station do
+  describe "Class Methods" do
+    describe ".total_count" do
+      it "returns total count for stations" do
+        station_1 = Station.create(name: "A", city: "Boston", dock_count: 1, installation_date: Time.now)
+        station_2 = Station.create(name: "B", city: "Denver", dock_count: 1, installation_date: Time.now)
+
+        count = Station.total_count
+
+        expect(count).to eq(2)
+      end
+    end
+  end
+
   describe "Validations" do
     it "is invalid without a name" do
       station = Station.new(dock_count: 1, city: "Boston", installation_date: Time.now)

@@ -1,5 +1,7 @@
 RSpec.describe Station do
   describe "Class Methods" do
+
+   describe ".average_bikes_available_per_station" do
     it "finds average number of bikes rounded to whole number" do
       station = Station.create(name: "Gary", city:"Denver", dock_count: 2, installation_date: Time.now)
       station2 = Station.create(name: "Lex", city:"Chicago", dock_count: 6, installation_date: Time.now)
@@ -11,6 +13,8 @@ RSpec.describe Station do
       expect(average_bikes.class).to eq(Fixnum)
       expect(average_bikes).to eq(5)
     end
+   end
+   describe ".most_recently_installed" do
     it "returns most recently made station" do
       station1 = Station.create(name: "Gary", city:"Denver", dock_count: 2, installation_date: "8/12/2013")
       station2 = Station.create(name: "Lex", city:"Chicago", dock_count: 6, installation_date: "8/6/2017")
@@ -20,7 +24,8 @@ RSpec.describe Station do
 
       expect(station.class).to eq(Station)
       expect(station).to eq(station2)
-     end
+    end
+   end
   end
 
   describe "Validations" do

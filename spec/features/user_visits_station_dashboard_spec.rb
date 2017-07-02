@@ -1,18 +1,17 @@
 RSpec.describe "user visits station dashboard" do
   before do
-    date = "12/08/2017"
-    @station_a = Station.create(name: "A", dock_count: 2, installation_date: date, city: "Lakewood")
-    @station_b = Station.create(name: "B", dock_count: 2, installation_date: date, city: "Denver")
-    @station_c = Station.create(name: "C", dock_count: 5, installation_date: date, city: "Littleton")
-    @station_d = Station.create(name: "D", dock_count: 4, installation_date: "11/08/2016", city: "Boulder")
-    @station_e = Station.create(name: "E", dock_count: 3, installation_date: "13/08/2017", city: "Fort Collins")
+    @station_a = Station.create(name: "A", dock_count: 2, installation_date_id: 2, city: "Lakewood")
+    @station_b = Station.create(name: "B", dock_count: 2, installation_date_id: 1, city: "Denver")
+    @station_c = Station.create(name: "C", dock_count: 5, installation_date_id: 3, city: "Littleton")
+    @station_d = Station.create(name: "D", dock_count: 4, installation_date_id: 5, city: "Boulder")
+    @station_e = Station.create(name: "E", dock_count: 3, installation_date_id: 6, city: "Fort Collins")
     visit("/station-dashboard")
   end
   #as an unauthenticated user
  # When I visit the station dashboard
   it "sees total count of stations" do
    # Then I see total count of stations
-   save_and_open_page
+  #  save_and_open_page
     expect(page).to have_content("5")
     # within('div.least_bikes_station') do
     #

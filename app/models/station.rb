@@ -1,10 +1,10 @@
 class Station < ActiveRecord::Base
-  validates_presence_of :name, :city, :dock_count, :installation_date
+  validates_presence_of :name, :city, :dock_count, :installation_date_id
 
   def self.total_count
     Station.count
   end
-  
+
   def self.most_number_of_available_bikes
     Station.pluck(:dock_count).max
   end
@@ -14,7 +14,7 @@ class Station < ActiveRecord::Base
   end
 
   def self.oldest_station
-    Station.order(:installation_date).first
+    Station.order(:installation_date_id).first
   end
 
   def self.station_with_most_bikes
@@ -27,7 +27,7 @@ class Station < ActiveRecord::Base
   end
 
   def self.most_recently_installed
-    self.order(:installation_date).last
+    self.order(:installation_date_id).last
   end
 
   def self.stations_with_fewest_bikes_available

@@ -1,9 +1,8 @@
 RSpec.describe "user deletes station" do
   it "reroutes to station with deleted station not present" do
 
-  date = Time.now
-  station_a = Station.create(name: "A", dock_count: 1, installation_date: date, city: "Chicago")
-  station_b = Station.create(name: "B", dock_count: 2, installation_date: date, city: "Denver")
+  station_a = Station.create(name: "A", dock_count: 1, installation_date_id: 1, city: "Chicago")
+  station_b = Station.create(name: "B", dock_count: 2, installation_date_id: 2, city: "Denver")
 
   visit("/stations")
   expect(page).to have_content("Chicago")

@@ -62,14 +62,24 @@
     margin-bottom: 330px;
     }
 
+  h2 {
+    color: #2D3BB5;
+    font-family: futura;
+    font-size: 75px;
+    position: fixed;
+    top: 0;
+    margin-left: 20px;
+    margin-top: -1px;
+  }
+
   #section2 {
-  background-color: #C58FEC;
+  background-color: #518CD8;
     }
   #section3 {
-  background-color: #EC8FA4;
+  background-color: #D85161;
     }
   #section4 {
-    background-color: #DE885D;
+    background-color: #6951D8;
     }
 
   .section {

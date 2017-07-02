@@ -32,13 +32,13 @@ RSpec.describe Station do
   end
 
   describe "Class Methods" do
-    describe ".fewest_bikes_available" do
+    describe ".stations_with_fewest_bikes_available" do
       it "returns the station with the fewest bikes available based on docks" do
         Station.create(name: "Mod2BEE", dock_count: 1, installation_date: "11/4/13", city: "Chicago")
         Station.create(name: "Mod1BEE", dock_count: 5, installation_date: "12/7/14", city: "Chicago")
         Station.create(name: "Mod3BEE", dock_count: 3, installation_date: "1/23/12", city: "Chicago")
 
-        result = Station.fewest_bikes_available
+        result = Station.stations_with_fewest_bikes_available
 
         expect(result[0].name).to eq("Mod2BEE")
       end
@@ -47,7 +47,7 @@ RSpec.describe Station do
         Station.create(name: "Mod1BEE", dock_count: 1, installation_date: "12/7/14", city: "Chicago")
         Station.create(name: "Mod3BEE", dock_count: 5, installation_date: "1/23/12", city: "Chicago")
 
-        result = Station.fewest_bikes_available
+        result = Station.stations_with_fewest_bikes_available
 
         expect(result.count).to eq(2)
         expect(result[0].class).to eq(Station)

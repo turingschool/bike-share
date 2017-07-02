@@ -1,4 +1,9 @@
 RSpec.describe Station do
+
+   describe "Class Methods" do
+    
+   end
+
   describe "Class Methods" do
     describe ".least_number_of_available_bikes" do
       it "returns the least bikes available at a station" do
@@ -136,5 +141,20 @@ RSpec.describe Station do
         expect(station).to eq(station2)
      end
    end
+     describe '.most_number_of_available_bikes' do
+       it "returns the most bikes available at a station" do
+         station_1 = Station.create(name: "First", dock_count: 4, city: "Detroit", installation_date: Time.now)
+         station_2 = Station.create(name: "Second", dock_count: 2, city: "Detroit", installation_date: Time.now)
+         station_3 = Station.create(name: "Third", dock_count: 23, city: "Detroit", installation_date: Time.now)
+         station_4 = Station.create(name: "Fourth", dock_count: 6, city: "Detroit", installation_date: Time.now)
+         station_5 = Station.create(name: "Fifth", dock_count: 5, city: "Detroit", installation_date: Time.now)
+
+         result = Station.most_number_of_available_bikes
+
+         expect(station_1.class).to eq(Station)
+         expect(result).to eq(23)
+       end
+     end
   end
+
 end

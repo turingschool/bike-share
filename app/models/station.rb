@@ -1,11 +1,16 @@
 class Station < ActiveRecord::Base
   validates_presence_of :name, :city, :dock_count, :installation_date
 
-  def self.least_number_of_available_bikes
-    Station.pluck(:dock_count).min
-
   def self.total_count
     Station.count
+  end
+  
+  def self.most_number_of_available_bikes
+    Station.pluck(:dock_count).max
+  end
+
+  def self.least_number_of_available_bikes
+    Station.pluck(:dock_count).min
   end
 
   def self.oldest_station

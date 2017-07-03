@@ -55,4 +55,15 @@ class BikeShareApp < Sinatra::Base
     @least_bikes = Station.least_number_of_available_bikes
     erb :"/stations/dashboard"
   end
+
+  get '/trips' do
+    @trips = Trip.all
+    erb :'/trips/index'
+  end
+
+  delete '/trips/:id' do |id|
+    Trip.destroy(id)
+
+    redirect('/trips')
+  end
 end

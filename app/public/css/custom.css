@@ -3,9 +3,9 @@
   margin-bottom: 1px;
 }
 
-.header-background {
-    background-image: url(http://icelandbike.com/Myndir_banner/_DSC3116_ChristinaBohner_UrsulaSpitzbart_banner2.jpg);
-}
+/*.header-background {
+  background-image: url(http://icelandbike.com/Myndir_banner/_DSC3116_ChristinaBohner_UrsulaSpitzbart_banner2.jpg);
+}*/
 .bike-icon {
   height: 40px;
   width: 40px;
@@ -53,19 +53,44 @@
 }
 
 .bike-pic-header{
-    margin-top: -100px;
-    width: 100%;
+  margin-top: -100px;
+  width: 100%;
 }
 
 .bike-pic-header-two {
-    margin-top: -250px;
-    width: 100%;
+  margin-top: -250px;
+  width: 100%;
 }
 
 .new-view-textbox-header {
   margin-top: 0px;
-
 }
-/*body {
+
+.empty-rounded-div {
+  border-style: solid;
+  border-width: thin;
+  border-radius: 5px;
+  margin-bottom:inherit;
   background-color: red;
+}
+
+.show-div {
+  height: 300px;
+  padding-bottom: 0px;
+}
+
+.panel {
+  padding-bottom: 0px;
+}
+
+.show-splash {
+  text-align: center;
+}
+
+.col-md-4 {
+  padding: 0px;
+}
+
+/*body {
+background-color: red;
 }*/

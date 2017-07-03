@@ -4,13 +4,34 @@
 </head>
 <body>
   <main>
-    <section class"yield-margin" >
-      <h1> Station Name: <%= @station.name  %> </h1>
-      <p>Station Number: <%= @station.id  %> </p>
-      <p>Dock Count: <%= @station.dock_count %> </p>
-      <p>Installation Date: <%= @station.installation_date %>  </p>
-      <p>City ID:  <%= @station.city_id  %> </p>
-      <a href="/stations">View all Stations</a>
+    <section>
+      <div class="row">
+        <div class="col-md-1 empty-rounded-div" >DEAD SPACE</div>
+        <div class="col-md-4">
+          <div class="panel panel-default show-div">
+            <div class="panel-heading">
+              <h1 class="panel-title"><%= @station.name  %></h1>
+            </div>
+            <div class="panel-body">
+              <p ><strong> Station Number:</strong> <%= @station.id  %> </p>
+              <p><strong>Dock Count:</strong> <%= @station.dock_count %> </p>
+              <p><strong>Installation Date:</strong> <%= @station.installation_date %>  </p>
+              <p><strong>City ID:</strong> <%= @station.city_id  %> </p>
+              <a role="button" class"btn btn-default" href="/stations">View all Stations</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 show-div">
+          <div class="panel panel-default">
+            <div class="panel-body show-div">
+              <h2 class="show-splash">Bicycle Station</h2>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1 empty-rounded-div" >DEAD SPACE</div>
+      </div>
+
+
     </section>
   </main>
 </body>

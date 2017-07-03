@@ -14,9 +14,10 @@ def start_date
   Trip.find(id)[:bike_share_date]
 end
 
-#maybe Trip works too?
 def start_station
-  Station.find(id)[:name]
+  Station.find_by(start_station_name_id: start_station_name_id)[:name]
+  #Trip.stations.find_by(:name name)
+  #Trip.station_name
 end
 
 def end_date
@@ -24,7 +25,7 @@ def end_date
 end
 
 def end_station
-  Station.find(id)[:name]
+  Station.find_by(start_station_name_id: start_station_name_id)[:name]
 end
 
 def bike_id

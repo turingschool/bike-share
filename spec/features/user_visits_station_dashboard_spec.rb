@@ -12,7 +12,7 @@ RSpec.describe "user visits station dashboard" do
  # When I visit the station dashboard
   it "sees total count of stations" do
    # Then I see total count of stations
-   save_and_open_page
+  #  save_and_open_page
     expect(page).to have_content("5")
     # within('div.least_bikes_station') do
     #

@@ -15,10 +15,7 @@ class Station < ActiveRecord::Base
   end
 
   def self.oldest_station
-    Station.includes(:installation_date).order('bike_share_dates.year')
-                                        .order('bike_share_dates.month')
-                                        .order('bike_share_dates.day')
-                                        .first
+    Station.includes(:installation_date).order('bike_share_dates.date').first
   end
 
   def self.station_with_most_bikes
@@ -31,10 +28,7 @@ class Station < ActiveRecord::Base
   end
 
   def self.most_recently_installed
-    Station.includes(:installation_date).order('bike_share_dates.year')
-                                        .order('bike_share_dates.month')
-                                        .order('bike_share_dates.day')
-                                        .last
+    Station.includes(:installation_date).order('bike_share_dates.date').last
   end
 
   def self.stations_with_fewest_bikes_available

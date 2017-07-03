@@ -1,5 +1,5 @@
 class BikeShareDate < ActiveRecord::Base
-  def format_date
-    "#{month}-#{day}-#{year}"
+  def self.create_by_date(date)
+    find_or_create_by(date: Date.parse(date, '%Y-%m-%d')).id
   end
 end

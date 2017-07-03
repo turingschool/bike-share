@@ -9,6 +9,6 @@
   <label>City: </label>
   <input type="text" name="station[city]" value="<%= @station.city %>">
   <label>Installation Date: </label>
-  <input type="text" name="station[installation_date_id]" value="<%= @station.installation_date.format_date %>">
+  <input type="date" name="station[installation_date_id]" value="<%= @station.installation_date.date %>">
   <button type="submit">Edit Station</button>
 </form>

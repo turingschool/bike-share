@@ -1,10 +1,10 @@
 RSpec.describe "user visits station dashboard" do
   before do
-    date = BikeShareDate.create(month: 1, day: 1, year:2012)
-    date_2 = BikeShareDate.create(month: 2, day: 5, year:2017)
-    date_3 = BikeShareDate.create(month: 4, day: 12, year:2014)
-    date_4 = BikeShareDate.create(month: 6, day: 25, year:2017)
-    date_5 = BikeShareDate.create(month: 2, day: 1, year:2012)
+    date = BikeShareDate.create(date: Date.strptime('1/1/2012', '%m/%d/%Y'))
+    date_2 = BikeShareDate.create(date: Date.strptime('2/5/2017', '%m/%d/%Y'))
+    date_3 = BikeShareDate.create(date: Date.strptime('4/12/2014', '%m/%d/%Y'))
+    date_4 = BikeShareDate.create(date: Date.strptime('6/25/2017', '%m/%d/%Y'))
+    date_5 = BikeShareDate.create(date: Date.strptime('2/1/2012', '%m/%d/%Y'))
 
     @station_a = Station.create(name: "A", dock_count: 2, installation_date_id: 2, city: "Lakewood")
     @station_b = Station.create(name: "B", dock_count: 2, installation_date_id: 1, city: "Denver")

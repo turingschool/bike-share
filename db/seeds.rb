@@ -1,7 +1,6 @@
 require 'csv'
 require 'pry'
 require 'date'
-require './db/format.rb'
 require './app/models/station'
 require './app/models/city'
 require './app/models/subscription'
@@ -57,4 +56,4 @@ end
 # seed_city_database("db/csv/station.csv")
 # seed_station_database("db/csv/station.csv")
 # seed_subscriptions_database("db/csv/trip.csv")
-seed_trips_database("db/csv/trip.csv")
+# seed_trips_database("db/csv/trip.csv")

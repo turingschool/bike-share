@@ -1,0 +1,36 @@
+<h1>All Trips</h1>
+
+<h3><a href="/trips/new">Create New Trip</a></h3>
+<table>
+  <tr>
+    <th>Duration</th>
+    <th>Start Date</th>
+    <th>Start Station</th>
+    <th>End Date</th>
+    <th>End Station</th>
+    <th>Bike ID</th>
+    <th>Subscription Type</th>
+    <th>Zip Code</th>
+  </tr>
+
+  <% @trips.each do |trip| %>
+  <tr>
+    <td><%= trip.duration %></td>
+    <td><%= trip.start_date.date %></td>
+    <td><%= trip.start_station.name %></td>
+    <td><%= trip.end_date.date  %></td>
+    <th><%= trip.end_station.name %></th>
+    <th><%= trip.bike_id %></th>
+    <th><%= trip.subscription_type %></th>
+    <th><%= trip.zipcode_id %></th>
+    <td><a href="/trips/<%= trip.id %>">Trip Info</a></td>
+
+      <td>
+      <form class="" action="/trips/<%= trip.id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" name="" value="delete">
+      </form>
+      </td>
+    </tr>
+  <% end %>
+</table>

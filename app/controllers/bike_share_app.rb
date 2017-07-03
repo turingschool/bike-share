@@ -1,3 +1,5 @@
+require "pry"
+
 class BikeShareApp < Sinatra::Base
 
   get '/' do
@@ -14,6 +16,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations' do
+    date = params[:station][:installation_date_id]
+    params[:station][:installation_date_id] = BikeShareDate.create_by_date(date)
     @station = Station.create(params[:station])
     redirect :"/stations/#{@station.id}"
   end
@@ -29,6 +33,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
+    date = params[:station][:installation_date_id]
+    params[:station][:installation_date_id] = BikeShareDate.create_by_date(date)
     @station = Station.update(params[:id], params[:station])
     redirect "/stations/#{@station.id}"
   end

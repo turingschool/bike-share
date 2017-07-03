@@ -51,7 +51,7 @@
           <td><%= station.name %></td>
           <td><%= station.city %></td>
           <td><%= station.dock_count %></td>
-          <td><%= station.installation_date_id %></td>
+          <td><%= station.installation_date.format_date %></td>
           <td><a href="/stations/<%= station.id %>">Station Info</a></td>
         </tr>
         <% end %>
@@ -74,7 +74,7 @@
           <td><%= station.name %></td>
           <td><%= station.city %></td>
           <td><%= station.dock_count %></td>
-          <td><%= station.installation_date_id %></td>
+          <td><%= station.installation_date.format_date %></td>
           <td><a href="/stations/<%= station.id %>">Station Info</a></td>
         </tr>
         <% end %>
@@ -91,7 +91,7 @@
         <ul>
           <li><%= @newest_station.name %></li>
           <li><%= @newest_station.city %></li>
-          <li><%= @newest_station.installation_date_id %></li>
+          <li><%= @newest_station.installation_date.format_date %></li>
         </ul>
       </div>
     </div>
@@ -104,7 +104,7 @@
         <ul>
           <li><%= @oldest_station.name %></li>
           <li><%= @oldest_station.city %></li>
-          <li><%= @oldest_station.installation_date_id %></li>
+          <li><%= @oldest_station.installation_date.format_date %></li>
         </ul>
       </div>
     </div>

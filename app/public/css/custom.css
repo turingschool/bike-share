@@ -3,9 +3,6 @@
   margin-bottom: 1px;
 }
 
-/*.header-background {
-  background-image: url(http://icelandbike.com/Myndir_banner/_DSC3116_ChristinaBohner_UrsulaSpitzbart_banner2.jpg);
-}*/
 .bike-icon {
   height: 40px;
   width: 40px;
@@ -15,7 +12,6 @@
   border: solid;
   border-width: 5px;
   border-color: red;
-
 }
 
 .yield-margin {
@@ -40,16 +36,18 @@
 }
 
 .footer {
-  bottom: 0px;
-  height: 100px;
-  left: 0;
-  position: absolute;
-  right: 0;
-  background-color: whitesmoke;
+  background-color: grey;
+  margin-left: 0%;
+  margin-right: 0%;
+  padding-right: 0%;
 }
 
 .bike-pic-header-container {
   max-height: 120px; overflow: hidden;
+}
+
+.container {
+  width: auto;
 }
 
 .bike-pic-header{
@@ -66,18 +64,23 @@
   margin-top: 0px;
 }
 
-.empty-rounded-div {
-  border-style: solid;
-  border-width: thin;
-  border-radius: 5px;
-  margin-bottom:inherit;
-  background-color: red;
-}
+/*.empty-rounded-div {
+border-style: solid;
+border-width: thin;
+border-radius: 5px;
+margin-bottom:inherit;
+background-color: red;
+}*/
 
-.show-div {
-  height: 300px;
-  padding-bottom: 0px;
+.btn {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 2px;
 }
+/*.show-div {
+height: 300px;
+padding-bottom: 0px;
+}*/
 
 .panel {
   padding-bottom: 0px;
@@ -90,6 +93,37 @@
 .col-md-4 {
   padding: 0px;
 }
+
+.panel-heading-text {
+  margin-top: 0px;
+}
+.station-info-text {
+  font-size: 150%;
+  text-align: center;
+}
+
+.bike-icon-one {
+  margin-top: 0px;
+  width: 50%;
+  height: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.element-center-hor {
+  display: block;
+  margin: 0 auto;
+}
+
+.btn {
+  width: auto;
+}
+
+.station-card {
+  width: 25%;
+  padding: 3px;
+}
+
 
 /*body {
 background-color: red;

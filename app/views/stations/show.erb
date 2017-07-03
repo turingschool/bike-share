@@ -7,31 +7,31 @@
     <section>
       <div class="row">
         <div class="col-md-1 empty-rounded-div" >DEAD SPACE</div>
-        <div class="col-md-4">
-          <div class="panel panel-default show-div">
+        <div class="col-md-5">
+          <div class="panel panel-primary show-div">
             <div class="panel-heading">
-              <h1 class="panel-title"><%= @station.name  %></h1>
+              <h3 class="panel-heading-text"><%= @station.name  %></h3>
             </div>
-            <div class="panel-body">
-              <p ><strong> Station Number:</strong> <%= @station.id  %> </p>
-              <p><strong>Dock Count:</strong> <%= @station.dock_count %> </p>
-              <p><strong>Installation Date:</strong> <%= @station.installation_date %>  </p>
-              <p><strong>City ID:</strong> <%= @station.city_id  %> </p>
-              <a role="button" class"btn btn-default" href="/stations">View all Stations</a>
+            <div class="panel-body ">
+              <!-- <h2 ><strong> Station Number:</strong> <%= @station.id  %> </h2> -->
+              <p class="station-info-text"><strong>Dock Count:</strong> <%= @station.dock_count %> </p>
+              <p class="station-info-text"><strong>Installation Date:</strong> <%= @station.installation_date %>  </p>
+              <p class="station-info-text"><strong>City ID:</strong> <%= @station.city_id  %> </p><br>
+              <!-- <a role="button" class"btn btn-primary" href="/stations">View all Stations</a> -->
+              <a href="/stations" class="btn btn-primary element-center-hor" role="button ">View All Stations</a><br>
+              <a href="/stations/<%= @station.id %>/edit" class="btn btn-warning element-center-hor" role="button">Edit This Station</a><br>
+              <a href="" class="btn btn-danger element-center-hor" role="button">Delete This Station</a>
             </div>
           </div>
         </div>
-        <div class="col-md-6 show-div">
-          <div class="panel panel-default">
-            <div class="panel-body show-div">
-              <h2 class="show-splash">Bicycle Station</h2>
-            </div>
+        <div class="col-md-5 show-div">
+          <div class="panel-body show-div">
+            <h2 class="show-splash">Bicycle Station Number <%= @station.id  %></h2>
+            <img src="https://image.freepik.com/free-icon/bike-of-a-gymnast_318-46870.jpg" alt="Bicycle Icon" class="bike-icon-one">
           </div>
         </div>
         <div class="col-md-1 empty-rounded-div" >DEAD SPACE</div>
       </div>
-
-
     </section>
   </main>
 </body>

@@ -1,14 +1,22 @@
 <h1>All stations</h1>
 <% @stations.each do |station| %>
-
-
-  <h3> <%= station.name %> </h3>
-  <p>Dock count:</p>
-  <p> <%= station.dock_count  %> </p>
-  <p> Installation date: </p>
-  <p> <%= station.installation_date  %> </p>
-  <form action="/stations/<%= station.id %>" method="post">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete">
-  </form>
+<div>
+  <div class="panel panel-primary station-card show-div">
+    <div class="panel-heading">
+      <h4 class="panel-heading-text"><%= station.name  %></h4>
+    </div>
+    <div class="panel-body">
+      <!-- <h3> <%= station.name %> </h3> -->
+      <p>Dock count:</p>
+      <p> <%= station.dock_count  %> </p>
+      <p> Installation date: </p>
+      <p> <%= station.installation_date  %> </p>
+      <!-- <form action="/stations/<%= station.id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete">
+      </form> -->
+      <a href="/stations/<%= station.id %>" class="btn btn-primary element-center-hor" role="button ">View Station Details</a><br>
+    </div>
+  </div>
+</div>
 <% end %>

@@ -88,10 +88,10 @@ RSpec.describe Station do
       it "returns most recently made station" do
         date = BikeShareDate.create(month: 1, day: 1, year:2012)
         date_2 = BikeShareDate.create(month: 2, day: 5, year:2017)
+        date_3 = BikeShareDate.create(month: 4, day: 5, year:2015)
         station1 = Station.create(name: "Gary", city:"Denver", dock_count: 2, installation_date_id: 1)
         station2 = Station.create(name: "Lex", city:"Chicago", dock_count: 6, installation_date_id: 2)
-        station3 = Station.create(name: "Jim", city:"San Diego", dock_count: 8, installation_date_id: 1)
-
+        station3 = Station.create(name: "Jim", city:"San Diego", dock_count: 8, installation_date_id: 3)
         station = Station.most_recently_installed
 
         expect(station.class).to eq(Station)
@@ -130,8 +130,9 @@ RSpec.describe Station do
        it "returns the station with the earliest installation date" do
          date = BikeShareDate.create(month: 1, day: 1, year:2012)
          date_2 = BikeShareDate.create(month: 2, day: 5, year:2017)
+         date_3 = BikeShareDate.create(month: 2, day: 2, year:2012)
          station_1 = Station.create(name: "A", city: "Boston", dock_count: 1, installation_date_id: 2)
-         station_2 = Station.create(name: "B", city: "Denver", dock_count: 2, installation_date_id: 2)
+         station_2 = Station.create(name: "B", city: "Denver", dock_count: 2, installation_date_id: 3)
          station_3 = Station.create(name: "C", city: "Denver", dock_count: 3, installation_date_id: 1)
 
          station = Station.oldest_station

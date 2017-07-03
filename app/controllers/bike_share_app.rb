@@ -49,4 +49,14 @@ class BikeShareApp < Sinatra::Base
     @least_bikes = Station.least_number_of_available_bikes
     erb :"/stations/dashboard"
   end
+
+  get "/trips" do
+    @trips = Trip.all
+    erb :"/trips/index"
+  end
+
+  get "/trips/new" do
+    erb :"/trips/new"
+  end
+
 end

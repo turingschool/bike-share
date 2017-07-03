@@ -17,6 +17,10 @@ class Station < ActiveRecord::Base
     #sql("SELECT COUNT(id) FROM stations").first["count"].to_i
   end
 
+  def name
+    Station.find(id)[:name]
+  end
+
   def self.average_bikes_per_station
     sql("SELECT AVG(dock_count)FROM stations").first["avg"].to_i
   end
@@ -45,7 +49,9 @@ class Station < ActiveRecord::Base
     sql("SELECT name FROM stations ORDER BY installation_date DESC").first["name"]
   end
 
+#this works even without the method below!?!!?
   def installation_date
-  BikeShareDate.find(installation_date_id)
+    Station.find(id)[:installation_date]
+  #BikeShareDate.find(installation_date_id)
   end
 end

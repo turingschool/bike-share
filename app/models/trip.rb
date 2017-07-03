@@ -8,9 +8,11 @@ class Trip < ActiveRecord::Base
                         :subscription_type,
                         :zipcode_id
 
+
   belongs_to :start_station, class_name: "Station", foreign_key: "start_station_id"
   belongs_to :end_station, class_name: "Station", foreign_key: "end_station_id"
 
   def
+
 
 end

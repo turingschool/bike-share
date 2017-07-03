@@ -1,11 +1,16 @@
 RSpec.describe "user visits station dashboard" do
   before do
-    date = "12/08/2017"
-    @station_a = Station.create(name: "A", dock_count: 2, installation_date: date, city: "Lakewood")
-    @station_b = Station.create(name: "B", dock_count: 2, installation_date: date, city: "Denver")
-    @station_c = Station.create(name: "C", dock_count: 5, installation_date: date, city: "Littleton")
-    @station_d = Station.create(name: "D", dock_count: 4, installation_date: "11/08/2016", city: "Boulder")
-    @station_e = Station.create(name: "E", dock_count: 3, installation_date: "13/08/2017", city: "Fort Collins")
+    date = BikeShareDate.create(date: Date.strptime('1/1/2012', '%m/%d/%Y'))
+    date_2 = BikeShareDate.create(date: Date.strptime('2/5/2017', '%m/%d/%Y'))
+    date_3 = BikeShareDate.create(date: Date.strptime('4/12/2014', '%m/%d/%Y'))
+    date_4 = BikeShareDate.create(date: Date.strptime('6/25/2017', '%m/%d/%Y'))
+    date_5 = BikeShareDate.create(date: Date.strptime('2/1/2012', '%m/%d/%Y'))
+
+    @station_a = Station.create(name: "A", dock_count: 2, installation_date_id: 2, city: "Lakewood")
+    @station_b = Station.create(name: "B", dock_count: 2, installation_date_id: 1, city: "Denver")
+    @station_c = Station.create(name: "C", dock_count: 5, installation_date_id: 3, city: "Littleton")
+    @station_d = Station.create(name: "D", dock_count: 4, installation_date_id: 5, city: "Boulder")
+    @station_e = Station.create(name: "E", dock_count: 3, installation_date_id: 4, city: "Fort Collins")
     visit("/station-dashboard")
   end
   #as an unauthenticated user

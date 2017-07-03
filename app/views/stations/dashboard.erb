@@ -51,7 +51,7 @@
           <td><%= station.name %></td>
           <td><%= station.city %></td>
           <td><%= station.dock_count %></td>
-          <td><%= station.installation_date %></td>
+          <td><%= station.installation_date.date %></td>
           <td><a href="/stations/<%= station.id %>">Station Info</a></td>
         </tr>
         <% end %>
@@ -74,7 +74,7 @@
           <td><%= station.name %></td>
           <td><%= station.city %></td>
           <td><%= station.dock_count %></td>
-          <td><%= station.installation_date %></td>
+          <td><%= station.installation_date.date %></td>
           <td><a href="/stations/<%= station.id %>">Station Info</a></td>
         </tr>
         <% end %>
@@ -91,20 +91,20 @@
         <ul>
           <li><%= @newest_station.name %></li>
           <li><%= @newest_station.city %></li>
-          <li><%= @newest_station.installation_date %></li>
+          <li><%= @newest_station.installation_date.date %></li>
         </ul>
       </div>
     </div>
 
     <div class="col-md-6">
-      <div class="panel panel-default"> 
+      <div class="panel panel-default">
         <div class="panel-header"><h3>Oldest Station</div>
       </div>
       <div class="panel-body">
         <ul>
           <li><%= @oldest_station.name %></li>
           <li><%= @oldest_station.city %></li>
-          <li><%= @oldest_station.installation_date %></li>
+          <li><%= @oldest_station.installation_date.date %></li>
         </ul>
       </div>
     </div>

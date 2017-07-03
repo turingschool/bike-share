@@ -1,6 +1,7 @@
 require 'csv'
 require 'pry'
 require 'date'
+require './db/format.rb'
 require './app/models/station'
 require './app/models/city'
 require './app/models/subscription'
@@ -43,9 +44,11 @@ end
 def seed_trips_database(file_path)
   trips = from_csv(file_path)
   trips.each do |row|
-    subscription = Subscription.find_by(subscription_type: trip[:subscription_type])
-    row.delete_if {|k,v| k == :subscription_type || k == :start_station_name || k == :end_station_name}
     next if row[:zip_code] == '' || row[:zip_code] == nil
+    row[:start_date] = DateTime.strptime(row[:start_date], "%m/%d/%Y %H:%M")
+    row[:end_date] = DateTime.strptime(row[:end_date], "%m/%d/%Y %H:%M")
+    subscription = Subscription.find_by(subscription_type: row[:subscription_type])
+    row.delete_if {|k,v| k == :subscription_type || k == :start_station_name || k == :end_station_name || k == :id}
     subscription.trips.create!(row)
   end
 end
@@ -54,4 +57,4 @@ end
 # seed_city_database("db/csv/station.csv")
 # seed_station_database("db/csv/station.csv")
 # seed_subscriptions_database("db/csv/trip.csv")
-# seed_trips_database("db/csv/trip.csv")
+seed_trips_database("db/csv/trip.csv")

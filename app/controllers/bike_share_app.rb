@@ -62,16 +62,21 @@ class BikeShareApp < Sinatra::Base
   end
 
   get "/trips/new" do
-    station = Station.
+
+    @station = Station.create(params[:trip])
     erb :"/trips/new"
   end
 
   post "/trips" do
+    end_date = params[:trip][:end_date_id]
+    params[:trip][:end_date_id] = BikeShareDate.create_by_date(end_date)
+    start_date = params[:trip][:start_date_id]
+    params[:trip][:start_date_id] = BikeShareDate.create_by_date(start_date)
+
+    @stations = Station.all
+    @bikes = Trip.pluck()
     @trip = Trip.create(params[:trip])
-  redirect :"/trips/#{@trip.id}"
+    redirect :"/trips/#{@trip.id}"
   end
-
-  # get "/trips/:id" do |id|
-
 
 end

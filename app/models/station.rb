@@ -2,8 +2,6 @@ class Station < ActiveRecord::Base
   validates_presence_of :name, :city, :dock_count, :installation_date_id
   belongs_to :installation_date, class_name: "BikeShareDate", foreign_key: "installation_date_id"
 
-  #has_many :trips, foreign_key :station_id
-
   def self.total_count
     Station.count
   end

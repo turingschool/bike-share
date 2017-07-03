@@ -9,10 +9,10 @@ RSpec.describe "user visits trips index" do
     save_and_open_page
     expect(page).to have_content(trip_a.duration)
     expect(page).to have_content(trip_b.start_date_id)
-    expect(page).to have_content(trip_c.start_station_id)
+    expect(page).to have_content(trip_c.start_station_id.name)
     expect(page).to have_content(trip_a.end_date_id)
     expect(page).to have_content(trip_b.end_station_id)
-    expect(page).to have_content(trip_c.end_station_id)
+    expect(page).to have_content(trip_c.end_station_id.name)
     expect(page).to have_content(trip_a.substription_type)
     expect(page).to have_content(trip_b.zipcode)
   end

@@ -1,10 +1,12 @@
 class Station < ActiveRecord::Base
   validates_presence_of :name, :city, :dock_count, :installation_date
 
+  #has_many :trips, foreign_key :station_id
+
   def self.total_count
     Station.count
   end
-  
+
   def self.most_number_of_available_bikes
     Station.pluck(:dock_count).max
   end

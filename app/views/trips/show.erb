@@ -1,3 +1,4 @@
+<h1>Test</h1>
 <div class="jumbotron">
   <h1>Trip: <%= @trip.id %></h1>
 </div>
@@ -17,19 +18,19 @@
         <tr>
           <td><%= @trip.duration %></td>
           <td><%= @trip.start_date %></td>
-          <td><%= @trip.start_station %></td>
+          <td><%= @trip.start_station_name %></td>
           <td><%= @trip.end_date %></td>
-          <td><%= @trip.end_station %></td>
+          <td><%= @trip.end_station_name %></td>
           <td><%= @trip.bike_id %></td>
           <td><%= @trip.zip_code %></td>
           <td>
-            <form action="/trips/<%= trip.id %>/edit" method="get">
+            <form action="/trips/<%= @trip.id %>/edit" method="get">
               <button type="submit" class="btn btn-primary btn active" role="button" aria-pressed="true" value="edit">Edit</a>
             </form>
           </td>
 
           <td>
-            <form action="/trips/<%= trip.id %>" method="POST">
+            <form action="/trips/<%= @trip.id %>" method="POST">
               <input type="hidden" name="_method" value="DELETE">
               <button type="submit" class="btn btn-primary btn active" role="button" aria-pressed="true" value="delete">Delete</a>
             </form>

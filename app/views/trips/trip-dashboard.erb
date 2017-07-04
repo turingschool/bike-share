@@ -1,0 +1,28 @@
+<h1>Trips Dashboard</h1>
+<h3>Average duration of a ride</h3>
+<p><%= Trip.average_duration %></p>
+<h3>Longest ride </h3>
+<p><%= Trip.longest_ride %></p>
+<h3>Shortest ride </h3>
+<p><%= Trip.shortest_ride %><p/>
+<h3> Station with most rides as starting place </h3>
+<p><%= Trip.start_station_with_most_rides %></p>
+<h3> Station with most rides as ending place </h3>
+<%= Trip.end_station_with_most_rides %>
+<h3> Total number of rides each month </h3>
+<% Trip.month_summary.each do |k,v| %>
+  <h4><%= k[1] %>/<%= k[0] %></h4>
+  <p><%= v %></p><br/>
+<% end %>
+<h3>Most ridden bike</h3>
+<p>Bike ID: <%= Trip.most_ridden_bike[0] %></p>
+<p>Number of rides: <%= Trip.most_ridden_bike[1] %></p>
+<h3>Least ridden bike</h3>
+<p>Bike ID: <%= Trip.least_ridden_bikes[0] %></p>
+<p>Number of rides: <%= Trip.least_ridden_bikes[1]%></p>
+<h3>Subscription information</h3>
+<% Trip.subscription_info.each do |k,v| %>
+  <p><%= Subscription.find(k)[:subscription_type] %>: <%= v %> (<%= Trip.subscription_percentage(v) %>%)</p>
+<% end %>
+<h3>Date with highest trip count</h3>
+<p><%= Trip.date_with_highest_trip_count[0] %>: <%= Trip.date_with_highest_trip_count[1] %></p> 

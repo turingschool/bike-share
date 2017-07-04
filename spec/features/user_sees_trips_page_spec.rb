@@ -1,8 +1,13 @@
 RSpec.describe "User visits '/trips'" do
 
   before :each do
-    Trip.create(duration: 63, start_date: 8/29/2013, start_station_id: 66, end_date: 8/29/2013, end_station_id: 66, bike_id: 520, subscription_id: 1)
-    Trip.create(duration: 70, start_date: 8/29/2013, start_station_id: 10, end_date: 8/29/2013, end_station_id: 10, bike_id: 661, subscription_id: 1)
+    start_date_1 = DateTime.new(2013, 8, 29, 7, 13)
+    end_date_1 = DateTime.new(2013, 8, 29, 7, 14)
+    start_date_2 = DateTime.new(2013, 8, 29, 7, 43)
+    end_date_2 = DateTime.new(2013, 8, 29, 7, 44)
+
+    Trip.create(duration: 63, start_date: start_date_1, start_station_id: 66, end_date: end_date_1, end_station_id: 66, bike_id: 520, subscription_id: 1)
+    Trip.create(duration: 70, start_date: start_date_2, start_station_id: 10, end_date: end_date_2, end_station_id: 10, bike_id: 661, subscription_id: 1)
   end
 
   it "and sees all trip durations" do
@@ -19,7 +24,7 @@ RSpec.describe "User visits '/trips'" do
 
     save_and_open_page
 
-    expect(page).to have_content("Start Date: 8/29/2013")
+    expect(page).to have_content("Start Date: 2013-08-29 07:43:00 UTC")
   end
 
   it "and sees all trip start station ids" do
@@ -36,7 +41,7 @@ RSpec.describe "User visits '/trips'" do
 
     save_and_open_page
 
-    expect(page).to have_content("End Date: 8/29/2013")
+    expect(page).to have_content("End Date: 2013-08-29 07:44:00 UTC")
   end
 
   it "and sees all trip end station ids" do

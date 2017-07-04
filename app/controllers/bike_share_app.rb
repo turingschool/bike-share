@@ -31,13 +31,13 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations/new' do
-  @station = Station.new(params[:station])
-    if @station.save
-      redirect "/stations"
-    else
-      @params[:page] = :"/stations/new"
-      erb :"/error"
-    end
+    sf = StationForm.new(params[:station])
+      if sf.save
+        redirect "/stations"
+      else
+        @params[:page] = :"/stations/new"
+        erb :"/error"
+      end
   end
 
   get '/stations/:id/edit' do

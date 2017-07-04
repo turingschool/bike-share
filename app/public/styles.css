@@ -60,7 +60,16 @@ body.show-me-body {
 }
 
 .btn-info {
-  
+  width: 160px;
+  height: 80px;
+  position: absolute;
+  background-color: rgb(50, 41, 32);
+  font-size: 1.3em;
+  border-color: white;
+}
+
+.btn-info a {
+  color: white
 }
 
 .panel {
@@ -245,13 +254,11 @@ li {
 .new-station-img {
   max-width: 200px;
   max-height: auto;
-  margin: 8px;
-  margin-bottom: 15px;
-  padding-right: 30px;
-  margin-left: -10px;
-  border-style: solid;
-  border-color: white;
-
+  margin-bottom: 5px;
+  padding-right: 0;
+  margin-left: -27px;
+  border: 2px solid white;
+  border-radius: 2px;
 }
 
 .list-station {
@@ -329,17 +336,12 @@ input {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-.index-table-header {
-  position: static;
+.index-table-header tr td{
   padding: 5px;
-  width: 100%;
-  align-content: flex-start;
+  height: 45px;
+  margin-bottom: 0px
 }
 
-.index-table-body {
-  margin-bottom: 10px;
-}
 th, td {
   border-bottom: 2px solid white;
 }
@@ -405,6 +407,7 @@ li.side-chevron-right {
   text-align: center;
   border-top: 5px solid white;
   border-bottom: 5px solid white;
+  border-radius: 5px;
 }
 
 .back-to-index {
@@ -417,6 +420,7 @@ li.side-chevron-right {
 
 .index-button {
   position: absolute;
+  color: rgb(51, 122, 183)
 }
 
 .col-md-4 {

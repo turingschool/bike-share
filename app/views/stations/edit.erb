@@ -1,13 +1,43 @@
-<h1>Edit</h1>
-<form action="/stations/<%= @station.id %>" method="post">
-<input type="hidden" name="_method" value="PUT">
-  <p>Name</p>
-  <textarea name="station[name]"> <%= @station.name %> </textarea>
-  <p>Dock count</p>
-  <textarea name="station[dock_count]"> <%= @station.dock_count %> </textarea>
-  <p>Installation date</p>
-  <textarea name="station[installation_date]"> <%= @station.installation_date %> </textarea>
-  <p>City id</p>
-  <textarea name="station[city_id]"> <%= @station.city_id %> </textarea><br><br>
-  <input type="submit">
-</form>
+<html>
+<head>
+  <title>Bike Share: Edit Station</title>
+</head>
+<body>
+  <main>
+    <section>
+      <div class="row">
+        <div class="col-md-1 empty-rounded-div" ></div>
+        <div class="col-md-4">
+          <div class="panel panel-default show-div">
+            <div class="panel-heading">
+              <h2 class="panel-heading-text">Edit Bike Station</h2>
+            </div>
+            <div class="panel-body ">
+              <form action="/stations/<%= @station.id %>" method="post">
+              <input type="hidden" name="_method" value="PUT">
+                <p class="edit-input-label">Name</p>
+                <input class="card-input" name="station[name]" value="<%= @station.name %>"></input>
+                <p class="edit-input-label">Dock count</p>
+                <input class="card-input" name="station[dock_count]" value="<%= @station.dock_count %>"></input>
+                <p class="edit-input-label">Installation date</p>
+                <input class="card-input" name="station[installation_date]" value=" <%= @station.installation_date %> "></input>
+                <p class="edit-input-label">City id</p>
+                <input class="card-input" name="station[city_id]" value=" <%= @station.city_id %> "></input><br><br>
+                <input class="btn btn-xs element-center-hor" type="submit" value="Submit Changes">
+              </form>
+              <a href="" class="btn btn-xs btn-danger element-center-hor" role="button">Delete This Station</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 show-div">
+          <div class="panel-body show-div">
+            <h2 class="show-splash">Bicycle Station Number <%= @station.id  %></h2>
+            <img src="http://i.imgur.com/sQGfeLx.jpg" alt="Bicycle Icon" class="bike-icon-show">
+          </div>
+        </div>
+        <div class="col-md-1 empty-rounded-div"></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

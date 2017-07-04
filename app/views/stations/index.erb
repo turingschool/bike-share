@@ -1,18 +1,19 @@
-<h1 class="index-title">ALL BIKETOPIA BIKE-SHARE STATIONS</h1>
+<!-- <h1 class="index-title">ALL BIKETOPIA BIKE-SHARE STATIONS</h1> -->
 
 <div class="row">
 <% @stations.each do |station| %>
 <div class="col-sm-3 no-pad">
   <div class="card station-card">
-    <img src="http://i.imgur.com/MbvLRly.jpg" alt="Bicycle Icon" class="bike-icon-one element-center-hor">
+    <img src="http://i.imgur.com/wIrAJs0.jpg" alt="Bicycle Icon" class="bike-icon-one element-center-hor">
     <!-- <img class="card-img-top" src="http://via.placeholder.com/478x100" alt="Card image cap"> -->
+    <!-- <p class="card-text text-muted">Station:</p> -->
     <div class="card-block">
       <h4 class="card-title"><%= station.name  %></h4>
       <h6 class="card-subtitle mb-2 text-muted card-text">PUBLIC BICYCLE RENTAL STATION</h6>
       <p class="card-text"><strong>Dock count: </strong><%= station.dock_count  %></p>
       <p class="card-text"><strong>Installation Date:</strong> <%= station.installation_date  %></p>
       <p class="card-text"><strong>City:</strong> <%= station.city.city  %></p>
-        <a href="/stations/<%= station.id  %>" class="card-link">View This Station</a><br>
+        <a href="/stations/<%= station.id  %>" class="card-link card-text">View This Station</a><br>
       </button>
     </div>
   </div>

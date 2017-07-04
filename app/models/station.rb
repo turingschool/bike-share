@@ -1,6 +1,6 @@
 class Station < ActiveRecord::Base
-  validates_presence_of :name, :dock_count, :city_id #,:installation_date
-  belongs_to :city
+  validates_presence_of :name, :dock_count, :city_id ,:installation_date
+  belongs_to :cities
 
   def self.average_dock_count
     Station.average("dock_count").round

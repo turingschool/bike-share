@@ -33,7 +33,7 @@ class BikeShareApp < Sinatra::Base
   post '/stations/new' do
     sf = StationForm.new(params[:station])
       if sf.save
-        redirect "/stations"
+        redirect '/stations'
       else
         @errors = sf.errors
         erb :"/stations/new"
@@ -46,9 +46,10 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
-    usf = StationForm.new(params[:station])
+    # require 'pry';binding.pry
+    usf = UpdateStationForm.new(params)
     if usf.save
-      redirect "/stations/:id"
+      redirect '/stations/:id'
     else
       @params[:page] = :"/stations/:id/edit"
     end

@@ -14,21 +14,23 @@ class UpdateStationForm
   validates  :installation_date, presence: true
 
   def initialize(params)
-    @station_name = params[:name]
-    @dock_count = params[:dock_count]
-    @city = params[:city]
-    @installation_date = params[:installation_date]
+    @station_name = params[:station][:name]
+    @dock_count = params[:station][:dock_count]
+    @city = params[:station][:city]
+    @installation_date = params[:station][:installation_date]
+    @id = params[:id]
+    # require 'pry';binding.pry
   end
 
-  def save    
+  def save
     if valid?
-      save_name =  StationName.find_or_create_by(name: @station_name)
-      save_city =  City.find_or_create_by(name: @city)
-      save_date =  InstallationDate.find_or_create_by(bike_share_date: @installation_date)
-      @station  =  StationName.update(station_name: save_name,
+      save_name =  StationName.find_or_create_by!(name: @station_name)
+      save_city =  City.find_or_create_by!(name: @city)
+      save_date =  BikeShareDate.find_or_create_by!(bike_share_date: @installation_date)
+      @station  =  Station.update(@id, station_name: save_name,
                               dock_count: @dock_count,
                               city: save_city,
-                              installation_date_id: save_date
+                              installation_date_id: save_date.id
                               )
 
     end

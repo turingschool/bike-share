@@ -26,10 +26,10 @@ RSpec.describe Station do
   end
   describe "Class Methods" do
     before :each do
-      Station.create(name: "Mission", dock_count: 30, city_id: 2, installation_date: 1/4/15)
-      Station.create(name: "Embarcadero", dock_count: 50, city_id: 2, installation_date: 3/4/16)
-      Station.create(name: "Rockridge", dock_count: 15, city_id: 3, installation_date: 5/4/17)
-      Station.create(name: "Marina", dock_count: 15, city_id: 5, installation_date: 5/1/16)
+      Station.create(name: "Mission", dock_count: 30, city_id: 2, installation_date: "1/4/15")
+      Station.create(name: "Embarcadero", dock_count: 50, city_id: 2, installation_date: "3/4/16")
+      Station.create(name: "Rockridge", dock_count: 15, city_id: 3, installation_date: "5/4/17")
+      Station.create(name: "Marina", dock_count: 15, city_id: 5, installation_date: "5/1/16")
     end
 
     describe ".average_dock_count" do
@@ -57,17 +57,15 @@ RSpec.describe Station do
         expect(Station.stations_with_least_bikes).to eq(["Rockridge", "Marina"])
       end
     end
-    #
-    # need to fix dates issue before these tests pass
-    # describe ".newest_stations" do
-    #   it "returns array of newest station names" do
-    #     expect(Station.newest_stations).to eq(["Rockridge"])
-    #   end
-    # end
-    # describe ".oldest_stations" do
-    #   it "returns an array of oldest station names" do
-    #     expect(Station.oldest_stations).to eq(["Mission"])
-    #   end
-    # end
+    describe ".newest_stations" do
+      it "returns array of newest station names" do
+        expect(Station.newest_stations).to eq(["Rockridge"])
+      end
+    end
+    describe ".oldest_stations" do
+      it "returns an array of oldest station names" do
+        expect(Station.oldest_stations).to eq(["Mission"])
+      end
+    end
   end
 end

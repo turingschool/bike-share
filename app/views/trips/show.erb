@@ -11,4 +11,8 @@
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="DELETE THIS TRIP">
   </form>
+  <form action="/trips/<%= @trip.id %>/edit" method="put">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="submit" value="Edit This Trip">
+  </form>
 <a href="/trips">View all Trips</a>

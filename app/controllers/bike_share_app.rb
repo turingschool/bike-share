@@ -24,6 +24,8 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations/:id' do |id|
     @station = Station.find(id)
+    @rides_started = Trip.rides_at_start_station(@station.id)
+    @rides_ended = Trip.rides_at_end_station(@station.id)
     erb :'/stations/show'
   end
 

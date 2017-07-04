@@ -46,7 +46,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
-    require 'pry';binding.pry
     sf = StationForm.new(params[:station])
     if sf.save
       redirect "/stations/:id"
@@ -94,6 +93,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/trips/new' do
+        require 'pry';binding.pry
     tf = TripForm.new(params[:trip])
       if tf.save
         redirect "/trips"

@@ -1,8 +1,8 @@
 RSpec.describe "User visits '/station-dashboard'" do
   before :all do
-    Station.create(name: "Mission", dock_count: 30, city_id: 2, installation_date: 1/4/15)
-    Station.create(name: "Embarcadero", dock_count: 50, city_id: 2, installation_date: 3/4/16)
-    Station.create(name: "Rockridge", dock_count: 15, city_id: 3, installation_date: 5/4/17)
+    Station.create(name: "Mission", dock_count: 30, city_id: 2, installation_date: "1/4/15")
+    Station.create(name: "Embarcadero", dock_count: 50, city_id: 2, installation_date: "3/4/16")
+    Station.create(name: "Rockridge", dock_count: 15, city_id: 3, installation_date: "5/4/17")
     visit("/stations/station-dashboard")
   end
 
@@ -24,12 +24,10 @@ RSpec.describe "User visits '/station-dashboard'" do
   it "and sees stations where fewest bikes are available" do
     expect(page).to have_content("Stations with Least Bikes: Rockridge")
   end
-  #
-  # need to fix dates issue before these tests pass
-  # it "and sees most recently installed station" do
-  #   expect(page).to have_content("Newest Stations: Rockridge")
-  # end
-  # it "and sees oldest station" do
-  #   expect(page).to have_content("Oldest Stations: Mission")
-  # end
+  it "and sees most recently installed station" do
+    expect(page).to have_content("Newest Stations: Rockridge")
+  end
+  it "and sees oldest station" do
+    expect(page).to have_content("Oldest Stations: Mission")
+  end
 end

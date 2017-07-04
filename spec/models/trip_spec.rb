@@ -75,5 +75,23 @@ RSpec.describe Trip do
         expect(result).to eq(2)
       end
     end
+
+    describe ".most_trip_date" do
+      it "returns the date with the highest number of rides started at a particular station" do
+      trip_1 = Trip.create(duration: 75, start_date_id: 2, start_station_id: 3, end_date_id: 2, end_station_id: 4, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+      trip_2 = Trip.create(duration: 75, start_date_id: 2, start_station_id: 3, end_date_id: 2, end_station_id: 4, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+      trip_3 = Trip.create(duration: 75, start_date_id: 3, start_station_id: 3, end_date_id: 3, end_station_id: 2, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+      trip_4 = Trip.create(duration: 75, start_date_id: 1, start_station_id: 2, end_date_id: 3, end_station_id: 1, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+      trip_5 = Trip.create(duration: 75, start_date_id: 2, start_station_id: 3, end_date_id: 2, end_station_id: 4, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+      trip_6 = Trip.create(duration: 75, start_date_id: 2, start_station_id: 1, end_date_id: 2, end_station_id: 4, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+      trip_7 = Trip.create(duration: 75, start_date_id: 3, start_station_id: 3, end_date_id: 3, end_station_id: 2, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+      trip_8 = Trip.create(duration: 75, start_date_id: 1, start_station_id: 2, end_date_id: 3, end_station_id: 1, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+binding.pry
+      result = Trip.most_trip_date
+
+      expect(result).to eq(trip_2.start_station)
+      expect(result).to eq(trip_2.start_date)
+      end
+    end
   end
 end

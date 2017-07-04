@@ -22,4 +22,8 @@ class Trip < ActiveRecord::Base
   def self.rides_at_end_station(station_id)
     Trip.where(end_station_id: station_id).count
   end
+
+  def self.most_trip_date
+    #need to finish method
+  end
 end

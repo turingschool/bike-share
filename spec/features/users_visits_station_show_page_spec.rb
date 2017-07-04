@@ -15,7 +15,7 @@ RSpec.describe "user visits station show page" do
     expect(page).to have_content(station.name)
     expect(page).to have_content(station.dock_count)
     expect(page).to have_content(station.city)
-    expect(page).to have_content(station.installation_date)
+    expect(page).to have_content(station.installation_date.date)
     expect(page).to have_content(4)
     expect(page).to have_content(3)
   end

@@ -37,6 +37,6 @@ class Station < ActiveRecord::Base
   end
 
   def most_trip_date
-    #Station.
+    #Need total rides by station by day
   end
 end

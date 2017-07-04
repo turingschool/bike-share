@@ -45,19 +45,29 @@ class BikeShareApp < Sinatra::Base
     erb :"stations/edit"
   end
 
+  put '/stations/:id' do
+    require 'pry';binding.pry
+    sf = StationForm.new(params[:station])
+    if sf.save
+      redirect "/stations/:id"
+    else
+      @params[:page] = :"/stations/:id/edit"
+    end
+  end
+
   get '/error' do
     erb :"error"
   end
 
-  put '/stations/:id' do |id|
-    if Station.update(id.to_i, params[:station]) == false
-      @params[:page] = :"/stations/new"
-      erb :"/error"
-    else
-      Station.update(id.to_i, params[:station])
-      redirect "/stations/#{id}"
-    end
-  end
+  # put '/stations/:id' do |id|
+  #   if Station.update(id.to_i, params[:station]) == false
+  #     @params[:page] = :"/stations/new"
+  #     erb :"/error"
+  #   else
+  #     Station.update(id.to_i, params[:station])
+  #     redirect "/stations/#{id}"
+  #   end
+  # end
 
   delete '/stations/:id' do |id|
     Station.destroy(id.to_i)

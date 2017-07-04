@@ -20,7 +20,10 @@
               <p class="station-info-text"><strong>City ID:</strong> <%= @station.city_id  %> </p><br>
               <a href="/stations" class="btn btn-xs btn-default btn element-center-hor" role="button ">View All Stations</a>
               <a href="/stations/<%= @station.id %>/edit" class="btn btn-xs btn-default element-center-hor" role="button">Edit This Station</a>
-              <a href="" class="btn btn-xs btn-danger element-center-hor" role="button">Delete This Station</a>
+              <form action="/stations/<%= @station.id %>" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <input class="btn btn-xs btn-default element-center-hor" type="submit" value="Delete this Station">
+              </form>
             </div>
           </div>
         </div>

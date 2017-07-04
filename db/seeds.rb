@@ -26,6 +26,7 @@ def seed_station_database(file_path)
   stations.each do |row|
     city = City.find_by(city: row[:city])
     row.delete_if { |k,v| k == :lat || k == :long || k == :city}
+    row[:installation_date] = Date.strptime(row[:installation_date], "%m/%d/%Y")
     city.stations.create!(row)
   end
 end

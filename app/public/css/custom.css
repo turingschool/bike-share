@@ -35,12 +35,6 @@
   margin-top: 10px;
 }
 
-.footer {
-  background-color: grey;
-  margin-left: 0%;
-  margin-right: 0%;
-  padding-right: 0%;
-}
 
 .bike-pic-header-container {
   max-height: 120px; overflow: hidden;
@@ -50,14 +44,14 @@
   width: auto;
 }
 
-.bike-pic-header{
-  margin-top: -100px;
-  width: 100%;
-}
+
 
 .bike-pic-header-two {
   margin-top: -250px;
   width: 100%;
+  border-style: solid;
+  border-color: white;
+  border-width: medium;
 }
 
 .new-view-textbox-header {
@@ -77,10 +71,10 @@ background-color: red;
   margin-bottom: 0px;
   margin-right: 2px;
 }
-/*.show-div {
-height: 300px;
-padding-bottom: 0px;
-}*/
+.show-div {
+  padding-bottom: 0px;
+
+}
 
 .panel {
   padding-bottom: 0px;
@@ -90,12 +84,25 @@ padding-bottom: 0px;
   text-align: center;
 }
 
-.col-md-4 {
+.col-md-3 {
   padding: 0px;
+  margin: 0px;
 }
+
+/*.panel > .panel-heading {
+background-image: none;
+background-color: red;
+color: white;}*/
+
+/*.panel-heading {
+background-color: red;
+text-decoration-color: red;
+}*/
+
 
 .panel-heading-text {
   margin-top: 0px;
+  color: 	#484848;
 }
 .station-info-text {
   font-size: 150%;
@@ -103,25 +110,99 @@ padding-bottom: 0px;
 }
 
 .bike-icon-one {
-  margin-top: 0px;
-  width: 50%;
-  height: 50%;
+  margin-top: 5px;
   display: block;
-  margin: 0 auto;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  width: 20%;
+}
+
+.bike-icon-show {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  /*margin-top: 30%;*/
+  position: relative;
 }
 
 .element-center-hor {
   display: block;
   margin: 0 auto;
+  margin-bottom: 5px;
 }
 
 .btn {
-  width: auto;
+  width: 150px;
+}
+
+.card {
+  margin: 0px;
+}
+
+.card-subtitle {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.card-title {
+  color: #484848;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  background: #FFCC66;
+  border-radius: 5px;
+}
+
+.card-link {
+  position: absolute;
+  float: bottom;
+}
+
+.card-text {
 }
 
 .station-card {
-  width: 25%;
-  padding: 3px;
+  padding: 5px;
+  margin: 10px;
+  border-style: solid;
+  border-color: gray;
+  border-width: 2px;
+  height: 245px;
+  border-radius: 10px;
+}
+
+.row {
+  margin: 0px;
+  pad: 15;
+}
+.navbar {
+  border-color: white;
+  border-radius: 0px;
+  border-width: medium;
+  /*background-color: lightgrey;*/
+  margin-bottom: 5px;;
+}
+
+.footer {
+  background-color: #e5f5ff;
+  margin-left: 0%;
+  margin-right: 0%;
+  margin-top: 5px;
+  padding-right: 0%;
+  border-radius: 0px;
+  border-color: grey;
+}
+
+.index-title{
+  text-align: center;
+  font-style: oblique;
+  margin-top: 5px;
+  padding-top: 0px;
+  font-weight: bolder;
+  color: white;
+  background: linear-gradient(to left, #33ccff 0%, #0066ff 100%);
+
 }
 
 

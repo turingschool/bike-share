@@ -153,5 +153,24 @@ RSpec.describe Station do
          expect(matching_station.sample.dock_count).to eq(station_3.dock_count)
        end
      end
+
+     describe ".most_trip_date" do
+       it "returns the date with the highest number of trips started at this station" do
+         trip_1 = Trip.new(duration: 75, start_date_id: 2, start_station_id: 3, end_date_id: 2, end_station_id: 5, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+         trip_2 = Trip.new(duration: 75, start_date_id: 2, start_station_id: 3, end_date_id: 2, end_station_id: 5, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+         trip_3 = Trip.new(duration: 75, start_date_id: 3, start_station_id: 3, end_date_id: 3, end_station_id: 5, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+         trip_3 = Trip.new(duration: 75, start_date_id: 1, start_station_id: 2, end_date_id: 3, end_station_id: 5, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+         date_1 = BikeShareDate.create(date: Date.strptime('1/1/2012', '%m/%d/%Y'))
+         date_2 = BikeShareDate.create(date: Date.strptime('2/5/2017', '%m/%d/%Y'))
+         date_3 = BikeShareDate.create(date: Date.strptime('4/5/2015', '%m/%d/%Y'))
+         station_1 = Station.create(name: "A", city: "Boston", dock_count: 2, installation_date_id: 1)
+         station_2 = Station.create(name: "B", city: "Atlanta", dock_count: 1, installation_date_id: 1)
+         station_3 = Station.create(name: "C", city: "Denver", dock_count: 3, installation_date_id: 1)
+
+         result = station_3.most_trip_date
+
+         expect(result).to eq("2/5/2017")
+       end
+     end
   end
 end

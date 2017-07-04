@@ -35,4 +35,8 @@ class Station < ActiveRecord::Base
     station = Station.minimum(:dock_count)
     Station.where(dock_count: station)
   end
+
+  def most_trip_date
+    #Station.
+  end
 end

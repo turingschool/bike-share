@@ -1,29 +1,73 @@
-<h1>All Stations</h1>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container navbar-beam">
+  </div>
+  <div class="container-fluid navbar-spacing">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">
+        <img class="brand-logo" alt="Brand" src="bs.png">
+      </a>
+      <h1> Station Index</h1><p class="navbar-item">(Page 1)</p>
+    </div>
+  </div>
+</nav>
+<div class="container container-body">
+  <h3 class="create-new"><a href="/stations/new">Create New Station</a></h3>
 
-<h3><a href="/stations/new">Create New Station</a></h3>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>City</th>
-    <th>Dock Count</th>
-    <th>Installation Date</th>
-  </tr>
+  <nav aria-label="Search Stations">
+    <ul class="pagination">
+      <li class="active index-pagination"><a href="/stations">1</a></li>
+      <li class="index-pagination"><a href="/stations/index-2">2</a></li>
+      <li class="index-pagination"><a href="/stations/index-3">3</a></li>
+      <li class="side-chevron-right">
+        <a href="/stations/index-2" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 
-  <% @stations.each do |station| %>
-  <tr>
-    <td><%= station.name %></td>
-    <td><%= station.city %></td>
-    <td><%= station.dock_count %></td>
-    <td><%= station.installation_date %></td>
-    <td><a href="/stations/<%= station.id %>">Station Info</a></td>
-
-      <td>
-      <form class="" action="/stations/<%= station.id %>" method="post">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" name="" value="delete <%= station.name %>">
-      </form>
+  <table id="stations-index">
+  <div class="stations-index">
+    <tr class="index-table-header">
+      <th class="col-md-2">Name</th>
+      <th class="col-md-3">City</th>
+      <th class="col-md-1">Dock Count</th>
+      <th class="col-md-2">Installation Date</th>
+      <th class="col-md-2"> </th>
+      <th class="col-md-2"> </th>
+    </tr>
+  </div>
+  <div class= "index-table-body">
+    <% @stations[0..29].each do |station| %>
+    <tr>
+      <td class="col-md-2 center"><%= station.name %></td>
+      <td class="col-md-2 center"><%= station.city %></td>
+      <td class="col-md-2 center"><%= station.dock_count %></td>
+      <td class="col-md-2 center"><%= station.installation_date %></td>
+      <td class="col-md-2 center"><a href="/stations/<%= station.id %>">Station Info</a></td>
+      <td class="col-md-2 center">
+        <form  action="/stations/<%= station.id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" name="" value="delete">
+        </form>
       </td>
     </tr>
-  <% end %>
+    <% end %>
+  </div>
+  </table>
 
-</table>
+  <nav aria-label="Search Stations">
+    <ul class="pagination">
+      <li class="active index-pagination"><a href="/stations">1</a></li>
+      <li class="index-pagination"><a href="/stations/index-2">2</a></li>
+      <li class="index-pagination"><a href="/stations/index-3">3</a></li>
+      <li class="side-chevron-right">
+        <a href="/stations/index-2" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+</body>

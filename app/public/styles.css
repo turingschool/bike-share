@@ -1,0 +1,390 @@
+.background-stations {
+  background-image: url("https://s-media-cache-ak0.pinimg.com/736x/71/af/9f/71af9fbb9d50c78be523f59d28d3ee59--train-station-map-train-stations.jpg");
+  border-style: solid;
+  border-color: white;
+}
+
+body {
+  font-family: 'Open Sans Condensed', sans-serif;
+  background-color: black;
+}
+
+.navbar-item {
+  display: inline;
+  color: white;
+  margin-left: 10px;
+}
+
+.container-body { /*change name?*/
+  margin-top: 60px;
+}
+
+.navbar-spacing {
+  margin-left: 0px;
+}
+
+.navbar-default {
+  border-style: outset;
+  border-color: black;
+}
+.navbar-beam {
+  position: absolute;
+  height: 35px;
+  width: 100%;
+  margin-top: 11px;
+  background-color: rgb(50, 41, 32);
+  z-index: -1;
+}
+
+.stat-container {
+    width: 55%;
+    padding-top: 15px;
+    padding-right: 41px;
+    text-transform: uppercase;
+}
+
+.brand-logo {
+  width: 28px;
+  height: 28px;
+  margin-right: 20px;
+  position: relative;
+}
+
+.panel {
+  margin-bottom: 10px;
+}
+.panel-data{
+  background-color: black;
+}
+
+.panel-default {
+  border-style: solid;
+  border-color: black;
+}
+
+.panel-body{
+  margin-top: -20px;
+}
+
+.first-row {
+  padding: 5px;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    /*align-self: center;*/
+    color: white;
+    font-family: "Lora", serif;
+    font-weight: bold;
+    font-style: italic;
+    margin-right: 25px;
+    margin-top: 45px;
+    padding-top: 6px;
+    padding-left: 2px;
+}
+
+.popup-first{
+  margin-top: 45px;
+}
+
+.popup-smaller {
+  margin-top: 50px;
+  font-size: 1.8em;
+}
+
+.popup-bigger {
+  padding-bottom: 6px;
+}
+
+.col-md-6 {
+  align-content: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.col-md-6:hover .popup {
+    display: block;
+    background-color: black;
+    overflow-y: hidden;
+}
+/*236,210,135<--yellow*/
+.stat {
+    font-size: 10em;
+    height: 100%;
+    color: white;
+    text-shadow: 2px 2px rgb(103, 82, 56);
+    background-color: black;
+}
+
+h1 {
+  font-family: "Lobster", cursive;
+  font-size: 1.9em;
+  display: inline-block;
+  margin-top: 17px;
+  color: white;
+  margin-left: 10px;
+}
+
+h3, h2 {
+  font-family: "Lato", sans-serif;
+  color: white;
+  text-shadow: 2px 2px rgb(103, 82, 56);
+  margin-bottom: 5px;
+  margin-top: 5px;
+  background-color: rgb(50, 41, 32);
+}
+
+tr, ul {
+  color: white;
+  font-family: "Lora", serif;
+}
+
+td {
+  text-align: left
+}
+
+table#stations-index {
+  background-color: black;
+  }
+
+#stations-index tr td {
+  height: 40px;
+}
+
+.index-table-body{
+  height: auto;
+}
+
+.center {
+  text-align: center;
+}
+
+th {
+  text-decoration: underline;
+  text-transform: uppercase;
+  font-size-adjust: auto;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+.dc {
+  text-align: center;
+}
+
+.nudge-right {
+  padding-left: 12px;
+}
+
+.nudge-right-er {
+  padding-left: 25px;
+}
+
+.nudge-left {
+  padding-right: 12px
+}
+
+table {
+  border-style: double;
+  border-color: white;
+  margin-bottom: 5px;
+}
+
+
+.body-beam {
+  display: inline-block;
+  position: absolute;
+  height: 45%;
+  width: 93%;
+  margin-top: 30px;
+  margin-left: 48px;
+  border-style: solid;
+  border-color: white;
+  background-color: black;
+  z-index: 0;
+  left: 0;
+}
+
+.new-station {
+  background-color: black;
+  max-width: 340px;
+  height: 270px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: -20px;
+  align-content: center;
+  margin-left: 85px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-color: white;
+  border-style: double;
+}
+li {
+  max-width: 200px;
+  padding-left: 50px;
+}
+
+.new-station-img {
+  max-width: 200px;
+  max-height: auto;
+  margin: 8px;
+  margin-bottom: 15px;
+  padding-right: 30px;
+  margin-left: -10px;
+  border-style: solid;
+  border-color: white;
+
+}
+
+.list-station {
+  font-family: "Lora", serif;
+  font-size: 1.2em;
+}
+
+.border-me {
+  border-style: solid;
+  border-color: white;
+}
+
+/* Edit Page */
+
+.edit-background {
+  background-image: url(https://bravobike.com/wp-content/uploads/2013/12/01_slider.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+form {
+  color: white;
+  margin-left: 20px;
+  margin-bottom: 280px;
+  text-shadow: 2px 2px black;
+}
+
+label {
+  text-decoration: underline;
+  font-size: 1.3em;
+}
+
+input {
+  color: black;
+}
+
+.btn-warning {
+  color: black;
+  border-color: white;
+}
+
+.entry_title {
+  width: 180px;
+  text-align: justify;
+  background-color: rgb(50, 41, 32);
+  padding: 2px;
+}
+
+.edit-form {
+  margin-top: 5px;
+  margin-left: 5px;
+  align-content: left;
+  border-style: solid;
+  border-color: white;
+  padding: 15px;
+  width: 300px;
+  background-color: rgb(50, 41, 32);
+  padding-left: 25px;
+}
+
+.edit-form-left {
+  margin-top: 65px;
+  margin-right: 75px;
+  border-style: solid;
+  border-color: rgb(96, 59, 147);
+  padding: 15px;
+  width: 300px;
+  background-color: rgb(50, 41, 32);
+  padding-left: 65px;
+}
+
+.new-background {
+  background-image: url(https://s-media-cache-ak0.pinimg.com/originals/d4/36/e3/d436e3cedb0982b6b02800e9f72f0b54.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  float: right
+}
+
+.index-table-header {
+  position: static;
+  padding: 5px;
+  width: 100%;
+  align-content: flex-start;
+}
+
+.index-table-body {
+  margin-bottom: 10px;
+}
+th, td {
+  border-bottom: 2px solid white;
+}
+th {
+  height: 25px;
+}
+td {
+  height: 10px;
+  vertical-align: top;
+  padding-bottom: 0;
+  padding-top: 10px
+}
+
+.stations-index {
+  position: relative;
+  margin-top: 2px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+ul.pagination {
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 230px;
+  text-align: center
+}
+
+li.index-pagination{
+  padding-left: 0px;
+  padding-right: 0px;
+  display: inline-block;
+}
+
+li.active.index-pagination{
+  padding-left: 0px;
+  padding-right: 0px;
+  display: inline-block;
+}
+
+a.whatever {
+  margin-left: 0px;
+  width: 10px;
+  display: inline-block;
+}
+
+li.side-chevron-right {
+  margin-left: 0px;
+  display: inline-block;
+  margin-right: 0px;
+  padding-left: 0px;
+  width: auto;
+}
+
+.create-new {
+  width: 230px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left:5px;
+  border: 1px double white;
+  text-align: center;
+  border-top: 5px solid white;
+  border-bottom: 5px solid white;
+}

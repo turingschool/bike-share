@@ -48,10 +48,12 @@
       <td class="col-md-2 center"><%= station.installation_date %></td>
       <td class="col-md-2 center"><a href="/stations/<%= station.id %>">Station Info</a></td>
       <td class="col-md-2 center">
+      <div class="index-table-body">
         <form  action="/stations/<%= station.id %>" method="post">
           <input type="hidden" name="_method" value="DELETE">
           <input type="submit" name="" value="delete">
         </form>
+      </div>
       </td>
     </tr>
     <% end %>

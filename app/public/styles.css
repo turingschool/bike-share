@@ -53,10 +53,10 @@ body.show-me-body {
 }
 
 .brand-logo {
-  width: 28px;
-  height: 28px;
+  width: 58px;
+  height: 58px;
   margin-right: 20px;
-  position: relative;
+  position: absolute;
 }
 
 .btn-info {
@@ -153,7 +153,7 @@ h1 {
   display: inline-block;
   margin-top: 17px;
   color: white;
-  margin-left: 10px;
+  margin-left: 70px;
 }
 
 h3, h2 {
@@ -309,7 +309,6 @@ input {
 
 .edit-form {
   margin-top: 5px;
-  margin-left: 5px;
   align-content: left;
   border-style: solid;
   border-color: white;
@@ -317,7 +316,12 @@ input {
   width: 300px;
   background-color: rgb(50, 41, 32);
   padding-left: 25px;
+  color: white;
+  margin-left: 20px;
+  margin-bottom: 280px;
+  text-shadow: 2px 2px black;
 }
+
 
 .edit-form-left {
   margin-top: 5px;
@@ -329,6 +333,10 @@ input {
   background-color: rgb(50, 41, 32);
   padding-left: 65px;
   float: right;
+  color: white;
+  margin-left: 20px;
+  margin-bottom: 280px;
+  text-shadow: 2px 2px black;
 }
 
 .new-background {
@@ -342,20 +350,21 @@ input {
   margin-bottom: 0px
 }
 
+.index-table-body form {
+  height: 25px;
+  width: 25px;
+  padding-bottom: 0px;
+  margin: 0px;
+}
+
 th, td {
   border-bottom: 2px solid white;
-}
-th {
   height: 25px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-}
-td {
-  height: 10px;
+  padding-top: 10px;
+  padding-bottom: 0px;
   vertical-align: top;
-  padding-bottom: 0;
-  padding-top: 10px
 }
+
 
 .stations-index {
   position: relative;
@@ -457,7 +466,19 @@ li.side-chevron-right {
   color: white;
   text-align: center;
   padding-top: 130px;
+  margin-left: -100px;
   margin-bottom: 0;
   font-size: 8em;
   position: fixed;
+}
+
+.navbar-grow h1{
+  height: 90px;
+  font-size: 60px;
+  padding: 10px;
+}
+
+.brand-logo-main {
+  height: 50px;
+  width: 50px;
 }

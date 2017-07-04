@@ -16,7 +16,7 @@ describe 'user deletes a trip' do
 
     expect(page).to have_content("53")
     click_button("delete", match: :first)
-    save_and_open_page
+    # save_and_open_page
 
     expect(page).to have_content("174")
     expect(page).to_not have_content("53")

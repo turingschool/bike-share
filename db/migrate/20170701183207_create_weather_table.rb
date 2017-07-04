@@ -1,6 +1,6 @@
 class CreateWeatherTable < ActiveRecord::Migration[5.0]
   def change
-    create_table :weather do |t|
+    create_table :weathers do |t|
       t.integer :date_id
       t.decimal :max_temperature_f
       t.decimal :mean_temperature_f
@@ -25,7 +25,7 @@ class CreateWeatherTable < ActiveRecord::Migration[5.0]
       t.decimal :events
       t.decimal :wind_dir_degrees
       t.integer :zip_code_id
-      
+
       t.timestamps null: false
     end
   end

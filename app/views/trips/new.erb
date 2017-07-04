@@ -13,7 +13,7 @@
   </select>
   <label>End Date: </label>
   <input type="date" name="trip[end_date_id]">
-  <label>Start Station: </label>
+  <label>End Station: </label>
   <select name="trip[end_station_id]">
     <% @stations.each do |station| %>
       <option value="<%= station.id %>"><%= station.name %></option>

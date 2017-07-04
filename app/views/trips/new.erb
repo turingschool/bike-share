@@ -1,20 +1,23 @@
-<h1>New</h1>
+<h1>New Trip</h1>
 <form action="/trips" method="post">
   <p>Duration</p>
   <input type="text" name="trip[duration]">
   <p>Start Date</p>
-  <input type="text" name="trip[start_date]">
+  <input type="datetime-local" name="trip[start_date]">
   <p>Start Station ID</p>
   <input type="text" name="trip[start_station_id]">
   <p>End Date</p>
-  <input type="text" name="trip[end_date]">
+  <input type="datetime-local" name="trip[end_date]">
   <p>End Station ID</p>
   <input type="text" name="trip[end_station_id]">
   <p>Bike ID</p>
   <input type="text" name="trip[bike_id]">
   <p>Subscription Type ID</p>
-  <input type="text" name="trip[subscription_type_id]">
+  <input type="text" name="trip[subscription_id]">
   <p>Zipcode</p>
-  <input type="text" name="trip[zipcode]"><br/>
+  <input type="text" name="trip[zip_code]"><br/>
   <input type="submit" value="Create Trip">
 </form>
+<!--
+<button type="submit">Create Trip</button>  -->
+<!-- <a type="submit" role="button" class="btn btn-xs btn-danger element-center-hor" >Create Trip</a> -->

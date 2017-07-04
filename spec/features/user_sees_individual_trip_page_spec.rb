@@ -1,7 +1,9 @@
 RSpec.describe "User visits '/trips/1'" do
 
   before :each do
-    Trip.create(duration: 30, start_date: "6/12/16", start_station_id: 1, end_date: "6/14/16", end_station_id: 2, bike_id: 12, subscription_type_id: 1)
+    start_date = DateTime.new(2013, 8, 29, 7, 13)
+    end_date = DateTime.new(2013, 8, 29, 7, 14)
+    Trip.create(duration: 63, start_date: start_date, start_station_id: 66, end_date: end_date, end_station_id: 66, bike_id: 520, subscription_id: 1)
   end
 
   it "and sees duration" do
@@ -9,7 +11,7 @@ RSpec.describe "User visits '/trips/1'" do
 
     save_and_open_page
 
-    expect(page).to have_content("Duration: 30")
+    expect(page).to have_content("Duration: 63")
   end
 
   it "and sees start date" do
@@ -17,7 +19,7 @@ RSpec.describe "User visits '/trips/1'" do
 
     save_and_open_page
 
-    expect(page).to have_content("Start Date: 6/12/16")
+    expect(page).to have_content("Start Date: 2013-08-29 07:13:00 UTC")
   end
 
   it "and sees start station id" do
@@ -25,7 +27,7 @@ RSpec.describe "User visits '/trips/1'" do
 
     save_and_open_page
 
-    expect(page).to have_content("Start Station ID: 1")
+    expect(page).to have_content("Start Station ID: 66")
   end
 
   it "and sees end date" do
@@ -33,7 +35,7 @@ RSpec.describe "User visits '/trips/1'" do
 
     save_and_open_page
 
-    expect(page).to have_content("End Date: 6/14/16")
+    expect(page).to have_content("End Date: 2013-08-29 07:14:00 UTC")
   end
 
   it "and sees end station id" do
@@ -41,7 +43,7 @@ RSpec.describe "User visits '/trips/1'" do
 
     save_and_open_page
 
-    expect(page).to have_content("End Station ID: 2")
+    expect(page).to have_content("End Station ID: 66")
   end
 
   it "and sees bike id" do
@@ -49,7 +51,7 @@ RSpec.describe "User visits '/trips/1'" do
 
     save_and_open_page
 
-    expect(page).to have_content("Bike ID: 12")
+    expect(page).to have_content("Bike ID: 520")
   end
 
   it "and sees subscription id" do

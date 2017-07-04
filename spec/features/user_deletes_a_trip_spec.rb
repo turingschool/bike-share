@@ -1,9 +1,17 @@
 RSpec.describe "User deletes a trip" do
   it "from all trips page" do
-    Trip.create(duration: 30, start_date: "6/12/16", start_station_id: 1, end_date: "6/14/16", end_station_id: 2, bike_id: 12, subscription_type_id: 1)
-    Trip.create(duration: 45, start_date: "6/14/16", start_station_id: 12, end_date: "6/16/16", end_station_id: 12, bike_id: 22, subscription_type_id: 1)
+
+    start_date_1 = DateTime.new(2013, 8, 29, 7, 13)
+    end_date_1 = DateTime.new(2013, 8, 29, 7, 14)
+    start_date_2 = DateTime.new(2013, 8, 29, 7, 43)
+    end_date_2 = DateTime.new(2013, 8, 29, 7, 44)
+
+    Trip.create(duration: 63, start_date: start_date_1, start_station_id: 66, end_date: end_date_1, end_station_id: 66, bike_id: 520, subscription_id: 1)
+    Trip.create(duration: 70, start_date: start_date_2, start_station_id: 10, end_date: end_date_2, end_station_id: 10, bike_id: 661, subscription_id: 1)
 
     visit('/trips')
+
+    save_and_open_page
 
     click_button("Delete Trip 1")
 

@@ -66,4 +66,16 @@ class BikeShareApp < Sinatra::Base
 
     redirect('/trips')
   end
+
+  get '/trips/new' do
+    @stations = Station.all
+    erb :'/trips/new'
+  end
+
+  post '/trips' do
+    #TODO create and route to trip show page
+    Trip.create(params[:trip])
+
+    redirect('/trips')
+  end
 end

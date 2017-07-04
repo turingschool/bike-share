@@ -17,9 +17,10 @@ class Zipcode < ActiveRecord::Base
   end
 
   def self.add_zeros(string)
-    until string.length == 5
-      string += "0"
+    array = string.split('')
+    until array.count == 5
+      array.unshift("0")
     end
-    return string
+    return array.join
   end
 end

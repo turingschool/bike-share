@@ -4,45 +4,46 @@
   <input type="hidden" name="_method" value="PUT">
 
   <label> Duration: </label>
-  <input type="number" name="trip[duration]" value="<%= @trip.name %>">
+  <input type="number" name="trip[duration]" value="<%= @trip.duration %>">
 
   <label> Start Date: ></label>
   <input type="date" name="trip[start_date_id]" value="<%= @trip.start_date.date %>">
 
   <label> Start Station Name: </label>
   <input list="names" type="text" name="trip[start_station_id]" value="<%= @trip.start_station.name %>">
+  <index>
     <datalist>
-                      <%= @stations.each do |station| %>
+                      <% @stations.each do |station| %>
               <option value="<%= station.name %>" > </option>
-                      <%= end %>
+                      <% end %>
     </datalist>
-
+  </index>
   <label> End Date: </label>
   <input type="date" name="trip[end_date_id]" value="<%= @trip.end_date.date %>">
 
 <label> End Station Name: </label>
-  <input list="names" type="text" name="trip[end_station_id]" value="<%= @trip.end_station_id.name %>">
-    <datalist>
-                  <%= @stations.each do |station| %>
+  <input list="names" type="text" name="trip[end_station_id]" value="<%= @trip.end_station.name %>">
+    <select>
+                  <% @stations.each do |station| %>
               <option value="<%= station.name %>" > </option>
-                  <%= end %>
-    </datalist>
+                  <% end %>
+    </select>
 
   <label> Bike ID:</label>
   <input list="ids" type="number" name="trip[bike_id]" value="<%= @trip.bike_id %>">
     <datalist>
             <% @bikes.each do |bike| %>
-        <option value="<%= bike.id %>" >
-                  <%= end %>
+        <option value="<%= bike %>" >
+                  <% end %>
         </option>
     </datalist>
 
-    <label> Substription Type: </label>
-    <input list="types" type="text" name="trip[substription_type]" value="<%= @trip.substription_type %>">
-      <datalist>
+    <label> Subscription Type: </label>
+    <input list="types" type="text" name="trip[subscription_type]" value="<%= @trip.subscription_type %>">
+      <select>
         <option value="Customer" </option>
         <option value="Subscriber" </option>
-      </datalist>
+      </select>
 
   <button type="submit">Edit Trip</button>
 </form>

@@ -10,7 +10,7 @@ class Station < ActiveRecord::Base
 
 
   def installation_date
-    BikeShareDate.find(installation_date_id)
+    BikeShareDate.find(installation_date_id).bike_share_date
   end
 
 
@@ -37,23 +37,26 @@ def city
   end
 
   def self.most_bikes_available
-    sql("SELECT station_name_id FROM stations ORDER BY dock_count ASC").first["name"]
-    #Station.order(:dock_count).first
+    # sql("SELECT station_name_id FROM stations ORDER BY dock_count ASC").first["name"]
+    station = Station.order(:dock_count).last
+    # station.station_name
   end
 
   def self.stations_with_most_bikes
-    sql("SELECT station_name_id FROM stations ORDER BY dock_count ASC LIMIT 5").map {|x| "#{x["name"]}"}
-    #Station.order(dock_count: :asc).limit(5)
+    # sql("SELECT station_name_id FROM stations ORDER BY dock_count ASC LIMIT 5").map #{|x| "#{x["name"]}"}
+    Station.order(dock_count: :desc).limit(5)
   end
 
   def self.fewest_bikes_avaiable
-    sql("SELECT station_name_id FROM stations ORDER BY dock_count DESC").first["name"]
-    #Station.order(:dock_count).last
+    # sql("SELECT station_name_id FROM stations ORDER BY dock_count DESC").first["name"]
+    Station.order(:dock_count).first
+
   end
 
   def self.stations_with_fewest_bikes
     sql("SELECT station_name_id FROM stations ORDER BY dock_count DESC LIMIT 5").map {|x| "#{x["name"]}"}
     #Station.order(dock_count: :desc).limit(5)
+    Station.order(dock_count: :asc).limit(5)
   end
 
   def self.most_recent_station
@@ -62,7 +65,7 @@ def city
   end
 
   def self.oldest_station
-    sql("SELECT station_name_id FROM stations ORDER BY installation_date_id DESC").first["name"]
-    #Station.order(:installation_date).last
+    date = BikeShareDate.order(:bike_share_date).first.id
+    Station.find_by(installation_date_id: date)
   end
 end

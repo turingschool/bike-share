@@ -6,14 +6,18 @@
 <h3>Average Bikes Available:
   <%= @average %></h3>
 <h3>Most bikes available at a station:
-  <%= @most_bikes %></h3>
-<h3>Station(s) where the most bikes are available:
-  <%= @stations_with_most_bikes %></h3>
+  <%= @most_bikes.station_name.name %></h3>
+<h3>Station(s) where the most bikes are available: </h3>
+  <% @stations_with_most_bikes.each do |station| %>
+  <p><%= station.station_name.name %></p>
+  <% end %>
 <h3>Fewest bikes available at a station:
-  <%= @fewest_bikes_avaiable %></h3>
-<h3>Station(s) where the fewest bikes are available:
-  <%= @stations_with_fewest_bikes %></h3>
+  <%= @fewest_bikes_avaiable.station_name.name %></h3>
+<h3>Station(s) where the fewest bikes are available:</h3>
+  <% @stations_with_fewest_bikes.each do |station| %>
+  <p><%= station.station_name.name %></p>
+  <% end %>
 <h3>Most recently installed station:
   <%= @most_recent_station %></h3>
 <h3>Oldest station:
-  <%= @oldest_station %></h3>
+  <%= @oldest_station.station_name.name %></h3>

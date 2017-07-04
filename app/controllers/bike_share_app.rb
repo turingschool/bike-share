@@ -14,9 +14,10 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/station-dashboard' do
+  
     @count = Station.total_station_count
     @average = Station.average_bikes_per_station
-    @most_bikes = Station.most_bikes_avaiable
+    @most_bikes = Station.most_bikes_available
     @stations_with_most_bikes = Station.stations_with_most_bikes
     @fewest_bikes_avaiable = Station.fewest_bikes_avaiable
     @stations_with_fewest_bikes = Station.stations_with_fewest_bikes

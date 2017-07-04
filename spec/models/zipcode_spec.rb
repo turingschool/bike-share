@@ -32,6 +32,14 @@ RSpec.describe Zipcode do
 
         expect(result.zipcode).to eq("12345")
       end
+
+      it "will return zeros if the zipcode is nil" do
+        zipcode = nil
+
+        result = Zipcode.create_zipcode(zipcode)
+
+        expect(result.zipcode).to eq("00000")
+      end
     end
   end
 end

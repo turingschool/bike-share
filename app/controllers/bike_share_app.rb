@@ -46,9 +46,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
-    require 'pry';binding.pry
-    sf = StationForm.new(params[:station])
-    if sf.save
+    usf = StationForm.new(params[:station])
+    if usf.save
       redirect "/stations/:id"
     else
       @params[:page] = :"/stations/:id/edit"

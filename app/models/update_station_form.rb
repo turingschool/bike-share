@@ -1,4 +1,4 @@
-class StationForm
+class UpdateStationForm
   include ActiveModel::Model
 
   attr_accessor(
@@ -6,7 +6,7 @@ class StationForm
     :dock_count,
     :city,
     :installation_date
-  )
+    )
 
   validates  :station_name, presence: true
   validates  :dock_count, presence: true
@@ -20,17 +20,17 @@ class StationForm
     @installation_date = params[:installation_date]
   end
 
-  def save
+  def save    
     if valid?
       save_name =  StationName.find_or_create_by(name: @station_name)
       save_city =  City.find_or_create_by(name: @city)
       save_date =  InstallationDate.find_or_create_by(bike_share_date: @installation_date)
-      @station  =  StationName.new(station_name: save_name,
+      @station  =  StationName.update(station_name: save_name,
                               dock_count: @dock_count,
                               city: save_city,
                               installation_date_id: save_date
                               )
-     return  @station.save
+
     end
       false
   end

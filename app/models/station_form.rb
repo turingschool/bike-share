@@ -30,10 +30,10 @@ class StationForm
     # require 'pry';binding.pry
     if valid?
 
-      save_name = station_name.find_or_initialize_by(name: @station_name)
-      save_city = city.find_or_initialize_by(name: @city)
-      save_date =  installation_date.find_or_initialize_by(bike_share_date: @installation_date)
-      @station = station_name.new(station_name: save_name,
+      save_name =  StationName.find_or_create_by(name: @station_name)
+      save_city =  City.find_or_create_by(name: @city)
+      save_date =  InstallationDate.find_or_create_by(bike_share_date: @installation_date)
+      @station  =  StationName.new(station_name: save_name,
                               dock_count: @dock_count,
                               city: save_city,
                               installation_date_id: save_date

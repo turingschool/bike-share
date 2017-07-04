@@ -14,7 +14,7 @@ class Trip < ActiveRecord::Base
     BikeShareDate.find(start_date_id).bike_share_date
   end
 
-  def start_station_name
+  def start_station
     StationName.find(start_station_name_id).name
   end
 
@@ -22,7 +22,7 @@ class Trip < ActiveRecord::Base
     BikeShareDate.find(end_date_id).bike_share_date
   end
 
-  def end_station_name
+  def end_station
     StationName.find(end_station_name_id).name
   end
   #not sure if needed
@@ -31,7 +31,7 @@ class Trip < ActiveRecord::Base
   # end
 
   def subscription_type
-    SubscriptionType.find(id).name
+    SubscriptionType.find(subscription_type_id).name
   end
 
   def zip_code

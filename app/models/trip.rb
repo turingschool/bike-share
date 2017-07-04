@@ -14,4 +14,10 @@ class Trip < ActiveRecord::Base
   belongs_to :start_date, class_name: "BikeShareDate", foreign_key: "start_date_id"
   belongs_to :end_date, class_name: "BikeShareDate", foreign_key: "end_date_id"
   belongs_to :zipcode, class_name: "Zipcode", foreign_key: "zipcode_id"
+
+  def self.date_with_most_trips
+    group(:start_date).count.max_by do |date, count|
+      count
+    end
+  end
 end

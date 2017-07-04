@@ -9,25 +9,26 @@ RSpec.describe "user edits trip" do
     date_2 = BikeShareDate.create(date: Date.strptime('2/5/2017', '%m/%d/%Y'))
     date_3 = BikeShareDate.create(date: Date.strptime('4/12/2014', '%m/%d/%Y'))
 
-    station_a = Station.create(name: "A", dock_count: 2, installation_date_id: 2, city: "Lakewood")
-    station_b = Station.create(name: "B", dock_count: 2, installation_date_id: 1, city: "Denver")
-    station_c = Station.create(name: "C", dock_count: 5, installation_date_id: 3, city: "Littleton")
+    station_a = Station.create(name: "Alamo", dock_count: 2, installation_date_id: 2, city: "Lakewood")
+    station_b = Station.create(name: "Boise", dock_count: 2, installation_date_id: 1, city: "Denver")
+    station_c = Station.create(name: "Central", dock_count: 5, installation_date_id: 3, city: "Littleton")
 
 
     visit("/trips/2/edit")
     save_and_open_page
-    fill_in("trip[bike_id]", with: Integer)
-    fill_in("trip[duration]", with: Integer)
-    #fill_in("trip[start_date_id]", with: "1990-04-16")
-    fill_in("trip[end_date_id]", with: "new_city")
-    fill_in("trip[subscription_type]", with: "new_city")
-    fill_in("trip[bike_id]", with: "new_city")
-    fill_in("trip[start_station_id]", with: "new_city")
+    #fill_in("trip[bike_id]", with: 2)
+    #fill_in("trip[duration]", with: 174)
+    fill_in("trip[start_date_id]", with: "1990-04-16")
+    fill_in("trip[end_date_id]", with: "2016-05-16")
+    fill_in("trip[subscription_type]", with: "Customer")
+    fill_in("trip[start_city_id]", with: "Denver")
+    fill_in("trip[end_city_id]", with: "Boulder")
+    fill_in("trip[zipcode_id]", with: 80202)
 
 
     click_button("Edit Trip")
     trip = Trip.last
     expect(current_path).to eq("/trips/#{trip.id}")
-    expect(page).to have_content("new_city")
+    expect(page).to have_content("Boulder")
   end
 end

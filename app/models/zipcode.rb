@@ -17,5 +17,4 @@ class Zipcode < ActiveRecord::Base
       return string
     end
   end
-
 end

@@ -61,14 +61,14 @@ class BikeShareApp < Sinatra::Base
     erb :'/trips/index'
   end
 
-  get '/trips/:id' do |id|
-    @trip = Trip.find(id)
-    erb :'/trips/:id/show'
-  end
-
   get '/trips/new' do
     @stations = Station.all
     erb :'/trips/new'
+  end
+
+  get '/trips/:id' do |id|
+    @trip = Trip.find(id)
+    erb :'/trips/show'
   end
 
   post '/trips' do

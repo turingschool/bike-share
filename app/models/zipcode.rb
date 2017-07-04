@@ -7,8 +7,10 @@ class Zipcode < ActiveRecord::Base
   end
 
   def self.clean_zipcode(string)
-    if string.length < 5
-      return add_zeros(string)
+    if string == nil
+      string = "00000"
+    elsif string.length < 5
+      return string.rjust(5, "0")
     elsif string.length > 5
       return string[0..4]
     else
@@ -16,11 +18,4 @@ class Zipcode < ActiveRecord::Base
     end
   end
 
-  def self.add_zeros(string)
-    array = string.split('')
-    until array.count == 5
-      array.unshift("0")
-    end
-    return array.join
-  end
 end

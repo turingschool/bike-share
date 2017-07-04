@@ -1,12 +1,12 @@
 class Zipcode < ActiveRecord::Base
   validates_presence_of :zipcode
 
-  #use this method for seed only?
-  # def self.create_zipcode(instance)
-  #   find_or_create_by(zipcode: instance.zipcode)
-  # end
+  def self.create_zipcode(string)
+    clean = clean_zipcode(string)
+    find_or_create_by(zipcode: clean)
+  end
 
-  def clean_zipcode(string)
+  def self.clean_zipcode(string)
     if string.length < 5
       return add_zeros(string)
     elsif string.length > 5
@@ -16,7 +16,7 @@ class Zipcode < ActiveRecord::Base
     end
   end
 
-  def add_zeros(string)
+  def self.add_zeros(string)
     until string.length == 5
       string += "0"
     end

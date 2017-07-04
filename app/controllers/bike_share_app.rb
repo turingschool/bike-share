@@ -35,8 +35,8 @@ class BikeShareApp < Sinatra::Base
       if sf.save
         redirect "/stations"
       else
-        @params[:page] = :"/stations/new"
-        erb :"/error"
+        @errors = sf.errors
+        erb :"/stations/new"
       end
   end
 

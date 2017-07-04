@@ -153,5 +153,18 @@ RSpec.describe Station do
          expect(matching_station.sample.dock_count).to eq(station_3.dock_count)
        end
      end
+     
+     describe '.id_by_name' do
+       it "returns the id of a station that matches the name" do
+         station_1 = Station.create(name: "A", city: "Boston", dock_count: 2, installation_date_id: 1)
+         station_2 = Station.create(name: "B", city: "Denver", dock_count: 1, installation_date_id: 1)
+         station_3 = Station.create(name: "C", city: "Denver", dock_count: 3, installation_date_id: 1)
+         station_4 = Station.create(name: "D", city: "Denver", dock_count: 3, installation_date_id: 1)
+
+         matching_station_id = Station.id_by_name("B")
+
+         expect(matching_station_id).to eq(2)
+       end
+     end
   end
 end

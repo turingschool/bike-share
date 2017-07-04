@@ -4,7 +4,7 @@ class Station < ActiveRecord::Base
   has_many :start_trips, class_name: "Trip", foreign_key: "start_station_id"
   has_many :end_trips, class_name: "Trip", foreign_key: "end_station_id"
 
-  def self.seed_by_name(name)
+  def self.id_by_name(name)
     name = "Stanford in Redwood City" if name == "Broadway at Main"
     name = "Santa Clara County Civic Center" if name == "San Jose Government Center"
     name = "Post at Kearney" if name == "Post at Kearny"

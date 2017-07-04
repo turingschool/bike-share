@@ -15,7 +15,7 @@ class StationForm
 
   def initialize(params)
     # @station_name = StationName.find_or_initialize_by(name: params[:name])
-    
+
     @station_name = params[:name]
     @dock_count = params[:dock_count]
     @city = params[:city]
@@ -33,7 +33,7 @@ class StationForm
       save_name =  StationName.find_or_create_by(name: @station_name)
       save_city =  City.find_or_create_by(name: @city)
       save_date =  InstallationDate.find_or_create_by(bike_share_date: @installation_date)
-      @station  =  StationName.new(station_name: save_name,
+      @station  =  Station.new(station_name: save_name,
                               dock_count: @dock_count,
                               city: save_city,
                               installation_date_id: save_date

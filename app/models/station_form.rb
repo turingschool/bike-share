@@ -15,6 +15,7 @@ class StationForm
 
   def initialize(params)
     # @station_name = StationName.find_or_initialize_by(name: params[:name])
+    
     @station_name = params[:name]
     @dock_count = params[:dock_count]
     @city = params[:city]
@@ -29,10 +30,9 @@ class StationForm
   def save
     # require 'pry';binding.pry
     if valid?
-
-      save_name = station_name.find_or_initialize_by(name: @station_name)
-      save_city = city.find_or_initialize_by(name: @city)
-      save_date =  installation_date.find_or_initialize_by(bike_share_date: @installation_date)
+      save_name = StationName.find_or_create_by!(name: @station_name)
+      save_city = City.find_or_create_by!(name: @city)
+      save_date =  BikeShareDate.find_or_create_by!(bike_share_date: @installation_date)
       @station = Station.new(station_name: save_name,
                               dock_count: @dock_count,
                               city: save_city,

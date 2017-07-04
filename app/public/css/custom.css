@@ -102,7 +102,6 @@ text-decoration-color: red;
 
 .panel-heading-text {
   margin-top: 0px;
-  text-align: center;
   color: 	#484848;
 }
 .station-info-text {
@@ -115,8 +114,7 @@ text-decoration-color: red;
   display: block;
   margin-top: 2px;
   margin-bottom: 2px;
-  width: 50%;
-  margin-left: 10%;
+  height: 50px;
 }
 
 .bike-icon-show {
@@ -146,15 +144,14 @@ text-decoration-color: red;
   margin-bottom: 2px;
 }
 .card-title {
-  color: #484848;
+  color: white;
   padding-left: 5px;
   padding-top: 5px;
   padding-bottom: 5px;
   margin-bottom: 0px;
   margin-top: 0px;
-  /*background: #FFCC66;*/
-  background: #c2bfc6;
-  border-radius: 5px;
+  background: #888888;
+  border-radius: 2px;
 }
 
 .card-link {
@@ -163,6 +160,11 @@ text-decoration-color: red;
 }
 
 .card-text {
+  margin-left: 5px;
+}
+
+.card-input {
+  width: 100%;
 }
 
 .station-card {
@@ -171,8 +173,9 @@ text-decoration-color: red;
   border-style: solid;
   border-color: gray;
   border-width: 2px;
-  height: 230px;
-  border-radius: 10px;
+  height: 250px;
+  border-radius: 5px;
+  background: linear-gradient( white, white, lightgray);
 }
 
 .row {
@@ -180,33 +183,25 @@ text-decoration-color: red;
   pad: 15;
 }
 .navbar {
-  border-color: white;
+  border-color: gray;
   border-radius: 0px;
-  border-width: medium;
+  border-width: thin;
   /*background-color: lightgrey;*/
   /*margin-bottom: 5px;;*/
-  background-color: #c2bfc6;
 }
 
-.navbar-brand {
-  font-size: 200%;
-}
 
-.header-button {
-  background-color: white;
-  margin: 2px;
-  margin-right: 10px;
-  padding: 0px;
+.navbar-button {
 }
 
 .footer {
-  background-color: grey;
+  background-color: #e5f5ff;
   margin-left: 0%;
   margin-right: 0%;
   margin-top: 5px;
   padding-right: 0%;
   border-radius: 0px;
-  border-color: #c2bfc6;
+  border-color: grey;
 }
 
 .index-title{
@@ -214,11 +209,20 @@ text-decoration-color: red;
   font-style: oblique;
   margin-top: 5px;
   padding-top: 0px;
-  font-weight: normal;
-  color: #484848;
-  background:  #c2bfc6;
+  font-weight: bolder;
+  color: white;
+  background: linear-gradient(to left, #33ccff 0%, #0066ff 100%);
 }
 
+
+.icon-bar {
+    background-color: #888888;
+}
+
+.edit-input-label {
+  margin-bottom: 2px;
+  margin-top: 5px;
+}
 
 /*body {
 background-color: red;

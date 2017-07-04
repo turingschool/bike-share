@@ -5,17 +5,17 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations' do
-    @stations = Station.all
+    @stations = Station.all[0..29]
     erb :"/stations/index"
   end
 
   get '/stations/index-2' do
-    @stations = Station.all
+    @stations = Station.all[30..68]
     erb :"/stations/index-2"
   end
 
   get '/stations/index-3' do
-    @stations = Station.all
+    @stations = Station.all[69..-1]
     erb :"/stations/index-3"
   end
 
@@ -58,5 +58,9 @@ class BikeShareApp < Sinatra::Base
     @most_bikes = Station.most_number_of_available_bikes
     @least_bikes = Station.least_number_of_available_bikes
     erb :"/stations/dashboard"
+  end
+
+  get '/stations/:id/bs.png' do
+    redirect "bs.png"
   end
 end

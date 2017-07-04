@@ -1,16 +1,19 @@
-<body class="new-background">
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container navbar-beam">
-  </div>
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">
-        <img class="brand-logo" alt="Brand" src="bs.png"/>
-      </a>
-      <h1> Create New Station</h1>
+<body>
+<div class="new-background">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container navbar-beam">
     </div>
-  </div>
-</nav>
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+          <img class="brand-logo" alt="Brand" src="bs.png"/>
+        </a>
+        <h1> Create New Station</h1>
+      </div>
+        <a class="nav navbar-nav navbar-right" href="/stations"><h3 class="back-to-index">Back to Stations</h3></a>
+    </div>
+  </nav>
+<div class="container container-body">
 <form class="edit-form-left" action="/stations" method="post">
   <div class="form-group">
     <label class="entry_title">Name: </label>
@@ -30,4 +33,6 @@
   </div>
   <button class="btn btn-warning" type="submit" name="button">Create Station</button>
 </form>
+</div>
+</div>
 </body>

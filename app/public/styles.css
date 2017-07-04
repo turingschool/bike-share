@@ -9,9 +9,18 @@ body {
   background-color: black;
 }
 
+body.show-me-body {
+  background-image: url("http://www.virtualblueridge.com/wp-content/uploads/gallery-scenic-cycling.jpg");
+  background-repeat: repeat-y;
+  background-position: center;
+  z-index: 1;
+  align-content: center;
+  margin-top: 20px
+}
+
 .navbar-item {
   display: inline;
-  color: white;
+  color: rgb(51, 122, 183);
   margin-left: 10px;
 }
 
@@ -48,6 +57,10 @@ body {
   height: 28px;
   margin-right: 20px;
   position: relative;
+}
+
+.btn-info {
+  
 }
 
 .panel {
@@ -117,6 +130,14 @@ body {
     background-color: black;
 }
 
+.show_p {
+    font-size: 4em;
+    height: 100%;
+    color: white;
+    text-shadow: 2px 2px black;
+    padding-top: 70px;
+}
+
 h1 {
   font-family: "Lobster", cursive;
   font-size: 1.9em;
@@ -149,11 +170,7 @@ table#stations-index {
   }
 
 #stations-index tr td {
-  height: 40px;
-}
-
-.index-table-body{
-  height: auto;
+  height: 10px;
 }
 
 .center {
@@ -185,11 +202,10 @@ th {
 }
 
 table {
-  border-style: double;
-  border-color: white;
+  border-bottom: 5px double white;
+  border-top: 2px double white;
   margin-bottom: 5px;
 }
-
 
 .body-beam {
   display: inline-block;
@@ -251,7 +267,7 @@ li {
 /* Edit Page */
 
 .edit-background {
-  background-image: url(https://bravobike.com/wp-content/uploads/2013/12/01_slider.jpg);
+  background-image: url(http://www.travelsupermarket.com/wp-content/uploads/2014/07/Scenic-and-challenging-Mountain-Passes-in-Scotland_Image-Wilderness-Scotland.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -297,21 +313,21 @@ input {
 }
 
 .edit-form-left {
-  margin-top: 65px;
-  margin-right: 75px;
+  margin-top: 5px;
+  margin-right: 55px;
   border-style: solid;
   border-color: rgb(96, 59, 147);
   padding: 15px;
   width: 300px;
   background-color: rgb(50, 41, 32);
   padding-left: 65px;
+  float: right;
 }
 
 .new-background {
   background-image: url(https://s-media-cache-ak0.pinimg.com/originals/d4/36/e3/d436e3cedb0982b6b02800e9f72f0b54.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  float: right
 }
 
 .index-table-header {
@@ -329,6 +345,8 @@ th, td {
 }
 th {
   height: 25px;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 td {
   height: 10px;
@@ -387,4 +405,55 @@ li.side-chevron-right {
   text-align: center;
   border-top: 5px solid white;
   border-bottom: 5px solid white;
+}
+
+.back-to-index {
+  color: rgb(51, 122, 183);
+  margin-top: 16px;
+  margin-right: 10px;
+  font-style: italic;
+  font-size: 1.5em;
+}
+
+.index-button {
+  position: absolute;
+}
+
+.col-md-4 {
+  font-size: 8em;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.show_p p {
+  background-color: black;
+  font-size: 40pt;
+  line-height: 42px;
+}
+
+.btn-grow {
+  height: 60px;
+  box-shadow: 4px 4px black
+}
+.dash {
+  padding:20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 350px;
+  padding-top: 0px;
+  height: 800px;
+}
+
+.dash a {
+  border-bottom: 5px solid white;
+}
+
+.dashboard-bar h4{
+  font-family: 'Zilla Slab', serif;
+  color: white;
+  text-align: center;
+  padding-top: 130px;
+  margin-bottom: 0;
+  font-size: 8em;
+  position: fixed;
 }

@@ -9,6 +9,7 @@
       </a>
       <h1> Station Index</h1><p class="navbar-item">(Page 1)</p>
     </div>
+    <a class="nav navbar-nav navbar-right" href="/station-dashboard"><h3 class="back-to-index">Back to Station's Dashboard</h3></a>
   </div>
 </nav>
 <div class="container container-body">
@@ -39,7 +40,7 @@
     </tr>
   </div>
   <div class= "index-table-body">
-    <% @stations[0..29].each do |station| %>
+    <% @stations.each do |station| %>
     <tr>
       <td class="col-md-2 center"><%= station.name %></td>
       <td class="col-md-2 center"><%= station.city %></td>

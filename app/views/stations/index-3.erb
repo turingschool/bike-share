@@ -5,11 +5,12 @@
   <div class="container-fluid navbar-spacing">
     <div class="navbar-header">
       <a class="navbar-brand" href="/">
-        <img class="brand-logo" alt="Brand" src="bs.png">
+        <img class="brand-logo" alt="Brand" src="bs.png"> 
       </a>
       <h1> Station Index</h1><p class="navbar-item">(Page 3)</p>
     </div>
-  </div>
+    <a class="nav navbar-nav navbar-right" href="/stations"><h3 class="back-to-index">Back to Station's Dashboard</h3></a>
+</div>
 </nav>
 <div class="container container-body">
   <h3 class="create-new"><a href="/stations/new">Create New Station</a></h3>
@@ -36,7 +37,7 @@
       <th class="col-md-2"> </th>
       <th class="col-md-2"> </th>
     </tr>
-    <% @stations[69..-1].each do |station| %>
+    <% @stations.each do |station| %>
     <tr class="index-table-body">
       <td class="col-md-2 center"><%= station.name %></td>
       <td class="col-md-2 center"><%= station.city %></td>

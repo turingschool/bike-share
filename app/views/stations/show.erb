@@ -1,6 +1,24 @@
-<h1><%= @station.name %></h1>
-
-<h2>Info</h2>
-<p>Dock Count: <%= @station.dock_count %></p>
-<p>City: <%= @station.city %></p>
-<p>Installation Date: <%= @station.installation_date %></p>
+<body class="show-me-body">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container navbar-beam">
+    </div>
+    <div class="navbar-header">
+      <a class="navbar-brand nav navbar-nav navbar-left" href="/">
+        <img class="brand-logo" alt="Brand" src="bs.png">
+      </a>
+      <a href="/stations"><h1>Back To Stations</h1></a>
+    </div>
+  </nav>
+  <div class="container-fluid center">
+    <div class="show_p">
+      <h1><%= @station.name %></h1>
+      <br/><br/>
+      <!-- <img class="" href="= @station.pic %>" /> -->
+      <p>Dock Count: <%= @station.dock_count %></p>
+      <p>City: <%= @station.city %></p>
+      <p>Installation Date: <%= @station.installation_date %></p>
+    </div>
+    <br/>
+    <button type="button" class="btn btn-warning btn-grow"><a href="/stations/<%= @station.id %>/edit">Edit Station</a></button>
+  </div>
+</body>

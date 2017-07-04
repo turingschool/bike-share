@@ -1,11 +1,8 @@
-
-/*body {
-  font-family: 'Avenir Next', sans-serif;
-}*/
-
-.header-background {
-    background-image: url(http://icelandbike.com/Myndir_banner/_DSC3116_ChristinaBohner_UrsulaSpitzbart_banner2.jpg);
+.tight-text {
+  margin-top: 1px;
+  margin-bottom: 1px;
 }
+
 .bike-icon {
   height: 40px;
   width: 40px;
@@ -15,10 +12,214 @@
   border: solid;
   border-width: 5px;
   border-color: red;
+}
+
+.yield-margin {
+  margin-left: 20px;
+}
+
+.input-label {
+  margin-bottom: 1px;
+}
+
+.no-pad {
+  padding: 0;
+}
+
+.panel-margins {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.btn-primary {
+  margin-top: 10px;
+}
+
+
+.bike-pic-header-container {
+  max-height: 120px; overflow: hidden;
+}
+
+.container {
+  width: auto;
+}
+
+
+
+.bike-pic-header-two {
+  margin-top: -250px;
+  width: 100%;
+  border-style: solid;
+  border-color: white;
+  border-width: medium;
+}
+
+.new-view-textbox-header {
+  margin-top: 0px;
+}
+
+/*.empty-rounded-div {
+border-style: solid;
+border-width: thin;
+border-radius: 5px;
+margin-bottom:inherit;
+background-color: red;
+}*/
+
+.btn {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 2px;
+}
+.show-div {
+  padding-bottom: 0px;
 
 }
 
-img {
-  height: 400px;
-  width: 400px;
+.panel {
+  padding-bottom: 0px;
 }
+
+.show-splash {
+  text-align: center;
+}
+
+.col-md-3 {
+  padding: 0px;
+  margin: 0px;
+}
+
+/*.panel > .panel-heading {
+background-image: none;
+background-color: red;
+color: white;}*/
+
+/*.panel-heading {
+background-color: red;
+text-decoration-color: red;
+}*/
+
+
+.panel-heading-text {
+  margin-top: 0px;
+  text-align: center;
+  color: 	#484848;
+}
+.station-info-text {
+  font-size: 150%;
+  text-align: center;
+}
+
+.bike-icon-one {
+  margin-top: 5px;
+  display: block;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  width: 50%;
+  margin-left: 10%;
+}
+
+.bike-icon-show {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  /*margin-top: 30%;*/
+  position: relative;
+}
+
+.element-center-hor {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
+
+.btn {
+  width: 150px;
+}
+
+.card {
+  margin: 0px;
+}
+
+.card-subtitle {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.card-title {
+  color: #484848;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  /*background: #FFCC66;*/
+  background: #c2bfc6;
+  border-radius: 5px;
+}
+
+.card-link {
+  position: absolute;
+  float: bottom;
+}
+
+.card-text {
+}
+
+.station-card {
+  padding: 5px;
+  margin: 10px;
+  border-style: solid;
+  border-color: gray;
+  border-width: 2px;
+  height: 230px;
+  border-radius: 10px;
+}
+
+.row {
+  margin: 0px;
+  pad: 15;
+}
+.navbar {
+  border-color: white;
+  border-radius: 0px;
+  border-width: medium;
+  /*background-color: lightgrey;*/
+  /*margin-bottom: 5px;;*/
+  background-color: #c2bfc6;
+}
+
+.navbar-brand {
+  font-size: 200%;
+}
+
+.header-button {
+  background-color: white;
+  margin: 2px;
+  margin-right: 10px;
+  padding: 0px;
+}
+
+.footer {
+  background-color: grey;
+  margin-left: 0%;
+  margin-right: 0%;
+  margin-top: 5px;
+  padding-right: 0%;
+  border-radius: 0px;
+  border-color: #c2bfc6;
+}
+
+.index-title{
+  text-align: center;
+  font-style: oblique;
+  margin-top: 5px;
+  padding-top: 0px;
+  font-weight: normal;
+  color: #484848;
+  background:  #c2bfc6;
+}
+
+
+/*body {
+background-color: red;
+}*/

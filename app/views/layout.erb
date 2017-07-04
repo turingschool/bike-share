@@ -5,17 +5,19 @@
   <link rel="stylesheet" href="/css/custom.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <title>BIKE SHARE</title>
-  <!-- <img class="img-circle heavy-border" src="http://www.paper-bicycle.com/hustle/wp-content/uploads/2013/08/basket.jpg" alt=""> -->
 </head>
 <body>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!-- <script>src="/js/bootstrap.js"</script>
-<script>src="/js/bootstrap.min.js"</script>
-<script>src="/js/.js"</script> -->
+  <!-- <script>src="/js/bootstrap.js"</script>
+  <script>src="/js/bootstrap.min.js"</script>
+  <script>src="/js/.js"</script> -->
   <header>
-    <!-- <h3>BIKE SHARE - FABULOUS 4</h3> -->
-    <nav class="navbar navbar-default">
+    <div class="bike-pic-header-container">
+      <!-- <img class="bike-pic-header" src="http://3ab5c52de8e71c1d8a88-7f01c3d006ad95dfe2d675a67d0797ae.r42.cf2.rackcdn.com/650cb9ea784beae0b75afede62fdd0d9-615322df681a0d74c4207049db8fb366.jpg" alt=""> -->
+      <img class="bike-pic-header-two" src="https://static.pexels.com/photos/383/summer-sport-bikes-bicycles.jpg" alt="">
+
+    </div>
+    <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -25,38 +27,29 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">BIKE-SHARE</a>
+          <a class="navbar-brand" href="#">USA-TOWN BIKE SHARE</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Stations <span class="sr-only">(current)</span></a></li>
-            <li class="active"><a href="#">Something <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Link</a></li>
-          </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Link</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </li>
+            <li><a href="/stations" class="header-button">Stations</a></li>
+            <li><a href="#" class="header-button">Trips</a></li>
+            <li><a href="#" class="header-button">Weather</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
   </header>
-  <%= yield %>
 </body>
+  <%= yield %>
 <footer>
-  <p>----------------------------------------------------------</p>
-  <p>................    UNIVERSAL  FOOTER    .................</p>
+<nav class="navbar navbar-default navbar-bottom" role="navigation">
+  <div class="container footer">
+    <h5 class"tight-text" > Bikeshare is owned by ElJiJiJo Corp.</h5>
+    <p class"tight-text"> ® BringDaFunk Development group of Denver. All rights reserved. Data is freely shared.</p>
+  </div>
+</nav>
 </footer>
 </html>

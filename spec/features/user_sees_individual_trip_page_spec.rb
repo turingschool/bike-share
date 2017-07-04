@@ -1,7 +1,7 @@
 RSpec.describe "User visits '/trips/1'" do
 
   before :each do
-    Trip.create(duration: 30, start_date: "6/12/16", start_station_id: 1, end_date: "6/14/16", end_station_id: 2, bike_id: 12, subscription_type_id: 1)
+    Trip.create(duration: 63, start_date: 8/29/2013, start_station_id: 66, end_date: 8/29/2013, end_station_id: 66, bike_id: 520, subscription_id: 1)
   end
 
   it "and sees duration" do

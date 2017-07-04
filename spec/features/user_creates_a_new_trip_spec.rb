@@ -21,7 +21,7 @@ RSpec.describe 'user creates a new trip' do
     fill_in('trip[duration]', with: 67)
     fill_in('trip[start_date_id]', with: Date.strptime('1/1/2012', '%m/%d/%Y'))
     page.select 'A', from: 'trip[start_station_id]'
-    fill_in('trip[end_date_id]', with: Date.strptime('1/1/2012', '%m/%d/%Y'))
+    fill_in('trip[end_date_id]', with: Date.strptime('2/5/2017', '%m/%d/%Y'))
     page.select 'B', from: 'trip[end_station_id]'
     page.select '2', from: 'trip[bike_id]'
     page.select 'User', from: 'trip[subscription_type]'
@@ -33,8 +33,10 @@ RSpec.describe 'user creates a new trip' do
 
     expect(trip.class).to eq(Trip)
     expect(trip.duration).to eq(67)
+    expect(trip.start_date_id).to eq(1)
+    expect(trip.end_date_id).to eq(2)
 
-    save_and_open_page
+    # save_and_open_page
 
     expect(page).to have_content(67)
   end

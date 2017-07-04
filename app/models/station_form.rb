@@ -32,7 +32,7 @@ class StationForm
     if valid?
       save_name =  StationName.find_or_create_by(name: @station_name)
       save_city =  City.find_or_create_by(name: @city)
-      save_date =  InstallationDate.find_or_create_by(bike_share_date: @installation_date)
+      save_date =  BikeShareDate.find_or_create_by(bike_share_date: @installation_date)
       @station  =  Station.new(station_name: save_name,
                               dock_count: @dock_count,
                               city: save_city,

@@ -79,17 +79,23 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips/new' do
+    @station_names = StationName.all
     erb :"trips/new"
   end
 
   get '/trip-dashboard' do
-    #@count = trip.total_trip_count
     erb :"trips/trips-dashboard"
   end
-
+#need to work on below, still not working
   get '/trips/:id' do
-    @trip = Trip.find(params[:id])
-    erb :"trips/show"
+    ti = Trip.find(params[:id])
+    if ti.nil?
+      @errors = ti.errors
+      redirect "/trips"
+    else
+      @trip = Trip.find(params[:id])
+      erb :"trips/show"
+    end
   end
 
   post '/trips/new' do

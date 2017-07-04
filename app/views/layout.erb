@@ -37,6 +37,14 @@
       </div>
     </div>
   </nav>
+  <% if @errors %>
+    <div class="alert alert-danger text-center">
+      <strong>Error!</strong><br><hr>
+      <% @errors.messages.each do |k, v| %>
+        <%= "#{k}: #{v.join}<br>" %>
+      <% end %>
+    </div>
+  <% end %>
   <div class="container-fluid text-center">
     <%= yield %>
   </div>

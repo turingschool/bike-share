@@ -20,4 +20,10 @@ class Trip < ActiveRecord::Base
       count
     end
   end
+
+  def self.date_with_least_trips
+    group(:start_date).count.min_by do |date, count|
+      count
+    end
+  end
 end

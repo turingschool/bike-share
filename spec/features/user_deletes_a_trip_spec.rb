@@ -5,9 +5,11 @@ RSpec.describe "User deletes a trip" do
 
     visit('/trips')
 
-    click_button("Delete Trip 12")
+    # save_and_open_page
+
+    click_button("Delete Trip 1")
 
     expect(current_path).to eq('/trips')
-    expect(page).to_not have_content('Trip 12')
+    expect(page).to_not have_content('Trip 1')
   end
 end

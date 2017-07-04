@@ -1,6 +1,6 @@
 <h1>All trips</h1>
 <a href="/trips/new">Take a trip!</a>
-<% @trips[0..29].each do |trip| %>
+<% @trips.each do |trip| %>
   <a href="trips/<%= trip.id %>">
     <h3>Trip ID: <%= trip.id %></h3>
   </a>

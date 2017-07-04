@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20170702210245) do
     t.datetime "updated_at",            null: false
   end
 
-  create_table "weather", force: :cascade do |t|
+  create_table "weathers", force: :cascade do |t|
     t.integer  "date_id"
     t.decimal  "max_temperature_f"
     t.decimal  "mean_temperature_f"

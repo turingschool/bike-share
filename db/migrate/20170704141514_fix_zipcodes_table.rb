@@ -5,7 +5,7 @@ class FixZipcodesTable < ActiveRecord::Migration[5.0]
     revert CreateZipcodesTable
 
     create_table :zipcodes do |t|
-      t.string :zipcodes
+      t.string :zipcode
     end
   end
 end

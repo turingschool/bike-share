@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20170704141514) do
   end
 
   create_table "zipcodes", force: :cascade do |t|
-    t.string "zipcodes"
+    t.string "zipcode"
   end
 
 end

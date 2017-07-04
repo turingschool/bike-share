@@ -21,6 +21,7 @@ RSpec.describe "user selects a trip" do
     expect(page).to have_content("Colfax")
     expect(page).to have_content(2)
     expect(page).to have_content("User")
-    #expect(page).to have_content(4)
+    expect(page).to have_content(4)
+    #need to create relationship to zipcode.zipcode
   end
 end

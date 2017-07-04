@@ -72,7 +72,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/trips' do
-    #TODO create and route to trip show page
     start_date = params[:trip][:start_date_id]
     params[:trip][:start_date_id] = BikeShareDate.create_by_date(start_date)
 

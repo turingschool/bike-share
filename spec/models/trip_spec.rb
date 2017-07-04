@@ -41,5 +41,11 @@ RSpec.describe Trip do
 
       expect(trip).to_not be_valid
     end
+
+    it "is valid with a all valid info" do
+      trip = Trip.new(duration: 63, start_date: 8/29/2013, start_station_id: 66, end_date: 8/29/2013, end_station_id: 66, bike_id: 520, subscription_id: 1)
+
+      expect(trip).to be_valid
+    end
   end
 end

@@ -3,6 +3,8 @@
   <h3> <%= station.name %> </h3>
   <p>Dock count:</p>
   <p> <%= station.dock_count  %> </p>
+  <p>City:</p>
+  <p><%= station.city.city  %> </p>
   <p> Installation date: </p>
   <p> <%= station.installation_date  %> </p>
   <form action="/stations/<%= station.id %>" method="post">

@@ -61,10 +61,9 @@ class BikeShareApp < Sinatra::Base
     erb :'/trips/index'
   end
 
-  delete '/trips/:id' do |id|
-    Trip.destroy(id)
-
-    redirect('/trips')
+  get '/trips/:id' do |id|
+    @trip = Trip.find(id)
+    erb :'/trips/:id/show'
   end
 
   get '/trips/new' do
@@ -81,6 +80,12 @@ class BikeShareApp < Sinatra::Base
     params[:trip][:end_date_id] = BikeShareDate.create_by_date(end_date)
 
     Trip.create(params[:trip])
+
+    redirect('/trips')
+  end
+
+  delete '/trips/:id' do |id|
+    Trip.destroy(id)
 
     redirect('/trips')
   end

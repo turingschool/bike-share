@@ -1,9 +1,10 @@
 <div class="jumbotron">
-  <h1>Stations</h1>
+  <h1>Trips</h1>
 </div>
 <div class="table-responsive">
   <table class="table text-left">
     <tr>
+      <th>Trip ID</th>
       <th>Duration</th>
       <th>Start Date</th>
       <th>Start Station</th>
@@ -16,6 +17,7 @@
         </tr>
         <% @trips.each do |trip| %>
         <tr>
+          <td><%= trip.id %></td>
           <td><%= trip.duration %></td>
           <td><%= trip.start_date %></td>
           <td><%= trip.start_station %></td>

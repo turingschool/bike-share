@@ -4,34 +4,38 @@ class Trip < ActiveRecord::Base
   belongs_to :subscription_type
   belongs_to :zip_code
   belongs_to :bike_share_date
-end
 
-def id
-  Trip.find(id)[:id]
-end
+#not sure if works
+  # def trip_id
+  #   Trip.find(id).trip_id
+  # end
 
-def start_date
-  Trip.find(id)[:bike_share_date]
-end
+  def start_date
+    BikeShareDate.find(start_date_id).bike_share_date
+  end
 
-def start_station
-  Station.find_by(start_station_name_id: start_station_name_id)[:name]
-  #Trip.stations.find_by(:name name)
-  #Trip.station_name
-end
+  def start_station
+    StationName.find(start_station_name_id).name
+  end
 
-def end_date
-  Trip.find(id)[:bike_share_date]
-end
+  def end_date
+    BikeShareDate.find(end_date_id).bike_share_date
+  end
 
-def end_station
-  Station.find_by(start_station_name_id: start_station_name_id)[:name]
-end
+  def end_station
+    StationName.find(end_station_name_id).name
+  end
+  #not sure if needed
+  # def bike_id
+  #   Trip.find(id).bike_id
+  # end
 
-def bike_id
-  Trip.find(id)[:bike_id]
-end
+  def subscription_type
+    SubscriptionType.find(subscription_type_id).name
+  end
 
-def zip_code
-  Trip.find(id)[:zip_code]
+  def zip_code
+    ZipCode.find(zip_code_id).zip_code
+  end
+
 end

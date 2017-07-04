@@ -94,13 +94,20 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/trips/new' do
-  @trip = Trip.new(params[:trip])
-    if @trip.save
-      redirect "/trips"
-    else
-      @params[:page] = :"/trips/new"
-      erb :"/error"
-    end
+    tf = TripForm.new(params[:trip])
+      if tf.save
+        redirect "/trips"
+      else
+        @params[:page] = :"/trips/new"
+        erb :"/error"
+      end
+  # @trip = Trip.new(params[:trip])
+  #   if @trip.save
+  #     redirect "/trips"
+  #   else
+  #     @params[:page] = :"/trips/new"
+  #     erb :"/error"
+  #   end
   end
 
   get '/trips/:id/edit' do

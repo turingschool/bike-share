@@ -1,5 +1,6 @@
 class BikeShareApp < Sinatra::Base
   include WillPaginate::Sinatra::Helpers
+
   get '/' do
     erb :dashboard
   end
@@ -112,6 +113,16 @@ class BikeShareApp < Sinatra::Base
   delete '/trips/:id' do |id|
     Trip.destroy(id.to_i)
     redirect '/trips'
+  end
+
+  get '/conditions' do
+    @conditions = Weather.paginate(page: params[:page], per_page: 30)
+    erb :"conditions/index"
+  end
+
+  get '/conditions/:id' do
+    @condition = Weather.find(params[:id])
+    erb :"conditions/show"
   end
 
   def execute_statement(sql)

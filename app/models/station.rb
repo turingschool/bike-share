@@ -47,6 +47,22 @@ class Station < ActiveRecord::Base
   end
 
   def most_trip_date
-    #Need total rides by station by day
+    all_start_trips = start_trips.pluck(:start_date_id)
+    highest_start_date = count_method(all_start_trips)[0]
+    BikeShareDate.find(highest_start_date)
   end
+
+  def count_method(array)
+    final ={}
+    array.each do |x|
+      if final.keys.include?(x)
+        final[x] += 1
+      else
+        final[x] = 1
+      end
+    end
+    return final.sort_by { |k,v| v }.last
+  end
+
+
 end

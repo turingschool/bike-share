@@ -44,7 +44,7 @@ class Trip < ActiveRecord::Base
     destination = Trip.where(start_station_id: station_id)
     array = destination.pluck(:end_station_id).to_a
     end_station = count_method(array).first
-    return Station.find(end_station)
+    return Trip.find(station_id).start_station
   end
 
 end

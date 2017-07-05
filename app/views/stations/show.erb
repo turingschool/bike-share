@@ -29,10 +29,14 @@
     <div class="show_p">
       <h4><%= @station.name %></h4>
       <br/>
-      <!-- <img class="" href="= @station.pic %>" /> -->
+      <img class="" href="= @station.pic %>" />
       <p>Dock Count: <%= @station.dock_count %></p>
       <p>City: <%= @station.city %></p>
       <p>Installation Date: <%= @station.installation_date.date %></p>
+      <p>Number of Rides Started at this Station: <%= @rides_started %></p>
+      <p>Number of Rides Ended at this Station: <%= @rides_ended %></p>
+      <p>Date with Highest Number of Trips: <%= @most_trips_started %></p>
+      <p>Most Frequent Destination: <%= @most_end_station %>
     </div>
     <br/><br/><br/></br>
     <button type="button" class="btn btn-warning btn-grow"><a href="/stations/<%= @station.id %>/edit">Edit Station</a></button>

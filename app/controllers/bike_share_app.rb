@@ -37,6 +37,7 @@ class BikeShareApp < Sinatra::Base
     @rides_started = Trip.rides_at_start_station(@station.id)
     @rides_ended = Trip.rides_at_end_station(@station.id)
     @most_trips_started = @station.most_trip_date
+    @most_end_station = @station.start_station_with_most_rides
     erb :'/stations/show'
   end
 

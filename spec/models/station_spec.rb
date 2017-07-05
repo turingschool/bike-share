@@ -199,7 +199,11 @@ RSpec.describe Station do
 
       result = station_1.start_station_with_most_rides
 
-      expect(result.city).to eq("Denver")
+      expect(result).to eq("A")
+
+      result_2 = station_2.start_station_with_most_rides
+
+      expect(result_2).to eq("0")
       end
     end
   end

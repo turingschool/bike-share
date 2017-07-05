@@ -62,7 +62,7 @@ class Station < ActiveRecord::Base
     if most_destination.nil?
       return "0"
     else
-      return Station.find(most_destination.first)
+      return Station.find(most_destination.first).name
     end
   end
 end

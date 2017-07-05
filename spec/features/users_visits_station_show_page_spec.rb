@@ -10,9 +10,8 @@ RSpec.describe "user visits station show page" do
     trip_3 = Trip.create(duration: 75, start_date_id: 2, start_station_id: 1, end_date_id: 3, end_station_id: 1, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
     trip_4 = Trip.create(duration: 75, start_date_id: 1, start_station_id: 1, end_date_id: 3, end_station_id: 2, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
 
-
     visit("/stations/#{station.id}")
-    # save_and_open_page
+    save_and_open_page
     expect(page).to have_content(station.name)
     expect(page).to have_content(station.dock_count)
     expect(page).to have_content(station.city)
@@ -20,5 +19,6 @@ RSpec.describe "user visits station show page" do
     expect(page).to have_content(4)
     expect(page).to have_content(3)
     expect(page).to have_content("2012-01-01")
+    expect(page).to have_content("A")
   end
 end

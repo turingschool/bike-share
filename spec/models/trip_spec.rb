@@ -64,9 +64,9 @@ RSpec.describe Trip do
 
         result = Trip.date_with_most_trips
 
-        expect(result.class).to eq(Array)
-        expect(result[0]).to eq(date_2)
-        expect(result[1]).to eq(3)
+        expect(result.class).to eq(Hash)
+        expect(result[:date]).to eq(date_2)
+        expect(result[:count]).to eq(3)
       end
     end
 
@@ -84,9 +84,9 @@ RSpec.describe Trip do
 
         result = Trip.date_with_least_trips
 
-        expect(result.class).to eq(Array)
-        expect(result[0]).to eq(date)
-        expect(result[1]).to eq(2)
+        expect(result.class).to eq(Hash)
+        expect(result[:date]).to eq(date)
+        expect(result[:count]).to eq(2)
       end
     end
 

@@ -40,7 +40,7 @@ class Trip < ActiveRecord::Base
   end
 
   def self.bike_with_least_rides
-     least_bike = group(:bike_id).count.min_by do |bike, count|
+    least_bike = group(:bike_id).count.min_by do |bike, count|
       count
     end
 

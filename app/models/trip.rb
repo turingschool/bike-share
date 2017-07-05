@@ -87,5 +87,6 @@ class Trip < ActiveRecord::Base
 
   def self.most_frequent_bike_starting(station_id)
     Trip.where(start_station_id: station_id).group(:bike_id).order('count_id DESC').count(:id).first[0]
+
   end
 end

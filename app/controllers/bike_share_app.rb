@@ -84,7 +84,12 @@ class BikeShareApp < Sinatra::Base
     redirect "/trips"
   end
 
+
   get '/' do
     erb :index
+  end
+
+  get '/trips-dashboard' do
+    erb :"trips/trip-dashboard"
   end
 end

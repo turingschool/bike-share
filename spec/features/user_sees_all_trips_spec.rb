@@ -14,7 +14,7 @@ RSpec.describe "user visits trips index" do
     zipcode = Zipcode.create(zipcode: 80202)
 
     visit("/trips")
-    save_and_open_page
+    # save_and_open_page
     expect(page).to have_content(trip.duration)
     expect(page).to have_content(trip.start_date_id)
     expect(page).to have_content(trip_2.start_station_id)

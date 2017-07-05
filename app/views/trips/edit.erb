@@ -1,5 +1,5 @@
 <h1>Edit Trip</h1>
-
+<a href="/trips">back</a>
 <form action="/trips/<%= @trip.id %>" method="post">
   <input type="hidden" name="_method" value="PUT">
 
@@ -28,8 +28,8 @@
 
   <label>Bike Id: </label>
   <select name="trip[bike_id]" value="<%= @trip.bike_id %>">
-    <% Trip.pluck(:bike_id).each do |bike| %>
-      <option value="<%= bike %>"><%= bike %></option>
+    <% @bikes.each do |bike_id| %>
+      <option value="<%= bike_id %>"><%= bike_id %></option>
     <% end %>
   </select>
 

@@ -12,6 +12,7 @@ RSpec.describe "user edits station" do
 
 
     visit("/stations/3/edit")
+        # save_and_open_page
     fill_in("station[name]", with: "test_station")
     fill_in("station[dock_count]", with: 500)
     fill_in("station[installation_date_id]", with: "1990-04-16")

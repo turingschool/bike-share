@@ -1,5 +1,5 @@
 <h1>Create New Trip</h1>
-
+<a href="/trips">back</a>
 <form action="/trips" method="post">
   <label>Duration: </label>
   <input type="number" name="trip[duration]">
@@ -20,11 +20,12 @@
     <% end %>
   </select>
   <label>Bike Id: </label>
-  <select name="trip[bike_id]">
+  <input type="text" name="trip[bike_id]">
+  <!-- <select name="trip[bike_id]">
     <% Trip.pluck(:bike_id).each do |bike| %>
       <option value="<%= bike %>"><%= bike %></option>
     <% end %>
-  </select>
+  </select> -->
   <label>Subscription Type: </label>
   <select name="trip[subscription_type]">
     <option value="User">User</option>

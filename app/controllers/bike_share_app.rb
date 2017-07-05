@@ -7,8 +7,18 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations' do
-    @stations = Station.all
+    @stations = Station.all[0..29]
     erb :"/stations/index"
+  end
+
+  get '/stations/index-2' do
+    @stations = Station.all[30..68]
+    erb :"/stations/index-2"
+  end
+
+  get '/stations/index-3' do
+    @stations = Station.all[69..-1]
+    erb :"/stations/index-3"
   end
 
   get '/stations/new' do
@@ -56,6 +66,10 @@ class BikeShareApp < Sinatra::Base
     erb :"/stations/dashboard"
   end
 
+  get '/stations/:id/bs.png' do
+    redirect "bs.png"
+  end
+  
   get '/trips' do
     @trips = Trip.all
     erb :'/trips/index'

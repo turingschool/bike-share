@@ -1,43 +1,74 @@
-<div class="container">
-  <h1>Bike Station Stats </h1>
-  <div class="row text-center">
-    <div class="col-md-3">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <h2> total stations: </h2>
-            <h3> <%= @total_stations %> </h3>
-        </div>
+<body>
+<div class="container background-stations">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container navbar-beam">
+    </div>
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+          <img class="brand-logo" alt="Brand" src="bs.png" >
+        </a>
+        <h1> Station's Dashboard</h1>
+      </div>
+      <div class="nav navbar-nav navbar-left" href="/station-dashboard">
+        <span class="glyphicon glyphicon-home white" aria-hidden="true"></span>
       </div>
     </div>
-    <div class="col-md-3">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <h2> average # bikes per station: </h2>
-            <h3> <%= @average_bikes %> </h3>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <h2> most available bikes per station: </h2>
-            <h3> <%= @most_bikes %> </h3>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <h2> least available bikes per station: </h2>
-            <h3> <%= @least_bikes %> </h3>
-        </div>
-      </div>
-    </div>
-  </div> <!-- first  row -->
+  </nav>
 
+  <div class="container container-body">
+    <div class="index-button">
+      <button class="btn btn-info"><span class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>
+      <a href="/stations">View Stations</a>
+      </button>
+    </div>
+    <div class="container stat-container">
+        <div class="row text-center first-row">
+          <div class="col-md-6 first-block">
+            <h2 class="popup popup-first"> total <strong>#</strong>  of stations </h2>
+            <div class="panel panel-default panel-data">
+              <div class="panel-body">
+                  <h3 class="stat"> <%= @total_stations %> </h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 second-block">
+            <div class="panel panel-default panel-data">
+              <div class="panel-body blue">
+                <h2 class="popup popup-smaller"> average <strong>#</strong>  bikes per station: </h2>
+                <h3 class="stat"> <%= @average_bikes %> </h3>
+              </div>
+            </div>
+          </div>
+        </div> <!-- first  row -->
+        `<div class="row text-center">
+          <div class="col-md-6">
+            <div class="panel panel-default panel-data">
+              <div class="panel-body blue">
+                  <h2 class="popup popup-bigger"> most <strong>#</strong> bikes per station: </h2>
+                  <h3 class="stat"> <%= @most_bikes %> </h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h2 class="popup popup-bigger"> least <strong>#</strong>  bikes per station: </h2>
+            <div class="panel panel-default panel-data">
+              <div class="panel-body">
+                  <h3 class="stat"> <%= @least_bikes %> </h3>
+              </div>
+            </div>
+          </div>
+        </div> <!-- second  row -->
+      </div> <!-- stats -->
+  </div> <!-- opening container -->
   <div class="row text-center">
+    <div class="container body-beam">
+    </div>
     <div class="col-md-6">
-      <h3>Stations with Most Bikes</h3>
+      <div class="panel panel-default panel-background">
+        <div class="panel-header"><h2>Stations With Most Bikes</div>
+      </div>
+      <div class="table-left">
       <table>
         <tr>
           <th>Name</th>
@@ -48,19 +79,23 @@
 
         <% @most_bikes_station.each do |station| %>
         <tr>
-          <td><%= station.name %></td>
-          <td><%= station.city %></td>
-          <td><%= station.dock_count %></td>
-          <td><%= station.installation_date.date %></td>
-          <td><a href="/stations/<%= station.id %>">Station Info</a></td>
+          <td class="nudge-right"><%= station.name %></td>
+          <td class="nudge-right"><%= station.city %></td>
+          <td class="dc"><%= station.dock_count %></td>
+          <td class="nudge-right-er"><%= station.installation_date.date %></td>
+          <td class="nudge-left"><a href="/stations/<%= station.id %>">Station Info</a></td>
         </tr>
         <% end %>
 
       </table>
+      </div>
     </div>
 
     <div class="col-md-6">
-      <h3>Stations with Fewest Bikes</h3>
+      <div class="panel panel-default panel-background">
+        <div class="panel-header"><h2>Stations With Fewest #Bikes</div>
+      </div>
+      <div class="table-right">
       <table>
         <tr>
           <th>Name</th>
@@ -71,42 +106,47 @@
 
         <% @fewest_bikes_station.each do |station| %>
         <tr>
-          <td><%= station.name %></td>
-          <td><%= station.city %></td>
-          <td><%= station.dock_count %></td>
-          <td><%= station.installation_date.date %></td>
-          <td><a href="/stations/<%= station.id %>">Station Info</a></td>
+          <td class="nudge-right"><%= station.name %></td>
+          <td class="nudge-right"><%= station.city %></td>
+          <td class="dc"><%= station.dock_count %></td>
+          <td class="nudge-right-er"><%= station.installation_date.date %></td>
+          <td class="nudge-left"><a href="/stations/<%= station.id %>">Station Info</a></td>
         </tr>
         <% end %>
 
       </table>
+      </div>
     </div>
   </div>
+  <hr/>
   <div class="row text-center">
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-header"><h3>Newest Station</div>
+    <div class="col-md-6 border-me">
+      <div class="panel panel-default panel-background">
+        <div class="panel-header"><h2>Newest Station</div>
       </div>
       <div class="panel-body">
-        <ul>
-          <li><%= @newest_station.name %></li>
-          <li><%= @newest_station.city %></li>
-          <li><%= @newest_station.installation_date.date %></li>
+        <ul class="new-station">
+          <li><img class="new-station-img" src="newest_station.png"/></li>
+          <li class="list-station"><%= @newest_station.name %></li>
+          <li class="list-station"><%= @newest_station.city %></li>
+          <li class="list-station"><%= @newest_station.installation_date.date %></li>
         </ul>
       </div>
     </div>
 
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-header"><h3>Oldest Station</div>
+    <div class="container col-md-6 border-me">
+      <div class="panel panel-default panel-background">
+        <div class="panel-header"><h2>Oldest Station</div>
       </div>
       <div class="panel-body">
-        <ul>
-          <li><%= @oldest_station.name %></li>
-          <li><%= @oldest_station.city %></li>
-          <li><%= @oldest_station.installation_date.date %></li>
+        <ul class="new-station">
+          <img class="new-station-img" src="oldest_station.png"/></li>
+          <li class="list-station"><%= @oldest_station.name %></li>
+          <li class="list-station"><%= @oldest_station.city %></li>
+          <li class="list-station"><%= @oldest_station.installation_date.date %></li>
         </ul>
       </div>
     </div>
   </div>
 </div>
+</body>

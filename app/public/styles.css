@@ -375,7 +375,7 @@ th, td {
 .index-table-body {
   height: 30px;
   width: 30px;
-  margin-bottom: 2px; 
+  margin-bottom: 2px;
 }
 
 .stations-index {
@@ -551,4 +551,9 @@ span.white {
   color: white;
   margin-left: 10px;
   border-color: white;
+}
+
+.form-group select {
+  max-width: 150px;
+  color: black; 
 }

@@ -86,7 +86,7 @@ end
 # seed_weather_database("db/csv/weather.csv")
 # seed_station_database("db/csv/station.csv")
 # seed_subscriptions_database("db/csv/trip.csv")
-seed_trips_database("db/csv/trip.csv")
+# seed_trips_database("db/csv/trip.csv")
 
 # #fixtures:
 # seed_city_database("db/fixtures/stations.csv")

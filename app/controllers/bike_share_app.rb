@@ -14,7 +14,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/station-dashboard' do
-  
+
     @count = Station.total_station_count
     @average = Station.average_bikes_per_station
     @most_bikes = Station.most_bikes_available
@@ -50,7 +50,7 @@ class BikeShareApp < Sinatra::Base
     # require 'pry';binding.pry
     usf = UpdateStationForm.new(params)
     if usf.save
-      redirect '/stations/:id'
+      redirect "/stations/#{params[:id]}"
     else
       @params[:page] = :"/stations/:id/edit"
     end

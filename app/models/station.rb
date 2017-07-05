@@ -53,15 +53,17 @@ class Station < ActiveRecord::Base
   end
 
   def self.most_recent_station
-    dates = BikeShareDate.where('extract(hour from bike_share_date) between 0 and 0')
-    first_date = dates.sort { |a,b| a.created_at <=> b.created_at }.first
-    station = Station.find_by(installation_date_id: first_date.id)
-    station.station_name.name
+    # dates = BikeShareDate.where('extract(hour from bike_share_date) between 0 and 0')
+    # first_date = dates.sort { |a,b| a.created_at <=> b.created_at }.first
+    # station = Station.find_by(installation_date_id: first_date.id)
+    # station.station_name.name
+    Station.joins("JOIN bike_share_dates ON bike_share_dates.id = stations.installation_date_id").order("bike_share_dates.bike_share_date asc").last.station_name.name
   end
 
   def self.oldest_station
-    date = BikeShareDate.order(:bike_share_date).first.id
-    station = Station.find_by(installation_date_id: date)
-    station.station_name.name
+    # date = BikeShareDate.order(:bike_share_date).first.id
+    # station = Station.find_by(installation_date_id: date)
+    # station
+    Station.joins("JOIN bike_share_dates ON bike_share_dates.id = stations.installation_date_id").order("bike_share_dates.bike_share_date asc").first.station_name.name
   end
 end

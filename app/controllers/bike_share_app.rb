@@ -47,7 +47,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
-    require 'pry';binding.pry
     sf = StationForm.new(params[:station])
     if sf.save
       redirect "/stations/:id"
@@ -132,8 +131,13 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/conditions' do
-    @weathers = Weather.paginate(page: params[:page], per_page: 30)
+    @conditions = Weather.paginate(page: params[:page], per_page: 30)
     erb :"conditions/index"
+  end
+
+  get '/conditions/:id' do
+    @condition = Weather.find(params[:id])
+    erb :"conditions/show"
   end
 
   def execute_statement(sql)

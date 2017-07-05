@@ -82,9 +82,9 @@ end
 # seed_subscriptions_database("db/csv/trip.csv")
 # seed_trips_database("db/csv/trip.csv")
 
-#fixtures:
-seed_city_database("db/fixtures/stations.csv")
-seed_weather_database("db/fixtures/weather.csv")
-seed_station_database("db/fixtures/stations.csv")
-seed_subscriptions_database("db/fixtures/trips.csv")
-seed_trips_database("db/fixtures/trips.csv")
+# #fixtures:
+# seed_city_database("db/fixtures/stations.csv")
+# seed_weather_database("db/fixtures/weather.csv")
+# seed_station_database("db/fixtures/stations.csv")
+# seed_subscriptions_database("db/fixtures/trips.csv")
+# seed_trips_database("db/fixtures/trips.csv")

@@ -26,4 +26,10 @@ class Trip < ActiveRecord::Base
       count
     end
   end
+
+  def self.bike_with_most_rides
+    group(:bike_id).count.max_by do |date, count|
+      count
+    end
+  end
 end

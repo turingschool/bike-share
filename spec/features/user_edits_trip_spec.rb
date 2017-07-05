@@ -13,7 +13,6 @@ RSpec.describe "user edits trip" do
     station_b = Station.create(name: "Boise", dock_count: 2, installation_date_id: 1, city: "Denver")
     station_c = Station.create(name: "Central", dock_count: 5, installation_date_id: 3, city: "Littleton")
 
-
     visit("/trips/2/edit")
     save_and_open_page
     fill_in("trip[bike_id]", with: 2)
@@ -24,7 +23,6 @@ RSpec.describe "user edits trip" do
     fill_in("trip[start_city_id]", with: "Denver")
     fill_in("trip[end_city_id]", with: "Boulder")
     fill_in("trip[zipcode_id]", with: 80202)
-
 
     click_button("Edit Trip")
     trip = Trip.last

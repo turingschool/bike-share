@@ -21,7 +21,6 @@ class StationForm
   end
 
   def save
-    # require 'pry';binding.pry
     if valid?
       save_name = StationName.find_or_create_by!(name: @station_name)
       save_city = City.find_or_create_by!(name: @city)

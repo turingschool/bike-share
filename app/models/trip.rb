@@ -28,14 +28,18 @@ class Trip < ActiveRecord::Base
   end
 
   def self.bike_with_most_rides
-    group(:bike_id).count.max_by do |bike, count|
+    most_bike = group(:bike_id).count.max_by do |bike, count|
       count
     end
+
+    {bike: most_bike[0], count: most_bike[1]}
   end
 
   def self.bike_with_least_rides
-    group(:bike_id).count.min_by do |bike, count|
+     least_bike = group(:bike_id).count.min_by do |bike, count|
       count
     end
+
+    {bike: least_bike[0], count: least_bike[1]}
   end
 end

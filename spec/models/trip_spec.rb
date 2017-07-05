@@ -106,8 +106,8 @@ RSpec.describe Trip do
 
         result = Trip.bike_with_most_rides
 
-        expect(result[0]).to eq(6)
-        expect(result[1]).to eq(5)
+        expect(result[:bike]).to eq(6)
+        expect(result[:count]).to eq(5)
       end
     end
 
@@ -127,8 +127,8 @@ RSpec.describe Trip do
 
         result = Trip.bike_with_least_rides
 
-        expect(result[0]).to eq(3)
-        expect(result[1]).to eq(1)
+        expect(result[:bike]).to eq(3)
+        expect(result[:count]).to eq(1)
       end
     end
   end

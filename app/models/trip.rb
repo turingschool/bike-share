@@ -1,9 +1,17 @@
 require_relative "station"
 require_relative "subscription"
 require 'pry'
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 class Trip < ActiveRecord::Base
   validates_presence_of :duration, :start_date, :end_date, :start_station_id, :end_station_id, :bike_id, :subscription_id
   belongs_to :subscription
+  belongs_to :weather
+  
+  def self.per_page
+    30
+  end
 
   def self.average_duration
     Trip.average(:duration).round(2)
@@ -87,6 +95,5 @@ class Trip < ActiveRecord::Base
 
   def self.most_frequent_bike_starting(station_id)
     Trip.where(start_station_id: station_id).group(:bike_id).order('count_id DESC').count(:id).first[0]
-
   end
 end

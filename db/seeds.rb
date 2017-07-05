@@ -51,6 +51,10 @@ def seed_trips_database(file_path)
     row[:end_station_name] = "Stanford in Redwood City" if row[:end_station_name] == "Broadway at Main"
     row[:start_station_name] = "Santa Clara County Civic Center" if row[:start_station_name] == "San Jose Government Center"
     row[:end_station_name] = "Santa Clara County Civic Center" if row[:end_station_name] == "San Jose Government Center"
+    row[:start_station_name] = "Post at Kearney" if row[:start_station_name] == "Post at Kearny"
+    row[:end_station_name] = "Post at Kearney" if row[:end_station_name] == "Post at Kearny"
+    row[:start_station_name] = "Washington at Kearney" if row[:start_station_name] == "Washington at Kearny"
+    row[:end_station_name] = "Washington at Kearney" if row[:end_station_name] == "Washington at Kearny"
     row[:start_station_id] = Station.find_by(name: row[:start_station_name]).id
     row[:end_station_id] = Station.find_by(name: row[:end_station_name]).id
     subscription = Subscription.find_by(subscription_type: row[:subscription_type])
@@ -82,7 +86,7 @@ end
 # seed_weather_database("db/csv/weather.csv")
 # seed_station_database("db/csv/station.csv")
 # seed_subscriptions_database("db/csv/trip.csv")
-# seed_trips_database("db/csv/trip.csv")
+seed_trips_database("db/csv/trip.csv")
 
 # #fixtures:
 # seed_city_database("db/fixtures/stations.csv")

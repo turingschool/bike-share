@@ -14,7 +14,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/station-dashboard' do
-    @count = Station.total_station_count
+    @count = Station.total_station_countshot
     @average = Station.average_bikes_per_station
     @most_bikes = Station.most_bikes_avaiable
     @stations_with_most_bikes = Station.stations_with_most_bikes
@@ -47,26 +47,18 @@ class BikeShareApp < Sinatra::Base
 
   put '/stations/:id' do
     sf = StationForm.new(params[:station])
-    if sf.save
-      redirect "/stations/:id"
-    else
-      @params[:page] = :"/stations/:id/edit"
-    end
+    #if
+      sf.save
+      #redirect "/stations/:id"
+      redirect "/stations/#{params[:id]}"
+    # else
+    #   @params[:page] = :"/stations/:id/edit"
+    # end
   end
 
   get '/error' do
     erb :"error"
   end
-
-  # put '/stations/:id' do |id|
-  #   if Station.update(id.to_i, params[:station]) == false
-  #     @params[:page] = :"/stations/new"
-  #     erb :"/error"
-  #   else
-  #     Station.update(id.to_i, params[:station])
-  #     redirect "/stations/#{id}"
-  #   end
-  # end
 
   delete '/stations/:id' do |id|
     Station.destroy(id.to_i)
@@ -74,7 +66,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    #@trips = Trip.all.order(:id)
     @trips = Trip.all.order(:id).paginate(:page => params[:page], :per_page => 30)
     erb :"trips/index"
   end
@@ -102,13 +93,6 @@ class BikeShareApp < Sinatra::Base
         erb :"/stations/new"
       end
     end
-  # @trip = Trip.new(params[:trip])
-  #   if @trip.save
-  #     redirect "/trips"
-  #   else
-  #     @params[:page] = :"/trips/new"
-  #     erb :"/error"
-  #   end
 
   get '/trips/:id/edit' do
     @station_names = StationName.all.order(:name)
@@ -116,32 +100,15 @@ class BikeShareApp < Sinatra::Base
     erb :"trips/edit"
   end
 
-
-    # put '/stations/:id' do
-    # # require 'pry';binding.pry
-    # usf = UpdateStationForm.new(params)
-    # if usf.save
-    #   redirect '/stations/:id'
-    # else
-    #   @params[:page] = :"/stations/:id/edit"
-    # end
-
   put '/trips/:id' do
     utf = UpdateTripForm.new(params)
-    if utf.save
-      redirect "/trips/:id"
-    else
-      @params[:page] = :"/trips/:id/edit"
-    end
+    # if
+      utf.save
+      redirect "/trips/#{params[:id]}"
+    # else
+    #   @params[:page] = :"/trips/:id/edit"
+    # end
   end
-  #   if Trip.update(id.to_i, params[:trip]) == false
-  #     @params[:page] = :"/trips/new"
-  #     erb :"/error"
-  #   else
-  #     Trip.update(id.to_i, params[:trip])
-  #     redirect "/trips/#{id}"
-  #   end
-  # end
 
   delete '/trips/:id' do |id|
     Trip.destroy(id.to_i)

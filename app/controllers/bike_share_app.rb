@@ -130,6 +130,11 @@ class BikeShareApp < Sinatra::Base
     redirect '/trips'
   end
 
+  get '/weather' do
+    @weathers = Weather.all
+    erb :"weather/index"
+  end
+
   def execute_statement(sql)
      results = ActiveRecord::Base.connection.execute(sql)
      if results.present?

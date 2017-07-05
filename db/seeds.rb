@@ -68,7 +68,7 @@ weather_csv = CSV.parse(weather_text, :headers => true, header_converters: :symb
 weather_csv.each do |row|
   Weather.transaction do
     date_str = DateTime.strptime(row[:date], '%m/%d/%Y')
-    date = BikeShareDate.find_or_create_by!(bike_share_date: date_str)
+    date = BikeShareDate.find_or_initialize_by(bike_share_date: date_str)
     max_temp = row[:max_temperature_f]
     mean_temp = row[:mean_temperature_f]
     min_temp = row[:min_temperature_f]
@@ -91,7 +91,7 @@ weather_csv.each do |row|
     cloud_cover = row[:cloud_cover]
     events = row[:events]
     wind_dir_degrees = row[:wind_dir_degrees]
-    zip_code = ZipCode.find_or_create_by!(zip_code: row[:zip_code])
+    zip_code = ZipCode.find_or_initialize_by(zip_code: row[:zip_code])
 
     Weather.create!(bike_share_date: date,
                     max_temperature_f: max_temp,

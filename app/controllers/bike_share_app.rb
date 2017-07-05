@@ -86,16 +86,10 @@ class BikeShareApp < Sinatra::Base
   get '/trip-dashboard' do
     erb :"trips/trips-dashboard"
   end
-#need to work on below, still not working
+
   get '/trips/:id' do
-    ti = Trip.find(params[:id])
-    if ti.nil?
-      @errors = ti.errors
-      redirect "/trips"
-    else
       @trip = Trip.find(params[:id])
       erb :"trips/show"
-    end
   end
 
   post '/trips/new' do

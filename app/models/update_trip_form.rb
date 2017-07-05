@@ -30,7 +30,6 @@ class UpdateTripForm
     @bike_id = params[:trip][:bike_id]
     @zip_code = params[:trip][:zip_code]
     @id = params[:id]
-        require 'pry';binding.pry
   end
 
   def save
@@ -50,6 +49,7 @@ class UpdateTripForm
                               bike_id: @bike_id,
                               zip_code_id: save_zip_code.id
                               )
+    #return  @trip.save
    end
    false
   end

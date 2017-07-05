@@ -1,4 +1,5 @@
 class BikeShareApp < Sinatra::Base
+  include WillPaginate::Sinatra::Helpers
 
   get '/' do
     erb :dashboard
@@ -130,9 +131,9 @@ class BikeShareApp < Sinatra::Base
     redirect '/trips'
   end
 
-  get '/weather' do
-    @weathers = Weather.all
-    erb :"weather/index"
+  get '/conditions' do
+    @weathers = Weather.paginate(page: params[:page], per_page: 30)
+    erb :"conditions/index"
   end
 
   def execute_statement(sql)

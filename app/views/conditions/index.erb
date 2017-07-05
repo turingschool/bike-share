@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h1>Weather</h1>
+  <h1>Conditions</h1>
 </div>
 <div class="table-responsive">
   <table class="table text-left">
@@ -7,11 +7,13 @@
       <th>Date</th>
       <th>Max Temperature</th>
       <th>Zip Code</th>
+      <th>Edit</th>
+      <th>Delete</th>
         </tr>
         <% @weathers.each do |w| %>
         <tr>
           <td><%= w.date %></td>
-          <td><%= w.max_temperature_f %></td>
+          <td><%= w.max_temperature_f.round %> F</td>
           <td><%= w.zip %></td>
           <td>
             <form action="/weather/<%= w.id %>/edit" method="get">
@@ -28,4 +30,5 @@
         </tr>
         <% end %>
       </table>
+      <%= will_paginate @weathers %>
     </div>

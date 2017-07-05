@@ -14,11 +14,11 @@ class Station < ActiveRecord::Base
   end
 
 
-def name
+  def name
    StationName.find(station_name_id).name
-end
+  end
 
-def city
+  def city
     City.find(city_id).name
   end
 
@@ -27,45 +27,41 @@ def city
   end
 
   def self.total_station_count
-    #Station.all.count
     sql("SELECT COUNT(id) FROM stations").first["count"].to_i
   end
 
   def self.average_bikes_per_station
     sql("SELECT AVG(dock_count)FROM stations").first["avg"].to_i
-    #Station.average(:dock_count)
   end
 
   def self.most_bikes_available
-    # sql("SELECT station_name_id FROM stations ORDER BY dock_count ASC").first["name"]
     station = Station.order(:dock_count).last
-    # station.station_name
+    station.station_name.name
   end
 
   def self.stations_with_most_bikes
-    # sql("SELECT station_name_id FROM stations ORDER BY dock_count ASC LIMIT 5").map #{|x| "#{x["name"]}"}
     Station.order(dock_count: :desc).limit(5)
   end
 
   def self.fewest_bikes_avaiable
-    # sql("SELECT station_name_id FROM stations ORDER BY dock_count DESC").first["name"]
-    Station.order(:dock_count).first
-
+    station = Station.order(:dock_count).first
+    station.station_name.name
   end
 
   def self.stations_with_fewest_bikes
-    sql("SELECT station_name_id FROM stations ORDER BY dock_count DESC LIMIT 5").map {|x| "#{x["name"]}"}
-    #Station.order(dock_count: :desc).limit(5)
     Station.order(dock_count: :asc).limit(5)
   end
 
   def self.most_recent_station
-    sql("SELECT station_name_id FROM stations ORDER BY installation_date_id ASC").first["name"]
-    #Station.order(:installation_date).first
+    dates = BikeShareDate.where('extract(hour from bike_share_date) between 0 and 0')
+    first_date = dates.sort { |a,b| a.created_at <=> b.created_at }.first
+    station = Station.find_by(installation_date_id: first_date.id)
+    station.station_name.name
   end
 
   def self.oldest_station
     date = BikeShareDate.order(:bike_share_date).first.id
-    Station.find_by(installation_date_id: date)
+    station = Station.find_by(installation_date_id: date)
+    station.station_name.name
   end
 end

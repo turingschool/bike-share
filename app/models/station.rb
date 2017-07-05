@@ -12,11 +12,6 @@ class Station < ActiveRecord::Base
     find_by(name: name).id
   end
 
-  # def self.create_by_name(name)
-  #   find_or_create_by(name: name).id
-  # end
-  # finds or creates Station object and returns its id # not needed if we do drop-down menu
-
   def self.total_count
     Station.count
   end
@@ -61,4 +56,13 @@ class Station < ActiveRecord::Base
     end
   end
 
+  def start_station_with_most_rides
+    all_destinations = start_trips.group(:end_station_id).count
+    most_destination = all_destinations.max_by { |k,v| v }
+    if most_destination.nil?
+      return "0"
+    else
+      return Station.find(most_destination.first)
+    end
+  end
 end

@@ -17,7 +17,7 @@ RSpec.describe "user edits trip" do
     zipcode = Zipcode.create(zipcode: 80202)
 
     visit("/trips/2/edit")
-    save_and_open_page
+    # save_and_open_page
     # fill_in("trip[bike_id]", with: 2)
     select("2", from: "trip[bike_id]")
     fill_in("trip[duration]", with: 174)

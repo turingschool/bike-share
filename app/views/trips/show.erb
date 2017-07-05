@@ -7,6 +7,5 @@
 <p>End Date: <%= @trip.end_date.date %></p>
 <p>End Station: <%= @trip.end_station.name %></p>
 <p>Bike ID: <%= @trip.bike_id %></p>
-<p>Substription Type: <%= @trip.subscription_type %></p>
-<!-- zipcode does not render with zipcode_id or zipcode.zipcode -->
-<p>Zipcode: <%= @trip.zipcode_id %></p>
+<p>Subscription Type: <%= @trip.subscription_type %></p>
+<p>Zipcode: <%= @trip.zipcode.zipcode %></p>

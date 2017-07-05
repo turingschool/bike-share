@@ -7,8 +7,18 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations' do
-    @stations = Station.all
+    @stations = Station.all[0..29]
     erb :"/stations/index"
+  end
+
+  get '/stations/index-2' do
+    @stations = Station.all[30..68]
+    erb :"/stations/index-2"
+  end
+
+  get '/stations/index-3' do
+    @stations = Station.all[69..-1]
+    erb :"/stations/index-3"
   end
 
   get '/stations/new' do
@@ -59,15 +69,13 @@ class BikeShareApp < Sinatra::Base
     erb :"/stations/dashboard"
   end
 
-  get '/trips' do
-    @trips = Trip.all
-    erb :'/trips/index'
+  get '/stations/:id/bs.png' do
+    redirect "bs.png"
   end
 
-  delete '/trips/:id' do |id|
-    Trip.destroy(id)
-
-    redirect('/trips')
+  get '/trips' do
+    @trips = Trip.all
+    erb :"/trips/index"
   end
 
   get '/trips/new' do
@@ -75,16 +83,64 @@ class BikeShareApp < Sinatra::Base
     erb :'/trips/new'
   end
 
+  get '/trips/:id' do |id|
+    @trip = Trip.find(id)
+    erb :'/trips/show'
+  end
+
+  get '/trips/:id/edit' do |id|
+    @trip = Trip.find(id)
+    @stations = Station.all
+    @bikes = Trip.pluck(:bike_id)
+    erb :"/trips/edit"
+  end
+
+  # trip[duration]:5
+  # trip[start_date_id]:2014-01-01
+  # trip[end_date_id]:2014-01-02
+  # trip[start_station_id]:71
+  # trip[end_station_id]:72
+  # trip[bike_id]:2
+  # trip[subscription_type]:User
+  # trip[zipcode_id]:90202
+  put "/trips/:id" do |id|
+    end_date = params[:trip][:end_date_id]
+    params[:trip][:end_date_id] = BikeShareDate.create_by_date(end_date)
+    start_date = params[:trip][:start_date_id]
+    params[:trip][:start_date_id] = BikeShareDate.create_by_date(start_date)
+
+    zipcode_id = params[:trip][:zipcode_id]
+    params[:trip][:zipcode_id] = Zipcode.create_zipcode(zipcode_id)
+
+    @trip = Trip.update(params[:trip])
+    redirect "/trips/#{id}"
+  end
+
+  # trip[duration]:5
+  # trip[start_date_id]:2014-01-02
+  # trip[start_station_id]:71
+  # trip[end_date_id]:2014-01-03
+  # trip[end_station_id]:72
+  # trip[bike_id]:1
+  # trip[subscription_type]:User
+  # trip[zipcode_id]:90202
   post '/trips' do
-    #TODO create and route to trip show page
     start_date = params[:trip][:start_date_id]
     params[:trip][:start_date_id] = BikeShareDate.create_by_date(start_date)
 
     end_date = params[:trip][:end_date_id]
     params[:trip][:end_date_id] = BikeShareDate.create_by_date(end_date)
 
+    zipcode = params[:trip][:zipcode_id]
+    params[:trip][:zipcode_id] = Zipcode.create_zipcode(zipcode)
+
     Trip.create(params[:trip])
 
+    redirect('/trips')
+  end
+
+  delete '/trips/:id' do |id|
+    Trip.destroy(id)
     redirect('/trips')
   end
 end

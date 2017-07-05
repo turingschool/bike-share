@@ -12,7 +12,8 @@ RSpec.describe Zipcode do
       it "will shorten a zipcode longer than 5 digits" do
         zipcode = "12345678"
 
-        result = Zipcode.create_zipcode(zipcode)
+        zipcode_id = Zipcode.create_zipcode(zipcode)
+        result = Zipcode.find(zipcode_id)
 
         expect(result.zipcode).to eq("12345")
       end
@@ -20,7 +21,8 @@ RSpec.describe Zipcode do
       it "will lengthen a zipcode shorter than 5 digits" do
         zipcode = "12"
 
-        result = Zipcode.create_zipcode(zipcode)
+        zipcode_id = Zipcode.create_zipcode(zipcode)
+        result = Zipcode.find(zipcode_id)
 
         expect(result.zipcode).to eq("00012")
       end
@@ -28,7 +30,8 @@ RSpec.describe Zipcode do
       it "will return the zipcode if it is 5 digits" do
         zipcode = "12345"
 
-        result = Zipcode.create_zipcode(zipcode)
+        zipcode_id = Zipcode.create_zipcode(zipcode)
+        result = Zipcode.find(zipcode_id)
 
         expect(result.zipcode).to eq("12345")
       end
@@ -36,7 +39,8 @@ RSpec.describe Zipcode do
       it "will return zeros if the zipcode is nil" do
         zipcode = nil
 
-        result = Zipcode.create_zipcode(zipcode)
+        zipcode_id = Zipcode.create_zipcode(zipcode)
+        result = Zipcode.find(zipcode_id)
 
         expect(result.zipcode).to eq("00000")
       end

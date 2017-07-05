@@ -12,6 +12,11 @@ class Station < ActiveRecord::Base
     find_by(name: name).id
   end
 
+  # def self.create_by_name(name)
+  #   find_or_create_by(name: name).id
+  # end
+  # finds or creates Station object and returns its id # not needed if we do drop-down menu
+
   def self.total_count
     Station.count
   end

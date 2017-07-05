@@ -1,0 +1,29 @@
+<h1>Station Dashboard</h1>
+<p>Total Stations: <%= Station.count %></p>
+<p>Average Bikes per Station: <%= Station.average_dock_count %></p>
+<p>Most bikes at a Station: <%= Station.most_bikes %></p>
+<p>Stations with Most Bikes:</p>
+<ul>
+<% Station.stations_with_most_bikes.each do |station| %>
+  <li><%= station %></li>
+<% end %>
+</ul>
+<p>Least bikes at Station: <%= Station.least_bikes %></p>
+<p>Stations with Least Bikes:</p>
+<ul>
+<% Station.stations_with_least_bikes.each do |station| %>
+  <li><%= station %></li>
+<% end %>
+</ul>
+<p>Newest Stations:</p>
+<ul>
+<% Station.newest_stations.each do |station| %>
+  <li><%= station %></li>
+<% end %>
+</ul>
+<p>Oldest Stations:</p>
+<ul>
+<% Station.oldest_stations.each do |station| %>
+  <li><%= station %></li>
+<% end %>
+</ul>

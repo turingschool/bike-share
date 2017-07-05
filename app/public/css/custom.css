@@ -1,0 +1,229 @@
+.tight-text {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+.bike-icon {
+  height: 40px;
+  width: 40px;
+}
+
+.heavy-border {
+  border: solid;
+  border-width: 5px;
+  border-color: red;
+}
+
+.yield-margin {
+  margin-left: 20px;
+}
+
+.input-label {
+  margin-bottom: 1px;
+}
+
+.no-pad {
+  padding: 0;
+}
+
+.panel-margins {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.btn-primary {
+  margin-top: 10px;
+}
+
+
+.bike-pic-header-container {
+  max-height: 120px; overflow: hidden;
+}
+
+.container {
+  width: auto;
+}
+
+
+
+.bike-pic-header-two {
+  margin-top: -250px;
+  width: 100%;
+  border-style: solid;
+  border-color: white;
+  border-width: medium;
+}
+
+.new-view-textbox-header {
+  margin-top: 0px;
+}
+
+/*.empty-rounded-div {
+border-style: solid;
+border-width: thin;
+border-radius: 5px;
+margin-bottom:inherit;
+background-color: red;
+}*/
+
+.btn {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 2px;
+}
+.show-div {
+  padding-bottom: 0px;
+
+}
+
+.panel {
+  padding-bottom: 0px;
+}
+
+.show-splash {
+  text-align: center;
+}
+
+.col-md-3 {
+  padding: 0px;
+  margin: 0px;
+}
+
+/*.panel > .panel-heading {
+background-image: none;
+background-color: red;
+color: white;}*/
+
+/*.panel-heading {
+background-color: red;
+text-decoration-color: red;
+}*/
+
+
+.panel-heading-text {
+  margin-top: 0px;
+  color: 	#484848;
+}
+.station-info-text {
+  font-size: 150%;
+  text-align: center;
+}
+
+.bike-icon-one {
+  margin-top: 5px;
+  display: block;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  height: 50px;
+}
+
+.bike-icon-show {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  /*margin-top: 30%;*/
+  position: relative;
+}
+
+.element-center-hor {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
+
+.btn {
+  width: 150px;
+}
+
+.card {
+  margin: 0px;
+}
+
+.card-subtitle {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.card-title {
+  color: white;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  background: #888888;
+  border-radius: 2px;
+}
+
+.card-link {
+  position: absolute;
+  float: bottom;
+}
+
+.card-text {
+  margin-left: 5px;
+}
+
+.card-input {
+  width: 100%;
+}
+
+.station-card {
+  padding: 5px;
+  margin: 10px;
+  border-style: solid;
+  border-color: gray;
+  border-width: 2px;
+  height: 250px;
+  border-radius: 5px;
+  background: linear-gradient( white, white, lightgray);
+}
+
+.row {
+  margin: 0px;
+  pad: 15;
+}
+.navbar {
+  border-color: gray;
+  border-radius: 0px;
+  border-width: thin;
+  /*background-color: lightgrey;*/
+  /*margin-bottom: 5px;;*/
+}
+
+
+.navbar-button {
+}
+
+.footer {
+  background-color: #e5f5ff;
+  margin-left: 0%;
+  margin-right: 0%;
+  margin-top: 5px;
+  padding-right: 0%;
+  border-radius: 0px;
+  border-color: grey;
+}
+
+.index-title{
+  text-align: center;
+  font-style: oblique;
+  margin-top: 5px;
+  padding-top: 0px;
+  font-weight: bolder;
+  color: white;
+  background: linear-gradient(to left, #33ccff 0%, #0066ff 100%);
+}
+
+
+.icon-bar {
+    background-color: #888888;
+}
+
+.edit-input-label {
+  margin-bottom: 2px;
+  margin-top: 5px;
+}
+
+/*body {
+background-color: red;
+}*/

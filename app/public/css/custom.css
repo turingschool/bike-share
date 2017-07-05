@@ -204,6 +204,7 @@ text-decoration-color: red;
   border-color: gray;
   border-radius: 0px;
   border-width: thin;
+  margin-bottom: 5px;
   /*background-color: lightgrey;*/
   /*margin-bottom: 5px;;*/
 }
@@ -283,6 +284,3 @@ text-decoration-color: red;
   background: linear-gradient( white, white, lightgray);
   height: auto;
 }
-/*body {
-background-color: red;
-}*/

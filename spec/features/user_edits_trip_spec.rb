@@ -2,7 +2,7 @@ RSpec.describe "user edits trip" do
   it "with valid attributes" do
 
     trip = Trip.create(duration: 53, start_date_id: 2, end_date_id: 2, start_station_id: 3, end_station_id: 3, bike_id: 3, subscription_type: 'Subscriber', zipcode_id: 3)
-    trip_2 = Trip.create(duration: 174, start_date_id: 1, end_date_id: 3, start_station_id: 2, end_station_id: 2, bike_id: 1, subscription_type: 'Customer', zipcode_id: 2)
+    trip_2 = Trip.create(duration: 174, start_date_id: 1, end_date_id: 3, start_station_id: 2, end_station_id: 2, bike_id: 1, subscription_type: 'Customer', zipcode_id: 1)
     trip_3 = Trip.create(duration: 13, start_date_id: 3, end_date_id: 1, start_station_id: 1, end_station_id: 1, bike_id: 2, subscription_type: 'Customer', zipcode_id: 4)
 
     date = BikeShareDate.create(date: Date.strptime('1/1/2012', '%m/%d/%Y'))
@@ -12,6 +12,8 @@ RSpec.describe "user edits trip" do
     station_a = Station.create(name: "Alamo", dock_count: 2, installation_date_id: 2, city: "Lakewood")
     station_b = Station.create(name: "Boise", dock_count: 2, installation_date_id: 1, city: "Denver")
     station_c = Station.create(name: "Central", dock_count: 5, installation_date_id: 3, city: "Littleton")
+
+    zipcode = Zipcode.create(zipcode: 80202)
 
     visit("/trips/2/edit")
     save_and_open_page

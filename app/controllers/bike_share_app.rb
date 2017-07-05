@@ -78,6 +78,9 @@ class BikeShareApp < Sinatra::Base
     start_date = params[:trip][:start_date_id]
     params[:trip][:start_date_id] = BikeShareDate.create_by_date(start_date)
 
+    zipcode_id = params[:trip][:zipcode_id]
+    params[:trip][:zipcode_id] = Zipcode.create_zipcode(zipcode_id)
+
     @trip = Trip.update(params[:trip], id)
     redirect "/trips/#{@trip.id}"
   end

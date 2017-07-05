@@ -9,5 +9,6 @@ class CreateWeathers < ActiveRecord::Migration[5.0]
       t.float    :mean_visibility
       t.float    :mean_wind_speed
       t.float    :percipitation
+    end 
   end
 end

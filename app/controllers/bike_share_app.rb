@@ -14,9 +14,10 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/station-dashboard' do
-    @count = Station.total_station_countshot
+    #refactor
+    @count = Station.total_station_count
     @average = Station.average_bikes_per_station
-    @most_bikes = Station.most_bikes_avaiable
+    @most_bikes = Station.most_bikes_available
     @stations_with_most_bikes = Station.stations_with_most_bikes
     @fewest_bikes_avaiable = Station.fewest_bikes_avaiable
     @stations_with_fewest_bikes = Station.stations_with_fewest_bikes
@@ -33,7 +34,7 @@ class BikeShareApp < Sinatra::Base
   post '/stations/new' do
     sf = StationForm.new(params[:station])
       if sf.save
-        redirect "/stations"
+        redirect '/stations'
       else
         @errors = sf.errors
         erb :"/stations/new"
@@ -46,14 +47,12 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
-    sf = StationForm.new(params[:station])
-    #if
-      sf.save
-      #redirect "/stations/:id"
+    usf = UpdateStationForm.new(params)
+    if usf.save
       redirect "/stations/#{params[:id]}"
-    # else
-    #   @params[:page] = :"/stations/:id/edit"
-    # end
+    else
+      @params[:page] = :"/stations/:id/edit"
+    end
   end
 
   get '/error' do

@@ -1,0 +1,47 @@
+<h1>Edit Trip</h1>
+
+<form action="/trips/<%= @trip.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT">
+
+  <label> Duration: </label>
+  <input type="number" name="trip[duration]" value="<%= @trip.duration %>">
+
+  <label>Start Date: </label>
+  <input type="date" name="trip[start_date_id]" value="<%= @trip.start_date.date %>">
+
+  <label>End Date: </label>
+  <input type="date" name="trip[end_date_id]" value="<%= @trip.end_date.date %>">
+
+  <label>Start Station Name: </label>
+  <select name="trip[start_station_id]" value="<%= @trip.start_station.name %>">
+    <% @stations.each do |station| %>
+      <option value="<%= station.id %>"><%= station.name %></option>
+    <% end %>
+  </select>
+
+  <label>End Station Name: </label>
+  <select name="trip[end_station_id]" value="<%= @trip.end_station.name %>">
+    <% @stations.each do |station| %>
+      <option value="<%= station.id %>"><%= station.name %></option>
+    <% end %>
+  </select>
+
+  <label>Bike Id: </label>
+  <select name="trip[bike_id]" value="<%= @trip.bike_id %>">
+    <% Trip.pluck(:bike_id).each do |bike| %>
+      <option value="<%= bike %>"><%= bike %></option>
+    <% end %>
+  </select>
+
+  <label>Subscription Type: </label>
+  <select name="trip[subscription_type]" value="<%= @trip.subscription_type %>" >
+    <option value="User">User</option>
+    <option value="Subscriber">Subscriber</option>
+  </select>
+
+  <label>Zipcode: </label>
+  <input type="text" name="trip[zipcode_id]" value="<%= @trip.zipcode.zipcode %>">
+  <br><br>
+
+  <button type="submit">Edit Trip</button>
+</form>

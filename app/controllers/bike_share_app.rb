@@ -56,6 +56,35 @@ class BikeShareApp < Sinatra::Base
     erb :"/stations/dashboard"
   end
 
+  get "/trips" do
+    @trips = Trip.all
+    erb :"/trips/index"
+  end
+
+  get "/trips/:id" do |id|
+    erb :"/trips/show"
+  end
+
+  get '/trips/:id/edit' do |id|
+    @trip = Trip.find(id)
+    @stations = Station.all
+    @bikes = Trip.pluck(:bike_id)
+    erb :"/trips/edit"
+  end
+
+  put "/trips/:id" do |id|
+    end_date = params[:trip][:end_date_id]
+    params[:trip][:end_date_id] = BikeShareDate.create_by_date(end_date)
+    start_date = params[:trip][:start_date_id]
+    params[:trip][:start_date_id] = BikeShareDate.create_by_date(start_date)
+
+    zipcode_id = params[:trip][:zipcode_id]
+    params[:trip][:zipcode_id] = Zipcode.create_zipcode(zipcode_id)
+
+    @trip = Trip.update(params[:trip], id)
+    redirect "/trips/#{@trip.id}"
+  end
+
   get '/trips' do
     @trips = Trip.all
     erb :'/trips/index'
@@ -88,7 +117,6 @@ class BikeShareApp < Sinatra::Base
 
   delete '/trips/:id' do |id|
     Trip.destroy(id)
-
     redirect('/trips')
   end
 end

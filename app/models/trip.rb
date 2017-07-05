@@ -1,3 +1,6 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 class Trip < ActiveRecord::Base
   belongs_to :station
   belongs_to :station_name

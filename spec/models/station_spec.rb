@@ -171,7 +171,8 @@ RSpec.describe Station do
 
          expect(result).to eq("2/5/2017")
        end
-
+     end
+     
      describe '.id_by_name' do
        it "returns the id of a station that matches the name" do
          station_1 = Station.create(name: "A", city: "Boston", dock_count: 2, installation_date_id: 1)

@@ -23,7 +23,28 @@ class Trip < ActiveRecord::Base
     Trip.where(end_station_id: station_id).count
   end
 
-  def self.most_trip_date
-    #need to finish method
+  # def self.most_trip_date(station_id)
+  #   a = Trip.where(start_station_id: station_id).to_a
+  #   b = count_by_start_date(a)
+  # end
+  #
+  def self.count_method(array)
+    final ={}
+    array.each do |x|
+      if final.keys.include?(x)
+        final[x] += 1
+      else
+        final[x] = 1
+      end
+    end
+    return final.sort_by { |k,v| v }.last
   end
+
+  def self.start_station_with_most_rides(station_id)
+    destination = Trip.where(start_station_id: station_id)
+    array = destination.pluck(:end_station_id).to_a
+    end_station = count_method(array).first
+    return Station.find(end_station)
+  end
+
 end

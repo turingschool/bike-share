@@ -73,4 +73,8 @@ class Trip < ActiveRecord::Base
     end
     years
   end
+
+  def self.average_ride_duration
+    average(:duration).round(2)
+  end
 end

@@ -203,5 +203,25 @@ RSpec.describe Trip do
         expect(result[2014]['total']).to eq (8)
       end
     end
+
+    describe '.average_ride_duration' do
+      it "returns the average ride duration" do
+        Trip.create(duration: 111, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 1)
+        Trip.create(duration: 222, start_date_id: 1, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "User", zipcode_id: 2)
+        Trip.create(duration: 333, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 1, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 444, start_date_id: 1, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 1, subscription_type: "User", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 2, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 3, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 2, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 4, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 2, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 5, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 3, subscription_type: "Customer", zipcode_id: 2)
+
+        result = Trip.average_ride_duration
+
+        expect(result).to eq(454.09)
+      end
+    end
   end
 end

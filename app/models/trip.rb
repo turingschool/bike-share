@@ -45,4 +45,10 @@ class Trip < ActiveRecord::Base
 
     {bike: least_bike[0], count: least_bike[1]}
   end
+
+  def self.subscription_type
+     count = Trip.group(:subscription_type).count.each do |bike, count|
+     end
+
+  end
 end

@@ -131,5 +131,24 @@ RSpec.describe Trip do
         expect(result[:count]).to eq(1)
       end
     end
+
+    describe ".subscription_type" do
+      it "returns user subscription type breakout with count and percentage" do
+
+      Trip.create(duration: 111, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 1)
+      Trip.create(duration: 222, start_date_id: 1, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Subscriber", zipcode_id: 2)
+      Trip.create(duration: 333, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 1, subscription_type: "Customer", zipcode_id: 2)
+      Trip.create(duration: 444, start_date_id: 1, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 1, subscription_type: "Subscriber", zipcode_id: 2)
+      Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+      Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 2, subscription_type: "Customer", zipcode_id: 2)
+      Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Subscriber", zipcode_id: 2)
+      Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 2, subscription_type: "Subscriber", zipcode_id: 2)
+
+      expect(Trip.subscription_type["Subscriber"]).to eq(4)
+      expect(Trip.subscription_type["Customer"]).to eq(4)
+    end
+
+
+    end
   end
 end

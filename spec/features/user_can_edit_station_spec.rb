@@ -18,7 +18,7 @@ RSpec.describe "user edits station" do
     fill_in("station[installation_date_id]", with: "1990-04-16")
     fill_in("station[city]", with: "new_city")
 
-    click_button("Edit Station")
+    click_button("Submit Changes")
     station = Station.last
     expect(current_path).to eq("/stations/#{station.id}")
     expect(page).to have_content("new_city")

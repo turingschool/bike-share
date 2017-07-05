@@ -11,6 +11,34 @@ RSpec.describe Station do
 
         expect(result).to eq(1)
     end
+
+    it "returns average bikes per station" do
+      station_name = StationName.create(name: "Test Station")
+      install_date = BikeShareDate.create(bike_share_date: "2013-08-06 00:00:00")
+      city = City.create(name: "Denver")
+      station = Station.create(station_name_id: station_name.id, dock_count: 20, city_id: city.id,
+                installation_date_id: install_date.id)
+      station2 = Station.create(station_name_id: station_name.id, dock_count: 10, city_id: city.id,
+                installation_date_id: install_date.id)
+
+      result = Station.average_bikes_per_station
+
+      expect(result).to eq(15)
+    end
+
+    it "returns most bikes available" do
+      station_name = StationName.create(name: "Test Station")
+      install_date = BikeShareDate.create(bike_share_date: "2013-08-06 00:00:00")
+      city = City.create(name: "Denver")
+      station = Station.create(station_name_id: station_name.id, dock_count: 20, city_id: city.id,
+                installation_date_id: install_date.id)
+      station1 = Station.create(station_name_id: station_name.id, dock_count: 10, city_id: city.id,
+                installation_date_id: install_date.id)
+
+      result = Station.most_bikes_available
+
+      expect(result).to eq(station.station_name.name)
+    end
   end
 
   describe "instance methods" do

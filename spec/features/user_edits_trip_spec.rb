@@ -16,8 +16,8 @@ RSpec.describe "user edits trip" do
 
     visit("/trips/2/edit")
     save_and_open_page
-    #fill_in("trip[bike_id]", with: 2)
-    #fill_in("trip[duration]", with: 174)
+    fill_in("trip[bike_id]", with: 2)
+    fill_in("trip[duration]", with: 174)
     fill_in("trip[start_date_id]", with: "1990-04-16")
     fill_in("trip[end_date_id]", with: "2016-05-16")
     fill_in("trip[subscription_type]", with: "Customer")

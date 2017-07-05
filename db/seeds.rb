@@ -47,6 +47,8 @@ def seed_trips_database(file_path)
     row[:start_date] = DateTime.strptime(row[:start_date], "%m/%d/%Y %H:%M")
     row[:end_date] = DateTime.strptime(row[:end_date], "%m/%d/%Y %H:%M")
     row[:weather_id] = Weather.find_by(date: row[:start_date].strftime("%m/%d/%Y")).id if Weather.find_by(date: row[:start_date])
+    row[:start_station_name] = "Stanford in Redwood City" if row[:start_station_name] == "Broadway at Main"
+    row[:end_station_name] = "Stanford in Redwood City" if row[:end_station_name] == "Broadway at Main"
     row[:start_station_id] = Station.find_by(name: row[:start_station_name]).id
     row[:end_station_id] = Station.find_by(name: row[:end_station_name]).id
     subscription = Subscription.find_by(subscription_type: row[:subscription_type])
@@ -81,8 +83,8 @@ end
 # seed_trips_database("db/csv/trip.csv")
 
 #fixtures:
-# seed_city_database("db/fixtures/stations.csv")
-# seed_weather_database("db/fixtures/weather.csv")
-# seed_station_database("db/fixtures/stations.csv")
-# seed_subscriptions_database("db/fixtures/trips.csv")
-# seed_trips_database("db/fixtures/trips.csv")
+seed_city_database("db/fixtures/stations.csv")
+seed_weather_database("db/fixtures/weather.csv")
+seed_station_database("db/fixtures/stations.csv")
+seed_subscriptions_database("db/fixtures/trips.csv")
+seed_trips_database("db/fixtures/trips.csv")

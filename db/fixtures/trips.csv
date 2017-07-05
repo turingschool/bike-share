@@ -1,4 +1,4 @@
 id,duration,start_date,start_station_name,start_station_id,end_date,end_station_name,end_station_id,bike_id,subscription_type,zip_code
 4576,63,8/29/2013 14:13,San Jose Diridon Caltrain Station,66,8/29/2013 14:14,San Jose Diridon Caltrain Station,66,520,Subscriber,94127
 4607,70,8/30/2013 14:42,San Jose Civic Center,10,8/29/2013 14:43,San Jose Diridon Caltrain Station,10,661,Subscriber,95138
-4130,71,8/29/2013 10:16,San Jose Diridon Caltrain Station,27,8/29/2013 10:17,Santa Clara at Almaden,27,48,Subscriber,97214
+4130,71,8/29/2013 10:16,Broadway at Main,27,8/29/2013 10:17,Santa Clara at Almaden,27,48,Subscriber,97214

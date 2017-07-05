@@ -120,15 +120,32 @@ class BikeShareApp < Sinatra::Base
     erb :"trips/edit"
   end
 
-  put '/trips/:id' do |id|
-    if Trip.update(id.to_i, params[:trip]) == false
-      @params[:page] = :"/trips/new"
-      erb :"/error"
+
+    # put '/stations/:id' do
+    # # require 'pry';binding.pry
+    # usf = UpdateStationForm.new(params)
+    # if usf.save
+    #   redirect '/stations/:id'
+    # else
+    #   @params[:page] = :"/stations/:id/edit"
+    # end
+
+  put '/trips/:id' do
+    utf = UpdateTripForm.new(params)
+    if utf.save
+      redirect '/trips/:id'
     else
-      Trip.update(id.to_i, params[:trip])
-      redirect "/trips/#{id}"
+      @params[:page] = :"/trips/:id/edit"
     end
   end
+  #   if Trip.update(id.to_i, params[:trip]) == false
+  #     @params[:page] = :"/trips/new"
+  #     erb :"/error"
+  #   else
+  #     Trip.update(id.to_i, params[:trip])
+  #     redirect "/trips/#{id}"
+  #   end
+  # end
 
   delete '/trips/:id' do |id|
     Trip.destroy(id.to_i)

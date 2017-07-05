@@ -169,7 +169,7 @@ RSpec.describe Station do
 
          result = station_3.most_trip_date
 
-         expect(result).to eq("2017-02-05")
+         expect(result).to eq("February 05, 2017")
        end
      end
 

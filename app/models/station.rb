@@ -47,26 +47,13 @@ class Station < ActiveRecord::Base
   end
 
   def most_trip_date
-    all_start_trips = start_trips.pluck(:start_date_id)
-    highest_start_date = count_method(all_start_trips)
+    all_start_trips = start_trips.group(:start_date_id).count
+    highest_start_date = all_start_trips.max_by { |k,v| v }
     if highest_start_date.nil?
       return "0"
     else
-      return BikeShareDate.find(highest_start_date.first).date.to_s
+      return BikeShareDate.find(highest_start_date.first).date.strftime('%B %d, %Y')
     end
   end
-
-  def count_method(array)
-    final ={}
-    array.each do |x|
-      if final.keys.include?(x)
-        final[x] += 1
-      else
-        final[x] = 1
-      end
-    end
-    return final.sort_by { |k,v| v }.last
-  end
-
 
 end

@@ -74,7 +74,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trips = Trip.all
+    @trips = Trip.all.order(:id)
     erb :"trips/index"
   end
 

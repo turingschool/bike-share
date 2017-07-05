@@ -75,11 +75,12 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips' do
     @trips = Trip.all.order(:id)
+    #Post.paginate(:page => params[:trips], :per_page => 30)
     erb :"trips/index"
   end
 
   get '/trips/new' do
-    @station_names = StationName.all
+    @station_names = StationName.all.order(:name)
     erb :"trips/new"
   end
 
@@ -98,8 +99,9 @@ class BikeShareApp < Sinatra::Base
         redirect "/trips"
       else
         @errors = tf.errors
-        erb :"/trips/new"
+        erb :"/stations/new"
       end
+    end
   # @trip = Trip.new(params[:trip])
   #   if @trip.save
   #     redirect "/trips"
@@ -107,9 +109,9 @@ class BikeShareApp < Sinatra::Base
   #     @params[:page] = :"/trips/new"
   #     erb :"/error"
   #   end
-  end
 
   get '/trips/:id/edit' do
+    @station_names = StationName.all.order(:name)
     @trip = Trip.find(params[:id])
     erb :"trips/edit"
   end
@@ -127,7 +129,7 @@ class BikeShareApp < Sinatra::Base
   put '/trips/:id' do
     utf = UpdateTripForm.new(params)
     if utf.save
-      redirect '/trips/:id'
+      redirect "/trips/:id"
     else
       @params[:page] = :"/trips/:id/edit"
     end

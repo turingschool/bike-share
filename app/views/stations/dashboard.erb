@@ -82,7 +82,7 @@
           <td class="nudge-right"><%= station.name %></td>
           <td class="nudge-right"><%= station.city %></td>
           <td class="dc"><%= station.dock_count %></td>
-          <td class="nudge-right-er"><%= station.installation_date %></td>
+          <td class="nudge-right-er"><%= station.installation_date.date %></td>
           <td class="nudge-left"><a href="/stations/<%= station.id %>">Station Info</a></td>
         </tr>
         <% end %>
@@ -109,7 +109,7 @@
           <td class="nudge-right"><%= station.name %></td>
           <td class="nudge-right"><%= station.city %></td>
           <td class="dc"><%= station.dock_count %></td>
-          <td class="nudge-right-er"><%= station.installation_date %></td>
+          <td class="nudge-right-er"><%= station.installation_date.date %></td>
           <td class="nudge-left"><a href="/stations/<%= station.id %>">Station Info</a></td>
         </tr>
         <% end %>
@@ -129,7 +129,7 @@
           <li><img class="new-station-img" src="newest_station.png"/></li>
           <li class="list-station"><%= @newest_station.name %></li>
           <li class="list-station"><%= @newest_station.city %></li>
-          <li class="list-station"><%= @newest_station.installation_date %></li>
+          <li class="list-station"><%= @newest_station.installation_date.date %></li>
         </ul>
       </div>
     </div>
@@ -143,7 +143,7 @@
           <img class="new-station-img" src="oldest_station.png"/></li>
           <li class="list-station"><%= @oldest_station.name %></li>
           <li class="list-station"><%= @oldest_station.city %></li>
-          <li class="list-station"><%= @oldest_station.installation_date %></li>
+          <li class="list-station"><%= @oldest_station.installation_date.date %></li>
         </ul>
       </div>
     </div>

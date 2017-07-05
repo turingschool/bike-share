@@ -10,7 +10,7 @@ require 'pry'
 def delete_columns(path, column_headers)
   table = CSV.table(path)
   column_headers.each do |column_header|
-    table.delete(row_header) #deletes
+    table.delete(column_header) #deletes columns
   end
   table
 end
@@ -36,10 +36,10 @@ start_time = Time.now
 trips.each do |row|
   row = row.to_h
   row[:start_date_id] = BikeShareDate.seed_by_date(row.delete(:start_date))
-  row[:start_station_id] = Station.seed_by_name(row.delete(:start_station_name))
+  row[:start_station_id] = Station.id_by_name(row.delete(:start_station_name))
   row[:end_date_id] = BikeShareDate.seed_by_date(row.delete(:end_date))
-  row[:end_station_id] = Station.seed_by_name(row.delete(:end_station_name))
-  row[:zipcode_id] = Zipcode.create_zipcode(row.delete(:zip_code))
+  row[:end_station_id] = Station.id_by_name(row.delete(:end_station_name))
+  row[:zipcode_id] = Zipcode.create_zipcode(row.delete(:zip_code)).id
   Trip.create!(row)
 end
 

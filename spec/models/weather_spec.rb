@@ -6,4 +6,7 @@ RSpec.describe Weather do
       expect(weather).to_not be_valid
     end
   end
+  describe "Class Methods" do
+
+  end
 end

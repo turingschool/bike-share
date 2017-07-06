@@ -1,4 +1,6 @@
 RSpec.describe "user clicks on stations hyperlink" do
+
+  
   it "is rerouted to another page with four squares visible" do
     visit("/")
     click_link("stations")

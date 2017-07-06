@@ -310,55 +310,111 @@ RSpec.describe Trip do
 end
 
 describe 'validations' do
-  it 'should require a start date' do
-    trip = Trip.new
+  it 'is invalid without a duration' do
+    start_date = BikeShareDate.create(bike_share_date: '2013-08-06 00:00:00')
+    start_station_name = StationName.create(name: 'Moon Base One')
+    end_date = BikeShareDate.create(bike_share_date: '2013-08-07 00:00:00')
+    end_station_name = StationName.create(name: 'Elon Musk City')
+    subscription_type = SubscriptionType.create(name: 'Customer')
+    zip_code = ZipCode.create(zip_code: 12_345)
+    trip = Trip.create(start_date_id: start_date.id, start_station_name_id: start_station_name.id, end_date_id: end_date.id, end_station_name_id: end_station_name.id, bike_id: 123, subscription_type_id: subscription_type.id, zip_code_id: zip_code.id)
+
     expect(trip).to_not be_valid
   end
-  #  it "is invalid without a start date" do
-  #    start_date = BikeShareDate.create(bike_share_date: "2013-08-06 00:00:00")
-  #    start_station_name = StationName.create(name: "Moon Base One")
-  #    end_date = BikeShareDate.create(bike_share_date: "2013-08-07 00:00:00")
-  #    end_station_name = StationName.create(name: "Elon Musk City")
-  #    subscription_type = SubscriptionType.create(name: "Customer")
-  #    zip_code = ZipCode.create(zip_code: 12345)
-  #    trip = Trip.create(duration: 1, start_station_name_id: start_station_name.id, end_date_id: end_date.id, end_station_name_id: end_station_name.id, bike_id: 123, subscription_type_id: subscription_type.id, zip_code_id: zip_code.id)
-  #
-  #    expect(trip).to_not be_valid
+
+  it 'is invalid without a start name' do
+    start_date = BikeShareDate.create(bike_share_date: '2013-08-06 00:00:00')
+    start_station_name = StationName.create(name: 'Moon Base One')
+    end_date = BikeShareDate.create(bike_share_date: '2013-08-07 00:00:00')
+    end_station_name = StationName.create(name: 'Elon Musk City')
+    subscription_type = SubscriptionType.create(name: 'Customer')
+    zip_code = ZipCode.create(zip_code: 12_345)
+    trip = Trip.create(duration: 1, start_station_name_id: start_station_name.id, end_date_id: end_date.id, end_station_name_id: end_station_name.id, bike_id: 123, subscription_type_id: subscription_type.id, zip_code_id: zip_code.id)
+
+    expect(trip).to_not be_valid
+  end
+
+  it 'is invalid without a start date' do
+    start_date = BikeShareDate.create(bike_share_date: '2013-08-06 00:00:00')
+    start_station_name = StationName.create(name: 'Moon Base One')
+    end_date = BikeShareDate.create(bike_share_date: '2013-08-07 00:00:00')
+    end_station_name = StationName.create(name: 'Elon Musk City')
+    subscription_type = SubscriptionType.create(name: 'Customer')
+    zip_code = ZipCode.create(zip_code: 12_345)
+    trip = Trip.create(duration: 1, start_station_name_id: start_station_name.id, end_date_id: end_date.id, end_station_name_id: end_station_name.id, bike_id: 123, subscription_type_id: subscription_type.id, zip_code_id: zip_code.id)
+
+    expect(trip).to_not be_valid
+  end
+
+  it 'is invalid without a end date' do
+    start_date = BikeShareDate.create(bike_share_date: '2013-08-06 00:00:00')
+    start_station_name = StationName.create(name: 'Moon Base One')
+    end_date = BikeShareDate.create(bike_share_date: '2013-08-07 00:00:00')
+    end_station_name = StationName.create(name: 'Elon Musk City')
+    subscription_type = SubscriptionType.create(name: 'Customer')
+    zip_code = ZipCode.create(zip_code: 12_345)
+    trip = Trip.create(duration: 1, start_date_id: start_date.id, start_station_name_id: start_station_name.id, end_station_name_id: end_station_name.id, bike_id: 123, subscription_type_id: subscription_type.id, zip_code_id: zip_code.id)
+
+    expect(trip).to_not be_valid
+  end
+
+  it 'is invalid without a end station name' do
+    start_date = BikeShareDate.create(bike_share_date: '2013-08-06 00:00:00')
+    start_station_name = StationName.create(name: 'Moon Base One')
+    end_date = BikeShareDate.create(bike_share_date: '2013-08-07 00:00:00')
+    end_station_name = StationName.create(name: 'Elon Musk City')
+    subscription_type = SubscriptionType.create(name: 'Customer')
+    zip_code = ZipCode.create(zip_code: 12_345)
+    trip = Trip.create(duration: 1, start_date_id: start_date.id, start_station_name_id: start_station_name.id, end_date_id: end_date.id, bike_id: 123, subscription_type_id: subscription_type.id, zip_code_id: zip_code.id)
+
+    expect(trip).to_not be_valid
+  end
+
+  it 'is invalid without a bike id' do
+    start_date = BikeShareDate.create(bike_share_date: '2013-08-06 00:00:00')
+    start_station_name = StationName.create(name: 'Moon Base One')
+    end_date = BikeShareDate.create(bike_share_date: '2013-08-07 00:00:00')
+    end_station_name = StationName.create(name: 'Elon Musk City')
+    subscription_type = SubscriptionType.create(name: 'Customer')
+    zip_code = ZipCode.create(zip_code: 12_345)
+    trip = Trip.create(duration: 1, start_date_id: start_date.id, start_station_name_id: start_station_name.id, end_date_id: end_date.id, end_station_name_id: end_station_name.id, subscription_type_id: subscription_type.id, zip_code_id: zip_code.id)
+
+    expect(trip).to_not be_valid
+  end
+
+  it 'is invalid without a subscription type' do
+    start_date = BikeShareDate.create(bike_share_date: '2013-08-06 00:00:00')
+    start_station_name = StationName.create(name: 'Moon Base One')
+    end_date = BikeShareDate.create(bike_share_date: '2013-08-07 00:00:00')
+    end_station_name = StationName.create(name: 'Elon Musk City')
+    subscription_type = SubscriptionType.create(name: 'Customer')
+    zip_code = ZipCode.create(zip_code: 12_345)
+    trip = Trip.create(duration: 1, start_date_id: start_date.id, start_station_name_id: start_station_name.id, end_date_id: end_date.id, end_station_name_id: end_station_name.id, bike_id: 123, zip_code_id: zip_code.id)
+
+    expect(trip).to_not be_valid
+  end
+
+  it 'is invalid without a zip code' do
+    start_date = BikeShareDate.create(bike_share_date: '2013-08-06 00:00:00')
+    start_station_name = StationName.create(name: 'Moon Base One')
+    end_date = BikeShareDate.create(bike_share_date: '2013-08-07 00:00:00')
+    end_station_name = StationName.create(name: 'Elon Musk City')
+    subscription_type = SubscriptionType.create(name: 'Customer')
+    zip_code = ZipCode.create(zip_code: 12_345)
+    trip = Trip.create(duration: 1, start_date_id: start_date.id, start_station_name_id: start_station_name.id, end_date_id: end_date.id, end_station_name_id: end_station_name.id, bike_id: 123, subscription_type_id: subscription_type.id)
+
+    expect(trip).to_not be_valid
+  end
+
+  it 'is invalid without anything' do
+    start_date = BikeShareDate.create(bike_share_date: '2013-08-06 00:00:00')
+    start_station_name = StationName.create(name: 'Moon Base One')
+    end_date = BikeShareDate.create(bike_share_date: '2013-08-07 00:00:00')
+    end_station_name = StationName.create(name: 'Elon Musk City')
+    subscription_type = SubscriptionType.create(name: 'Customer')
+    zip_code = ZipCode.create(zip_code: 12_345)
+    trip = Trip.create(duration: 1, start_date_id: start_date.id, start_station_name_id: start_station_name.id, end_date_id: end_date.id, end_station_name_id: end_station_name.id, bike_id: 123, subscription_type_id: subscription_type.id, zip_code_id: zip_code.id)
+
+    expect(trip).to_not be_valid
+  end
 end
-#
-# describe "validations" do
-#   it "is invalid without a name" do
-#     install_date = BikeShareDate.create(bike_share_date: 2120-07-05)
-#     city = City.create(name: "Denver")
-#     station = Station.create(dock_count: 99, city_id: city.id,
-#               installation_date_id: install_date.id)
-#
-#     expect(station).to_not be_valid
-#   end
-#
-#   it "is invalid without an install date" do
-#     station_name = StationName.create(name: "Test Station")
-#     city = City.create(name: "Denver")
-#     station = Station.create(station_name_id: station_name.id, dock_count: 99, city_id: city.id)
-#
-#     expect(station).to_not be_valid
-#   end
-#
-#   it "it is invalid without a city" do
-#     station_name = StationName.create(name: "Test Station")
-#     install_date = BikeShareDate.create(bike_share_date: 2120-07-05)
-#     station = Station.create(station_name_id: station_name.id, dock_count: 99,
-#               installation_date_id: install_date.id)
-#
-#     expect(station).to_not be_valid
-#   end
-#
-#   it "is invalid without a dock count" do
-#     station_name = StationName.create(name: "Test Station")
-#     install_date = BikeShareDate.create(bike_share_date: 2120-07-05)
-#     city = City.create(name: "Denver")
-#     station = Station.create(station_name_id: station_name.id, city_id: city.id,
-#               installation_date_id: install_date.id)
-#
-#     expect(station).to_not be_valid
-#   end

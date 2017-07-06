@@ -3,7 +3,15 @@ class Weather < ActiveRecord::Base
   has_many :trips
 
   def self.rides_by_max_temp
-    Weather.average_rides("max_temperature", 10)
+    Weather.calculate_rides("max_temperature", 10)
+  end
+
+  def self.calculate_rides(condition, increment)
+    result = {}
+    result["average"] = Weather.average_rides(condition, increment)
+    result["highest"] = Weather.highest_rides(condition, increment)
+    result["lowest"] = Weather.lowest_rides(condition, increment)
+    return result
   end
 
   def self.average_rides(condition, increment)

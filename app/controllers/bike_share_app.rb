@@ -132,7 +132,12 @@ class BikeShareApp < Sinatra::Base
 
   get '/weather_conditions' do
     @weather_conditions = WeatherCondition.paginate(:page => params[:page])
-    # binding.pry
     erb :"weather_conditions/index"
+  end
+
+  get '/weather_conditions/:id' do |id|
+    @weather_condition = WeatherCondition.find(id)
+
+    erb :"weather_conditions/show"
   end
 end

@@ -83,7 +83,7 @@ class Station < ActiveRecord::Base
       .group(:start_date_id)
       .order("count_id DESC")
       .count(:id).keys.first
-    BikeShareDate.find(4).bike_share_date
+    BikeShareDate.find(id).bike_share_date
   end
 
   def most_frequent_user_zip(id)

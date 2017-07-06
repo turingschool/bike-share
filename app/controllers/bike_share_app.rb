@@ -63,16 +63,6 @@ class BikeShareApp < Sinatra::Base
     redirect '/stations'
   end
 
-  get '/trips' do
-    @trips = Trip.all.order(:id).paginate(:page => params[:page], :per_page => 30)
-    erb :"trips/index"
-  end
-
-  get '/trips/new' do
-    @station_names = StationName.all.order(:name)
-    erb :"trips/new"
-  end
-
   get '/trip-dashboard' do
     @average_duration_of_a_ride = Trip.average_duration_of_a_ride
     @longest_ride = Trip.longest_ride
@@ -91,6 +81,16 @@ class BikeShareApp < Sinatra::Base
     @day_of_highest_trips_number = Trip.day_of_highest_trips_number
     @day_of_lowest_trips_number = Trip.day_of_lowest_trips_number
     erb :"trips/trips-dashboard"
+  end
+
+  get '/trips' do
+    @trips = Trip.all.order(:id).paginate(:page => params[:page], :per_page => 30)
+    erb :"trips/index"
+  end
+
+  get '/trips/new' do
+    @station_names = StationName.all.order(:name)
+    erb :"trips/new"
   end
 
   get '/trips/:id' do

@@ -5,6 +5,7 @@ RSpec.describe "user can delete existing station" do
     city = City.create(name: "Denver")
     station = Station.create(station_name_id: station_name.id, dock_count: 3, city_id: city.id,
               installation_date_id: install_date.id)
+
     visit '/stations'
     click_button("Delete")
 
@@ -18,6 +19,7 @@ RSpec.describe "user can delete existing station" do
     city = City.create(name: "Denver")
     station = Station.create(station_name_id: station_name.id, dock_count: 3, city_id: city.id,
               installation_date_id: install_date.id)
+
     visit '/stations/1'
     click_button("Delete")
 

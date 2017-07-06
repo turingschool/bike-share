@@ -1,4 +1,5 @@
 class BikeShareApp < Sinatra::Base
+  include WillPaginate::Sinatra::Helpers
 
   get '/' do
     erb :dashboard
@@ -14,9 +15,10 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/station-dashboard' do
+    #refactor
     @count = Station.total_station_count
     @average = Station.average_bikes_per_station
-    @most_bikes = Station.most_bikes_avaiable
+    @most_bikes = Station.most_bikes_available
     @stations_with_most_bikes = Station.stations_with_most_bikes
     @fewest_bikes_avaiable = Station.fewest_bikes_avaiable
     @stations_with_fewest_bikes = Station.stations_with_fewest_bikes
@@ -33,7 +35,7 @@ class BikeShareApp < Sinatra::Base
   post '/stations/new' do
     sf = StationForm.new(params[:station])
       if sf.save
-        redirect "/stations"
+        redirect '/stations'
       else
         @errors = sf.errors
         erb :"/stations/new"
@@ -46,10 +48,9 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
-    require 'pry';binding.pry
-    sf = StationForm.new(params[:station])
-    if sf.save
-      redirect "/stations/:id"
+    usf = UpdateStationForm.new(params)
+    if usf.save
+      redirect "/stations/#{params[:id]}"
     else
       @params[:page] = :"/stations/:id/edit"
     end
@@ -59,38 +60,28 @@ class BikeShareApp < Sinatra::Base
     erb :"error"
   end
 
-  # put '/stations/:id' do |id|
-  #   if Station.update(id.to_i, params[:station]) == false
-  #     @params[:page] = :"/stations/new"
-  #     erb :"/error"
-  #   else
-  #     Station.update(id.to_i, params[:station])
-  #     redirect "/stations/#{id}"
-  #   end
-  # end
-
   delete '/stations/:id' do |id|
     Station.destroy(id.to_i)
     redirect '/stations'
   end
 
   get '/trips' do
-    @trips = Trip.all
+    @trips = Trip.all.order(:id).paginate(:page => params[:page], :per_page => 30)
     erb :"trips/index"
   end
 
   get '/trips/new' do
+    @station_names = StationName.all.order(:name)
     erb :"trips/new"
   end
 
   get '/trip-dashboard' do
-    #@count = trip.total_trip_count
     erb :"trips/trips-dashboard"
   end
 
   get '/trips/:id' do
-    @trip = Trip.find(params[:id])
-    erb :"trips/show"
+      @trip = Trip.find(params[:id])
+      erb :"trips/show"
   end
 
   post '/trips/new' do
@@ -98,37 +89,55 @@ class BikeShareApp < Sinatra::Base
       if tf.save
         redirect "/trips"
       else
-        @params[:page] = :"/trips/new"
-        erb :"/error"
+        @errors = tf.errors
+        erb :"/stations/new"
       end
-  # @trip = Trip.new(params[:trip])
-  #   if @trip.save
-  #     redirect "/trips"
-  #   else
-  #     @params[:page] = :"/trips/new"
-  #     erb :"/error"
-  #   end
-  end
+    end
 
   get '/trips/:id/edit' do
+    @station_names = StationName.all.order(:name)
     @trip = Trip.find(params[:id])
     erb :"trips/edit"
   end
 
-  put '/trips/:id' do |id|
-    if Trip.update(id.to_i, params[:trip]) == false
-      @params[:page] = :"/trips/new"
-      erb :"/error"
-    else
-      Trip.update(id.to_i, params[:trip])
-      redirect "/trips/#{id}"
-    end
+  put '/trips/:id' do
+    utf = UpdateTripForm.new(params)
+    # if
+      utf.save
+      redirect "/trips/#{params[:id]}"
+    # else
+    #   @params[:page] = :"/trips/:id/edit"
+    # end
   end
 
   delete '/trips/:id' do |id|
     Trip.destroy(id.to_i)
     redirect '/trips'
   end
+
+  get '/conditions' do
+    @conditions = Weather.paginate(page: params[:page], per_page: 30)
+    erb :"conditions/index"
+  end
+
+  get '/conditions/new' do
+    erb :"conditions/new"
+  end
+
+  get '/conditions/:id' do
+    @condition = Weather.find(params[:id])
+    erb :"conditions/show"
+  end
+
+  post '/conditions/new' do
+    cf = ConditionForm.new(params[:weather])
+      if cf.save
+        redirect '/conditions'
+      else
+        @errors = cf.errors
+        erb :"/conditions/new"
+      end
+    end
 
   def execute_statement(sql)
      results = ActiveRecord::Base.connection.execute(sql)

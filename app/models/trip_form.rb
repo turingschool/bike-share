@@ -1,5 +1,6 @@
 class TripForm
   include ActiveModel::Model
+
   attr_accessor(
     :duration,
     :start_date,
@@ -48,8 +49,10 @@ class TripForm
                               bike_id: @bike_id,
                               zip_code_id: save_zip_code.id
                               )
-          return  @trip.save
-         end
-         false
-       end
-     end
+      @trip.save
+      return true
+    else
+      false
+   end
+ end
+end

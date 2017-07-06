@@ -49,8 +49,8 @@ class UpdateTripForm
                               bike_id: @bike_id,
                               zip_code_id: save_zip_code.id
                               )
-    # return  @trip.save
+    else
+      false
    end
-   false
   end
 end

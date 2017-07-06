@@ -119,9 +119,14 @@ class BikeShareApp < Sinatra::Base
 
   put '/trips/:id' do
     utf = UpdateTripForm.new(params)
-    # if
-      utf.save
+    if utf.save
       redirect "/trips/#{params[:id]}"
+    else
+      @errors = utf.errors
+      @station_names = StationName.all.order(:name)
+      @trip = Trip.find(params[:id])
+      erb :"/trips/edit"
+    end
   end
 
   delete '/trips/:id' do |id|

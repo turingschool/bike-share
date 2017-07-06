@@ -8,23 +8,47 @@
       <th>City</th>
       <th>Installation Date</th>
       <th>Edit</th>
-      <th>Delete<th></tr>
-        <tr>
-          <td><%= @station.dock_count %></td>
-          <td><%= @station.city %></td>
-          <td><%= @station.installation_date %></td>
-          <td>
-            <form action="/stations/<%= @station.id %>/edit" method="get">
-              <button type="submit" class="btn btn-primary btn active" role="button" aria-pressed="true" value="edit">Edit</a>
-            </form>
-          </td>
+      <th>Delete<th>
+    </tr>
+    <tr>
+      <td><%= @station.dock_count %></td>
+      <td><%= @station.city %></td>
+      <td><%= @station.installation_date %></td>
+      <td>
+        <form action="/stations/<%= @station.id %>/edit" method="get">
+          <button type="submit" class="btn btn-primary btn active" role="button" aria-pressed="true" value="edit">Edit</a>
+        </form>
+      </td>
 
-          <td>
-            <form action="/stations/<%= @station.id %>" method="POST">
-              <input type="hidden" name="_method" value="DELETE">
-              <button type="submit" class="btn btn-primary btn active" role="button" aria-pressed="true" value="delete">Delete</a>
-            </form>
-          </td>
-        </tr>
-      </table>
-    </div>
+      <td>
+        <form action="/stations/<%= @station.id %>" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <button type="submit" class="btn btn-primary btn active" role="button" aria-pressed="true" value="delete">Delete</a>
+        </form>
+      </td>
+    </tr>
+  </table>
+  <table class="table text-left">
+    <tr>
+      <th># Origination Rides</th>
+      <th># Destination Ended</th>
+      <th>Most Frequent Destination</th>
+      <th>Most Frequent Origination</th>
+      <th>Date of Most Rides<th>
+      <th>Most Frequent User Zip Code<th>
+      <th>Most Frequent Bike ID<th>
+    </tr>
+  </br>
+  </br>
+  <h4>metrics</h4>
+    <tr>
+      <td># Origination Rides</td>
+      <td># Destination Ended</td>
+      <td>Most Frequent Destination</td>
+      <td>Most Frequent Origination</td>
+      <td>Date of Most Rides<td>
+      <td>Most Frequent User Zip Code<td>
+      <td>Most Frequent Bike ID<td>
+    </tr>
+  </table>
+</div>

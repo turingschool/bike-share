@@ -8,7 +8,7 @@ class Trip < ActiveRecord::Base
   validates_presence_of :duration, :start_date, :end_date, :start_station_id, :end_station_id, :bike_id, :subscription_id
   belongs_to :subscription
   belongs_to :weather
-  
+
   def self.per_page
     30
   end
@@ -40,11 +40,11 @@ class Trip < ActiveRecord::Base
   end
 
   def self.most_ridden_bike
-    Trip.group(:bike_id).order('count_id DESC').limit(1).count(:id).first
+    Trip.group(:bike_id).order('count_id DESC').limit(1).count(:id).first.first
   end
 
   def self.least_ridden_bikes
-    Trip.group(:bike_id).order('count_id').limit(1).count(:id).first
+    Trip.group(:bike_id).order('count_id').limit(1).count(:id).first.first
   end
 
   def self.subscription_info

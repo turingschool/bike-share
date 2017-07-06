@@ -14,7 +14,7 @@
       <h6 class="card-subtitle mb-2 text-muted card-text">PUBLIC BICYCLE RENTAL STATION</h6>
       <p class="card-text"><strong>Dock count: </strong><%= station.dock_count  %></p>
       <p class="card-text"><strong>Installation Date:</strong> <%= station.installation_date  %></p>
-      <p class="card-text"><strong>City:</strong> <%= station.city  %></p>
+      <p class="card-text"><strong>City:</strong> <%= station.city.city if station.city  %></p>
       <a href="/stations/<%= station.id  %>" class="btn btn-xs btn-default element-center-hor" role="button">View This Station</a><br>
     </div>
   </div>

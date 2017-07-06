@@ -5,7 +5,7 @@
     </div>
     <div class="navbar-header">
       <a class="navbar-brand nav navbar-nav navbar-left" href="/">
-        <img class="brand-logo" alt="Brand" src="bs.png">
+        <img class="brand-logo" alt="Brand" src="/bs.png">
       </a>
       <a href="/stations"><h1>Back To Stations Index</h1></a>
     </div>
@@ -26,6 +26,17 @@
       <h6><em><%= @station.city %></em></h6>
       <p><strong>Installation Date: </strong></p>
       <h6><em><%= @station.installation_date.date %></em></h6>
+      <p><strong>Rides Started at this Station: </strong></p>
+      <h6><em><%= @rides_started %></em></h6>
+      <p><strong>Ride Ended at this Station: </strong></p>
+      <h6><em><%= @rides_ended %></em></h6>
+      <p><strong>Most Frequent Destination from this Station: </strong></p>
+      <h6><em><%= @most_end_station %></em></h6>
+      <p><strong>Most Frequent Origination Point to this Station: </strong></p>
+      <h6><em><%= @most_start_station %></em></h6>
+      <p><strong>Date with the Highest Number of Trips Started at this Station: </strong></p>
+      <h6><em><%= @most_trips_started %></em></h6>
+
       <br/><br/>
     </div>
   </div>

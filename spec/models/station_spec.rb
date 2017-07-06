@@ -208,7 +208,7 @@ RSpec.describe Station do
     end
 
     describe ".origination_station" do
-      it" returns the station most the origination rides" do
+      it "returns the station most the origination rides" do
         trip_1 = Trip.create(duration: 75, start_date_id: 2, start_station_id: 2, end_date_id: 2, end_station_id: 1, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
         trip_2 = Trip.create(duration: 75, start_date_id: 2, start_station_id: 2, end_date_id: 2, end_station_id: 1, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
         trip_3 = Trip.create(duration: 75, start_date_id: 3, start_station_id: 4, end_date_id: 3, end_station_id: 1, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
@@ -219,6 +219,25 @@ RSpec.describe Station do
         result = station_1.origination_station
 
         expect(result).to eq("Station 2")
+      end
+    end
+
+    describe ".starting_bike_id" do
+      it "returns the most frequent bike_id for trips started at this station" do
+        trip_1 = Trip.create(duration: 75, start_date_id: 2, start_station_id: 1, end_date_id: 2, end_station_id: 1, bike_id: 1, subscription_type: "customer", zipcode_id: 7)
+        trip_2 = Trip.create(duration: 75, start_date_id: 2, start_station_id: 1, end_date_id: 2, end_station_id: 1, bike_id: 1, subscription_type: "customer", zipcode_id: 7)
+        trip_3 = Trip.create(duration: 75, start_date_id: 3, start_station_id: 1, end_date_id: 3, end_station_id: 1, bike_id: 2, subscription_type: "customer", zipcode_id: 7)
+        trip_4 = Trip.create(duration: 75, start_date_id: 1, start_station_id: 1, end_date_id: 3, end_station_id: 1, bike_id: 3, subscription_type: "customer", zipcode_id: 7)
+        station_1 = Station.create(name: "Station 1", city: "Boston", dock_count: 2, installation_date_id: 1)
+        station_2 = Station.create(name: "Station 2", city: "Baltimore", dock_count: 4, installation_date_id: 1)
+
+        result = station_1.starting_bike_id
+
+        expect(result).to eq(1)
+
+        result_2 = station_2.starting_bike_id
+
+        expect(result_2).to eq("n/a")
       end
     end
   end

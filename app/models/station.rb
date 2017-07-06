@@ -75,4 +75,14 @@ class Station < ActiveRecord::Base
       return Station.find(most_origin.first).name
     end
   end
+
+  def starting_bike_id
+    bike_ids = start_trips.group(:bike_id).count
+    bike = bike_ids.max_by { |k,v| v }
+    if bike.nil?
+      return "n/a"
+    else
+      return bike.first
+    end
+  end
 end

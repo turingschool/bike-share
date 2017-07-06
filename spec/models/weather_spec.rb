@@ -64,7 +64,6 @@ RSpec.describe Weather do
     it ".highest_rides_weather" do
       expect(Weather.highest_rides_weather["max_temperature"]).to eq(55.0)
     end
-    
     it ".lowest_rides_weather" do
       expect(Weather.lowest_rides_weather["max_temperature"]).to eq(77.0)
     end

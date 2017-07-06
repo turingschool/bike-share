@@ -1,2 +1,57 @@
 <h1>Weather Dashboard</h1>
-<p> rides: <%= Weather.rides_by_max_temp %> </p>
+
+<h3>Daily Rides Statistics By Maximum Temperature</h3>
+<h4>Average Rides per Day When it Was... </h4>
+<% Weather.rides_by_max_temp["average"].each do |k,v| %>
+  <p> <%="#{k[0]} to #{k[1]} degrees: #{v}"%> </p>
+<% end %>
+<h4>Highest Daily Ride Count When it Was... </h4>
+<% Weather.rides_by_max_temp["highest"].each do |k,v| %>
+  <p> <%="#{k[0]} to #{k[1]} degrees: #{v}"%> </p>
+<% end %>
+<h4>Lowest Daily Ride Count When it Was... </h4>
+<% Weather.rides_by_max_temp["lowest"].each do |k,v| %>
+  <p> <%="#{k[0]} to #{k[1]} degrees: #{v}"%> </p>
+<% end %>
+<br>
+<h3>Daily Rides Statistics By Precipitation</h3>
+<h4>Average Rides per Day When it Rained... </h4>
+<% Weather.rides_by_precipitation["average"].each do |k,v| %>
+  <p> <%="#{k[0]} to #{k[1]} inches: #{v}"%> </p>
+<% end %>
+<h4>Highest Daily Ride Count When it Rained... </h4>
+<% Weather.rides_by_precipitation["highest"].each do |k,v| %>
+  <p> <%="#{k[0]} to #{k[1]} inches: #{v}"%> </p>
+<% end %>
+<h4>Lowest Daily Ride Count When it Rained... </h4>
+<% Weather.rides_by_precipitation["lowest"].each do |k,v| %>
+  <p> <%="#{k[0]} to #{k[1]} inches: #{v}"%> </p>
+<% end %>
+<br>
+<h3>Daily Rides Statistics By Mean Wind Speed </h3>
+<h4>Average Rides per Day When the Wind Speed was... </h4>
+<% Weather.rides_by_mean_wind_speed["average"].each do |k,v| %>
+  <p> <%="#{k[0]} to #{k[1]} mph: #{v}"%> </p>
+<% end %>
+<h4>Highest Daily Ride Count When the Wind Speed was... </h4>
+<% Weather.rides_by_mean_wind_speed["highest"].each do |k,v| %>
+  <p> <%="#{k[0]} to #{k[1]} mph: #{v}"%> </p>
+<% end %>
+<h4>Lowest Daily Ride Count When the Wind Speed was... </h4>
+<% Weather.rides_by_mean_wind_speed["lowest"].each do |k,v| %>
+  <p> <%="#{k[0]} to #{k[1]} mph: #{v}"%> </p>
+<% end %>
+<br>
+<h3>Daily Rides Statistics By Mean Visibility </h3>
+<h4>Average Rides per Day When the Visibility was... </h4>
+<% Weather.rides_by_mean_visibility["average"].each do |k,v| %>
+  <p> <%="#{k[0]} to #{k[1]} miles: #{v}"%> </p>
+<% end %>
+<h4>Highest Daily Ride Count When the Wind Speed was... </h4>
+<% Weather.rides_by_mean_visibility["highest"].each do |k,v| %>
+  <p> <%="#{k[0]} to #{k[1]} miles: #{v}"%> </p>
+<% end %>
+<h4>Lowest Daily Ride Count When the Wind Speed was... </h4>
+<% Weather.rides_by_mean_visibility["lowest"].each do |k,v| %>
+  <p> <%="#{k[0]} to #{k[1]} miles: #{v}"%> </p>
+<% end %>

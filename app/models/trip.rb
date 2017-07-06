@@ -45,4 +45,14 @@ class Trip < ActiveRecord::Base
 
     {bike: least_bike[0], count: least_bike[1]}
   end
+
+  def self.subscription_type
+    counts = Trip.group(:subscription_type).count
+    total_count = counts.values.reduce(:+)
+    counts.each do |subscription_type, count|
+      counts[subscription_type] = { "Count" => count, "Percentage" => (count.to_f / total_count).round(2)}
+    end
+# Access in controller route for trip dashboard by data[user]
+  end
+
 end

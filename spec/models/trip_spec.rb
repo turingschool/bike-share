@@ -50,6 +50,28 @@ RSpec.describe Trip do
   end
 
   describe "Class Methods" do
+    describe '.subscription_type' do
+      it "returns count and percentage for each subscription type" do
+        date = BikeShareDate.create(date: Date.strptime('1/1/2012', '%m/%d/%Y'))
+        date_2 = BikeShareDate.create(date: Date.strptime('2/5/2017', '%m/%d/%Y'))
+
+
+        Trip.create(duration: 111, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 1)
+        Trip.create(duration: 222, start_date_id: 1, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "User", zipcode_id: 2)
+        Trip.create(duration: 333, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 444, start_date_id: 1, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "User", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+
+        counts = Trip.subscription_type
+
+        expect(counts["Customer"]["Count"]).to eq(3)
+        expect(counts["User"]["Count"]).to eq(2)
+
+        expect(counts["Customer"]["Percentage"]).to eq(0.60)
+        expect(counts["User"]["Percentage"]).to eq(0.40)
+
+      end
+    end
     describe '.date_with_most_trips' do
       it "returns single date with highest number of trips and count of those trips" do
         date = BikeShareDate.create(date: Date.strptime('1/1/2012', '%m/%d/%Y'))

@@ -19,6 +19,7 @@ RSpec.describe "user visits station show page" do
     expect(page).to have_content(4)
     expect(page).to have_content(3)
     expect(page).to have_content("2012-01-01")
-    expect(page).to have_content("A")
+    expect(page).to have_content("Destination Station: A")
+    expect(page).to have_content("Origin Station: A")
   end
 end

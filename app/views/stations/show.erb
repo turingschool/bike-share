@@ -36,7 +36,8 @@
       <p>Number of Rides Started at this Station: <%= @rides_started %></p>
       <p>Number of Rides Ended at this Station: <%= @rides_ended %></p>
       <p>Date with Highest Number of Trips: <%= @most_trips_started %></p>
-      <p>Most Frequent Destination: <%= @most_end_station %>
+      <p>Most Frequent Destination Station: <%= @most_end_station %>
+      <p>Most Frequent Origin Station: <%= @most_start_station %>
     </div>
     <br/><br/><br/></br>
     <button type="button" class="btn btn-warning btn-grow"><a href="/stations/<%= @station.id %>/edit">Edit Station</a></button>

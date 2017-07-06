@@ -65,4 +65,14 @@ class Station < ActiveRecord::Base
       return Station.find(most_destination.first).name
     end
   end
+
+  def origination_station
+    all_origins = end_trips.group(:start_station_id).count
+    most_origin = all_origins.max_by { |k,v| v }
+    if most_origin.nil?
+      return "0"
+    else
+      return Station.find(most_origin.first).name
+    end
+  end
 end

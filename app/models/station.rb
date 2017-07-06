@@ -70,6 +70,38 @@ class Station < ActiveRecord::Base
   end
 
   def most_frequent_destination(id)
-    Trip.group(start_station_id: id).order("count_id asc").count(end_station_id: id).keys.first
+    Trip.where(start_station_id: id)
+      .group(:end_station_id)
+      .order("count_id DESC")
+      .count(:id).keys.first
+  end
+
+  def most_frequent_origination(id)
+    Trip.where(end_station_id: id)
+      .group(:start_station_id)
+      .order("count_id DESC")
+      .count(:id).keys.first
+  end
+
+  def date_of_most_rides(id)
+    date_id = Trip.where(start_station_id: id)
+      .group(:start_date_id)
+      .order("count_id DESC")
+      .count(:id).keys.first
+    BikeShareDate.find(4).bike_share_date
+  end
+
+  def most_frequent_user_zip(id)
+    Trip.where(start_station_id: id)
+      .group(:zip_code_id)
+      .order("count_id DESC")
+      .count(:id).keys.first
+  end
+
+  def most_frequent_bike(id)
+    Trip.where(start_station_id: id)
+      .group(:bike_id)
+      .order("count_id DESC")
+      .count(:id).keys.first
   end
 end

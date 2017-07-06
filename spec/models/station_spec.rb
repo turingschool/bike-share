@@ -189,7 +189,7 @@ RSpec.describe Station do
     it "is invalid without a name" do
       install_date = BikeShareDate.new(bike_share_date: 2120-07-05)
       city = City.new(name: "Denver")
-      station = Station.new(dock_count: 99, city_id: city.id,
+      station = StationForm.new(dock_count: 99, city_id: city.id,
                 installation_date_id: install_date.id)
 
       expect(station).to_not be_valid
@@ -198,7 +198,7 @@ RSpec.describe Station do
     it "is invalid without an install date" do
       station_name = StationName.new(name: "Test Station")
       city = City.new(name: "Denver")
-      station = Station.new(station_name_id: station_name.id, dock_count: 99, city_id: city.id)
+      station = StationForm.new(station_name_id: station_name.id, dock_count: 99, city_id: city.id)
 
       expect(station).to_not be_valid
     end
@@ -206,7 +206,7 @@ RSpec.describe Station do
     it "it is invalid without a city" do
       station_name = StationName.new(name: "Test Station")
       install_date = BikeShareDate.new(bike_share_date: 2120-07-05)
-      station = Station.new(station_name_id: station_name.id, dock_count: 99,
+      station = StationForm.new(station_name_id: station_name.id, dock_count: 99,
                 installation_date_id: install_date.id)
 
       expect(station).to_not be_valid
@@ -216,7 +216,7 @@ RSpec.describe Station do
       station_name = StationName.new(name: "Test Station")
       install_date = BikeShareDate.new(bike_share_date: 2120-07-05)
       city = City.new(name: "Denver")
-      station = Station.new(station_name_id: station_name.id, city_id: city.id,
+      station = StationForm.new(station_name_id: station_name.id, city_id: city.id,
                 installation_date_id: install_date.id)
 
       expect(station).to_not be_valid

@@ -18,6 +18,14 @@ class Weather < ActiveRecord::Base
     Weather.calculate_rides("mean_visibility", 4)
   end
 
+  def self.highest_rides_weather
+    Weather.find_by(date: Date.strptime(Trip.date_with_highest_trip_count[0].join("/"), "%m/%d/%Y"))
+  end
+
+  def self.lowest_rides_weather
+    Weather.find_by(date: Date.strptime(Trip.date_with_lowest_trip_count[0].join("/"), "%m/%d/%Y"))
+  end
+
   def self.calculate_rides(condition, increment)
     result = {}
     result["average"] = Weather.average_rides(condition, increment)

@@ -42,13 +42,9 @@
   </br>
   <h4>metrics</h4>
     <tr>
-      <td># Origination Rides</td>
-      <td># Destination Ended</td>
-      <td>Most Frequent Destination</td>
-      <td>Most Frequent Origination</td>
-      <td>Date of Most Rides<td>
-      <td>Most Frequent User Zip Code<td>
-      <td>Most Frequent Bike ID<td>
+      <td><%=@station.origination_rides(params[:id])%></td>
+      <td><%=@station.destination_rides(params[:id])%></td>
+  
     </tr>
   </table>
 </div>

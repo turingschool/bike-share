@@ -15,35 +15,35 @@ ActiveRecord::Schema.define(version: 20170705002149) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cities", force: :cascade do |t|
+  create_table "cities", id: :serial, force: :cascade do |t|
     t.text "city"
   end
 
-  create_table "stations", force: :cascade do |t|
-    t.text    "name"
+  create_table "stations", id: :serial, force: :cascade do |t|
+    t.text "name"
     t.integer "dock_count"
     t.integer "city_id"
-    t.date    "installation_date"
+    t.date "installation_date"
   end
 
-  create_table "subscriptions", force: :cascade do |t|
+  create_table "subscriptions", id: :serial, force: :cascade do |t|
     t.text "subscription_type"
   end
 
-  create_table "trips", id: :bigserial, force: :cascade do |t|
-    t.bigint   "duration"
-    t.integer  "start_station_id"
-    t.integer  "end_station_id"
-    t.bigint   "bike_id"
-    t.bigint   "zip_code"
-    t.integer  "subscription_id"
+  create_table "trips", force: :cascade do |t|
+    t.bigint "duration"
+    t.integer "start_station_id"
+    t.integer "end_station_id"
+    t.bigint "bike_id"
+    t.bigint "zip_code"
+    t.integer "subscription_id"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.integer  "weather_id"
+    t.integer "weather_id"
   end
 
-  create_table "weathers", force: :cascade do |t|
-    t.date  "date"
+  create_table "weathers", id: :serial, force: :cascade do |t|
+    t.date "date"
     t.float "max_temperature"
     t.float "mean_temperature"
     t.float "min_temperature"

@@ -19,11 +19,13 @@ class Weather < ActiveRecord::Base
   end
 
   def self.highest_rides_weather
-    Weather.find_by(date: Date.strptime(Trip.date_with_highest_trip_count[0].join("/"), "%m/%d/%Y"))
+    weather = Weather.find_by(date: Date.strptime(Trip.date_with_highest_trip_count[0].join("/"), "%m/%d/%Y"))
+    weather.attributes.delete_if {|k,v| k == "id" || k == "date"}
   end
 
   def self.lowest_rides_weather
-    Weather.find_by(date: Date.strptime(Trip.date_with_lowest_trip_count[0].join("/"), "%m/%d/%Y"))
+    weather = Weather.find_by(date: Date.strptime(Trip.date_with_lowest_trip_count[0].join("/"), "%m/%d/%Y"))
+    weather.attributes.delete_if {|k,v| k == "id" || k == "date"}
   end
 
   def self.calculate_rides(condition, increment)

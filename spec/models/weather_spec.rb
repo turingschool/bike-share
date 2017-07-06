@@ -62,10 +62,11 @@ RSpec.describe Weather do
       expect(Weather.rides_by_mean_visibility).to eq(expected)
     end
     it ".highest_rides_weather" do
-      expect(Weather.highest_rides_weather).to eq(Weather.first)
+      expect(Weather.highest_rides_weather["max_temperature"]).to eq(55.0)
     end
+    
     it ".lowest_rides_weather" do
-      expect(Weather.lowest_rides_weather).to eq(Weather.last)
+      expect(Weather.lowest_rides_weather["max_temperature"]).to eq(77.0)
     end
   end
 end

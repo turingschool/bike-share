@@ -87,4 +87,22 @@ class Trip < ActiveRecord::Base
     average(:duration).round(2)
   end
 
+  def self.longest_ride
+    Trip.maximum(:duration)
+  end
+
+  def self.shortest_ride
+    Trip.minimum(:duration)
+  end
+
+  def self.most_frequent_zipcode
+    zipcode_id = Trip.group(:zipcode_id).count.max_by{|k,v| v}.first
+    Zipcode.find(zipcode_id).zipcode
+  end
+
+  def self.most_frequent_start_station
+    station_id = Trip.group(:start_station_id).count.max_by{|k,v| v}.first
+    Station.find(station_id).name
+  end
+
 end

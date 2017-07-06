@@ -54,6 +54,10 @@ class BikeShareApp < Sinatra::Base
     erb :"trips/index"
   end
 
+  get '/trips-dashboard' do
+    erb :"trips/trip-dashboard"
+  end
+
   get '/trips/new' do
     erb :"trips/new"
   end
@@ -84,7 +88,6 @@ class BikeShareApp < Sinatra::Base
     redirect "/trips"
   end
 
-
   get '/' do
     erb :index
   end
@@ -94,7 +97,9 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/conditions' do
-    @weathers = Weather.all
+    Weather.connection
+    @wpages = Weather.paginate(page: params[:page])
+    @weathers = Weather.order('date DESC').page(params[:page])
     erb :"weathers/index"
   end
 

@@ -40,11 +40,11 @@ class Trip < ActiveRecord::Base
   end
 
   def self.most_ridden_bike
-    Trip.group(:bike_id).order('count_id DESC').limit(1).count(:id).first
+    Trip.group(:bike_id).order('count_id DESC').limit(1).count(:id).first.first
   end
 
   def self.least_ridden_bikes
-    Trip.group(:bike_id).order('count_id').limit(1).count(:id).first
+    Trip.group(:bike_id).order('count_id').limit(1).count(:id).first.first
   end
 
   def self.subscription_info

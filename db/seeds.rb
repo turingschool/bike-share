@@ -5,7 +5,6 @@ require './app/models/zipcode.rb'
 require './app/models/weather_condition.rb'
 require 'csv'
 require 'pry'
-
 # This method is written with weather conditions in mind, so we don't have to
 # delete keys on every iteration when seeding
 def delete_columns(path, column_headers)

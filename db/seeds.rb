@@ -2,6 +2,7 @@ require './app/models/station.rb'
 require './app/models/bikesharedate.rb'
 require './app/models/trip.rb'
 require './app/models/zipcode.rb'
+require './app/models/weather_condition.rb'
 require 'csv'
 require 'pry'
 
@@ -30,7 +31,6 @@ stations.each do |row|
   row[:installation_date_id] = BikeShareDate.seed_by_date(row.delete(:installation_date))
   Station.create!(row)
 end
-
 system 'Say "Finished Seeding Stations"'
 
 start_time = Time.now
@@ -41,7 +41,7 @@ trips.each do |row|
   row[:start_station_id] = Station.id_by_name(row.delete(:start_station_name))
   row[:end_date_id] = BikeShareDate.seed_by_date(row.delete(:end_date))
   row[:end_station_id] = Station.id_by_name(row.delete(:end_station_name))
-  row[:zipcode_id] = Zipcode.create_zipcode(row.delete(:zip_code)).id
+  row[:zipcode_id] = Zipcode.create_zipcode(row.delete(:zip_code))
   Trip.create!(row)
 end
 
@@ -57,7 +57,7 @@ weather_conditions = delete_columns("./db/csv/weather.csv", [:max_dew_point_f,
                                                       :min_sea_level_pressure_inches,
                                                       :max_visibility_miles,
                                                       :min_visibility_miles,
-                                                      :max_wind_Speed_mph,
+                                                      :max_wind_speed_mph,
                                                       :max_gust_speed_mph,
                                                       :cloud_cover,
                                                       :events,
@@ -67,20 +67,16 @@ weather_conditions = delete_columns("./db/csv/weather.csv", [:max_dew_point_f,
 weather_conditions.each do |row|
   row = row.to_h
   row[:date_id] = BikeShareDate.seed_by_date(row.delete(:date))
-  row[:max_temp_f] = row.delete(:max_temperature_f)
-  row[:mean_temp_f] = row.delete(:mean_temperature_f)
-  row[:min_temp_f] = row.delete(:min_temperature_f)
-  row[:mean_humidity] = row.delete(:mean_humidity)
-  row[:mean_visibility] = row.delete(:mean_visibility_miles)
-  row[:mean_wind_speed] = row.delete(:mean_wind_speed_mph)
-  row[:precipitation] = row.delete(:precipitation_inches)
-  row[:zipcode] = row.delete(:zip_code)
+  row[:max_temp_f] = WeatherCondition.clean_float(row.delete(:max_temperature_f))
+  row[:mean_temp_f] = WeatherCondition.clean_float(row.delete(:mean_temperature_f))
+  row[:min_temp_f] = WeatherCondition.clean_float(row.delete(:min_temperature_f))
+  row[:mean_humidity] = WeatherCondition.clean_float(row.delete(:mean_humidity))
+  row[:mean_visibility] = WeatherCondition.clean_float(row.delete(:mean_visibility_miles))
+  row[:mean_wind_speed] = WeatherCondition.clean_float(row.delete(:mean_wind_speed_mph))
+  row[:precipitation] = WeatherCondition.clean_float(row.delete(:precipitation_inches))
+  row[:zipcode] = WeatherCondition.clean_float(row.delete(:zip_code))
   WeatherCondition.create!(row)
 end
-
-# comment out the destroy lines and
-# the trips iteration so it doesn’t take forever
-
 system 'Say "Finished Seeding Weather Conditions"'
 
 puts Time.now - start_time

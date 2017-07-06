@@ -1,6 +1,8 @@
 <h1>All Trips</h1>
 
 <h3><a href="/trips/new">Create New Trip</a></h3>
+<div class="index-pages">
+<%= will_paginate @trips %>
 <table>
   <tr>
     <th>Duration</th>
@@ -35,3 +37,5 @@
     </tr>
   <% end %>
 </table>
+<%= will_paginate @trips %>
+</div>

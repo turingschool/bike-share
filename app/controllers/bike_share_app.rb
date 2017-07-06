@@ -4,6 +4,7 @@ require "pry"
 
 
 class BikeShareApp < Sinatra::Base
+  include WillPaginate::Sinatra::Helpers
 
   get '/' do
     erb :"dashboard"
@@ -74,7 +75,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trips = Trip.all
+    @trips = Trip.paginate(:page => params[:page], :per_page => 30)
     erb :"/trips/index"
   end
 

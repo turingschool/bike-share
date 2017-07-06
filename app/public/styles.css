@@ -627,3 +627,12 @@ span.white {
   margin-bottom: 0px;
   font-size: 2.2em;
 }
+
+.index-pages {
+  margin: 50px;
+}
+
+.index-pages form {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}

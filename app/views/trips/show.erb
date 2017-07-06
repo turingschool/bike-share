@@ -1,12 +1,42 @@
-<h1>Trip</h1>
-<a href="/trips">back</a>
-<a href="/trips/<%= @trip.id %>/edit">edit</a>
-<h2>Info</h2>
-<p>Duration: <%= @trip.duration %></p>
-<p>Start Date: <%= @trip.start_date.date %></p>
-<p>Start Station: <%= @trip.start_station.name %></p>
-<p>End Date: <%= @trip.end_date.date %></p>
-<p>End Station: <%= @trip.end_station.name %></p>
-<p>Bike ID: <%= @trip.bike_id %></p>
-<p>Subscription Type: <%= @trip.subscription_type %></p>
-<p>Zipcode: <%= @trip.zipcode.zipcode %></p>
+<body>
+  <div class="show-me-body">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container navbar-beam">
+    </div>
+    <div class="navbar-header">
+      <a class="navbar-brand nav navbar-nav navbar-left" href="/">
+        <img class="brand-logo" alt="Brand" src="bs.png">
+      </a>
+      <a href="/trips"><h1>Back To Trip Index</h1></a>
+    </div>
+    <div>
+      <a class="nav navbar-nav navbar-right" href="/trip-dashboard">
+        <span class="glyphicon glyphicon-home show-right" aria-hidden="true"></span>
+      </a>
+    </div>
+  </nav>
+<button type="button" class="btn btn-warning btn-grow"><a href="/trips/<%= @trip.id %>/edit">Edit Trip</a></button>
+<div class="container-fluid">
+    <div class="show_p">
+      <h4>TRIP DETAILS</h4>
+      <br/>
+      <p>Duration:</p>
+      <h6><em><%= @trip.duration%></em></h6>
+      <p>Start Date: </p>
+      <h6><em><%= @trip.start_date.date %></em></h6>
+      <p>Start Station: </p>
+      <h6><em><%= @trip.start_station.name %></em></h6>
+      <p>End Date: </p>
+      <h6><em><%= @trip.end_date.date %></em></h6>
+      <p>End Station: </p>
+      <h6><em><%= @trip.end_station.name %></em></h6>
+      <p>Bike Id: </p>
+      <h6><em><%= @trip.bike_id %></em></h6>
+      <p>Subscriber Type: </p>
+      <h6><em><%= @trip.subscription_type %></em></h6>
+      <p>Zipcode: </p>
+      <h6><em><%= @trip.zipcode.zipcode %></em></h6>
+    </div>
+  </div>
+</div>
+</body>

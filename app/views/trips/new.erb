@@ -1,38 +1,65 @@
-<h1>Create New Trip</h1>
-<a href="/trips">back</a>
-<form action="/trips" method="post">
-  <label>Duration: </label>
-  <input type="number" name="trip[duration]">
-  <label>Start Date: </label>
-  <input type="date" name="trip[start_date_id]">
-  <label>Start Station: </label>
-  <select name="trip[start_station_id]">
-    <% @stations.each do |station| %>
-      <option value="<%= station.id %>"><%= station.name %></option>
-    <% end %>
-  </select>
-  <label>End Date: </label>
-  <input type="date" name="trip[end_date_id]">
-  <label>End Station: </label>
-  <select name="trip[end_station_id]">
-    <% @stations.each do |station| %>
-      <option value="<%= station.id %>"><%= station.name %></option>
-    <% end %>
-  </select>
-  <label>Bike Id: </label>
-  <input type="text" name="trip[bike_id]">
-  <!-- <select name="trip[bike_id]">
-    <% Trip.pluck(:bike_id).each do |bike| %>
-      <option value="<%= bike %>"><%= bike %></option>
-    <% end %>
-  </select> -->
-  <label>Subscription Type: </label>
-  <select name="trip[subscription_type]">
-    <option value="User">User</option>
-    <option value="Subscriber">Subscriber</option>
-  </select>
-  <label>Zipcode: </label>
-  <input type="text" name="trip[zipcode_id]">
-  <br><br>
-  <button type="submit">Create Trip</button>
-</form>
+<body>
+<div class= "new-background">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container navbar-beam">
+    </div>
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+          <img class="brand-logo" alt="Brand" src="bs.png">
+        </a>
+        <h1> Create New Trip</h1>
+      </div>
+      <div>
+      <a class="nav navbar-nav navbar-right" href="/trip-dashboard">
+        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+      </a>
+      <a class="nav navbar-nav navbar-right" href="/trips"><h3 class="back-to-index">Back to Trips Index</h3></a>
+      </div>
+    </div>
+  </nav>
+<div class="container container-body">
+  <form class="edit-form-left" action="/trips" method="post">
+      <label class="entry_title">Duration: </label>
+      <input type="number" name="trip[duration]" value="">
+
+      <label class="entry_title">Start Date: </label>
+      <input type="date" name="trip[start_date_id]" value="">
+
+      <label class="entry_title">End Date: </label>
+      <input type="date" name="trip[end_date_id]" value="">
+
+      <div class="form-group">
+        <label class="entry_title">Start Station Name: </label>
+        <select name="trip[start_station_id]" value="">
+          <% @stations.each do |station| %>
+            <option value="<%= station.id %>"><%= station.name %></option>
+          <% end %>
+        </select>
+        <label class="entry_title">End Station Name: </label>
+        <select name="trip[end_station_id]" value="">
+          <% @stations.each do |station| %>
+            <option value="<%= station.id %>"><%= station.name %></option>
+          <% end %>
+        </select>
+
+        <label>Bike Id: </label>
+        <select name="trip[bike_id]" value="">
+          <% @bikes.each do |bike_id| %>
+            <option value="<%= bike_id %>"><%= bike_id %></option>
+          <% end %>
+        </select>
+
+        <label class="entry_title">Subscription Type: </label>
+        <select name="trip[subscription_type]" value="" >
+          <option value="User">User</option>
+          <option value="Subscriber">Subscriber</option>
+        </select>
+        <label class="entry_title">Zipcode: </label><br/>
+        <input type="text" name="trip[zipcode_id]" value="">
+      </div>
+      <button class="btn btn-warning" type="submit" name="button">Create Trip</button>
+  </form>
+</div>
+</div>
+</body>

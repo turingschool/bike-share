@@ -30,9 +30,10 @@ class StationForm
                               city: save_city,
                               installation_date_id: save_date.id
                               )
-     return  @station.save
+      @station.save
+      return true
+    else
+      false
     end
-    # return @station.save if valid?
-    false
   end
 end

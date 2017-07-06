@@ -53,12 +53,10 @@ class BikeShareApp < Sinatra::Base
     if usf.save
       redirect "/stations/#{params[:id]}"
     else
-      @params[:page] = :"/stations/:id/edit"
+      @errors = usf.errors
+      @station = Station.find(params[:id])
+      erb :"/stations/edit"
     end
-  end
-
-  get '/error' do
-    erb :"error"
   end
 
   delete '/stations/:id' do |id|

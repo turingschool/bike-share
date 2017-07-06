@@ -1,4 +1,4 @@
-require './db/seeds.rb'
+
 
 RSpec.describe Weather do
   describe "Validations" do

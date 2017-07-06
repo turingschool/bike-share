@@ -17,7 +17,7 @@ end
 
 Station.destroy_all
 system 'Say "Finished Destroying Stations"'
-# Trip.destroy_all
+Trip.destroy_all
 system 'Say "Finished Destroying Trips"'
 WeatherCondition.destroy_all
 system 'Say "Finished Destroying WeatherConditions"'
@@ -34,15 +34,15 @@ system 'Say "Finished Seeding Stations"'
 
 start_time = Time.now
 
-# trips.each do |row|
-#   row = row.to_h
-#   row[:start_date_id] = BikeShareDate.seed_by_date(row.delete(:start_date))
-#   row[:start_station_id] = Station.id_by_name(row.delete(:start_station_name))
-#   row[:end_date_id] = BikeShareDate.seed_by_date(row.delete(:end_date))
-#   row[:end_station_id] = Station.id_by_name(row.delete(:end_station_name))
-#   row[:zipcode_id] = Zipcode.create_zipcode(row.delete(:zip_code))
-#   Trip.create!(row)
-# end
+trips.each do |row|
+  row = row.to_h
+  row[:start_date_id] = BikeShareDate.seed_by_date(row.delete(:start_date))
+  row[:start_station_id] = Station.id_by_name(row.delete(:start_station_name))
+  row[:end_date_id] = BikeShareDate.seed_by_date(row.delete(:end_date))
+  row[:end_station_id] = Station.id_by_name(row.delete(:end_station_name))
+  row[:zipcode_id] = Zipcode.create_zipcode(row.delete(:zip_code))
+  Trip.create!(row)
+end
 
 system 'Say "Finished Seeding Trips"'
 

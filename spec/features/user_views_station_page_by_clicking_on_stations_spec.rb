@@ -60,10 +60,17 @@ RSpec.describe "user clicks on stations hyperlink" do
   it "can see 'Average Number of Bikes' only when hovering" do
     visit('/')
     click_link("stations")
-    expect(page).to have_content("")
+    h2 = first(:css, ".popup", :visible=> :false)
+    require 'pry' ; binding.pry
+    expect(page).to_not have_content("Average # Bikes Per Station")
+    boolean = h2.matches_css?(".popup-first")
+    expect(boolean).to eq(true)
   end
 
   it "can scroll to see 'Newest' and 'Oldest' Stations" do
-
+    visit('/')
+    click_link("stations")
+    expect(page).to have_content("Newest Station")
+    expect(page).to have_content("Oldest Station")
   end
 end

@@ -25,6 +25,14 @@
   <p><%= Subscription.find(k)[:subscription_type] %>: <%= v %> (<%= Trip.subscription_percentage(v) %>%)</p>
 <% end %>
 <h3>Date with highest trip count</h3>
-<p><%= Trip.date_with_highest_trip_count[0][0] %>/<%= Trip.date_with_highest_trip_count[0][1] %>/<%= Trip.date_with_highest_trip_count[0][2] %>:   <%= Trip.date_with_highest_trip_count[1] %></p>
+<p><%= Trip.date_with_highest_trip_count %></p>
+<h5>Weather on this Day:</h5>
+<% Weather.highest_rides_weather.each do |k,v| %>
+  <p> <%= k %>:  <%= v %></p>
+<% end %>
 <h3>Date with lowest trip count</h3>
-<p><%= Trip.date_with_lowest_trip_count[0][0] %>/<%= Trip.date_with_lowest_trip_count[0][1] %>/<%= Trip.date_with_lowest_trip_count[0][2] %>:   <%= Trip.date_with_lowest_trip_count[1] %></p>
+<p><%= Trip.date_with_lowest_trip_count %></p>
+<h5>Weather on this Day:</h5>
+<% Weather.lowest_rides_weather.each do |k,v| %>
+  <p> <%= k %>:  <%= v %></p>
+<% end %>

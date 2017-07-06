@@ -8,7 +8,7 @@ RSpec.describe "User clicks edit button" do
     visit('/trips/1')
     save_and_open_page
 
-    click_button("Edit This Trip")
+    click_link_or_button("Edit This Trip")
 
     expect(current_path).to eq("/trips/1/edit")
   end

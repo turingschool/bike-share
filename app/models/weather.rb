@@ -6,8 +6,8 @@ class Weather < ActiveRecord::Base
     Weather.calculate_rides("max_temperature", 10)
   end
 
-  def self.rides_by_percripitation
-    Weather.calculate_rides("precipitation", 10)
+  def self.rides_by_precipitation
+    Weather.calculate_rides("precipitation", 0.5)
   end
 
   def self.calculate_rides(condition, increment)
@@ -23,7 +23,7 @@ class Weather < ActiveRecord::Base
     counter = Weather.counter(condition, increment)
     upper_limit = Weather.upper_limit(condition, increment)
     until counter == upper_limit do
-      range = Weather.join_table.where("#{condition} BETWEEN ? AND ?", counter, counter + increment)
+      range = Weather.join_table.where("#{condition} >= ? AND #{condition} < ?", counter, counter + increment)
       trip_count = range.count
       day_count = range.pluck("date").uniq.count
       results[[counter, counter + increment]] = trip_count/day_count if day_count != 0
@@ -37,8 +37,9 @@ class Weather < ActiveRecord::Base
     counter = Weather.counter(condition, increment)
     upper_limit = Weather.upper_limit(condition, increment)
     until counter == upper_limit do
-      range = Weather.join_table.where("#{condition} BETWEEN ? AND ?", counter, counter + increment)
-      results[[counter, counter + increment]] = range.group("date").count("id").values.max
+      range = Weather.join_table.where("#{condition} >= ? AND #{condition} < ?", counter, counter + increment)
+      max = range.group("date").count("id").values.max
+      results[[counter, counter + increment]] = max if max
       counter += increment
     end
     return results
@@ -49,8 +50,9 @@ class Weather < ActiveRecord::Base
     counter = Weather.counter(condition, increment)
     upper_limit = Weather.upper_limit(condition, increment)
     until counter == upper_limit do
-      range = Weather.join_table.where("#{condition} BETWEEN ? AND ?", counter, counter + increment)
-      results[[counter, counter + increment]] = range.group("date").count("id").values.min
+      range = Weather.join_table.where("#{condition} >= ? AND #{condition} < ?", counter, counter + increment)
+      min = range.group("date").count("id").values.min
+      results[[counter, counter + increment]] = min if min
       counter += increment
     end
     return results

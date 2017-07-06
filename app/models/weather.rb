@@ -6,6 +6,10 @@ class Weather < ActiveRecord::Base
     Weather.calculate_rides("max_temperature", 10)
   end
 
+  def self.rides_by_percripitation
+    Weather.calculate_rides("precipitation", 10)
+  end
+
   def self.calculate_rides(condition, increment)
     result = {}
     result["average"] = Weather.average_rides(condition, increment)
@@ -16,13 +20,13 @@ class Weather < ActiveRecord::Base
 
   def self.average_rides(condition, increment)
     results = {}
-    counter = (Weather.join_table.minimum("max_temperature")/10).to_i * 10
-    upper_limit = (Weather.join_table.maximum("max_temperature")/10 + 1).to_i * 10
+    counter = Weather.counter(condition, increment)
+    upper_limit = Weather.upper_limit(condition, increment)
     until counter == upper_limit do
       range = Weather.join_table.where("#{condition} BETWEEN ? AND ?", counter, counter + increment)
       trip_count = range.count
       day_count = range.pluck("date").uniq.count
-      results[[counter, counter + increment]] = trip_count/day_count
+      results[[counter, counter + increment]] = trip_count/day_count if day_count != 0
       counter += increment
     end
     return results
@@ -30,8 +34,8 @@ class Weather < ActiveRecord::Base
 
   def self.highest_rides(condition, increment)
     results = {}
-    counter = (Weather.join_table.minimum("max_temperature")/10).to_i * 10
-    upper_limit = (Weather.join_table.maximum("max_temperature")/10 + 1).to_i * 10
+    counter = Weather.counter(condition, increment)
+    upper_limit = Weather.upper_limit(condition, increment)
     until counter == upper_limit do
       range = Weather.join_table.where("#{condition} BETWEEN ? AND ?", counter, counter + increment)
       results[[counter, counter + increment]] = range.group("date").count("id").values.max
@@ -42,8 +46,8 @@ class Weather < ActiveRecord::Base
 
   def self.lowest_rides(condition, increment)
     results = {}
-    counter = (Weather.join_table.minimum("max_temperature")/10).to_i * 10
-    upper_limit = (Weather.join_table.maximum("max_temperature")/10 + 1).to_i * 10
+    counter = Weather.counter(condition, increment)
+    upper_limit = Weather.upper_limit(condition, increment)
     until counter == upper_limit do
       range = Weather.join_table.where("#{condition} BETWEEN ? AND ?", counter, counter + increment)
       results[[counter, counter + increment]] = range.group("date").count("id").values.min
@@ -54,5 +58,13 @@ class Weather < ActiveRecord::Base
 
   def self.join_table
     Trip.joins(:weather)
+  end
+
+  def self.counter(condition, increment)
+    (Weather.join_table.minimum(condition)/increment).to_i * increment
+  end
+
+  def self.upper_limit(condition, increment)
+    (Weather.join_table.maximum(condition)/increment + 1).to_i * increment
   end
 end

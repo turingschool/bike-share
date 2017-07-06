@@ -31,6 +31,18 @@ RSpec.describe Weather do
       expected = {[50, 60] => 3,[60, 70] => 2,[70, 80] => 1}
       expect(lowest_rides).to eq(expected)
     end
+    it ".calculate_rides" do
+      expected = {"average" => {[50, 60] => 3,[60, 70] => 2,[70, 80] => 2},
+                  "highest" => {[50, 60] => 3,[60, 70] => 2,[70, 80] => 3},
+                  "lowest" =>  {[50, 60] => 3,[60, 70] => 2,[70, 80] => 1}}
+      expect(Weather.calculate_rides("max_temperature", 10)).to eq(expected)
+    end
+    it ".rides_by_max_temp" do
+      expected = {"average" => {[50, 60] => 3,[60, 70] => 2,[70, 80] => 2},
+                  "highest" => {[50, 60] => 3,[60, 70] => 2,[70, 80] => 3},
+                  "lowest" =>  {[50, 60] => 3,[60, 70] => 2,[70, 80] => 1}}
+      expect(Weather.rides_by_max_temp).to eq(expected)
+    end
     it ".rides_by_max_temp" do
       expected = {"average" => {[50, 60] => 3,[60, 70] => 2,[70, 80] => 2},
                   "highest" => {[50, 60] => 3,[60, 70] => 2,[70, 80] => 3},

@@ -171,6 +171,7 @@ text-decoration-color: red;
   border-radius: 2px;
 }
 
+
 .card-link {
   position: absolute;
   float: bottom;
@@ -195,6 +196,22 @@ text-decoration-color: red;
   height: 240px;
   border-radius: 5px;
   background: linear-gradient( white, white, lightgray);
+}
+
+.trip-card {
+    padding: 5px;
+    margin: 10px;
+    border-style: solid;
+    border-color: gray;
+    border-width: 2px;
+    /*height: 240px;*/
+    border-radius: 5px;
+    background: linear-gradient( white, white, lightgray);
+}
+
+.trip-card-text {
+  margin-bottom: 1px;
+  margin-left: 5px;
 }
 
 .row {
@@ -284,4 +301,8 @@ text-decoration-color: red;
   border-radius: 5px;
   background: linear-gradient( white, white, lightgray);
   height: auto;
+}
+
+.trip-sub-button {
+  margin-top: 10px;
 }

@@ -14,6 +14,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/station-dashboard' do
+    #refactor
     @count = Station.total_station_count
     @average = Station.average_bikes_per_station
     @most_bikes = Station.most_bikes_available
@@ -116,11 +117,12 @@ class BikeShareApp < Sinatra::Base
 
   put '/trips/:id' do
     utf = UpdateTripForm.new(params)
-    if utf.save
+    # if
+      utf.save
       redirect "/trips/#{params[:id]}"
-    else
-      @params[:page] = :"/trips/:id/edit"
-    end
+    # else
+    #   @params[:page] = :"/trips/:id/edit"
+    # end
   end
 
   delete '/trips/:id' do |id|

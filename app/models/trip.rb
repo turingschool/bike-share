@@ -53,4 +53,44 @@ class Trip < ActiveRecord::Base
 
     {bike: least_bike[0], count: least_bike[1]}
   end
+
+  def self.rides_by_month
+    years = {2013 => {}, 2014 => {}, 2015 => {}}
+
+    group_by_month(years)
+    total_by_year(years)
+  end
+
+  def self.group_by_month(years)
+    grouped = group(:start_date).count
+
+    grouped.each do |date, total|
+       month = date.date.strftime('%B')
+      if years[date.date.year].has_key?(month)
+        years[date.date.year][month] += total
+      else
+        years[date.date.year][month] = total
+      end
+    end
+    years
+  end
+
+  def self.total_by_year(years)
+    years.each do |year, month_totals|
+      month_totals['total'] = month_totals.values.reduce(:+)
+    end
+    years
+  end
+
+  def self.average_ride_duration
+    average(:duration).round(2)
+  end
+
+  def self.station_with_most_ending_trips
+    most_ending_station = group(:end_station).count.max_by do |station, count|
+      count
+    end
+
+    {station: most_ending_station[0], count: most_ending_station[1]}
+  end
 end

@@ -305,22 +305,22 @@ input {
 }
 
 .edit-form {
-  margin-top: 5px;
+  margin-top: 25px;
   align-content: left;
   border-style: solid;
   border-color: white;
   padding: 15px;
-  width: 300px;
+  width: 400px;
   background-color: rgb(50, 41, 32);
   padding-left: 25px;
   color: white;
-  margin-left: 20px;
+  margin-left: 0px;
   margin-bottom: 280px;
   text-shadow: 2px 2px black;
 }
 
 .edit-form-left {
-  margin-top: 5px;
+  margin-top: 20px;
   margin-right: 55px;
   border-style: solid;
   border-color: rgb(96, 59, 147);
@@ -330,9 +330,10 @@ input {
   padding-left: 65px;
   float: right;
   color: white;
-  margin-left: 20px;
-  margin-bottom: 280px;
+  margin-left: 820px;
+  margin-bottom: 310px;
   text-shadow: 2px 2px black;
+  position: fixed;
 }
 
 .edit-button {
@@ -343,7 +344,7 @@ input {
   background-image: url(https://s-media-cache-ak0.pinimg.com/originals/d4/36/e3/d436e3cedb0982b6b02800e9f72f0b54.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 800px;
+  height: 1200px;
 }
 .index-table-header tr td{
   padding: 5px;
@@ -446,14 +447,14 @@ li.side-chevron-right {
 }
 
 .show_p {
-    font-size: 4em;
+    font-size: 3em;
     height: 100%;
     color: white;
     text-shadow: 2px 2px black;
     padding: 30px;
     padding-top: 20px;
     margin-left: 160px;
-    width: 550px;
+    width: 400px;
     border: 5px solid white;
     background-color: black;
     margin-top: 60px;
@@ -461,8 +462,8 @@ li.side-chevron-right {
 
 .show_p p, h6{
   background-color: black;
-  font-size: 30pt;
-  line-height: 50px;
+  font-size: 20pt;
+  line-height: 40px;
   margin-top: 0px;
 }
 
@@ -481,22 +482,22 @@ li.side-chevron-right {
   padding-bottom: 0px;
   margin-left: 0px;
   margin-bottom: 0px;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 .btn-grow {
-  height: 200px;
+  height: 150px;
   box-shadow: 4px 4px black;
   color: black;
-  font-size: 3em;
+  font-size: 2.2em;
   border-width: thick;
   border-color: black;
   display: absolute;
   float: right;
   margin-right: 400px;
-  margin-top: 100px;
+  margin-top: 80px;
   text-align: center;
-  min-width: 270px;
+  min-width: 200px;
 }
 
 .btn-grow a {
@@ -585,24 +586,22 @@ span.white {
   margin-top: 20px;
 }
 
-form.edit-form-trips input, select {
-  margin-left: 16px;
-  width: 150px;
-}
+
 
 .edit-form-trips {
-  margin-top: 5px;
+  margin-top: 20px;
   align-content: left;
   border-style: solid;
   border-color: white;
   padding: 15px;
-  width: 300px;
+  width: 400px;
   background-color: rgb(50, 41, 32);
   padding-left: 25px;
   color: white;
-  margin-left: 20px;
+  margin-left: 820px;
   margin-bottom: 280px;
   text-shadow: 2px 2px black;
+  position: fixed;
 }
 
 .edit-form-trips h4 {
@@ -629,4 +628,19 @@ form.edit-form-trips input, select {
   margin-left: 0px;
   margin-bottom: 0px;
   font-size: 2.2em;
+}
+
+.index-pages {
+  margin-top: 110px;
+  margin-left: 30px;
+}
+.index-pages-inner {
+  margin: 50px;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.index-pages form {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }

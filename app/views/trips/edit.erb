@@ -47,18 +47,13 @@
             <option value="<%= station.id %>"><%= station.name %></option>
           <% end %>
         </select>
-        <!-- <label class="entry_title">Bike Id: </label>
-        <select name="trip[bike_id]" value="<%= @trip.bike_id %>">
-          <% @bikes.each do |bike_id| %>
-            <option value="<%= bike_id %>"><%= bike_id %></option>
-          <% end %>
-        </select> -->
+
         <label class="entry_title">Subscription Type: </label>
         <select name="trip[subscription_type]" value="<%= @trip.subscription_type %>" >
           <option value="User">User</option>
           <option value="Subscriber">Subscriber</option>
         </select>
-        <label class="entry_title">Zipcode: </label>
+        <label class="entry_title">Zipcode: </label><br/>
         <input type="text" name="trip[zipcode_id]" value="<%= @trip.zipcode.zipcode %>">
       </div>
       <button class="btn btn-warning" type="submit">Submit Changes</button>

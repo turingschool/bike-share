@@ -4,6 +4,7 @@ require "pry"
 
 
 class BikeShareApp < Sinatra::Base
+  include WillPaginate::Sinatra::Helpers
 
   get '/' do
     erb :"dashboard"
@@ -79,7 +80,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trips = Trip.all
+    @trips = Trip.paginate(:page => params[:page], :per_page => 30)
     erb :"/trips/index"
   end
 
@@ -100,14 +101,6 @@ class BikeShareApp < Sinatra::Base
     erb :"/trips/edit"
   end
 
-  # trip[duration]:5
-  # trip[start_date_id]:2014-01-01
-  # trip[end_date_id]:2014-01-02
-  # trip[start_station_id]:71
-  # trip[end_station_id]:72
-  # trip[bike_id]:2
-  # trip[subscription_type]:User
-  # trip[zipcode_id]:90202
   put "/trips/:id" do |id|
     end_date = params[:trip][:end_date_id]
     params[:trip][:end_date_id] = BikeShareDate.create_by_date(end_date)
@@ -121,14 +114,6 @@ class BikeShareApp < Sinatra::Base
     redirect "/trips/#{id}"
   end
 
-  # trip[duration]:5
-  # trip[start_date_id]:2014-01-02
-  # trip[start_station_id]:71
-  # trip[end_date_id]:2014-01-03
-  # trip[end_station_id]:72
-  # trip[bike_id]:1
-  # trip[subscription_type]:User
-  # trip[zipcode_id]:90202
   post '/trips' do
     start_date = params[:trip][:start_date_id]
     params[:trip][:start_date_id] = BikeShareDate.create_by_date(start_date)

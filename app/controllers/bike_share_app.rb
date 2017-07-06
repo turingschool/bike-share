@@ -81,6 +81,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips/new' do
     @stations = Station.all
+    @bikes = Trip.pluck(:bike_id).uniq
     erb :"/trips/new"
   end
 
@@ -117,9 +118,9 @@ class BikeShareApp < Sinatra::Base
     params[:trip][:end_date_id] = BikeShareDate.create_by_date(end_date)
 
     zipcode = params[:trip][:zipcode_id]
-    params[:trip][:zipcode_id] = Zipcode.create_zipcode(zipcode)
+    params[:trip][:zipcode_id] = Zipcode.create_zipcode(zipcode).id
 
-    Trip.create(params[:trip])
+    Trip.create!(params[:trip])
 
     redirect('/trips')
   end
@@ -127,5 +128,11 @@ class BikeShareApp < Sinatra::Base
   delete '/trips/:id' do |id|
     Trip.destroy(id)
     redirect('/trips')
+  end
+
+  get '/weather_conditions' do
+    @weather_conditions = WeatherCondition.paginate(:page => params[:page])
+    # binding.pry
+    erb :"weather_conditions/index"
   end
 end

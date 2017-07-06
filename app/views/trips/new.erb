@@ -19,7 +19,7 @@
     </div>
   </nav>
 <div class="container container-body">
-  <form class="edit-form-left" action="/trips/" method="post">
+  <form class="edit-form-left" action="/trips" method="post">
       <label class="entry_title">Duration: </label>
       <input type="number" name="trip[duration]" value="">
 
@@ -40,6 +40,13 @@
         <select name="trip[end_station_id]" value="">
           <% @stations.each do |station| %>
             <option value="<%= station.id %>"><%= station.name %></option>
+          <% end %>
+        </select>
+
+        <label>Bike Id: </label>
+        <select name="trip[bike_id]" value="">
+          <% @bikes.each do |bike_id| %>
+            <option value="<%= bike_id %>"><%= bike_id %></option>
           <% end %>
         </select>
 

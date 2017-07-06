@@ -14,7 +14,7 @@ RSpec.describe "user selects a trip" do
     station_c = Station.create(name: "Colfax", dock_count: 2121, installation_date_id: 3, city: "New York")
 
     visit('/trips/3')
-    save_and_open_page
+    # save_and_open_page
     expect(page).to have_content(13)
     expect(page).to have_content(trip_3.end_date.date)
     expect(page).to have_content(trip_3.start_date.date)

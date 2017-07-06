@@ -82,7 +82,7 @@
           <td class="nudge-right"><%= station.name %></td>
           <td class="nudge-right"><%= station.city %></td>
           <td class="dc"><%= station.dock_count %></td>
-          <td class="nudge-right-er"><%= station.installation_date.date %></td>
+          <td class="nudge-right-er"><%= station.installation_date.date.strftime('%B %d %Y') %></td>
           <td class="nudge-left"><a href="/stations/<%= station.id %>">Station Info</a></td>
         </tr>
         <% end %>

@@ -1,4 +1,4 @@
-class ConditionForm
+class UpdateConditionForm
   include ActiveModel::Model
 
   attr_accessor(
@@ -24,21 +24,23 @@ class ConditionForm
   validates  :precipitation_inches, presence: true
 
   def initialize(params)
-    @date = params[:date]
-    @max_temperature_f = params[:max_temperature_f]
-    @mean_temperature_f = params[:mean_temperature_f]
-    @min_temperature_f = params[:min_temperature_f]
-    @mean_humidity = params[:mean_humidity]
-    @mean_visibility_miles = params[:mean_visibility_miles]
-    @mean_humidity = params[:mean_humidity]
-    @mean_wind_speed_mph = params[:mean_wind_speed_mph]
-    @precipitation_inches = params[:precipitation_inches]
+    @date = params[:weather][:date]
+    @max_temperature_f = params[:weather][:max_temperature_f]
+    @mean_temperature_f = params[:weather][:mean_temperature_f]
+    @min_temperature_f = params[:weather][:min_temperature_f]
+    @mean_humidity = params[:weather][:mean_humidity]
+    @mean_visibility_miles = params[:weather][:mean_visibility_miles]
+    @mean_humidity = params[:weather][:mean_humidity]
+    @mean_wind_speed_mph = params[:weather][:mean_wind_speed_mph]
+    @precipitation_inches = params[:weather][:precipitation_inches]
+    @id = params[:id]
   end
 
   def save
     if valid?
       save_date = BikeShareDate.find_or_create_by!(bike_share_date: @date)
-      @condition = Weather.new(bike_share_date: save_date,
+      @condition = Weather.update(@id,
+                              bike_share_date:       save_date,
                               max_temperature_f:     @max_temperature_f,
                               mean_temperature_f:    @mean_temperature_f,
                               min_temperature_f:     @min_temperature_f,
@@ -48,8 +50,8 @@ class ConditionForm
                               mean_wind_speed_mph:   @mean_wind_speed_mph,
                               precipitation_inches:  @precipitation_inches
                               )
-     return  @condition.save
+    else
+      false
     end
-    false
   end
 end

@@ -19,7 +19,6 @@ class UpdateStationForm
     @city = params[:station][:city]
     @installation_date = params[:station][:installation_date]
     @id = params[:id]
-    # require 'pry';binding.pry
   end
 
   def save

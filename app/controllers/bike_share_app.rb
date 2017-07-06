@@ -139,6 +139,11 @@ class BikeShareApp < Sinatra::Base
       end
     end
 
+  delete '/conditions/:id' do |id|
+    Weather.destroy(id.to_i)
+    redirect '/conditions'
+  end
+
   def execute_statement(sql)
      results = ActiveRecord::Base.connection.execute(sql)
      if results.present?

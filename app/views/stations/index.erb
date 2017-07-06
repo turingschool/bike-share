@@ -12,7 +12,7 @@
       <th>Delete<th></tr>
         <% @stations.each do |station| %>
         <tr>
-          <td><%= station.name %></td>
+          <td><a href="/stations/<%= station.id %>"><%= station.name %></a></td>
           <td><%= station.dock_count %></td>
           <td><%= station.city %></td>
           <td><%= station.installation_date %></td>

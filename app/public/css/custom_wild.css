@@ -1,0 +1,28 @@
+.background_wild{
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+#background1_wild{
+    background: url(http://d1gxum163dfxw6.cloudfront.net/images/made/images/remote/https_marineeimages.s3.amazonaws.com/images/1826/17_mrn_attack_4__large_640_366_80_c1_smart_scale.jpg) no-repeat 100% 0;
+}
+
+#background2_wild{
+    background: url(phttps://clubcyclistemomentum.files.wordpress.com/2012/02/marin.jpg) no-repeat 0 0;
+}
+
+#body_wild_background {
+content: "";
+background: url(https://www.aspensnowmass.com/~/media/aspensnowmass/bike-snowmass/bike-rental-and-trail-descriptions/2016_bike_rentals_cta_50.ashx?h=225&w=438);
+opacity: 0.5;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+position: absolute;
+z-index: -1;
+}

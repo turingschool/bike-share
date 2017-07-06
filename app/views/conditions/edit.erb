@@ -1,0 +1,36 @@
+<h1>Edit A Weather Condition</h1>
+
+
+<form class="" action="/conditions/<%= Date.find(@condition.date_id).date %>" method="post">
+
+  <input type="hidden" name="_method" value="PUT">
+
+  <label for="Date">Date:</label>
+
+   #placeholder for grbbing date from drop down and getting date id
+  <input type="date" name="condition[date_id] = Date.find_by(date: ?).id" value="<%= @condition.date_id %>"></br>
+
+  <label for="Max Temp">Max Temp:</label>
+  <input type="integer" name="condition[max_temp]" value="<%= @condition.max_temp %>"></br>
+
+  <label for="Min Temp">Min Temp:</label>
+  <input type="integer" name="condition[min_temp]" value="<%= @condition.min_temp %>"></br>
+
+  <label for="Mean Temp">Mean Temp:</label>
+  <input type="integer" name="condition[mean_temp]" value="<%= @condition.mean_temp %>"></br>
+
+  <label for="Mean Humidity">Mean Humidity:</label>
+  <input type="integer" name="condition[mean_humidity]" value="<%= @condition.mean_humidity %>"></br>
+
+  <label for="Mean Visibility">Mean Visibility:</label>
+  <input type="integer" name="condition[mean_visibility]" value="<%= @condition.mean_visibility %>"></br>
+
+  <label for="Mean Wind Speed">Mean Wind Speed:</label>
+  <input type="integer" name="condition[mean_wind_speed]" value="<%= @condition.mean_wind_speed %>"></br>
+
+  <label for="Precipitation">Precipitation:</label>
+  <input type="integer" name="condition[precipitation]" value="<%= @condition.precipitation%>"></br>
+
+  <button value="submit" name="submit">Submit</button>
+
+</form>

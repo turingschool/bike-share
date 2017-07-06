@@ -1,0 +1,16 @@
+<h1>Edit Station</h1>
+
+<p><a href="/stations">All Stations</a> | <a href="/trips">All Trips</a> | <a href="/">Home</a></p>
+
+<form class="" action="/stations/<%= @station.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT">
+  <label for="name">Name:</label>
+  <input type="text" name="station[name]" value="<%= @station.name %>"></br>
+  <label for="dock count">Dock Count:</label>
+  <input type="integer" name="station[dock_count]" value="<%= @station.dock_count %>"></br>
+  <label for="city id">City:</label>
+  <input type="text" name="station[city_id]" value="<%= @city.find(@station.city_id).city %>"></br>
+  <label for="installation date">Installation Date:</label>
+  <input type="date" name="station[installation_date]" value="<%= @station.installation_date %>"></br>
+  <button value="submit" name="submit">Submit</button>
+</form>

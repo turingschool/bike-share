@@ -49,6 +49,37 @@ class Trip < ActiveRecord::Base
   def self.subscription_type
      count = Trip.group(:subscription_type).count.each do |bike, count|
      end
+  end
 
+  def self.rides_by_month
+    years = {2013 => {}, 2014 => {}, 2015 => {}}
+
+    group_by_month(years)
+    total_by_year(years)
+  end
+
+  def self.group_by_month(years)
+    grouped = group(:start_date).count
+
+    grouped.each do |date, total|
+       month = date.date.strftime('%B')
+      if years[date.date.year].has_key?(month)
+        years[date.date.year][month] += total
+      else
+        years[date.date.year][month] = total
+      end
+    end
+    years
+  end
+
+  def self.total_by_year(years)
+    years.each do |year, month_totals|
+      month_totals['total'] = month_totals.values.reduce(:+)
+    end
+    years
+  end
+
+  def self.average_ride_duration
+    average(:duration).round(2)
   end
 end

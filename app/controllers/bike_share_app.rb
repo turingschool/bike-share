@@ -88,18 +88,10 @@ class BikeShareApp < Sinatra::Base
   get '/trips/:id/edit' do |id|
     @trip = Trip.find(id)
     @stations = Station.all
-    @bikes = Trip.pluck(:bike_id)
+    @bikes = Trip.pluck(:bike_id).uniq
     erb :"/trips/edit"
   end
 
-  # trip[duration]:5
-  # trip[start_date_id]:2014-01-01
-  # trip[end_date_id]:2014-01-02
-  # trip[start_station_id]:71
-  # trip[end_station_id]:72
-  # trip[bike_id]:2
-  # trip[subscription_type]:User
-  # trip[zipcode_id]:90202
   put "/trips/:id" do |id|
     end_date = params[:trip][:end_date_id]
     params[:trip][:end_date_id] = BikeShareDate.create_by_date(end_date)
@@ -109,18 +101,10 @@ class BikeShareApp < Sinatra::Base
     zipcode_id = params[:trip][:zipcode_id]
     params[:trip][:zipcode_id] = Zipcode.create_zipcode(zipcode_id)
 
-    @trip = Trip.update(params[:trip])
+    @trip = Trip.update(id, params[:trip])
     redirect "/trips/#{id}"
   end
 
-  # trip[duration]:5
-  # trip[start_date_id]:2014-01-02
-  # trip[start_station_id]:71
-  # trip[end_date_id]:2014-01-03
-  # trip[end_station_id]:72
-  # trip[bike_id]:1
-  # trip[subscription_type]:User
-  # trip[zipcode_id]:90202
   post '/trips' do
     start_date = params[:trip][:start_date_id]
     params[:trip][:start_date_id] = BikeShareDate.create_by_date(start_date)

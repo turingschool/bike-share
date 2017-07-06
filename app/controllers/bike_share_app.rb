@@ -92,4 +92,38 @@ class BikeShareApp < Sinatra::Base
   get '/trips-dashboard' do
     erb :"trips/trip-dashboard"
   end
+
+  get '/weathers' do
+    @weathers = Weather.all
+    erb :"weathers/index"
+  end
+
+  get '/weathers/new' do
+    erb :"weathers/new"
+  end
+
+  post '/weathers' do
+    Weather.create(params[:weather])
+    redirect '/weathers'
+  end
+
+  get '/weathers/:id' do
+    @weather = Weather.find(params[:id])
+    erb :"weathers/show"
+  end
+
+  get '/weathers/:id/edit' do
+    @weather = Weather.find(params[:id])
+    erb :"weathers/edit"
+  end
+
+  put '/weathers/:id' do |id|
+    Weather.update(id.to_i, params[:weather])
+    redirect "/weathers"
+  end
+
+  delete '/weathers/:id' do |id|
+    Weather.destroy(id.to_i)
+    redirect '/weathers'
+  end
 end

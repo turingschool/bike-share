@@ -1,0 +1,20 @@
+<form action="/weathers/<%= @weather.id %>" method="post">
+<p>Edit weather information</p>
+<input type="hidden" name="_method" value="PUT" />
+<p>Date:</p>
+<input type="text" name="weather[date]" value= "<%=@weather.date %>"/><br/>
+<p>Max temperature:</p>
+<input type="text" name="weather[max_temperature]" value= "<%=@weather.max_temperature %>"/><br/>
+<p>Min temperature:</p>
+<input type="text" name="weather[min_temperature]" value= "<%=@weather.min_temperature %>"/><br/>
+<p>Mean temperature:</p>
+<input type="text" name="weather[mean_temperature]" value= "<%=@weather.mean_temperature %>"/><br/>
+<p>Mean humidity:</p>
+<input type="text" name="weather[mean_humidity]" value= "<%=@weather.mean_humidity %>"/><br/>
+<p>Mean visibility:</p>
+<input type="text" name="weather[mean_visibility]" value= "<%=@weather.mean_visibility %>"/><br/>
+<p>Mean wind speeds:</p>
+<input type="text" name="weather[mean_wind_speed]" value= "<%=@weather.mean_wind_speed %>"/><br/>
+<p>Precipitation:</p>
+<input type="text" name="weather[precipitation]" value= "<%=@weather.precipitation %>"/><br/>
+<input type="submit" />

@@ -1,0 +1,5 @@
+<p><a href="/">go back</a></p>
+<h1>All Weather reports</h1>
+<% @weathers.each do |weather| %>
+  <p><a href="/weathers/<%=weather.id%>"><%= weather.date %></a></p>
+<% end %>

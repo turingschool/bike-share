@@ -46,7 +46,7 @@ def seed_trips_database(file_path)
     next if row[:zip_code] == '' || row[:zip_code] == nil
     row[:start_date] = DateTime.strptime(row[:start_date], "%m/%d/%Y %H:%M")
     row[:end_date] = DateTime.strptime(row[:end_date], "%m/%d/%Y %H:%M")
-    row[:weather_id] = Weather.find_by(date: row[:start_date].strftime("%m/%d/%Y")).id if Weather.find_by(date: row[:start_date])
+    row[:weather_id] = Weather.find_by(date: row[:start_date]).id if Weather.find_by(date: row[:start_date])
     row[:start_station_name] = "Stanford in Redwood City" if row[:start_station_name] == "Broadway at Main"
     row[:end_station_name] = "Stanford in Redwood City" if row[:end_station_name] == "Broadway at Main"
     row[:start_station_name] = "Santa Clara County Civic Center" if row[:start_station_name] == "San Jose Government Center"
@@ -80,13 +80,12 @@ def seed_weather_database(file_path)
     Weather.create!(row)
   end
 end
-#
-# full-length csvs:
+
 # seed_city_database("db/csv/station.csv")
 # seed_weather_database("db/csv/weather.csv")
 # seed_station_database("db/csv/station.csv")
 # seed_subscriptions_database("db/csv/trip.csv")
-# seed_trips_database("db/csv/trip.csv")
+seed_trips_database("db/csv/trip.csv")
 
 # #fixtures:
 # seed_city_database("db/fixtures/stations.csv")

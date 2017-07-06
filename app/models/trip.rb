@@ -77,4 +77,12 @@ class Trip < ActiveRecord::Base
   def self.average_ride_duration
     average(:duration).round(2)
   end
+
+  def self.station_with_most_ending_trips
+    most_ending_station = group(:end_station).count.max_by do |station, count|
+      count
+    end
+
+    {station: most_ending_station[0], count: most_ending_station[1]}
+  end
 end

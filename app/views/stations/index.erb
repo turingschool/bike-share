@@ -1,7 +1,7 @@
 <!-- <h1 class="index-title">ALL BIKETOPIA BIKE-SHARE STATIONS</h1> -->
 
 <a href="/stations/new" class="btn btn-xs btn-default create-button" role="button">Create A New Station</a>
-<a href="/stations/stations-dashboard" class="btn btn-xs btn-default create-button" role="button">Stations Dashboard</a>
+<a href="/stations-dashboard" class="btn btn-xs btn-default create-button" role="button">Stations Dashboard</a>
 <div class="row">
 <% @stations.each do |station| %>
 <div class="col-sm-3 no-pad">
@@ -14,7 +14,7 @@
       <h6 class="card-subtitle mb-2 text-muted card-text">PUBLIC BICYCLE RENTAL STATION</h6>
       <p class="card-text"><strong>Dock count: </strong><%= station.dock_count  %></p>
       <p class="card-text"><strong>Installation Date:</strong> <%= station.installation_date  %></p>
-      <p class="card-text"><strong>City:</strong> <%= station.city  %></p>
+      <p class="card-text"><strong>City:</strong> <%= station.city.city if station.city  %></p>
       <a href="/stations/<%= station.id  %>" class="btn btn-xs btn-default element-center-hor" role="button">View This Station</a><br>
     </div>
   </div>

@@ -1,0 +1,42 @@
+<body>
+  <div class="show-me-body">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container navbar-beam">
+    </div>
+    <div class="navbar-header">
+      <a class="navbar-brand nav navbar-nav navbar-left" href="/">
+        <img class="brand-logo" alt="Brand" src="bs.png">
+      </a>
+      <a href="/weather_conditions"><h1>Back To Weather Condition Index</h1></a>
+    </div>
+    <div>
+      <a class="nav navbar-nav navbar-right" href="/weather_condition-dashboard">
+        <span class="glyphicon glyphicon-home show-right" aria-hidden="true"></span>
+      </a>
+    </div>
+  </nav>
+<button type="button" class="btn btn-warning btn-grow"><a href="/weather_conditions/<%= @weather_condition.id %>/edit">Edit Weather Condition</a></button>
+<div class="container-fluid">
+    <div class="show_p">
+      <h4>WEATHER CONDITION DETAILS</h4>
+      <br/>
+      <p>Date:</p>
+      <h6><em><%= @weather_condition.date.date%></em></h6>
+      <p>Max Temp(f): </p>
+      <h6><em><%= @weather_condition.max_temp_f%></em></h6>
+      <p>Mean Temp(f): </p>
+      <h6><em><%= @weather_condition.mean_temp_f %></em></h6>
+      <p>Min Temp(f): </p>
+      <h6><em><%= @weather_condition.min_temp_f %></em></h6>
+      <p>Mean Humidity: </p>
+      <h6><em><%= @weather_condition.mean_humidity %></em></h6>
+      <p>Precipitation: </p>
+      <h6><em><%= @weather_condition.precipitation %></em></h6>
+      <p>Mean Visibility: </p>
+      <h6><em><%= @weather_condition.mean_visibility %></em></h6>
+      <p>Mean Wind Speed: </p>
+      <h6><em><%= @weather_condition.mean_wind_speed %></em></h6>
+    </div>
+  </div>
+</div>
+</body>

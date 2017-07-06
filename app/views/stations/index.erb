@@ -1,0 +1,80 @@
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container navbar-beam">
+  </div>
+  <div class="container-fluid navbar-spacing">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">
+        <img class="brand-logo" alt="Brand" src="bs.png">
+      </a>
+      <h1> Station Index</h1><p class="navbar-item">(Page 1)</p>
+    </div>
+    <div>
+    <a class="nav navbar-nav navbar-right" href="/station-dashboard">
+      <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+    </a>
+    </div>
+  </div>
+</nav>
+<div class="container container-body">
+  <h3 class="create-new"><a href="/stations/new">Create New Station</a></h3>
+
+  <nav aria-label="Search Stations">
+    <ul class="pagination">
+      <li class="active index-pagination"><a href="/stations">1</a></li>
+      <li class="index-pagination"><a href="/stations/index-2">2</a></li>
+      <li class="index-pagination"><a href="/stations/index-3">3</a></li>
+      <li class="side-chevron-right">
+        <a href="/stations/index-2" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <table id="stations-index">
+  <div class="stations-index index-table-header">
+    <tr>
+      <th class="col-md-2">Name</th>
+      <th class="col-md-3">City</th>
+      <th class="col-md-1">Dock Count</th>
+      <th class="col-md-2">Installation Date</th>
+      <th class="col-md-2"> </th>
+      <th class="col-md-2"> </th>
+    </tr>
+  </div>
+  <div class= "index-table-body">
+    <% @stations.each do |station| %>
+    <tr>
+      <td class="col-md-2 center"><%= station.name %></td>
+      <td class="col-md-2 center"><%= station.city %></td>
+      <td class="col-md-2 center"><%= station.dock_count %></td>
+      <td class="col-md-2 center"><%= station.installation_date.date %></td>
+      <td class="col-md-2 center"><a href="/stations/<%= station.id %>">Station Info</a></td>
+      <td class="col-md-2 center">
+      <div class="index-table-body">
+        <form  action="/stations/<%= station.id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" name="" value="delete">
+        </form>
+      </div>
+      </td>
+    </tr>
+    <% end %>
+  </div>
+  </table>
+
+  <nav aria-label="Search Stations">
+    <ul class="pagination">
+      <li class="active index-pagination"><a href="/stations">1</a></li>
+      <li class="index-pagination"><a href="/stations/index-2">2</a></li>
+      <li class="index-pagination"><a href="/stations/index-3">3</a></li>
+      <li class="side-chevron-right">
+        <a href="/stations/index-2" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+</body>

@@ -15,11 +15,22 @@ class Weather < ActiveRecord::Base
       range = join_table.where("#{condition} BETWEEN ? AND ?", counter, counter + increment)
       trip_count = range.count
       day_count = range.pluck("date").uniq.count
-      binding.pry if day_count == 0
-      results[[counter, counter + increment]] = trip_count/day_count unless day_count == 0
+      results[[counter, counter + increment]] = trip_count/day_count
       counter += increment
     end
-    results
+    return results
+  end
 
+  def self.highest_rides(condition, increment)
+    results = {}
+    join_table = Trip.joins(:weather)
+    counter = (join_table.minimum("max_temperature")/10).to_i * 10
+    upper_limit = (join_table.maximum("max_temperature")/10 + 1).to_i * 10
+    until counter == upper_limit do
+      range = join_table.where("#{condition} BETWEEN ? AND ?", counter, counter + increment)
+      results[[counter, counter + increment]] = range.group("date").count("id").values.max
+      counter += increment
+    end
+    return results
   end
 end

@@ -1,25 +1,34 @@
-<h1>All trips</h1>
-<a href="/trips/new">Take a trip!</a>
+<a href="/trips/new" class="btn btn-xs btn-default create-button" role="button">Take a Trip</a>
 <a href="/trips-dashboard" class="btn btn-xs btn-default create-button" role="button">Trips Dashboard</a>
+<div class="row">
 <% @trips.each do |trip| %>
-  <a href="trips/<%= trip.id %>">
-    <h3>Trip ID: <%= trip.id %></h3>
-  </a>
-    <p>Duration: <%= trip.duration  %></p>
-    <p>Start Date: <%= trip.start_date  %></p>
-    <p>Start Station ID: <%= trip.start_station_id  %></p>
-    <p>End Date: <%= trip.end_date  %></p>
-    <p>End Station ID: <%= trip.end_station_id  %></p>
-    <p>Bike ID: <%= trip.bike_id  %></p>
-    <p>Subscription Type ID: <%= trip.subscription_id  %></p>
-    <p>Zip Code: <%= trip.zip_code %> </p>
-    <form action="/trips/<%= trip.id %>" method="post">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Delete Trip <%= trip.id %>">
-    </form>
-    <form action="/trips/<%= trip.id %>/edit" method="put">
-      <input type="hidden" name="_method" value="PUT">
-      <input type="submit" value="Edit This Trip">
-    </form>
+<div class="col-sm-3 no-pad">
+  <div class="card trip-card">
+    <div class="card-block">
+      <h4 class="card-title card-text">Trip ID: <%= trip.id %></h4>
+      <p class="trip-card-text">Duration: <%= trip.duration  %></p>
+      <p class="trip-card-text">Start Date: <%= trip.start_date  %></p>
+      <p class="trip-card-text">Start Station ID: <%= trip.start_station_id  %></p>
+      <p class="trip-card-text">End Date: <%= trip.end_date  %></p>
+      <p class="trip-card-text">End Station ID: <%= trip.end_station_id  %></p>
+      <p class="trip-card-text">Bike ID: <%= trip.bike_id  %></p>
+      <p class="trip-card-text">Subscription Type ID: <%= trip.subscription_id  %></p>
+      <p class="trip-card-text">Zip Code: <%= trip.zip_code %> </p>
+      <form action="/trips/<%= trip.id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete Trip <%= trip.id %>">
+      </form>
+      <form action="/trips/<%= trip.id %>/edit" method="put">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="submit" value="Edit This Trip">
+      </form>
+      <form action="/trips/<%= trip.id %>" method="get">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="submit" value="View This Trip">
+      </form>
+    </div>
+  </div>
+</div>
 <% end %>
+</div>
 <p><%= will_paginate @pages %></p>

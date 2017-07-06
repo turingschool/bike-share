@@ -1,21 +1,49 @@
-<h1>Edit</h1>
-<form action="/trips/<%= @trip.id %>" method="post">
-<input type="hidden" name="_method" value="PUT">
-  <p class="edit-input-label">Duration</p>
-  <textarea name="trip[duration]"> <%= @trip.duration %> </textarea>
-  <p class="edit-input-label">Start Date</p>
-  <textarea name="trip[start_date]"> <%= @trip.start_date %> </textarea>
-  <p class="edit-input-label">Start Station ID</p>
-  <textarea name="trip[start_station_id]"> <%= @trip.start_station_id %> </textarea>
-  <p class="edit-input-label">End Date</p>
-  <textarea name="trip[end_date]"> <%= @trip.end_date %> </textarea>
-  <p class="edit-input-label">End Station ID</p>
-  <textarea name="trip[end_station_id]"> <%= @trip.end_station_id %> </textarea>
-  <p class="edit-input-label">Bike ID</p>
-  <textarea name="trip[bike_id]"> <%= @trip.bike_id %> </textarea>
-  <p class="edit-input-label">Subscription</p>
-  <textarea name="trip[subscription_id]"> <%= @trip.subscription_id %> </textarea>
-  <p class="edit-input-label">Zip Code</p>
-  <textarea name="trip[zip_code]"> <%= @trip.zip_code %> </textarea>
-  <input type="submit" value="Submit Changes">
-</form>
+<html>
+<head>
+  <title>Bike Share: Edit Trip</title>
+</head>
+<body>
+  <main>
+    <section>
+      <div class="row">
+        <div class="col-md-1 empty-rounded-div" ></div>
+        <div class="col-md-4">
+          <div class="panel panel-default show-div">
+            <div class="panel-heading">
+              <h2 class="panel-heading-text">Edit Trip</h2>
+            </div>
+            <div class="panel-body ">
+              <form action="/trips/<%= @trip.id %>" method="post">
+              <input type="hidden" name="_method" value="PUT">
+                <p class="edit-input-label">Duration</p>
+                <input class="card-input" name="trip[duration]" value="<%= @trip.duration %>"> </input>
+                <p class="edit-input-label">Start Date</p>
+                <input class="card-input" name="trip[start_date]" value="<%= @trip.start_date %>"> </input>
+                <p class="edit-input-label">Start Station ID</p>
+                <input class="card-input" name="trip[start_station_id]" value="<%= @trip.start_station_id %>"> </input>
+                <p class="edit-input-label">End Date</p>
+                <input class="card-input" name="trip[end_date]" value="<%= @trip.end_date %>"> </input>
+                <p class="edit-input-label">End Station ID</p>
+                <input class="card-input" name="trip[end_station_id]" value="<%= @trip.end_station_id %>"> </input>
+                <p class="edit-input-label">Bike ID</p>
+                <input class="card-input" name="trip[bike_id]" value="<%= @trip.bike_id %>"> </input>
+                <p class="edit-input-label">Subscription</p>
+                <input class="card-input" name="trip[subscription_id]" value="<%= @trip.subscription_id %>"> </input>
+                <p class="edit-input-label">Zip Code</p>
+                <input class="card-input" name="trip[zip_code]" value="<%= @trip.zip_code %>"> </input><br>
+                <input class="btn btn-xs element-center-hor trip-sub-button" type="submit" value="Submit Changes">
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 show-div">
+          <div class="panel-body show-div">
+            <h2 class="show-splash">Bicycle Trip Number <%= @trip.id  %></h2>
+            <img src="http://icons.iconarchive.com/icons/icons8/ios7/512/Maps-Treasury-Map-icon.png" alt="Bicycle Icon" class="map-icon-show">
+        </div>
+        <div class="col-md-1 empty-rounded-div"></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

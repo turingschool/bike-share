@@ -1,18 +1,50 @@
-<h1> Trip <%= @trip.id  %> </h1>
-  <p>Duration: <%= @trip.duration%></p>
-  <p>Start Date: <%= @trip.start_date%></p>
-  <p>Start Station ID: <%= @trip.start_station_id%></p>
-  <p>End Date: <%= @trip.end_date%></p>
-  <p>End Station ID: <%= @trip.end_station_id%></p>
-  <p>Bike ID: <%= @trip.bike_id%></p>
-  <p>Subscription Type ID: <%= @trip.subscription_id%></p>
-  <p>Zip Code: <%= @trip.zip_code%></p>
-  <form action="/trips/<%= @trip.id %>" method="post">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="DELETE THIS TRIP">
-  </form>
-  <form action="/trips/<%= @trip.id %>/edit" method="put">
-    <input type="hidden" name="_method" value="PUT">
-    <input type="submit" value="Edit This Trip">
-  </form>
-<a href="/trips">View all Trips</a>
+<html>
+<head>
+  <title>Bike Share: Trip Info</title>
+</head>
+<body>
+  <main>
+    <section>
+      <div class="row">
+        <div class="col-md-1 empty-rounded-div" ></div>
+        <div class="col-md-4">
+          <div class="panel panel-default show-div">
+            <div class="panel-heading">
+              <h2 class="panel-heading-text">Trip Information</h2>
+            </div>
+            <div class="panel-body ">
+              <p>Duration: <%= @trip.duration%></p>
+              <p>Start Date: <%= @trip.start_date%></p>
+              <p>Start Station ID: <%= @trip.start_station_id%></p>
+              <p>End Date: <%= @trip.end_date%></p>
+              <p>End Station ID: <%= @trip.end_station_id%></p>
+              <p>Bike ID: <%= @trip.bike_id%></p>
+              <p>Subscription Type ID: <%= @trip.subscription_id%></p>
+              <p>Zip Code: <%= @trip.zip_code%></p>
+              <form action="/trips/<%= @trip.id %>" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="DELETE THIS TRIP">
+              </form>
+              <form action="/trips/<%= @trip.id %>/edit" method="put">
+                <input type="hidden" name="_method" value="PUT">
+                <input type="submit" value="Edit This Trip">
+              </form>
+              <form action="/trips" method="get">
+                <input type="hidden" name="_method" value="PUT">
+                <input type="submit" value="View All Trips">
+              </form>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 show-div">
+          <div class="panel-body show-div">
+            <h2 class="show-splash">Bicycle Trip Number <%= @trip.id  %></h2>
+            <img src="http://icons.iconarchive.com/icons/icons8/ios7/512/Maps-Treasury-Map-icon.png" alt="Bicycle Icon" class="map-icon-show">
+        </div>
+        <div class="col-md-1 empty-rounded-div"></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

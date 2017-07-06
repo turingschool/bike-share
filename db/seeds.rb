@@ -38,7 +38,7 @@ end
 
 x = Time.now
 
-trip_text = File.read('./db/csv/trip_test.csv')
+trip_text = File.read('./db/csv/trip.csv')
 trip_csv = CSV.parse(trip_text, :headers => true, header_converters: :symbol)
 trip_csv.each do |row|
   Trip.transaction do

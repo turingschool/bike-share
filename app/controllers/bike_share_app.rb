@@ -120,10 +120,24 @@ class BikeShareApp < Sinatra::Base
     erb :"conditions/index"
   end
 
+  get '/conditions/new' do
+    erb :"conditions/new"
+  end
+
   get '/conditions/:id' do
     @condition = Weather.find(params[:id])
     erb :"conditions/show"
   end
+
+  post '/conditions/new' do
+    cf = ConditionForm.new(params[:weather])
+      if cf.save
+        redirect '/conditions'
+      else
+        @errors = cf.errors
+        erb :"/conditions/new"
+      end
+    end
 
   def execute_statement(sql)
      results = ActiveRecord::Base.connection.execute(sql)

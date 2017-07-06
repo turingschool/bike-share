@@ -7,8 +7,8 @@
 <p>mean visibility in miles: <%= @weather.mean_visibility %></p>
 <p>mean wind speeds (mph): <%= @weather.mean_wind_speed %></p>
 <p>precipitation (inches): <%= @weather.precipitation %></p>
-<a href="/weathers/<%= @weather.id %>/edit">edit</a>
-<form action="/weathers/<%= @weather.id %>" method = "POST">
+<a href="/conditions/<%= @weather.id %>/edit">edit</a>
+<form action="/conditions/<%= @weather.id %>" method = "POST">
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="delete" />
 </form>

@@ -124,4 +124,15 @@ class BikeShareApp < Sinatra::Base
     Trip.destroy(id)
     redirect('/trips')
   end
+
+  get '/weather_conditions' do
+    @weather_conditions = WeatherCondition.all
+    erb :"/weather_conditions/index"
+  end
+
+  get '/weather_conditions/new' do
+    erb :"/weather_conditions/new"
+  end
+
+
 end

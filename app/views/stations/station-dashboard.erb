@@ -1,0 +1,111 @@
+<a href="/stations" class="btn btn-xs btn-default btn">View all Stations</a>
+<head>
+  <title>Bike Share: Stations</title>
+</head>
+<body>
+  <main>
+    <section>
+      <div class="row">
+        <div class="col-md-1 empty-rounded-div" ></div>
+        <div class="col-md-10 empty-rounded-div" >
+          <div class="panel panel-default show-div">
+            <div class="panel-heading">
+              <h2 class="panel-heading-text">Station Dashboard</h2>
+            </div>
+            <div class="col-md-6">
+              <div class="panel panel-default show-div">
+                <div class="panel-body ">
+                      <h4>Stations Statistics:</h4>
+                  <p>Total Stations: <%= Station.count %></p>
+                  <p>Average Bikes per Station: <%= Station.average_dock_count %></p>
+                  <p>Most bikes at a Station: <%= Station.most_bikes %></p><br>
+                  <h4>Stations with Most Bikes:</h4>
+                  <ul>
+                    <% Station.stations_with_most_bikes.each do |station| %>
+                    <li><%= station %></li>
+                    <% end %>
+                  </ul>
+                  <p>Least bikes at Station: <%= Station.least_bikes %></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 show-div">
+              <div class="panel panel-default show-div">
+                <div class="panel-body show-div">
+                  <h4>Stations with Least Bikes:</h4>
+                  <ul>
+                    <% Station.stations_with_least_bikes.each do |station| %>
+                    <li><%= station %></li>
+                    <% end %>
+                  </ul>
+                  <h4>Newest Stations:</h4>
+                  <ul>
+                    <% Station.newest_stations.each do |station| %>
+                    <li><%= station %></li>
+                    <% end %>
+                  </ul>
+                  <h4>Oldest Stations:</h4>
+                  <ul>
+                    <% Station.oldest_stations.each do |station| %>
+                    <li><%= station %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1 empty-rounded-div" ></div>
+      </div>
+    </section>
+  </main>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h1>Station Dashboard</h1>
+<p>Total Stations: <%= Station.count %></p>
+<p>Average Bikes per Station: <%= Station.average_dock_count %></p>
+<p>Most bikes at a Station: <%= Station.most_bikes %></p>
+
+<p>Stations with Most Bikes:</p>
+<ul>
+<% Station.stations_with_most_bikes.each do |station| %>
+<li><%= station %></li>
+<% end %>
+</ul>
+<p>Least bikes at Station: <%= Station.least_bikes %></p>
+
+<p>Stations with Least Bikes:</p>
+<ul>
+<% Station.stations_with_least_bikes.each do |station| %>
+<li><%= station %></li>
+<% end %>
+</ul>
+<p>Newest Stations:</p>
+<ul>
+<% Station.newest_stations.each do |station| %>
+<li><%= station %></li>
+<% end %>
+</ul>
+<p>Oldest Stations:</p>
+<ul>
+<% Station.oldest_stations.each do |station| %>
+<li><%= station %></li>
+<% end %>
+</ul> -->

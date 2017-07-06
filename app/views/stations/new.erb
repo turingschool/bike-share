@@ -1,0 +1,41 @@
+<html>
+<head>
+  <title>Bike Share: Stations</title>
+</head>
+<body>
+  <main>
+    <section>
+      <div class="row">
+        <div class="col-md-1 empty-rounded-div" ></div>
+        <div class="col-md-4">
+          <div class="panel panel-default show-div">
+            <div class="panel-heading">
+              <h2 class="panel-heading-text">Add A Station</h2>
+            </div>
+            <div class="panel-body ">
+              <form action="/stations" method="post">
+                <p class="input-label">Name</p>
+                <input class="card-input" type="text" name="station[name]">
+                <p class="input-label">Dock count</p>
+                <input class="card-input" type="text" name="station[dock_count]">
+                <p class="input-label">Installation date</p>
+                <input class="card-input" type="text" name="station[installation_date]">
+                <p class="input-label">City id</p>
+                <input class="card-input" type="text" name="station[city_id]"><br><br>
+                <button type="submit" class="btn btn-xs element-center-hor">Create Station</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 show-div">
+          <div class="panel-body show-div">
+            <h2 class="show-splash">NEW STATION CREATION</h2>
+            <img src="http://i.imgur.com/sQGfeLx.jpg" alt="Bicycle Icon" class="bike-icon-show">
+          </div>
+        </div>
+        <div class="col-md-1 empty-rounded-div"></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/custom.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <header>
+    <div class="">
+      <!-- <img class="bike-pic-header-two" src="http://3ab5c52de8e71c1d8a88-7f01c3d006ad95dfe2d675a67d0797ae.r42.cf2.rackcdn.com/650cb9ea784beae0b75afede62fdd0d9-615322df681a0d74c4207049db8fb366.jpg" alt=""> -->
+      <!-- <img class="bike-pic-header-two" src="https://static.pexels.com/photos/383/summer-sport-bikes-bicycles.jpg" alt=""> -->
+      <img class="bike-banner" src="http://i.imgur.com/BxxwnHj.jpg" alt="">
+    </div>
+    <nav class="navbar">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+          <a href="/" class="navbar-brand">San-Francisco Bay Area Bike Share Program</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/stations" class="header-button">Stations</a></li>
+            <li><a href="/trips" class="header-button">Trips</a></li>
+            <li><a href="/conditions" class="header-button">Weather</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+  </header>
+</body>
+<%= yield %>
+<footer>
+  <nav class="navbar navbar-bottom" role="navigation">
+    <div class="container footer">
+      <h5 class"tight-text" > ®  San-Francisco Bay Area Bike Share Program is a non-profit subsidiary by ElJiJiJo Corp.</h5>
+      <p class"tight-text"> Nothing is reserved, but it should be. Data is freely shared.</p>
+    </div>
+  </nav>
+</footer>
+</html>

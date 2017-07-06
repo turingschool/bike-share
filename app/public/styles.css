@@ -320,7 +320,7 @@ input {
 }
 
 .edit-form-left {
-  margin-top: 25px;
+  margin-top: 20px;
   margin-right: 55px;
   border-style: solid;
   border-color: rgb(96, 59, 147);
@@ -330,9 +330,10 @@ input {
   padding-left: 65px;
   float: right;
   color: white;
-  margin-left: 20px;
-  margin-bottom: 480px;
+  margin-left: 820px;
+  margin-bottom: 310px;
   text-shadow: 2px 2px black;
+  position: fixed;
 }
 
 .edit-button {
@@ -588,7 +589,7 @@ span.white {
 
 
 .edit-form-trips {
-  margin-top: 25px;
+  margin-top: 20px;
   align-content: left;
   border-style: solid;
   border-color: white;
@@ -597,9 +598,10 @@ span.white {
   background-color: rgb(50, 41, 32);
   padding-left: 25px;
   color: white;
-  margin-left: 0px;
+  margin-left: 820px;
   margin-bottom: 280px;
   text-shadow: 2px 2px black;
+  position: fixed;
 }
 
 .edit-form-trips h4 {

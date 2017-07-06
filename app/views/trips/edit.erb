@@ -6,7 +6,7 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand nav navbar-nav" href="/">
-          <img class="brand-logo" alt="Brand" src="bs.png">
+          <img class="brand-logo" alt="Brand" src="/bs.png">
         </a>
         <h1> EDIT trip</h1>
       </div>
@@ -24,7 +24,7 @@
   <form class="edit-form-trips" action="/trips/<%= @trip.id %>" method="post">
       <h4>Edit Trip Details?</h4>
       <input type="hidden" name="_method" value="PUT" />
-      <label class="entry_title">Duration: </label>
+      <label class="entry_title">Duration: (s)</label>
       <input type="number" name="trip[duration]" value="<%= @trip.duration %>">
 
       <label class="entry_title">Start Date: </label>

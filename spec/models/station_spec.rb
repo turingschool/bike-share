@@ -39,6 +39,14 @@ RSpec.describe Station do
 
       expect(result).to eq(station.station_name.name)
     end
+
+    it "returns most rides taken from the station" do
+      station_name = StationName.create(name: "Test Station")
+      install_date = BikeShareDate.create(bike_share_date: "2013-08-06 00:00:00")
+      city = City.create(name: "Denver")
+      station = Station.create(station_name_id: station_name.id, dock_count: 20, city_id: city.id,
+                installation_date_id: install_date.id)
+    end
   end
 
   describe "instance methods" do

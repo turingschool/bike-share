@@ -67,15 +67,15 @@ class Station < ActiveRecord::Base
     Station.joins("JOIN bike_share_dates ON bike_share_dates.id = stations.installation_date_id").order("bike_share_dates.bike_share_date asc").first.station_name.name
   end
 
-  def self.origination_rides(id)
-    Trip.where(start_station_id: id]).count
+  def origination_rides(id)
+    Trip.where(start_station_id: id).count
   end
 
-  def self.destination_rides(id)
+  def destination_rides(id)
     Trip.where(end_station_id: id).count
   end
 
-  # def self.most_frequent_destination
-  #   Trip.where
-  # end
+  def most_frequent_destination(id)
+    Trip.group(start_station_id: id).order("count_id asc").count(end_station_id: id).keys.first
+  end
 end

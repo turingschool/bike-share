@@ -25,7 +25,7 @@ RSpec.describe 'user creates a new trip' do
     page.select 'A', from: 'trip[start_station_id]'
     fill_in('trip[end_date_id]', with: Date.strptime('2/5/2017', '%m/%d/%Y'))
     page.select 'B', from: 'trip[end_station_id]'
-    fill_in('trip[bike_id]', with: '2')
+    select("2", from: "trip[bike_id]")
     page.select 'User', from: 'trip[subscription_type]'
     fill_in('trip[zipcode_id]', with: '96799')
 

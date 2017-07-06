@@ -107,7 +107,7 @@ text-decoration-color: red;
   color: 	#484848;
 }
 .station-info-text {
-  font-size: 150%;
+  font-size: 100%;
   text-align: center;
 }
 
@@ -122,6 +122,7 @@ text-decoration-color: red;
 .bike-icon-show {
   top: 50%;
   left: 50%;
+  width: 130px;
   transform: translate(-50%, 10%);
   /*margin-top: 30%;*/
   position: relative;

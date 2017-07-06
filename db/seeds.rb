@@ -23,18 +23,20 @@ ZipCode.destroy_all
 station_text = File.read('./db/csv/station.csv')
 station_csv = CSV.parse(station_text, :headers => true, header_converters: :symbol)
 station_csv.each do |row|
-  station_name      = StationName.find_or_create_by!(name: row[:name])
+  station_name      = StationName.find_or_initialize_by(name: row[:name])
   date              = DateTime.strptime(row[:installation_date], '%m/%d/%Y')
-  installation_date = BikeShareDate.find_or_create_by!(bike_share_date: date)
+  installation_date = BikeShareDate.find_or_initialize_by(bike_share_date: date)
   city              = City.find_or_create_by!(name: row[:city])
-  Station.find_or_create_by!(station_id:           row[:id],
-                             station_name_id:      station_name.id,
+  Station.create!(station_id:           row[:id],
+                             station_name:      station_name,
                              lat:                  row[:lat],
                              long:                 row[:long],
                              dock_count:           row[:dock_count],
-                             city_id:              city.id,
-                             installation_date_id: installation_date.id)
+                             city:              city,
+                             bike_share_date: installation_date)
 end
+
+x = Time.now
 
 trip_text = File.read('./db/csv/trip_test.csv')
 trip_csv = CSV.parse(trip_text, :headers => true, header_converters: :symbol)
@@ -52,17 +54,19 @@ trip_csv.each do |row|
     entry_zip         = ZipCode.find_or_initialize_by(zip_code: row[:zip_code])
     Trip.create!(           trip_id:               row[:id],
                             duration:              row[:duration],
-                            start_date_id:         start_date_entry.id,
-                            start_station_name_id: ss_name_entry.id,
-                            start_station_id:      ss_id_entry.station_id,
-                            end_date_id:           end_date_entry.id,
-                            end_station_name_id:   es_name_entry.id,
-                            end_station_id:        es_id_entry.station_id,
+                            start_bike_share_date:       start_date_entry,
+                            start_station_name:          ss_name_entry,
+                            start_station:               ss_id_entry,
+                            end_bike_share_date:       end_date_entry,
+                            end_station_name:          es_name_entry,
+                            end_station:               es_id_entry,
                             bike_id:               row[:bike_id],
-                            subscription_type_id:  e_sub_type.id,
-                            zip_code_id:           entry_zip.id)
+                            subscription_type:     e_sub_type,
+                            zip_code:           entry_zip)
   end
 end
+
+y = Time.now
 
 weather_text = File.read('./db/csv/weather.csv')
 weather_csv = CSV.parse(weather_text, :headers => true, header_converters: :symbol)
@@ -121,3 +125,5 @@ weather_csv.each do |row|
                     )
                   end
  end
+
+puts y - x

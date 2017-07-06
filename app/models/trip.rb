@@ -2,11 +2,14 @@ require 'will_paginate'
 require 'will_paginate/active_record'
 
 class Trip < ActiveRecord::Base
-  belongs_to :station
-  belongs_to :station_name
+  belongs_to :start_station, class_name: :Station, foreign_key: :start_station_id
+  belongs_to :end_station, class_name: :Station, foreign_key: :end_station_id
+  belongs_to :start_station_name, class_name: :StationName, foreign_key: :start_station_name_id
+  belongs_to :end_station_name, class_name: :StationName, foreign_key: :end_station_name_id
   belongs_to :subscription_type
   belongs_to :zip_code
-  belongs_to :bike_share_date
+  belongs_to :start_bike_share_date, class_name: :BikeShareDate, foreign_key: :start_date_id
+  belongs_to :end_bike_share_date, class_name: :BikeShareDate, foreign_key: :end_date_id
 
   def start_date
     BikeShareDate.find(start_date_id).bike_share_date

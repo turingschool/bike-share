@@ -57,6 +57,7 @@ class BikeShareApp < Sinatra::Base
     date = params[:station][:installation_date_id]
     params[:station][:installation_date_id] = BikeShareDate.create_by_date(date)
     @station = Station.update(params[:id], params[:station])
+    # binding.pry
     redirect "/stations/#{@station.id}"
   end
 

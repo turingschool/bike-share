@@ -140,4 +140,9 @@ class BikeShareApp < Sinatra::Base
 
     erb :"weather_conditions/show"
   end
+
+  delete '/weather_conditions/:id' do |id|
+    WeatherCondition.destroy(id)
+    redirect('/weather_conditions')
+  end
 end

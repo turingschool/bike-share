@@ -85,4 +85,14 @@ class Station < ActiveRecord::Base
       return bike.first
     end
   end
+
+  def most_frequent_zipcode
+    zipcode_ids = start_trips.group(:zipcode_id).count
+    zipcode = zipcode_ids.max_by { |k,v| v }
+    if zipcode.nil?
+      return "n/a"
+    else
+      return Zipcode.find(zipcode.first).zipcode
+    end
+  end
 end

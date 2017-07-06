@@ -240,5 +240,21 @@ RSpec.describe Station do
         expect(result_2).to eq("n/a")
       end
     end
+
+    describe ".most_frequent_zipcode" do
+      it "returns the most frequent zipcode for users starting trips at this station" do
+        zip = Zipcode.create(zipcode: "80215")
+        zip = Zipcode.create(zipcode: "90401")
+        trip_1 = Trip.create(duration: 75, start_date_id: 2, start_station_id: 1, end_date_id: 2, end_station_id: 1, bike_id: 1, subscription_type: "customer", zipcode_id: 2)
+        trip_2 = Trip.create(duration: 75, start_date_id: 2, start_station_id: 1, end_date_id: 2, end_station_id: 1, bike_id: 1, subscription_type: "customer", zipcode_id: 2)
+        trip_3 = Trip.create(duration: 75, start_date_id: 3, start_station_id: 1, end_date_id: 3, end_station_id: 1, bike_id: 2, subscription_type: "customer", zipcode_id: 1)
+        trip_4 = Trip.create(duration: 75, start_date_id: 1, start_station_id: 1, end_date_id: 3, end_station_id: 1, bike_id: 3, subscription_type: "customer", zipcode_id: 2)
+        station_1 = Station.create(name: "Station 1", city: "Boston", dock_count: 2, installation_date_id: 1)
+
+        result = station_1.most_frequent_zipcode
+
+        expect(result).to eq("90401")
+      end
+    end
   end
 end

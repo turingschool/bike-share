@@ -124,12 +124,6 @@ RSpec.describe Trip do
       end
     end
 
-    # describe ".month_summary" do
-    #   it "returns the number total rides of each month" do
-    #     expect(Trip.month_summary.first).to eq([[2013, 08], 5])
-    #   end
-    # end
-
     describe ".most_ridden_bike" do
       it "returns bike id with most rides" do
         expect(Trip.most_ridden_bike).to eq(48)
@@ -153,18 +147,6 @@ RSpec.describe Trip do
         expect(Trip.subscription_percentage(4)).to eq(66.67)
       end
     end
-
-    # describe ".date_with_highest_trip_count" do
-    #   it "returns date with highest trip count" do
-    #     expect(Trip.date_with_highest_trip_count).to eq([8, 29, 2013], 5)
-    #   end
-    # end
-
-    # describe ".dates_with_lowest_trip_count" do
-    #   it "returns date with lowest trip count" do
-    #     expect(Trip.date_with_lowest_trip_count).to eq([][9, 1, 2014], 1])
-    #   end
-    # end
 
     describe ".number_of_starting_rides_at_station" do
       it "returns number of rides starting at a station" do

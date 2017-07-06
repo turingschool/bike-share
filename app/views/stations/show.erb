@@ -1,15 +1,5 @@
-
-<!-- <h1><#%= @station.name %></h1>
-
-<h2>Info</h2>
-<p>Dock Count: <#%= @station.dock_count %></p>
-<p>City: <#%= @station.city %></p>
-<p>Installation Date: <#%= @station.installation_date.date %></p>
-<p>Number of Rides Started at this Station: <#%= @rides_started %></p>
-<p>Number of Rides Ended at this Station: <#%= @rides_ended %></p>
-<p>Date with Highest Number of Trips: <#%= @most_trips_started %></p> -->
-
-<body class="show-me-body">
+<body>
+<div class="show-me-body">
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container navbar-beam">
     </div>
@@ -17,7 +7,7 @@
       <a class="navbar-brand nav navbar-nav navbar-left" href="/">
         <img class="brand-logo" alt="Brand" src="bs.png">
       </a>
-      <a href="/stations"><h1>Back To Stations</h1></a>
+      <a href="/stations"><h1>Back To Stations Index</h1></a>
     </div>
     <div>
       <a class="nav navbar-nav navbar-right" href="/station-dashboard">
@@ -25,21 +15,19 @@
       </a>
     </div>
   </nav>
-  <div class="container-fluid center">
+<button type="button" class="btn btn-warning btn-grow"><a href="/stations/<%= @station.id %>/edit">Edit Station</a></button>
+<div class="container-fluid">
     <div class="show_p">
       <h4><%= @station.name %></h4>
       <br/>
-      <img class="" href="= @station.pic %>" />
-      <p>Dock Count: <%= @station.dock_count %></p>
-      <p>City: <%= @station.city %></p>
-      <p>Installation Date: <%= @station.installation_date.date %></p>
-      <p>Number of Rides Started at this Station: <%= @rides_started %></p>
-      <p>Number of Rides Ended at this Station: <%= @rides_ended %></p>
-      <p>Date with Highest Number of Trips: <%= @most_trips_started %></p>
-      <p>Most Frequent Destination Station: <%= @most_end_station %>
-      <p>Most Frequent Origin Station: <%= @most_start_station %>
+      <p><strong>Dock Count: </strong></p>
+      <h6><em><%= @station.dock_count %></em></p>
+      <p><strong>City: </strong></p>
+      <h6><em><%= @station.city %></em></p>
+      <p><strong>Installation Date: </strong></p>
+      <h6><em><%= @station.installation_date.date %></em></p>
+      <br/><br/>
     </div>
-    <br/><br/><br/></br>
-    <button type="button" class="btn btn-warning btn-grow"><a href="/stations/<%= @station.id %>/edit">Edit Station</a></button>
   </div>
+</div>
 </body>

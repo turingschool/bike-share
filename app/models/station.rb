@@ -1,5 +1,5 @@
 class Station < ActiveRecord::Base
-  validates_presence_of :name, :dock_count, :city_id ,:installation_date
+  validates_presence_of :name, :dock_count, :city_id #,:installation_date
   belongs_to :city
 
   def self.average_dock_count

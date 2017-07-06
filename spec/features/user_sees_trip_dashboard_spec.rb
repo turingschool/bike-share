@@ -1,4 +1,4 @@
-RSpec.describe "User visits '/trip-dashboard'" do
+RSpec.describe "User visits '/trips-dashboard'" do
   before :all do
     Trip.create(duration: 50, start_station_id: 1, end_station_id: 3, bike_id: 318, zip_code: 94103, subscription_id: 1, start_date: "2013-08-29 17:01:00", end_date: "2013-08-29 17:03:00", weather_id: 1)
     Trip.create(duration: 40, start_station_id: 2, end_station_id: 2, bike_id: 48, zip_code: 97214, subscription_id: 1, start_date: "2013-08-29 10:16:00", end_date: "2013-08-29 10:17:00", weather_id: 1)
@@ -12,7 +12,8 @@ RSpec.describe "User visits '/trip-dashboard'" do
 
     Subscription.create(subscription_type: "Subscriber")
     Subscription.create(subscription_type: "Customer")
-    visit("/trip-dashboard")
+    visit("/trips-dashboard")
+    save_and_open_page
   end
 
   it "and sees average duration" do
@@ -42,7 +43,10 @@ RSpec.describe "User visits '/trip-dashboard'" do
 
   it "and sees total number of rides each month" do
     expect(page).to have_content("Total number of rides each month")
-    expect(page).to have_content("")
+    expect(page).to have_content("8/2013")
+    expect(page).to have_content("4")
+    expect(page).to have_content("9/2014")
+    expect(page).to have_content("1")
   end
 
   it "and sees most ridden bike" do
@@ -57,11 +61,11 @@ RSpec.describe "User visits '/trip-dashboard'" do
 
   it "and sees date with highest trip count" do
     expect(page).to have_content("Date with highest trip count")
-    expect(page).to have_content("2013-08-29")
+    expect(page).to have_content("8/29/2013: 4")
   end
 
   it "and sees date with lowest trip count" do
     expect(page).to have_content("Date with lowest trip count")
-    expect(page).to have_content("2014-09-01")
+    expect(page).to have_content("9/1/2014: 1")
   end
 end

@@ -96,7 +96,7 @@ RSpec.describe Trip do
 
     describe ".average_duration" do
       it "returns average duration of trips" do
-        expect(Trip.average_duration).to eq(165)
+        expect(Trip.average_duration).to eq(0.16583e3)
       end
     end
 
@@ -144,13 +144,13 @@ RSpec.describe Trip do
 
     describe ".subscription_info" do
       it "returns number of subscribers and customers" do
-        expect(Trip.subscription_info.first).to eq({1 => 4, 2 => 1})
+        expect(Trip.subscription_info.first).to eq([1, 5])
       end
     end
 
     describe "subscription_percentage" do
       it "returns percentage of subscribers and customers" do
-        expect(Trip.subscription_percentage(4)).to eq(1, 83.33)
+        expect(Trip.subscription_percentage(4)).to eq(66.67)
       end
     end
 
@@ -186,25 +186,25 @@ RSpec.describe Trip do
 
     describe ".most_frequent_origination" do
       it "returns most frequent origination to this station" do
-        expect(Trip.most_frequent_origination(10)).to eq("San Jose City Hall")
+        expect(Trip.most_frequent_origination(1)).to eq("Mountain View City Hall")
       end
     end
 
     describe ".date_with_highest_trip_from_this_station" do
       it "returns date with highest trip from this station" do
-        expect(Trip.date_with_highest_trip_from_this_station(4)).to eq("8/29/2013")
+        expect(Trip.date_with_highest_trip_from_this_station(2)).to eq("8/29/2013")
       end
     end
 
     describe ".most_frequent_zip_code_users_starting" do
       it "returns zip code with most frequent starting rides" do
-        expect(Trip.most_frequent_zip_code_users_starting(66)).to eq(94103)
+        expect(Trip.most_frequent_zip_code_users_starting(1)).to eq(94103)
       end
     end
 
     describe ".most_frequent_bike_starting" do
       it "returns bike id with most frequent starting ride" do
-        expect(Trip.most_frequent_bike_starting(66)).to eq(318)
+        expect(Trip.most_frequent_bike_starting(1)).to eq(318)
       end
     end
   end

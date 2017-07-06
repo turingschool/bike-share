@@ -9,13 +9,12 @@
     <!-- <img class="card-img-top" src="http://via.placeholder.com/478x100" alt="Card image cap"> -->
     <!-- <p class="card-text text-muted">Station:</p> -->
     <div class="card-block">
-      <h4 class="card-title"><%= station.name  %></h4>
+      <h4 class="card-title card-text"><%= station.name  %></h4>
       <h6 class="card-subtitle mb-2 text-muted card-text">PUBLIC BICYCLE RENTAL STATION</h6>
       <p class="card-text"><strong>Dock count: </strong><%= station.dock_count  %></p>
       <p class="card-text"><strong>Installation Date:</strong> <%= station.installation_date  %></p>
       <p class="card-text"><strong>City:</strong> <%= station.city  %></p>
-        <a href="/stations/<%= station.id  %>" class="card-link card-text">View This Station</a><br>
-      </button>
+      <a href="/stations/<%= station.id  %>" class="btn btn-xs btn-default element-center-hor" role="button">View This Station</a><br>
     </div>
   </div>
 </div>

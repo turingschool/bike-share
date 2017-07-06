@@ -1,12 +1,10 @@
-<p><a href="/">go back</a></p>
-
-
-<p><a href="/conditions/new">add new weather condition</a></p>
+<p><a href="/" class="btn btn-xs btn-default create-button" role="button">go back</a></p>
+<p><a href="/conditions/new" class="btn btn-xs btn-default create-button" role="button">add new weather condition</a></p>
 <a href="/weather-dashboard" class="btn btn-xs btn-default create-button" role="button">Weather Dashboard</a>
-
 <h1>Weather condition reports by date</h1>
 <% @weathers.each do |weather| %>
-  <p><a href="/conditions/<%=weather.id%>"><%= weather.date %></a></p>
+<div class="boxed-date ">
+  <p class="btn btn-xs element-center-hor"><a href="/conditions/<%=weather.id%>"><%= weather.date %></a></p>
+</div>
 <% end %>
-
 <p><%= will_paginate @wpages %></p>

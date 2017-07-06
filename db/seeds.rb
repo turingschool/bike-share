@@ -82,7 +82,7 @@ def seed_weather_database(file_path)
 end
 
 # seed_city_database("db/csv/station.csv")
-# seed_weather_database("db/csv/weather.csv")
+seed_weather_database("db/csv/weather.csv")
 # seed_station_database("db/csv/station.csv")
 # seed_subscriptions_database("db/csv/trip.csv")
 # seed_trips_database("db/csv/trip.csv")

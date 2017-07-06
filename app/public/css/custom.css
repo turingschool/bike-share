@@ -133,7 +133,14 @@ text-decoration-color: red;
   width: 100%;
   height: inherit;
 }
-
+.sun-icon-show {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  position: relative;
+  width: 200px;
+  margin-bottom: 30px;
+}
 .map-icon-show {
   top: 50%;
   left: 50%;
@@ -305,4 +312,14 @@ text-decoration-color: red;
 
 .trip-sub-button {
   margin-top: 10px;
+}
+
+.boxed-date {
+  padding: 2px;
+  border-style: solid;
+  border-radius: 3px;
+  border-color: grey;
+  width: 200px;
+  margin: 5px;
+  float: left;
 }

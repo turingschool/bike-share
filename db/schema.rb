@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 20170705002149) do
     t.bigint "bike_id"
     t.bigint "zip_code"
     t.integer "subscription_id"
-    t.string "start_date"
-    t.string "end_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.integer "weather_id"
   end
 

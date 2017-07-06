@@ -1,20 +1,46 @@
-<form action="/conditions/<%= @weather.id %>" method="post">
-<p>Edit weather information</p>
-<input type="hidden" name="_method" value="PUT" />
-<p>Date:</p>
-<input type="text" name="weather[date]" value= "<%=@weather.date %>"/><br/>
-<p>Max temperature:</p>
-<input type="text" name="weather[max_temperature]" value= "<%=@weather.max_temperature %>"/><br/>
-<p>Min temperature:</p>
-<input type="text" name="weather[min_temperature]" value= "<%=@weather.min_temperature %>"/><br/>
-<p>Mean temperature:</p>
-<input type="text" name="weather[mean_temperature]" value= "<%=@weather.mean_temperature %>"/><br/>
-<p>Mean humidity:</p>
-<input type="text" name="weather[mean_humidity]" value= "<%=@weather.mean_humidity %>"/><br/>
-<p>Mean visibility:</p>
-<input type="text" name="weather[mean_visibility]" value= "<%=@weather.mean_visibility %>"/><br/>
-<p>Mean wind speeds:</p>
-<input type="text" name="weather[mean_wind_speed]" value= "<%=@weather.mean_wind_speed %>"/><br/>
-<p>Precipitation:</p>
-<input type="text" name="weather[precipitation]" value= "<%=@weather.precipitation %>"/><br/>
-<input type="submit" />
+<head>
+  <title>Bike Share: Edit Weather</title>
+</head>
+<body>
+  <main>
+    <section>
+      <div class="row">
+        <div class="col-md-1 empty-rounded-div" ></div>
+        <div class="col-md-4">
+          <div class="panel panel-default show-div">
+            <div class="panel-heading">
+              <h2 class="panel-heading-text">Edit weather information</h2>
+            </div>
+            <div class="panel-body ">
+              <form action="/conditions/<%= @weather.id %>" method="post">
+                <input class="card-input" type="hidden" name="_method" value="PUT" />
+                <p class="edit-input-label">Max temperature:</p>
+                <input class="card-input" type="text" name="weather[max_temperature]" value= "<%=@weather.max_temperature %>"/><br/>
+                <p class="edit-input-label">Min temperature:</p>
+                <input class="card-input" type="text" name="weather[min_temperature]" value= "<%=@weather.min_temperature %>"/><br/>
+                <p class="edit-input-label">Mean temperature:</p>
+                <input class="card-input" type="text" name="weather[mean_temperature]" value= "<%=@weather.mean_temperature %>"/><br/>
+                <p class="edit-input-label">Mean humidity:</p>
+                <input class="card-input" type="text" name="weather[mean_humidity]" value= "<%=@weather.mean_humidity %>"/><br/>
+                <p class="edit-input-label">Mean visibility:</p>
+                <input class="card-input" type="text" name="weather[mean_visibility]" value= "<%=@weather.mean_visibility %>"/><br/>
+                <p class="edit-input-label">Mean wind speeds:</p>
+                <input class="card-input" type="text" name="weather[mean_wind_speed]" value= "<%=@weather.mean_wind_speed %>"/><br/>
+                <p class="edit-input-label">Precipitation:</p>
+                <input class="card-input" type="text" name="weather[precipitation]" value= "<%=@weather.precipitation %>"/><br/>
+                <input class="btn btn-xs element-center-hor trip-sub-button" type="submit" />
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 show-div">
+          <div class="panel-body show-div">
+            <h2 class="show-splash">Weather Date:  <%=@weather.date %></h2>
+            <img src="http://icon-park.com/imagefiles/simple_weather_icons2_sunny.png" alt="Bicycle Icon" class="sun-icon-show">
+
+          </div>
+          <div class="col-md-1 empty-rounded-div"></div>
+        </div>
+      </section>
+    </main>
+  </body>

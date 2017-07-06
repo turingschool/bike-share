@@ -1,14 +1,41 @@
-<a href="/">go back</a>
-<h1><%= @weather.date %></h1>
-<p>max temperature: <%= @weather.max_temperature %></p>
-<p>min temperature: <%= @weather.min_temperature %></p>
-<p>mean temperature: <%= @weather.mean_temperature %></p>
-<p>mean humidity: <%= @weather.mean_humidity %></p>
-<p>mean visibility in miles: <%= @weather.mean_visibility %></p>
-<p>mean wind speeds (mph): <%= @weather.mean_wind_speed %></p>
-<p>precipitation (inches): <%= @weather.precipitation %></p>
-<a href="/conditions/<%= @weather.id %>/edit">edit</a>
-<form action="/conditions/<%= @weather.id %>" method = "POST">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="delete" />
-</form>
+<head>
+  <title>Bike Share: Trip Info</title>
+</head>
+<body>
+  <main>
+    <section>
+      <div class="row">
+        <div class="col-md-1 empty-rounded-div" ></div>
+        <div class="col-md-4">
+          <div class="panel panel-default show-div">
+            <div class="panel-heading">
+              <h2 class="panel-heading-text">Date Information</h2>
+            </div>
+            <div class="panel-body ">
+              <p>max temperature: <%= @weather.max_temperature %></p>
+              <p>min temperature: <%= @weather.min_temperature %></p>
+              <p>mean temperature: <%= @weather.mean_temperature %></p>
+              <p>mean humidity: <%= @weather.mean_humidity %></p>
+              <p>mean visibility in miles: <%= @weather.mean_visibility %></p>
+              <p>mean wind speeds (mph): <%= @weather.mean_wind_speed %></p>
+              <p>precipitation (inches): <%= @weather.precipitation %></p>
+              <button><a href="/conditions/<%= @weather.id %>/edit">edit</a></button>
+              <form action="/conditions/<%= @weather.id %>" method = "POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="delete" />
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 show-div">
+          <div class="panel-body show-div">
+            <h2 class="show-splash">Weather Date: <%= @weather.date %></h2>
+            <img src="http://icon-park.com/imagefiles/simple_weather_icons2_sunny.png" alt="Bicycle Icon" class="sun-icon-show">
+          </div>
+          <div class="col-md-1 empty-rounded-div">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>

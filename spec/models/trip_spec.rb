@@ -49,7 +49,125 @@ RSpec.describe Trip do
     end
   end
 
+
   describe "Class Methods" do
+    describe '.longest_ride' do
+      it 'returns longest ride duration' do
+        date = BikeShareDate.create(date: Date.strptime('1/1/2012', '%m/%d/%Y'))
+        date_2 = BikeShareDate.create(date: Date.strptime('2/5/2017', '%m/%d/%Y'))
+        Trip.create(duration: 111, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 1)
+        Trip.create(duration: 222, start_date_id: 1, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "User", zipcode_id: 2)
+        Trip.create(duration: 333, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 444, start_date_id: 1, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "User", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+
+        longest_ride = Trip.longest_ride
+
+        expect(longest_ride).to eq(555)
+      end
+    end
+    describe '.shortest_ride' do
+      it 'returns shortest ride duration' do
+        date = BikeShareDate.create(date: Date.strptime('1/1/2012', '%m/%d/%Y'))
+        date_2 = BikeShareDate.create(date: Date.strptime('2/5/2017', '%m/%d/%Y'))
+        Trip.create(duration: 111, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 1)
+        Trip.create(duration: 222, start_date_id: 1, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "User", zipcode_id: 2)
+        Trip.create(duration: 333, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 444, start_date_id: 1, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "User", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+
+        shortest_ride = Trip.shortest_ride
+
+        expect(shortest_ride).to eq(111)
+      end
+    end
+    describe '.most_frequent_zipcode' do
+      it 'returns most frequently used zipcode' do
+        date = BikeShareDate.create(date: Date.strptime('1/1/2012', '%m/%d/%Y'))
+        date_2 = BikeShareDate.create(date: Date.strptime('2/5/2017', '%m/%d/%Y'))
+
+        Zipcode.create(zipcode:"80202")
+        Zipcode.create(zipcode:"80209")
+
+        Trip.create(duration: 111, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 1)
+        Trip.create(duration: 222, start_date_id: 1, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "User", zipcode_id: 2)
+        Trip.create(duration: 333, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 444, start_date_id: 1, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "User", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+
+        most_frequent_zipcode = Trip.most_frequent_zipcode
+
+        expect(most_frequent_zipcode).to eq("80209")
+      end
+    end
+    describe '.most_frequent_start_station' do
+      it 'returns station where the most rides started' do
+        station_a = Station.create(name: "A", dock_count: 2, installation_date_id: 2, city: "Lakewood")
+        station_b = Station.create(name: "B", dock_count: 2, installation_date_id: 1, city: "Denver")
+
+        date = BikeShareDate.create(date: Date.strptime('1/1/2012', '%m/%d/%Y'))
+        date_2 = BikeShareDate.create(date: Date.strptime('2/5/2017', '%m/%d/%Y'))
+        Trip.create(duration: 111, start_date_id: 2, start_station_id: 1, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 1)
+        Trip.create(duration: 222, start_date_id: 1, start_station_id: 1, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "User", zipcode_id: 2)
+        Trip.create(duration: 333, start_date_id: 2, start_station_id: 2, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 444, start_date_id: 1, start_station_id: 2, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "User", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 2, start_station_id: 2, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+
+        most_frequent_start_station = Trip.most_frequent_start_station
+
+        expect(most_frequent_start_station).to eq("B")
+      end
+    end
+    describe '.subscription_type' do
+      it "returns count and percentage for each subscription type" do
+        date = BikeShareDate.create(date: Date.strptime('1/1/2012', '%m/%d/%Y'))
+        date_2 = BikeShareDate.create(date: Date.strptime('2/5/2017', '%m/%d/%Y'))
+
+
+        Trip.create(duration: 111, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 1)
+        Trip.create(duration: 222, start_date_id: 1, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "User", zipcode_id: 2)
+        Trip.create(duration: 333, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 444, start_date_id: 1, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "User", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+
+        counts = Trip.subscription_type
+
+        expect(counts["Customer"]["Count"]).to eq(3)
+        expect(counts["User"]["Count"]).to eq(2)
+
+        expect(counts["Customer"]["Percentage"]).to eq(0.60)
+        expect(counts["User"]["Percentage"]).to eq(0.40)
+
+      end
+    end
+
+  describe "Class methods" do
+    describe ".rides_at_start_station" do
+      it "returns the number of trips started at that station" do
+        trip_1 = Trip.create(duration: 75, start_date_id: 2, start_station_id: 3, end_date_id: 2, end_station_id: 5, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+        trip_2 = Trip.create(duration: 75, start_date_id: 2, start_station_id: 3, end_date_id: 2, end_station_id: 5, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+        trip_3 = Trip.create(duration: 75, start_date_id: 3, start_station_id: 3, end_date_id: 3, end_station_id: 5, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+        trip_4 = Trip.create(duration: 75, start_date_id: 1, start_station_id: 2, end_date_id: 3, end_station_id: 5, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+
+        result = Trip.rides_at_start_station(3)
+
+        expect(result).to eq(3)
+      end
+    end
+
+    describe ".rides_at_end_station" do
+      it "returns the number of trips ended at that station" do
+        trip_1 = Trip.create(duration: 75, start_date_id: 2, start_station_id: 3, end_date_id: 2, end_station_id: 4, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+        trip_2 = Trip.create(duration: 75, start_date_id: 2, start_station_id: 3, end_date_id: 2, end_station_id: 4, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+        trip_3 = Trip.create(duration: 75, start_date_id: 3, start_station_id: 3, end_date_id: 3, end_station_id: 2, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+        trip_4 = Trip.create(duration: 75, start_date_id: 1, start_station_id: 2, end_date_id: 3, end_station_id: 1, bike_id: 6, subscription_type: "customer", zipcode_id: 7)
+
+        result = Trip.rides_at_end_station(4)
+
+        expect(result).to eq(2)
+      end
+    end
+    
     describe '.date_with_most_trips' do
       it "returns single date with highest number of trips and count of those trips" do
         date = BikeShareDate.create(date: Date.strptime('1/1/2012', '%m/%d/%Y'))
@@ -130,22 +248,6 @@ RSpec.describe Trip do
         expect(result[:bike]).to eq(3)
         expect(result[:count]).to eq(1)
       end
-    end
-
-    describe ".subscription_type" do
-      it "returns user subscription type breakout with count and percentage" do
-
-      Trip.create(duration: 111, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 1)
-      Trip.create(duration: 222, start_date_id: 1, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Subscriber", zipcode_id: 2)
-      Trip.create(duration: 333, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 1, subscription_type: "Customer", zipcode_id: 2)
-      Trip.create(duration: 444, start_date_id: 1, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 1, subscription_type: "Subscriber", zipcode_id: 2)
-      Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
-      Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 2, subscription_type: "Customer", zipcode_id: 2)
-      Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Subscriber", zipcode_id: 2)
-      Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 2, subscription_type: "Subscriber", zipcode_id: 2)
-
-      expect(Trip.subscription_type["Subscriber"]).to eq(4)
-      expect(Trip.subscription_type["Customer"]).to eq(4)
     end
 
     describe ".group_by_month" do
@@ -237,6 +339,33 @@ RSpec.describe Trip do
         result = Trip.average_ride_duration
 
         expect(result).to eq(454.09)
+      end
+    end
+
+    describe '.station_with_most_ending_trips' do
+      it "returns station with the most rides ending there" do
+        station_1 = Station.create(name: "First", dock_count: 4, city: "Detroit", installation_date_id: 1)
+        station_2 = Station.create(name: "Second", dock_count: 2, city: "Detroit", installation_date_id: 1)
+        station_3 = Station.create(name: "Third", dock_count: 23, city: "Detroit", installation_date_id: 1)
+        station_4 = Station.create(name: "Fourth", dock_count: 6, city: "Detroit", installation_date_id: 1)
+        station_5 = Station.create(name: "Fifth", dock_count: 5, city: "Detroit", installation_date_id: 1)
+
+        Trip.create(duration: 111, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 4, bike_id: 6, subscription_type: "Customer", zipcode_id: 1)
+        Trip.create(duration: 222, start_date_id: 1, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "User", zipcode_id: 2)
+        Trip.create(duration: 333, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 1, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 444, start_date_id: 1, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 1, subscription_type: "User", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 1, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 2, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 3, start_station_id: 3, end_date_id: 4, end_station_id: 2, bike_id: 2, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 2, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 6, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 4, start_station_id: 3, end_date_id: 4, end_station_id: 3, bike_id: 2, subscription_type: "Customer", zipcode_id: 2)
+        Trip.create(duration: 555, start_date_id: 5, start_station_id: 3, end_date_id: 4, end_station_id: 5, bike_id: 3, subscription_type: "Customer", zipcode_id: 2)
+
+        result = Trip.station_with_most_ending_trips
+
+        expect(result[:station]).to eq(station_5)
+        expect(result[:count]).to eq(7)
       end
     end
   end

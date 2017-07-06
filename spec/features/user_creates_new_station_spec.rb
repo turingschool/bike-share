@@ -12,6 +12,9 @@ RSpec.describe "user creates station" do
     fill_in("station[installation_date_id]", with: "1990-04-16")
     fill_in("station[city]", with: "city")
     click_button("Create Station")
+
+    # save_and_open_page
+
     station = Station.last
     expect(current_path).to eq("/stations/#{station.id}")
     expect(page).to have_content("fifth")

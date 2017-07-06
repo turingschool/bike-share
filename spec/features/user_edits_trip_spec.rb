@@ -28,7 +28,7 @@ RSpec.describe "user edits trip" do
     select("Central", from: "trip[end_station_id]")
     fill_in("trip[zipcode_id]", with: 80202)
 
-    click_button("Edit Trip")
+    click_button("Submit Changes")
     expect(current_path).to eq("/trips/2")
     expect(page).to have_content("Boise")
   end

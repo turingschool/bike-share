@@ -14,6 +14,14 @@ class Trip < ActiveRecord::Base
   belongs_to :end_date, class_name: "BikeShareDate", foreign_key: "end_date_id"
   belongs_to :zipcode, class_name: "Zipcode", foreign_key: "zipcode_id"
 
+  def self.rides_at_start_station(station_id)
+    Trip.where(start_station_id: station_id).count
+  end
+
+  def self.rides_at_end_station(station_id)
+    Trip.where(end_station_id: station_id).count
+  end
+
   def self.date_with_most_trips
     most_date = group(:start_date).count.max_by do |date, count|
       count
@@ -47,8 +55,12 @@ class Trip < ActiveRecord::Base
   end
 
   def self.subscription_type
-     count = Trip.group(:subscription_type).count.each do |bike, count|
-     end
+    counts = Trip.group(:subscription_type).count
+    total_count = counts.values.reduce(:+)
+    counts.each do |subscription_type, count|
+      counts[subscription_type] = { "Count" => count, "Percentage" => (count.to_f / total_count).round(2)}
+    end
+# Access in controller route for trip dashboard by data[user]
   end
 
   def self.rides_by_month
@@ -81,5 +93,31 @@ class Trip < ActiveRecord::Base
 
   def self.average_ride_duration
     average(:duration).round(2)
+  end
+
+  def self.longest_ride
+    Trip.maximum(:duration)
+  end
+
+  def self.shortest_ride
+    Trip.minimum(:duration)
+  end
+
+  def self.most_frequent_zipcode
+    zipcode_id = Trip.group(:zipcode_id).count.max_by{|k,v| v}.first
+    Zipcode.find(zipcode_id).zipcode
+  end
+
+  def self.most_frequent_start_station
+    station_id = Trip.group(:start_station_id).count.max_by{|k,v| v}.first
+    Station.find(station_id).name
+  end
+
+  def self.station_with_most_ending_trips
+    most_ending_station = group(:end_station).count.max_by do |station, count|
+      count
+    end
+
+    {station: most_ending_station[0], count: most_ending_station[1]}
   end
 end

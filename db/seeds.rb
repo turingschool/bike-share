@@ -60,7 +60,8 @@ weather_conditions = delete_columns("./db/csv/weather.csv", [:max_dew_point_f,
                                                       :max_gust_speed_mph,
                                                       :cloud_cover,
                                                       :events,
-                                                      :wind_dir_degrees]
+                                                      :wind_dir_degrees,
+                                                      :zip_code]
                                                       )
 
 weather_conditions.each do |row|
@@ -73,7 +74,6 @@ weather_conditions.each do |row|
   row[:mean_visibility] = WeatherCondition.clean_float(row.delete(:mean_visibility_miles))
   row[:mean_wind_speed] = WeatherCondition.clean_float(row.delete(:mean_wind_speed_mph))
   row[:precipitation] = WeatherCondition.clean_float(row.delete(:precipitation_inches))
-  row[:zipcode] = WeatherCondition.clean_float(row.delete(:zip_code))
   WeatherCondition.create!(row)
 end
 system 'Say "Finished Seeding Weather Conditions"'

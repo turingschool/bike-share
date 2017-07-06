@@ -1,3 +1,4 @@
+
 require 'will_paginate'
 require 'will_paginate/active_record'
 
@@ -32,46 +33,66 @@ class Trip < ActiveRecord::Base
     ZipCode.find(zip_code_id).zip_code
   end
 
-
-  Trip.average(:duration).to_i
-
-  def average_duration_of_a_ride
+  def self.average_duration_of_a_ride
+    Trip.average(:duration).to_i
   end
 
-  def longest_ride
+  def self.longest_ride
+    Trip.order(:duration).last.duration
   end
 
-  def shortest_ride
+  def self.shortest_ride
+    Trip.order(:duration).first.duration
+  end
+  def self.most_starting_station_rides
+    StationName.find(Trip.group(:start_station_name_id).order("count_id asc").count(:id).keys.last).name
   end
 
-  def most_starting_station_rides
+  def self.most_ending_station_rides
+    StationName.find(Trip.group(:start_station_name_id).order("count_id desc").count(:id).keys.last).name
   end
 
-  def most_ending_place_conditions
+  def self.month_by_month_breakdown
+      #Month by Month breakdown of number of rides with subtotals for each year
   end
 
-  def month_by_month_breakdown
-      # <h3>Month by Month breakdown of number of rides with subtotals for each year: <%= %></h3>
+  def self.least_ridden_bike
+    Trip.group(:bike_id).order("count_id desc").count(:id).keys.last
   end
 
-  def least_ridden_bike
-      # <h3>Least ridden bike with total number of rides for that bike: <%= %></h3>
+  def self.least_ridden_bike_number
+    Trip.group(:bike_id).order("count_id desc").count(:id).values.last
   end
 
-  def most_ridden_bike
-    # <h3>Most ridden bike with total number of rides for that bike: <%= %></h3>
+  def self.most_ridden_bike
+    Trip.group(:bike_id).order("count_id asc").count(:id).keys.last
   end
 
-  def user_subscription_breakout
-    #count and percentage
+  def self.most_ridden_bike_number
+    Trip.group(:bike_id).order("count_id asc").count(:id).values.last
   end
 
-  def day_of_highest_trips
-    # <h3>Single date with the highest number of trips with a count of those trips: <%= %></h3>
-
+  def self.user_subscription_count
+    Trip.where(subscription_type_id: 1).count
   end
 
-  def day_of_lowest_trips
-    # <h3>Single date with the lowest number of trips with a count of those trips: <%= %></h3>
+  def self.user_subscription_percentage
+    ((user_subscription_count.to_f / Trip.all.count.to_f) * 100).round
+  end
+
+  def self.day_of_highest_trips
+    BikeShareDate.find(Trip.group(:start_date_id).order("count_id asc").count(:id).keys.last).bike_share_date
+  end
+
+  def self.day_of_lowest_trips
+    BikeShareDate.find(Trip.group(:start_date_id).order("count_id asc").count(:id).keys.first).bike_share_date
+  end
+
+  def self.day_of_highest_trips_number
+    Trip.group(:start_date_id).order("count_id asc").count(:id).values.last
+  end
+
+  def self.day_of_lowest_trips_number
+    Trip.group(:start_date_id).order("count_id asc").count(:id).values.first
   end
 end

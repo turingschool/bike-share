@@ -1,6 +1,14 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 class Weather < ActiveRecord::Base
-  validates_presence_of :date
+  validates_presence_of :date, :max_temperature, :min_temperature, :mean_temperature,
+  :mean_humidity, :mean_visibility, :mean_wind_speed, :precipitation
   has_many :trips
+
+  def self.per_page
+    30
+  end
 
   def self.rides_by_max_temp
     Weather.calculate_rides("max_temperature", 10)
@@ -19,12 +27,12 @@ class Weather < ActiveRecord::Base
   end
 
   def self.highest_rides_weather
-    weather = Weather.find_by(date: Date.strptime(Trip.date_with_highest_trip_count[0].join("/"), "%m/%d/%Y"))
+    weather = Weather.find_by(date: Date.strptime(Trip.date_with_highest_trip_count, "%m/%d/%Y"))
     weather.attributes.delete_if {|k,v| k == "id" || k == "date"}
   end
 
   def self.lowest_rides_weather
-    weather = Weather.find_by(date: Date.strptime(Trip.date_with_lowest_trip_count[0].join("/"), "%m/%d/%Y"))
+    weather = Weather.find_by(date: Date.strptime(Trip.date_with_lowest_trip_count, "%m/%d/%Y"))
     weather.attributes.delete_if {|k,v| k == "id" || k == "date"}
   end
 

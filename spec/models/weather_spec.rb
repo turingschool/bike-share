@@ -1,4 +1,4 @@
-require './db/seeds.rb'
+
 
 RSpec.describe Weather do
   describe "Validations" do
@@ -66,8 +66,8 @@ RSpec.describe Weather do
     end
     it ".lowest_rides_weather" do
       expect(Weather.lowest_rides_weather["max_temperature"]).to eq(77.0)
-    end 
-  end 
+    end
+  end
   describe "Relationships" do
     it ".trips returns all trips" do
       trip1 = Trip.create(duration: 113, start_station_id: 66, end_station_id: 66, bike_id: 318, zip_code: 94103, subscription_id: 1, start_date: "2013-08-29 17:01:00", end_date: "2013-08-29 17:03:00", weather_id: 1)

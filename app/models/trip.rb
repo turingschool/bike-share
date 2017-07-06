@@ -8,7 +8,7 @@ class Trip < ActiveRecord::Base
   validates_presence_of :duration, :start_date, :end_date, :start_station_id, :end_station_id, :bike_id, :subscription_id
   belongs_to :subscription
   belongs_to :weather
-  
+
   def self.per_page
     30
   end
@@ -36,15 +36,15 @@ class Trip < ActiveRecord::Base
   end
 
   def self.month_summary
-    dates = Trip.group('(EXTRACT(YEAR FROM end_date))::integer').group('(EXTRACT(MONTH FROM end_date))::integer').order('count_all DESC').count
+    Trip.group('(EXTRACT(YEAR FROM end_date))::integer').group('(EXTRACT(MONTH FROM end_date))::integer').order('count_all DESC').count
   end
 
   def self.most_ridden_bike
-    Trip.group(:bike_id).order('count_id DESC').limit(1).count(:id).first
+    Trip.group(:bike_id).order('count_id DESC').limit(1).count(:id).first.first
   end
 
   def self.least_ridden_bikes
-    Trip.group(:bike_id).order('count_id').limit(1).count(:id).first
+    Trip.group(:bike_id).order('count_id').limit(1).count(:id).first.first
   end
 
   def self.subscription_info
@@ -57,11 +57,13 @@ class Trip < ActiveRecord::Base
   end
 
   def self.date_with_highest_trip_count
-    Trip.group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all DESC').count.first
+    date = Trip.group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all DESC').count.first
+    "#{date[0][0]}/#{date[0][1]}/#{date[0][2]}: #{date[1]}"
   end
 
   def self.date_with_lowest_trip_count
-    Trip.group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all').count.first
+    date = Trip.group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all').count.first
+    "#{date[0][0]}/#{date[0][1]}/#{date[0][2]}: #{date[1]}"
   end
 
   def self.number_of_starting_rides_at_station(station_id)

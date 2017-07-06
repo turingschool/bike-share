@@ -105,9 +105,6 @@ class BikeShareApp < Sinatra::Base
     # if
       utf.save
       redirect "/trips/#{params[:id]}"
-    # else
-    #   @params[:page] = :"/trips/:id/edit"
-    # end
   end
 
   delete '/trips/:id' do |id|
@@ -122,6 +119,27 @@ class BikeShareApp < Sinatra::Base
 
   get '/conditions/new' do
     erb :"conditions/new"
+  end
+
+  get '/conditions/:id/edit' do
+    @condition = Weather.find(params[:id])
+    erb :"conditions/edit"
+  end
+
+  put '/conditions/:id' do
+    ucf = UpdateConditionForm.new(params)
+    if ucf.save
+      redirect "/conditions/#{params[:id]}"
+    else
+      @errors = ucf.errors
+      @condition = Weather.find(params[:id])
+      erb :"/conditions/edit"
+    end
+  end
+
+  delete '/conditions/:id' do |id|
+    Weather.destroy(id.to_i)
+    redirect '/conditions'
   end
 
   get '/conditions/:id' do

@@ -1,5 +1,6 @@
 <p><a href="/">go back</a></p>
-<p><a href="/conditions/new">add new weather condition</a>
+<p><a href="/conditions/new">add new weather condition</a></p>
+<a href="/weather-dashboard" class="btn btn-xs btn-default create-button" role="button">Weather Dashboard</a>
 <h1>Weather condition reports by date</h1>
 <% @weathers.each do |weather| %>
   <p><a href="/conditions/<%=weather.id%>"><%= weather.date %></a></p>

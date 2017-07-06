@@ -3,12 +3,12 @@ RSpec.describe "user can see conditions" do
     date_str = DateTime.strptime('8/29/2013', '%m/%d/%Y')
     date = BikeShareDate.find_or_initialize_by(bike_share_date: date_str)
     zip_code = ZipCode.find_or_initialize_by(zip_code: 98059)
-    Weather.create!(bike_share_date: date, max_temperature_f: 74.0, zip_code: zip_code)
+    Weather.create!(bike_share_date: date, max_temperature_f: 74.0, mean_temperature_f: 54, min_temperature_f: 43, mean_humidity: 32, mean_visibility_miles: 54, mean_humidity: 87, mean_wind_speed_mph: 97, precipitation_inches: 3)
 
     visit '/conditions'
 
     expect(page).to have_content('Weather')
-    expect(page).to have_content('98059')
+    expect(page).to have_content('74')
     expect(page).to have_button('Edit')
     expect(page).to have_button('Delete')
   end
@@ -18,7 +18,7 @@ RSpec.describe "user can see conditions" do
       date_str = DateTime.strptime('8/29/2013', '%m/%d/%Y')
       date = BikeShareDate.find_or_initialize_by(bike_share_date: date_str)
       zip_code = ZipCode.find_or_initialize_by(zip_code: 98059)
-      Weather.create!(bike_share_date: date, max_temperature_f: 74.0, zip_code: zip_code)
+      Weather.create!(bike_share_date: date, max_temperature_f: 74.0, mean_temperature_f: 54, min_temperature_f: 43, mean_humidity: 32, mean_visibility_miles: 54, mean_humidity: 87, mean_wind_speed_mph: 97, precipitation_inches: 3)
     end
 
     visit '/conditions'

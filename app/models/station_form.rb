@@ -31,9 +31,9 @@ class StationForm
                               installation_date_id: save_date.id
                               )
       @station.save
-        return true
+      return true
     else
-        false
+      false
     end
   end
 end

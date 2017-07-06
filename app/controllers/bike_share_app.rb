@@ -15,7 +15,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/station-dashboard' do
-    #refactor
     @count = Station.total_station_count
     @average = Station.average_bikes_per_station
     @most_bikes = Station.most_bikes_available

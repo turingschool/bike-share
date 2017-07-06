@@ -58,7 +58,7 @@ class Station < ActiveRecord::Base
 
   def start_station_with_most_rides
     all_destinations = start_trips.group(:end_station_id).count
-    most_destination = all_destinations.max_by { |k,v| v }
+    most_destination = all_destinations.max_by { |end_station_id,count| count }
     if most_destination.nil?
       return "0"
     else
@@ -68,7 +68,7 @@ class Station < ActiveRecord::Base
 
   def origination_station
     all_origins = end_trips.group(:start_station_id).count
-    most_origin = all_origins.max_by { |k,v| v }
+    most_origin = all_origins.max_by { |start_station_id,count| count }
     if most_origin.nil?
       return "0"
     else
@@ -78,7 +78,7 @@ class Station < ActiveRecord::Base
 
   def starting_bike_id
     bike_ids = start_trips.group(:bike_id).count
-    bike = bike_ids.max_by { |k,v| v }
+    bike = bike_ids.max_by { |bike_id,count| count }
     if bike.nil?
       return "n/a"
     else
@@ -88,7 +88,7 @@ class Station < ActiveRecord::Base
 
   def most_frequent_zipcode
     zipcode_ids = start_trips.group(:zipcode_id).count
-    zipcode = zipcode_ids.max_by { |k,v| v }
+    zipcode = zipcode_ids.max_by { |zipcode_id,count| count }
     if zipcode.nil?
       return "n/a"
     else

@@ -16,7 +16,7 @@ RSpec.describe "user visits station show page" do
 
 
     visit("/stations/#{station.id}")
-    save_and_open_page
+    # save_and_open_page
     expect(page).to have_content(station.name)
     expect(page).to have_content(station.dock_count)
     expect(page).to have_content(station.city)

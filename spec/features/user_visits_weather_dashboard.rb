@@ -25,4 +25,22 @@ RSpec.describe "User visits '/weather-dashboard'" do
   it "and sees highest rides per day based on precipitation" do
     expect(page).to have_content("5.5 to 6.0 inches: 1")
   end
+  it "and sees average rides per day based on mean_wind_speed" do
+    expect(page).to have_content("12 to 16 mph: 2")
+  end
+  it "and sees highest rides per day based on mean_wind_speed" do
+    expect(page).to have_content("12 to 16 mph: 3")
+  end
+  it "and sees highest rides per day based on mean_wind_speed" do
+    expect(page).to have_content("12 to 16 mph: 1")
+  end
+  it "and sees average rides per day based on mean_visibility" do
+    expect(page).to have_content("8 to 12 miles: 2")
+  end
+  it "and sees highest rides per day based on mean_visibility" do
+    expect(page).to have_content("8 to 12 miles: 3")
+  end
+  it "and sees highest rides per day based on mean_visibility" do
+    expect(page).to have_content("8 to 12 miles: 1")
+  end
 end

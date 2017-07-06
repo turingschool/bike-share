@@ -55,5 +55,11 @@ RSpec.describe Weather do
                   "lowest" =>  {[8, 12] => 3,[12, 16] => 1}}
       expect(Weather.rides_by_mean_wind_speed).to eq(expected)
     end
+    it ".rides_by_mean_visibility" do
+      expected = {"average" => {[8, 12] => 2,[20, 24] => 3},
+                  "highest" => {[8, 12] => 3,[20, 24] => 3},
+                  "lowest" =>  {[8, 12] => 1,[20, 24] => 3}}
+      expect(Weather.rides_by_mean_visibility).to eq(expected)
+    end
   end
 end

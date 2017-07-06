@@ -14,6 +14,10 @@ class Weather < ActiveRecord::Base
     Weather.calculate_rides("mean_wind_speed", 4)
   end
 
+  def self.rides_by_mean_visibility
+    Weather.calculate_rides("mean_visibility", 4)
+  end
+
   def self.calculate_rides(condition, increment)
     result = {}
     result["average"] = Weather.average_rides(condition, increment)

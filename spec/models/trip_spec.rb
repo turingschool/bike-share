@@ -167,7 +167,7 @@ RSpec.describe Trip do
         expect(result).to eq(2)
       end
     end
-    
+
     describe '.date_with_most_trips' do
       it "returns single date with highest number of trips and count of those trips" do
         date = BikeShareDate.create(date: Date.strptime('1/1/2012', '%m/%d/%Y'))
@@ -369,4 +369,5 @@ RSpec.describe Trip do
       end
     end
   end
+end
 end

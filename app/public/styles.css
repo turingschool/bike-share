@@ -1,0 +1,646 @@
+.background-stations {
+  background-image: url("https://s-media-cache-ak0.pinimg.com/736x/71/af/9f/71af9fbb9d50c78be523f59d28d3ee59--train-station-map-train-stations.jpg");
+  border-style: solid;
+  border-color: white;
+}
+
+body {
+  font-family: 'Open Sans Condensed', sans-serif;
+  background-color: black;
+}
+
+
+.show-me-body {
+  background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/10/Bicycle-HD-Background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1;
+  height: 100%;
+  min-height: 1200px;
+  width: 100%;
+  margin-top: 60px;
+}
+
+.navbar-item {
+  display: inline;
+  color: rgb(51, 122, 183);
+  margin-left: 10px;
+}
+
+.container-body { /*change name?*/
+  margin-top: 60px;
+}
+
+.navbar-spacing {
+  margin-left: 0px;
+}
+
+.navbar-default {
+  border-style: outset;
+  border-color: black;
+}
+.navbar-beam {
+  position: absolute;
+  height: 35px;
+  width: 100%;
+  margin-top: 11px;
+  background-color: rgb(50, 41, 32);
+  z-index: -1;
+}
+
+.stat-container {
+    width: 55%;
+    padding-top: 15px;
+    padding-right: 41px;
+    text-transform: uppercase;
+}
+
+.brand-logo {
+  width: 58px;
+  height: 58px;
+  margin-right: 20px;
+  position: absolute;
+}
+
+.btn-info {
+  width: 160px;
+  height: 80px;
+  position: absolute;
+  color: rgb(51, 122, 183);
+  background-color: rgb(50, 41, 32);
+  font-size: 1.3em;
+  border-color: white;
+}
+
+.btn-info a {
+  color: rgb(51, 122, 183)
+}
+
+.panel {
+  margin-bottom: 10px;
+}
+.panel-data{
+  background-color: black;
+}
+
+.panel-default {
+  border-style: solid;
+  border-color: black;
+}
+
+.panel-body{
+  margin-top: -20px;
+}
+
+.first-row {
+  padding: 5px;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    /*align-self: center;*/
+    color: white;
+    font-family: "Lora", serif;
+    font-weight: bold;
+    font-style: italic;
+    margin-right: 25px;
+    margin-top: 45px;
+    padding-top: 6px;
+    padding-left: 2px;
+}
+
+.popup-first{
+  margin-top: 45px;
+}
+
+.popup-smaller {
+  margin-top: 50px;
+  font-size: 1.8em;
+}
+
+.popup-bigger {
+  padding-bottom: 6px;
+}
+
+.col-md-6 {
+  align-content: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.col-md-6:hover .popup {
+    display: block;
+    background-color: black;
+    overflow-y: hidden;
+}
+/*236,210,135<--yellow*/
+.stat {
+    font-size: 10em;
+    height: 100%;
+    color: white;
+    text-shadow: 2px 2px rgb(103, 82, 56);
+    background-color: black;
+}
+
+h1 {
+  font-family: "Lobster", cursive;
+  font-size: 1.9em;
+  display: inline-block;
+  margin-top: 17px;
+  color: white;
+  margin-left: 70px;
+}
+
+h3, h2 {
+  font-family: "Lato", sans-serif;
+  color: white;
+  text-shadow: 2px 2px rgb(103, 82, 56);
+  margin-bottom: 5px;
+  margin-top: 5px;
+  background-color: rgb(50, 41, 32);
+}
+
+tr, ul {
+  color: white;
+  font-family: "Lora", serif;
+}
+
+td {
+  text-align: left
+}
+
+table#stations-index {
+  background-color: black;
+  }
+
+#stations-index tr td {
+  height: 10px;
+}
+
+.center {
+  text-align: center;
+}
+
+th {
+  text-decoration: underline;
+  text-transform: uppercase;
+  font-size-adjust: auto;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+.dc {
+  text-align: center;
+}
+
+.nudge-right {
+  padding-left: 12px;
+}
+
+.nudge-right-er {
+  padding-left: 25px;
+}
+
+.nudge-left {
+  padding-right: 12px
+}
+
+table {
+  border-bottom: 5px double white;
+  border-top: 2px double white;
+  margin-bottom: 5px;
+}
+
+.body-beam {
+  display: inline-block;
+  position: absolute;
+  height: 45%;
+  width: 93%;
+  margin-top: 30px;
+  margin-left: 48px;
+  border-style: solid;
+  border-color: white;
+  background-color: black;
+  z-index: 0;
+  left: 0;
+}
+
+.new-station {
+  background-color: black;
+  max-width: 340px;
+  height: 270px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: -20px;
+  align-content: center;
+  margin-left: 85px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-color: white;
+  border-style: double;
+}
+li {
+  max-width: 200px;
+  padding-left: 50px;
+}
+
+.new-station-img {
+  max-width: 200px;
+  max-height: auto;
+  margin-bottom: 5px;
+  padding-right: 0;
+  margin-left: -27px;
+  border: 2px solid white;
+  border-radius: 2px;
+}
+
+.list-station {
+  font-family: "Lora", serif;
+  font-size: 1.2em;
+}
+
+.border-me {
+  border-style: solid;
+  border-color: white;
+}
+
+/* Edit Page */
+
+.edit-background {
+  background-image: url(http://www.travelsupermarket.com/wp-content/uploads/2014/07/Scenic-and-challenging-Mountain-Passes-in-Scotland_Image-Wilderness-Scotland.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 880px;
+}
+
+form {
+  color: white;
+  margin-left: 20px;
+  margin-bottom: 280px;
+  text-shadow: 2px 2px black;
+}
+
+label {
+  text-decoration: underline;
+  font-size: 1.3em;
+}
+
+input {
+  color: black;
+}
+
+.btn-warning {
+  color: black;
+  border-color: white;
+}
+
+.entry_title {
+  width: 180px;
+  text-align: justify;
+  background-color: rgb(50, 41, 32);
+  padding: 2px;
+}
+
+.edit-form {
+  margin-top: 25px;
+  align-content: left;
+  border-style: solid;
+  border-color: white;
+  padding: 15px;
+  width: 400px;
+  background-color: rgb(50, 41, 32);
+  padding-left: 25px;
+  color: white;
+  margin-left: 0px;
+  margin-bottom: 280px;
+  text-shadow: 2px 2px black;
+}
+
+.edit-form-left {
+  margin-top: 20px;
+  margin-right: 55px;
+  border-style: solid;
+  border-color: rgb(96, 59, 147);
+  padding: 15px;
+  width: 300px;
+  background-color: rgb(50, 41, 32);
+  padding-left: 65px;
+  float: right;
+  color: white;
+  margin-left: 820px;
+  margin-bottom: 310px;
+  text-shadow: 2px 2px black;
+  position: fixed;
+}
+
+.edit-button {
+  margin-top: 50px;
+}
+
+.new-background {
+  background-image: url(https://s-media-cache-ak0.pinimg.com/originals/d4/36/e3/d436e3cedb0982b6b02800e9f72f0b54.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 1200px;
+}
+.index-table-header tr td{
+  padding: 5px;
+  height: 45px;
+  margin-bottom: 0px
+}
+
+th, td {
+  border-bottom: 2px solid white;
+  height: 40px;
+  padding-top: 10px;
+  padding-bottom: 2px;
+  vertical-align: top;
+}
+
+.index-table-body form {
+  height: 25px;
+  width: 25px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  margin: 0px;
+}
+
+.index-table-body {
+  height: 30px;
+  width: 30px;
+  margin-bottom: 2px;
+}
+
+.stations-index {
+  position: relative;
+  margin-top: 2px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+ul.pagination {
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 230px;
+  text-align: center
+}
+
+li.index-pagination{
+  padding-left: 0px;
+  padding-right: 0px;
+  display: inline-block;
+}
+
+li.active.index-pagination{
+  padding-left: 0px;
+  padding-right: 0px;
+  display: inline-block;
+}
+
+a.whatever {
+  margin-left: 0px;
+  width: 10px;
+  display: inline-block;
+}
+
+li.side-chevron-right {
+  margin-left: 0px;
+  display: inline-block;
+  margin-right: 0px;
+  padding-left: 0px;
+  width: auto;
+}
+
+.create-new {
+  width: 230px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left:5px;
+  border: 1px double white;
+  text-align: center;
+  border-top: 5px solid white;
+  border-bottom: 5px solid white;
+  border-radius: 5px;
+}
+
+.back-to-index {
+  color: rgb(51, 122, 183);
+  margin-top: 20px;
+  margin-right: 10px;
+  font-style: italic;
+  font-size: 1.5em;
+}
+
+.index-button {
+  position: absolute;
+  color: rgb(51, 122, 183)
+}
+
+.col-md-4 {
+  font-size: 8em;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.show_p {
+    font-size: 3em;
+    height: 100%;
+    color: white;
+    text-shadow: 2px 2px black;
+    padding: 30px;
+    padding-top: 20px;
+    margin-left: 160px;
+    width: 400px;
+    border: 5px solid white;
+    background-color: black;
+    margin-top: 60px;
+}
+
+.show_p p, h6{
+  background-color: black;
+  font-size: 20pt;
+  line-height: 40px;
+  margin-top: 0px;
+}
+
+.show_p h6 {
+  background-color: white;
+  color: black;
+}
+
+.show_p h4 {
+  font-family: 'Zilla Slab', serif;
+  color: white;
+  text-align: center;
+  background-color: transparent;
+  text-decoration: underline;
+  padding-top: 30px;
+  padding-bottom: 0px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  font-size: 1em;
+}
+
+.btn-grow {
+  height: 150px;
+  box-shadow: 4px 4px black;
+  color: black;
+  font-size: 2.2em;
+  border-width: thick;
+  border-color: black;
+  display: absolute;
+  float: right;
+  margin-right: 400px;
+  margin-top: 80px;
+  text-align: center;
+  min-width: 200px;
+}
+
+.btn-grow a {
+  color: black;
+  font-family: 'Zilla Slab', serif;
+}
+.dash {
+  padding:20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 350px;
+  padding-top: 0px;
+  height: 800px;
+}
+
+.dash a {
+  border-bottom: 5px solid white;
+}
+
+.dashboard-bar h4{
+  font-family: 'Zilla Slab', serif;
+  color: white;
+  text-align: center;
+  padding-top: 130px;
+  margin-left: -100px;
+  margin-bottom: 0;
+  font-size: 8em;
+  position: fixed;
+}
+
+.navbar-grow h1{
+  height: 90px;
+  font-size: 60px;
+  padding: 10px;
+  margin-left: 180px;
+}
+
+.brand-logo-main {
+  height: 150px;
+  width: 150px;
+}
+
+.dashboard-bottom {
+  width:100%;
+  height: 50px;
+  background-color: rgb(38, 33, 81);
+  align-items: center;
+}
+
+.blue h3 {
+  color: rgb(51, 122, 183);
+}
+
+span.glyphicon-home {
+  width: 31px;
+  font-size: 20px;
+  padding: 1px;
+  padding-right: 5px;
+  margin-right: 5px;
+  margin-top: 15px;
+  border-style: solid;
+  border-color: rgb(51, 122, 183);
+}
+
+.table-left table{
+  border-right: 2px solid white;
+}
+
+span.show-right {
+  margin-right: 35px;
+}
+
+span.white {
+  color: white;
+  margin-left: 10px;
+  border-color: white;
+}
+
+.form-group select {
+  max-width: 150px;
+  color: black;
+  display: block;
+}
+
+.form-group button {
+  margin-top: 20px;
+}
+
+
+
+.edit-form-trips {
+  margin-top: 20px;
+  align-content: left;
+  border-style: solid;
+  border-color: white;
+  padding: 15px;
+  width: 400px;
+  background-color: rgb(50, 41, 32);
+  padding-left: 25px;
+  color: white;
+  margin-left: 820px;
+  margin-bottom: 280px;
+  text-shadow: 2px 2px black;
+  position: fixed;
+}
+
+.edit-form-trips h4 {
+  font-family: 'Zilla Slab', serif;
+  color: white;
+  text-align: center;
+  background-color: transparent;
+  text-decoration: underline;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  font-size: 2.2em;
+}
+
+.edit-form h4 {
+  font-family: 'Zilla Slab', serif;
+  color: white;
+  text-align: center;
+  background-color: transparent;
+  text-decoration: underline;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  font-size: 2.2em;
+}
+
+.index-pages {
+  margin-top: 110px;
+  margin-left: 30px;
+}
+.index-pages-inner {
+  margin: 50px;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.index-pages form {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}

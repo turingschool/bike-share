@@ -1,0 +1,61 @@
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container navbar-beam">
+  </div>
+  <div class="container-fluid navbar-spacing">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">
+        <img class="brand-logo" alt="Brand" src="bs.png">
+      </a>
+      <h1>Weather Conditions Index</h1>
+    </div>
+    <div>
+    <a class="nav navbar-nav navbar-right" href="/weather_condition-dashboard">
+      <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+    </a>
+    </div>
+  </div>
+</nav>
+<div class="index-pages">
+  <h3 class="create-new"><a href="/weather_conditions/new">Create New Weather Condition</a></h3>
+  <div class="index-pages-inner">
+  <%= will_paginate @weather_conditions %>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Max Temp(f)</th>
+      <th>Mean Temp(f)</th>
+      <th>Min Temp(f)</th>
+      <th>Mean Humidity</th>
+      <th>Precipitation</th>
+      <th>Mean Visibility</th>
+      <th>Mean Wind Speed</th>
+    </tr>
+
+    <% @weather_conditions.each do |weather_condition| %>
+
+    <tr>
+      <td><%= weather_condition.date.date %></td>
+      <td><%= weather_condition.max_temp_f %></td>
+      <td><%= weather_condition.mean_temp_f %></td>
+      <td><%= weather_condition.min_temp_f  %></td>
+      <th><%= weather_condition.mean_humidity %></th>
+      <th><%= weather_condition.precipitation %></th>
+      <th><%= weather_condition.mean_visibility %></th>
+      <th><%= weather_condition.mean_wind_speed %></th>
+
+      <td><a href="/weather_conditions/<%= weather_condition.id %>">Weather Condition Info</a></td>
+
+        <td>
+        <form class="" action="/weather_conditions/<%= weather_condition.id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" name="" value="delete">
+        </form>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <%= will_paginate @weather_conditions %>
+  </div>
+</div>
+</body>

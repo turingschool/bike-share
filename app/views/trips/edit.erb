@@ -1,0 +1,71 @@
+<body>
+<div class="edit-background" >
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container navbar-beam">
+    </div>
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand nav navbar-nav" href="/">
+          <img class="brand-logo" alt="Brand" src="/bs.png">
+        </a>
+        <h1> EDIT trip</h1>
+      </div>
+    <div>
+      <a class="nav navbar-nav navbar-right" href="/trip-dashboard">
+        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+      </a>
+      <a class="nav navbar-nav navbar-right" href="/trips">
+        <h3 class="back-to-index">Back to Trips</h3>
+      </a>
+    </div>
+    </div>
+  </nav>
+  <div class="container container-body">
+  <form class="edit-form-trips" action="/trips/<%= @trip.id %>" method="post">
+      <h4>Edit Trip Details?</h4>
+      <input type="hidden" name="_method" value="PUT" />
+      <label class="entry_title">Duration: (s)</label>
+      <input type="number" name="trip[duration]" value="<%= @trip.duration %>">
+
+      <label class="entry_title">Start Date: </label>
+      <input type="date" name="trip[start_date_id]" value="<%= @trip.start_date.date %>">
+
+
+      <label class="entry_title">End Date: </label>
+      <input type="date" name="trip[end_date_id]" value="<%= @trip.end_date.date%>">
+    <div class="form-group">
+      <div class="form-group">
+        <label class="entry_title">Start Station Name: </label>
+        <select name="trip[start_station_id]" value="<%= @trip.start_station.name %>">
+          <% @stations.each do |station| %>
+            <option value="<%= station.id %>"><%= station.name %></option>
+          <% end %>
+        </select>
+        <label class="entry_title">End Station Name: </label>
+        <select name="trip[end_station_id]" value="<%= @trip.end_station.name %>">
+          <% @stations.each do |station| %>
+            <option value="<%= station.id %>"><%= station.name %></option>
+          <% end %>
+        </select>
+
+        <label>Bike Id: </label>
+        <select name="trip[bike_id]" value="<%= @trip.bike_id %>">
+          <% @bikes.each do |bike_id| %>
+            <option value="<%= bike_id %>"><%= bike_id %></option>
+          <% end %>
+        </select>
+
+        <label class="entry_title">Subscription Type: </label>
+        <select name="trip[subscription_type]" value="<%= @trip.subscription_type %>" >
+          <option value="User">User</option>
+          <option value="Subscriber">Subscriber</option>
+        </select>
+        <label class="entry_title">Zipcode: </label><br/>
+        <input type="text" name="trip[zipcode_id]" value="<%= @trip.zipcode.zipcode %>">
+      </div>
+      <button class="btn btn-warning" type="submit">Submit Changes</button>
+    </div>
+</form>
+</div>
+</div>
+<body>

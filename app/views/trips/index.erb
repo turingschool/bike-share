@@ -2,7 +2,7 @@
   <h1>Trips</h1>
 </div>
 <div class="table-responsive">
-  <table class="table text-left">
+  <table class="table text-left table-hover">
     <tr>
       <th>Trip ID</th>
       <th>Duration</th>
@@ -17,7 +17,7 @@
       <th>Delete</th>
         </tr>
         <% @trips.each do |trip| %>
-        <tr>
+        <tr onclick="window.location.href = '/trips/<%= trip.id %>';">
           <td><%= trip.id %></td>
           <td><%= trip.duration %></td>
           <td><%= trip.start_date %></td>

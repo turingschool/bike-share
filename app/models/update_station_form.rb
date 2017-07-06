@@ -19,7 +19,6 @@ class UpdateStationForm
     @city = params[:station][:city]
     @installation_date = params[:station][:installation_date]
     @id = params[:id]
-    # require 'pry';binding.pry
   end
 
   def save
@@ -32,7 +31,7 @@ class UpdateStationForm
                               city: save_city,
                               installation_date_id: save_date.id
                               )
-
+        #return @station.save
     end
       false
   end

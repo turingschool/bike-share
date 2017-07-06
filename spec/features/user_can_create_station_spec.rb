@@ -4,11 +4,11 @@ RSpec.describe "User creates station" do
     fill_in("station[name]", with: "Buster")
     fill_in("station[dock_count]", with: 5)
     fill_in("station[city]", with: "SF")
-    fill_in("station[installation_date]", with: 010101)
+    fill_in("station[installation_date]", with: "2013-08-06 00:00:00")
     click_button("Create Station")
 
     station = Station.last
-    expect(current_path).to eq("/station/#{jockey.id}")
+    expect(current_path).to eq("/stations")
     expect(page).to have_content("Buster")
   end
 end

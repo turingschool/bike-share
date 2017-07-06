@@ -6,37 +6,57 @@
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="/">
-            <img class="brand-logo" alt="Brand" src="bs.png"/>
+            <img class="brand-logo" alt="Brand" src="/bs.png"/>
           </a>
-          <h1> Create New Station</h1>
+          <h1>Add Weather Information</h1>
         </div>
         <div>
-          <a class="nav navbar-nav navbar-right" href="/station-dashboard">
+          <a class="nav navbar-nav navbar-right" href="/weather-dashboard">
             <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
           </a>
-          <a class="nav navbar-nav navbar-right" href="/stations">
-            <h3 class="back-to-index">Back to Station's</h3>
+          <a class="nav navbar-nav navbar-right" href="/weather_conditions">
+            <h3 class="back-to-index">Back to Weather Condition's</h3>
           </a>
         </div>
       </div>
     </nav>
     <div class="container container-body">
-      <form class="edit-form-left" action="/stations" method="post">
+      <form class="edit-form-left" action="/weather_conditions" method="post">
         <div class="form-group">
-          <label class="entry_title">Name: </label>
-          <input type="text" name="station[name]" value="">
+          <label class="entry_title">Date: </label>
+          <input type="date" name="weather_conditions[date]" value="">
         </div>
         <div class="form-group">
-          <label class="entry_title">Dock Count: </label>
-          <input type="number" name="station[dock_count]" value="">
+          <label class="entry_title">Maximum Temperature: </label>
+          <input type="number" name="weather_conditions[max_temp_f]" value="">
         </div>
         <div class="form-group">
-          <label class="entry_title">City: </label>
-          <input type="text" name="station[city]" value="">
+          <label class="entry_title">Mean Temperature: </label>
+          <input type="number" name="weather_conditions[mean_temp_f]" value="">
         </div>
         <div class="form-group">
-          <label class="entry_title">Installation Date: </label>
-          <input class="input_installation" type="date" name="station[installation_date_id]" value="">
+          <label class="entry_title">Minimum Temperature: </label>
+          <input type="number" name="weather_conditions[min_temp_f]" value="">
+        </div>
+        <div class="form-group">
+          <label class="entry_title">Mean Humidity: </label>
+          <input type="number" name="weather_conditions[mean_humidity]" value="">
+        </div>
+        <div class="form-group">
+          <label class="entry_title">Mean Visibility: </label>
+          <input type="number" name="weather_conditions[mean_visibility]" value="">
+        </div>
+        <div class="form-group">
+          <label class="entry_title">Mean Wind Speed: </label>
+          <input type="number" name="weather_conditions[mean_wind_speed]" value="">
+        </div>
+        <div class="form-group">
+          <label class="entry_title">Precipitation: </label>
+          <input type="number" name="weather_conditions[precipitation]" value="">
+        </div>
+        <div class="form-group">
+          <label class="entry_title">Zipcode: </label>
+          <input type="number" name="weather_conditions[zipcode_id]" value="">
         </div>
         <button class="btn btn-warning" type="submit" name="button">Create Station</button>
       </form>

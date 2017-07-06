@@ -3,7 +3,7 @@ class Station < ActiveRecord::Base
   belongs_to :city
 
   def self.average_dock_count
-    Station.average("dock_count").round
+    Station.average("dock_count").round if Station.average("dock_count")
   end
 
   def self.most_bikes

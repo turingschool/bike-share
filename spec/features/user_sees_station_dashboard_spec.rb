@@ -1,9 +1,10 @@
 RSpec.describe "User visits '/station-dashboard'" do
-  before :all do
+  before :each do
     Station.create(name: "Mission", dock_count: 30, city_id: 2, installation_date: "1/4/15")
     Station.create(name: "Embarcadero", dock_count: 50, city_id: 2, installation_date: "3/4/16")
     Station.create(name: "Rockridge", dock_count: 15, city_id: 3, installation_date: "5/4/17")
-    visit("/stations/station-dashboard")
+    visit("/stations-dashboard")
+    save_and_open_page
   end
 
   it "and sees total count of stations" do

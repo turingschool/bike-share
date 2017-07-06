@@ -49,16 +49,6 @@ RSpec.describe "User visits '/trips-dashboard'" do
     expect(page).to have_content("1")
   end
 
-  it "and sees most ridden bike" do
-    expect(page).to have_content("Most ridden bike")
-    expect(page).to have_content("Bike ID: 48")
-  end
-
-  it "and sees least ridden bike" do
-    expect(page).to have_content("Least ridden bike")
-    expect(page).to have_content("Bike ID: 318")
-  end
-
   it "and sees date with highest trip count" do
     expect(page).to have_content("Date with highest trip count")
     expect(page).to have_content("8/29/2013: 4")

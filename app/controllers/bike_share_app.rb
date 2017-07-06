@@ -1,5 +1,5 @@
 require 'will_paginate'
-require 'will_paginate/active_record' 
+require 'will_paginate/active_record'
 require "pry"
 
 
@@ -80,18 +80,18 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips/new' do
     @stations = Station.all
-    erb :'/trips/new'
+    erb :"/trips/new"
   end
 
   get '/trips/:id' do |id|
     @trip = Trip.find(id)
-    erb :'/trips/show'
+    erb :"/trips/show"
   end
 
   get '/trips/:id/edit' do |id|
     @trip = Trip.find(id)
     @stations = Station.all
-    @bikes = Trip.pluck(:bike_id)
+    @bikes = Trip.pluck(:bike_id).uniq
     erb :"/trips/edit"
   end
 
@@ -112,7 +112,7 @@ class BikeShareApp < Sinatra::Base
     zipcode_id = params[:trip][:zipcode_id]
     params[:trip][:zipcode_id] = Zipcode.create_zipcode(zipcode_id)
 
-    @trip = Trip.update(params[:trip])
+    @trip = Trip.update(id, params[:trip])
     redirect "/trips/#{id}"
   end
 

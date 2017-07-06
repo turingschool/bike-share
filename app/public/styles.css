@@ -9,14 +9,16 @@ body {
   background-color: black;
 }
 
-body.show-me-body {
-  background-image: url("http://www.virtualblueridge.com/wp-content/uploads/gallery-scenic-cycling.jpg");
+
+.show-me-body {
+  background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/10/Bicycle-HD-Background.jpg");
   background-repeat: no-repeat;
   background-position: center;
   z-index: 1;
-  height: 760px;
-  align-content: center;
-  margin-top: 100px;
+  height: 100%;
+  min-height: 1200px;
+  width: 100%;
+  margin-top: 60px;
 }
 
 .navbar-item {
@@ -139,14 +141,6 @@ body.show-me-body {
     color: white;
     text-shadow: 2px 2px rgb(103, 82, 56);
     background-color: black;
-}
-
-.show_p {
-    font-size: 4em;
-    height: 100%;
-    color: white;
-    text-shadow: 2px 2px black;
-    padding-top: 70px;
 }
 
 h1 {
@@ -279,6 +273,7 @@ li {
   background-image: url(http://www.travelsupermarket.com/wp-content/uploads/2014/07/Scenic-and-challenging-Mountain-Passes-in-Scotland_Image-Wilderness-Scotland.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  height: 880px;
 }
 
 form {
@@ -324,7 +319,6 @@ input {
   text-shadow: 2px 2px black;
 }
 
-
 .edit-form-left {
   margin-top: 5px;
   margin-right: 55px;
@@ -349,6 +343,7 @@ input {
   background-image: url(https://s-media-cache-ak0.pinimg.com/originals/d4/36/e3/d436e3cedb0982b6b02800e9f72f0b54.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  height: 800px;
 }
 .index-table-header tr td{
   padding: 5px;
@@ -450,11 +445,30 @@ li.side-chevron-right {
   padding-top: 100px;
 }
 
-.show_p p {
+.show_p {
+    font-size: 4em;
+    height: 100%;
+    color: white;
+    text-shadow: 2px 2px black;
+    padding: 30px;
+    padding-top: 20px;
+    margin-left: 160px;
+    width: 550px;
+    border: 5px solid white;
+    background-color: black;
+    margin-top: 60px;
+}
+
+.show_p p, h6{
   background-color: black;
-  font-size: 40pt;
+  font-size: 30pt;
   line-height: 50px;
   margin-top: 0px;
+}
+
+.show_p h6 {
+  background-color: white;
+  color: black;
 }
 
 .show_p h4 {
@@ -462,6 +476,7 @@ li.side-chevron-right {
   color: white;
   text-align: center;
   background-color: transparent;
+  text-decoration: underline;
   padding-top: 30px;
   padding-bottom: 0px;
   margin-left: 0px;
@@ -470,16 +485,23 @@ li.side-chevron-right {
 }
 
 .btn-grow {
-  height: 100px;
+  height: 200px;
   box-shadow: 4px 4px black;
   color: black;
-  font-size: 2em;
-  border-width: medium;
-  border-color: white
+  font-size: 3em;
+  border-width: thick;
+  border-color: black;
+  display: absolute;
+  float: right;
+  margin-right: 400px;
+  margin-top: 100px;
+  text-align: center;
+  min-width: 270px;
 }
 
 .btn-grow a {
   color: black;
+  font-family: 'Zilla Slab', serif;
 }
 .dash {
   padding:20px;
@@ -555,5 +577,56 @@ span.white {
 
 .form-group select {
   max-width: 150px;
-  color: black; 
+  color: black;
+  display: block;
+}
+
+.form-group button {
+  margin-top: 20px;
+}
+
+form.edit-form-trips input, select {
+  margin-left: 16px;
+  width: 150px;
+}
+
+.edit-form-trips {
+  margin-top: 5px;
+  align-content: left;
+  border-style: solid;
+  border-color: white;
+  padding: 15px;
+  width: 300px;
+  background-color: rgb(50, 41, 32);
+  padding-left: 25px;
+  color: white;
+  margin-left: 20px;
+  margin-bottom: 280px;
+  text-shadow: 2px 2px black;
+}
+
+.edit-form-trips h4 {
+  font-family: 'Zilla Slab', serif;
+  color: white;
+  text-align: center;
+  background-color: transparent;
+  text-decoration: underline;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  font-size: 2.2em;
+}
+
+.edit-form h4 {
+  font-family: 'Zilla Slab', serif;
+  color: white;
+  text-align: center;
+  background-color: transparent;
+  text-decoration: underline;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  font-size: 2.2em;
 }

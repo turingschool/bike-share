@@ -13,5 +13,8 @@ RSpec.describe "User creates a station" do
 
     expect(current_path).to eq("/stations")
     expect(page).to have_content("Santa Clara at Almaden")
+    expect(page).to have_content("Dock count: 11")
+    expect(page).to have_content("Installation Date: 2013-06-08")
+    # expect(page).to have_content("City: San Diego")
   end
 end

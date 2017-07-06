@@ -12,11 +12,6 @@ class Station < ActiveRecord::Base
     find_by(name: name).id
   end
 
-  # def self.create_by_name(name)
-  #   find_or_create_by(name: name).id
-  # end
-  # finds or creates Station object and returns its id # not needed if we do drop-down menu
-
   def self.total_count
     Station.count
   end
@@ -49,5 +44,55 @@ class Station < ActiveRecord::Base
   def self.stations_with_fewest_bikes_available
     station = Station.minimum(:dock_count)
     Station.where(dock_count: station)
+  end
+
+  def most_trip_date
+    all_start_trips = start_trips.group(:start_date_id).count
+    highest_start_date = all_start_trips.max_by { |k,v| v }
+    if highest_start_date.nil?
+      return "0"
+    else
+      return BikeShareDate.find(highest_start_date.first).date.strftime('%B %d, %Y')
+    end
+  end
+
+  def start_station_with_most_rides
+    all_destinations = start_trips.group(:end_station_id).count
+    most_destination = all_destinations.max_by { |end_station_id,count| count }
+    if most_destination.nil?
+      return "0"
+    else
+      return Station.find(most_destination.first).name
+    end
+  end
+
+  def origination_station
+    all_origins = end_trips.group(:start_station_id).count
+    most_origin = all_origins.max_by { |start_station_id,count| count }
+    if most_origin.nil?
+      return "0"
+    else
+      return Station.find(most_origin.first).name
+    end
+  end
+
+  def starting_bike_id
+    bike_ids = start_trips.group(:bike_id).count
+    bike = bike_ids.max_by { |bike_id,count| count }
+    if bike.nil?
+      return "n/a"
+    else
+      return bike.first
+    end
+  end
+
+  def most_frequent_zipcode
+    zipcode_ids = start_trips.group(:zipcode_id).count
+    zipcode = zipcode_ids.max_by { |zipcode_id,count| count }
+    if zipcode.nil?
+      return "n/a"
+    else
+      return Zipcode.find(zipcode.first).zipcode
+    end
   end
 end

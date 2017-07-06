@@ -1,6 +1,10 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
 require "pry"
 
+
 class BikeShareApp < Sinatra::Base
+  include WillPaginate::Sinatra::Helpers
 
   get '/' do
     erb :"dashboard"
@@ -34,6 +38,13 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations/:id' do |id|
     @station = Station.find(id)
+    @rides_started = Trip.rides_at_start_station(@station.id)
+    @rides_ended = Trip.rides_at_end_station(@station.id)
+    @most_trips_started = @station.most_trip_date
+    @most_end_station = @station.start_station_with_most_rides
+    @most_start_station = @station.origination_station
+    @most_zipcode = @station.most_frequent_zipcode
+    @most_bike_id = @station.starting_bike_id
     erb :'/stations/show'
   end
 
@@ -71,18 +82,19 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trips = Trip.all
+    @trips = Trip.paginate(:page => params[:page], :per_page => 30)
     erb :"/trips/index"
   end
 
   get '/trips/new' do
     @stations = Station.all
-    erb :'/trips/new'
+    @bikes = Trip.pluck(:bike_id).uniq
+    erb :"/trips/new"
   end
 
   get '/trips/:id' do |id|
     @trip = Trip.find(id)
-    erb :'/trips/show'
+    erb :"/trips/show"
   end
 
   get '/trips/:id/edit' do |id|
@@ -113,9 +125,9 @@ class BikeShareApp < Sinatra::Base
     params[:trip][:end_date_id] = BikeShareDate.create_by_date(end_date)
 
     zipcode = params[:trip][:zipcode_id]
-    params[:trip][:zipcode_id] = Zipcode.create_zipcode(zipcode)
+    params[:trip][:zipcode_id] = Zipcode.create_zipcode(zipcode).id
 
-    Trip.create(params[:trip])
+    Trip.create!(params[:trip])
 
     redirect('/trips')
   end
@@ -126,8 +138,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/weather_conditions' do
-    @weather_conditions = WeatherCondition.all
-    erb :"/weather_conditions/index"
+    @weather_conditions = WeatherCondition.paginate(:page => params[:page])
+    erb :"weather_conditions/index"
   end
 
   get '/weather_conditions/new' do
@@ -141,4 +153,14 @@ class BikeShareApp < Sinatra::Base
     redirect :"/weather_conditions/#{@weather_conditions.id}"
   end
 
+  get '/weather_conditions/:id' do |id|
+    @weather_condition = WeatherCondition.find(id)
+
+    erb :"weather_conditions/show"
+  end
+
+  delete '/weather_conditions/:id' do |id|
+    WeatherCondition.destroy(id)
+    redirect('/weather_conditions')
+  end
 end

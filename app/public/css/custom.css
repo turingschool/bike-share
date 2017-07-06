@@ -20,6 +20,8 @@
 
 .input-label {
   margin-bottom: 1px;
+  font-weight: bold;
+  margin-left: 3px;
 }
 
 .no-pad {
@@ -113,8 +115,8 @@ text-decoration-color: red;
   margin-top: 5px;
   display: block;
   margin-top: 2px;
-  margin-bottom: 2px;
-  height: 50px;
+  margin-bottom: 0%;
+  height: 40px;
 }
 
 .bike-icon-show {
@@ -123,8 +125,22 @@ text-decoration-color: red;
   transform: translate(-50%, 10%);
   /*margin-top: 30%;*/
   position: relative;
+  margin-bottom: 30px;
 }
 
+.bike-banner {
+  width: 100%;
+  height: inherit;
+}
+
+.map-icon-show {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  position: relative;
+  width: 200px;
+  margin-bottom: 30px;
+}
 .element-center-hor {
   display: block;
   margin: 0 auto;
@@ -161,6 +177,8 @@ text-decoration-color: red;
 
 .card-text {
   margin-left: 5px;
+  margin-bottom: 0px;
+  text-align: center;
 }
 
 .card-input {
@@ -173,7 +191,7 @@ text-decoration-color: red;
   border-style: solid;
   border-color: gray;
   border-width: 2px;
-  height: 250px;
+  height: 240px;
   border-radius: 5px;
   background: linear-gradient( white, white, lightgray);
 }
@@ -186,6 +204,7 @@ text-decoration-color: red;
   border-color: gray;
   border-radius: 0px;
   border-width: thin;
+  margin-bottom: 5px;
   /*background-color: lightgrey;*/
   /*margin-bottom: 5px;;*/
 }
@@ -218,7 +237,7 @@ text-decoration-color: red;
 
 
 .icon-bar {
-    background-color: #888888;
+  background-color: #888888;
 }
 
 .edit-input-label {
@@ -235,9 +254,33 @@ text-decoration-color: red;
 }
 
 .index-links-temp {
-padding-left: 45%;
+  padding-left: 45%;
 }
 
-/*body {
-background-color: red;
-}*/
+.index-icons {
+  height: 100px;
+}
+
+.center-index-text {
+  text-align: center;
+}
+
+.main-index-splash-pic {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  /*margin-top: 30%;*/
+  position: relative;
+  margin-bottom: 30px;
+  margin-top: 0px;
+  width: 300px;
+}
+.main-index-splash-divs   {padding: 5px;
+  margin: 10px;
+  border-style: solid;
+  border-color: gray;
+  border-width: 2px;
+  border-radius: 5px;
+  background: linear-gradient( white, white, lightgray);
+  height: auto;
+}

@@ -68,4 +68,13 @@ RSpec.describe Station do
       end
     end
   end
+
+  describe "Relationships" do
+    it ".city returns the name of the city" do
+      station = Station.create(name: "Santa Clara at Almaden", dock_count: 11, city_id: 1, installation_date: "2013-06-08")
+      diego = City.create(city: "San Diego")
+
+      expect(station.city).to eq(diego)
+    end
+  end
 end

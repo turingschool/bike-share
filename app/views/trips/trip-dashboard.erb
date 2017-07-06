@@ -28,3 +28,11 @@
 <p><%= Trip.date_with_highest_trip_count %></p>
 <h3>Date with lowest trip count</h3>
 <p><%= Trip.date_with_lowest_trip_count %></p>
+<h5>Weather on this Day:</h5>
+<% Weather.highest_rides_weather.each do |k,v| %>
+  <p> <%= k %>:  <%= v %></p>
+<% end %>
+<h5>Weather on this Day:</h5>
+<% Weather.lowest_rides_weather.each do |k,v| %>
+  <p> <%= k %>:  <%= v %></p>
+<% end %>

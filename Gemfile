@@ -10,6 +10,7 @@ gem 'will_paginate'
 gem 'groupdate'
 gem 'rubysl-zlib', '~> 2.0', '>= 2.0.1'
 gem 'rake'
+gem 'aws-sdk', '~> 2'
 
 group :development, :test do
   gem 'shotgun'

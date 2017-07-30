@@ -6,10 +6,10 @@ require_relative '../app/models/subscription_type'
 require_relative '../app/models/zip_code'
 require_relative '../app/models/trip'
 require_relative '../app/models/condition'
-require 'database_cleaner'
+# require 'database_cleaner'
 
-DatabaseCleaner.strategy = :truncation
-DatabaseCleaner.clean
+# DatabaseCleaner.strategy = :truncation
+# DatabaseCleaner.clean
 
 stations = (CSV.open'db/csv/station.csv', headers: true, header_converters: :symbol)
 

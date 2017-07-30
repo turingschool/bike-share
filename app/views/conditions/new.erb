@@ -1,0 +1,54 @@
+<body class="stations-show-bg">
+
+  <div class="page-header top">
+    <h1 class="title text-right">Create New Weather Condition</h1><br/>
+  </div>
+
+  <div class="container new-trip">
+
+    <form action="/conditions" method="post">
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" name="condition[date]" class="form-control" id="date" placeholder="Date">
+      </div>
+
+      <div class="form-group">
+        <label for="max_temp">Max Temperature:</label>
+        <input type="text" name="condition[max_temp]" class="form-control" id="max_temp" placeholder="Max Temperature">
+      </div>
+
+      <div class="form-group">
+        <label for="mean_temp">Mean Temperature:</label>
+        <input type="text" name="condition[mean_temp]" class="form-control" id="mean_temp" placeholder="Mean Temperature">
+      </div>
+
+      <div class="form-group">
+        <label for="min_temp">Min Temperature:</label>
+        <input type="text" name="condition[min_temp]" class="form-control" id="min_temp" placeholder="Min Temperature">
+      </div>
+
+      <div class="form-group">
+        <label for="mean_humidity">Mean Humidity:</label>
+        <input type="text" name="condition[mean_humidity]" class="form-control" id="mean_humidity" placeholder="Mean Humidity">
+      </div>
+
+      <div class="form-group">
+        <label for="mean_visibility">Mean Visibility (miles):</label>
+        <input type="text" name="condition[mean_visibility]" class="form-control" id="mean_visibility" placeholder="Mean Visibility">
+      </div>
+
+      <div class="form-group">
+        <label for="mean_wind">Mean Wind Speed (mph):</label>
+        <input type="text" name="condition[mean_wind]" class="form-control" id="mean_wind" placeholder="Mean Wind">
+      </div>
+
+      <div class="form-group">
+        <label for="precipitation">Precipitation</label>
+        <input type="text" name="condition[precipitation]" class="form-control" id="precipitation" placeholder="Precipitation">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+  </div>
+</body>

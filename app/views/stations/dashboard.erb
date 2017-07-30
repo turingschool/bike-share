@@ -1,0 +1,18 @@
+<div class="page-header top">
+  <h1 class="title text-left">Stations Dashboard</h1><br/>
+</div>
+
+<div class="container stations-dashboard">
+
+  <ul>
+    <li>Total number of stations: <span class="dashboard-value"><%= @stations.count %></span></li>
+    <li>Average bikes available per station: <span class="dashboard-value"><%= @stations.average_bikes_per_station %></span></li>
+    <li>Most bikes available at a station: <span class="dashboard-value"><%= @stations.max_bikes_available %></span></li>
+    <li>Station(s) where the most bikes are available: <span class="dashboard-value"><%= @stations.station_with_most_bikes %></span></li>
+    <li>Fewest bikes available at a station: <span class="dashboard-value"><%= @stations.fewest_bikes_available %></span></li>
+    <li>Station(s) where the fewest bikes are available: <span class="dashboard-value"><%= @stations.station_with_fewest_bikes %></span></li>
+    <li>Newest station: <span class="dashboard-value"><%= @stations.newest_station %></span></li>
+    <li>Oldest station: <span class="dashboard-value"><%= @stations.oldest_station %></span></li>
+  </ul>
+
+</div>

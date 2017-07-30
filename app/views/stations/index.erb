@@ -1,0 +1,32 @@
+<div class="page-header top">
+  <h1 class="title text-left">Stations</h1><br/>
+</div>
+
+<div class="container all-stations">
+
+  <div class="panel">
+    <div class="panel-heading stations-panel">All Stations</div>
+    <table class="table table-striped table-hover table-condensed">
+      <tr>
+        <th><div id="station-name-header">Station Name</div></th>
+        <th>Edit Info</th>
+        <th>Delete Station</th>
+      </tr>
+
+      <% @stations.each do |station| %>
+        <tr>
+          <td><div class="station-name"><a href="/stations/<%= station.id %>"><%= station.name %></a></div></td>
+          <td><div id="edit-button"><button type="button"><a href="/stations/<%= station.id %>/edit">Edit</a></button></div></td>
+          <td>
+            <form action="/stations/<%= station.id %>" method="post">
+              <div class="form-group delete-button">
+                <input type="hidden" name="_method" value="DELETE" />
+                <input type="submit" value="Delete">
+              </div>
+            </form>
+          </td>
+        </tr>
+      <% end%>
+    </table>
+  </div>
+</div>

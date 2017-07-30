@@ -1,0 +1,30 @@
+<body class="stations-show-bg">
+  <div class="page-header top">
+    <h1 class="title text-left"><%= @station.name %></h1>
+  </div>
+
+  <div class="container">
+    <div class="station-box text-center">
+      <p>Bike Capacity: <span class="dashboard-value"><%= @station.dock_count %></span></p>
+      <p>Installation Date: <span class="dashboard-value"><%= @station.installation_date %></span></p>
+      <p>City: <span class="dashboard-value"><%= @station.city.name %></span></p>
+      <p>Number of Rides starting from this station: <span class="dashboard-value"><%= @station.start_trips.count %></span></p>
+      <p>Number of Rides ending at this station: <span class="dashboard-value"><%= @station.end_trips.count%></span></p>
+      <p>Most frequent destination station: <span class="dashboard-value"><%= @station.frequent_destination %></span></p>
+      <p>Most frequent origination station: <span class="dashboard-value"><%= @station.frequent_origination %></span></p>
+      <p>Busiest Day: <span class="dashboard-value"><%= @station.busiest_day %></span></p>
+      <p>Most frequent customer zip code: <span class="dashboard-value"><%= @station.max_zip_code_count %></span></p>
+      <p>Most frequently used bike: <span class="dashboard-value"><%= @station.most_frequent_bike %></span></p>
+
+      <button type="button"><span id="edit-button"><a href="/stations/<%= @station.id %>/edit">Edit</a></span></button>
+
+      <form action="/stations/<%= @station.id %>" method="post">
+        <div class="form-group">
+          <input type="hidden" name="_method" value="DELETE" />
+          <input type="submit" value="Delete">
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>

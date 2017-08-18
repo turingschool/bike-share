@@ -34,7 +34,7 @@ RSpec.describe Trip do
                       :subscription_type_id => 68)
         end
 
-        expect(Trip.find_thirty_trips(1).second.start_date.to_s).to eq('2015-03-12')
+        expect(Trip.find_thirty_trips(1).second.start_date.strftime).to eq('2015-03-12')
         expect(Trip.find_thirty_trips(1).third.start_date.to_s).to eq('2015-03-12')
         expect(Trip.find_thirty_trips(1).fourth.start_date.to_s).to eq('2015-03-12')
         expect(Trip.find_thirty_trips(1).fifth.start_date.to_s).to eq('2015-03-12')

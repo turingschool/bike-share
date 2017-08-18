@@ -6,6 +6,11 @@ csv = CSV.parse(csv_file, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
   t = Trip.new
   t.duration = row['duration']
+    td = TripDate.new
+    td.date = row['start_date']
+    td.save
+    td.day = row['start_date']
+  t.start_date_id = sd.id
   t.start_date = row['start_date']
   t.end_date = row['end_date']
   t.start_station = row['start_station']

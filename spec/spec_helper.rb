@@ -8,10 +8,6 @@ require 'database_cleaner'
 Capybara.app = BikeShareApp
 Capybara.save_and_open_page_path = 'tmp/capybara'
 
-# RSpec.configure do |c|
-#
-# end
-
 DatabaseCleaner.strategy = :truncation
 
 RSpec.configure do |c|

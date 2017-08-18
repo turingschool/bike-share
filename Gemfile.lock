@@ -92,6 +92,7 @@ DEPENDENCIES
   capybara
   launchy
   pg
+  rack
   rack-test
   rspec
   rspec-core

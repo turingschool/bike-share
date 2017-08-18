@@ -7,11 +7,6 @@ class Trip < ActiveRecord::Base
 
   def self.find_thirty_trips(start_index)
     find_range = (start_index...(start_index + 30)).to_a
-    sort_trips_by_date
-    find(find_range)
-  end
-
-  def self.sort_trips_by_date
-    order(:trip_date)
+    order(:start_date).find(find_range)
   end
 end

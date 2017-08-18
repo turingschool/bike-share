@@ -1,5 +1,3 @@
-require_relative ""
-
 RSpec.describe Station do
   describe "Validations" do
     it "validations city, name, dock_count, and installation date" do

@@ -8,7 +8,7 @@ RSpec.describe Station do
 
     end
 
-    it "validations city, name, dock_count, and installation date" do
+    it "invalid station cannot be created" do
       date = DateTime.now
       invalid_station = Station.create(name: "StationOne", city_id: 1, dock_count: 10)
 

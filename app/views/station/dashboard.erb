@@ -1,3 +1,9 @@
 <h1>Station Analytics</h1>
 
-<p>Count of all stations: <%= Station.station_count %></p>
+<h3>Count of all stations:</h3><p><%= Station.station_count %></p>
+<h3>Most recent station and installation date:</h3> <% Station.newest_station.each do |station| %>
+                                              <p><%= station.name %>, <%= station.installation_date %></p>
+                                              <% end %>
+<h3>Oldest station and installation date:</h3> <% Station.oldest_station.each do |station| %>
+                                              <p><%= station.name %>, <%= station.installation_date %></p>
+                                              <% end %>

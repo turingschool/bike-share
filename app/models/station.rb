@@ -13,11 +13,11 @@ class Station < ActiveRecord::Base
   end
 
   def self.oldest_station
-    self.where(installation_date: oldest_installation_date)
+    self.where(installation_date: oldest_installation_date).first
   end
 
   def self.newest_station
-    self.where(installation_date: most_recent_installation_date)
+    self.where(installation_date: most_recent_installation_date).first
   end
 
   def self.average_bike_available_per_station

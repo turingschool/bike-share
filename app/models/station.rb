@@ -20,7 +20,7 @@ class Station < ActiveRecord::Base
     self.where(installation_date: most_recent_installation_date).first
   end
 
-  def self.average_bike_available_per_station
+  def self.average_bikes_available_per_station
     self.average(:dock_count).round
   end
 

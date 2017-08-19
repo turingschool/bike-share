@@ -4,10 +4,6 @@ class Station < ActiveRecord::Base
   validates :installation_date, presence: true
   validates :dock_count, presence: true
 
-  def self.station_count
-    self.count
-  end
-
   def self.most_recent_installation_date
     self.maximum(:installation_date)
   end
@@ -17,14 +13,14 @@ class Station < ActiveRecord::Base
   end
 
   def self.oldest_station
-    self.where(installation_date: oldest_installation_date)
+    self.where(installation_date: oldest_installation_date).first
   end
 
   def self.newest_station
-    self.where(installation_date: most_recent_installation_date)
+    self.where(installation_date: most_recent_installation_date).first
   end
 
-  def self.average_bike_available_per_station
+  def self.average_bikes_available_per_station
     self.average(:dock_count).round
   end
 

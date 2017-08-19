@@ -2,6 +2,10 @@ class BikeShareApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
   set :method_override, true
 
+  get '/' do
+    erb :bike_share
+  end
+
   get '/stations' do
     erb :stations
   end
@@ -11,7 +15,7 @@ class BikeShareApp < Sinatra::Base
     erb :all
   end
 
-  get '/station_dashboard' do
+  get '/stations/dashboard' do
     @stations = Station.all
     erb :station_dashboard
   end
@@ -21,13 +25,14 @@ class BikeShareApp < Sinatra::Base
     erb :'/trips/index.erb'
   end
 
-  get '/trips/:id' do
-    @trip = Trip.find(id)
-    erb :'/trips/show.erb'
+  get '/trips/new' do
+    @stations = Station.all
+    erb :"trips/new"
   end
 
-  get '/trips/new' do
-    erb :'/trips/new.erb'
+  get '/trips/:id' do
+    @trip = Trip.find(params[:id])
+    erb :'/trips/show.erb'
   end
 
   post '/trips' do

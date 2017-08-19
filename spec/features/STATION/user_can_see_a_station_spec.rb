@@ -1,12 +1,11 @@
 RSpec.describe "User can see a specific station" do
 	it "When visiting station / station id" do
 		Station.create(name: "Turing", city: "Hell", installation_date: "1969/4/20", dock_count: 69)
-		Station.create(name: "Mushroom", city: "Englewood", installation_date: "1982/3/10", dock_count: 413)
 
 		visit 'stations/1'
 
-		expect(page).to have_content("Turing")
-		expect(page).to have_content("Hell")
+		page.has_content?("Turing")
+		page.has_content?("Hell")
 
 		# visit "stations/2"
 		# #

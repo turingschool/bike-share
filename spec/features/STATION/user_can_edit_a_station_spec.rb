@@ -12,7 +12,7 @@ RSpec.describe "User can update a station" do
 	fill_in('station[dock_count]',        with: "20"       )
 
 	click_on('edit the station')
-	expect(current_path).to eq("/stations")
+	expect(current_path).to eq("/stations/1")
 
 	end
 end

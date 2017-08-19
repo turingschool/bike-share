@@ -1,7 +1,7 @@
 RSpec.describe "User can create a new station" do
 	it "When visiting new station" do
 
-		visit 'stations/new'
+		visit '/stations/new'
 
 
 		fill_in('name',              with: 'Mushroom' )

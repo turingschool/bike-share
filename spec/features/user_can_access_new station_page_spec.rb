@@ -1,5 +1,5 @@
 describe "User can access new station page" do
-  it "and see a create form" do
+  it "and view form to create new station" do
 
     visit '/stations/new'
 

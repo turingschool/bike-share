@@ -1,13 +1,13 @@
-<h1>Edit station:</h1>
+<h1>Edit <%= @station.name %> Station:</h1>
 
 <form action="/stations" method="post">
   <label for="">Name</label>
-  <input type="textfield" name="station[name]">
+  <input type="textfield" name="station[name]" value="<%= @station.name %>">
   <label for="">Dock Count</label>
-  <input type="textfield" name="station[dock_count]">
+  <input type="textfield" name="station[dock_count]" value="<%= @station.dock_count %>">
   <label for="">City</label>
-  <input type="textfield" name="station[city]">
+  <input type="textfield" name="station[city]" value="<%= @station.city %>">
   <label for="">Installation Date</label>
-  <input type="textfield" name="station[installation_date]">
+  <input type="textfield" name="station[installation_date]" value="<%= @station.installation_date %>">
   <input type="submit" value="Update New Station" />
 </form>

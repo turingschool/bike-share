@@ -5,10 +5,7 @@ describe "User can access edit station page" do
 
     visit '/stations/1/edit'
 
-    page.has_content?(station_1.name)
-    page.has_content?(station_1.dock_count)
-    page.has_content?(station_1.city)
-    page.has_content?(station_1.installation_date)
+    expect(page).to have_content("Edit #{station_1.name} Station:")
   end
   it "and edit station" do
     Station.create(name: "Turing", dock_count: 10, city: "Denver", installation_date: "11/08/17")
@@ -20,6 +17,7 @@ describe "User can access edit station page" do
     fill_in("station[city]", with: "Denver")
     fill_in("station[installation_date]", with: "08/18/17")
     click_on("Update New Station")
+
 
     expect(page).to have_content("Galvanize")
     expect(page).to have_content("10")

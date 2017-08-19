@@ -19,4 +19,10 @@ class BikeShareApp < Sinatra::Base
     erb :new
   end
 
+  post '/stations' do
+    station = Station.new(params)
+    station.save
+    redirect '/stations'
+  end
+
 end

@@ -16,4 +16,5 @@ group :development, :test do
   gem 'pry'
   gem 'table_print'
   gem 'rake'
+  gem 'database_cleaner'
 end

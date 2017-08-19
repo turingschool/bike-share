@@ -16,7 +16,7 @@ describe "User can access edit station page" do
     fill_in("station[dock_count]", with: 10)
     fill_in("station[city]", with: "Denver")
     fill_in("station[installation_date]", with: "08/18/17")
-    click_on("Update New Station")
+    click_on("Update Station")
 
     expect(page).to have_content("Galvanize")
     expect(page).to have_content("10")

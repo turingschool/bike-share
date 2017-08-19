@@ -12,7 +12,7 @@ def delete_columns(path, column_headers)
 end
 
 Station.destroy_all
-system 'Say "Destroying Stations Complete"'
+system 'Say "Good morning Joan, I love you, I will never leave you, destroy stations complete"'
 
 stations = delete_columns("./db/csv/station.csv", [:lat, :long])
 

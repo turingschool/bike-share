@@ -5,8 +5,6 @@ RSpec.describe "user can see all stations" do
 
     visit '/stations'
 
-    save_and_open_page
-
     expect(page).to have_content("Turing")
     expect(page).to have_content("Harvard")
     expect(Station.count).to eq(2)

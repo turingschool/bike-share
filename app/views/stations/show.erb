@@ -4,3 +4,7 @@
 <p>Dock Count: <%= @station.dock_count %></p>
 <p>City: <%= @station.city %></p>
 <p>Installation Date: <%= @station.installation_date %></p>
+<form action="/stations/<%= @station.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="delete" />
+</form>

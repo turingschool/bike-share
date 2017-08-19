@@ -23,6 +23,5 @@ describe "User can access edit station page" do
     expect(page).to have_content("Denver")
     expect(page).to have_content("08/18/17")
     expect(current_path).to eq("/stations/#{Station.last.id}")
-    save_and_open_page
   end
 end

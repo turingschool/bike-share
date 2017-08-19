@@ -7,5 +7,3 @@
 <p>The station(s) where the least bikes are available is/are <%= @stations.order("dock_count").last.name %></p>
 <p>The most recently installed station is <%= @stations.order("installation_date").first.name %></p>
 <p>The oldest station is <%= @stations.order("installation_date").last.name %></p>
-Most recently installed station.
-Oldest station. -->

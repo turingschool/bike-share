@@ -9,5 +9,7 @@ describe "User can delete station" do
     click_on("delete")
 
     expect(current_path).to eq('/stations')
+    expect(page).to_not have_content("Galvanize")
+    expect(page).to have_content("Turing")
   end
 end

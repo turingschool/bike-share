@@ -22,6 +22,6 @@ describe "User can access new station page" do
     expect(page).to have_content("10")
     expect(page).to have_content("Denver")
     expect(page).to have_content("08/18/17")
-    # expect(current_path).to eq('/stations/')
+    expect(current_path).to eq('/stations/1')
   end
 end

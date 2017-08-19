@@ -47,14 +47,14 @@ CSV.foreach('db/csv/weather.csv', {headers: true, header_converters: :symbol}) d
    )
 end
 
-CSV.foreach('db/csv/status.csv', {headers: true, header_converters: :symbol}) do |row|
-  Status.create(
-  station_id:      row[:station_id]
-  bikes_available: row[:bikes_available]
-  docks_available: row[:docks_available]
-  time:            row[:time]
-  )
-end
+# CSV.foreach('db/csv/status.csv', {headers: true, header_converters: :symbol}) do |row|
+#   Status.create(
+#   station_id:      row[:station_id]
+#   bikes_available: row[:bikes_available]
+#   docks_available: row[:docks_available]
+#   time:            row[:time]
+#   )
+# end
 
 b = Time.now
 puts "Seeding took #{((b - a).to_f / 60).round(2)} minutes"

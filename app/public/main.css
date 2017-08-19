@@ -1,9 +1,28 @@
 body {
   background-color: black;
 }
+
+header{
+  transition: margin-left .5s;
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+  margin: 0em;
+  padding: 0em;
+  border: 0em;
+}
 img {
   width: 100%;
   height: auto;
+}
+
+.top_bar {
+  color: white;
+  font-family: 'Kaushan Script';
+  font-size: 2.5em;
+  margin: 0em;
+  padding: 0em;
+  border: 0em;
 }
 
 span.menu-color {
@@ -50,7 +69,11 @@ span.menu-color {
     margin-left: 50px;
 }
 
-@media screen and (max-height: 450px) {
+@media screen and (max-height: 450px, max-width: 1000px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+  header{
+    flex-direction: column; 
+    align-items: flex-start;
+    }
 }

@@ -7,11 +7,5 @@ RSpec.describe "User can see a specific station" do
 		page.has_content?("Turing")
 		page.has_content?("Hell")
 
-		# visit "stations/2"
-		# #
-		# # save_and_open_page
-		# expect(page).to have_content("Mushroom")
-		# expect(page).to have_content("Englewood")
-
 	end
 end

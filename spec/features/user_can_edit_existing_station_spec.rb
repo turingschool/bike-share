@@ -18,10 +18,11 @@ describe "User can access edit station page" do
     fill_in("station[installation_date]", with: "08/18/17")
     click_on("Update New Station")
 
-
     expect(page).to have_content("Galvanize")
     expect(page).to have_content("10")
     expect(page).to have_content("Denver")
     expect(page).to have_content("08/18/17")
+    expect(current_path).to eq("/stations/#{Station.last.id}")
+    save_and_open_page
   end
 end

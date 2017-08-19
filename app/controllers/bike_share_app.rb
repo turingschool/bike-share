@@ -27,4 +27,9 @@ class BikeShareApp < Sinatra::Base
     erb :'stations/edit'
   end
 
+  put '/stations/:id' do
+    @station = Station.update(params[:id])
+    redirect :"stations/#{@station.id}"
+  end
+
 end

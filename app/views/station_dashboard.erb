@@ -1,1 +1,9 @@
 <h1>Station Dashboard</h1>
+<p>There are <%= @stations.count %> stations total</p>
+<p>The average bikes available per station is <%= @stations.average("dock_count").round(2) %></p>
+<p>The most bikes at a station is <%= @stations.maximum("dock_count") %> bikes</p>
+<p>The station(s) where the most bikes are available is/are <%= @stations.order("dock_count").last.name %></p>
+<p>The fewest bikes at a station is <%= @stations.minimum("dock_count") %> bikes</p>
+<p>The station(s) where the least bikes are available is/are <%= @stations.order("dock_count").first.name %></p>
+<p>The most recently installed station is <%= @stations.order("installation_date").first.name %></p>
+<p>The oldest station is <%= @stations.order("installation_date").last.name %></p>

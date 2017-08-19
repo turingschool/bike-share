@@ -2,7 +2,7 @@
 
 <div>
   <% @stations.each do |station| %>
-    <h2><%= station.name %></h2>
+    <h2><a href="/stations/<%= station.id %>"><%= station.name %></a></h2>
     <p><%= station.dock_count %></p>
     <p><%= station.city %></p>
     <p><%= station.installation_date %></p>

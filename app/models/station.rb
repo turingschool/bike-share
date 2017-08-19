@@ -24,4 +24,23 @@ class Station < ActiveRecord::Base
     self.where(installation_date: most_recent_installation_date)
   end
 
+  def self.average_bike_available_per_station
+    self.average(:dock_count).round
+  end
+
+  def self.maximum_dock_count
+    self.maximum(:dock_count)
+  end
+
+  def self.station_with_maximum_dock_count
+    self.where(dock_count: maximum_dock_count)
+  end
+
+  def self.minimum_dock_count
+    self.minimum(:dock_count)
+  end
+
+  def self.station_with_minimum_dock_count
+    self.where(dock_count: minimum_dock_count)
+  end
 end

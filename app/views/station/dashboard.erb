@@ -1,9 +1,25 @@
 <h1>Station Analytics</h1>
 
 <h3>Count of all stations:</h3><p><%= Station.station_count %></p>
+
+<h3>Average Dock Count per Station</h3><p><%= Station.average_bike_available_per_station %></p>
+
+<h3>Most Bikes available at a Station</h3><p><%= Station.maximum_dock_count %></p>
+
+<h3>Station(s) with the Most Bikes Available</h3><% Station.station_with_maximum_dock_count.each do |station| %>
+                                              <p><%= station.name %></p>
+                                              <% end %>
+
+<h3>Fewest Bikes available at a Station</h3><p><%= Station.minimum_dock_count %></p>
+
+<h3>Station(s) with the Fewest Bikes Available</h3><% Station.station_with_minimum_dock_count.each do |station| %>
+                                              <p><%= station.name %></p>
+                                              <% end %>
+
 <h3>Most recent station and installation date:</h3> <% Station.newest_station.each do |station| %>
                                               <p><%= station.name %>, <%= station.installation_date %></p>
                                               <% end %>
+
 <h3>Oldest station and installation date:</h3> <% Station.oldest_station.each do |station| %>
                                               <p><%= station.name %>, <%= station.installation_date %></p>
                                               <% end %>

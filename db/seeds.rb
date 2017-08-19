@@ -1,4 +1,5 @@
 require 'csv'
+<<<<<<< HEAD
 require './app/models/station.rb'
 
 def load_station(data)
@@ -15,5 +16,9 @@ def load_station(data)
 end
 
 load_station("./db/csv/station.csv")
+=======
+require './app/models/trip.rb'
+
+>>>>>>> trip_import
 
 

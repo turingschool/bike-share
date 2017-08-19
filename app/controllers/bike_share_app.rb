@@ -15,22 +15,9 @@ class BikeShareApp < Sinatra::Base
     erb :all
   end
 
-<<<<<<< HEAD
   get '/stations/dashboard' do
     @stations = Station.all
     erb :station_dashboard
-=======
-
-  get '/stations/new' do
-    erb :new
-  end
-
-  post '/stations' do
-    station = Station.new(params)
-    station.save
-    redirect '/stations'
-
->>>>>>> master
   end
 
   get '/trips' do

@@ -15,4 +15,5 @@ group :development, :test do
   gem 'rack-test'
   gem 'pry'
   gem 'table_print'
+  gem 'rake'
 end

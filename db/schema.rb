@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170819040617) do
+ActiveRecord::Schema.define(version: 20170819163237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,26 +20,11 @@ ActiveRecord::Schema.define(version: 20170819040617) do
     t.float "max_temperature_f"
     t.float "mean_temperature_f"
     t.float "min_temperature_f"
-    t.float "max_dew_point_f"
-    t.float "mean_dew_point_f"
-    t.float "min_dew_point_f"
     t.float "max_humidity"
     t.float "mean_humidity"
-    t.float "min_humidity"
-    t.float "max_sea_level_pressure_inches"
-    t.float "mean_sea_level_pressure_inches"
-    t.float "min_sea_level_pressure_inches"
-    t.float "max_visibility_miles"
     t.float "mean_visibility_miles"
-    t.float "min_visibility_miles"
-    t.float "max_wind_Speed_mph"
     t.float "mean_wind_speed_mph"
-    t.float "max_gust_speed_mph"
     t.float "precipitation_inches"
-    t.float "cloud_cover"
-    t.float "events"
-    t.float "wind_dir_degrees"
-    t.float "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,6 +36,15 @@ ActiveRecord::Schema.define(version: 20170819040617) do
     t.integer "dock_count"
     t.text "city"
     t.date "installation_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.integer "station_id"
+    t.integer "bikes_available"
+    t.integer "docks_available"
+    t.time "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

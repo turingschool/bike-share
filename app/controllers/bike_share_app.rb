@@ -11,4 +11,8 @@ class BikeShareApp < Sinatra::Base
     erb :all
   end
 
+  get 'stations/new' do
+    erb :new
+  end
+
 end

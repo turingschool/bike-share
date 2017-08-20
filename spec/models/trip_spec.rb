@@ -1,14 +1,31 @@
 RSpec.describe Trip do
   describe "Class Methods" do
     describe ".per_page" do
-      it 'returns certain number of trips per page' do
+      xit 'returns certain number of trips per page' do
 
       end
     end
 
     describe ".avg_duration_of_a_ride" do
       it 'returns average duration of a trip' do
+        Trip.create(duration: 100,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "2nd at South Park",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "10th at South Park",
+                    bike_id: 288,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
 
+        Trip.create(duration: 200,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "2nd at South Park",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "Hello Kitty",
+                    bike_id: 288,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+        expect(Trip.avg_duration_of_a_ride).to eq(150)
       end
     end
 

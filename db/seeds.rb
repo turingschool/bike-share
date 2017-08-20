@@ -65,6 +65,7 @@ Ccsv.foreach('db/csv/trip.csv') do |row|
                     bike_id: row[8],
                     subscription_type_id: compute_subscription_id(row[9]),
                     zip_code: add_to_zip_code_hash(row[10]))
+                    binding.pry
     trip.save
     puts "Adding trip #{row[0]} to the table"
   end
@@ -73,11 +74,20 @@ end
 
 puts "There are now #{Trip.count} rows in the trips table"
 
+Ccsv.foreach('db/csv/subscription_type.csv') do |row|
+  if header == false
+    subscription = SubscriptionType.new(id: row[0],
+                    subscription_type: row[1],
+                    )
+    subscription.save
+  end
+  header = false
+end
+
 ZIP_CODES.each do |id, value|
   zip_code = ZipCode.new(
                       id: id,
                       zip_code: value
-
                         )
   zip_code.save
 end
@@ -98,15 +108,6 @@ TIMES.each do |id, value|
   time.save
 end
 
-# Ccsv.foreach('db/csv/subscription_type.csv') do |row|
-#   if header == false
-#     subscription = SubscriptionType.new(id: row[0],
-#                     subscription_type: row[1],
-#                     )
-#     subscription.save
-#   end
-#   header = false
-# end
 #
 # puts "There are now #{SubscriptionType.count} rows in the trips table"
 

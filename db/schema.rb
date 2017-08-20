@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170820154952) do
+ActiveRecord::Schema.define(version: 20170820170441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,11 +20,11 @@ ActiveRecord::Schema.define(version: 20170820154952) do
   end
 
   create_table "trip_dates", force: :cascade do |t|
-    t.date "date"
+    t.string "date"
   end
 
   create_table "trip_times", force: :cascade do |t|
-    t.time "time"
+    t.string "time"
   end
 
   create_table "trips", force: :cascade do |t|

@@ -71,5 +71,13 @@ class Trip < ActiveRecord::Base
     "There are #{a} subscriber trips representing #{sub_count}% of the total. "     "There are #{b} customer trips representing #{cust_count}% of total trips."
   end
 
-  
+  def self.most_popular_trip_date
+    a = Trip.group(:start_date).order("count_id DESC").count(:id)
+    "#{a.keys.first} was the most popular trip date, with #{a.values.first} rentals."
+  end
+
+  def self.least_popular_trip_date
+    a = Trip.group(:start_date).order("count_id ASC").count(:id)
+    "#{a.keys.first} was the least popular trip date, with only #{a.values.first} rentals."
+  end
 end

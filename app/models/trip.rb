@@ -1,5 +1,6 @@
 require 'will_paginate'
 require 'will_paginate/active_record'
+require 'Time'
 
 class Trip < ActiveRecord::Base
   validates :duration, presence: true
@@ -14,9 +15,31 @@ class Trip < ActiveRecord::Base
   belongs_to :end_station, class_name: "Station", foreign_key: "end_station_id"
 
   def self.average_duration_of_a_trip
-    a = (Trip.average("duration").to_i) / 60
-    b = (Trip.average("duration").to_i) % 60
-    "#{a} minutes and #{b} seconds"
+    a = Trip.average("duration").to_i
+    Time.at(a).utc.strftime("%M:%S")
+    # time_converter(Trip.average("duration"))
+
+    # a = (Trip.average("duration").to_i) / 60
+    # b = (Trip.average("duration").to_i) % 60
+    # "#{a} minutes and #{b} seconds"
+  end
+
+  def self.longest_ride
+    a = Trip.maximum(:duration)
+    time_converter(a)
+    # + Time.at(a).utc.strftime("%H:%M:%S")
+  end
+
+  def self.time_converter(totalseconds)
+    total_seconds = totalseconds.to_i
+    days = nil
+
+    if total_seconds >= 86400
+      days = total_seconds / 86400
+      total_seconds = total_seconds % 86400
+    end
+
+    "#{days} days"
   end
 
 end

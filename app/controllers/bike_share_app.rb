@@ -53,4 +53,9 @@ class BikeShareApp < Sinatra::Base
     @city = City.find(params[:id])
     erb :'cities/show'
   end
+
+  get '/station-dashboard'
+  @stations = Station.all
+  erb :'station-dashboard'
+
 end

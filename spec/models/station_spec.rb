@@ -34,5 +34,13 @@ RSpec.describe Station do
 
       expect(invalid_station).to_not be_valid
     end
+
+  # describe "Class Methods" do
+  #   it "returns average bikes per station" do
+  #     Station.create(name: "StationOne", city_id: 1, dock_count: 10, installation_date: date)
+  #     Station.create(name: "StationTwo", city_id: 2, dock_count: 20, installation_date: date)
+  #
+  #     expect(station.average_per_station).to eq(15)
+  #   end
   end
 end

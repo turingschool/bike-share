@@ -23,7 +23,6 @@ class BikeShareApp < Sinatra::Base
 
   end
 
-
   get '/trips/:id/edit' do
     erb :trip_edit
   end

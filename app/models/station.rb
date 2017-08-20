@@ -14,23 +14,23 @@ class Station < ActiveRecord::Base
   end
 
   def self.stations_with_most_bikes
-    Station.where(dock_count: maximum(:dock_count)).order(:name)
+    Station.order(:dock_count).reverse_order
   end
 
   def self.least_bikes_available_at_station
     Station.minimum(:dock_count)
   end
 
-  def self.stations_with_most_bikes
-    Station.where(dock_count: minimum(:dock_count)).order(:name)
+  def self.stations_with_least_bikes
+    Station.order(:dock_count)
   end
 
   def self.most_recent_installed_station
-    Station.where(installation_date: maximum(:installation_date))
+    Station.order(:installation_date).reverse_order.first
   end
 
   def self.oldest_station
-    Station.where(installation_date: minimum(:installation_date))
+    Station.order(:installation_date).first
   end
 
 end

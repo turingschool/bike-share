@@ -17,5 +17,6 @@ RSpec.describe "User visits '/stations'" do
     expect(page).to have_content("GlueFactoryville")
     expect(page).to have_content("Station_4")
     expect(page).to have_content("Pants Town")
+    
   end
 end

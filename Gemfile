@@ -18,5 +18,6 @@ group :development, :test do
   gem 'rake'
   gem 'database_cleaner'
   gem 'pry'
+  gem 'will_paginate'
 
 end

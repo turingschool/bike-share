@@ -23,6 +23,12 @@ RSpec.describe Station do
 
       expect(station).to_not be_valid
     end
+
+    it "is invalid without an installation date" do
+      station = Station.new(name: "Station_1", city: "bike town", dock_count: 20)
+
+      expect(station).to_not be_valid
+    end
   end
 
   describe "Class Methods" do

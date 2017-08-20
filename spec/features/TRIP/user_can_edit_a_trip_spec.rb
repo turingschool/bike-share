@@ -13,7 +13,7 @@ RSpec.describe "User can edit a trip" do
     fill_in('trip[duration]',           with:"4000789")
     fill_in('trip[bike_id]',            with:"4")
     select('Customer', :from => 'trip[subscription_type]')
-    fill_in('trip[zip_code]',           with:'zip_code')
+    fill_in('trip[zip_code]',           with:'40506')
 
     click_on('edit the trip')
   	expect(current_path).to eq("/trips/1")

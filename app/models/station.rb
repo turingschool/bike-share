@@ -78,4 +78,15 @@ class Station < ActiveRecord::Base
     a.group(:end_station).order("count_id DESC").count(:id).keys.first.name
   end
 
+  def highest_volume_date_here
+    a = Trip.where(start_station_id: self.id)
+    a.group(:start_date).order("count_id DESC").count(:id).keys.first
+  end
+
+  def most_frequent_zip_code
+    a = Trip.where(start_station_id: self.id)
+    a.group(:zip_code).order("count_id DESC").count(:id).keys.first
+  end
+
+
 end

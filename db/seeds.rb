@@ -3,7 +3,6 @@ require './app/models/trip.rb'
 require 'csv'
 require 'Date'
 require 'pry'
-
 def delete_columns(path, column_headers)
   table = CSV.table(path)
   column_headers.each do |column_header|

@@ -3,6 +3,16 @@
 
 <h2><%= @station.name %></h2>
 
+<h3>General Information: </h3>
 <p>city:<%= @station.city %></p>
 <p>installation date:<%= @station.installation_date %></p>
 <p>dock count:<%= @station.dock_count %></p>
+
+<h3>Station <%= @station.name %>'s Analytics</h3>
+<p>Number of rides started at this station:<%= %></p>
+<p>Number of rides ended at this station:<%= %></p>
+<p>Most frequent destination station (for rides that began at this station):<%= %></p>
+<p>Most frequent origination station (for rides that began at this station):<%= %></p>
+<p>Date with the highest number of trips started at this station:<%= %></p>
+<p>Most frequent zip code for users starting trips at this station:<%= %></p>
+<p>Bike ID most frequently starting a trip at this station:<%= %></p>

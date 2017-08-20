@@ -59,4 +59,24 @@ class BikeShareApp < Sinatra::Base
     erb :'stations/station-index'
   end
 
+  get '/trips' do
+    @trips = Trip.all
+    erb :'trips/index'
+  end
+
+  get '/trips/:id' do
+    @trips = Trip.find(params[:id])
+    erb :'trips/show'
+  end
+
+  get '/trips/new' do
+    @stations = Station.all
+    erb :'stations/new'
+  end
+
+  get '/trips/:id/edit' do
+    @stations = Station.all
+    @trips = Trip.find(params[:id])
+    erb '/trips/edit'
+  end
 end

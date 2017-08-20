@@ -19,6 +19,60 @@ RSpec.describe Trip do
 		end
 	end
 
-	describe :
+	describe "In-Validations" do
+		it "Is invalid without a duration" do
+			trip = Trip.create(start_date: "1969/4/20", end_date: "1969/4/21",
+												 start_station_id: 1, end_station_id: 2, bike_id: 4,
+												 subscription_type: "Some Nonsense", zip_code: "80113"          )
+			expect(Trip.count).to eq(0)
+		end
+
+		it "Is invalid without a start date" do
+			trip = Trip.create(duration: 4002, end_date: "1969/4/21",
+												 start_station_id: 1, end_station_id: 2, bike_id: 4,
+												 subscription_type: "Some Nonsense", zip_code: "80113"          )
+
+			expect(Trip.count).to eq(0)
+		end
+
+		it "Is invalid without a end date" do
+			trip = Trip.create(duration: 4002, start_date: "1969/4/20",
+												 start_station_id: 1, end_station_id: 2, bike_id: 4,
+												 subscription_type: "Some Nonsense", zip_code: "80113"          )
+
+			expect(Trip.count).to eq(0)
+		end
+
+		it "Is invalid without a start station id" do
+			trip = Trip.create(duration: 4002, start_date: "1969/4/20", end_date: "1969/4/21" ,
+			 										end_station_id: 2, bike_id: 4, subscription_type: "Some Nonsense",
+													zip_code: "80113")
+
+			expect(Trip.count).to eq(0)
+		end
+
+		it "Is invalid without a end station id" do
+			trip = Trip.create(duration: 4002, start_date: "1969/4/20", end_date: "1969/4/21",
+												 start_station_id: 1, bike_id: 4,
+												 subscription_type: "Some Nonsense", zip_code: "80113"          )
+
+			expect(Trip.count).to eq(0)
+		end
+
+		it "Is invalid without a bike id" do
+			trip = Trip.create(duration: 4002, start_date: "1969/4/20", end_date: "1969/4/21",
+												 start_station_id: 1, end_station_id: 2,
+												 subscription_type: "Some Nonsense", zip_code: "80113"          )
+
+			expect(Trip.count).to eq(0)
+		end
+
+		it "Is invalid without a subscription type" do
+			trip = Trip.create(duration: 4002, start_date: "1969/4/20", end_date: "1969/4/21",
+												 start_station_id: 1, end_station_id: 2, bike_id: 4, zip_code: "80113")
+
+			expect(Trip.count).to eq(0)
+		end
+	end
 
 end

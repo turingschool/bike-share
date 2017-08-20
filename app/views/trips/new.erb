@@ -30,6 +30,11 @@
                     <li>
                         <a id="text" href="/cities"><button class="btn btn-primary navbar-btn">City Index</button></a>
                     </li>
+                    <li>
+                        <a id="text" href="/trips">
+                            <button class="btn btn-primary navbar-btn">Trip Index</button>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -37,23 +42,36 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1>Create New Station</h1>
-                <form action="/stations" method="post">
-                    <label>Name:</label>
-                    <input type="text" name="station[name]">
-                    <label>Dock Count:</label>
-                    <input type="text" name="station[dock_count]">
-                    <label>City:</label>
-                    <!-- <input type="text" name ="station[city]"> -->
-                    <select class="city-selector" name="station[city_id]">
-                        <% @cities.each do |city| %>
-                            <option value="<%= city.id %>">
-                                <%= city.name %>
+                <h1>Create New Trip</h1>
+                <form action="/trips" method="post">
+                    <label>Duration:</label>
+                    <input type="text" name="trip[duration]">
+                    <label>Start Date:</label>
+                    <input type="text" name="trip[start_date]">
+                    <label>End Date:</label>
+                    <input type="text" name="trip[start_date]">
+                    <label>Start Station:</label>
+                    <select class="station-selector" name="station[start_station_id]">
+                        <% @stations.each do |station| %>
+                            <option value="<%= station.id %>">
+                                <%= station.name %>
                             </option>
                         <% end %>
                     </select>
-                    <label>Installation Date:</label>
-                    <input type="text" name="station[date]">
+                    <label>End Station:</label>
+                    <select class="station-selector" name="trip[end_station_id]">
+                        <% @stations.each do |station| %>
+                            <option value="<%= station.id %>">
+                                <%= station.name %>
+                            </option>
+                        <% end %>
+                    </select>
+                    <label>Bike ID:</label>
+                    <input type="text" name="station[bike_id]">
+                    <label>Subscription Type:</label>
+                    <input type="text" name="trip[subscription_type]">
+                    <label>Zip Code:</label>
+                    <input type="text" name="trip[zip_code]">
                     <input type="submit" value="Create Station" />
                 </form>
             </div>

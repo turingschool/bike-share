@@ -52,7 +52,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips/:id/edit' do
-    @task = Task.find(id)
+    @trips = Trip.find(params[:id])
     erb :'/trips/edit'
   end
 

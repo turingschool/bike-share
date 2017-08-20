@@ -124,5 +124,30 @@ RSpec.describe Station do
 
       expect(Station.station_with_minimum_dock_count.first).to eq(station_four)
     end
+
+    it "Gets most popular starting station" do
+      station_one   = Station.create(name: "Turing", city: "Hell", installation_date: "1969/4/20", dock_count: 69)
+      station_two   = Station.create(name: "Mushroom", city: "Englewood", installation_date: "1982/3/10", dock_count: 413)
+
+      trip_one  = Trip.create(duration: 40000, start_date: "1969/4/20", end_date: "1969/4/20", start_station_id: 1, end_station_id: 2, bike_id: 666, subscription_type: "customer")
+      trip_two  = Trip.create(duration: 40000, start_date: "1969/4/20", end_date: "1969/4/20", start_station_id: 1, end_station_id: 2, bike_id: 666, subscription_type: "customer")
+      trip_three  = Trip.create(duration: 40000, start_date: "1969/4/20", end_date: "1969/4/20", start_station_id: 1, end_station_id: 2, bike_id: 666, subscription_type: "customer")
+      trip_four  = Trip.create(duration: 40000, start_date: "1969/4/20", end_date: "1969/4/20", start_station_id: 2, end_station_id: 1, bike_id: 666, subscription_type: "customer")
+
+      expect(Station.most_popular_starting_station).to eq(station_one.name)
+    end
+
+    it "Gets most popular ending station" do
+      station_one   = Station.create(name: "Turing", city: "Hell", installation_date: "1969/4/20", dock_count: 69)
+      station_two   = Station.create(name: "Mushroom", city: "Englewood", installation_date: "1982/3/10", dock_count: 413)
+
+      trip_one  = Trip.create(duration: 40000, start_date: "1969/4/20", end_date: "1969/4/20", start_station_id: 1, end_station_id: 2, bike_id: 666, subscription_type: "customer")
+      trip_two  = Trip.create(duration: 40000, start_date: "1969/4/20", end_date: "1969/4/20", start_station_id: 1, end_station_id: 2, bike_id: 666, subscription_type: "customer")
+      trip_three  = Trip.create(duration: 40000, start_date: "1969/4/20", end_date: "1969/4/20", start_station_id: 1, end_station_id: 2, bike_id: 666, subscription_type: "customer")
+      trip_four  = Trip.create(duration: 40000, start_date: "1969/4/20", end_date: "1969/4/20", start_station_id: 2, end_station_id: 1, bike_id: 666, subscription_type: "customer")
+
+      expect(Station.most_popular_ending_station).to eq(station_two.name)
+    end
+
 	end
 end

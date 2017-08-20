@@ -59,4 +59,5 @@ class Station < ActiveRecord::Base
   def self.most_popular_ending_station
     Trip.group(:end_station).order("count_id DESC").count(:id).keys.first.name
   end
+
 end

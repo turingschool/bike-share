@@ -3,6 +3,8 @@ class Station < ActiveRecord::Base
   validates :city, presence: true
   validates :installation_date, presence: true
   validates :dock_count, presence: true
+  has_many :start_trips, class_name: "Trip", foreign_key: "start_station_id"
+  has_many :end_trips, class_name: "Trip", foreign_key: "end_station_id"
 
   def self.most_recent_installation_date
     self.maximum(:installation_date)

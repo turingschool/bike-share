@@ -9,4 +9,7 @@ class Trip < ActiveRecord::Base
   validates :end_station_id, presence: true
   validates :bike_id, presence: true
   validates :subscription_type, presence: true
+
+  belongs_to :start_station, class_name: "Station", foreign_key: "start_station_id"
+  belongs_to :end_station, class_name: "Station", foreign_key: "end_station_id"
 end

@@ -17,17 +17,11 @@ class Trip < ActiveRecord::Base
   def self.average_duration_of_a_trip
     a = Trip.average("duration").to_i
     Time.at(a).utc.strftime("%M:%S")
-    # time_converter(Trip.average("duration"))
-
-    # a = (Trip.average("duration").to_i) / 60
-    # b = (Trip.average("duration").to_i) % 60
-    # "#{a} minutes and #{b} seconds"
   end
 
   def self.longest_ride
     a = Trip.maximum(:duration)
     time_converter(a)
-    # + Time.at(a).utc.strftime("%H:%M:%S")
   end
 
   def self.time_converter(totalseconds)
@@ -54,4 +48,13 @@ class Trip < ActiveRecord::Base
   def self.yearly_ride_breakdown
     Trip.group("DATE_TRUNC('year', start_date)").count
   end
+
+  def self.hottest_bike
+    Trip.group(:bike_id).order("count_id DESC").count(:id).keys.first
+  end
+
+  def self.most_neglected_bike
+    Trip.group(:bike_id).order("count_id ASC").count(:id).keys.first
+  end
+
 end

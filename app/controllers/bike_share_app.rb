@@ -1,6 +1,14 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
+
+require 'pry'
 class BikeShareApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
   set :method_override, true
+
+  configure do
+    register WillPaginate::Sinatra
+  end
 
   get '/' do
     erb :'/root/index'
@@ -22,8 +30,10 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trips = Trip.all
-    erb :'/trips/index.erb'
+    Trip.connection
+    @pages = Trip.paginate(page: params[:page], :per_page => 30)
+    @trips = Trip.order('start_date DESC').page(params[:page])
+    erb :'/trips/index'
   end
 
   get '/trips/new' do
@@ -33,7 +43,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips/:id' do
     @trip = Trip.find(params[:id])
-    erb :'/trips/show.erb'
+    erb :'/trips/show'
   end
 
   post '/trips' do
@@ -43,7 +53,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips/:id/edit' do
     @task = Task.find(id)
-    erb :'/trips/edit.erb'
+    erb :'/trips/edit'
   end
 
   put '/trips/:id' do

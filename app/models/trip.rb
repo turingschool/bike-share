@@ -50,11 +50,15 @@ class Trip < ActiveRecord::Base
   end
 
   def self.hottest_bike
-    Trip.group(:bike_id).order("count_id DESC").count(:id).keys.first
+    a = Trip.group(:bike_id).order("count_id DESC").count(:id).keys.first
+    b = Trip.where(bike_id: a).count
+    "Bike #{a} is the hottest bike with #{b} times ridden"
   end
 
   def self.most_neglected_bike
-    Trip.group(:bike_id).order("count_id ASC").count(:id).keys.first
+    a = Trip.group(:bike_id).order("count_id ASC").count(:id).keys.first
+    b = Trip.where(bike_id: a).count
+    "Bike #{a} is the least popular bike with only #{b} times ridden"
   end
 
 end

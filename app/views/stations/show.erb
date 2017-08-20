@@ -14,11 +14,11 @@
 
 <div class="station analytics">
   <h3><%= @station.name %> Analytics</h3>
-    <p>Number of rides started at this station: <%= Trip.number_of_starting_rides_at_station %></p>
-    <p>Number of rides ending at this station: <%= Trip.number_of_ending_rides_at_station %></p>
-    <p>Most frequent destination station from here: <%= Trip.most_frequent_destination(station_id) %></p>
-    <p>Most frequent origination station to here: <%= Trip.most_frequent_origination(station_id) %></p>
-    <p>Date with highest number of origination trip from here: <%= Trip.date_with_highest_trip_from_this_station(station_id) %></p>
-    <p>Most frequent zipcode for users starting trips at this station: <%= Trip.most_frequent_zip_code_users_starting(station_id) %></p>
-    <p>Most frequently use bike starting at this station: <%= Trip.most_frequent_bike_starting(station_id) %></p>
+    <p>Number of rides started at this station: <%= Trip.number_of_starting_rides_at_station(@station.id) %></p>
+    <p>Number of rides ending at this station: <%= Trip.number_of_ending_rides_at_station(@station.id) %></p>
+    <p>Most frequent destination station from here: <%= Trip.most_frequent_destination(@station.id) %></p>
+    <p>Most frequent origination station to here: <%= Trip.most_frequent_origination(@station.id) %></p>
+    <p>Date with highest number of origination trip from here: <%= Trip.date_with_highest_trip_from_this_station(@station.id) %></p>
+    <p>Most frequent zipcode for users starting trips at this station: <%= Trip.most_frequent_zip_code_users_starting(@station.id) %></p>
+    <p>Most frequently use bike starting at this station: <%= Trip.most_frequent_bike_starting(@station.id) %></p>
 </div>

@@ -3,8 +3,9 @@ require_relative "subscription"
 
 class Trip < ActiveRecord::Base
 
-  validates_presence_of :duration, :start_date, :end_date, :start_station_id, :end_station_id, :bike_id, :subscription_id
-  belongs_to :subscription
+  validates_presence_of :duration, :start_date, :end_date, :bike_id, :subscription_type
+
+  has_many :stations
 
   acts_as_copy_target #this is from the postgres-copy gem
 
@@ -47,11 +48,11 @@ class Trip < ActiveRecord::Base
   end
 
   def self.subscription_info
-    group(:subscription_id).limit(2).count(:id)
+    group(:subscription_type).limit(2).count(:id)
   end
 
   def self.subscription_percentage(amount)
-    total = Trip.group(:subscription_id).limit(2).count(:id).values.reduce(:+)
+    total = Trip.group(:subscription_type).limit(2).count(:id).values.reduce(:+)
     (amount / total.to_f * 100).round(2)
   end
 

@@ -1,8 +1,10 @@
 <link href='/main.css' rel='stylesheet' type="text/css"/>
-<div class='top_bar' id='main'>
-  <h2>
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+<div id='top-head' class='top_bar'>
+  <p id='app-name' style='font-family: Kaushan Script;'>
     Bike Share App
-  </h2>
+  </p>
 </div>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -18,11 +20,13 @@
 <script>
   function openNav() {
     document.getElementById("mySidenav").style.width = "200px";
+    document.getElementById("top-head").style.marginLeft = "250px";
     document.getElementById("main").style.marginLeft = "250px";
   }
   function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
+    document.getElementById("top-head").style.marginLeft = "0";
   }
 </script>
 

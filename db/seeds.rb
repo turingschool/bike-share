@@ -1,8 +1,10 @@
 require './app/models/station.rb'
 require './app/models/trip.rb'
 require 'csv'
+require 'time'
 require 'Date'
 require 'pry'
+
 def delete_columns(path, column_headers)
   table = CSV.table(path)
   column_headers.each do |column_header|
@@ -16,9 +18,9 @@ def clean_zipcode(zip_code)
 end
 
 Station.destroy_all
-system 'Say "Good morning Joan, I love you, I will never leave you, destroy stations complete"'
+# system 'Say "Good morning Joan, I love you, I will never leave you, destroy stations complete"'
 Trip.destroy_all
-system 'Say "Trips seeded, thank you computer Jesus"'
+# system 'Say "Trips seeded, thank you computer Jesus"'
 
 
 stations = delete_columns("./db/csv/station.csv", [:lat, :long])
@@ -29,7 +31,8 @@ trips = CSV.open "./db/csv/trip.csv", headers: true, header_converters: :symbol
     row[:installation_date] = Date.strptime(row[:installation_date], '%m/%d/%Y')
     Station.create!(row)
   end
-
+  
+start_time = Time.now
   count = 0
   trips.each do |row|
     row = row.to_h
@@ -42,3 +45,4 @@ trips = CSV.open "./db/csv/trip.csv", headers: true, header_converters: :symbol
     count += 1
     puts count
   end
+puts (Time.now - start_time)

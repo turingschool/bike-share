@@ -21,7 +21,6 @@ class Station < ActiveRecord::Base
     Station.minimum(:dock_count)
   end
 
-
   def self.stations_with_most_bikes
     Station.where(dock_count: minimum(:dock_count)).order(:name)
   end
@@ -33,6 +32,5 @@ class Station < ActiveRecord::Base
   def self.oldest_station
     Station.where(installation_date: minimum(:installation_date))
   end
-
 
 end

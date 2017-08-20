@@ -2,4 +2,6 @@
 
 <% @stations.each do |station| %>
   <h3><%= station.name%></h3>
+  <p><%= station.id%></p>
+  <a href="/stations/<%= station.id%>">Show Station</a>
 <%end%>

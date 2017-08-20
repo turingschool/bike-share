@@ -47,5 +47,11 @@ class Trip < ActiveRecord::Base
     Time.at(a).utc.strftime("%M:%S")
   end
 
-  
+  def self.monthly_ride_breakdown
+    Trip.group("DATE_TRUNC('month', start_date)").count
+  end
+
+  def self.yearly_ride_breakdown
+    Trip.group("DATE_TRUNC('year', start_date)").count
+  end
 end

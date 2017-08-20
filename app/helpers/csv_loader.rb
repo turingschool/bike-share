@@ -11,7 +11,7 @@ class CSVLoader
         :name => row[:name],
         :dock_count => row[:dock_count].to_i,
         :city => row[:city],
-        :date => row[:installation_date] # Should we make this an integer for calcs?
+        :installation_date => row[:installation_date]
       }
     end
   end

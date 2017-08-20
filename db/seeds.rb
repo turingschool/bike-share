@@ -19,6 +19,6 @@ station_data.each do |station|
                   name: station[:name],
                   dock_count: station[:dock_count],
                   city_id: city.id,
-                  date: station[:date]
+                  installation_date: station[:installation_date]
                   )
 end

@@ -1,4 +1,4 @@
-RSpec.describe City do
+describe City do
   describe "Validations" do
     it "is invalid without a city" do
       city = City.create

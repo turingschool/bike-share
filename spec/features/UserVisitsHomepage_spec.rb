@@ -11,13 +11,13 @@ RSpec.describe "User can interact with homepage" do
       end
     end
 
-    it "lets you access station index" do
-      visit("/")
-      within(:css, ".container#button") do
-        click_button("Station Index")
-
-        expect(page).to have_content("Station Index")
-      end
-    end
+    # it "lets you access station index" do
+    #   visit("/")
+    #   within(:css, ".container#button") do
+    #     click_button("Station Index")
+    #
+    #     expect(page).to have_content("Station Index")
+    #   end
+    # end
   end
 end

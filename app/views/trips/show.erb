@@ -1,0 +1,14 @@
+<h3>Trip Details</h3>
+<p>The trip started on <%= @trip.start_date %> and ended on <%= @trip.end_date %></p>
+<p>The trip started at <%= @trip.start_station_name %>, and ended at <%= @trip.end_station_name %></p>
+<p>The trip lasted <%= @trip.duration %> minutes</p>
+<p>The trip was on bike# <%= @trip.bike_id %></p>
+<p>The person taking the trip was a <%= @trip.subscription_type %></p>
+<p>The trip zip code was <%= @trip.zip_code %></p><br><br>
+<a href="/trips/<%= @trip.id %>/edit"> Edit this trip</a>
+<p>OR</p>
+<form action="/trips/<%= @trip.id%>" method = "POST">
+  <input type="hidden" name= "_method" value="DELETE">
+  <input type="submit" value="delete">
+</form>
+<p><a href='/trips'>Back to the trip index</a></p>

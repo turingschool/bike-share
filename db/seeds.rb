@@ -23,7 +23,7 @@ system 'Say "Trips seeded, thank you computer Jesus"'
 
 
 stations = delete_columns("./db/csv/station.csv", [:lat, :long])
-trips = CSV.open "./db/csv/trip.csv", headers: true, header_converters: :symbol
+trips = CSV.foreach "./db/csv/trip.csv", headers: true, header_converters: :symbol
 
   stations.each do |row|
     row = row.to_h

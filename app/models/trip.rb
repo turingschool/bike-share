@@ -1,6 +1,16 @@
+require_relative "station"
+require_relative "subscription"
+
 class Trip < ActiveRecord::Base
 
+  validates_presence_of :duration, :start_date, :end_date, :start_station_id, :end_station_id, :bike_id, :subscription_id
+  belongs_to :subscription
+
   acts_as_copy_target #this is from the postgres-copy gem
+
+  def self.per_page
+    30
+  end
 
   def self.avg_duration_of_a_ride
     average(:duration)
@@ -54,6 +64,8 @@ class Trip < ActiveRecord::Base
     date = Trip.group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all').count.first
     "#{date[0][0]}/#{date[0][1]}/#{date[0][2]}: #{date[1]}"
   end
+
+  
 
 
 

@@ -2,6 +2,7 @@ require 'csv'
 require_relative '../app/helpers/csv_loader'
 require_relative '../app/models/station'
 require_relative '../app/models/city'
+require_relative '../app/models/trip'
 
 loader = CSVLoader.new
 

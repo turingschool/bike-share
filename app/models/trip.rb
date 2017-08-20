@@ -61,4 +61,15 @@ class Trip < ActiveRecord::Base
     "Bike #{a} is the least popular bike with only #{b} times ridden"
   end
 
+  def self.subscription_type_breakdown
+    a = Trip.where(subscription_type: "Subscriber").count
+    b = Trip.where(subscription_type: "Customer").count
+
+    sub_count = ((a.to_f / Trip.count.to_f) * 100).round(2)
+    cust_count = ((b.to_f / Trip.count.to_f) * 100).round(2)
+
+    "There are #{a} subscriber trips representing #{sub_count}% of the total. "     "There are #{b} customer trips representing #{cust_count}% of total trips."
+  end
+
+  
 end

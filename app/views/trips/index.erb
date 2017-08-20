@@ -1,0 +1,15 @@
+<h1>All Trips</h1>
+
+<div>
+  <% @trips.each do |trip| %>
+    <h2><a href="/trips/<%= trip.id %>">Trip #{trip.id}</a></h2>
+    <p><%= trip.duration %></p>
+    <p><%= trip.start_date %></p>
+    <p><%= trip.start_station_name %></p>
+    <p><%= trip.end_date %></p>
+    <p><%= trip.end_station_name %></p>
+    <p><%= trip.bike_id %></p>
+    <p><%= trip.subscription_type %></p>
+    <p><%= trip.zip_code %></p>
+  <% end %>
+</div>

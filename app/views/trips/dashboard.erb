@@ -1,0 +1,17 @@
+<h1>Trip Analytics</h1>
+
+<div>
+  <p>Average duration of a ride: <%= Trip.avg_duration_of_a_ride %> </p>
+  <p>Longest ride: <%= Trip.longest_ride %></p>
+  <p>Shortest ride: <%= Trip.shortest_ride %></p>
+  <p>Station with the most rides as a starting place: <%= Trip.station_with_most_ride_starts %></p>
+  <p>Station with the most rides as an ending place: <%= Trip.station_with_most_rides_ends %></p>
+  <p>Month by Month breakdown of number of rides with subtotals for each year: <%= Trip.month_breakdown %></p>
+  <p>Most ridden bike with total number of rides for that bike: <%= Trip.most_ridden_bike %></p>
+  <p>Least ridden bike with total number of rides for that bike: <%= Trip.least_ridden_bike %></p>
+  <p>User subscription type breakout with both count and percentage: <%= Trip.subscription_type %></p>
+  <p>Single date with the highest number of trips with a count of those trips: <%= Trip.date_with_highest_trips %></p>
+  <p>Single date with the lowest number of trips with a count of those trips: <%= Trip.date_with_fewest_trips %></p>
+
+  <h3>To view the analytics of an individual station, visit the station index and view the station you'd like to receive analytics on.</h3>
+</div>

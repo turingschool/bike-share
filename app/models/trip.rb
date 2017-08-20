@@ -12,4 +12,11 @@ class Trip < ActiveRecord::Base
 
   belongs_to :start_station, class_name: "Station", foreign_key: "start_station_id"
   belongs_to :end_station, class_name: "Station", foreign_key: "end_station_id"
+
+  def self.average_duration_of_a_trip
+    a = (Trip.average("duration").to_i) / 60
+    b = (Trip.average("duration").to_i) % 60
+    "#{a} minutes and #{b} seconds"
+  end
+
 end

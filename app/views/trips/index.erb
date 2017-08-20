@@ -1,0 +1,7 @@
+<h1>Trips!</h1>
+
+<% @trips.each do |trip|%>
+<p><%= trip.start_station_name %></p>
+<% end %>
+
+<%= will_paginate @pages, :page_links => false %>

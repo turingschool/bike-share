@@ -1,3 +1,4 @@
+require 'pry'
 class BikeShareApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
   set :method_override, true
@@ -21,8 +22,9 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trips = Trip.all
-    erb :'/trips/index.erb'
+    @pages = Trip.paginate(page: params[:page])
+    binding.pry
+    erb :'/trips/index'
   end
 
   get '/trips/new' do

@@ -6,4 +6,12 @@ class Station < ActiveRecord::Base
   validates :dock_count, presence: true
   validates :city_id, presence: true
   validates :installation_date_id, presence: true
+
+  def database
+    SQLite3::Database.new("..")
+  end
+
+  def self.count
+    database.execute("SELECT Count(id) AS Numberofstations FROM stations;")
+  end
 end

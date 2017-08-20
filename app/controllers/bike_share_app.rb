@@ -1,3 +1,5 @@
+require 'pry'
+
 class BikeShareApp < Sinatra::Base
   get '/' do
     erb :'home/index'
@@ -66,10 +68,16 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips/new' do
     @stations = Station.all
-    erb :'stations/new'
+    erb :'trips/new'
+  end
+
+  post '/trips' do
+    @trip = Trip.create(params[:trip])
+    redirect "/trips/#{@trip.id}"
   end
 
   get '/trips/:id' do
+        binding.pry
     @trips = Trip.find(params[:id])
     erb :'trips/show'
   end

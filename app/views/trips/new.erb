@@ -31,9 +31,7 @@
                         <a id="text" href="/cities"><button class="btn btn-primary navbar-btn">City Index</button></a>
                     </li>
                     <li>
-                        <a id="text" href="/trips">
-                            <button class="btn btn-primary navbar-btn">Trip Index</button>
-                        </a>
+                        <a id="text" href="/trips"><button class="btn btn-primary navbar-btn">Trip Index</button></a>
                     </li>
                 </ul>
             </div>
@@ -52,7 +50,7 @@
                     <input type="text" name="trip[start_date]">
                     <label>Start Station:</label>
                     <select class="station-selector" name="station[start_station_id]">
-                        <% @stations.each do |station| %>
+                        <% @stations.order(:name).each do |station| %>
                             <option value="<%= station.id %>">
                                 <%= station.name %>
                             </option>
@@ -60,7 +58,7 @@
                     </select>
                     <label>End Station:</label>
                     <select class="station-selector" name="trip[end_station_id]">
-                        <% @stations.each do |station| %>
+                        <% @stations.order(:name).each do |station| %>
                             <option value="<%= station.id %>">
                                 <%= station.name %>
                             </option>
@@ -72,7 +70,7 @@
                     <input type="text" name="trip[subscription_type]">
                     <label>Zip Code:</label>
                     <input type="text" name="trip[zip_code]">
-                    <input type="submit" value="Create Station" />
+                    <input type="submit" value="Create Trip" />
                 </form>
             </div>
         </div>

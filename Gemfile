@@ -6,6 +6,7 @@ gem 'activerecord'
 gem 'sinatra-activerecord'
 
 group :development, :test do
+  gem 'will_paginate'
   gem 'shotgun'
   gem 'rspec'
   gem 'rspec-core'

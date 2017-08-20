@@ -16,10 +16,12 @@ class BikeShareApp < Sinatra::Base
     erb :'stations/dashboard'
   end
 
-  get 'stations/:id' do
+  get '/stations/:id' do
     @station = Station.find(params[:id])
     erb :'stations/show'
   end
+
+  
 
   get '/trips' do
     @trips = Trip.all

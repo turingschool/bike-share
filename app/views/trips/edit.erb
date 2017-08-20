@@ -1,0 +1,34 @@
+<form action="/trips" method="post">
+  <fieldset>
+    <legend>Edit A Trip</legend>
+      <input type="hidden" name="_method" value="PUT" />
+      Duration:<br>
+      <input type='text' name='trip[duration]' value=<%= @trip.duration %>><br/>
+      Start Date:<br>
+      <input type='text' name='trip[start_date]'><br/>
+      Start Station:<br>
+      <select name="trip[station_id]">
+        <% @stations.each do |station| %>
+          <option value=<%= station.id %>><%= station.name %></option>
+        <% end %>
+      </select><br>
+      End Date:<br>
+      <input type='text' name='trip[end_date]'><br/>
+      End Station:<br>
+      <select name="trip[station_id]">
+        <% @stations.each do |station| %>
+          <option value=<%= station.id %>><%= station.name %></option>
+        <% end %>
+      </select><br>
+      Bike ID:<br/>
+      <input type='text' name='trip[bike_id]'><br/>
+      Subscription Type:<br>
+      <select name="trip[subscription_type]">
+        <option value="Subscriber">Subscriber</option>
+        <option value="Customer">Customer</option>
+      </select><br>
+      Zip Code:<br>
+      <input type='text' name='trip[zip_code]'><br/>
+      <input type="submit" value="Submit">
+    </fieldset>
+</form>

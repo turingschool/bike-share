@@ -1,0 +1,9 @@
+<h1>Trips!</h1>
+
+<% @trips.each do |trip|%>
+<p><a href='trips/<%= trip.id %>'><%= trip.start_station_name %></a></p>
+<a href="/trips/<%= trip.id%>/edit"> Edit this trip</a>
+<p>...</p>
+<% end %>
+
+<%= will_paginate @pages, :page_links => false %>

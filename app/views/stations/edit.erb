@@ -1,0 +1,11 @@
+<form action="/stations/<%=@station.id %>" method= "post">
+  <p>Edit Station</p>
+  <input type="hidden" name="_method" value= "PUT" />
+  <input type='text' name='station[name]' placeholder="Name" value='<%= @station.name %>'/><br/>
+  <input type='number' name='station[dock_count]' placeholder="Dock Count" value='<%= @station.dock_count %>'/><br/>
+  <input type='text' name='station[lat]' placeholder="Lattitude" value='<%= @station.lat %>'/><br/>
+  <input type='text' name='station[long]' placeholder="Longitude" value='<%= @station.long %>'/><br/>
+  <input type='text' name='station[city]' placeholder="City" value='<%= @station.city %>'/><br/>
+  <input type='date' name='station[installation_date]' placeholder="Date of Installation" value='<%= @station.installation_date %>'/><br/>
+  <input type='submit'/>
+</form>

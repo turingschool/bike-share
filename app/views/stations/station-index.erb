@@ -55,25 +55,29 @@
       <div class="row">
         <div class="col-md-4">
           <h2>Most bikes available at: </h2>
-          <p>placeholder</p>
+          <p><%= @stations.stations_with_most_bikes[1].name %></p>
+          <p><%= @stations.stations_with_most_bikes[2].name %></p>
+          <p><%= @stations.stations_with_most_bikes[3].name %></p>
         </div>
         <div class="col-md-4">
           <h2>Fewest bikes available at:</h2>
-          <p>placeholder</p>
+          <p><%= @stations.stations_with_least_bikes[1].name %></p>
+          <p><%= @stations.stations_with_least_bikes[2].name %></p>
+          <p><%= @stations.stations_with_least_bikes[3].name %></p>
         </div>
         <div class="col-md-4">
           <h2>Fewest Bikes available:</h2>
-          <p>placeholder</p>
+          <p><%= @stations.least_bikes_available_at_station %></p>
         </div>
       </div>
       <div class="row">
         <div class="col-md-4">
           <h2>Newest station: </h2>
-          <p><%= @stations.most_recent_installed_station.first.name %></p>
+          <p><%= @stations.most_recent_installed_station.name %></p>
         </div>
         <div class="col-md-4">
           <h2>Oldest Station:</h2>
-          <p><%= @stations.oldest_station.first.name %></p>
+          <p><%= @stations.oldest_station.name %></p>
         </div>
       </div>
 

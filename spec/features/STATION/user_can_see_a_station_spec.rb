@@ -6,6 +6,5 @@ RSpec.describe "User can see a specific station" do
 
 		page.has_content?("Turing")
 		page.has_content?("Hell")
-
 	end
 end

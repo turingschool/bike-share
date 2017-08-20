@@ -73,4 +73,9 @@ class Station < ActiveRecord::Base
     a.group(:start_station).order("count_id DESC").count(:id).keys.first.name
   end
 
+  def most_frequent_origination_station
+    a = Trip.where(start_station_id: self.id)
+    a.group(:end_station).order("count_id DESC").count(:id).keys.first.name
+  end
+
 end

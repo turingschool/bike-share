@@ -6,12 +6,3 @@ class Getridoftimedatatypes < ActiveRecord::Migration[5.1]
     add_column :trip_times, :time, :string
   end
 end
-
-
-class TripDates < ActiveRecord::Migration[5.1]
-  def change
-    create_table :trip_dates do |t|
-      t.date :date
-    end
-  end
-end

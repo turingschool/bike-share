@@ -45,12 +45,12 @@ class BikeShareApp < Sinatra::Base
   put '/stations/:id' do |id|
     Station.update(id, params[:station])
     redirect '/stations/#{id}'
-    
+  end  #fixed by adding end tag, but unsure if the route is right. Did not edit what was already written. -joel
+
   get '/stations/:id' do
     @station = Station.find(params[:id])
     erb :'stations/show'
-
-  end
+  end  #fixed by adding end tag, but unsure if the route is right. Did not edit what was already written. -joel
 
   get '/trips' do
     Trip.connection

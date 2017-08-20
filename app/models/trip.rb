@@ -3,7 +3,8 @@ class Trip < ActiveRecord::Base
   belongs_to :trip_date
   belongs_to :trip_time
 
-  # validates :duration, :start_date, :end_date, :start_station, :end_station, :bike_id, :subscription_type_id, presence: true
+  #  validates :duration,:start_date,
+  # #   :end_date, :start_station, :end_station, :bike_id, :subscription_type_id,  presence: true
 
   def self.find_thirty_trips(start_index)
     find_range = (start_index...(start_index + 30)).to_a

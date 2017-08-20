@@ -21,6 +21,10 @@ position: absolute;
 	background-color: #1D2D44;
 }
 
+.navbar-brand {
+	margin-top: 12px;
+}
+
 .navbar-inverse .navbar-brand {
 	color: 	#748CAB;
 }
@@ -35,12 +39,7 @@ position: absolute;
 }
 
 .navbar-btn {
-	color: #3E5C76;
-	margin-right: 4px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	padding-left: 5px;
-	padding-right: 5px;
+	color: #F0EBD8;
 }
 
 #text {

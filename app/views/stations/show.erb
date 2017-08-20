@@ -51,8 +51,6 @@
                         <li class="list-group-item">Installation Date:
                             <%= @station.installation_date %>
                         </li>
-                        <br />
-                        <br />
                     </ul>
                         <form action="/stations/<%= @station.id %>" method="post">
                             <input type="hidden" name="_method" value="DELETE" />

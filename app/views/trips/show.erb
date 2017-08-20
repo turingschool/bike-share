@@ -6,4 +6,9 @@
 <p>The person taking the trip was a <%= @trip.subscription_type %></p>
 <p>The trip zip code was <%= @trip.zip_code %></p><br><br>
 <a href="/trips/<%= @trip.id %>/edit"> Edit this trip</a>
+<p>OR</p>
+<form action="/trips/<%= @trip.id%>" method = "POST">
+  <input type="hidden" name= "_method" value="DELETE">
+  <input type="submit" value="delete">
+</form>
 <p><a href='/trips'>Back to the trip index</a></p>

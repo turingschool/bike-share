@@ -37,13 +37,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1>Station Index</h1>
+                <h1>City Index</h1>
                 <br>
+                <% @cities.each do |city| %>
                     <ul class="list-group">
-                <% @stations.each do |station| %>
-                        <li class="list-group-item"><b><a href="stations/<%= station.id %>"><%= station.name %></a></li>
-                <% end %>
+                        <li class="list-group-item"><b><a href="cities/<%= city.id %>"><%= city.name %></a></b></li>
                     </ul>
+                <% end %>
             </div>
         </div>
     </div>

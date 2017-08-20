@@ -13,6 +13,10 @@
 
   <%= condition.precipitation %>
 
+  <form action="/conditions/<%= condition.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Condition"/>
+  </form>
 <% end %>
 
 

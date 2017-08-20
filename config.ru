@@ -7,6 +7,7 @@ use Rack::Static,
   :urls => ["/assets", "/js", "/css"],
   :root => "public"
 
+# Heroku Stuff####
 run lambda { |env|
   [
     200,
@@ -16,5 +17,6 @@ run lambda { |env|
     }
   ]
 }
+###################
 
 run BikeShareApp

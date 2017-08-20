@@ -3,7 +3,7 @@ class BikeShareApp < Sinatra::Base
   set :method_override, true
 
   get '/' do
-    erb :index
+    erb :'/root/index'
   end
 
   get '/stations' do

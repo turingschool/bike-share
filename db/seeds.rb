@@ -14,12 +14,18 @@ def compute_subscription_id(subscription_string)
   end
 end
 
-def compute_trip_duration(start_time, end_time)
-  #convert time to hours
-  #hour number - hour number
-  #
-  start_time - end_time
+def handle_date(start_time, end_time)
+  start_time = start_time.split(" ")
+  end_time = end_time.split(" ")
+  compute_trip_duration(start_time[1], end_time[1])
+  add_to_date_hash(start_time[0])
+  add_to_date_hash(end_time[0])
+end
 
+def compute_trip_duration(start_time, end_time)
+  # convert time to hours
+  # hour number - hour number
+  # start_time - end_time
 end
 
 def add_to_date_hash(date)

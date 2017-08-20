@@ -20,9 +20,9 @@ describe "User can access new trip page" do
     fill_in("trip[start_date]", with: "2014-08-21 09:08:00")
     fill_in("trip[start_station_name]", with: "Yoyo")
     fill_in("trip[end_date]", with: "2015-08-22 09:08:00")
-    fill_in("trip[end_station]", with: "Memememe")
+    fill_in("trip[end_station_name]", with: "Memememe")
     fill_in("trip[bike_id]", with: 299)
-    fill_in("trip[subscription_type]", with: "Subsciber")
+    fill_in("trip[subscription_type]", with: "Subscriber")
     fill_in("trip[zip_code]", with: "90210")
     click_on("Create New Trip")
 

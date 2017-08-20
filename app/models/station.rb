@@ -60,4 +60,11 @@ class Station < ActiveRecord::Base
     Trip.group(:end_station).order("count_id DESC").count(:id).keys.first.name
   end
 
+  def number_of_rides_started_here
+    self.start_trips.count
+  end
+
+  def number_of_rides_ended_here
+    self.end_trips.count
+  end
 end

@@ -15,5 +15,3 @@ def load_station(data)
 end
 
 load_station("./db/csv/station.csv")
-
-

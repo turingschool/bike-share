@@ -45,6 +45,7 @@ class Trip < ActiveRecord::Base
   def self.shortest_ride
     a = Trip.minimum(:duration).to_i
     Time.at(a).utc.strftime("%M:%S")
-
   end
+
+  
 end

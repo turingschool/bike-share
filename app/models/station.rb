@@ -1,3 +1,5 @@
+require './app/models/trip'
+
 class Station < ActiveRecord::Base
   validates :name, presence: true
   validates :city, presence: true
@@ -48,5 +50,13 @@ class Station < ActiveRecord::Base
     name = "Post at Kearney" if name == "Post at Kearny"
     name = "Washington at Kearney" if name == "Washington at Kearny"
     find_by(name: name).id
+  end
+
+  def self.most_popular_starting_station
+    Trip.group(:start_station).order("count_id DESC").count(:id).keys.first.name
+  end
+
+  def self.most_popular_ending_station
+    Trip.group(:end_station).order("count_id DESC").count(:id).keys.first.name
   end
 end

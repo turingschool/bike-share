@@ -1,7 +1,7 @@
 <h1>Complete Station List</h1>
 
 <% @stations.each do |station| %>
-  <h3><%= station.name%></h3>
-  <p><%= station.id%></p>
-  <a href="/stations/<%= station.id%>">Show Station</a>
+  <h4><a href="/stations/<%= station.id%>"><%= station.name%></a></h4>
+  <p>Located in <%= station.city%></p>
+  
 <%end%>

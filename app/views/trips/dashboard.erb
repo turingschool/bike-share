@@ -1,0 +1,4 @@
+<h3>Trips Dashboard</h3>
+<p>The average duration of a ride is <%= Trip.average(:duration).to_i%> minutes</p>
+<p>The longest ride was <%=Trip.maximum(:duration)%> minutes.</p>
+<p>The shortest ride was <%=Trip.minimum(:duration)%> minutes.</p>

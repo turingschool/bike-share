@@ -26,7 +26,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations/new' do
-    erb:'/stations/new'
+    erb :'/stations/new'
   end
 
   get '/stations/:id' do
@@ -47,13 +47,13 @@ class BikeShareApp < Sinatra::Base
 
   put '/stations/:id' do |id|
     Station.update(id, params[:station])
-    redirect '/stations/#{id}'
+    redirect "/stations/#{id}"
   end  #fixed by adding end tag, but unsure if the route is right. Did not edit what was already written. -joel
 
-  get '/stations/:id' do
-    @station = Station.find(params[:id])
-    erb :'stations/show'
-  end  #fixed by adding end tag, but unsure if the route is right. Did not edit what was already written. -joel
+  delete '/stations/:id' do |id|
+    Station.destroy(id)
+    redirect'/tasks'
+  end
 
   get '/trips' do
     Trip.connection

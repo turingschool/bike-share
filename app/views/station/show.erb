@@ -1,7 +1,5 @@
-<h1>Station</h1>
+<h1><%= @station.name %></h1>
 <a href="/stations">Station Index</a>
-
-<h2><%= @station.name %></h2>
 
 <h3>General Information: </h3>
 <p>city:<%= @station.city %></p>
@@ -13,6 +11,6 @@
 <p>Number of rides ended at this station:<%= @station.number_of_rides_ended_here %></p>
 <p>Most frequent destination station (for rides that began at this station):<%= @station.most_frequent_destination_station %></p>
 <p>Most frequent origination station (for rides that began at this station):<%= @station.most_frequent_origination_station %></p>
-<p>Date with the highest number of trips started at this station:<%= @station. %></p>
-<p>Most frequent zip code for users starting trips at this station:<%= @station. %></p>
-<p>Bike ID most frequently starting a trip at this station:<%= @station. %></p>
+<p>Date with the highest number of trips started at this station:<%= @station.highest_volume_date_here %></p>
+<p>Most frequent zip code for users starting trips at this station:<%= @station.most_frequent_zip_code %></p>
+<p>Bike ID most frequently starting a trip at this station:<%= @station.most_frequent_bike_id %></p>

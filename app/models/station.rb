@@ -88,5 +88,9 @@ class Station < ActiveRecord::Base
     a.group(:zip_code).order("count_id DESC").count(:id).keys.first
   end
 
+  def most_frequent_bike_id
+    a = Trip.where(start_station_id: self.id)
+    a.group(:bike_id).order("count_id DESC").count(:id).keys.first
+  end
 
 end

@@ -15,13 +15,13 @@ describe "User can access new station page" do
     fill_in("station[name]", with: "Turing")
     fill_in("station[dock_count]", with: 10)
     fill_in("station[city]", with: "Denver")
-    fill_in("station[installation_date]", with: "08/18/17")
+    fill_in("station[installation_date]", with: "2014-04-09")
     click_on("Create New Station")
 
     expect(page).to have_content("Turing")
     expect(page).to have_content("10")
     expect(page).to have_content("Denver")
-    expect(page).to have_content("08/18/17")
+    expect(page).to have_content("2014-04-09")
     expect(current_path).to eq('/stations/1')
   end
 end

@@ -54,7 +54,7 @@ class BikeShareApp < Sinatra::Base
     @trip = Trip.create(params[:trip])
     redirect :"trips/#{@trip.id}"
   end
-
+  
   get '/trips-dashboard' do
     erb :'trips/dashboard'
   end
@@ -78,5 +78,4 @@ class BikeShareApp < Sinatra::Base
     @trip = Trip.destroy(params[:id])
     redirect '/trips'
   end
-
 end

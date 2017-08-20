@@ -95,7 +95,8 @@ TIMES.each do |id, value|
                       id: id,
                       trip_time: value
   )
-
+  time.save
+end
 
 # Ccsv.foreach('db/csv/subscription_type.csv') do |row|
 #   if header == false

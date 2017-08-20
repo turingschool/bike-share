@@ -13,10 +13,10 @@ puts "Starting seeding..."
 CSV.foreach('db/csv/trip_fixture.csv', {headers: true, header_converters: :symbol}) do |row|
   next if row[:zip_code].to_s.length != 5
   Trip.create(duration:            row[:duration],
-              start_date:          Date.strptime(row[:start_date], '%m/%e/%Y')),
+              start_date:          Date.strptime(row[:start_date], '%m/%e/%Y'),
               start_station_name:  row[:start_station_name],
               start_station_id:    row[:start_station_id],
-              end_date:            Date.strptime(row[:end_date], '%m/%e/%Y')),
+              end_date:            Date.strptime(row[:end_date], '%m/%e/%Y'),
               end_station_name:    row[:end_station_name],
               end_station_id:      row[:end_station_id],
               bike_id:             row[:bike_id],
@@ -36,7 +36,7 @@ end
 
 CSV.foreach('db/csv/weather.csv', {headers: true, header_converters: :symbol}) do |row|
   Condition.create(
-   date:                           Date.strptime(row[:date], '%m/%e/%Y')),
+   date:                           Date.strptime(row[:date], '%m/%e/%Y'),
    max_temperature_f:              row[:max_temperature_f],
    mean_temperature_f:             row[:mean_temperature_f],
    min_temperature_f:              row[:min_temperature_f],

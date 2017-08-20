@@ -146,7 +146,6 @@ DEPENDENCIES
   shotgun
   sinatra
   sinatra-activerecord
-  table_print
   tux
 
 BUNDLED WITH

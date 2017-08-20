@@ -3,7 +3,7 @@ class BikeShareApp < Sinatra::Base
   set :method_override, true
 
   get '/' do
-    erb :index
+    erb :'root/index'
   end
 
   get '/stations' do
@@ -18,7 +18,7 @@ class BikeShareApp < Sinatra::Base
 
   get 'stations/:id' do
     @station = Station.find(params[:id])
-    erb :show
+    erb :'stations/show'
   end
 
   get '/trips' do

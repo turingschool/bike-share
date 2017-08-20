@@ -67,8 +67,9 @@ RSpec.describe Station do
 			station_three = Station.create(name: "Bible", city: "Denver", installation_date: "1960/1/2", dock_count: 221)
 			station_four  = Station.create(name: "Chatfield", city: "Jefferson County", installation_date: "2015/10/10", dock_count: 13)
 
-      expect(Station.oldest_station).to eq(station_three)
-
+      expect(Station.oldest_station.first).to eq(Station.find(3))
+      expect(Station.oldest_station.first.name).to eq(Station.find(3).name)
+      expect(Station.oldest_station.first).to_not eq(Station.find(4))
     end
 
     it "Gets the earliest date for most recent installation date" do
@@ -77,7 +78,9 @@ RSpec.describe Station do
 			station_three = Station.create(name: "Bible", city: "Denver", installation_date: "1960/1/2", dock_count: 221)
 			station_four  = Station.create(name: "Chatfield", city: "Jefferson County", installation_date: "2015/10/10", dock_count: 13)
 
-      expect(Station.newest_station).to eq(station_four)
+      expect(Station.newest_station.first).to eq(Station.find(4))
+      expect(Station.newest_station.first.name).to eq(Station.find(4).name)
+      expect(Station.newest_station.first).to_not eq(Station.find(3))
     end
 
     it "Gets average bikes availble per station" do

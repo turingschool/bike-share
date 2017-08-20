@@ -24,11 +24,13 @@ describe "User can access new trip page" do
     fill_in("trip[bike_id]", with: 299)
     fill_in("trip[subscription_type]", with: "Subsciber")
     fill_in("trip[zip_code]", with: "90210")
+    click_on("Create New Trip")
 
     expect(page).to have_content("173")
     expect(page).to have_content("Yoyo")
     expect(page).to have_content("Memememe")
     expect(page).to have_content("Subscriber")
     expect(page).to have_content("90210")
+    expect(current_path).to eq('/trips/1')
   end
 end

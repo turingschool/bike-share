@@ -67,4 +67,10 @@ class Station < ActiveRecord::Base
   def number_of_rides_ended_here
     self.end_trips.count
   end
+
+  def most_frequent_destination_station
+    a = Trip.where(end_station_id: self.id)
+    a.group(:start_station).order("count_id DESC").count(:id).keys.first.name
+  end
+
 end

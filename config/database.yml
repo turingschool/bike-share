@@ -10,5 +10,5 @@ test:
 
 production:
   adapter: postgresql
-  database: bike-share-production
+  database: sam
 

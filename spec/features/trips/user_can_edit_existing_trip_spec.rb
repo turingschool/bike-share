@@ -23,8 +23,7 @@ describe "User can access edit trip page" do
                            bike_id: 288,
                            subscription_type: "Subscriber",
                            zip_code: "94114")
-
-    visit '/trips/1/edit'
+    visit "/trips/#{trip_one.id}/edit"
 
     fill_in("trip[duration]", with: 173)
     fill_in("trip[start_date]", with: "2014-08-21 09:08:00")
@@ -41,6 +40,6 @@ describe "User can access edit trip page" do
     expect(page).to have_content("Memememe")
     expect(page).to have_content("Subscriber")
     expect(page).to have_content("90210")
-    expect(current_path).to eq('/trips/1')
+    expect(current_path).to eq("/trips/#{Trip.last.id}")
   end
 end

@@ -1,0 +1,8 @@
+<h1>Complete Station List</h1>
+
+<% @stations.each do |station| %>
+  <h3><%= station.name%></h3>
+<%end%>
+<ul>
+  <li><a href="/stations/new">Create a Station</a></li>
+</ul>

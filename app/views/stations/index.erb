@@ -6,6 +6,7 @@
     <th>Dock Count</th>
     <th>City</th>
     <th>Installation Date</th>
+    <th>More Info</th>
     <th>Delete</th>
   </tr>
   <% @stations.each do |station| %>
@@ -14,6 +15,7 @@
       <td><%= station.dock_count %></td>
       <td><%= station.city.city %></td>
       <td><%= station.installation_date %></td>
+      <td><a href="/stations/<%=station.id %>">More Info</a></td>
       <td>
         <form action="/stations/<%= station.id %>" method="post">
           <input type="hidden" name="_method" value="DELETE" />

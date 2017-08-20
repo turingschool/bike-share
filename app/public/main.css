@@ -9,7 +9,6 @@ img {
 
 .top_bar {
   color: white;
-  font-family: 'Kaushan Script' !important;
   font-size: 2.5em;
 }
 
@@ -27,7 +26,7 @@ span.menu-color {
 
 #top-head {
   transition: margin-left .5s;
-  padding: 1em;
+  padding: 0;
   width: 100%;
   height: auto;
 }

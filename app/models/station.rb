@@ -1,9 +1,11 @@
+require_relative '../helpers/allow_setting_id_on_create'
+
 class Station < ActiveRecord::Base
   validates :name, presence: true
   validates :city_id, presence: true
   validates :dock_count, presence: true
   validates :installation_date, presence: true
-  belongs_to :cities
+  belongs_to :city
 
   def self.average_per_station
     Station.average(:dock_count)

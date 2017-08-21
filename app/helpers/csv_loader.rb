@@ -5,6 +5,7 @@ class CSVLoader
     data = CSV.open(path, headers: true, header_converters: :symbol)
 
     data.map do |row|
+      # binding.pry
       {
         :id => row[:id],
         :name => row[:name],

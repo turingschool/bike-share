@@ -7,6 +7,7 @@ gem 'sinatra-activerecord'
 gem 'rake'
 gem "activesupport", :require => "active_support"
 gem 'pry'
+gem 'pry-byebug'
 
 group :development, :test do
   gem 'shotgun'

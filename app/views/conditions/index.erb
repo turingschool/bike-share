@@ -1,5 +1,5 @@
 <h1>Condition Index</h1>
-<a href="/trips/new">Add a New Condition</a>
+<a href="/conditions/new">Add a New Condition</a>
 
 <% @conditions.each do |condition| %>
 	<h3><a href="/conditions/<%= condition.id %>"><%= condition.date %></h3>
@@ -9,4 +9,8 @@
 	<p>Visibility Average: <%= @condition.mean_visibility %></p>
 	<p>Wind Speed Average: <%= @condition.mean_wind_speed %></p>
 	<p>Precipitation: <%= @condition.precipitation %></p>
+	<form action="/conditions/<%= condition.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="delete"/>
+  </form>
 <% end %>

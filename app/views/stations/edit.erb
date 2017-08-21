@@ -1,6 +1,7 @@
 <h1>Edit <%= @station.name %> Station:</h1>
 
-<form action="/stations" method="post">
+<form action="/stations" method="POST">
+  <input type="hidden" name="_method" value="PUT">
   <label for="">Name</label>
   <input type="textfield" name="station[name]" value="<%= @station.name %>">
   <label for="">Dock Count</label>

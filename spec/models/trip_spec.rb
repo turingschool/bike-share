@@ -25,6 +25,7 @@ RSpec.describe Trip do
                     bike_id: 288,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
+                    
         expect(Trip.avg_duration_of_a_ride).to eq(150)
       end
     end
@@ -48,6 +49,7 @@ RSpec.describe Trip do
                     bike_id: 288,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
+
         expect(Trip.longest_ride).to eq(200)
       end
     end
@@ -71,6 +73,7 @@ RSpec.describe Trip do
                     bike_id: 288,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
+
         expect(Trip.shortest_ride).to eq(100)
       end
     end
@@ -147,6 +150,7 @@ RSpec.describe Trip do
                     end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
+
         expect(Trip.station_with_most_ride_starts).to eq("Panera")
       end
     end
@@ -300,6 +304,7 @@ RSpec.describe Trip do
                     end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
+
         expect(Trip.month_breakdown).to eq({[2013, 8]=>3, [2013, 7]=>2, [2013, 6]=>1})
       end
     end
@@ -376,6 +381,7 @@ RSpec.describe Trip do
                     end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
+
         expect(Trip.most_ridden_bike).to eq(288)
       end
     end
@@ -452,6 +458,7 @@ RSpec.describe Trip do
                     end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
+
         expect(Trip.least_ridden_bike).to eq(287)
       end
     end
@@ -528,6 +535,7 @@ RSpec.describe Trip do
                     end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
+
         expect(Trip.subscription_info).to eq({"Customer"=>2, "Subscriber"=>4})
       end
     end
@@ -604,6 +612,7 @@ RSpec.describe Trip do
                     end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
+
         expect(Trip.subscriber_percentage).to eq(66.67)
       end
     end
@@ -680,6 +689,7 @@ RSpec.describe Trip do
                     end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
+
         expect(Trip.customer_percentage).to eq(33.33)
       end
     end
@@ -756,7 +766,9 @@ RSpec.describe Trip do
                     end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
+
         date_string = Date.parse("2013-08-29")
+
         expect(Trip.date_with_highest_trips).to eq(date_string)
         expect(Trip.count_of_highest_trips).to eq("6")
       end
@@ -834,7 +846,9 @@ RSpec.describe Trip do
                     end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
+
         date_string = Date.parse("2013-08-27")
+
         expect(Trip.date_with_fewest_trips).to eq(date_string)
         expect(Trip.count_of_fewest_trips).to eq("1")
       end
@@ -912,6 +926,7 @@ RSpec.describe Trip do
                     end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
+
         expect(Trip.number_of_starting_rides_at_station(1)).to eq(3)
       end
     end
@@ -988,6 +1003,7 @@ RSpec.describe Trip do
                     end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
+
         expect(Trip.number_of_ending_rides_at_station(1)).to eq(2)
       end
     end
@@ -1064,6 +1080,7 @@ RSpec.describe Trip do
                     end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
+
         expect(Trip.most_frequent_destination(1)).to eq("Panera")
       end
     end
@@ -1140,6 +1157,7 @@ RSpec.describe Trip do
                     end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
+
         expect(Trip.most_frequent_origination(1)).to eq("Panera")
       end
     end
@@ -1216,7 +1234,9 @@ RSpec.describe Trip do
                     end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
+
         date_string = Date.parse("2013-08-29")
+
         expect(Trip.date_with_highest_trip_from_this_station(1)).to eq(date_string)
       end
     end
@@ -1293,6 +1313,7 @@ RSpec.describe Trip do
                     end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94113")
+
         expect(Trip.most_frequent_zip_code_users_starting(1)).to eq("94114")
       end
     end
@@ -1369,6 +1390,7 @@ RSpec.describe Trip do
                     end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94113")
+
         expect(Trip.most_frequent_bike_starting(1)).to eq(288)
       end
     end
@@ -1385,6 +1407,7 @@ RSpec.describe Trip do
                       end_station_id: 1,
                       subscription_type: "Subscriber",
                       zip_code: "94113")
+
           expect(trip_1).to_not be_valid
         end
 
@@ -1398,6 +1421,7 @@ RSpec.describe Trip do
                       end_station_id: 1,
                       subscription_type: "Subscriber",
                       zip_code: "94113")
+
           expect(trip_1).to_not be_valid
         end
 

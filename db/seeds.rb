@@ -48,7 +48,7 @@ ZipCode.destroy_all
 
 header = true
 Ccsv.foreach('db/csv/trip.csv') do |row|
-  if header == false
+  if header == false && row[0].to_i < 6000
     trip = Trip.new(duration: row[1],
                     start_station: row[4],
                     end_station: row[7],

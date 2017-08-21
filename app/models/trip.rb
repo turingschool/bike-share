@@ -10,9 +10,13 @@ class Trip < ActiveRecord::Base
 
   def self.find_thirty_trips(start_index)
     find_range = (start_index...(start_index + 30)).to_a
-    order(:start_date).find(find_range)
+    find(find_range)
   end
 
+  def self.reset_ids
+    ActiveRecord::Base.connection.reset_pk_sequence!('trips')
+  end
+  
   # def self.sort_trips_by_date
   #   order(:trip_date)
   # end

@@ -1,10 +1,10 @@
-<h1>Trip: <%= @trip.id%></h1>
+<h1>Trip: <%= @trip.id.to_s%></h1>
 
-<p>durrrrrrr-ation: <%= @trip.duration%> </p>
-<p>start date: <%= @trip.start_date%></p>
-<p>end date: <%= @trip.end_date%></p>
+<p>duration: <%= @trip.duration%> minutes </p>
+<p>start date: <%= @trip.start_date.date.to_s%></p>
+<p>end date: <%= @trip.end_date.date.to_s%></p>
 <p>start station: <%= @trip.start_station%></p>
 <p>end station: <%= @trip.end_station%></p>
-<p>bike id: <%= @trip.bike_id%></p>
-<p>subscription type id: <%= @trip.subscription_type_id%></p>
-<p>zip code: <%= @trip.zip_code%></p>
+<p>bike number: <%= @trip.bike_id%></p>
+<p>subscription type: <%= @trip.subscription_type.subscription_type%></p>
+<p>zip code: <%= @trip.zip_code.zip_code%></p>

@@ -1,14 +1,14 @@
 <form action="/trips/<%= @trip.id %>/edit" method="post">
 <h1>Update a trip</h1>
 <input type="hidden" name="_method" value="PUT" />
-<p>durrrrrrr-ation:<input type='text' name='trip[duration]' value="<%= @trip.duration %>"></p><br>
-<p>start date: <input type='text' name='trip[start_date]' value="<%= @trip.start_date %>"</p><br>
-<p>end date: <input type='text' name= 'trip[end_date]' value="<%= @trip.end_date %>"></p><br>
-<p>start station: <input type='text' name='trip[end_date]' value="<%=@trip.start_station%>"></p><br>
-<p>end station: <input type='text' name='trip[end_station]' value="<%=@trip.end_station%>"></p><br>
-<p>bike id: <input type='text' name='trip[bike_id]' value="<%=@trip.bike_id%>"></p><br>
-<p>subscription type: <input type='text' name='trip[subscription_type_id]' value="<%=@trip.subscription_type_id%>"></p>
-<p>zip code: <input type='text' name='trip[zip_code]'></p>
+<p>durrrrrrr-ation:<input type='text' name='duration' value="<%= @trip.duration %>"></p><br>
+<p>start date: <input type='text' name='start_date' value="<%= @trip.start_date.date %>"></p><br>
+<p>end date: <input type='text' name= 'end_date' value="<%= @trip.end_date.date %>"></p><br>
+<p>start station: <input type='text' name='start_station' value="<%=@trip.start_station%>"></p><br>
+<p>end station: <input type='text' name='end_station' value="<%=@trip.end_station%>"></p><br>
+<p>bike id: <input type='text' name='bike_id' value="<%=@trip.bike_id%>"></p><br>
+<p>subscription type: <input type='text' name='subscription_type' value="<%=@trip.subscription_type.subscription_type%>"></p>
+<p>zip code: <input type='text' name='zip_code' value="<%= @trip.zip_code.zip_code %>"</p>
 <input type='submit'/>
 
 </form>

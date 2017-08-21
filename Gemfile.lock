@@ -80,10 +80,7 @@ GEM
       activerecord (>= 3.2)
       sinatra (>= 1.0)
     slop (3.6.0)
-<<<<<<< HEAD
-=======
     table_print (1.5.6)
->>>>>>> master
     thread_safe (0.3.6)
     tilt (2.0.8)
     tux (0.3.0)
@@ -102,29 +99,19 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   capybara
-<<<<<<< HEAD
   ccsv
   launchy
   pg
   pry
   rack
-=======
-  database_cleaner
-  launchy
-  pg
-  pry
->>>>>>> master
   rack-test
   rspec
   rspec-core
   shotgun
   sinatra
   sinatra-activerecord
-<<<<<<< HEAD
-=======
   table_print
->>>>>>> master
   tux
 
 BUNDLED WITH
-   1.15.3
+   1.15.4

@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170820235406) do
 
   create_table "zip_codes", force: :cascade do |t|
     t.integer "zip_code"
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string "city"

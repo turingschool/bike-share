@@ -5,7 +5,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips' do
     @trips = Trip.find_thirty_trips(1)
-    erb :trip_index
+    erb :"trips/trip_index"
   end
 
   post '/trips' do
@@ -15,18 +15,18 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips/new' do
-    erb :trip_new
+    erb :"trips/trip_new"
   end
 
   get '/trips/:id' do
     @trip = Trip.find(params["id"])
-    erb :show_trip
+    erb :"trips/show_trip"
 
   end
 
   get '/trips/:id/edit' do
     @trip = Trip.find(params["id"])
-    erb :trip_edit
+    erb :"trips/trip_edit"
   end
 
   put '/trips/:id/edit' do

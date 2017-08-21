@@ -71,4 +71,18 @@ RSpec.describe "user can view trip analytics" do
     expect(page).to have_content(breakdown)
     expect(page).to have_content(Trip.subscription_type_breakdown)
   end
+
+  it "sees the most popular trip date" do
+    most_popular_date = "1969-04-20 was the most popular trip date, with 3 rentals."
+
+    expect(page).to have_content(most_popular_date)
+    expect(page).to have_content(Trip.most_popular_trip_date)
+  end
+
+  it "sees the least popular trip date" do
+    least_popular_date = "1969-04-20 was the least popular trip date, with only 3 rentals."
+
+    expect(page).to have_content(least_popular_date)
+    expect(page).to have_content(Trip.least_popular_trip_date)
+  end
 end

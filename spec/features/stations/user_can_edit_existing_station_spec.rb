@@ -82,17 +82,17 @@ describe "User can access edit station page" do
 
     #require 'pry';binding.pry
     visit '/stations/2/edit'
-    #fill_in("station[name]", with: "Galvanize")
-    #fill_in("station[dock_count]", with: 10)
-    #fill_in("station[city]", with: "Denver")
-    #fill_in("station[installation_date]", with: "2014-04-09")
-    #click_on("Update Station")
+    fill_in("station[name]", with: "Galvanize")
+    fill_in("station[dock_count]", with: 10)
+    fill_in("station[city]", with: "Denver")
+    fill_in("station[installation_date]", with: "2014-04-09")
+    click_on("Update Station")
 
-    #expect(page).to have_content("Galvanize")
-    #expect(page).to have_content("10")
-    #expect(page).to have_content("Denver")
-    #expect(page).to have_content("2014-04-09")
+    expect(page).to have_content("Galvanize")
+    expect(page).to have_content("10")
+    expect(page).to have_content("Denver")
+    expect(page).to have_content("2014-04-09")
 
-    #expect(current_path).to eq("/stations/2")
+    expect(current_path).to eq("/stations/2")
   end
 end

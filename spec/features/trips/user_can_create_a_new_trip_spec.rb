@@ -3,7 +3,7 @@ RSpec.describe "User can create a new trip" do
 
     visit 'trips/new'
 
-    expect(page).to have_field("trip[duration]")
+    expect(page).to have_field("trip[start_date]")
 
     fill_in("trip[duration]", with: 45)
     fill_in("trip[start_date]", with: "2017-08-20 19:20:22")

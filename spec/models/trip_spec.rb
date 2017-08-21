@@ -1140,7 +1140,7 @@ RSpec.describe Trip do
                     end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
-        expect(Trip.most_frequent_origination(1)).to eq(3)
+        expect(Trip.most_frequent_origination(1)).to eq("Panera")
       end
     end
 

@@ -18,6 +18,13 @@ def clean_zipcode(zip_code)
   zip_code.to_s.rjust(5, "0")[0..4]
 end
 
+def pick_a_stupid_zipcode(zip_code)
+  result = false
+  if zip_code == 95113
+    result = true
+  end
+end
+
 def clean_conditions(measurement)
   if measurement.nil?
     measurement = 0.0
@@ -65,6 +72,7 @@ start_time = Time.now
   conditions.each do |row|
     row=row.to_h
     clean_row = {}
+    clean_row[:zip_code] = clean_zipcode(row[:zip_code])
     clean_row[:max_temperature] = clean_conditions(row[:max_temperature_f])
     clean_row[:mean_temperature] = clean_conditions(row[:mean_temperature_f])
     clean_row[:min_temperature] = clean_conditions(row[:min_temperature_f])
@@ -75,7 +83,7 @@ start_time = Time.now
     row[:weather_date] = row[:date]
     clean_row[:weather_date] = seed_by_date(row[:weather_date])
     puts "finished rows"
-    Condition.create!(clean_row)
+    Condition.create!(clean_row) if pick_a_stupid_zipcode(row[:zip_code])
   end
 
 puts (Time.now - start_time)

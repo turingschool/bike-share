@@ -69,13 +69,13 @@ class Station < ActiveRecord::Base
   end
 
   def most_frequent_destination_station
-    a = Trip.where(end_station_id: self.id)
-    a.group(:start_station).order("count_id DESC").count(:id).keys.first.name
+    a = Trip.where(start_station_id: self.id)
+    a.group(:end_station).order("count_id DESC").count(:id).keys.first.name
   end
 
   def most_frequent_origination_station
-    a = Trip.where(start_station_id: self.id)
-    a.group(:end_station).order("count_id DESC").count(:id).keys.first.name
+    a = Trip.where(end_station_id: self.id)
+    a.group(:start_station).order("count_id DESC").count(:id).keys.first.name
   end
 
   def highest_volume_date_here

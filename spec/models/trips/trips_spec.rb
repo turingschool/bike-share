@@ -1,3 +1,5 @@
+require 'Date'
+
 RSpec.describe Trip do
 	describe "Validations" do
 		it "can exist with valid attributes" do
@@ -75,4 +77,29 @@ RSpec.describe Trip do
 		end
 	end
 
+	describe "Class Methods" do
+		it "Gets the average duration of a ride" do
+			station_one   = Station.create(name: "Turing", city: "Hell", installation_date: "1969/4/20", dock_count: 69)
+			station_two   = Station.create(name: "Mushroom", city: "Englewood", installation_date: "1982/3/10", dock_count: 413)
+
+
+			trip_1 = Trip.create(duration: 60, start_date: "1969/4/20", end_date: "1969/4/21",
+												 start_station_id: 1, end_station_id: 2, bike_id: 4,
+			 									 subscription_type: "Some Nonsense", zip_code: "80113")
+
+			trip_2 = Trip.create(duration: 120, start_date: "1969/4/20", end_date: "1969/4/21",
+												 start_station_id: 1, end_station_id: 2, bike_id: 4,
+			 									 subscription_type: "Some Nonsense", zip_code: "80113")
+
+
+			trip_3 = Trip.create(duration: 180, start_date: "1969/4/20", end_date: "1969/4/21",
+												 start_station_id: 1, end_station_id: 2, bike_id: 4,
+			 									 subscription_type: "Some Nonsense", zip_code: "80113")
+
+
+			avg_trip_duration = Trip.average_duration_of_a_trip
+
+			expect(avg_trip_duration).to eq("02:00")
+		end
+	end
 end

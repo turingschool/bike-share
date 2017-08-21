@@ -25,7 +25,7 @@ RSpec.describe Trip do
                     bike_id: 288,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
-                    
+
         expect(Trip.avg_duration_of_a_ride).to eq(150)
       end
     end
@@ -1426,23 +1426,73 @@ RSpec.describe Trip do
         end
 
         it 'is invalid without an end date' do
+          trip_1 = Trip.create(duration: 174,
+                      start_station_name: "Panera",
+                      end_station_name: "Panera",
+                      bike_id: 288,
+                      start_station_id: 1,
+                      end_station_id: 1,
+                      subscription_type: "Subscriber",
+                      zip_code: "94113")
 
+          expect(trip_1).to_not be_valid
         end
 
-        it 'is invalid without a start station id' do
+        xit 'is invalid without a start station id' do
+          trip_1 = Trip.create(duration: 174,
+                      start_date: "2013-08-27 09:08:00",
+                      start_station_name: "Panera",
+                      end_date: "2013-07-29 09:11:00",
+                      end_station_name: "Pantera",
+                      bike_id: 288,
+                      end_station_id: 1,
+                      subscription_type: "Subscriber",
+                      zip_code: "94113")
 
+          expect(trip_1).to_not be_valid
         end
 
-        it 'is invalid without an end station id' do
+        xit 'is invalid without an end station id' do
+          trip_1 = Trip.create(duration: 174,
+                      start_date: "2013-08-27 09:08:00",
+                      start_station_name: "Panera",
+                      end_date: "2013-07-29 09:11:00",
+                      end_station_name: "Panera",
+                      bike_id: 288,
+                      start_station_id: 1,
+                      end_station_id: 1,
+                      subscription_type: "Subscriber",
+                      zip_code: "94113")
 
+          expect(trip_1).to_not be_valid
         end
 
         it 'is invalid without a bike id' do
+          trip_1 = Trip.create(duration: 174,
+                      start_date: "2013-08-27 09:08:00",
+                      start_station_name: "Panera",
+                      end_date: "2013-07-29 09:11:00",
+                      end_station_name: "Panera",
+                      start_station_id: 1,
+                      end_station_id: 1,
+                      subscription_type: "Subscriber",
+                      zip_code: "94113")
 
+          expect(trip_1).to_not be_valid
         end
 
-        it 'is invalid without a subsciption id' do
-
+        it 'is invalid without a subscription type' do
+          trip_1 = Trip.create(duration: 174,
+                      start_date: "2013-08-27 09:08:00",
+                      start_station_name: "Panera",
+                      end_date: "2013-07-29 09:11:00",
+                      end_station_name: "Panera",
+                      bike_id: 288,
+                      start_station_id: 1,
+                      end_station_id: 1,
+                      zip_code: "94113")
+                      
+          expect(trip_1).to_not be_valid
         end
 
       end

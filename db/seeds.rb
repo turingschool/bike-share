@@ -31,7 +31,7 @@ trips = CSV.foreach "./db/csv/trip.csv", headers: true, header_converters: :symb
     row[:installation_date] = Date.strptime(row[:installation_date], '%m/%d/%Y')
     Station.create!(row)
   end
-  
+
 start_time = Time.now
   count = 0
   trips.each do |row|

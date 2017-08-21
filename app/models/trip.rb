@@ -29,7 +29,7 @@ class Trip < ActiveRecord::Base
     puts "Creating the trips array took #{b - a} seconds"
     trips
   end
-  
+
   def self.average_duration
     Trip.average(:duration).to_i
   end
@@ -40,4 +40,6 @@ class Trip < ActiveRecord::Base
 
   def self.shortest_ride
     Trip.minimum(:duration)
+  end
+
 end

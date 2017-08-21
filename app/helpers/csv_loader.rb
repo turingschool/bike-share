@@ -9,6 +9,11 @@ class CSVLoader
   #   Time.strptime(date, “%m/%d/%Y”).strftime(“%d/%m/%Y”)
   # end
 
+  def date_formatter(date)
+    date_array = date.split('/')
+    date = "#{date_array[1]}/#{date_array[0]}/#{date_array[2]}"
+  end
+
   def sanitize_station(path)
     data = CSV.open(path, headers: true, header_converters: :symbol)
 
@@ -18,7 +23,7 @@ class CSVLoader
         :name => row[:name],
         :dock_count => row[:dock_count].to_i,
         :city => row[:city],
-        :installation_date => DateTime.parse(row[:installation_date]).strftime("%-m/%-d/%Y")
+        :installation_date => date_formatter(row[:installation_date])
       }
     end
   end

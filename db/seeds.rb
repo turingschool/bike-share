@@ -83,7 +83,7 @@ CSV.foreach('./db/csv/station.csv', :headers => true, :encoding => 'ISO-8859-1')
 
   Station.create(name: row["name"],
                  dock_count: row["dock_count"],
-                 installation_date: row["installation_date"],
+                 installation_date: Date.strptime(row["installation_date"], "%m/%d/%Y"),
                  city_id: city.id
                  )
 

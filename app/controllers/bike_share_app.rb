@@ -73,7 +73,7 @@ class BikeShareApp < Sinatra::Base
   post '/stations' do
     city_name = params["city"]
     city = City.find_or_create_by(city: city_name)
-    station   = city.stations.create(params["station"])
+    station = Station.create(params["station"])
     redirect "/stations/#{station.id}"
   end
 

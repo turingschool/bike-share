@@ -1,7 +1,13 @@
 require 'csv'
-
-require './app/models/trip.rb'
 require './app/models/station.rb'
+require './app/models/condition.rb'
+require './app/models/trip.rb'
+
+Station.destroy_all
+
+Condition.destroy_all
+
+Trip.destroy_all
 
 def load_station(data)
   csv_text = File.read(data)
@@ -17,3 +23,8 @@ def load_station(data)
 end
 
 load_station("./db/csv/station.csv")
+
+Condition.copy_from "./db/csv/weather.csv"
+
+Trip.copy_from "./db/trip.csv"
+

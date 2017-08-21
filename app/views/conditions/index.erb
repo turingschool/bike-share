@@ -1,0 +1,23 @@
+<% @conditions.each do |condition| %>
+  <a href="conditions/<%= condition.id %>"><%= condition.date %></a>
+
+  <%= condition.max_temperature %>
+
+  <%= condition.min_temperature %>
+
+  <%= condition.mean_humidity %>
+
+  <%= condition.mean_visibility %>
+
+  <%= condition.mean_windspeed %>
+
+  <%= condition.precipitation %>
+
+  <form action="/conditions/<%= condition.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Condition"/>
+  </form>
+<% end %>
+
+
+

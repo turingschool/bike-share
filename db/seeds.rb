@@ -20,7 +20,7 @@ end
 
 def pick_a_stupid_zipcode(zip_code)
   result = false
-  if zip_code == 95113
+  if zip_code == "95113"
     result = true
   end
 end
@@ -37,25 +37,28 @@ def seed_by_date(date)
   date = "#{date_array[1]}/#{date_array[0]}/#{date_array[2]}"
 end
 
-Station.destroy_all
-system 'Say "Good morning Joan, I love you, I will never leave you, destroy stations complete"'
+# Station.destroy_all
+# system 'Say "Good morning Joan, I love you, I will never leave you, destroy stations complete"'
 Trip.destroy_all
 system 'Say "Trips seeded, thank you computer Jesus"'
-Condition.destroy_all
-system 'Say "All bunnies must die Die Bunnies die bunnies die die die die all bunnies"'
+# Condition.destroy_all
+# system 'Say "All bunnies must die Die Bunnies die bunnies die die die die all bunnies"'
 
-
-stations = delete_columns("./db/csv/station.csv", [:lat, :long])
+# conditions = CSV.foreach "./db/csv/weather.csv", headers: true, header_converters: :symbol
+# stations = delete_columns("./db/csv/station.csv", [:lat, :long])
 trips = CSV.foreach "./db/csv/trip.csv", headers: true, header_converters: :symbol
-conditions = CSV.foreach "./db/csv/weather.csv", headers: true, header_converters: :symbol
 
-  stations.each do |row|
-    row = row.to_h
-    row[:installation_date] = Date.strptime(row[:installation_date], '%m/%d/%Y')
-    Station.create!(row)
-  end
+puts "finished with csvs"
+
+  # stations.each do |row|
+  #   row = row.to_h
+  #   row[:installation_date] = Date.strptime(row[:installation_date], '%m/%d/%Y')
+  #   Station.create!(row)
+  #   puts "finished station"
+  # end
 
 start_time = Time.now
+
   count = 0
   trips.each do |row|
     row = row.to_h
@@ -69,21 +72,21 @@ start_time = Time.now
     puts count
   end
 
-  conditions.each do |row|
-    row=row.to_h
-    clean_row = {}
-    clean_row[:zip_code] = clean_zipcode(row[:zip_code])
-    clean_row[:max_temperature] = clean_conditions(row[:max_temperature_f])
-    clean_row[:mean_temperature] = clean_conditions(row[:mean_temperature_f])
-    clean_row[:min_temperature] = clean_conditions(row[:min_temperature_f])
-    clean_row[:mean_humidity] = clean_conditions(row[:mean_humidity])
-    clean_row[:mean_visibility] = clean_conditions(row[:mean_visibility_miles])
-    clean_row[:mean_wind_speed] = clean_conditions(row[:mean_wind_speed_mph])
-    clean_row[:precipitation] = clean_conditions(row[:precipitation_inches])
-    row[:weather_date] = row[:date]
-    clean_row[:weather_date] = seed_by_date(row[:weather_date])
-    puts "finished rows"
-    Condition.create!(clean_row) if pick_a_stupid_zipcode(row[:zip_code])
-  end
+  # conditions.each do |row|
+  #   row=row.to_h
+  #   clean_row = {}
+  #   clean_row[:zip_code] = clean_zipcode(row[:zip_code])
+  #   clean_row[:max_temperature] = clean_conditions(row[:max_temperature_f])
+  #   clean_row[:mean_temperature] = clean_conditions(row[:mean_temperature_f])
+  #   clean_row[:min_temperature] = clean_conditions(row[:min_temperature_f])
+  #   clean_row[:mean_humidity] = clean_conditions(row[:mean_humidity])
+  #   clean_row[:mean_visibility] = clean_conditions(row[:mean_visibility_miles])
+  #   clean_row[:mean_wind_speed] = clean_conditions(row[:mean_wind_speed_mph])
+  #   clean_row[:precipitation] = clean_conditions(row[:precipitation_inches])
+  #   row[:weather_date] = row[:date]
+  #   clean_row[:weather_date] = seed_by_date(row[:weather_date])
+  #   puts "finished rows"
+  #   Condition.create!(clean_row) if pick_a_stupid_zipcode(row[:zip_code])
+  # end
 
 puts (Time.now - start_time)

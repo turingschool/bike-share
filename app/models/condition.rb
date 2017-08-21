@@ -1,5 +1,5 @@
 class Condition < ActiveRecord::Base
-	validates :date,             presence: true
+	validates :weather_date,     presence: true
 	validates :max_temperature,  presence: true
 	validates :mean_temperature, presence: true
 	validates :min_temperature,  presence: true

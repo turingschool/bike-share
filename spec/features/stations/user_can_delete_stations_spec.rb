@@ -1,6 +1,6 @@
 describe "User can delete station" do
   it "and click on button" do
- Station.create(name: "Panera", dock_count: 15, city: "Denver", installation_date: "2014-04-09")
+    Station.create(name: "Panera", dock_count: 15, city: "Denver", installation_date: "2014-04-09")
     Station.create(name: "Galvanize", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
     Station.create(name: "Turing", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
     Station.create(name: "Trader Joes", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
@@ -70,8 +70,6 @@ describe "User can delete station" do
                 end_station_id: 1,
                 subscription_type: "Subscriber",
                 zip_code: "94114")
-
-
 
     visit '/stations/2'
     click_on("delete")

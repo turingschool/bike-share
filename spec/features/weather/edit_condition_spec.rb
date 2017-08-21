@@ -25,7 +25,7 @@ describe "User can access edit condition page" do
                                    precipitation:  3)
     visit '/conditions/1/edit'
 
-    fill_in("condition[date]", with: "10/10/11")
+    fill_in("condition[date]", with: "2010/10/11")
     fill_in("condition[max_temperature]", with: "50")
     fill_in("condition[mean_temperature]", with: "11")
     fill_in("condition[min_temperature]", with: "10")

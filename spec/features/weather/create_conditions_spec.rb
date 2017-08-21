@@ -2,7 +2,7 @@ describe "user" do
   it "can create a condition" do
     visit '/conditions/new'
 
-    fill_in("condition[date]", with: "10/10/11")
+    fill_in("condition[date]", with: "2010/10/11")
     fill_in("condition[max_temperature]", with: "50")
     fill_in("condition[mean_temperature]", with: "11")
     fill_in("condition[min_temperature]", with: "10")
@@ -14,5 +14,6 @@ describe "user" do
     click_on("Create New Condition")
 
     expect(page).to have_content("2010-10-11")
+
   end
 end

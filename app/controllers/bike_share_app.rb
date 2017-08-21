@@ -14,7 +14,7 @@ class BikeShareApp < Sinatra::Base
 
   post '/stations' do
     @station = Station.create(params[:station])
-    redirect :"stations/#{@station.id}"
+    redirect "stations/#{@station.id}"
   end
 
   get '/station-dashboard' do
@@ -48,13 +48,31 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/conditions/:id' do
-    @condition = Condition.update(params[:id], params[:conditions])
+    @condition = Condition.update(params[:id], params[:condition])
     redirect :"/conditions/#{@condition.id}"
   end
 
   delete '/conditions/:id' do
     Condition.destroy(params[:id])
     redirect '/conditions'
+  end
+
+  get '/trips' do
+    @trips = Trip.all
+    erb :'trips/index'
+  end
+
+  get '/trips/new' do
+    erb :'trips/new'
+  end
+
+  post '/trips' do
+    @trip = Trip.create(params[:trip])
+    redirect :"trips/#{@trip.id}"
+  end
+
+  get '/trips-dashboard' do
+    erb :'trips/dashboard'
   end
 
   get '/stations/:id' do
@@ -68,13 +86,31 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do
-    @station = Station.update(params[:id])
-    redirect :"stations/#{@station.id}"
+    @station = Station.update(params[:id], params[:station])
+    redirect "stations/#{@station.id}"
   end
 
   delete '/stations/:id' do
     Station.destroy(params[:id])
     redirect '/stations'
   end
+  get '/trips/:id' do
+    @trip = Trip.find(params[:id])
+    erb :'trips/show'
+  end
 
+  get '/trips/:id/edit' do
+    @trip = Trip.find(params[:id])
+    erb :'trips/edit'
+  end
+
+  put '/trips/:id' do
+    @trip = Trip.update(params[:id])
+    redirect :"trips/#{@trip.id}"
+  end
+
+  delete '/trips/:id' do
+    @trip = Trip.destroy(params[:id])
+    redirect '/trips'
+  end
 end

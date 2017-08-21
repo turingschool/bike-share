@@ -1,11 +1,10 @@
 class Condition < ActiveRecord::Base
-	Date
-	Max Temperature
-	Mean Temperature
-	Min Temperature
-	Mean Humidity
-	Mean Visibility (in Miles)
-	Mean Wind Speed (mph)
-	Precipitation (inches)
-
+	validates :date,             presence: true
+	validates :max_temperature,  presence: true
+	validates :mean_temperature, presence: true
+	validates :min_temperature,  presence: true
+	validates :mean_humidity,    presence: true
+	validates :mean_visibility,  presence: true
+	validates :mean_wind_speed,  presence: true
+	validates :precipitation,    presence: true
 end

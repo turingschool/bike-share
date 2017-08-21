@@ -1376,7 +1376,16 @@ RSpec.describe Trip do
     describe "Validations" do
       context "Trip" do
         it 'is invalid without a duration' do
-
+          trip_1 = Trip.create(start_date: "2013-08-27 09:08:00",
+                      start_station_name: "Panera",
+                      end_date: "2013-07-29 09:11:00",
+                      end_station_name: "Panera",
+                      bike_id: 288,
+                      start_station_id: 1,
+                      end_station_id: 1,
+                      subscription_type: "Subscriber",
+                      zip_code: "94113")
+          expect(trip_1).to_not be_valid
         end
 
         it 'is invalid without a start date' do

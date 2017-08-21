@@ -25,10 +25,14 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a id="text" href="/stations"><button class="btn btn-primary navbar-btn">Station Index</button></a>
+                        <a id="text" href="/stations">
+                            <button class="btn btn-primary navbar-btn">Station Index</button>
+                        </a>
                     </li>
                     <li>
-                        <a id="text" href="/cities"><button class="btn btn-primary navbar-btn">City Index</button></a>
+                        <a id="text" href="/cities">
+                            <button class="btn btn-primary navbar-btn">City Index</button>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -37,8 +41,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1>Create New Station</h1>
-                <form action="/stations" method="post">
+                <h1>Edit <%= @station.name %></h1>
+                <form action="/stations/<%= @station.id %>" method="post">
+                <input type="hidden" name="_method" value="PUT" />
                     <label>Name:</label>
                     <input type="text" name="station[name]">
                     <label>Dock Count:</label>
@@ -49,11 +54,13 @@
                             <option value="<%= city.id %>">
                                 <%= city.name %>
                             </option>
-                        <% end %>
+                            <% end %>
                     </select>
                     <label>Installation Date:</label>
-                    <input type="text" name="station[date]">
-                    <input type="submit" value="Create Station" />
+                    <input type='text' name='station[date]' value="<%= @station.installation_date %>" />
+                    <br/>
+                    <br>
+                    <input type='submit' value="Update Station">
                 </form>
             </div>
         </div>

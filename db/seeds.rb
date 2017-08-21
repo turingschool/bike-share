@@ -49,13 +49,18 @@ ZipCode.destroy_all
 header = true
 Ccsv.foreach('db/csv/trip.csv') do |row|
   if header == false && row[0].to_i < 6000
+    start_date = Date.find_or_create_by(date: get_date(row[2]))
+    end_date = Date.find_or_create_by(date: get_date(row[5]))
+
     trip = Trip.new(duration: row[1],
                     start_station: row[4],
                     end_station: row[7],
                     bike_id: row[8],
+                    start_date_id: start_date.id,
+                    end__date_id: end_date.id
                     )
-      trip.start_date = StartDate.find_or_create_by(date: get_date(row[2]))
-      trip.end_date = EndDate.find_or_create_by(date: get_date(row[5]))
+      # trip.start_date = StartDate.find_or_create_by(date: get_date(row[2]))
+      # trip.end_date = EndDate.find_or_create_by(date: get_date(row[5]))
       trip.subscription_type = SubscriptionType.find(compute_subscription_id(row[9]))
       trip.zip_code = ZipCode.find_or_create_by(zip_code: row[10])
       trip.save

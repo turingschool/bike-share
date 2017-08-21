@@ -9,11 +9,7 @@ RSpec.describe "User creates station" do
     fill_in("installation_date", with: "2017-10-20 19:20:22")
     click_on("Submit")
 
-    save_and_open_page
-    
     expect(page).to have_content("Station_1")
-    expect(page).to have_content("Dock Count: 10")
-    expect(page).to have_content("City: cityville")
-    expect(page).to have_content("Install Date: 2017-06-08")
+    expect(page).to have_content("Located in cityville")
   end
 end

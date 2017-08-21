@@ -233,5 +233,26 @@ RSpec.describe Trip do
 
 			expect(Trip.most_neglected_bike).to eq("Bike 5 is the least popular bike with only 1 times ridden")
 		end
+
+		it "Gets subscription type breakdown" do
+			trip_1 = Trip.create(duration: 600, start_date: "1969/4/20", end_date: "1969/4/21",
+												 start_station_id: 1, end_station_id: 2, bike_id: 4,
+												 subscription_type: "Customer", zip_code: "80113")
+
+			trip_2 = Trip.create(duration: 1200, start_date: "1969/4/20", end_date: "1969/4/21",
+												 start_station_id: 1, end_station_id: 2, bike_id: 4,
+												 subscription_type: "Customer", zip_code: "80113")
+
+
+			trip_3 = Trip.create(duration: 180000, start_date: "1969/4/20", end_date: "1969/4/21",
+												 start_station_id: 2, end_station_id: 1, bike_id: 5,
+												 subscription_type: "Subscriber", zip_code: "80113")
+
+			breakdown = "There are 1 subscriber trips representing 33.33% of the total. There are 2 customer trips representing 66.67% of total trips."
+
+			expect(Trip.subscription_type_breakdown).to eq(breakdown)
+		end
+
+
 	end
 end

@@ -1,7 +1,8 @@
 
 <h1>Edit Condition from <%= @condition.date %>:</h1>
 
-<form action="/conditions" method="post">
+<form action="/conditions/<%= @condition.id %>" method="post">
+<input type="hidden" name="_method" value="put">
   <label for="">Date</label>
   <input type="textfield" name="condition[date]" value="<%= @condition.date %>">
   <label for="">Max Temperature</label>

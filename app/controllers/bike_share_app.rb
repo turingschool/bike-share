@@ -48,7 +48,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/conditions/:id' do
-    @condition = Condition.update(params[:id])
+    @condition = Condition.update(params[:id], params[:conditions])
     redirect :"/conditions/#{@condition.id}"
   end
 

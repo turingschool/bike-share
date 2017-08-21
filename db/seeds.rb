@@ -1,6 +1,7 @@
 require 'csv'
 require './app/models/station.rb'
 require './app/models/condition.rb'
+require './app/models/trip.rb'
 
 Station.destroy_all
 
@@ -24,5 +25,6 @@ Condition.destroy_all
 #load_station("./db/csv/station.csv")
 
 Condition.copy_from "./db/csv/weather.csv"
+
 
 

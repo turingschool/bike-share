@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170821184938) do
+=======
+ActiveRecord::Schema.define(version: 20170819185249) do
+>>>>>>> trip_import
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +38,19 @@ ActiveRecord::Schema.define(version: 20170821184938) do
     t.date "installation_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.integer "duration"
+    t.datetime "start_date"
+    t.string "start_station_name"
+    t.integer "start_station_id"
+    t.datetime "end_date"
+    t.string "end_station_name"
+    t.integer "end_station_id"
+    t.integer "bike_id"
+    t.string "subscription_type"
+    t.string "zip_code"
   end
 
 end

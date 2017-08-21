@@ -3,6 +3,8 @@ require_relative '../app/helpers/csv_loader'
 require_relative '../app/models/station'
 require_relative '../app/models/city'
 require_relative '../app/models/trip'
+require 'fastercsv'
+require 'activerecord-import'
 
 loader = CSVLoader.new
 
@@ -31,11 +33,25 @@ trip_data.each do |trip|
 
   Trip.create(duration: trip[:duration],
               start_date: trip[:start_date],
-              start_station_id: start_station,
+              start_station_id: start_station.id,
               end_date: trip[:end_date],
-              end_station_id: end_station,
+              end_station_id: end_station.id,
               bike_id: trip[:bike_id],
               subscription_type: trip[:subscription_type],
               zip_code: trip[:zip_code]
               )
 end
+
+# trips = []
+# CSV.foreach('./db/csv/trip.csv', headers: true, header_converters: :symbol) do |row|
+#   trips << Trip.new(:id => row[:id],
+#                     :duration => row[:duration],
+#                     :start_date => row[:start_date],
+#                     :start_station_id => row[:start_station_id].to_i,
+#                     :end_date => row[:end_date],
+#                     :end_station_id => row[:end_station_id].to_i,
+#                     :bike_id => row[:bike_id].to_i,
+#                     :subscription_type => row[:subscription_type].downcase,
+#                     :zip_code => row[:zip_code].to_i)
+# end
+# Trip.import(trips)

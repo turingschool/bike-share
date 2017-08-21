@@ -8,6 +8,8 @@ gem 'rake'
 gem "activesupport", :require => "active_support"
 gem 'pry'
 gem 'pry-byebug'
+gem 'fastercsv'
+gem 'activerecord-import'
 
 group :development, :test do
   gem 'shotgun'

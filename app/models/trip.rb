@@ -9,4 +9,16 @@ class Trip < ActiveRecord::Base
   validates :end_station_id, presence: true
   validates :bike_id, presence: true
   validates :subscription_type, presence: true
+
+  def self.average_duration
+    Trip.average(:duration).to_i
+  end
+
+  def self.longest_ride
+    Trip.maximum(:duration)
+  end
+
+  def self.shortest_ride
+    Trip.minimum(:duration)
+  end
 end

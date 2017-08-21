@@ -1,13 +1,15 @@
 RSpec.describe "User can edit a trip" do
   it "when user clicks on edit" do
-  Trip.create(duration: 40000, start_date: "1969/4/20", end_date: "1969/4/20", start_station_id: 69, end_station_id: 666, bike_id: 666, subscription_type: "customer")
+  Trip.create(duration: 40000, start_date: "1969/4/20", end_date: "1969/4/20", start_station_id: 1, end_station_id: 1, bike_id: 666, subscription_type: "customer")
+  Station.create(name: "Turing", city: "Hell", installation_date: "1969/4/20", dock_count: 69)
+
 
     visit "/trips"
     click_on('Edit')
     expect(page).to have_content("Edit your Trip")
 
-    fill_in('trip[start_station_id]',   with:"69")
-    fill_in('trip[end_station_id]',     with:"666")
+    fill_in('trip[start_station_id]',   with:"1")
+    fill_in('trip[end_station_id]',     with:"1")
     fill_in('trip[start_date]',         with:'2012/1/1')
     fill_in('trip[end_date]',           with:'2012/1/2')
     fill_in('trip[duration]',           with:"4000789")

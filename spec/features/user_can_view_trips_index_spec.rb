@@ -13,7 +13,7 @@ RSpec.describe "User visits '/trips'" do
     expect(page).to have_content("Denver")
     expect(page).to have_content("Pants Town")
     expect(page).to have_content("Chicago")
-    expect(page).to have_content("Edit this trip")
+    expect(page).to have_content("Edit")
 
   end
 end

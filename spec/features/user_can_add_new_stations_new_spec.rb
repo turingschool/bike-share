@@ -1,5 +1,3 @@
-require './app/models/station'
-
 RSpec.describe "User creates station" do
   it "with valid attributes" do
 
@@ -8,11 +6,14 @@ RSpec.describe "User creates station" do
     fill_in("name", with: "Station_1")
     fill_in("dock_count", with: 10)
     fill_in("city", with: "cityville")
-    fill_in("lattitude", with: "37.329732")
-    fill_in("longitude", with: "-121.901782")
-    select("06/08/2013", :from => 'installation_date')
+    fill_in("installation_date", with: "2017-10-20 19:20:22")
     click_on("Submit")
 
+    save_and_open_page
+    
     expect(page).to have_content("Station_1")
+    expect(page).to have_content("Dock Count: 10")
+    expect(page).to have_content("City: cityville")
+    expect(page).to have_content("Install Date: 2017-06-08")
   end
 end

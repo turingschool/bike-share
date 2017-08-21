@@ -21,19 +21,13 @@
       <input type='text' name='trip[end_station_name]'><br/>
       End Station ID:<br>
       <input type='integer' name='trip[end_station_id]'><br/>
-      <!-- <select name="trip[station_id]">
-        <% @stations.each do |station| %>
-          <option value=<%= station.id %>><%= station.name %></option>
-        <% end %>
-      </select><br> -->
       Bike ID:<br/>
       <input type='text' name='trip[bike_id]'><br/>
       Subscription Type:<br>
-      <input type='text' name='trip[subscription_type]'><br/>
-      <!-- <select name="trip[subscription_type]">
+      <select name="trip[subscription_type]">
         <option value="Subscriber">Subscriber</option>
         <option value="Customer">Customer</option>
-      </select><br> -->
+      </select><br>
       Zip Code:<br>
       <input type='text' name='trip[zip_code]'><br/>
       <input type="submit" value="Submit">

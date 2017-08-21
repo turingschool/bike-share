@@ -13,7 +13,7 @@ RSpec.describe "user can view trip analytics" do
 
 
     trip_3 = Trip.create(duration: 180000, start_date: "1969/4/20", end_date: "1969/4/21",
-                       start_station_id: 2, end_station_id: 1, bike_id: 4,
+                       start_station_id: 2, end_station_id: 1, bike_id: 3,
                        subscription_type: "Some Nonsense", zip_code: "80113")
 
     visit("/trips-dashboard")
@@ -53,6 +53,16 @@ RSpec.describe "user can view trip analytics" do
     # require 'pry'; binding.pry
     expect(page).to have_content("1969-04-01 00:00:00 UTC=>3")
     expect(page).to have_content("1969-01-01 00:00:00 UTC=>3")
+  end
+
+  it "sees the most ridden bike" do
+    expect(page).to have_content("Bike 4 is the hottest bike with 2 times ridden")
+    expect(page).to have_content(Trip.hottest_bike)
+  end
+
+  it "sees the least ridden bike" do
+    expect(page).to have_content("Bike 3 is the least popular bike with only 1 times ridden")
+    expect(page).to have_content(Trip.most_neglected_bike)
   end
 
 end

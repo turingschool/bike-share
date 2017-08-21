@@ -38,13 +38,10 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h1>Station Index</h1>
-<<<<<<< HEAD
-=======
                 <button class="btn btn-success"><a id="text" href="/stations/new">Create New Station</a></button>
                 <br>
                 <br>
                     <ul class="list-group">
->>>>>>> a727893de38f4e2db15fea6597c23084185f6a2b
                 <% @stations.each do |station| %>
                     <ul class="list-group">
                         <li class="list-group-item"><b><a href="stations/<%= station.id %>"><%= station.name %></a></b></li>
@@ -59,7 +56,6 @@
                         <br />
                     </ul>
                 <% end %>
->>>>>>> csv_loader
             </div>
         </div>
     </div>

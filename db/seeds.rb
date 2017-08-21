@@ -22,3 +22,24 @@ station_data.each do |station|
                   installation_date: station[:installation_date]
                   )
 end
+
+trip_data = loader.sanitize_trips('./db/csv/trip.csv')
+count = 0
+trip_data.each do |trip|
+  count += 1
+  puts "Seeding db_trips count: #{count}"
+
+  start_station = Station.find(trip[:start_station_id])
+  end_station = Station.find(trip[:start_station_id])
+
+  Trip.create(id: trip[:id],
+              duration: trip[:duration],
+              start_date: trip[:start_date],
+              start_station: start_station,
+              end_date: trip[:end_date],
+              end_station: end_station,
+              bike_id: trip[:bike_id],
+              subscription_type: trip[:subscription_type],
+              zip_code: trip[:zip_code]
+              )
+end

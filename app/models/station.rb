@@ -6,6 +6,7 @@ class Station < ActiveRecord::Base
   validates :dock_count, presence: true
   validates :installation_date, presence: true
   belongs_to :city
+  has_many :trips
 
   def self.average_per_station
     Station.average(:dock_count)

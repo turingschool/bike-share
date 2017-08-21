@@ -34,21 +34,48 @@
             </div>
         </div>
     </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h1>trip Index</h1>
-                <button class="btn btn-success"><a id="text" href="/trips/new">Create New trip</a></button>
-                <br>
-                <br>
-                    <ul class="list-group">
-                <% @trips.each do |trip| %>
-                        <li class="list-group-item"><b><a href="trips/<%= trip.id %>"><%= trip.id %></a></li>
-                <% end %>
-                    </ul>
-            </div>
-        </div>
-    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Trip ID</th>
+          <th>Duration</th>
+          <th>Start Date</th>
+          <th>Start Station ID</th>
+          <th>End Date</th>
+          <th>End Station Id</th>
+          <th>Bike ID</th>
+          <th>Subscription Type</th>
+          <th>Zip Code</th>
+          <th>Delete</th>
+          <th class="button btn btn-update">Update</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <!-- <% count = 0 %> -->
+        <th scope="row" id="total entries"></th>
+        <% @trips.each do |trip| %>
+        <tr>
+          <td><%= trip.id %></td>
+          <td><%= trip.duration%></td>
+          <td><%= trip.start_date%></td>
+          <td><%= trip.start_station_id%></td>
+          <td><%= trip.end_date%></td>
+          <td><%= trip.end_station_id%></td>
+          <td><%= trip.bike_id%></td>
+          <td><%= trip.subscription_type%></td>
+          <td><%= trip.zip_code%></td>
+          <td><form class="btn-form" id="trip_<%= trip.id %>" action="/trips/<%=trip.id%>" method="POST">
+            <input class="button btn btn-delete" type="hidden" name="_method" value="DELETE">
+            <input id="delete_trip" type="submit" value="Delete"/>
+          </form></td>
+          <td><a id="Update_<%= trip.id %>" class="btn btn-update button" href="/trips/<%=trip.id%>/edit">Update Trip<a/></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
     <div class="container">
     </div>
     <footer class="footer">

@@ -6,7 +6,7 @@ class Trip < ActiveRecord::Base
   validates :end_station_id, presence: true
   validates :bike_id, presence: true
   validates :subscription_type, presence: true
-  belongs_to :stations
+  belongs_to :station
 
   def self.average_duration_of_ride
     Trip.average(:duration)

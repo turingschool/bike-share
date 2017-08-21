@@ -25,11 +25,17 @@ def clean_conditions(measurement)
   measurement
 end
 
+def seed_by_date(date)
+  date_array = (date).split("/")
+  date = "#{date_array[1]}/#{date_array[0]}/#{date_array[2]}"
+end
+
 Station.destroy_all
-#system 'Say "Good morning Joan, I love you, I will never leave you, destroy stations complete"'
-# Trip.destroy_all
-# system 'Say "Trips seeded, thank you computer Jesus"'
+system 'Say "Good morning Joan, I love you, I will never leave you, destroy stations complete"'
+Trip.destroy_all
+system 'Say "Trips seeded, thank you computer Jesus"'
 Condition.destroy_all
+system 'Say "All bunnies must die Die Bunnies die bunnies die die die die all bunnies"'
 
 
 stations = delete_columns("./db/csv/station.csv", [:lat, :long])
@@ -43,30 +49,33 @@ conditions = CSV.foreach "./db/csv/weather.csv", headers: true, header_converter
   end
 
 start_time = Time.now
-  # count = 0
-  # trips.each do |row|
-  #   row = row.to_h
-  #   row[:start_station_id] = Station.id_by_name(row.delete(:start_station_name))
-  #   row[:end_station_id] = Station.id_by_name(row.delete(:end_station_name))
-  #   row[:zip_code] = clean_zipcode(row[:zip_code])
-  #   row[:start_date] = Date.strptime(row[:start_date], "%m/%d/%Y")
-  #   row[:end_date] = Date.strptime(row[:end_date], "%m/%d/%Y")
-  #   Trip.create!(row)
-  #   count += 1
-  #   puts count
-  # end
+  count = 0
+  trips.each do |row|
+    row = row.to_h
+    row[:start_station_id] = Station.id_by_name(row.delete(:start_station_name))
+    row[:end_station_id] = Station.id_by_name(row.delete(:end_station_name))
+    row[:zip_code] = clean_zipcode(row[:zip_code])
+    row[:start_date] = Date.strptime(row[:start_date], "%m/%d/%Y")
+    row[:end_date] = Date.strptime(row[:end_date], "%m/%d/%Y")
+    Trip.create!(row)
+    count += 1
+    puts count
+  end
 
   conditions.each do |row|
     row=row.to_h
-    row[:weather_date] = Date.strptime(row[:weather_date], "%m%d%Y")
-    row[:max_temperature] = clean_conditions(row.delete(:max_temperature_f))
-    row[:mean_temperature] = clean_conditions(row.delete(:mean_temperature_f))
-    row[:min_temperature] = clean_conditions(row.delete(:min_temperature_f))
-    row[:mean_humidity] = clean_conditions(row.delete(:mean_humidity))
-    row[:mean_visibility] = clean_conditions(row.delete(:mean_visibility_miles))
-    row[:mean_wind_speed] = clean_conditions(row.delete(:mean_wind_speed_mph))
-    row[:precipitation] = clean_conditions(row.delete(:precipitation_inches))
-    Condition.create!(row)
+    clean_row = {}
+    clean_row[:max_temperature] = clean_conditions(row[:max_temperature_f])
+    clean_row[:mean_temperature] = clean_conditions(row[:mean_temperature_f])
+    clean_row[:min_temperature] = clean_conditions(row[:min_temperature_f])
+    clean_row[:mean_humidity] = clean_conditions(row[:mean_humidity])
+    clean_row[:mean_visibility] = clean_conditions(row[:mean_visibility_miles])
+    clean_row[:mean_wind_speed] = clean_conditions(row[:mean_wind_speed_mph])
+    clean_row[:precipitation] = clean_conditions(row[:precipitation_inches])
+    row[:weather_date] = row[:date]
+    clean_row[:weather_date] = seed_by_date(row[:weather_date])
+    puts "finished rows"
+    Condition.create!(clean_row)
   end
 
 puts (Time.now - start_time)

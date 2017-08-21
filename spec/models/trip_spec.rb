@@ -306,37 +306,537 @@ RSpec.describe Trip do
 
     describe ".most_ridden_bike" do
       it 'returns the bike id that occurs most frequently' do
+        Station.create(name: "Panera", dock_count: 15, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "Turing", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "King Sooper", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "Trader Joes", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
 
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-07-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 2,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Turing",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "King Sooper",
+                    bike_id: 275,
+                    start_station_id: 2,
+                    end_station_id: 3,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Trader Joes",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 254,
+                    start_station_id: 4,
+                    end_station_id: 4,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 1,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Turing",
+                    end_date: "2013-06-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 289,
+                    start_station_id: 2,
+                    end_station_id: 2,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-07-29 09:11:00",
+                    end_station_name: "Panera",
+                    bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 1,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+        expect(Trip.most_ridden_bike).to eq(288)
       end
     end
 
     describe ".least_ridden_bike" do
       it 'returns the bike id that occurs least frequently' do
+        Station.create(name: "Panera", dock_count: 15, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "Turing", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "King Sooper", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "Trader Joes", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
 
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-07-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 2,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Turing",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "King Sooper",
+                    bike_id: 275,
+                    start_station_id: 2,
+                    end_station_id: 3,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Trader Joes",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 275,
+                    start_station_id: 4,
+                    end_station_id: 4,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 1,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Turing",
+                    end_date: "2013-06-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 275,
+                    start_station_id: 2,
+                    end_station_id: 2,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-07-29 09:11:00",
+                    end_station_name: "Panera",
+                    bike_id: 287,
+                    start_station_id: 1,
+                    end_station_id: 1,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+        expect(Trip.least_ridden_bike).to eq(287)
       end
     end
 
     describe ".subscription_info" do
       it 'returns user subscription type breakdown count' do
+        Station.create(name: "Panera", dock_count: 15, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "Turing", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "King Sooper", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "Trader Joes", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
 
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-07-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 2,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Turing",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "King Sooper",
+                    bike_id: 275,
+                    start_station_id: 2,
+                    end_station_id: 3,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Trader Joes",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 275,
+                    start_station_id: 4,
+                    end_station_id: 4,
+                    subscription_type: "Customer",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 1,
+                    subscription_type: "Customer",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Turing",
+                    end_date: "2013-06-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 275,
+                    start_station_id: 2,
+                    end_station_id: 2,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-07-29 09:11:00",
+                    end_station_name: "Panera",
+                    bike_id: 287,
+                    start_station_id: 1,
+                    end_station_id: 1,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+        expect(Trip.subscription_info).to eq({"Customer"=>2, "Subscriber"=>4})
       end
     end
 
-    describe ".subscription_percentage" do
+    describe ".subscriber_percentage" do
       it 'returns user subscription type by percentage' do
+        Station.create(name: "Panera", dock_count: 15, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "Turing", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "King Sooper", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "Trader Joes", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
 
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-07-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 2,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Turing",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "King Sooper",
+                    bike_id: 275,
+                    start_station_id: 2,
+                    end_station_id: 3,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Trader Joes",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 275,
+                    start_station_id: 4,
+                    end_station_id: 4,
+                    subscription_type: "Customer",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 1,
+                    subscription_type: "Customer",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Turing",
+                    end_date: "2013-06-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 275,
+                    start_station_id: 2,
+                    end_station_id: 2,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-07-29 09:11:00",
+                    end_station_name: "Panera",
+                    bike_id: 287,
+                    start_station_id: 1,
+                    end_station_id: 1,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+        expect(Trip.subscriber_percentage).to eq(66.67)
+      end
+    end
+
+    describe ".customer_percentage" do
+      it 'returns user subscription type by percentage' do
+        Station.create(name: "Panera", dock_count: 15, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "Turing", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "King Sooper", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "Trader Joes", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-07-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 2,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Turing",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "King Sooper",
+                    bike_id: 275,
+                    start_station_id: 2,
+                    end_station_id: 3,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Trader Joes",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 275,
+                    start_station_id: 4,
+                    end_station_id: 4,
+                    subscription_type: "Customer",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 1,
+                    subscription_type: "Customer",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Turing",
+                    end_date: "2013-06-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 275,
+                    start_station_id: 2,
+                    end_station_id: 2,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-07-29 09:11:00",
+                    end_station_name: "Panera",
+                    bike_id: 287,
+                    start_station_id: 1,
+                    end_station_id: 1,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+        expect(Trip.customer_percentage).to eq(33.33)
       end
     end
 
     describe ".date_with_highest_trips" do
       it 'returns single date with highest number of trips with a count' do
+        Station.create(name: "Panera", dock_count: 15, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "Turing", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "King Sooper", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "Trader Joes", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
 
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-07-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 2,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Turing",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "King Sooper",
+                    bike_id: 275,
+                    start_station_id: 2,
+                    end_station_id: 3,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Trader Joes",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 275,
+                    start_station_id: 4,
+                    end_station_id: 4,
+                    subscription_type: "Customer",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-08-27 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 1,
+                    subscription_type: "Customer",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Turing",
+                    end_date: "2013-06-30 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 275,
+                    start_station_id: 2,
+                    end_station_id: 2,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-07-29 09:11:00",
+                    end_station_name: "Panera",
+                    bike_id: 287,
+                    start_station_id: 1,
+                    end_station_id: 1,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+        date_string = Date.parse("2013-08-29")
+        expect(Trip.date_with_highest_trips).to eq(date_string)
+        expect(Trip.count_of_highest_trips).to eq("6")
       end
     end
 
     describe ".date_with_fewest_trips" do
       it 'returns single date with fewest number of trips with a count' do
+        Station.create(name: "Panera", dock_count: 15, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "Turing", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "King Sooper", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
+        Station.create(name: "Trader Joes", dock_count: 10, city: "Denver", installation_date: "2014-04-09")
 
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-07-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 2,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Turing",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "King Sooper",
+                    bike_id: 275,
+                    start_station_id: 2,
+                    end_station_id: 3,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Trader Joes",
+                    end_date: "2013-08-29 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 275,
+                    start_station_id: 4,
+                    end_station_id: 4,
+                    subscription_type: "Customer",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-08-27 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 1,
+                    subscription_type: "Customer",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-29 09:08:00",
+                    start_station_name: "Turing",
+                    end_date: "2013-06-30 09:11:00",
+                    end_station_name: "Turing",
+                    bike_id: 275,
+                    start_station_id: 2,
+                    end_station_id: 2,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+
+        Trip.create(duration: 174,
+                    start_date: "2013-08-27 09:08:00",
+                    start_station_name: "Panera",
+                    end_date: "2013-07-29 09:11:00",
+                    end_station_name: "Panera",
+                    bike_id: 287,
+                    start_station_id: 1,
+                    end_station_id: 1,
+                    subscription_type: "Subscriber",
+                    zip_code: "94114")
+        date_string = Date.parse("2013-08-27")
+        expect(Trip.date_with_fewest_trips).to eq(date_string)
+        expect(Trip.count_of_fewest_trips).to eq("1")
       end
     end
 

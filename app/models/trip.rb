@@ -40,30 +40,59 @@ class Trip < ActiveRecord::Base
   end
 
   def self.most_ridden_bike
-    group_by(:bike_id).order('bike_id DESC').count(:id)
+    group(:bike_id).order('count_id DESC').count(:id).first.first
   end
 
   def self.least_ridden_bike
-    group(:bike_id).order('count_id DESC').limit(1).count(:id).first.first
+    group(:bike_id).order('count_id ASC').count(:id).first.first
   end
 
   def self.subscription_info
     group(:subscription_type).limit(2).count(:id)
   end
 
-  def self.subscription_percentage(amount)
-    total = Trip.group(:subscription_type).limit(2).count(:id).values.reduce(:+)
-    (amount / total.to_f * 100).round(2)
+  def self.subscriber_percentage
+    subscription_hash = Trip.group(:subscription_type)
+    .limit(2)
+    .count(:id)
+    total = subscription_hash.values.reduce(:+).to_f
+    (subscription_hash["Subscriber"] / total * 100).round(2)
+  end
+
+  def self.customer_percentage
+    subscription_hash = Trip.group(:subscription_type)
+    .limit(2)
+    .count(:id)
+    total = subscription_hash.values.reduce(:+).to_f
+    (subscription_hash["Customer"] / total * 100).round(2)
   end
 
   def self.date_with_highest_trips
     date = Trip.group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all DESC').count.first
-    "#{date[0][0]}/#{date[0][1]}/#{date[0][2]}: #{date[1]}"
+    date_string = "#{date[0][2]}-#{date[0][0]}-#{date[0][1]}"
+    Date.parse(date_string)
+  end
+
+  def self.date_with_highest_trips
+    date = Trip.group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all DESC').count.first
+    date_string = "#{date[0][2]}-#{date[0][0]}-#{date[0][1]}"
+    Date.parse(date_string)
+  end
+
+  def self.count_of_highest_trips
+    date = Trip.group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all DESC').count.first
+    "#{date[1]}"
   end
 
   def self.date_with_fewest_trips
     date = Trip.group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all').count.first
-    "#{date[0][0]}/#{date[0][1]}/#{date[0][2]}: #{date[1]}"
+    date_string = "#{date[0][2]}-#{date[0][0]}-#{date[0][1]}"
+    Date.parse(date_string)
+  end
+
+  def self.count_of_fewest_trips
+    date = Trip.group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all').count.first
+    "#{date[1]}"
   end
 
   def self.number_of_starting_rides_at_station(station_id)

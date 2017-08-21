@@ -63,4 +63,49 @@ RSpec.describe Trip do
       expect(invalid_trip).to_not be_valid
     end
   end
+
+  describe "Class Methods" do
+    it "returns average duration of ride" do
+      start_date = DateTime.new(2001,2,3,4,5,6)
+      end_date = DateTime.new(2001,2,3,4,5,7)
+      Trip.create(duration: 10, start_date: start_date, start_station_id: 1, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345)
+      Trip.create(duration: 20, start_date: start_date, start_station_id: 1, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345)
+
+      expect(Trip.average_duration_of_ride).to eq(15)
+    end
+
+    it "returns longest ride" do
+      start_date = DateTime.new(2001,2,3,4,5,6)
+      end_date = DateTime.new(2001,2,3,4,5,7)
+      Trip.create(duration: 10, start_date: start_date, start_station_id: 1, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345)
+      Trip.create(duration: 20, start_date: start_date, start_station_id: 1, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345)
+
+      expect(Trip.longest_ride).to eq(20)
+    end
+
+    it "returns shortest ride" do
+      start_date = DateTime.new(2001,2,3,4,5,6)
+      end_date = DateTime.new(2001,2,3,4,5,7)
+      Trip.create(duration: 10, start_date: start_date, start_station_id: 1, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345)
+      Trip.create(duration: 20, start_date: start_date, start_station_id: 1, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345)
+
+      expect(Trip.shortest_ride).to eq(10)
+    end
+
+    it "returns station with most rides as a starting place" do
+      start_date = DateTime.new(2001,2,3,4,5,6)
+      end_date = DateTime.new(2001,2,3,4,5,7)
+      Trip.create(duration: 10, start_date: start_date, start_station_id: 1, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345)
+      Trip.create(duration: 20, start_date: start_date, start_station_id: 1, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345)
+      Trip.create(duration: 20, start_date: start_date, start_station_id: 2, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345)
+
+      expect(Trip.station_with_most_rides_as_starting_place).to (eq)
+
+
+
+
+
+
+    end
+  end
 end

@@ -1,5 +1,5 @@
 <% @conditions.each do |condition| %>
-  <a href="conditions/#{condition.id}"><%= condition.date %></a>
+  <a href="conditions/<%= condition.id %>"><%= condition.date %></a>
 
   <%= condition.max_temperature %>
 

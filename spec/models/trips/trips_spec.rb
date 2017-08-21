@@ -112,10 +112,33 @@ RSpec.describe Trip do
 												 start_station_id: 1, end_station_id: 2, bike_id: 4,
 			 									 subscription_type: "Some Nonsense", zip_code: "80113")
 
+			long_trip = trip_3.duration
+			long_trip_convert = Trip.time_converter(long_trip)
 
+			expect(long_trip_convert).to eq("2 days")
 			expect(Trip.longest_ride).to eq("2 days")
 		end
 
+		it "Gets the shortest ride" do
+			trip_1 = Trip.create(duration: 600, start_date: "1969/4/20", end_date: "1969/4/21",
+												 start_station_id: 1, end_station_id: 2, bike_id: 4,
+												 subscription_type: "Some Nonsense", zip_code: "80113")
+
+			trip_2 = Trip.create(duration: 1200, start_date: "1969/4/20", end_date: "1969/4/21",
+												 start_station_id: 1, end_station_id: 2, bike_id: 4,
+												 subscription_type: "Some Nonsense", zip_code: "80113")
+
+
+			trip_3 = Trip.create(duration: 180000, start_date: "1969/4/20", end_date: "1969/4/21",
+												 start_station_id: 1, end_station_id: 2, bike_id: 4,
+												 subscription_type: "Some Nonsense", zip_code: "80113")
+
+			quickest_trip = trip_1.duration
+			quickest_trip_convert = Time.at(quickest_trip).utc.strftime("%M:%S")
+
+			expect(quickest_trip_convert).to eq("10:00")
+			expect(Trip.shortest_ride).to eq("10:00")
+		end
 
 	end
 end

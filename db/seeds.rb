@@ -1,10 +1,13 @@
 require 'ccsv'
+require 'CSV'
 require 'pry'
 require './app/models/trip'
 require './app/models/subscription_type'
 require './app/models/start_date'
 require './app/models/end_date'
 require './app/models/zip_code'
+require './app/models/city'
+require './app/models/station'
 
 TOTAL = []
 
@@ -59,8 +62,6 @@ Ccsv.foreach('db/csv/trip.csv') do |row|
                     start_date_id: start_date.id,
                     end_date_id: end_date.id
                     )
-      # trip.start_date = StartDate.find_or_create_by(date: get_date(row[2]))
-      # trip.end_date = EndDate.find_or_create_by(date: get_date(row[5]))
       trip.subscription_type = SubscriptionType.find(compute_subscription_id(row[9]))
       trip.zip_code = ZipCode.find_or_create_by(zip_code: row[10])
       trip.save
@@ -85,6 +86,7 @@ CSV.foreach('./db/csv/station.csv', :headers => true, :encoding => 'ISO-8859-1')
                  city_id: city.id
                  )
 
+puts "There are now #{Station.count} rows in the stations table."
 
 # DATES.each do |id, value|
 #   date = TripDate.new(

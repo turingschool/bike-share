@@ -27,4 +27,14 @@ RSpec.describe "user can view trip analytics" do
     expect(page).to have_content(average_trip)
     expect(page).to have_content(Trip.average_duration_of_a_trip)
   end
+
+  it "sees longest ride" do
+    expect(page).to have_content("2 days")
+    expect(page).to have_content(Trip.longest_ride)
+  end
+
+  it "sees shortest ride" do
+    expect(page).to have_content("10:00")
+    expect(page).to have_content(Trip.shortest_ride)
+  end
 end

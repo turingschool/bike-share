@@ -76,6 +76,16 @@ puts "There are now #{Trip.count} rows in the trips table"
 puts "There are #{total} duplicate dates."
 
 
+CSV.foreach('./db/csv/station.csv', :headers => true, :encoding => 'ISO-8859-1') do |row|
+  #We may need to review this portion of the code. How does this join the city object to the Station table?
+
+  city = City.find_or_create_by(city: row["city"])
+
+  Station.create(name: row["name"],
+                 dock_count: row["dock_count"],
+                 installation_date: row["installation_date"],
+                 city_id: city.id
+                 )
 
 
 # DATES.each do |id, value|
@@ -102,3 +112,6 @@ puts "There are #{total} duplicate dates."
 # id,duration,start_date,start_station_name,start_station_id
 # ,end_date,end_station_name,end_station_id,bike_id,subscription_type,
 # zip_code
+
+
+end

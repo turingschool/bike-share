@@ -1163,12 +1163,12 @@ RSpec.describe Trip do
                     zip_code: "94114")
 
         Trip.create(duration: 174,
-                    start_date: "2013-08-29 09:08:00",
+                    start_date: "2013-08-24 09:08:00",
                     start_station_name: "Turing",
                     end_date: "2013-08-29 09:11:00",
                     end_station_name: "King Sooper",
                     bike_id: 275,
-                    start_station_id: 2,
+                    start_station_id: 1,
                     end_station_id: 3,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
@@ -1179,7 +1179,7 @@ RSpec.describe Trip do
                     end_date: "2013-08-29 09:11:00",
                     end_station_name: "Turing",
                     bike_id: 275,
-                    start_station_id: 4,
+                    start_station_id: 1,
                     end_station_id: 4,
                     subscription_type: "Customer",
                     zip_code: "94114")
@@ -1196,12 +1196,12 @@ RSpec.describe Trip do
                     zip_code: "94114")
 
         Trip.create(duration: 174,
-                    start_date: "2013-08-29 09:08:00",
+                    start_date: "2013-08-24 09:08:00",
                     start_station_name: "Turing",
                     end_date: "2013-06-30 09:11:00",
                     end_station_name: "Turing",
                     bike_id: 275,
-                    start_station_id: 2,
+                    start_station_id: 1,
                     end_station_id: 2,
                     subscription_type: "Subscriber",
                     zip_code: "94114")

@@ -1,7 +1,7 @@
 RSpec.describe "User can create a new trip" do
   it "when visiting 'trips/new'" do
 
-    visit 'trips/new'
+    visit '/trips/new'
 
     expect(page).to have_field("trip[start_date]")
 
@@ -15,7 +15,7 @@ RSpec.describe "User can create a new trip" do
     fill_in("trip[bike_id]", with: 547835)
     select("Customer", from: "trip[subscription_type]")
     fill_in("trip[zip_code]", with: 90210)
-    click_on("Submit")
+    click_button("Submit")
 
     expect(page).to have_content("The trip lasted 45 minutes")
     expect(page).to have_content("The trip started at Over There, and ended at Over Here")

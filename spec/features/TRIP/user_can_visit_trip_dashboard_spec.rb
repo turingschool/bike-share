@@ -22,7 +22,9 @@ RSpec.describe "user can view trip analytics" do
 
 
   it "sees average duration of a ride" do
-    save_and_open_page
-    expect(page).to have_content("kljasdf")
+    average_trip = "50:00 minutes"
+
+    expect(page).to have_content(average_trip)
+    expect(page).to have_content(Trip.average_duration_of_a_trip)
   end
 end

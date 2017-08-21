@@ -33,4 +33,20 @@ class Station < ActiveRecord::Base
       Station.order("installation_date").first.name
     end
 
+    def self.convert_csv_to_station_attributes
+      a = Time.now
+      stations = []
+      CSV.foreach('db/csv/station.csv', {headers: true, header_converters: :symbol}) do |row|
+      stations <<  Station.new(name:             row[:name],
+                               lat:               row[:lat],
+                               long:              row[:long],
+                               dock_count:        row[:dock_count],
+                               city:              row[:city],
+                               installation_date: Date.strptime(row[:installation_date], '%m/%e/%Y'))
+      end
+    b = Time.now
+    puts "Creating the stations array took #{b - a} seconds"
+    stations
+    end
+
 end

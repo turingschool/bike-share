@@ -5,7 +5,6 @@ class CSVLoader
     data = CSV.open(path, headers: true, header_converters: :symbol)
 
     data.map do |row|
-
       {
         :id => row[:id],
         :name => row[:name],
@@ -15,7 +14,7 @@ class CSVLoader
       }
     end
   end
-
+  
   def sanitize_trip(path)
     data = CSV.open(path, headers: true, header_converters: :symbol)
 

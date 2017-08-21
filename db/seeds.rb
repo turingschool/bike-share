@@ -4,6 +4,7 @@ require_relative '../app/models/station'
 require_relative '../app/models/city'
 require_relative '../app/models/trip'
 
+
 loader = CSVLoader.new
 
 station_data = loader.sanitize_station('./db/csv/station.csv')
@@ -22,7 +23,6 @@ station_data.each do |station|
                   city_id: city.id,
                   installation_date: station[:installation_date]
                   )
-end
 
 trip_data = loader.sanitize_trips('./db/csv/trip.csv')
 trip_data.each do |trip|
@@ -44,3 +44,4 @@ trip_data.each do |trip|
               zip_code: trip[zip_code]
               )
 end
+

@@ -1,10 +1,10 @@
 RSpec.describe "User can edit a trip" do
   it "when visiting 'trips/:id/edit'" do
-    Trip.create(duration: 49, start_date: "2017-08-20 19:20:22",  start_station_name: "Banana Town", start_station_id: 84, end_date: "2017-08-20 19:20:22", end_station_name: "Pants Town", end_station_id: 94, bike_id: 4, subscription_type: "Customer", zip_code: 99000)
+    trip = Trip.create(duration: 49, start_date: "2017-08-20 19:20:22",  start_station_name: "Banana Town", start_station_id: 84, end_date: "2017-08-20 19:20:22", end_station_name: "Pants Town", end_station_id: 94, bike_id: 4, subscription_type: "Customer", zip_code: 99000)
 
-    visit 'trips/1/edit'
+    visit "/trips/#{trip.id}"
 
-    expect(page).to have_field("trip[start_date]")
+    click_link("Edit this trip")
 
     fill_in("trip[duration]", with: 45)
     fill_in("trip[start_date]", with: "2017-08-20 19:20:22")

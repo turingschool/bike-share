@@ -9,8 +9,6 @@ require './app/models/zip_code'
 require './app/models/city'
 require './app/models/station'
 
-TOTAL = []
-
 def compute_subscription_id(subscription_string)
   if subscription_string[0] == "S"
     1
@@ -23,31 +21,16 @@ def get_date(date)
   Date.strptime(date.split(" ")[0], "%m/%d/%Y")
 end
 
-def check_for_unique_dates(day1, day2, line)
-  if day1 != day2
-    TOTAL << line
-  end
-end
-
 header = true
-
-SubscriptionType.destroy_all
-
-Ccsv.foreach('db/csv/subscription_type.csv') do |row|
-  if header == false
-    subscription = SubscriptionType.new(
-                    id: row[0],
-                    subscription_type: row[1]
-                    )
-    subscription.save
-  end
-  header = false
-end
 
 Trip.destroy_all
 StartDate.destroy_all
 EndDate.destroy_all
 ZipCode.destroy_all
+SubscriptionType.destroy_all
+
+SubscriptionType.create(subscription_type: 'Customer')
+SubscriptionType.create(subscription_type: 'Subscriber')
 
 header = true
 Ccsv.foreach('db/csv/trip.csv') do |row|
@@ -85,33 +68,6 @@ CSV.foreach('./db/csv/station.csv', :headers => true, :encoding => 'ISO-8859-1')
                  installation_date: Date.strptime(row["installation_date"], "%m/%d/%Y"),
                  city_id: city.id
                  )
+               end
 
-puts "There are now #{Station.count} rows in the stations table."
-
-# DATES.each do |id, value|
-#   date = TripDate.new(
-#                       id: id,
-#                       trip_date: value
-#                       )
-#   date.save
-# end
-#
-# TIMES.each do |id, value|
-#   time = TripTime.new(
-#                       id: id,
-#                       trip_time: value
-#   )
-#   time.save
-# end
-
-#
-# puts "There are now #{SubscriptionType.count} rows in the trips table"
-
-
-
-# id,duration,start_date,start_station_name,start_station_id
-# ,end_date,end_station_name,end_station_id,bike_id,subscription_type,
-# zip_code
-
-
-end
+  puts "There are now #{Station.count} rows in the stations table."

@@ -73,8 +73,6 @@ Ccsv.foreach('db/csv/trip.csv') do |row|
 end
 
 puts "There are now #{Trip.count} rows in the trips table"
-puts "There are #{total} duplicate dates."
-
 
 CSV.foreach('./db/csv/station.csv', :headers => true, :encoding => 'ISO-8859-1') do |row|
   #We may need to review this portion of the code. How does this join the city object to the Station table?

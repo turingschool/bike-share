@@ -37,4 +37,22 @@ RSpec.describe "user can view trip analytics" do
     expect(page).to have_content("10:00")
     expect(page).to have_content(Trip.shortest_ride)
   end
+
+  it "sees the station with the most rides started there" do
+    expect(page).to have_content("Turing")
+    expect(page).to have_content(Station.most_popular_starting_station)
+  end
+
+  it "sees the station with the most rides ended there" do
+    expect(page).to have_content("Mushroom")
+    expect(page).to have_content(Station.most_popular_ending_station)
+  end
+
+  it "sees the monthly and yearly ride breakdown" do
+    # skip
+    # require 'pry'; binding.pry
+    expect(page).to have_content("1969-04-01 00:00:00 UTC=>3")
+    expect(page).to have_content("1969-01-01 00:00:00 UTC=>3")
+  end
+
 end

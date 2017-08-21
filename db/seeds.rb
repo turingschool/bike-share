@@ -12,13 +12,13 @@ puts "Starting seeding..."
 # system "rake db:migrate"
 
 trips = Trip.convert_csv_to_trip_attributes
-Trip.import trips
+Trip.import! trips
 
 stations = Station.convert_csv_to_station_attributes
-Station.import stations
+Station.import! stations
 
 conditions = Condition.convert_csv_to_condition_attributes
-Condition.import conditions
+Condition.import! conditions
 
 # statuses = Status.convert_csv_to_status_attributes
 # Status.import statuses

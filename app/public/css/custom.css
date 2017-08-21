@@ -1,0 +1,49 @@
+.hbmain {
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 800;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #EEEEEE;
+  text-shadow: 1px 1px #555555;
+  letter-spacing: 4px;
+}
+
+.navbar-default .navbar-brand {
+  color: white;
+  font-size: 32px;
+  letter-spacing: -1px;
+  font-weight: bold;
+  /*font-style: italic;*/
+  text-shadow: 2px 2px #555555;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color: white;
+  font-size: 12px;
+  font-weight: lighter;
+  letter-spacing: 2px;
+}
+
+.header-button.hbstatbtn {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  color: #000000;
+}
+
+.navbar-default {
+  background-color: #AFCEFF;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+.navbar.navbar-inverse {
+  margin-bottom: 0px;
+  min-height: 10px;
+  border-radius: 0px;
+}
+
+.navbar.navbar-default {
+  border-radius: 0px;
+}

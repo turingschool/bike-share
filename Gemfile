@@ -6,6 +6,7 @@ gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'rake'
 gem "activesupport", :require => "active_support"
+gem 'pry'
 
 group :development, :test do
   gem 'shotgun'

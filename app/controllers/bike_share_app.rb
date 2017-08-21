@@ -1,3 +1,5 @@
+require 'pry'
+
 class BikeShareApp < Sinatra::Base
   get '/' do
     erb :'home/index'
@@ -52,5 +54,44 @@ class BikeShareApp < Sinatra::Base
   get '/cities/:id' do
     @city = City.find(params[:id])
     erb :'cities/show'
+  end
+
+  get '/station-dashboard' do
+    @stations = Station.all
+    erb :'stations/station-index'
+  end
+
+  get '/trips' do
+    @trips = Trip.all
+    erb :'trips/index'
+  end
+
+  get '/trips/new' do
+    @stations = Station.all
+    erb :'trips/new'
+  end
+
+  post '/trips' do
+    @trip = Trip.create(params[:trip])
+    redirect "/trips/#{@trip.id}"
+  end
+
+  put '/trips/:id' do |id|
+    binding.pry
+    trip = Trip.find(id)
+    trip.update(params[:trip])
+    redirect "/trip/#{id}"
+  end
+
+  get '/trips/:id' do
+        binding.pry
+    @trips = Trip.find(params[:id])
+    erb :'trips/show'
+  end
+
+  get '/trips/:id/edit' do
+    @stations = Station.all
+    @trips = Trip.find(params[:id])
+    erb '/trips/edit'
   end
 end

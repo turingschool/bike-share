@@ -253,6 +253,43 @@ RSpec.describe Trip do
 			expect(Trip.subscription_type_breakdown).to eq(breakdown)
 		end
 
+		it "Gets most popular trip date" do
+			trip_1 = Trip.create(duration: 600, start_date: "1969/4/20", end_date: "1969/4/21",
+												 start_station_id: 1, end_station_id: 2, bike_id: 4,
+												 subscription_type: "Customer", zip_code: "80113")
+
+			trip_2 = Trip.create(duration: 1200, start_date: "1969/4/20", end_date: "1969/4/21",
+												 start_station_id: 1, end_station_id: 2, bike_id: 4,
+												 subscription_type: "Customer", zip_code: "80113")
+
+
+			trip_3 = Trip.create(duration: 180000, start_date: "1969/4/21", end_date: "1969/4/21",
+												 start_station_id: 2, end_station_id: 1, bike_id: 5,
+												 subscription_type: "Subscriber", zip_code: "80113")
+
+			breakdown = "1969-04-20 was the most popular trip date, with 2 rentals."
+
+			expect(Trip.most_popular_trip_date).to eq(breakdown)
+		end
+
+		it "Gets least popular trip date" do
+			trip_1 = Trip.create(duration: 600, start_date: "1969/4/20", end_date: "1969/4/21",
+												 start_station_id: 1, end_station_id: 2, bike_id: 4,
+												 subscription_type: "Customer", zip_code: "80113")
+
+			trip_2 = Trip.create(duration: 1200, start_date: "1969/4/20", end_date: "1969/4/21",
+												 start_station_id: 1, end_station_id: 2, bike_id: 4,
+												 subscription_type: "Customer", zip_code: "80113")
+
+
+			trip_3 = Trip.create(duration: 180000, start_date: "1969/4/21", end_date: "1969/4/21",
+												 start_station_id: 2, end_station_id: 1, bike_id: 5,
+												 subscription_type: "Subscriber", zip_code: "80113")
+
+			breakdown = "1969-04-21 was the least popular trip date, with only 1 rentals."
+
+			expect(Trip.least_popular_trip_date).to eq(breakdown)
+		end
 
 	end
 end

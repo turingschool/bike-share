@@ -7,7 +7,7 @@ RSpec.describe "User visits /stations/:id/edit" do
                             city: "bike town",
                             installation_date: "2017-08-04")
 
-    visit "stations/#{station.id}"
+    visit "/stations/#{station.id}"
 
     expect(page).to have_content("Station_1")
     click_on("Edit this station")

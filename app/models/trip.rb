@@ -5,7 +5,7 @@ class Trip < ActiveRecord::Base
 
   validates_presence_of :duration, :start_date, :end_date, :bike_id, :subscription_type
 
-  has_many :stations
+  #has_many :stations
 
   acts_as_copy_target #this is from the postgres-copy gem
 

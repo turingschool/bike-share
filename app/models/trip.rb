@@ -16,8 +16,8 @@ class Trip < ActiveRecord::Base
   def self.reset_ids
     ActiveRecord::Base.connection.reset_pk_sequence!('trips')
   end
-  
-  # def self.sort_trips_by_date
-  #   order(:trip_date)
-  # end
+
+  def self.sort_trips_by_date
+    order(:start_date)
+  end
 end

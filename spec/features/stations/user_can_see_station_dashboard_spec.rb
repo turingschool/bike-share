@@ -1,5 +1,6 @@
 describe 'User can view station dashboard' do
   it 'and see the analytics' do
+    
     Station.create(name: "San Jose Civic Center", dock_count: 30, city: "San Jose", installation_date: "2014-04-09")
 
     visit '/station-dashboard'

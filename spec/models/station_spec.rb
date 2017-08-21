@@ -2,6 +2,7 @@ RSpec.describe Station do
   describe "Class Methods" do
     describe ".total_stations"
       it 'returns total station count' do
+        
         Station.create(name: "San Jose Civic Center", dock_count: 30, city: "San Jose", installation_date: "2013-08-06")
         Station.create(name: "Sam", dock_count: 10, city: "San Jose", installation_date: "2014-04-09")
 
@@ -10,6 +11,7 @@ RSpec.describe Station do
 
     describe ".avg_bikes_avail" do
       it 'returns avg bikes available' do
+
         Station.create(name: "San Jose Civic Center", dock_count: 30, city: "San Jose", installation_date: "2013-08-06")
         Station.create(name: "Sam", dock_count: 10, city: "San Jose", installation_date: "2014-04-09")
 
@@ -19,6 +21,7 @@ RSpec.describe Station do
 
     describe '.most_bikes_avail' do
       it 'returns most bikes available' do
+
         Station.create(name: "San Jose Civic Center", dock_count: 30, city: "San Jose", installation_date: "2013-08-06")
         Station.create(name: "Sam", dock_count: 10, city: "San Jose", installation_date: "2014-04-09")
 
@@ -28,6 +31,7 @@ RSpec.describe Station do
 
     describe '.station_with_most_bikes' do
       it 'returns station name with most bikes' do
+
         Station.create(name: "San Jose Civic Center", dock_count: 30, city: "San Jose", installation_date: "2013-08-06")
         Station.create(name: "Sam", dock_count: 10, city: "San Jose", installation_date: "2014-04-09")
 
@@ -37,6 +41,7 @@ RSpec.describe Station do
 
     describe '.fewest_bikes_avail' do
       it 'returns fewest bikes available' do
+
         Station.create(name: "San Jose Civic Center", dock_count: 30, city: "San Jose", installation_date: "2013-08-06")
         Station.create(name: "Sam", dock_count: 10, city: "San Jose", installation_date: "2014-04-09")
 
@@ -46,6 +51,7 @@ RSpec.describe Station do
 
     describe '.station_with_fewest_bikes' do
       it 'returns station name with fewest bikes' do
+
         Station.create(name: "San Jose Civic Center", dock_count: 30, city: "San Jose", installation_date: "2013-08-06")
         Station.create(name: "Sam", dock_count: 10, city: "San Jose", installation_date: "2014-04-09")
 

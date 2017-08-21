@@ -1,4 +1,6 @@
 require 'csv'
+
+require './app/models/trip.rb'
 require './app/models/station.rb'
 
 def load_station(data)

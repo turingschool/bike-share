@@ -2,7 +2,8 @@ require 'ccsv'
 require 'pry'
 require './app/models/trip'
 require './app/models/subscription_type'
-require './app/models/trip_date'
+require './app/models/start_date'
+require './app/models/end_date'
 require './app/models/zip_code'
 
 TOTAL = []
@@ -41,7 +42,8 @@ Ccsv.foreach('db/csv/subscription_type.csv') do |row|
 end
 
 Trip.destroy_all
-TripDate.destroy_all
+StartDate.destroy_all
+EndDate.destroy_all
 ZipCode.destroy_all
 
 header = true
@@ -52,7 +54,8 @@ Ccsv.foreach('db/csv/trip.csv') do |row|
                     end_station: row[7],
                     bike_id: row[8],
                     )
-      trip.trip_date = TripDate.find_or_create_by(date: get_date(row[2]))
+      trip.start_date = StartDate.find_or_create_by(date: get_date(row[2]))
+      trip.end_date = EndDate.find_or_create_by(date: get_date(row[5]))
       trip.subscription_type = SubscriptionType.find(compute_subscription_id(row[9]))
       trip.zip_code = ZipCode.find_or_create_by(zip_code: row[10])
       trip.save

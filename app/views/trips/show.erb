@@ -1,20 +1,53 @@
-<h3>Trip Details</h3>
-<p>The trip started on <%= @trip.start_date %> and ended on <%= @trip.end_date %></p>
-<p>The trip started at <%= @trip.start_station_name %>, and ended at <%= @trip.end_station_name %></p>
-<p>The trip lasted <%= @trip.duration %> minutes</p>
-<p>The trip was on bike# <%= @trip.bike_id %></p>
-<p>The person taking the trip was a <%= @trip.subscription_type %></p>
-<p>The trip zip code was <%= @trip.zip_code %></p><br><br>
-<td>
-  <form action="/trips/<%= @trip.id %>/edit" method="get">
-    <button type="submit" class="btn btn-warning btn active btn-sm" role="button" aria-pressed="true" value="edit">Edit</button>
-  </form>
-</td>
+<div class="row newshoweditrow">
+  <div class="col-md-1"></div>
+  <div class="col-md-4">
+    <div class="left-pane">
+      <div class="panel panel-default trip-show-panel">
+        <div class="panel-heading">
+          <h1 class="panel-title">Details for Trip <%= @trip.id %></h1>
+        </div>
+        <div class="panel-body">
+          <p>The trip started on <%= @trip.start_date %> and ended on <%= @trip.end_date %></p>
+          <p>The trip started at <%= @trip.start_station_name %>, and ended at <%= @trip.end_station_name %></p>
+          <p>The trip lasted <%= @trip.duration %> minutes</p>
+          <p>The trip was on bike# <%= @trip.bike_id %></p>
+          <p>The person taking the trip was a <%= @trip.subscription_type %></p>
+          <p>The trip zip code was <%= @trip.zip_code %></p><br>
+          <td>
+            <form action="/trips/<%= @trip.id %>/edit" method="get">
+              <button type="submit" class="btn btn-warning formbtn" role="button" aria-pressed="true" value="edit">Edit</button>
+            </form>
+          </td>
+          <td>
+            <form action="/trips/<%= @trip.id %>" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <button type="submit" class="btn btn-danger formbtn" role="button" aria-pressed="true" value="delete">Delete</button>
+            </form>
+          </td>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="right-pane-trip">
+      THIS IS WHERE THE MAP GOES <br>
+      POINT A TO POINT B
+    </div>
+  </div>
+  <div class="col-md-1"></div>
+</div>
 
-<td>
-  <form action="/trips/<%= @trip.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <button type="submit" class="btn btn-danger btn active btn-sm" role="button" aria-pressed="true" value="delete">Delete</button>
-  </form>
-</td>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p><a href='/trips'>Back to the trip index</a></p>

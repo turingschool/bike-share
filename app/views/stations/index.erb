@@ -45,7 +45,7 @@
                 <h1>Station Index</h1>
                 <br>
                 <br>
-                <% @stations.each do |station| %>
+                <% @stations.order(:name).each do |station| %>
                     <ul class="list-group">
                         <li class="list-group-item"><b><a href="stations/<%= station.id %>"><%= station.name %></a></b></li>
                     </ul>

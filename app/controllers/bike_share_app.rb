@@ -1,6 +1,19 @@
 require 'pry'
+require "sinatra/namespace"
 
 class BikeShareApp < Sinatra::Base
+  register Sinatra::Namespace
+
+  namespace '/api/v1' do
+    before do
+      content_type 'application/json'
+    end
+
+    get '/stations' do
+      Station.all.to_json
+    end
+  end
+
   get '/' do
     erb :'home/index'
   end
@@ -8,6 +21,7 @@ class BikeShareApp < Sinatra::Base
   get '/stations' do
     @cities = City.all
     @stations = Station.all
+
     erb :'stations/index'
   end
 

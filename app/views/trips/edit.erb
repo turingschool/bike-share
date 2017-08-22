@@ -1,30 +1,51 @@
-<form action="/trips/<%= @trips.id %>" method="post">
-  <fieldset>
-    <legend>Edit A Trip</legend>
-    <input type="hidden" name="_method" value="PUT" />
-    Duration:<br>
-    <input type='text' name='trip[duration]' value=<%= @trips.duration %>><br/>
-    Start Date:<br>
-    <input type='text' name='trip[start_date]'value=<%= @trips.start_date %>><br/>
-    Start Station Name:<br>
-    <input type='text' name='trip[start_station_name]' value=<%= @trips.start_station_name %>><br/>
-    Start Station ID:<br>
-    <input type='text' name='trip[start_station_id]' value=<%= @trips.start_station_id %>><br/>
-    End Date:<br>
-    <input type='text' name='trip[end_date]' value=<%= @trips.end_date %>><br/>
-    End Station Name:<br>
-    <input type='text' name='trip[end_station_name]' value=<%= @trips.end_station_name %>><br/>
-    End Station ID:<br>
-    <input type='text' name='trip[end_station_id]' value=<%= @trips.end_station_id %>><br/>
-    Bike ID:<br/>
-    <input type='text' name='trip[bike_id]' value=<%= @trips.bike_id %>><br/>
-    Subscription Type:<br>
-    <select name="trip[subscription_type]">
-      <option value="Subscriber">Subscriber</option>
-      <option value="Customer">Customer</option>
-    </select><br>
-    Zip Code:<br>
-    <input type='text' name='trip[zip_code]' value=<%= @trips.zip_code %>><br/>
-    <input type="submit" value="Submit">
-  </fieldset>
-</form>
+<div class="row newshoweditrow">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8">
+    <div class="left-pane">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="panel-title">Edit Bike Trip</h1>
+        </div>
+        <h4>Please be sure all fields are filled out correctly.</h4>
+        <div class="row">
+          <div class="col-md-6">
+            <form action="/trips/<%= @trips.id %>" method="post">
+              <fieldset>
+                <input type="hidden" name="_method" value="PUT" />
+                Duration:<br>
+                <input type='text' name='trip[duration]' value=<%= @trips.duration %>><br/>
+                Start Date:<br>
+                <input type='text' name='trip[start_date]'value=<%= @trips.start_date %>><br/>
+                Start Station Name:<br>
+                <input type='text' name='trip[start_station_name]' value=<%= @trips.start_station_name %>><br/>
+                Start Station ID:<br>
+                <input type='text' name='trip[start_station_id]' value=<%= @trips.start_station_id %>><br/>
+                End Date:<br>
+                <input type='text' name='trip[end_date]' value=<%= @trips.end_date %>><br/>
+                End Station Name:<br>
+                <input type='text' name='trip[end_station_name]' value=<%= @trips.end_station_name %>><br/>
+                End Station ID:<br>
+                <input type='text' name='trip[end_station_id]' value=<%= @trips.end_station_id %>><br/>
+              </div>
+              <div class="col-md-6">
+                Bike ID:<br/>
+                <input type='text' name='trip[bike_id]' value=<%= @trips.bike_id %>><br/>
+                Zip Code:<br>
+                <input type='text' name='trip[zip_code]' value=<%= @trips.zip_code %>><br/><br>
+                Subscription Type:<br>
+                <select name="trip[subscription_type]">
+                  <option value="Subscriber">Subscriber</option>
+                  <option value="Customer">Customer</option>
+                </select><br><br>
+                <input class="btn-warning formbtn" type="submit" value="Submit">
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+  </div>
+</div>

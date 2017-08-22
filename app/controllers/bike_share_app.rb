@@ -150,6 +150,12 @@ class BikeShareApp < Sinatra::Base
     redirect '/conditions'
   end
 
+  get '/condition-dashboard' do
+    @condition = Condition.all
+    @temp_range = params[:temp_range].to_i
+    erb :'/conditions/condition-dashboard'
+  end
+
 
 
 

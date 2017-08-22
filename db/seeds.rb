@@ -48,6 +48,10 @@ count = 0
 weather_data.each do |condition|
   count += 1
   puts "Seeding db_conditions count: #{count}"
+
+  ActiveRecord::Base.connection.execute("SET datestyle = dmy;")
+  trip = Trip.where(start_date: condition[:date]).first_or_create
+
   Condition.create(date: condition[:date],
                    max_temperature: condition[:max_temperature],
                    mean_temperature: condition[:mean_temperature],
@@ -55,6 +59,7 @@ weather_data.each do |condition|
                    mean_humidity: condition[:mean_humidity],
                    mean_visibility: condition[:mean_visibility],
                    mean_wind_speed: condition[:mean_wind_speed],
-                   precipitation: condition[:precipitation]
+                   precipitation: condition[:precipitation],
+                   trip_id: trip.id
                    )
 end

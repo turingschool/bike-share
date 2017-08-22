@@ -1,0 +1,99 @@
+input {
+  width: 300px;
+}
+
+.hbmain {
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 800;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #EEEEEE;
+  text-shadow: 1px 1px #555555;
+  letter-spacing: 4px;
+}
+
+.navbar-default .navbar-brand {
+  color: white;
+  font-size: 32px;
+  letter-spacing: -1px;
+  font-weight: bold;
+  /*font-style: italic;*/
+  text-shadow: 2px 2px #555555;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color: white;
+  font-size: 12px;
+  font-weight: lighter;
+  letter-spacing: 2px;
+}
+
+.header-button.hbstatbtn {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  color: #000000;
+}
+
+.navbar-default {
+  background-color: #AFCEFF;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+.navbar.navbar-inverse {
+  margin-bottom: 0px;
+  min-height: 10px;
+  border-radius: 0px;
+}
+
+.navbar.navbar-default {
+  border-radius: 0px;
+}
+
+.formbtn {
+  width: 200px;
+}
+
+.panel-default > .panel-heading {
+  background-color: #AFCEFF;
+}
+
+.panel-title {
+  font-size: 26px;
+}
+
+.panel {
+  text-align: center;
+}
+
+.newshoweditrow {
+  margin-top: 10px;
+}
+
+.right-pane {
+  text-align: center;
+  height: 280px;
+  font-size: 30;
+  color: white;
+  text-shadow: 2px 2px #333333;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: thin;
+  border-color: lightgrey;
+  background-color: #AFCEFF;
+}
+
+.show-panel {
+  height: 280px;
+}
+
+.new-station-panel {
+  height: 330px;
+}
+
+.edit-station-panel-form-item {
+  text-align: left;
+  margin-left: 15px;
+}

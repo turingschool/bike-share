@@ -1,8 +1,10 @@
 class BikeShareApp < Sinatra::Base
+  include WillPaginate::Sinatra::Helpers
+
   set :method_override, true
 
   get '/trips' do
-    @trips = Trip.find_thirty_trips
+    @trips = Trip.paginate(:page => params[:page], :per_page => 30)
     erb :"trips/trip_index"
   end
 

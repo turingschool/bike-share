@@ -38,7 +38,6 @@ GEM
     mustermann (1.0.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
-    paginator (1.2.0)
     pg (0.21.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -92,6 +91,7 @@ GEM
       sinatra (>= 1.2.1)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
+    will_paginate (3.1.6)
     xpath (2.1.0)
       nokogiri (~> 1.3)
 
@@ -104,7 +104,6 @@ DEPENDENCIES
   ccsv
   database_cleaner
   launchy
-  paginator
   pg
   pry
   rack
@@ -116,6 +115,7 @@ DEPENDENCIES
   sinatra-activerecord
   table_print
   tux
+  will_paginate (~> 3.1.1)
 
 BUNDLED WITH
    1.15.4

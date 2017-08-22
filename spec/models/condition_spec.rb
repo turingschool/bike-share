@@ -1,5 +1,5 @@
 RSpec.describe Condition do
-  xdescribe "Validations" do
+  describe "Validations" do
     it "is valid with all information" do
       condition = Condition.new(date: "2013-08-29", max_temperature_f: 74.0, mean_temperature_f: 68.0, min_temperature_f: 61.0, mean_humidity: 75.0, mean_visibility_miles: 10.0, mean_wind_speed_mph: 11.0, precipitation_inches: 0.0)
 

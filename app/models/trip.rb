@@ -32,15 +32,18 @@ class Trip < ActiveRecord::Base
   end
 
   def self.average_duration
-    Trip.average(:duration).to_i
+    secs = Trip.average(:duration).to_i
+    (secs / 60)
   end
 
   def self.longest_ride
-    Trip.maximum(:duration)
+    secs = Trip.maximum(:duration)
+    (secs / 60)
   end
 
   def self.shortest_ride
-    Trip.minimum(:duration)
+    secs = Trip.minimum(:duration)
+    (secs / 60)
   end
 
   def self.station_with_most_rides_as_starting_point
@@ -51,8 +54,8 @@ class Trip < ActiveRecord::Base
     Trip.group('end_station_name').order('count(*)').pluck(:end_station_name).last
   end
 
-  def self.month_by_month_num_rides
-    Trip.group_by_month_of_year(:start_date).count
+  def self.chart_it_brah
+    Trip.group_by_month(:start_date).count
   end
 
   def self.most_ridden_bike_id
@@ -65,9 +68,40 @@ class Trip < ActiveRecord::Base
     "bike ##{id}, with #{b} rides."
   end
 
-  def self.least_ridden_bike
+  def self.least_ridden_bike_id
     id = Trip.group('bike_id').order('count(*)').pluck(:bike_id).first
     Trip.get_bike_trip_count(id)
+  end
+
+  def self.highest_date
+    date = Trip.group('start_date').order("count(*)").pluck(:start_date).last
+    Trip.get_bike_trips_by_date(date)
+  end
+
+  def self.get_bike_trips_by_date(date)
+    b = Trip.group('start_date').order('count(*)').count[date]
+    "#{date}, there were #{b} rides."
+  end
+
+  def self.lowest_date
+    date = Trip.group('start_date').order("count(*)").pluck(:start_date).first
+    Trip.get_bike_trips_by_date(date)
+  end
+
+  def self.most_used_sub_type
+    sub_type = Trip.group('subscription_type').order("count(*)").pluck(:subscription_type).last
+    Trip.get_sub_count(sub_type)
+  end
+
+  def self.get_sub_count(sub_type)
+    b = Trip.group('subscription_type').order('count(*)').count[sub_type]
+    total = Trip.all.count
+    "There are #{b} #{sub_type} subscriptions, which accounts for #{((b.to_f / total.to_f) * 100).round(2)} percent of the total."
+  end
+
+  def self.least_used_sub_type
+    sub_type = Trip.group('subscription_type').order("count(*)").pluck(:subscription_type).first
+    Trip.get_sub_count(sub_type)
   end
 
 end

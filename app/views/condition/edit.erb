@@ -1,14 +1,15 @@
 <h1> Edit your condtion </h1>
 
-<form action="/conditions/<%= condition.id %>" method="post">
+<form action="/conditions/<%= @condition.id %>" method="post">
 	<input type="hidden" name="_method" value="PUT" / />
-	<input type='text' name ='condition[weather_date]' value="<%= condition.weather_date %>" />
-	<input type='text' name ='condition[max_temperature]' value="<%= condition.max_temperature %>" />
-	<input type='text' name ='condition[mean_temperature]' value="<%= condition.mean_temperature %>" />
-	<input type='text' name ='condition[min_temperature]' value="<%= condition.min_temperature %>" />
-	<input type='text' name ='condition[mean_humidity]' value="<%= condition.mean_humidity %>" />
-	<input type='text' name ='condition[mean_visibility]' value="<%= condition.mean_visibility %>" />
-	<input type='text' name ='condition[mean_wind_speed]' value="<%= condition.mean_wind_speed %>" />
-	<input type='text' name ='condition[precipitation]' value="<%= condition.preciptation %>" />
+	<input type='text' name ='condition[weather_date]' value="<%= @condition.weather_date %>" />
+	<input type='text' name ='condition[max_temperature]' value="<%= @condition.max_temperature %>" />
+	<input type='text' name ='condition[mean_temperature]' value="<%= @condition.mean_temperature %>" />
+	<input type='text' name ='condition[min_temperature]' value="<%= @condition.min_temperature %>" />
+	<input type='text' name ='condition[mean_humidity]' value="<%= @condition.mean_humidity %>" />
+	<input type='text' name ='condition[mean_visibility]' value="<%= @condition.mean_visibility %>" />
+	<input type='text' name ='condition[mean_wind_speed]' value="<%= @condition.mean_wind_speed %>" />
+	<input type='text' name ='condition[precipitation]' value="<%= @condition.precipitation %>" />
+	<input type='text' name ='condition[zip_code]' value="<%= @condition.zip_code %>" />
 	<input type='submit' value = "edit the condition"/>
 </form>

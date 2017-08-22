@@ -27,7 +27,7 @@ class Trip < ActiveRecord::Base
   end
 
   def self.average_duration
-    average(:duration)
+    average(:duration).to_f.round(2)
   end
 
   def self.longest
@@ -39,7 +39,9 @@ class Trip < ActiveRecord::Base
   end
 
   def self.station_with_most_starts
-    group(:start_station).last
+    station_name = group(:start_station).order("count_id DESC").count(:name).first[0]
+    Station.find(name: station_name).name
+
   end
 
 end

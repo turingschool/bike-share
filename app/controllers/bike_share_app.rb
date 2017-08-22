@@ -47,6 +47,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/conditions/:id/edit' do
+    @condition = Weather.find(params["id"])
     erb :edit_weather
   end
 

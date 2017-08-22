@@ -7,26 +7,20 @@
     <header><h1>Edit Weather</h1></header>
     <button href='/conditions'>back to main page</button>
     <section>
-      <form>
-        <a>Date:</a>
-        <input type="text" name="date" value="<%= condition.date %>"/></br>
-        <a>Max Temperature(&#176;F)</a>
-        <input type="text" name="max_temperature" value="<%= condition.max_temperature %>"/></br>
-        <a>Average Temperature(&#176;F)</a>
-        <input type="text" name="mean_temperature" value="<%= condition.mean_temperature %>"/></br>
-        <a>Min Temperature(&#176;F)</a>
-        <input type="text" name="min_temperature" value="<%= condition.min_temperature %>"/></br>
-        <a>Humidity</a>
-        <input type="text" name="mean_humidity" value="<%= condition.mean_humidity %>"/></br>
-        <a>Visibility(miles)</a>
-        <input type="text" name="mean_visibility" value="<%= condition.mean_visibility %>"/></br>
-        <a>Wind Speed(mph)</a>
-        <input type="text" name="mean_wind_speed" value="<%= condition.mean_wind_speed %>"/></br>
-        <a>Precipitation</a>
-        <input type="text" name="precipitation" value="<%= condition.precipitation %>"/></br>
-        <a>Zip Code</a>
-        <input type="text" name="zip_code" value="<%= condition.zip_code %>"/></br>
+      <a>Date: <%= condition.date %></a>
+      <a>Max Temperature(&#176;F): <%= condition.max_temperature %></a>
+      <a>Average Temperature(&#176;F): <%= condition.mean_temperature %></a>
+      <a>Min Temperature(&#176;F): <%= condition.min_temperature %></a>
+      <a>Humidity: <%= condition.mean_humidity %>&#37;</a>
+      <a>Visibility(miles): <%= condition.mean_visibility %></a>
+      <a>Wind Speed(mph): <%= condition.mean_wind_speed %></a>
+      <a>Precipitation(inches): <%= condition.precipitation %></a>
+      <a>Zip Code: <%= condition.zip_code %></a>
+      <button href="/conditions/<%= weather.id %>/edit" value="EDIT"/>
+      <form href="/conditions/<%= weather.id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE"/>
+        <input type="submit" value="DELETE"/>
       </form>
-      <input type="submit" action="/conditions" method="post" value="UPDATE"/>
+
   </body>
 </html>

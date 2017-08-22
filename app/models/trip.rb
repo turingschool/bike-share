@@ -13,7 +13,7 @@ class Trip < ActiveRecord::Base
   def self.convert_csv_to_trip_attributes
     a = Time.now
     trips = []
-    CSV.foreach("db/csv/trip.csv", {headers: true, header_converters: :symbol}) do |row|
+    CSV.foreach("db/csv/trip_fixture.csv", {headers: true, header_converters: :symbol}) do |row|
       row[:zip_code] = 0 if row[:zip_code].to_s.length != 5
       trips << Trip.new(duration:            row[:duration],
                         start_date:          Date.strptime(row[:start_date], '%m/%e/%Y'),

@@ -66,9 +66,22 @@ class Trip < ActiveRecord::Base
     Trip.where(start_date: date).count
   end
 
+  def self.month_by_month_breakdown
+    start_year = 2013
+    month = 1
+    months = {}
+    years= {}
+    12.times do
+      # binding.pry
+      months[month] = where("extract(month from start_date) = ?", month).count
+      month += 1
+    end
 
+    (Time.new.year - start_year).times do
+      years[start_year] = where('extract(year from start_date) = ?', start_year).count
+      start_year += 1
+    end
 
-
-
-
+    {months: months, years: years}
+  end
 end

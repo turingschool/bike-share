@@ -13,10 +13,8 @@ RSpec.describe "User can create a new condition" do
 		fill_in('mean_wind_speed', with: 3.5        )
 		fill_in('mean_visibility', with: 2          )
 		fill_in('precipitation',   with: 2.25       )
-		fill_in('zip_code',        with: 80113      )
+		fill_in('zip_code',        with: "95113"      )
 
-
-		save_and_open_page
 		click_on('create new condition')
 
 

@@ -1,22 +1,13 @@
 require 'pry'
-# require "sinatra/namespace"
+require 'will_paginate'
+require 'will_paginate/active_record'
 
 class BikeShareApp < Sinatra::Base
-  # register Sinatra::Namespace
 
-  # namespace '/api/v1' do
-  #   before do
-  #     content_type 'application/json'
-  #   end
-
-  #   get '/stations' do
-  #     Station.all.to_json
-  #   end
-
-  #   get '/stations/:id' do
-  #     Station.find(params[:id]).to_json
-  #   end
-  # end
+  configure do
+    set :method_override, true
+    register WillPaginate::Sinatra
+  end
 
   get '/' do
     erb :'home/index'
@@ -32,6 +23,11 @@ class BikeShareApp < Sinatra::Base
   get '/stations/new' do
     @cities = City.all
     erb :'stations/new'
+  end
+
+  get '/station-dashboard' do
+    @stations = Station.all
+    erb :'stations/station-index'
   end
 
   post '/stations' do
@@ -74,14 +70,9 @@ class BikeShareApp < Sinatra::Base
     erb :'cities/show'
   end
 
-  get '/station-dashboard' do
-    @stations = Station.all
-    erb :'stations/station-index'
-  end
-
   get '/trips' do
-    @trips = Trip.all
-    erb :'trips/index'
+    @trips = Trip.all.paginate(:page => params[:page], :per_page => 30)
+    erb :"trips/index"
   end
 
   get '/trips/new' do
@@ -89,28 +80,32 @@ class BikeShareApp < Sinatra::Base
     erb :'trips/new'
   end
 
-  post '/trips' do
+  post '/trips/' do
     @trip = Trip.create(params[:trip])
+    binding.pry
     redirect "/trips/#{@trip.id}"
   end
 
   put '/trips/:id' do |id|
-    binding.pry
     trip = Trip.find(id)
     trip.update(params[:trip])
     redirect "/trip/#{id}"
   end
 
   get '/trips/:id' do
-        binding.pry
-    @trips = Trip.find(params[:id])
+    @trip = Trip.find(params[:id])
     erb :'trips/show'
   end
 
   get '/trips/:id/edit' do
     @stations = Station.all
-    @trips = Trip.find(params[:id])
-    erb '/trips/edit'
+    @trip = Trip.find(params[:id])
+    erb :'/trips/edit'
+  end
+
+  delete '/trips/:id' do |id|
+    Trip.destroy(id)
+    redirect '/trips'
   end
 
   get '/conditions' do
@@ -155,10 +150,6 @@ class BikeShareApp < Sinatra::Base
     @temp_range = params[:temp_range].to_i
     erb :'/conditions/condition-dashboard'
   end
-
-
-
-
 
 
 end

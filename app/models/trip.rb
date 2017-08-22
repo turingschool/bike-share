@@ -9,10 +9,6 @@ class Trip < ActiveRecord::Base
   belongs_to :station
   has_one :condition
 
-  def self.id_by_date(date)
-    find_by(weather_date: date).id
-  end
-
   def self.average_duration_of_ride
     Trip.average(:duration)
   end

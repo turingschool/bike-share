@@ -10,4 +10,4 @@ test:
 
 production:
   adapter: postgresql
-  database: da4430k5ug62pn
+  database: bike-share-production

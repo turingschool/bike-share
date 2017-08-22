@@ -1,0 +1,14 @@
+<h1>Station Dashboard</h1>
+<p>There are <%= @stations.count %> stations total</p>
+<p>The average bikes available per station is <%= @stations.average_bikes %></p>
+<p>The most bikes at a station is <%= @stations.most_bikes %> bikes</p>
+<p>The station(s) where the most bikes are available is/are <%= @stations.station_with_most_bikes %></p>
+<p>The fewest bikes at a station is <%= @stations.fewest_bikes %> bikes</p>
+<p>The station(s) where the least bikes are available is/are <%= @stations.station_with_fewest_bikes %></p>
+<p>The most recently installed station is <%= @stations.most_recent_station %></p>
+<p>The oldest station is <%= @stations.oldest_station %></p>
+
+<ul>
+  <li><a href="/stations/new">Create a Station</a></li>
+</ul>
+<p><%= line_chart Station.group_by_week(:installation_date).count %></p>

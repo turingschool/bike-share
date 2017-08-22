@@ -37,7 +37,7 @@ def seed_by_date(date)
   date = "#{date_array[1]}/#{date_array[0]}/#{date_array[2]}"
 end
 
-<<<<<<< HEAD
+
 Station.destroy_all
 system 'Say "Good morning Joan, I love you, I will never leave you, destroy stations complete"'
 Trip.destroy_all
@@ -48,18 +48,9 @@ system 'Say "All bunnies must die Die Bunnies die bunnies die die die die all bu
 conditions = CSV.foreach "./db/csv/weather.csv", headers: true, header_converters: :symbol
 stations = delete_columns("./db/csv/station.csv", [:lat, :long])
 trips = CSV.foreach "./db/csv/trip.csv", headers: true, header_converters: :symbol
-=======
-# Station.destroy_all
-# system 'Say "Good morning Joan, I love you, I will never leave you, destroy stations complete"'
-# Trip.destroy_all
-# system 'Say "Trips seeded, thank you computer Jesus"'
-# # Condition.destroy_all
-# system 'Say "All bunnies must die Die Bunnies die bunnies die die die die all bunnies"'
 
 conditions = CSV.foreach "./db/csv/weather.csv", headers: true, header_converters: :symbol
-# stations = delete_columns("./db/csv/station.csv", [:lat, :long])
-# trips = CSV.foreach "./db/csv/trip.csv", headers: true, header_converters: :symbol
->>>>>>> bbed97c6c2125599f68542e9b114404e8243b44e
+
 
 puts "finished with csvs"
 
@@ -73,7 +64,7 @@ puts "finished with csvs"
 start_time = Time.now
 
   count = 0
-<<<<<<< HEAD
+
   trips.each do |row|
     row = row.to_h
     row[:start_station_id] = Station.id_by_name(row.delete(:start_station_name))
@@ -102,35 +93,7 @@ start_time = Time.now
     puts "finished rows"
     Condition.create!(clean_row) if pick_a_stupid_zipcode(row[:zip_code])
   end
-=======
-  # trips.each do |row|
-  #   row = row.to_h
-  #   row[:start_station_id] = Station.id_by_name(row.delete(:start_station_name))
-  #   row[:end_station_id] = Station.id_by_name(row.delete(:end_station_name))
-  #   row[:zip_code] = clean_zipcode(row[:zip_code])
-  #   row[:start_date] = Date.strptime(row[:start_date], "%m/%d/%Y")
-  #   row[:end_date] = Date.strptime(row[:end_date], "%m/%d/%Y")
-  #   Trip.create!(row)
-  #   count += 1
-  #   puts count
-  # end
->>>>>>> bbed97c6c2125599f68542e9b114404e8243b44e
 
-  conditions.each do |row|
-    row=row.to_h
-    clean_row = {}
-    clean_row[:zip_code] = clean_zipcode(row[:zip_code])
-    clean_row[:max_temperature] = clean_conditions(row[:max_temperature_f])
-    clean_row[:mean_temperature] = clean_conditions(row[:mean_temperature_f])
-    clean_row[:min_temperature] = clean_conditions(row[:min_temperature_f])
-    clean_row[:mean_humidity] = clean_conditions(row[:mean_humidity])
-    clean_row[:mean_visibility] = clean_conditions(row[:mean_visibility_miles])
-    clean_row[:mean_wind_speed] = clean_conditions(row[:mean_wind_speed_mph])
-    clean_row[:precipitation] = clean_conditions(row[:precipitation_inches])
-    row[:weather_date] = row[:date]
-    clean_row[:weather_date] = seed_by_date(row[:weather_date])
-    puts "finished rows"
-    Condition.create!(clean_row) if pick_a_stupid_zipcode(row[:zip_code])
-  end
+  
 
 puts (Time.now - start_time)

@@ -10,13 +10,13 @@ RSpec.describe "User visits /stations/:id/edit" do
     visit "/stations/#{station.id}"
 
     expect(page).to have_content("Station_1")
-    click_on("Edit this station")
+    click_on("Edit this Station")
 
     fill_in("station[name]", with: "Station_edit")
     fill_in("station[dock_count]", with: 30)
     fill_in("station[city]", with: "cityville")
     fill_in("station[installation_date]", with: "2017-08-05")
-    click_on("edit")
+    click_on("Submit Changes")
 
     expect(page).to have_content("Station_edit")
     expect(page).to have_content(30)

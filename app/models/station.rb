@@ -1,5 +1,5 @@
 require './app/models/trip'
-
+require 'pry'
 class Station < ActiveRecord::Base
   validates :name, presence: true
   validates :city, presence: true

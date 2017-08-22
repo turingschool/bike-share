@@ -13,17 +13,13 @@
           <p>The trip was on bike# <%= @trip.bike_id %></p>
           <p>The person taking the trip was a <%= @trip.subscription_type %></p>
           <p>The trip zip code was <%= @trip.zip_code %></p><br>
-          <td>
-            <form action="/trips/<%= @trip.id %>/edit" method="get">
-              <button type="submit" class="btn btn-warning formbtn" role="button" aria-pressed="true" value="edit">Edit</button>
-            </form>
-          </td>
-          <td>
-            <form action="/trips/<%= @trip.id %>" method="POST">
-              <input type="hidden" name="_method" value="DELETE">
-              <button type="submit" class="btn btn-danger formbtn" role="button" aria-pressed="true" value="delete">Delete</button>
-            </form>
-          </td>
+          <form action="/trips/<%= @trip.id %>/edit" method="get">
+            <button type="submit" class="btn btn-warning formbtn" role="button" aria-pressed="true" value="edit">Edit</button>
+          </form>
+          <form action="/trips/<%= @trip.id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit" class="btn btn-danger formbtn" role="button" aria-pressed="true" value="delete">Delete</button>
+          </form>
         </div>
       </div>
     </div>

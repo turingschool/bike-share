@@ -94,4 +94,14 @@ class BikeShareApp < Sinatra::Base
     @trips = Trip.find(params[:id])
     erb '/trips/edit'
   end
+
+  get '/conditions' do
+    @conditions = Condition.all
+    erb '/conditions/index'
+  end
+
+
+
+
+
 end

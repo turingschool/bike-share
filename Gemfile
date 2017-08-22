@@ -19,5 +19,5 @@ group :development, :test do
   gem 'rack'
   gem 'ccsv'
   gem 'pry'
-
+  gem 'database_cleaner'
 end

@@ -84,8 +84,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips/:id' do
-        binding.pry
-    @trips = Trip.find(params[:id])
+    @trip = Trip.find(params[:id])
     erb :'trips/show'
   end
 
@@ -94,4 +93,10 @@ class BikeShareApp < Sinatra::Base
     @trips = Trip.find(params[:id])
     erb '/trips/edit'
   end
+
+  delete '/trips/:id' do |id|
+    Trip.destroy(id)
+    redirect '/trips'
+  end
+
 end

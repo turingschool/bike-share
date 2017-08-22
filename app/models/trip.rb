@@ -15,7 +15,12 @@ class Trip < ActiveRecord::Base
   validates :start_date_id, presence: true
   validates :end_date_id, presence: true
 
-
+  def list
+    @person_pages = Paginator.new self, Trip.count, 30, params[:page]
+    @trips = Trip.find :all, :order => 'start_date',
+                          :limit  =>  @trips.items_per_page,
+                          :offset =>  @trips.current.offset
+  end
 
   def self.find_thirty_trips(number_of_records = 30)
     first(number_of_records)

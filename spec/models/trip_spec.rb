@@ -1,44 +1,75 @@
-RSpec.describe Trip do
-  describe "class methods" do
-    describe ".find_thirty_trips" do
-      it "returns thirty trips" do
-        35.times do
-        Trip.create(:duration => 5,
-                    :start_date => '12/3/2015',
-                    :end_date => '12/3/2015',
-                    :start_station => 1,
-                    :end_station => 2,
-                    :bike_id => 68,
-                    :subscription_type_id => 68)
-        end
-         expect(Trip.find_thirty_trips(1).length).to eq(30)
-      end
+describe Trip do
+  describe "validations" do
+    it "has to have all data fields present" do
+      trip = Trip.create(
+        duration: 60,
+        start_station: 54,
+        end_station: 66,
+        bike_id: 66,
+        subscription_type_id: 10,
+        start_date_id: 6,
+        end_date_id: 5,
+      )
+
+      invalid_trip = Trip.new(
+        duration: 5,
+        start_station: 5
+      )
+
+      expect(trip).to be_valid
+      expect(invalid_trip).to_not be_valid
     end
-    describe ".sort_trips_by_date" do
-      it "sorts trips by date" do
-        20.times do
-          Trip.create(:duration => 5,
-                      :start_date => '12/3/2015',
-                      :end_date => '12/3/2015',
-                      :start_station => 1,
-                      :end_station => 2,
-                      :bike_id => 68,
-                      :subscription_type_id => 68)
+  end
 
-          Trip.create(:duration => 5,
-                      :start_date => '12/5/2015',
-                      :end_date => '12/5/2015',
-                      :start_station => 1,
-                      :end_station => 2,
-                      :bike_id => 68,
-                      :subscription_type_id => 68)
-        end
+  describe "class methods" do
 
-        expect(Trip.find_thirty_trips(1).second.start_date.strftime).to eq('2015-03-12')
-        expect(Trip.find_thirty_trips(1).third.start_date.to_s).to eq('2015-03-12')
-        expect(Trip.find_thirty_trips(1).fourth.start_date.to_s).to eq('2015-03-12')
-        expect(Trip.find_thirty_trips(1).fifth.start_date.to_s).to eq('2015-03-12')
-      end
+    before(:each) do
+      trip = Trip.create(
+      duration: 60,
+      start_station: 23,
+      end_station: 66,
+      bike_id: 66,
+      subscription_type_id: 10,
+      start_date_id: 6,
+      end_date_id: 5,
+    )
+    trip = Trip.create(
+    duration: 80,
+    start_station: 54,
+    end_station: 66,
+    bike_id: 66,
+    subscription_type_id: 10,
+    start_date_id: 6,
+    end_date_id: 5,
+    )
+    trip = Trip.create(
+    duration: 80,
+    start_station: 54,
+    end_station: 66,
+    bike_id: 66,
+    subscription_type_id: 10,
+    start_date_id: 6,
+    end_date_id: 5,
+    )
+    end
+
+    it "returns the average durrration" do
+      average_duration = Trip.average_duration
+      expect(average_duration).to eq(73.33)
+    end
+
+
+    it "returns the single longest ride" do
+      expect(Trip.longest).to eq(80)
+    end
+
+
+  it "returns shortest ride" do
+    expect(Trip.shortest).to eq(60)
+  end
+
+  it "finds the station with the most trips starting from it" do
+    expect(Trip.station_with_most_starts).to eq(54)
     end
   end
 end

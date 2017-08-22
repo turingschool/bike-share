@@ -8,6 +8,44 @@
     <!-- Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/overwrite.css" rel="stylesheet">
+
+        <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Cities');
+        data.addColumn('number', 'Stations');
+        data.addRows([
+          ['San Jose', <%= @cities.find(1).stations.count %>],
+          ['Redwood City', <%= @cities.find(2).stations.count %>],
+          ['Mountain View', <%= @cities.find(3).stations.count %>],
+          ['Palo Alto', <%= @cities.find(4).stations.count %>],
+          ['San Francisco', <%= @cities.find(1).stations.count %>]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Stations Per City',
+                       'width':400,
+                       'height':350};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
 </head>
 
 <body>
@@ -34,6 +72,9 @@
             </div>
         </div>
     </nav>
+    <div id="container" class="flexbox text-center">
+        <div class='station_chart' id="chart_div"></div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">

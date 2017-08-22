@@ -109,3 +109,16 @@ input {
   border-color: lightgrey;
   background-color: #AFCEFF;
 }
+
+.index-row {
+ margin: 15px;
+}
+
+.root-index-img {
+  height: 250px;
+  width: 250px;
+}
+
+.center-text {
+  text-align: center;
+}

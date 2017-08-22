@@ -1,25 +1,10 @@
 require 'pry'
-require 'will_paginate'
-require 'will_paginate/active_record'
 
 class BikeShareApp < Sinatra::Base
 
   include WillPaginate::Sinatra::Helpers
 
   set :method_override, true
-
-  helpers do
-    def paginate(collection)
-       options = {
-         #renderer: BootstrapPagination::Sinatra,
-         inner_window: 0,
-         outer_window: 0,
-         previous_label: '&laquo;',
-         next_label: '&raquo;'
-       }
-      will_paginate collection, options
-    end
-  end
 
   get '/trips' do
     @trips = Trip.paginate(:page => params[:page], :per_page => 30)

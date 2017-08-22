@@ -94,6 +94,7 @@ input {
   text-align: left;
   margin-left: 15px;
 }
+
 .trip-show-panel {
   height: 380px;
 }
@@ -121,4 +122,10 @@ input {
 
 .center-text {
   text-align: center;
+}
+
+#map {
+  width: 100%;
+  height: 400px;
+  background-color: grey;
 }

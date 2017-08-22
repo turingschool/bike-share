@@ -1,9 +1,39 @@
-<h1>Complete Station List</h1>
-
-<% @stations.each do |station| %>
-  <h4><a href="/stations/<%= station.id%>"><%= station.name%></a></h4>
-  <p>Located in <%= station.city%></p>
-
-<%end%>
-
-<h4><a href="/stations/new">Create a New Station</a>
+  <h1>All Stations</h1>
+  <div class="table-responsive">
+    <table class="table text-left table-hover">
+      <tr>
+        <th>Station ID</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>Dock Count</th>
+        <th>Date of Installtion</th>
+        <th>Lattitude</th>
+        <th>Longitude</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      <% @stations.each do |station| %>
+      <tr onclick="window.location.href = '/stations/<%= station.id %>';">
+        <td><%= station.id %></td>
+        <td><%= station.name%></td>
+        <td><%= station.city %></td>
+        <td><%= station.dock_count %></td>
+        <td><%= station.installation_date %></td>
+        <td><%= station.lat %></td>
+        <td><%= station.long %></td>
+        <td>
+          <form action="/stations/<%= station.id %>/edit" method="get">
+            <button type="submit" class="btn btn-warning btn active btn-sm" role="button" aria-pressed="true" value="edit">Edit</button>
+          </form>
+        </td>
+        <td>
+          <form action="/stations/<%= station.id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit" class="btn btn-danger btn active btn-sm" role="button" aria-pressed="true" value="delete">Delete</button>
+          </form>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <%= will_paginate @stations, renderer: BootstrapPagination::Sinatra %>
+  </div>

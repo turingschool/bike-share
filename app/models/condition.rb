@@ -1,7 +1,11 @@
 require 'pry'
 class Condition < ActiveRecord::Base
-  has_many :trips
-  validates :date, :max_temperature, :mean_temperature, :min_temperature, :mean_humidity, :mean_visibility, :mean_wind_speed, :precipitation, presence: true
+  belongs_to :trips
+  validates :condition_date, :max_temperature, :mean_temperature, :min_temperature, :mean_humidity, :mean_visibility, :mean_wind_speed, :precipitation, presence: true
+
+  def self.id_by_date(date)
+    find_by(condition_date: date).id
+  end
 
   def self.sort_temp(range)
     trip_nums = trips_by_temp(range)

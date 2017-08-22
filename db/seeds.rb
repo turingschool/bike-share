@@ -23,14 +23,34 @@ station_data.each do |station|
                   )
 end
 
+weather_data = loader.sanitize_weather('./db/csv/weather.csv')
+count = 0
+weather_data.each do |condition|
+  count += 1
+  puts "Seeding db_conditions count: #{count}"
+
+  Condition.create(condition_date: condition[:date],
+                   max_temperature: condition[:max_temperature],
+                   mean_temperature: condition[:mean_temperature],
+                   min_temperature: condition[:min_temperature],
+                   mean_humidity: condition[:mean_humidity],
+                   mean_visibility: condition[:mean_visibility],
+                   mean_wind_speed: condition[:mean_wind_speed],
+                   precipitation: condition[:precipitation]
+                   )
+end
+
 trip_data = loader.sanitize_trips('./db/csv/trip.csv')
 count = 0
 trip_data.each do |trip|
   count += 1
   puts "Seeding db_trips count: #{count}"
 
+  # ActiveRecord::Base.connection.execute("SET datestyle = dmy;")
+
   start_station = Station.find(trip[:start_station_id])
   end_station = Station.find(trip[:start_station_id])
+  condition = Condition.id_by_date(trip[:start_date])
 
   Trip.create(duration: trip[:duration],
               start_date: trip[:start_date],
@@ -39,27 +59,7 @@ trip_data.each do |trip|
               end_station_id: end_station.id,
               bike_id: trip[:bike_id],
               subscription_type: trip[:subscription_type],
-              zip_code: trip[:zip_code]
+              zip_code: trip[:zip_code],
+              condition_id: condition
               )
-end
-
-weather_data = loader.sanitize_weather('./db/csv/weather.csv')
-count = 0
-weather_data.each do |condition|
-  count += 1
-  puts "Seeding db_conditions count: #{count}"
-
-  ActiveRecord::Base.connection.execute("SET datestyle = dmy;")
-  trip = Trip.where(start_date: condition[:date]).first_or_create
-
-  Condition.create(date: condition[:date],
-                   max_temperature: condition[:max_temperature],
-                   mean_temperature: condition[:mean_temperature],
-                   min_temperature: condition[:min_temperature],
-                   mean_humidity: condition[:mean_humidity],
-                   mean_visibility: condition[:mean_visibility],
-                   mean_wind_speed: condition[:mean_wind_speed],
-                   precipitation: condition[:precipitation],
-                   trip_id: trip.id
-                   )
 end

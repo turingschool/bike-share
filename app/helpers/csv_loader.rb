@@ -44,7 +44,7 @@ class CSVLoader
         row[:precipitation_inches] = 0
       end
       {
-        :date => date_formatter(row[:date]),
+        :condition_date => date_formatter(row[:date]),
         :max_temperature => row[:max_temperature_f],
         :mean_temperature => row[:mean_temperature_f],
         :min_temperature => row[:min_temperature_f],
@@ -55,8 +55,6 @@ class CSVLoader
       }
     end
   end
-
-  private
 
   def date_formatter(date)
     date_array = date.split('/')

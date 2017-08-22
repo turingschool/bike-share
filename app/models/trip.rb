@@ -21,7 +21,7 @@ class Trip < ActiveRecord::Base
   end
 
   def self.station_with_most_rides_as_starting_place
-    Trip.group(:starting_station_id).order('count_id DESC').count(:id)
+    Trip.group(:start_station_id).order('count_id DESC').count(:id)
   end
 
 

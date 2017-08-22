@@ -99,7 +99,7 @@ RSpec.describe Trip do
       Trip.create(duration: 20, start_date: start_date, start_station_id: 1, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345)
       Trip.create(duration: 20, start_date: start_date, start_station_id: 2, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345)
 
-      expect(Trip.station_with_most_rides_as_starting_place).to (eq)
+      expect(Trip.station_with_most_rides_as_starting_place.first[0]).to eq(1)
 
 
 

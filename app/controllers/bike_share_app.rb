@@ -97,11 +97,12 @@ class BikeShareApp < Sinatra::Base
 
   get '/conditions' do
     @conditions = Condition.all
-    erb '/conditions/index'
+    erb :'/conditions/index'
   end
 
-
-
-
+  get '/conditions/new' do
+    @conditions = Condition.all
+    erb :'/conditions/new'
+  end
 
 end

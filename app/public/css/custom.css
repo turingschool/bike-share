@@ -110,3 +110,9 @@ input {
   border-color: lightgrey;
   background-color: #AFCEFF;
 }
+
+#map {
+  width: 100%;
+  height: 400px;
+  background-color: grey;
+}

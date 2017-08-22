@@ -1,4 +1,3 @@
-
 <div class="row newshoweditrow">
   <div class="col-md-1"></div>
   <div class="col-md-4">
@@ -18,13 +17,27 @@
           </form>
         </div>
       </div>
-
     </div>
   </div>
   <div class="col-md-6">
-    <div class="right-pane">
-      THIS IS WHERE THE MAP GOES
-    </div>
+    <div id="map">
+      <script>
+      function initMap() {
+        var uluru = {lat: parseFloat("<%= @lat %>"), lng: parseFloat("<%= @long %>")};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+      </script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0rfsdYJ4TVdjlwGM1Py8fWka573hauNg&callback=initMap">
+      </script>
+      </div>
   </div>
   <div class="col-md-1"></div>
 </div>

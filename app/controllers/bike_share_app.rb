@@ -1,11 +1,29 @@
 require 'pry'
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 class BikeShareApp < Sinatra::Base
+
+  include WillPaginate::Sinatra::Helpers
 
   set :method_override, true
 
+  helpers do
+    def paginate(collection)
+       options = {
+         #renderer: BootstrapPagination::Sinatra,
+         inner_window: 0,
+         outer_window: 0,
+         previous_label: '&laquo;',
+         next_label: '&raquo;'
+       }
+      will_paginate collection, options
+    end
+  end
+
   get '/trips' do
-    @trips = Trip.find_thirty_trips(1)
-    erb :trip_index
+    @trips = Trip.paginate(:page => params[:page], :per_page => 30)
+    erb :'trips/trip_index'
   end
 
   post '/trips' do
@@ -63,6 +81,11 @@ class BikeShareApp < Sinatra::Base
   get '/stations/new' do
     @cities = City.all
     erb :'stations/new'
+  end
+
+  get '/stations-dashboard' do
+    @stations = Station.all
+    erb :'stations/dashboard'
   end
 
   get '/stations/:id' do

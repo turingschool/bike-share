@@ -1,0 +1,8 @@
+<p>Total stations: <%= @stations.count %></p>
+<p>Average Bikes Available: <%= @stations.average_bikes_available %></p>
+<p>Most bikes available at a station: <%= @stations.most_bikes_at_a_station %></p>
+<p>Station(s) with the most bikes: <%= @stations.formatted_stations_with_most_bikes %></p>
+<p>Fewest bikes available at a station: <%= @stations.least_bikes_at_a_station %></p>
+<p>Station(s) with the fewest bikes: <%= @stations.formatted_stations_with_least_bikes %></p>
+<p>Most recently installed station: <%= @stations.formatted_most_recent_station %></p>
+<p>Oldest station: <%= @stations.formatted_oldest_station %></p>

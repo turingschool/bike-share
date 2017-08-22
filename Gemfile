@@ -5,6 +5,7 @@ gem 'pg'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'table_print'
+gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
   gem 'shotgun'
@@ -17,4 +18,5 @@ group :development, :test do
   gem 'rack'
   gem 'ccsv'
   gem 'pry'
+  gem 'database_cleaner'
 end

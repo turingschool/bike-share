@@ -1,6 +1,7 @@
 class CreateStations < ActiveRecord::Migration[5.1]
   def change
     create_table :stations do |t|
+      t.primary_key :id
       t.text    :name
       t.float   :lat
       t.float   :long

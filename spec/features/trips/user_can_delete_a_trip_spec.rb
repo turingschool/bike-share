@@ -7,7 +7,7 @@ RSpec.describe "User can edit a trip" do
     expect(page).to have_content("Banana Town")
     expect(page).to have_content("Customer")
 
-    click_on("Delete")
+    click_button("Delete")
 
     expect(page).to_not have_content("Banana Town")
     expect(page).to_not have_content("Customer")

@@ -13,7 +13,8 @@ class Trip < ActiveRecord::Base
   def self.convert_csv_to_trip_attributes
     a = Time.now
     trips = []
-    CSV.foreach("db/csv/trip_fixture.csv", {headers: true, header_converters: :symbol}) do |row|
+    CSV.foreach("db/csv/trip.csv", {headers: true, header_converters: :symbol}) do |row|
+      next if row[:zip_code].to_s.length != 5
       trips << Trip.new(duration:            row[:duration],
                         start_date:          Date.strptime(row[:start_date], '%m/%e/%Y'),
                         start_station_name:  row[:start_station_name],
@@ -40,6 +41,33 @@ class Trip < ActiveRecord::Base
 
   def self.shortest_ride
     Trip.minimum(:duration)
+  end
+
+  def self.station_with_most_rides_as_starting_point
+    Trip.group('start_station_name').order('count(*)').pluck(:start_station_name).last
+  end
+
+  def self.station_with_the_most_rides_as_end_point
+    Trip.group('end_station_name').order('count(*)').pluck(:end_station_name).last
+  end
+
+  def self.month_by_month_num_rides
+    Trip.group_by_month_of_year(:start_date).count
+  end
+
+  def self.most_ridden_bike_id
+    id = Trip.group('bike_id').order("count(*)").pluck(:bike_id).last
+    Trip.get_bike_trip_count(id)
+  end
+
+  def self.get_bike_trip_count(id)
+    b = Trip.group('bike_id').order('count(*)').count[id]
+    "bike ##{id}, with #{b} rides."
+  end
+
+  def self.least_ridden_bike
+    id = Trip.group('bike_id').order('count(*)').pluck(:bike_id).first
+    Trip.get_bike_trip_count(id)
   end
 
 end

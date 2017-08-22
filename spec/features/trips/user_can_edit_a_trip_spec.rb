@@ -4,7 +4,7 @@ RSpec.describe "User can edit a trip" do
 
     visit "/trips/#{trip.id}"
 
-    click_link("Edit this trip")
+    click_button("Edit")
 
     fill_in("trip[duration]", with: 45)
     fill_in("trip[start_date]", with: "2017-08-20 19:20:22")

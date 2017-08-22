@@ -5,10 +5,16 @@
 <p>The trip was on bike# <%= @trip.bike_id %></p>
 <p>The person taking the trip was a <%= @trip.subscription_type %></p>
 <p>The trip zip code was <%= @trip.zip_code %></p><br><br>
-<a href="/trips/<%= @trip.id %>/edit">Edit this trip</a>
-<p>OR</p>
-<form action="/trips/<%= @trip.id%>" method ="POST">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="delete">
-</form>
+<td>
+  <form action="/trips/<%= @trip.id %>/edit" method="get">
+    <button type="submit" class="btn btn-warning btn active btn-sm" role="button" aria-pressed="true" value="edit">Edit</button>
+  </form>
+</td>
+
+<td>
+  <form action="/trips/<%= @trip.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit" class="btn btn-danger btn active btn-sm" role="button" aria-pressed="true" value="delete">Delete</button>
+  </form>
+</td>
 <p><a href='/trips'>Back to the trip index</a></p>

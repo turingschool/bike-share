@@ -1,6 +1,9 @@
 require 'pry'
 require 'will_paginate'
 require 'will_paginate/active_record'
+require "will_paginate-bootstrap"
+require 'chartkick'
+require 'groupdate'
 
 class BikeShareApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)

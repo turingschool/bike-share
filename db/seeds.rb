@@ -3,6 +3,7 @@ require_relative '../app/helpers/csv_loader'
 require_relative '../app/models/station'
 require_relative '../app/models/city'
 require_relative '../app/models/trip'
+require_relative '../app/models/condition'
 require 'fastercsv'
 require 'activerecord-import'
 
@@ -22,6 +23,23 @@ station_data.each do |station|
                   )
 end
 
+weather_data = loader.sanitize_weather('./db/csv/weather.csv')
+count = 0
+weather_data.each do |condition|
+  count += 1
+  puts "Seeding db_conditions count: #{count}"
+
+  Condition.create(date: condition[:date],
+                   max_temperature: condition[:max_temperature],
+                   mean_temperature: condition[:mean_temperature],
+                   min_temperature: condition[:min_temperature],
+                   mean_humidity: condition[:mean_humidity],
+                   mean_visibility: condition[:mean_visibility],
+                   mean_wind_speed: condition[:mean_wind_speed],
+                   precipitation: condition[:precipitation]
+                   )
+end
+
 trip_data = loader.sanitize_trips('./db/csv/trip.csv')
 count = 0
 trip_data.each do |trip|
@@ -30,6 +48,7 @@ trip_data.each do |trip|
 
   start_station = Station.find(trip[:start_station_id])
   end_station = Station.find(trip[:start_station_id])
+  condition = Condition.id_by_date(trip[:start_date])
 
   Trip.create(duration: trip[:duration],
               start_date: trip[:start_date],
@@ -38,20 +57,7 @@ trip_data.each do |trip|
               end_station_id: end_station.id,
               bike_id: trip[:bike_id],
               subscription_type: trip[:subscription_type],
-              zip_code: trip[:zip_code]
+              zip_code: trip[:zip_code],
+              condition_id: condition
               )
 end
-
-# trips = []
-# CSV.foreach('./db/csv/trip.csv', headers: true, header_converters: :symbol) do |row|
-#   trips << Trip.new(:id => row[:id],
-#                     :duration => row[:duration],
-#                     :start_date => row[:start_date],
-#                     :start_station_id => row[:start_station_id].to_i,
-#                     :end_date => row[:end_date],
-#                     :end_station_id => row[:end_station_id].to_i,
-#                     :bike_id => row[:bike_id].to_i,
-#                     :subscription_type => row[:subscription_type].downcase,
-#                     :zip_code => row[:zip_code].to_i)
-# end
-# Trip.import(trips)

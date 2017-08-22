@@ -1,6 +1,14 @@
 require 'pry'
+require 'will_paginate'
+require 'will_paginate/active_record'
 
 class BikeShareApp < Sinatra::Base
+
+  configure do
+    set :method_override, true
+    register WillPaginate::Sinatra
+  end
+
   get '/' do
     erb :'home/index'
   end
@@ -8,12 +16,18 @@ class BikeShareApp < Sinatra::Base
   get '/stations' do
     @cities = City.all
     @stations = Station.all
+
     erb :'stations/index'
   end
 
   get '/stations/new' do
     @cities = City.all
     erb :'stations/new'
+  end
+
+  get '/station-dashboard' do
+    @stations = Station.all
+    erb :'stations/station-index'
   end
 
   post '/stations' do
@@ -56,14 +70,9 @@ class BikeShareApp < Sinatra::Base
     erb :'cities/show'
   end
 
-  get '/station-dashboard' do
-    @stations = Station.all
-    erb :'stations/station-index'
-  end
-
   get '/trips' do
-    @trips = Trip.all
-    erb :'trips/index'
+    @trips = Trip.all.paginate(:page => params[:page], :per_page => 30)
+    erb :"trips/index"
   end
 
   get '/trips/new' do
@@ -71,27 +80,76 @@ class BikeShareApp < Sinatra::Base
     erb :'trips/new'
   end
 
-  post '/trips' do
+  post '/trips/' do
     @trip = Trip.create(params[:trip])
+    binding.pry
     redirect "/trips/#{@trip.id}"
   end
 
   put '/trips/:id' do |id|
-    binding.pry
     trip = Trip.find(id)
     trip.update(params[:trip])
     redirect "/trip/#{id}"
   end
 
   get '/trips/:id' do
-        binding.pry
-    @trips = Trip.find(params[:id])
+    @trip = Trip.find(params[:id])
     erb :'trips/show'
   end
 
   get '/trips/:id/edit' do
     @stations = Station.all
-    @trips = Trip.find(params[:id])
-    erb '/trips/edit'
+    @trip = Trip.find(params[:id])
+    erb :'/trips/edit'
   end
+
+  delete '/trips/:id' do |id|
+    Trip.destroy(id)
+    redirect '/trips'
+  end
+
+  get '/conditions' do
+    @conditions = Condition.all
+    erb :'/conditions/index'
+  end
+
+  get '/conditions/new' do
+    @conditions = Condition.all
+    erb :'/conditions/new'
+  end
+
+  post '/conditions' do
+    @condition = Condition.create(params[:condition])
+    redirect "/conditions/#{@condition.id}"
+  end
+
+  get '/conditions/:id' do
+    @condition = Condition.find(params[:id])
+    erb :'conditions/show'
+  end
+
+  get '/conditions/:id/edit' do
+    @conditions = Condition.all
+    @condition = Condition.find(params[:id])
+    erb :'/conditions/edit'
+  end
+
+  put '/conditions/:id' do |id|
+    condition = Condition.find(id)
+    condition.update(params[:condition])
+    redirect "/conditions/#{id}"
+  end
+
+  delete '/conditions/:id' do |id|
+    Condition.destroy(id)
+    redirect '/conditions'
+  end
+
+  get '/condition-dashboard' do
+    @condition = Condition.all
+    @temp_range = params[:temp_range].to_i
+    erb :'/conditions/condition-dashboard'
+  end
+
+
 end

@@ -9,6 +9,6 @@ RSpec.describe "When user goes to the station analytics page, user can see" do
 
 
     visit '/stations-dashboard'
-    expect(page).to have_content(Station.oldest_station)
+    expect(page).to have_content(Station.oldest_station.first.name)
   end
 end

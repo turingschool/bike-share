@@ -10,6 +10,6 @@ RSpec.describe "When user goes to the station analytics page, user can see" do
 
     visit '/stations-dashboard'
     expect(page).to have_content(Station.minimum_dock_count)
-    expect(page).to have_content(Station.station_with_minimum_dock_count)
+    expect(page).to have_content(Station.station_with_minimum_dock_count.first.name)
   end
 end

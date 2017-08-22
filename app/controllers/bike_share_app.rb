@@ -95,7 +95,17 @@ class BikeShareApp < Sinatra::Base
 
   get '/conditions' do
     @conditions = Condition.all
-    erb :'/conditions/index'
+    erb :'/condition/index'
+  end
+
+  get '/conditions/new' do
+    erb :'/condition/new'
+  end
+
+  post '/conditions' do
+    condition = Condition.new(params)
+    condition.save
+    redirect '/conditions'
   end
 
   get '/conditions/:id' do |id|
@@ -110,7 +120,7 @@ class BikeShareApp < Sinatra::Base
 
   put '/conditions/:id' do |id|
     Condition.update(id, params[:condition])
-    redirect "/conditions/#{id}"
+    redirect "/condition/#{id}"
   end
 
   delete '/conditions/:id' do |id|

@@ -5,6 +5,10 @@ gem 'pg'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'activerecord-import'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+gem 'chartkick'
+gem 'groupdate'
 
 group :development, :test do
   gem 'shotgun'
@@ -18,7 +22,7 @@ group :development, :test do
   gem 'table_print'
   gem 'rake'
   gem 'database_cleaner'
-  gem 'will_paginate'
+
 
 
 end

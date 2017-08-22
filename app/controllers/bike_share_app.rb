@@ -8,24 +8,27 @@ class BikeShareApp < Sinatra::Base
     erb :"trips/trip_index"
   end
 
+  get '/trips/new' do
+    erb :"trips/trip_new"
+  end
+
+
   post '/trips' do
-    trip = Trip.create(
+    trip = Trip.find_or_create_by(
     duration: params[:duration],
     start_station: params[:start_station],
     end_station: params[:end_station],
     start_date: StartDate.find_or_create_by(date: params[:start_date]),
     end_date: EndDate.find_or_create_by(date: params[:end_date]),
+    bike_id: params[:bike_id],
     subscription_type: SubscriptionType.find_or_create_by(subscription_type:
     params[:subscription_type]),
     zip_code: ZipCode.find_or_create_by(zip_code: params[:zip_code])
     )
-    trip.save
+
     redirect"/trips/#{trip.id}"
   end
 
-  get '/trips/new' do
-    erb :"trips/trip_new"
-  end
 
   get '/trips/:id' do
     @trip = Trip.find(params["id"])
@@ -46,6 +49,7 @@ class BikeShareApp < Sinatra::Base
     end_station: params[:end_station],
     start_date: StartDate.find_or_create_by(date: params[:start_date]),
     end_date: EndDate.find_or_create_by(date: params[:end_date]),
+    bike_id: params[:bike_id],
     subscription_type: SubscriptionType.find_or_create_by(subscription_type:
     params[:subscription_type]),
     zip_code: ZipCode.find_or_create_by(zip_code: params[:zip_code])

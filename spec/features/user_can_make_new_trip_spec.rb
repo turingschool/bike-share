@@ -2,7 +2,7 @@ describe "User visits '/trips/trip_new'" do
   it "and sees a form to make a new trip" do
 
   visit('/trips/new')
-    save_and_open_page
+
   within ("form") do
     fill_in :duration, with: "66"
     fill_in :start_date, with: "02/13/2013"
@@ -14,5 +14,8 @@ describe "User visits '/trips/trip_new'" do
     fill_in :zip_code, with: "83638"
     click_on "thing"
   end
+
+  expect(current_path).to eq('/trips/1')
+  expect(page).to have_content("duration: 66 minutes")
 end
 end

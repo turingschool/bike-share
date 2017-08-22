@@ -76,7 +76,7 @@ header = true
 Ccsv.foreach('db/csv/weather.csv') do |row|
   if header == false && row[0].to_i < 6000
 
-    weather = Weather.new(date: row[0],
+    weather = Weather.new(date: Date.find_or_create_by(date: row[0]),
                           max_temperature: row[1],
                           mean_temperature: row[2],
                           min_temperature: row[3],
@@ -86,8 +86,9 @@ Ccsv.foreach('db/csv/weather.csv') do |row|
                           precipitation: row[19],
                           zip_code: Zipcode.find_or_create_by(zip_code: row[22])
                     )
+  end
 
       puts "There are now #{Weather.count} rows in the weather table"
-  end
+
   header = false
 end

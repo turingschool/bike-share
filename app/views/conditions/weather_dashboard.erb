@@ -9,18 +9,20 @@
       <button href="/conditions/new">NEW</button>
     </h4>
     <% @conditions.each do |weather| %>
-    <h3 href="/conditions/<%= weather.id %>"><%= weather.date %></h3>
-    <h5 class="temps">max temperature: <%= weather.max_temperature %></h5>
-    <h5 class="temps">min temperature: <%= weather.min_temperature %></h5>
-    <h5 class="temps">average temperature: <%= weather.mean_temperature %></h5>
-    <h5>humidity: <%= weather.mean_humidity %>&#37;</h5>
-    <h5>visibility: <%= weather.mean_visibility %> miles</h5>
-    <h5>wind speed: <%= weather.mean_wind_speed %>mph</h5>
-    <h5>precipitation: <%= weather.precipitation %> inches</h5>
-    <button href="/conditions/<%= weather.id %>/edit" value="EDIT"/>
-    <form href="/conditions/<%= weather.id %>" method="post">
-      <input type="hidden" name="_method" value="DELETE"/>
-      <input type="submit" value="DELETE"/>
-    </form>
+    <section>
+      <a href="/conditions/<%= weather.id %>"><%= weather.date %></a>
+      <a class="temps">max temperature: <%= weather.max_temperature %></a>
+      <a class="temps">min temperature: <%= weather.min_temperature %></a>
+      <a class="temps">average temperature: <%= weather.mean_temperature %></a>
+      <a>humidity: <%= weather.mean_humidity %>&#37;</a>
+      <a>visibility: <%= weather.mean_visibility %> miles</a>
+      <a>wind speed: <%= weather.mean_wind_speed %>mph</a>
+      <a>precipitation: <%= weather.precipitation %> inches</a>
+      <button href="/conditions/<%= weather.id %>/edit" value="EDIT"/>
+      <form href="/conditions/<%= weather.id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE"/>
+        <input type="submit" value="DELETE"/>
+      </form>
+    </section>
   </body>
 </html>

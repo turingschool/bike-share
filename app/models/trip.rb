@@ -116,7 +116,7 @@ class Trip < ActiveRecord::Base
   end
 
   def self.date_with_highest_trip_from_this_station(station_id)
-    date = Trip.where(start_station_id: 1).group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all').reverse_order.count.first
+    date = Trip.where(start_station_id: station_id).group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all').reverse_order.count.first
     date_string = "#{date[0][2]}-#{date[0][0]}-#{date[0][1]}"
     Date.parse(date_string)
   end

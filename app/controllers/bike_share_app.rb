@@ -12,6 +12,10 @@ class BikeShareApp < Sinatra::Base
     get '/stations' do
       Station.all.to_json
     end
+
+    get '/stations/:id' do
+      @station = Station.find(params[:id]).to_json
+    end
   end
 
   get '/' do

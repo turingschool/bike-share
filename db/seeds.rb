@@ -29,7 +29,7 @@ weather_data.each do |condition|
   count += 1
   puts "Seeding db_conditions count: #{count}"
 
-  Condition.create(condition_date: condition[:date],
+  Condition.create(date: condition[:date],
                    max_temperature: condition[:max_temperature],
                    mean_temperature: condition[:mean_temperature],
                    min_temperature: condition[:min_temperature],
@@ -45,8 +45,6 @@ count = 0
 trip_data.each do |trip|
   count += 1
   puts "Seeding db_trips count: #{count}"
-
-  # ActiveRecord::Base.connection.execute("SET datestyle = dmy;")
 
   start_station = Station.find(trip[:start_station_id])
   end_station = Station.find(trip[:start_station_id])

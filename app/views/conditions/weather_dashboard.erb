@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <header><h1>Conditions By Day:</h1></header>
+    <h4>
+      <button href="/conditions/new">NEW</button>
+    </h4>
+    <% @conditions.each do |weather| %>
+    <h3 href="/conditions/<%= weather.id %>"><%= weather.date %></h3>
+    <h5 class="temps">max temperature: <%= weather.max_temperature %></h5>
+    <h5 class="temps">min temperature: <%= weather.min_temperature %></h5>
+    <h5 class="temps">average temperature: <%= weather.mean_temperature %></h5>
+    <h5>humidity: <%= weather.mean_humidity %>&#37;</h5>
+    <h5>visibility: <%= weather.mean_visibility %> miles</h5>
+    <h5>wind speed: <%= weather.mean_wind_speed %>mph</h5>
+    <h5>precipitation: <%= weather.precipitation %> inches</h5>
+    <button href="/conditions/<%= weather.id %>/edit">EDIT</button>
+    <button href="/conditions/<%= weather.id %>" method="post">
+      <input type="hidden" name="_method" value="DELETE"/>
+      <input type="submit" value="DELETE"/>
+    </button>
+  </body>
+</html>

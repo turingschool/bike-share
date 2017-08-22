@@ -32,4 +32,32 @@ class BikeShareApp < Sinatra::Base
     erb :station_dashboard
   end
 
+  get '/conditions' do
+    @conditions = Weather.all
+    erb :weather_dashboard
+  end
+
+  get '/conditons.new' do
+    erb :new_weather
+  end
+
+  get '/conditions/:id' do
+    @condition = Weather.find(params["id"])
+    erb :show_weather
+  end
+
+  get '/conditions/:id/edit' do
+    erb :edit_weather
+  end
+
+  post '/conditions' do
+    @condition = Weather.new(params)
+    condition.save
+    redirect '/conditions'
+  end
+
+  delete '/conditions/:id' do
+    Weather.delete(params["id"])
+    redirect '/conditions'
+  end
 end

@@ -19,15 +19,34 @@ ActiveRecord::Schema.define(version: 20170821222347) do
     t.string "city"
   end
 
-  create_table "installation_dates", force: :cascade do |t|
-    t.date "installation_date"
+  create_table "end_dates", force: :cascade do |t|
+    t.date "date"
+  end
+
+  create_table "start_dates", force: :cascade do |t|
+    t.date "date"
   end
 
   create_table "stations", force: :cascade do |t|
     t.string "name"
     t.integer "dock_count"
+    t.date "installation_date"
     t.integer "city_id"
-    t.integer "installation_date_id"
+  end
+
+  create_table "subscription_types", force: :cascade do |t|
+    t.string "subscription_type"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.integer "duration"
+    t.integer "start_station"
+    t.integer "end_station"
+    t.integer "bike_id"
+    t.integer "subscription_type_id"
+    t.integer "zip_code_id"
+    t.integer "start_date_id"
+    t.integer "end_date_id"
   end
 
   create_table "weathers", force: :cascade do |t|
@@ -40,6 +59,10 @@ ActiveRecord::Schema.define(version: 20170821222347) do
     t.float "mean_wind_speed"
     t.float "precipitation"
     t.integer "zip_code_id"
+  end
+
+  create_table "zip_codes", force: :cascade do |t|
+    t.integer "zip_code"
   end
 
 end

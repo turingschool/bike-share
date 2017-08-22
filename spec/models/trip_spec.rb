@@ -1,7 +1,7 @@
 describe Trip do
   describe "validations" do
     it "has to have all data fields present" do
-      trip = Trip.new(
+      trip = Trip.create(
         duration: 60,
         start_station: 54,
         end_station: 66,

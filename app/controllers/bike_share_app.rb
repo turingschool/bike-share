@@ -9,9 +9,18 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/trips' do
-    @trip = Trip.new(params)
+    trip = Trip.create(
+    duration: params[:duration],
+    start_station: params[:start_station],
+    end_station: params[:end_station],
+    start_date: StartDate.find_or_create_by(date: params[:start_date]),
+    end_date: EndDate.find_or_create_by(date: params[:end_date]),
+    subscription_type: SubscriptionType.find_or_create_by(subscription_type:
+    params[:subscription_type]),
+    zip_code: ZipCode.find_or_create_by(zip_code: params[:zip_code])
+    )
     trip.save
-    redirect'/trips'
+    redirect"/trips/#{trip.id}"
   end
 
   get '/trips/new' do
@@ -47,7 +56,6 @@ class BikeShareApp < Sinatra::Base
 
   delete '/trips/:id' do
     Trip.destroy(params[:id])
-    Trip.reset_ids
     redirect "/trips"
   end
 

@@ -15,12 +15,23 @@ ActiveRecord::Schema.define(version: 20170820235406) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "cities", force: :cascade do |t|
+    t.string "city"
+  end
+
   create_table "end_dates", force: :cascade do |t|
     t.date "date"
   end
 
   create_table "start_dates", force: :cascade do |t|
     t.date "date"
+  end
+
+  create_table "stations", force: :cascade do |t|
+    t.string "name"
+    t.integer "dock_count"
+    t.date "installation_date"
+    t.integer "city_id"
   end
 
   create_table "subscription_types", force: :cascade do |t|
@@ -40,17 +51,6 @@ ActiveRecord::Schema.define(version: 20170820235406) do
 
   create_table "zip_codes", force: :cascade do |t|
     t.integer "zip_code"
-  end
-
-  create_table "cities", force: :cascade do |t|
-    t.string "city"
-  end
-
-  create_table "stations", force: :cascade do |t|
-    t.string "name"
-    t.integer "dock_count"
-    t.date "installation_date"
-    t.integer "city_id"
   end
 
 end

@@ -29,8 +29,8 @@ EndDate.destroy_all
 ZipCode.destroy_all
 SubscriptionType.destroy_all
 
-SubscriptionType.create(subscription_type: 'Customer')
 SubscriptionType.create(subscription_type: 'Subscriber')
+SubscriptionType.create(subscription_type: 'Customer')
 
 header = true
 Ccsv.foreach('db/csv/trip.csv') do |row|

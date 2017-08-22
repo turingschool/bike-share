@@ -1,6 +1,6 @@
 describe ZipCode do
   describe "validation" do
-    it "zip code of 6 characters is invalid" do
+    it "zip code of 7 characters is invalid" do
       zip_code = ZipCode.create(zip_code: 4141444)
 
       expect(zip_code).to_not be_valid

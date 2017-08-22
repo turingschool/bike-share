@@ -7,7 +7,7 @@ RSpec.describe "User can interact with homepage" do
 
       within(:css, ".nav") do
         expect(page).to have_content("Station Index")
-        expect(page).to have_content("City Index")
+        expect(page).to have_content("Trip Index")
       end
     end
 

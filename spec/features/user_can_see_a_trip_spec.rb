@@ -12,8 +12,6 @@ describe "User visits '/trips/1'" do
     zip_code: ZipCode.create(zip_code: 83638)
 )
     visit('/trips/1')
-
-    expect(page).to have_content("Trip: 1")
     expect(page).to have_content("duration")
     expect(page).to have_content("start date")
     expect(page).to have_content("start station")
@@ -21,6 +19,8 @@ describe "User visits '/trips/1'" do
     expect(page).to have_content("bike number")
     expect(page).to have_content("subscription type")
     expect(page).to have_content("zip code")
+
+
 
   end
 end

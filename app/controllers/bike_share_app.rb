@@ -4,7 +4,7 @@ class BikeShareApp < Sinatra::Base
   set :method_override, true
 
   get '/trips' do
-    @trips = Trip.find_thirty_trips(1)
+    @trips = Trip.find_thirty_trips
     erb :"trips/trip_index"
   end
 

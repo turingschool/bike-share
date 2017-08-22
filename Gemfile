@@ -9,6 +9,7 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'chartkick'
 gem 'groupdate'
+gem 'json'
 
 group :development, :test do
   gem 'shotgun'

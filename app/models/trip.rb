@@ -14,7 +14,7 @@ class Trip < ActiveRecord::Base
     a = Time.now
     trips = []
     CSV.foreach("db/csv/trip.csv", {headers: true, header_converters: :symbol}) do |row|
-      next if row[:zip_code].to_s.length != 5
+      row[:zip_code] = 0 if row[:zip_code].to_s.length != 5
       trips << Trip.new(duration:            row[:duration],
                         start_date:          Date.strptime(row[:start_date], '%m/%e/%Y'),
                         start_station_name:  row[:start_station_name],
@@ -89,8 +89,11 @@ class Trip < ActiveRecord::Base
   end
 
   def self.most_used_sub_type
-    sub_type = Trip.group('subscription_type').order("count(*)").pluck(:subscription_type).last
-    Trip.get_sub_count(sub_type)
+    Trip.get_sub_count(sub_type.last)
+  end
+
+  def self.sub_type
+    group(:subscription_type).order("count(*)").pluck('subscription_type')
   end
 
   def self.get_sub_count(sub_type)

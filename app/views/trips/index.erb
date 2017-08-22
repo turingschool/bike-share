@@ -57,7 +57,7 @@
         <th scope="row" id="total entries"></th>
         <% @trips.each do |trip| %>
         <tr>
-          <td><%= trip.id %></td>
+          <td><a href="trips/<%= trip.id %>"><%= trip.id %></a></td>
           <td><%= trip.duration%></td>
           <td><%= trip.start_date%></td>
           <td><%= trip.start_station_id%></td>
@@ -74,15 +74,18 @@
         </tr>
         <% end %>
       </tbody>
+
     </table>
 
     <div class="container">
+              <%= will_paginate @trips %>
     </div>
     <footer class="footer">
         <div class="container">
             <p class="text-muted">BikeShare August 17</p>
             <p class="text-muted" id="right">Built with ActiveRecord and Sinatra</p>
         </div>
+
     </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

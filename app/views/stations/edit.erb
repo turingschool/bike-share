@@ -49,12 +49,12 @@
                     <label>Dock Count:</label>
                     <input type="text" name="station[dock_count]">
                     <label>City:</label>
-                    <select class="city-selector" name="station[city_id]">
-                        <% @cities.each do |city| %>
-                            <option value="<%= city.id %>">
-                                <%= city.name %>
+                    <select class="station-selector" name="station[start_station_id]">
+                        <% @stations.order(:name).each do |station| %>
+                            <option value="<%= station.id %>">
+                                <%= station.name %>
                             </option>
-                            <% end %>
+                        <% end %>
                     </select>
                     <label>Installation Date:</label>
                     <input type='text' name='station[date]' value="<%= @station.installation_date %>" />

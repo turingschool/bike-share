@@ -48,9 +48,9 @@
                     <label>Start Date:</label>
                     <input type="text" name="trip[start_date]">
                     <label>End Date:</label>
-                    <input type="text" name="trip[start_date]">
+                    <input type="text" name="trip[end_date]">
                     <label>Start Station:</label>
-                    <select class="station-selector" name="station[start_station_id]">
+                    <select class="station-selector" name="trip[start_station_id]">
                         <% @stations.order(:name).each do |station| %>
                             <option value="<%= station.id %>">
                                 <%= station.name %>
@@ -66,7 +66,7 @@
                         <% end %>
                     </select>
                     <label>Bike ID:</label>
-                    <input type="text" name="station[bike_id]">
+                    <input type="text" name="trip[bike_id]">
                     <label>Subscription Type:</label>
                     <input type="text" name="trip[subscription_type]">
                     <label>Zip Code:</label>

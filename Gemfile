@@ -10,6 +10,7 @@ gem 'pry'
 gem 'pry-byebug'
 gem 'fastercsv'
 gem 'activerecord-import'
+gem 'simplecov'
 
 group :development, :test do
   gem 'shotgun'

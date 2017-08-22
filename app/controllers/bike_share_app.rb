@@ -20,7 +20,7 @@ class BikeShareApp < Sinatra::Base
   get '/stations' do
     Station.connection
     @pages = Station.paginate(page: params[:page], :per_page => 20)
-    @stations = Station.order('name DESC').page(params[:page])
+    @stations = Station.order('id ASC').page(params[:page])
     erb :'/stations/index'
   end
 

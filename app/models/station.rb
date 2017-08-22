@@ -1,4 +1,3 @@
-require_relative '../helpers/allow_setting_id_on_create'
 
 class Station < ActiveRecord::Base
   validates :name, presence: true

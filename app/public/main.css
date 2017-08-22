@@ -10,6 +10,27 @@ h1 {
   color: #ddd !important;
 }
 
+h4 {
+  color: #ddd !important;
+}
+
+h5 {
+  padding-top: 1%;
+}
+
+select, input, textarea{
+    background-color:#666;
+    color: #FFF;
+}
+
+div {
+  color: #ddd !important;
+}
+
+.forminput > h4, input {
+  display: inline-block;
+}
+
 .stations > table {
   width: 75%;
   margin: auto;
@@ -25,7 +46,7 @@ h1 {
 }
 
 .digg_pagination {
-  background: white;
+  background: #eee;
   cursor: default;
   /* self-clearing method: */ }
   .digg_pagination a, .digg_pagination span, .digg_pagination em {

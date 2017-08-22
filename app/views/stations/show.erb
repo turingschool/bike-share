@@ -1,6 +1,6 @@
 <head>
-  <link rel = "stylesheet" type = "text/css" href = "/main.css" />
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel = "stylesheet" type = "text/css" href = <%= url("/main.css")%> />
+  <link href=<%= url("/css/bootstrap.min.css") %> rel="stylesheet">
 </head>
 
 <body>
@@ -24,36 +24,45 @@
           <li><a href="#">Trips</a></li>
           <li><a href="#">Weather</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Analytics<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/stations-dashboard">Stations</a></li>
+              <li><a href="#">Trips</a></li>
+              <li><a href="#">Weather</a></li>
+            </ul>
+          </li>
+        </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
 
-  <div>
+  <header>
     <h1><%= @station.name %></h1>
-  </div>
+  </header>
 
-  <div>
-      <ul>
-      <li>City: <%= @station.city.city %></li>
-      <li>Dock Count: <%= @station.dock_count %></li>
-      <li>Installation Date: <%= @station.installation_date.inspect %></li>
-    </ul>
-  </div>
-
-  <div class="container">
-    <div class="text-center">
-    <a class="btn btn-warning" href="/stations/<%= @station.id %>/edit">
-      <i class="glyphicon glyphicon-pencil"></i>
-        Edit</a><br></br>
-
-      <form action="/stations/<%= @station.id %>" class="delete-form" method="POST">
-        <input name="_method" type="hidden" value="DELETE"/>
-        <input class="btn btn-danger" type="submit" value="Delete"/>
-      </form>
+  <div class="spacer">
+    <div class="row">
+      <h4>City: <%= @station.city.city %></h4>
+    </div>
+    <div class="row">
+      <h4>Dock Count: <%= @station.dock_count %></h4>
+    </div>
+    <div class="row">
+      <h4>Installation Date: <%= @station.installation_date.inspect %></h4>
     </div>
   </div>
 
-  <a href='/stations'>All Stations</a>
+
+  <a class="btn btn-warning" href="/stations/<%= @station.id %>/edit">Edit</a><br></br>
+
+  <form action="/stations/<%= @station.id %>" class="delete-form" method="POST">
+    <input name="_method" type="hidden" value="DELETE"/>
+    <input class="btn btn-danger" type="submit" value="Delete"/>
+  </form>
+  
+  <a href='/stations'><button class="btn btn-primary">All Stations</button></a>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

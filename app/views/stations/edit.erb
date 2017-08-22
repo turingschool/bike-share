@@ -1,6 +1,6 @@
 <head>
-  <link rel = "stylesheet" type = "text/css" href = "/main.css" />
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel = "stylesheet" type = "text/css" href = <%= url("/main.css")%> />
+  <link href=<%= url("/css/bootstrap.min.css") %> rel="stylesheet">
 </head>
 
 <body>
@@ -24,6 +24,16 @@
           <li><a href="#">Trips</a></li>
           <li><a href="#">Weather</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Analytics<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/stations-dashboard">Stations</a></li>
+              <li><a href="#">Trips</a></li>
+              <li><a href="#">Weather</a></li>
+            </ul>
+          </li>
+        </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
@@ -38,39 +48,35 @@
       <input type="hidden" name="_method" value="PUT"/>
     </div>
 
-    <div>
-      <label>Name:</label>
+    <div class=row>
+      <h4>Name:</h4>
       <input type="text" name="station[name]" value="<%= @station.name %>"/><br>
     </div>
 
-    <div>
-      <label>Dock Count:</label>
+    <div class="row">
+      <h4>Dock Count:</h4>
       <input type="integer" name="station[dock_count]" value="<%= @station.dock_count %>"/><br>
     </div>
 
-    <div>
-      <label>Installation Date:</label>
+    <div class="row">
+      <h4>Installation Date:</h4>
       <input type="date" name="station[installation_date]" value="<%= @station.installation_date %>"/><br>
     </div>
 
-    <div>
-      <div class="row">
-        <div class="col-sm-3">
-          <div>
-            <label for="city">City:</label>
+    <div class="row">
+            <h4 for="city">City:</h4>
             <select name="city" value="<%= @station.city.city %>">
               <% @cities.each do |city| %>
                 <option><%= city.city %></option>
               <% end %>
             </select>
-            <label>Current city: <%= @station.city.city %></label>
-          </div>
-        </div>
-      </div>
+            <h4>Current city: <%= @station.city.city %></h4>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <a href="/stations/"><button>Cancel</button></a>
+    <div class="spacer">
+      <button type="submit" class="btn btn-success">Submit</button>
+      <a href="/stations/"><button class="btn btn-danger">Cancel</button></a>
+    </div>
 
   </form>
   </div>

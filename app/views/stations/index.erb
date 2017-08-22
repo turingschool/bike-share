@@ -1,6 +1,6 @@
 <head>
-  <link rel = "stylesheet" type = "text/css" href = "/main.css" />
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel = "stylesheet" type = "text/css" href = <%= url("/main.css")%> />
+  <link href=<%= url("/css/bootstrap.min.css") %> rel="stylesheet">
 </head>
 <body>
   <nav class="navbar navbar-inverse">
@@ -23,13 +23,23 @@
           <li><a href="#">Trips</a></li>
           <li><a href="#">Weather</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Analytics<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/stations-dashboard">Stations</a></li>
+              <li><a href="#">Trips</a></li>
+              <li><a href="#">Weather</a></li>
+            </ul>
+          </li>
+        </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
   <header class="spacer">
     <h1>All Stations</h1>
   </header>
-  <a href="/stations/new"><button>Create New Station</button></a>
+  <a href="/stations/new"><button class="btn btn-primary">Create New Station</button></a>
 
   <div class="stations spacer">
     <table class="table text-center">
@@ -39,12 +49,12 @@
           <!-- <td><%= station.dock_count %></td>
           <td><%= station.city.city %></td>
           <td><%= station.installation_date %></td> -->
-          <td><a href="/stations/<%= station.id %>"><button>More Info</button></a></td>
-          <td><a href="/stations/<%= station.id %>/edit"><button>Edit</button></td>
+          <td><a href="/stations/<%= station.id %>"><button class="btn btn-info">More Info</button></a></td>
+          <td><a href="/stations/<%= station.id %>/edit"><button class="btn btn-success">Edit</button></td>
           <td>
             <form action="/stations/<%= station.id %>" method="post">
               <input type="hidden" name="_method" value="DELETE" />
-              <button type="submit">Delete</button>
+              <button type="submit" class="btn btn-danger">Delete</button>
             </form>
           </td>
         </tr>

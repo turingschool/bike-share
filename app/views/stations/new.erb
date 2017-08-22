@@ -1,6 +1,6 @@
 <head>
-  <link rel = "stylesheet" type = "text/css" href = "/main.css" />
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel = "stylesheet" type = "text/css" href = <%= url("/main.css")%> />
+  <link href=<%= url("/css/bootstrap.min.css") %> rel="stylesheet">
 </head>
 
 <body>
@@ -20,9 +20,19 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Stations<span class="sr-only">(current)</span></a></li>
+          <li class="active"><a href="/stations">Stations<span class="sr-only">(current)</span></a></li>
           <li><a href="#">Trips</a></li>
           <li><a href="#">Weather</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Analytics<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/stations-dashboard">Stations</a></li>
+              <li><a href="#">Trips</a></li>
+              <li><a href="#">Weather</a></li>
+            </ul>
+          </li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -30,25 +40,35 @@
   <header>
     <h1>Create a New Station</h1>
   </header>
-  <div>
+  <div class="spacer">
     <form action="/stations" method="post">
-      <label>Name:</label>
-      <input type="textfield" name="station[name]">
-      <label>Dock Count:</label>
-      <input type="textfield" name="station[dock_count]">
-      <label>City:</label>
-      <select name="station[city_id]">
-        <% @cities.each do |city| %>
-          <option value=<%= city.id %>><%= city.city %></option>
-        <% end %>
-      </select>
-      <label>Installation Date:</label>
-      <input type="textfield" name="station[installation_date]">
-      <input type="submit" value="Create New Station" />
+      <div class="row forminput">
+        <h4>Name:</h4>
+        <input type="textfield" name="station[name]">
+      </div>
+      <div class="row forminput">
+        <h4>Dock Count:</h4>
+        <input type="textfield" name="station[dock_count]">
+      </div>
+      <div class="row forminput">
+        <h4>City:</h4>
+        <select name="station[city_id]">
+          <% @cities.each do |city| %>
+            <option value=<%= city.id %>><%= city.city %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class="row forminput">
+        <h4>Installation Date:</h4>
+        <input type="textfield" name="station[installation_date]">
+      </div>
+      <div class="spacer">
+        <input class="btn btn-success" type="submit" value="Create New Station" />
+      </div>
     </form>
   </div>
 
-  <a href="/stations"><button>Cancel</button></a>
+  <a href="/stations"><button class="btn btn-danger">Cancel</button></a>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->

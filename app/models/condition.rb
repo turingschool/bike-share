@@ -7,4 +7,5 @@ class Condition < ActiveRecord::Base
 	validates :mean_visibility,  presence: true
 	validates :mean_wind_speed,  presence: true
 	validates :precipitation,    presence: true
+	validates :zip_code,         presence: true
 end

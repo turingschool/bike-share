@@ -12,3 +12,4 @@
 <p>The date with the fewest rides was <%=Trip.lowest_date%></p>
 <p><%= Trip.least_used_sub_type %></p>
 <p><%= Trip.most_used_sub_type %></p>
+<p><%= pie_chart Trip.group(:subscription_type).count %></p>

@@ -1,5 +1,5 @@
 <h1>Condition Index</h1>
-<a href="/conditions/new">Add a New Condition</a>
+<a href="/conditions/new" value= 'new'>Add a New Condition</a>
 
 <% @conditions.each do |condition| %>
 	<h3><a href="/conditions/<%= condition.id %>"><%= condition.weather_date %></h3>

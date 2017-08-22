@@ -24,4 +24,21 @@ class Trip < ActiveRecord::Base
   def self.sort_trips_by_date
     order(:start_date)
   end
+
+  def self.average_duration
+    average(:duration)
+  end
+
+  def self.longest
+    maximum(:duration)
+  end
+
+  def self.shortest
+    minimum(:duration)
+  end
+
+  def self.station_with_most_starts
+    group(:start_station).last
+  end
+
 end

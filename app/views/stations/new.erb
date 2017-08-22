@@ -1,11 +1,25 @@
-<form action="/stations" method="post">
-  <p>Enter a new station</p>
-  <p>Please make sure to fill out all station fields</p>
-  <input type='text' name='name' placeholder="Name" /><br/>
-  <input type='number' name='dock_count' placeholder="Dock Count" /><br/>
-  <input type='text' name='lat' placeholder="Lattitude" /><br/>
-  <input type='text' name='long' placeholder="Longitude" /><br/>
-  <input type='text' name='city' placeholder="City" /><br/>
-  <input type='date' name='installation_date' placeholder="Date of Installation" /><br/>
-  <input type='submit' value = "Submit"/>
-</form>
+
+<div class="row newshoweditrow">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="left-pane">
+      <div class="panel panel-default new-station-panel">
+        <div class="panel-heading">
+          <h1 class="panel-title">Create a new Station</h1>
+        </div>
+        <form action="/stations" method="post">
+          <p>Please make sure to fill out all station fields</p>
+          <input type='text' name='name' placeholder="Name" /><br/>
+          <input type='number' name='dock_count' placeholder="Dock Count" /><br>
+          <input type='text' name='lat' placeholder="Lattitude" /><br>
+          <input type='text' name='long' placeholder="Longitude" /><br>
+          <input type='text' name='city' placeholder="City" /><br>
+          <input type='date' name='installation_date' placeholder="Date of Installation" /><br><br>
+          <input class="btn btn-primary formbtn" type='submit' value = "Submit"/>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4"></div>
+</div>

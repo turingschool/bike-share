@@ -3,9 +3,9 @@ require './app/models/station'
 RSpec.describe "User visits /stations/:id/edit" do
   it "when visiting /stations" do
     station = Station.create(name: "Station_1",
-                          dock_count: 20,
-                          city: "bike town",
-                          installation_date: "2017-08-04")
+                            dock_count: 20,
+                            city: "bike town",
+                            installation_date: "2017-08-04")
 
     visit "/stations/#{station.id}"
 

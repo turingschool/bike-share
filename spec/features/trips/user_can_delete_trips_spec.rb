@@ -14,20 +14,31 @@ describe "User can delete trip" do
 
     Trip.create(duration: 174,
                 start_date: "2013-08-29 09:08:00",
-                start_station_name: "2nd at South Park",
+                start_station_name: "Pet Smart",
                 end_date: "2013-08-29 09:11:00",
-                end_station_name: "Hello Kitty",
+                end_station_name: "Turing",
                 bike_id: 288,
                 start_station_id: 9,
                 end_station_id: 11,
                 subscription_type: "Subscriber",
                 zip_code: "94114")
-# require 'pry';binding.pry
+
+    Trip.create(duration: 174,
+                start_date: "2013-08-29 09:08:00",
+                start_station_name: "King Sooper",
+                end_date: "2013-08-29 09:11:00",
+                end_station_name: "Turing",
+                bike_id: 288,
+                start_station_id: 9,
+                end_station_id: 11,
+                subscription_type: "Subscriber",
+                zip_code: "94114")
+
     visit '/trips/1'
     click_on("delete")
 
     expect(current_path).to eq('/trips')
-    expect(page).to_not have_content('10th at South Park')
-    expect(page).to have_content('Hello Kitty')
+    expect(page).to_not have_content("10th at South Park")
+    expect(page).to have_content("Turing")
   end
 end

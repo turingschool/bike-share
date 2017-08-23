@@ -1,6 +1,14 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 class BikeShareApp < Sinatra::Base
+
   get '/' do
     erb :index
+  end
+
+  configure do
+    register WillPaginate::Sinatra
   end
 
   get '/stations' do
@@ -22,6 +30,13 @@ class BikeShareApp < Sinatra::Base
   end
 #weather conditions
   get '/conditions' do
+    Condition.connection
+    @pages = Condition.paginate(page: params[:page])
+    @conditions = Condition.order('date DESC').page(params[:page])
+    erb :"conditions/index"
+  end
+
+  get '/conditions' do
     @conditions = Condition.all
     erb :'conditions/index'
   end
@@ -32,8 +47,6 @@ class BikeShareApp < Sinatra::Base
 
   post '/conditions' do
     @condition = Condition.create(params[:condition])
-
-    #require 'pry';binding.pry
     redirect :"conditions/#{@condition.id}"
   end
 
@@ -55,6 +68,17 @@ class BikeShareApp < Sinatra::Base
   delete '/conditions/:id' do
     Condition.destroy(params[:id])
     redirect '/conditions'
+  end
+
+  get '/weather-dashboard' do
+    erb :'conditions/dashboard'
+  end
+
+  get '/trips' do
+    Trip.connection
+    @pages = Trip.paginate(page: params[:page])
+    @trips = Trip.order('start_date DESC').page(params[:page])
+    erb :"trips/index"
   end
 
   get '/trips' do
@@ -95,6 +119,7 @@ class BikeShareApp < Sinatra::Base
     Station.destroy(params[:id])
     redirect '/stations'
   end
+
   get '/trips/:id' do
     @trip = Trip.find(params[:id])
     erb :'trips/show'

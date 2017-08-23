@@ -1,5 +1,8 @@
 <h1>All Trips</h1>
-
+<div>
+  <a class="btn btn-primary" href="/trips-dashboard"> Trip Analytics</a>
+  <a class="btn btn-success" href="/trips/new"> Create New Trip</a>
+</div>
 <div>
   <% @trips[0..30].each do |trip| %>
     <h2><a href="/trips/<%= trip.id %>">Trip <%= trip.id %></a></h2>
@@ -13,3 +16,5 @@
     <p>Zip Code: <%= trip.zip_code %></p>
   <% end %>
 </div>
+
+<h3><%= will_paginate @pages %></h3>

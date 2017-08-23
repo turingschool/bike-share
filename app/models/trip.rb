@@ -15,7 +15,9 @@ class Trip < ActiveRecord::Base
   end
 
   def self.avg_duration_of_a_ride
-    average(:duration).round(2)
+    seconds = average(:duration)
+    minutes = seconds / 60
+    minutes.round(2)
   end
 
   def self.longest_ride

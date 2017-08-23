@@ -55,6 +55,20 @@ div {
   margin: 2% 0;
 }
 
+.station-info {
+  width: 50%;
+  display: inline-block;
+  float: left;
+}
+
+#map {
+  height: 400px;
+  width: 45%;
+  display: inline-block;
+  float: right;
+  margin-right: 5%
+ }
+
 .digg_pagination {
   background: #eee;
   cursor: default;

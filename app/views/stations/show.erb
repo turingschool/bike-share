@@ -42,7 +42,7 @@
     <h1><%= @station.name %></h1>
   </header>
 
-  <div class="spacer">
+  <div class="spacer station-info">
     <div class="row">
       <h4>City: <%= @station.city.city %></h4>
     </div>
@@ -53,6 +53,25 @@
       <h4>Installation Date: <%= @station.installation_date.inspect %></h4>
     </div>
   </div>
+
+  <div id="map"></div>
+
+  <script>
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywRPlJLZnaCAn1mDM5LevTGBZeYdEl24&callback=initMap">
+    </script>
 
 
   <a class="btn btn-warning" href="/stations/<%= @station.id %>/edit">Edit</a><br></br>

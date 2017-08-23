@@ -19,21 +19,23 @@ class Condition < ActiveRecord::Base
     amount.size
   end
 
-  # def self.sort_temp_mean(range)
-  #   amount = []
-  #   where(mean_temperature: range).each do |condition|
-  #     amount << condition.trips
-  #   end
-  #   amount.size
-  # end
+  def self.sort_temp_mean(range)
+    amount = []
+    where(mean_temperature: range).each do |condition|
+      amount << condition.trips
+    end
+    amount.size
+  end
 
-  # def self.sort_wind_max(range)
-  #   amount = []
-  #   where(mean_wind_speed: range).each do |condition|
-  #     amount << condition.trips
-  #   end
-  #   amount.size
-  # end
+  def self.sort_wind_max(range)
+    amount = []
+    where(mean_wind_speed: range).each do |condition|
+      condition.trips.each do |trip|
+        amount << trip if trip.start_date == condition.date
+      end
+    end
+    amount.size
+  end
 
   # def self.sort_wind_min(range)
   #   amount = []

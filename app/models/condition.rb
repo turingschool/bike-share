@@ -8,7 +8,8 @@ class Condition < ActiveRecord::Base
 	validates :mean_visibility,  presence: true
 	validates :mean_wind_speed,  presence: true
 	validates :precipitation,    presence: true
-	
+	validates :zip_code,         presence: true
+
 	has_many :trips, class_name: "Trip", foreign_key: "condition_id"
 	
 	def self.id_by_date(date)
@@ -19,25 +20,30 @@ class Condition < ActiveRecord::Base
 	# 	self.joins(:trips)
 	# end
 		
-	def breakout_temp(temp_range)
+	def self.breakout_temp(temp_range)
 		range = trip_arr(temp_range)
 		min   = range.values.last
 		max   = range.values.first
 		avg   = range.values.sum / range.values.count
 	end
 	
-	def trip_arr(temp_range)
-		self.joins(:trips).where(max_temperature: (temp_range...(temp_range + 10)))
+	def self.trip_arr(temp_range)
+		select("condition.*, sum(trip.condition_id) AS total_trips")
+			.joins(:trips).where(max_temperature: (temp_range...(temp_range + 10)))
 			.group(:conditions).order("count_id DESC").count(:id)
+		# Condition.joins(:trips).where(max_temperature: (temp_range...(temp_range + 10)))
+		# 	.group(:conditions).order("count_id DESC").count(:id)
 	end
 	
-	def breakout_temps
-		counter = 40.0
+	def self.breakout_temps
+		counter = 50.0
 		until counter == 100
 			breakout_temp(counter)
 			counter += 10
+			require "pry"; binding.pry
 		end
 	end
+
 end
 
 # Condition.select("conditions.*, sum(trip.condition_id) AS total_trips")

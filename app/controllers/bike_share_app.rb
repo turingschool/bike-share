@@ -17,7 +17,6 @@ class BikeShareApp < Sinatra::Base
     erb :"trips/trip_new"
   end
 
-
   post '/trips' do
     trip = Trip.find_or_create_by(
     duration: params[:duration],
@@ -32,7 +31,6 @@ class BikeShareApp < Sinatra::Base
 
     redirect"/trips/#{trip.id}"
   end
-
 
   get '/trips/:id' do
     @trip = Trip.find(params["id"])
@@ -79,7 +77,7 @@ class BikeShareApp < Sinatra::Base
     erb :'stations/new'
   end
 
-  get '/stations-dashboard' do
+  get '/stations/dashboard' do
     @stations = Station.all
     erb :'stations/dashboard'
   end

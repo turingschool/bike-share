@@ -2,7 +2,7 @@
 <p>The average duration of a ride is <%= Trip.average_duration%> minutes</p>
 <p>The longest ride was <%=Trip.longest_ride%> minutes.</p>
 <p>The shortest ride was <%=Trip.shortest_ride%> minutes.</p>
-<p>The station with the most rides as an starting point is <a href="/stations/<%= Trip.station_with_most_rides_as_starting_point.id %>"> <%= Trip.station_with_most_rides_as_starting_point.name %></a></p><br>
+<p>The station with the most rides as a starting point is <a href="/stations/<%= Trip.station_with_most_rides_as_starting_point.id %>"> <%= Trip.station_with_most_rides_as_starting_point.name %></a></p><br>
 <p>The station with the most rides as an end point is <a href="/stations/<%= Trip.station_with_the_most_rides_as_end_point.id %>"> <%= Trip.station_with_the_most_rides_as_end_point.name %></a></p><br>
 <p>Bike trips by month:</p>
 <p><%= column_chart Trip.chart_it_brah, id: "users-chart", colors: ["FF69B4"], xtitle: "Month of Year", ytitle: "Trips" %></p>

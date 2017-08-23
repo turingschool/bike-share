@@ -1,6 +1,7 @@
 require 'pry'
 class Condition < ActiveRecord::Base
-  belongs_to :trip
+  has_many :conditions_trips
+  has_many :trips, :through => :conditions_trips
   validates :date, :max_temperature, :mean_temperature, :min_temperature, :mean_humidity, :mean_visibility, :mean_wind_speed, :precipitation, presence: true
 
   def self.id_by_date(date)

@@ -10,6 +10,7 @@ require 'activerecord-import'
 loader = CSVLoader.new
 
 station_data = loader.sanitize_station('./db/csv/station.csv')
+binding.pry
 station_data.each do |station|
   puts "Seeding db_stations with: #{station[:name]}"
 

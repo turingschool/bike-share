@@ -6,8 +6,10 @@ class Trip < ActiveRecord::Base
   validates :end_station_id, presence: true
   validates :bike_id, presence: true
   validates :subscription_type, presence: true
+
   belongs_to :station
-  has_one :condition
+  has_many :conditions_trips
+  has_many :conditions, :through => :conditions_trips
 
   def self.average_duration_of_ride
     Trip.average(:duration)

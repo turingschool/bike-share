@@ -38,7 +38,7 @@ class Condition < ActiveRecord::Base
 	end
 	
 	def self.breakout_temps
-		counter = 50.0
+		counter = 40.0
 		breakout = Hash.new(0)
 		until counter == 100
 			breakout.merge!(counter=>breakout_temp(counter))

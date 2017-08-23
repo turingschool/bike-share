@@ -101,7 +101,7 @@ RSpec.describe Condition do
 	
 	describe "#breakout_temp" do
 		it "returns maximim amount of trips for temperature ranges" do
-			condition = Condition.create!(weather_date: "1991/8/14", max_temperature: 50.0,
+			condition = Condition.create!(weather_date: "1991/8/14", max_temperature: 40.0,
 			 														 min_temperature: 40.1,   mean_temperature: 45.3,
 																	 mean_humidity: 20.1,     mean_visibility: 2,
 																	 mean_wind_speed: 9,      precipitation: 3.1,zip_code: "80113")
@@ -118,9 +118,9 @@ RSpec.describe Condition do
 												 start_station_id: 1, end_station_id: 2, bike_id: 4,
 												 subscription_type: "Some Nonsense", zip_code: "80113")
 
-			expect(Condition.breakout_temp(50.0)[:min]).to eq(3)
-			expect(Condition.breakout_temp(50.0)[:max]).to eq(3)
-			expect(Condition.breakout_temp(50.0)[:avg]).to eq(3)
+			expect(Condition.breakout_temp(40.0)[:min]).to eq(3)
+			expect(Condition.breakout_temp(40.0)[:max]).to eq(3)
+			expect(Condition.breakout_temp(40.0)[:avg]).to eq(3)
 		end
 	end
 end

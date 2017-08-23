@@ -1,4 +1,3 @@
-require 'csv'
 require_relative '../app/helpers/csv_loader'
 require_relative '../app/models/station'
 require_relative '../app/models/city'
@@ -6,88 +5,116 @@ require_relative '../app/models/trip'
 require_relative '../app/models/condition'
 require_relative '../app/helpers/fast_seeder'
 require 'fastercsv'
-require 'activerecord-import'
+require "activerecord-import/base"
 
-class Seed
-  include FastSeeder
+def fast_seed_station(data)
+  count = 0
+  batch,batch_size = [], 1_000
+  data.each do |row|
+    # binding.pry
+    puts "Seeded #{count} records (station)"
+    count += 1
 
-  def run
-    fast_seed_station(stations)
-    fast_seed_condition(conditions)
-    fast_seed_trip(trips)
+    city = City.where(name: row[:name]).first_or_create
+
+
+    batch << Station.new(id: row[:id].to_i,
+                         name: row[:name],
+                         dock_count: row[:dock_count].to_i,
+                         city_id: city.id,
+                         installation_date: row[:installation_date].to_date
+                         )
+    if batch.size >= batch_size
+      Station.import batch
+      batch = []
+    end
   end
-
-  # def run(record_one, record_two, record_three)
-  #   loader = CSVLoader.new
-  #   dataset_1 = loader.sanitize_station(record_one)
-  #   dataset_2 = loader.sanitize_weather(record_two)
-  #   dataset_3 = loader.sanitize_trips(record_three)
-
-  #   fast_seed()
-  # end
-
-  # station_data = loader.sanitize_station('./db/csv/station.csv')
   # binding.pry
-  # station_data.each do |station|
-  #   puts "Seeding db_stations with: #{station[:name]}"
-
-  #   city = City.where(name: station[:city]).first_or_create
-
-  #   Station.create(id: station[:id],
-  #                  name: station[:name],
-  #                  dock_count: station[:dock_count],
-  #                  city_id: city.id,
-  #                  installation_date: station[:installation_date]
-  #                  )
-  # end
-
-  # weather_data = loader.sanitize_weather('./db/csv/weather.csv')
-  # count = 0
-  # weather_data.each do |condition|
-  #   count += 1
-  #   puts "Seeding db_conditions count: #{count}"
-
-  #   Condition.create(date: condition[:date],
-  #                    max_temperature: condition[:max_temperature],
-  #                    mean_temperature: condition[:mean_temperature],
-  #                    min_temperature: condition[:min_temperature],
-  #                    mean_humidity: condition[:mean_humidity],
-  #                    mean_visibility: condition[:mean_visibility],
-  #                    mean_wind_speed: condition[:mean_wind_speed],
-  #                    precipitation: condition[:precipitation]
-  #                    )
-  # end
-
-  # trip_data = loader.sanitize_trips('./db/csv/trip.csv')
-  # count = 0
-  # trip_data.each do |trip|
-  #   count += 1
-  #   puts "Seeding db_trips count: #{count}"
-
-  #   start_station = Station.find(trip[:start_station_id])
-  #   end_station = Station.find(trip[:start_station_id])
-  #   condition = Condition.id_by_date(trip[:start_date])
-
-  #   Trip.create(duration: trip[:duration],
-  #               start_date: trip[:start_date],
-  #               start_station_id: start_station.id,
-  #               end_date: trip[:end_date],
-  #               end_station_id: end_station.id,
-  #               bike_id: trip[:bike_id],
-  #               subscription_type: trip[:subscription_type],
-  #               zip_code: trip[:zip_code],
-  #               condition_id: condition
-  #               )
-  # end
+  Station.import batch
 end
 
-Seed.new.run
+def fast_seed_condition(data)
+  count = 0
+  data.each do |row|
+    puts "Seeded #{count} records (condition)"
+    count += 1
+
+    c = Condition.create(date: row[:date],
+                         max_temperature: row[:max_temperature],
+                         mean_temperature: row[:mean_temperature],
+                         min_temperature: row[:min_temperature],
+                         mean_humidity: row[:mean_humidity],
+                         mean_visibility: row[:mean_visibility],
+                         mean_wind_speed: row[:mean_wind_speed],
+                         precipitation: row[:precipitation],
+                         )
+    # binding.pry
+    t = Trip.where(start_date: row[:date]).first
+    ConditionTrip.create(condition_id: c.id, trip_id: t.id)
+  end
+  # binding.pry
+end
+
+def fast_seed_trip(data)
+  count = 0
+  batch,batch_size = [], 1_000
+  data.each do |row|
+    count += 1
+    puts "Seeded #{count} records (trip)"
+
+    start_station = Station.find(row[:start_station_id])
+    end_station = Station.find(row[:start_station_id])
+
+    t = Trip.new(duration: row[:duration],
+                 start_date: row[:start_date],
+                 start_station_id: start_station.id,
+                 end_date: row[:end_date],
+                 end_station_id: end_station.id,
+                 bike_id: row[:bike_id],
+                 subscription_type: row[:subscription_type],
+                 zip_code: row[:zip_code]
+                 )
+    batch << t
+    if batch.size >= batch_size
+      Trip.import batch
+      batch = []
+    end
+  end
+  Trip.import batch
+end
+
+def stations
+  @loader = CSVLoader.new
+  @loader.sanitize_station('./db/csv/station.csv')
+end
+
+def trips
+  @loader.sanitize_trips('./db/csv/trip.csv')
+end
+
+def conditions
+  @loader.sanitize_weather('./db/csv/weather.csv')
+end
+
+def jam
   count = 0
   Trip.all.each do |trip|
     puts "Made #{count} relations"
     count += 1
     # binding.pry
     c_id = Condition.where(date: trip[:start_date]).first.id
-    ConditionsTrips.where("condition_id = #{c_id}").first.trip_id = trip.id
+    ConditionTrip.where("condition_id = #{c_id}").each do |record|
+      record.update_attribute(:trip_id, trip.id)
+      binding.pry
+    end
   end
+end
 
+def run
+  fast_seed_station(stations)
+  fast_seed_trip(trips)
+  fast_seed_condition(conditions)
+  # jam
+end
+
+run

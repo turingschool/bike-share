@@ -1,6 +1,6 @@
 class CreateTripsConditionsTable < ActiveRecord::Migration[5.1]
   def change
-    create_table :conditions_trips do |t|
+    create_table :condition_trips do |t|
       t.integer :condition_id
       t.integer :trip_id
     end

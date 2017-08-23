@@ -19,6 +19,11 @@ ActiveRecord::Schema.define(version: 20170823061748) do
     t.string "name"
   end
 
+  create_table "condition_trips", force: :cascade do |t|
+    t.integer "condition_id"
+    t.integer "trip_id"
+  end
+
   create_table "conditions", force: :cascade do |t|
     t.date "date"
     t.float "max_temperature"
@@ -28,11 +33,6 @@ ActiveRecord::Schema.define(version: 20170823061748) do
     t.float "mean_visibility"
     t.float "mean_wind_speed"
     t.float "precipitation"
-  end
-
-  create_table "conditions_trips", force: :cascade do |t|
-    t.integer "condition_id"
-    t.integer "trip_id"
   end
 
   create_table "stations", force: :cascade do |t|

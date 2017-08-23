@@ -8,8 +8,8 @@ class Trip < ActiveRecord::Base
   validates :subscription_type, presence: true
 
   belongs_to :station
-  has_many :conditions_trips
-  has_many :conditions, :through => :conditions_trips
+  has_many :condition_trips
+  has_many :conditions, :through => :condition_trips
 
   def self.average_duration_of_ride
     Trip.average(:duration)

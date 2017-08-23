@@ -11,31 +11,6 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse navbar-sticky-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" id="text" href="/">BikeShare</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a id="text" href="/stations"><button class="btn btn-primary navbar-btn">Station Index</button></a>
-                    </li>
-                    <li>
-                        <a id="text" href="/trips"><button class="btn btn-primary navbar-btn">Trip Index</button></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
        <div class="container">
 
         <div class="row">
@@ -44,7 +19,7 @@
                 <p class="lead">A comprehensive report.</p>
             </div>
         </div>
-        <h3>Rides by Temperature (F) <i>(Click Ranges to Expand)</i></h3>
+        <h3>Rides by Temperature (F)</h3>
         <div class="mdl-card__supporting-text">
             <div>
                 <span class="range"><h4>50-60</h4></span>
@@ -52,16 +27,31 @@
                 <div class="details"><p><b>Min:</b> <%= @condition.sort_temp_min(50..60) %></p></div>
                 <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp_mean(50..60) %></p></div>
             </div>
-
-
-
-
-    <footer class="footer">
-      <div class="container">
-        <p class="text-muted">BikeShare August 17</p>
-        <p class="text-muted" id="right">Built with ActiveRecord and Sinatra</p>
-      </div>
-    </footer>
+            <div>
+                <span class="range"><h4>60-70</h4></span>
+                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp_max(60..70) %></p></div>
+                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp_min(60..70) %></p></div>
+                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp_mean(60..70) %></p></div>
+            </div>
+            <div>
+                <span class="range"><h4>70-80</h4></span>
+                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp_max(70..80) %></p></div>
+                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp_min(70..80) %></p></div>
+                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp_mean(70..80) %></p></div>
+            </div>
+            <div>
+                <span class="range"><h4>80-90</h4></span>
+                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp_max(80..90) %></p></div>
+                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp_min(80..90) %></p></div>
+                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp_mean(80..90) %></p></div>
+            </div>
+            <div>
+                <span class="range"><h4>90-100</h4></span>
+                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp_max(90..100) %></p></div>
+                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp_min(90..100) %></p></div>
+                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp_mean(90..100) %></p></div>
+            </div>
+        </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

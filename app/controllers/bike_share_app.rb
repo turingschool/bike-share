@@ -35,7 +35,7 @@ class BikeShareApp < Sinatra::Base
     @conditions = Condition.order('date DESC').page(params[:page])
     erb :"conditions/index"
   end
-  
+
   get '/conditions' do
     @conditions = Condition.all
     erb :'conditions/index'
@@ -68,6 +68,10 @@ class BikeShareApp < Sinatra::Base
   delete '/conditions/:id' do
     Condition.destroy(params[:id])
     redirect '/conditions'
+  end
+
+  get '/weather-dashboard' do
+    erb :'conditions/dashboard'
   end
 
   get '/trips' do

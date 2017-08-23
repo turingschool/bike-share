@@ -31,7 +31,7 @@ class Condition < ActiveRecord::Base
       total_trips.group(:start_date).order('count_id DESC').count(:id).keys.first
     end
 
-    def self.high_rides_by_weather(start_of_range)
+    def self.low_rides_by_weather(start_of_range)
       conditions = Condition.where(max_temperature:
                                    start_of_range..(start_of_range+9))
       dates_in_temp_range = conditions.select(:date).distinct.where(

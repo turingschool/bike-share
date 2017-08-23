@@ -109,4 +109,10 @@ class BikeShareApp < Sinatra::Base
     @conditions = Condition.order('id ASC').page(params[:page])
     erb :'/conditions/index'
   end
+
+  get '/conditions-dashboard' do
+    @conditions = Condition.all
+    erb :'/conditions/dashboard'
+  end
+
 end

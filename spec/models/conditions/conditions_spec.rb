@@ -99,8 +99,8 @@ RSpec.describe Condition do
 		end
 	end
 	
-	describe "#breakout_temp" do
-		it "returns maximim amount of trips for temperature ranges" do
+	describe "breakout_temp" do
+		it "returns range of trips for temperature ranges" do
 			condition = Condition.create!(weather_date: "1991/8/14", max_temperature: 40.0,
 			 														 min_temperature: 40.1,   mean_temperature: 45.3,
 																	 mean_humidity: 20.1,     mean_visibility: 2,
@@ -118,9 +118,34 @@ RSpec.describe Condition do
 												 start_station_id: 1, end_station_id: 2, bike_id: 4,
 												 subscription_type: "Some Nonsense", zip_code: "80113")
 
-			expect(Condition.breakout_temp(40.0)[:min]).to eq(3)
-			expect(Condition.breakout_temp(40.0)[:max]).to eq(3)
-			expect(Condition.breakout_temp(40.0)[:avg]).to eq(3)
+			expect(Condition.breakout(40.0)[:min]).to eq(3)
+			expect(Condition.breakout(40.0)[:max]).to eq(3)
+			expect(Condition.breakout(40.0)[:avg]).to eq(3)
+		end
+		
+		describe "breakout_precip" do
+			it "returns ranges of trips for precipitation ranges" do
+				condition = Condition.create!(weather_date: "1991/8/14", max_temperature: 40.0,
+				 														 min_temperature: 40.1,   mean_temperature: 45.3,
+																		 mean_humidity: 20.1,     mean_visibility: 2,
+																		 mean_wind_speed: 9,      precipitation: 3.1,zip_code: "80113")
+			 trip_1 = condition.trips.create!(duration: 600, start_date: "1969/4/20", end_date: "1969/4/21",
+													 start_station_id: 1, end_station_id: 2, bike_id: 4,
+													 subscription_type: "Some Nonsense", zip_code: "80113")
+
+				trip_2 = condition.trips.create!(duration: 1200, start_date: "1969/4/20", end_date: "1969/4/21",
+													 start_station_id: 1, end_station_id: 2, bike_id: 4,
+													 subscription_type: "Some Nonsense", zip_code: "80113")
+
+
+				trip_3 = condition.trips.create!(duration: 180000, start_date: "1969/4/20", end_date: "1969/4/21",
+													 start_station_id: 1, end_station_id: 2, bike_id: 4,
+													 subscription_type: "Some Nonsense", zip_code: "80113")
+
+				expect(Condition.breakout_inches(3.0)[:min]).to eq(3)
+				expect(Condition.breakout_inches(3.0)[:max]).to eq(3)
+				expect(Condition.breakout_inches(3.0)[:avg]).to eq(3)
+			end
 		end
 	end
 end

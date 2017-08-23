@@ -20,8 +20,8 @@ class Condition < ActiveRecord::Base
 	# 	self.joins(:trips)
 	# end
 		
-	def self.breakout_temp(temp_range)
-		range = trip_arr(temp_range)
+	def self.breakout(temp_range)
+		range = trip_temps(temp_range)
 		answers = Hash.new(0)
 		answers[:min] = range.values.last
 		answers[:max] = range.values.first
@@ -29,25 +29,43 @@ class Condition < ActiveRecord::Base
 		answers
 	end
 	
-	def self.trip_arr(temp_range)
+	def self.trip_temps(temp_range)
 		select("condition.*, sum(trip.condition_id) AS total_trips")
 			.joins(:trips).where(max_temperature: (temp_range...(temp_range + 10)))
 			.group(:conditions).order("count_id DESC").count(:id)
-		# Condition.joins(:trips).where(max_temperature: (temp_range...(temp_range + 10)))
-		# 	.group(:conditions).order("count_id DESC").count(:id)
 	end
 	
 	def self.breakout_temps
 		counter = 40.0
-		breakout = Hash.new(0)
+		temp = Hash.new(0)
 		until counter == 100
-			breakout.merge!(counter=>breakout_temp(counter))
+			temp.merge!(counter=>breakout(counter))
 			counter += 10
 		end
 	end
+	
+	def self.breakout_inches(precip_range)
+		range = precip_trips(precip_range)
+		answers = Hash.new(0)
+		answers[:min] = range.values.last
+		answers[:max] = range.values.first
+		answers[:avg] = range.values.sum / range.values.count
+		answers
+	end
+	
+	def self.breakout_precip
+		counter = 0.0
+		temp = Hash.new(0)
+		until counter == 3.5
+			temp.merge!(counter=>breakout_inches(counter))
+			counter += 0.5
+		end
+	end
+	
+	def self.precip_trips(range)
+		select("condition.*, sum(trip.condition_id) AS total_trips")
+			.joins(:trips).where(precipitation: (range...(range + 0.5)))
+			.group(:conditions).order("count_id DESC").count(:id)
+	end
 
 end
-
-# Condition.select("conditions.*, sum(trip.condition_id) AS total_trips")
-# 	.joins(:trips).where(max_temperature: (50.0...60.0))
-# 	.group(:conditions).order("count_id DESC").count(:id)

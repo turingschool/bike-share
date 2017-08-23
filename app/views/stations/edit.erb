@@ -1,48 +1,92 @@
+<head>
+  <link rel = "stylesheet" type = "text/css" href = <%= url("/main.css")%> />
+  <link href=<%= url("/css/bootstrap.min.css") %> rel="stylesheet">
+</head>
 
-<div>
-  <h1>Update Station</h1>
-</div>
-
-<div>
-<form action="/stations/<%= @station.id %>" method="POST">
-
-  <div>
-    <input type="hidden" name="_method" value="PUT"/>
-  </div>
-
-  <div>
-    <label>Name:</label>
-    <input type="text" name="station[name]" value="<%= @station.name %>"/><br>
-  </div>
-
-  <div>
-    <label>Dock Count:</label>
-    <input type="integer" name="station[dock_count]" value="<%= @station.dock_count %>"/><br>
-  </div>
-
-  <div>
-    <label>Installation Date:</label>
-    <input type="date" name="station[installation_date]" value="<%= @station.installation_date %>"/><br>
-  </div>
-
-  <div>
-    <div class="row">
-      <div class="col-sm-3">
-        <div>
-          <label for="city">City:</label>
-          <select name="city" value="<%= @station.city.city %>">
-            <% @cities.each do |city| %>
-              <option><%= city.city %></option>
-            <% end %>
-          </select>
-          <label>Current city: <%= @station.city.city %></label>
-        </div>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Bike Share</a>
       </div>
-    </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Stations<span class="sr-only">(current)</span></a></li>
+          <li><a href="#">Trips</a></li>
+          <li><a href="#">Weather</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Analytics<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/stations-dashboard">Stations</a></li>
+              <li><a href="#">Trips</a></li>
+              <li><a href="#">Weather</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <div>
+    <h1>Update Station</h1>
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
-  <a href="/stations/"><button>Cancel</button></a>
+  <div>
+  <form action="/stations/<%= @station.id %>" method="POST">
 
-</form>
-</div>
+    <div>
+      <input type="hidden" name="_method" value="PUT"/>
+    </div>
+
+    <div class=row>
+      <h4>Name:</h4>
+      <input type="text" name="station[name]" value="<%= @station.name %>"/><br>
+    </div>
+
+    <div class="row">
+      <h4>Dock Count:</h4>
+      <input type="integer" name="station[dock_count]" value="<%= @station.dock_count %>"/><br>
+    </div>
+
+    <div class="row">
+      <h4>Installation Date:</h4>
+      <input type="date" name="station[installation_date]" value="<%= @station.installation_date %>"/><br>
+    </div>
+
+    <div class="row">
+            <h4 for="city">City:</h4>
+            <select name="city" value="<%= @station.city.city %>">
+              <% @cities.each do |city| %>
+                <option><%= city.city %></option>
+              <% end %>
+            </select>
+            <h4>Current city: <%= @station.city.city %></h4>
+    </div>
+
+    <div class="spacer">
+      <button type="submit" class="btn btn-success">Submit</button>
+      <a href="/stations/"><button class="btn btn-danger">Cancel</button></a>
+    </div>
+
+  </form>
+  </div>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+
+

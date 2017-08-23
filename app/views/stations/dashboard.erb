@@ -1,8 +1,73 @@
-<p>Total stations: <%= @stations.count %></p>
-<p>Average Bikes Available: <%= @stations.average_bikes_available %></p>
-<p>Most bikes available at a station: <%= @stations.most_bikes_at_a_station %></p>
-<p>Station(s) with the most bikes: <%= @stations.formatted_stations_with_most_bikes %></p>
-<p>Fewest bikes available at a station: <%= @stations.least_bikes_at_a_station %></p>
-<p>Station(s) with the fewest bikes: <%= @stations.formatted_stations_with_least_bikes %></p>
-<p>Most recently installed station: <%= @stations.formatted_most_recent_station %></p>
-<p>Oldest station: <%= @stations.formatted_oldest_station %></p>
+<head>
+  <link rel = "stylesheet" type = "text/css" href = <%= url("/main.css")%> />
+  <link href=<%= url("/css/bootstrap.min.css") %> rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Bike Share</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Stations<span class="sr-only">(current)</span></a></li>
+          <li><a href="#">Trips</a></li>
+          <li><a href="#">Weather</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Analytics<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/stations-dashboard">Stations</a></li>
+              <li><a href="#">Trips</a></li>
+              <li><a href="#">Weather</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <div class="container">
+    <div class="row">
+      <h5>Total stations: <p><%= @stations.count %></h5>
+    </div>
+    <div class="row">
+      <h5>Average Bikes Available: <p><%= @stations.average_bikes_available %></p></h5>
+    </div>
+    <div class="row">
+      <h5>Most bikes available at a station: <p><%= @stations.most_bikes_at_a_station %></p></h5>
+    </div>
+    <div class="row">
+      <h5>Station(s) with the most bikes: <p><%= @stations.formatted_stations_with_most_bikes %></p></h5>
+    </div>
+    <div class="row">
+      <h5>Fewest bikes available at a station: <p><%= @stations.least_bikes_at_a_station %></p></h5>
+    </div>
+    <div class="row">
+      <h5>Station(s) with the fewest bikes: <p><%= @stations.formatted_stations_with_least_bikes %></p></h5>
+    </div>
+    <div class="row">
+      <h5>Most recently installed station: <p><%= @stations.formatted_most_recent_station %></p></h5>
+    </div>
+    <div class="row">
+      <h5>Oldest station: <p><%= @stations.formatted_oldest_station %></p></h5>
+    </div>
+  </div>
+
+  <a href='/stations'><button class="btn btn-primary">All Stations</button></a>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+</body>

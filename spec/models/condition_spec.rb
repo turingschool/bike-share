@@ -109,8 +109,7 @@ describe Condition do
                   precipitation:  1,
                   zip_code: 95113)
 
-      require 'pry';binding.pry
-      expect(Condition.avg_rides_by_weather(70.0)).to eq(1.5)
+      expect(Condition.avg_rides_by_weather(70.0)).to eq(3.0)
 
     end
   end

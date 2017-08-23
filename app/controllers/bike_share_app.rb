@@ -129,6 +129,27 @@ class BikeShareApp < Sinatra::Base
     redirect "/conditions/#{@condition.id}"
   end
 
+  get '/conditions/temps' do
+    Condition.eager_load(:date)
+    @condition = Condition.all
+    @temp_range = params[:temp_range].to_i
+    erb :'/conditions/temps'
+  end
+
+  get '/conditions/visability' do
+    Condition.eager_load(:date)
+    @condition = Condition.all
+    @temp_range = params[:temp_range].to_i
+    erb :'/conditions/visability'
+  end
+
+  get '/conditions/windspeed' do
+    Condition.eager_load(:date)
+    @condition = Condition.all
+    @temp_range = params[:temp_range].to_i
+    erb :'/conditions/windspeed'
+  end
+
   get '/conditions/:id' do
     @condition = Condition.find(params[:id])
     erb :'conditions/show'
@@ -152,11 +173,10 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/condition-dashboard' do
-    Condition.eager_load(:date)
-    @condition = Condition.all
-    @temp_range = params[:temp_range].to_i
     erb :'/conditions/condition-dashboard'
   end
+
+
 
 
 end

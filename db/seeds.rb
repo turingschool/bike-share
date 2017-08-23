@@ -3,8 +3,6 @@ require 'CSV'
 require 'pry'
 require './app/models/trip'
 require './app/models/subscription_type'
-require './app/models/start_date'
-require './app/models/end_date'
 require './app/models/zip_code'
 require './app/models/city'
 require './app/models/station'
@@ -24,13 +22,11 @@ end
 header = true
 
 Trip.destroy_all
-StartDate.destroy_all
-EndDate.destroy_all
 ZipCode.destroy_all
 SubscriptionType.destroy_all
 
-SubscriptionType.create(subscription_type: 'Subscriber')
-SubscriptionType.create(subscription_type: 'Customer')
+SubscriptionType.create(id: 1, subscription_type: 'Subscriber')
+SubscriptionType.create(id: 2, subscription_type: 'Customer')
 
 
 CSV.foreach('./db/csv/station.csv', :headers => true, :encoding => 'ISO-8859-1') do |row|
@@ -49,18 +45,16 @@ CSV.foreach('./db/csv/station.csv', :headers => true, :encoding => 'ISO-8859-1')
 
 header = true
 Ccsv.foreach('db/csv/trip.csv') do |row|
-  if header == false && row[0].to_i < 6000
-    start_date = StartDate.find_or_create_by(date: get_date(row[2]))
-    end_date = EndDate.find_or_create_by(date: get_date(row[5]))
+  if header == false && row[0].to_i < 16000
       start_station = Station.find_by(name: row[3])
       end_station = Station.find_by(name: row[6])
     trip = Trip.new(duration: row[1],
                     start_station: start_station.id,
                     end_station: end_station.id,
                     bike_id: row[8],
-                    start_date_id: start_date.id,
-                    end_date_id: end_date.id
+                    trip_date: get_date(row[2])
                     )
+
       trip.subscription_type = SubscriptionType.find(compute_subscription_id(row[9]))
       trip.zip_code = ZipCode.find_or_create_by(zip_code: row[10])
       trip.save

@@ -5,8 +5,7 @@ describe "User visits '/trips/trip_new'" do
 
   within ("form") do
     fill_in :duration, with: "66"
-    fill_in :start_date, with: "02/13/2013"
-    fill_in :end_date, with: "02/13/2013"
+    fill_in :trip_date, with: "2/13/2013"
     fill_in :start_station, with: "1"
     fill_in :end_station, with: "2"
     fill_in :bike_id, with: "3"

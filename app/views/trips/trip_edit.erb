@@ -2,8 +2,7 @@
 <h1>Update a trip</h1>
 <input type="hidden" name="_method" value="PUT" />
 <p>duration:<input type='text' name='duration' value="<%= @trip.duration %>"></p><br>
-<p>start date: <input type='text' name='start_date' value="<%= @trip.start_date.date %>"></p><br>
-<p>end date: <input type='text' name= 'end_date' value="<%= @trip.end_date.date %>"></p><br>
+<p>trip date: <input type='text' name='trip_date' value="<%= @trip.trip_date %>"></p><br>
 <p>start station: <input type='text' name='start_station' value="<%=@trip.start_station%>"></p><br>
 <p>end station: <input type='text' name='end_station' value="<%=@trip.end_station%>"></p><br>
 <p>bike id: <input type='text' name='bike_id' value="<%=@trip.bike_id%>"></p><br>

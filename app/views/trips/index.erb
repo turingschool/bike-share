@@ -23,7 +23,7 @@
       <td><%= trip.end_date %></td>
       <td><%= Station.find(trip.end_station_id).subscription_type_id %></td>
       <td><%= trip.bike_id %></td>
-      <td><%= SubscriptionType.find(trip.subscription_type).subscription_type %></td>
+      <td><%= SubscriptionType.find(trip.subscription_type_id).subscription_type %></td>
       <td><%= trip.zip_code %></td>
       <td>
         <form action="/trips/<%= trip.id %>/edit" method="get">

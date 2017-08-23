@@ -1,6 +1,5 @@
 describe Weather do
   describe "Validations" do
-    before { FactoryGirl.build_stub(:Weather) }
 
     it { should validate_presence_of(:date) }
     it { should validate_presence_of(:max_temperature) }
@@ -10,9 +9,19 @@ describe Weather do
     it { should validate_presence_of(:mean_visibility) }
     it { should validate_presence_of(:mean_wind_speed) }
     it { should validate_presence_of(:precipitation) }
-    it { should validate_presence_of(:zip_code) }
   end
   describe "Class Methods" do
-    
-  end
+    before(:each) do
+      date = Date.new("8/29/2013")
+      zip_code = 94107
+      weather = Weather.new(date: date,
+                            max_temperature: 45.2,
+                            mean_temperature: 55.4,
+                            min_temperature: 23.4,
+                            mean_humidity: 12.0,
+                            mean_visibility: 22.5,
+                            mean_wind_speed: 65.2,
+                            precipitation: 43.2)
+    end
+
 end

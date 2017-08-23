@@ -1,6 +1,6 @@
 describe "Weather CRUD" do
   it "has main page" do
-    visit('/condtitions')
+    visit('/conditions')
 
     is_expected.to respond_with 200
     is_expected.to have_content "Conditions By Day:"
@@ -26,9 +26,8 @@ describe "Weather CRUD" do
   it "can show single weather" do
     visit('/conditions')
     click_button(...)
-    weather = Weather.find(params["id"])
 
-    expected(params["id"]).to_eq(5)
+    expected(current_path).to_eq('/conditions/1')
     is_expected.to respond_with 200
     is_expectec.to have_content "Edit Weather"
     is_expected.to have_content weather.date.to_s

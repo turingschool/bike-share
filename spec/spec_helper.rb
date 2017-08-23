@@ -6,7 +6,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec'
 require 'capybara/dsl'
 require 'factory_girl'
-require 'shoulda-matches'
+require 'shoulda-matchers'
 
 Capybara.app = BikeShareApp
 

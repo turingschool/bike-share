@@ -15,7 +15,6 @@
       <a>Visibility(miles): <%= condition.mean_visibility %></a>
       <a>Wind Speed(mph): <%= condition.mean_wind_speed %></a>
       <a>Precipitation(inches): <%= condition.precipitation %></a>
-      <a>Zip Code: <%= condition.zip_code %></a>
       <button href="/conditions/<%= weather.id %>/edit" value="EDIT"/>
       <form href="/conditions/<%= weather.id %>" method="post">
         <input type="hidden" name="_method" value="DELETE"/>

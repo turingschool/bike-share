@@ -3,7 +3,6 @@ require_relative '../app/models/station'
 require_relative '../app/models/city'
 require_relative '../app/models/trip'
 require_relative '../app/models/condition'
-require_relative '../app/helpers/fast_seeder'
 require 'fastercsv'
 require "activerecord-import/base"
 

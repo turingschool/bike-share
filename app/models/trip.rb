@@ -1,5 +1,4 @@
 require_relative "station"
-require_relative "subscription"
 
 class Trip < ActiveRecord::Base
 

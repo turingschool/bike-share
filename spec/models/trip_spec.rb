@@ -1,4 +1,5 @@
 describe Trip do
+
   describe "validations" do
     it "has to have all data fields present" do
       trip = Trip.create(
@@ -6,9 +7,9 @@ describe Trip do
         start_station: 54,
         end_station: 66,
         bike_id: 66,
-        subscription_type_id: 10,
-        start_date_id: 6,
-        end_date_id: 5,
+        subscription_type_id: 1,
+        trip_date: Date.strptime("5/5/2015", "%m/%d/%Y")
+
       )
 
       invalid_trip = Trip.new(
@@ -24,32 +25,49 @@ describe Trip do
   describe "class methods" do
 
     before(:each) do
-      trip = Trip.create(
+
+      SubscriptionType.create(subscription_type: 'Subscriber')
+      SubscriptionType.create(subscription_type: 'Customer')
+      
+      Station.create(
+      name: "Brandon's Station",
+      dock_count: 13,
+      city_id: 1,
+      installation_date: "8/5/2013"
+      )
+      Station.create(
+      name: "Fancy Mike's Station",
+      dock_count: 13,
+      city_id: 1,
+      installation_date: "8/5/2013"
+      )
+
+
+
+      Trip.create(
       duration: 60,
-      start_station: 23,
-      end_station: 66,
+      start_station: 2,
+      end_station: 1,
       bike_id: 66,
-      subscription_type_id: 10,
-      start_date_id: 6,
-      end_date_id: 5,
-    )
-    trip = Trip.create(
+      subscription_type_id: SubscriptionType.find(2),
+      trip_date: Date.strptime("5/5/2015", "%m/%d/%Y")
+      )
+    Trip.create(
     duration: 80,
-    start_station: 54,
-    end_station: 66,
-    bike_id: 66,
-    subscription_type_id: 10,
-    start_date_id: 6,
-    end_date_id: 5,
+    start_station: 1,
+    end_station: 2,
+    bike_id: 67,
+    subscription_type_id: SubscriptionType.find(1),
+    trip_date: Date.strptime("6/5/2015", "%m/%d/%Y")
     )
-    trip = Trip.create(
+
+    Trip.create(
     duration: 80,
-    start_station: 54,
-    end_station: 66,
+    start_station: 1,
+    end_station: 2,
     bike_id: 66,
-    subscription_type_id: 10,
-    start_date_id: 6,
-    end_date_id: 5,
+    subscription_type_id: SubscriptionType.find(2),
+    trip_date: Date.strptime("5/5/2015", "%m/%d/%Y"),
     )
     end
 
@@ -63,13 +81,39 @@ describe Trip do
       expect(Trip.longest).to eq(80)
     end
 
+    it "returns shortest ride" do
+      expect(Trip.shortest).to eq(60)
+    end
 
-  it "returns shortest ride" do
-    expect(Trip.shortest).to eq(60)
-  end
+    it "finds the station with the most trips starting from it" do
+      expect(Trip.station_with_most_starts).to eq("Brandon's Station")
+    end
 
-  it "finds the station with the most trips starting from it" do
-    expect(Trip.station_with_most_starts).to eq(54)
+  it "finds the station with the most trips ending at it" do
+    expect(Trip.station_with_most_ends).to eq("Fancy Mike's Station")
+    end
+
+  it "finds the most ridden bike with the total number of rides for that bike"  do
+  expect(Trip.bike_with_most_rides).to eq([66, 2])
+    end
+
+    it "find the least ridden bike with the total number of rides" do
+    expect(Trip.bike_with_least_rides).to eq([67, 1])
+    end
+
+    it "returns the count of subscribers and customers" do
+      expect(Trip.subscriber_count).to eq([2, 1])
+    end
+
+
+
     end
   end
-end
+
+  # it "returns percentage of subscribers and customers" do
+  #   expect(Trip.subscriber_percentage).to eq([0.66, 0.33])
+  # end
+
+# it "finds the month by month breakdown of total rides with a total by year" do    expect(Trip.trip_count_by_month).to eq(2)
+#   expect(Trip.trip_count_by_year).to eq(3)
+#   end

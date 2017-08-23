@@ -1,7 +1,7 @@
 <h1>All Trips<h1>
 
 <% @trips.each do |trip| %>
-  <h3><a href="/trips/<%= trip.id%>" ><%= trip.start_date.date.to_s %></h3>
+  <h3><a href="/trips/<%= trip.id%>" ><%= trip.trip_date %></h3>
   <p><a href="/trips/<%= trip.id%>/edit" > Edit </p>
   <form action="/trips/<%= trip.id %>" method="post">
     <input type="hidden" name="_method" value="DELETE" />

@@ -18,8 +18,7 @@ class BikeShareApp < Sinatra::Base
     duration: params[:duration],
     start_station: params[:start_station],
     end_station: params[:end_station],
-    start_date: StartDate.find_or_create_by(date: params[:start_date]),
-    end_date: EndDate.find_or_create_by(date: params[:end_date]),
+    trip_date: Date.strptime(params[:trip_date], "%m/%d/%Y"),
     bike_id: params[:bike_id],
     subscription_type: SubscriptionType.find_or_create_by(subscription_type:
     params[:subscription_type]),
@@ -47,11 +46,9 @@ class BikeShareApp < Sinatra::Base
     duration: params[:duration],
     start_station: params[:start_station],
     end_station: params[:end_station],
-    start_date: StartDate.find_or_create_by(date: params[:start_date]),
-    end_date: EndDate.find_or_create_by(date: params[:end_date]),
+    trip_date: Date.strptime(params[:trip_date], "%Y-%d-%m"),
     bike_id: params[:bike_id],
-    subscription_type: SubscriptionType.find_or_create_by(subscription_type:
-    params[:subscription_type]),
+    subscription_type: SubscriptionType.find_or_create_by(subscription_type: params[:subscription_type]),
     zip_code: ZipCode.find_or_create_by(zip_code: params[:zip_code])
     )
 

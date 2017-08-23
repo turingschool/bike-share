@@ -1,0 +1,634 @@
+--- !ruby/object:ActiveRecord::ConnectionAdapters::SchemaCache
+columns:
+  schema_migrations:
+  - &25 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: version
+    table_name: schema_migrations
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &1 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: character varying
+          type: :string
+          limit: 
+          precision: 
+          scale: 
+        - 1043
+        - -1
+        - false
+      : *1
+    'null': false
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  ar_internal_metadata:
+  - &26 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: key
+    table_name: ar_internal_metadata
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &2 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: character varying
+          type: :string
+          limit: 
+          precision: 
+          scale: 
+        - 1043
+        - -1
+        - false
+      : *2
+    'null': false
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - &27 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: value
+    table_name: ar_internal_metadata
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &3 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: character varying
+          type: :string
+          limit: 
+          precision: 
+          scale: 
+        - 1043
+        - -1
+        - false
+      : *3
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - &28 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: created_at
+    table_name: ar_internal_metadata
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &4 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: timestamp without time zone
+          type: :datetime
+          limit: 
+          precision: 
+          scale: 
+        - 1114
+        - -1
+        - false
+      : *4
+    'null': false
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - &29 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: updated_at
+    table_name: ar_internal_metadata
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &5 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: timestamp without time zone
+          type: :datetime
+          limit: 
+          precision: 
+          scale: 
+        - 1114
+        - -1
+        - false
+      : *5
+    'null': false
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  cities:
+  - &30 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: id
+    table_name: cities
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &6 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: bigint
+          type: :integer
+          limit: 8
+          precision: 
+          scale: 
+        - 20
+        - -1
+        - false
+      : *6
+    'null': false
+    default: 
+    default_function: nextval('cities_id_seq'::regclass)
+    collation: 
+    comment: 
+  - &31 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: city
+    table_name: cities
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &7 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: character varying
+          type: :string
+          limit: 
+          precision: 
+          scale: 
+        - 1043
+        - -1
+        - false
+      : *7
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  stations:
+  - &32 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: id
+    table_name: stations
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &8 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: bigint
+          type: :integer
+          limit: 8
+          precision: 
+          scale: 
+        - 20
+        - -1
+        - false
+      : *8
+    'null': false
+    default: 
+    default_function: nextval('stations_id_seq'::regclass)
+    collation: 
+    comment: 
+  - &33 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: name
+    table_name: stations
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &9 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: character varying
+          type: :string
+          limit: 
+          precision: 
+          scale: 
+        - 1043
+        - -1
+        - false
+      : *9
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - &34 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: dock_count
+    table_name: stations
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &10 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: integer
+          type: :integer
+          limit: 
+          precision: 
+          scale: 
+        - 23
+        - -1
+        - false
+      : *10
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - &35 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: installation_date
+    table_name: stations
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &11 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: date
+          type: :date
+          limit: 
+          precision: 
+          scale: 
+        - 1082
+        - -1
+        - false
+      : *11
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - &36 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: city_id
+    table_name: stations
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &12 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: integer
+          type: :integer
+          limit: 
+          precision: 
+          scale: 
+        - 23
+        - -1
+        - false
+      : *12
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  subscription_types:
+  - &37 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: id
+    table_name: subscription_types
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &13 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: bigint
+          type: :integer
+          limit: 8
+          precision: 
+          scale: 
+        - 20
+        - -1
+        - false
+      : *13
+    'null': false
+    default: 
+    default_function: nextval('subscription_types_id_seq'::regclass)
+    collation: 
+    comment: 
+  - &38 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: subscription_type
+    table_name: subscription_types
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &14 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: character varying
+          type: :string
+          limit: 
+          precision: 
+          scale: 
+        - 1043
+        - -1
+        - false
+      : *14
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  trips:
+  - &39 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: id
+    table_name: trips
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &15 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: bigint
+          type: :integer
+          limit: 8
+          precision: 
+          scale: 
+        - 20
+        - -1
+        - false
+      : *15
+    'null': false
+    default: 
+    default_function: nextval('trips_id_seq'::regclass)
+    collation: 
+    comment: 
+  - &40 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: duration
+    table_name: trips
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &16 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: integer
+          type: :integer
+          limit: 
+          precision: 
+          scale: 
+        - 23
+        - -1
+        - false
+      : *16
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - &41 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: start_station
+    table_name: trips
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &17 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: integer
+          type: :integer
+          limit: 
+          precision: 
+          scale: 
+        - 23
+        - -1
+        - false
+      : *17
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - &42 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: end_station
+    table_name: trips
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &18 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: integer
+          type: :integer
+          limit: 
+          precision: 
+          scale: 
+        - 23
+        - -1
+        - false
+      : *18
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - &43 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: bike_id
+    table_name: trips
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &19 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: integer
+          type: :integer
+          limit: 
+          precision: 
+          scale: 
+        - 23
+        - -1
+        - false
+      : *19
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - &44 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: subscription_type_id
+    table_name: trips
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &20 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: integer
+          type: :integer
+          limit: 
+          precision: 
+          scale: 
+        - 23
+        - -1
+        - false
+      : *20
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - &45 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: zip_code_id
+    table_name: trips
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &21 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: integer
+          type: :integer
+          limit: 
+          precision: 
+          scale: 
+        - 23
+        - -1
+        - false
+      : *21
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - &46 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: trip_date
+    table_name: trips
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &22 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: date
+          type: :date
+          limit: 
+          precision: 
+          scale: 
+        - 1082
+        - -1
+        - false
+      : *22
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  zip_codes:
+  - &47 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: id
+    table_name: zip_codes
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &23 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: bigint
+          type: :integer
+          limit: 8
+          precision: 
+          scale: 
+        - 20
+        - -1
+        - false
+      : *23
+    'null': false
+    default: 
+    default_function: nextval('zip_codes_id_seq'::regclass)
+    collation: 
+    comment: 
+  - &48 !ruby/object:ActiveRecord::ConnectionAdapters::PostgreSQLColumn
+    name: zip_code
+    table_name: zip_codes
+    sql_type_metadata: !ruby/marshalable:ActiveRecord::ConnectionAdapters::PostgreSQLTypeMetadata
+      :__v2__:
+      - :@type_metadata
+      - :@oid
+      - :@fmod
+      - :@array
+      ? - &24 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+          sql_type: integer
+          type: :integer
+          limit: 
+          precision: 
+          scale: 
+        - 23
+        - -1
+        - false
+      : *24
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+columns_hash:
+  schema_migrations:
+    version: *25
+  ar_internal_metadata:
+    key: *26
+    value: *27
+    created_at: *28
+    updated_at: *29
+  cities:
+    id: *30
+    city: *31
+  stations:
+    id: *32
+    name: *33
+    dock_count: *34
+    installation_date: *35
+    city_id: *36
+  subscription_types:
+    id: *37
+    subscription_type: *38
+  trips:
+    id: *39
+    duration: *40
+    start_station: *41
+    end_station: *42
+    bike_id: *43
+    subscription_type_id: *44
+    zip_code_id: *45
+    trip_date: *46
+  zip_codes:
+    id: *47
+    zip_code: *48
+primary_keys:
+  schema_migrations: version
+  ar_internal_metadata: key
+  cities: id
+  stations: id
+  subscription_types: id
+  trips: id
+  zip_codes: id
+data_sources:
+  schema_migrations: true
+  ar_internal_metadata: true
+  cities: true
+  stations: true
+  subscription_types: true
+  trips: true
+  zip_codes: true
+version: 20170822225009

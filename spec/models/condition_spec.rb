@@ -77,9 +77,9 @@ describe Condition do
                    mean_humidity: 40,
                    mean_visibility: 20,
                    mean_windspeed: 50,
-                   precipitation:  3,
-                   zip_code: 95113)
-                   precipitation:  3)
+                   precipitation: 3,
+                   zip_code: 95113,
+                   precipitation: 3)
 
 
       Condition.create(date:'2013-08-29',
@@ -89,9 +89,9 @@ describe Condition do
                    mean_humidity: 43,
                    mean_visibility: 22,
                    mean_windspeed: 30,
-                   precipitation:  1,
-                   zip_code: 95113)
-                   precipitation:  1)
+                   precipitation: 1,
+                   zip_code: 95113,
+                   precipitation: 1)
 
       Condition.create(date:'2013-08-29',
                   max_temperature: 70,
@@ -100,9 +100,9 @@ describe Condition do
                   mean_humidity: 40,
                   mean_visibility: 20,
                   mean_windspeed: 50,
-                  precipitation:  3,
-                  zip_code: 95113)
-                  precipitation:  3)
+                  precipitation: 3,
+                  zip_code: 95113,
+                  precipitation: 3)
 
 
       Condition.create(date:'2013-08-30',
@@ -115,7 +115,7 @@ describe Condition do
                   precipitation:  1,
                   zip_code: 95113)
 
-   
+
       expect(Condition.avg_rides_by_weather(70.0)).to eq(1.5)
 
     end

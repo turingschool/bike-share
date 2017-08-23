@@ -1,6 +1,8 @@
 <h1>All Trips</h1>
-
-<a class="btn btn-primary" href="/trips-dashboard"> Trip Dashboard</a>
+<div>
+  <a class="btn btn-primary" href="/trips-dashboard"> Trip Analytics</a>
+  <a class="btn btn-success" href="/trips/new"> Create New Trip</a>
+</div>
 <div>
   <% @trips.each do |trip| %>
     <h2><a href="/trips/<%= trip.id %>">Trip <%= trip.id %></a></h2>

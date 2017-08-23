@@ -63,21 +63,16 @@
             </div>
         </div>
 
-        <h3>Rides by Precipitation</h3>
+        <h3>Rides by Visability</h3>
         <div class="mdl-card__supporting-text">
             <div>
-                <span class="range"><h4>0-0.5in</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_precip_max(0..0.5) %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_precip_min(0..0.5) %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_precip_mean(0..0.5) %></p></div>
+                <span class="range"><h4>0-4 miles</h4></span>
+                <div class="details"><p><b>Total Rides:</b> <%= @condition.sort_sight_max(0..4.1) %></p></div>
             </div>
             <div>
-                <span class="range"><h4>0.5-1in</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_precip_max(0.5..1.0) %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_precip_min(0.5..1.0) %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_precip_mean(0.5..1.0) %></p></div>
+                <span class="range"><h4>4-8 miles</h4></span>
+                <div class="details"><p><b>Total Rides:</b> <%= @condition.sort_sight_max(4.1..8) %></p></div>
             </div>
-        </div>
 </body>
 
 </html>

@@ -34,11 +34,14 @@ end
 
 def fast_seed_condition(data)
   count = 0
+  batch,batch_size = [], 1_000
   data.each do |row|
     puts "Seeded #{count} records (condition)"
     count += 1
 
-    c = Condition.create(date: row[:date],
+    trip = Trip.where(start_date: row[:date]).first.id
+
+    c = Condition.new(date: row[:date],
                          max_temperature: row[:max_temperature],
                          mean_temperature: row[:mean_temperature],
                          min_temperature: row[:min_temperature],
@@ -46,10 +49,13 @@ def fast_seed_condition(data)
                          mean_visibility: row[:mean_visibility],
                          mean_wind_speed: row[:mean_wind_speed],
                          precipitation: row[:precipitation],
+                         trip_id: trip
                          )
-    # binding.pry
-    t = Trip.where(start_date: row[:date]).first
-    ConditionTrip.create(condition_id: c.id, trip_id: t.id)
+    batch << c
+    if batch.size >= batch_size
+      Condition.import batch
+      batch = []
+    end
   end
   # binding.pry
 end
@@ -95,17 +101,13 @@ def conditions
   @loader.sanitize_weather('./db/csv/weather.csv')
 end
 
-def jam
+def associate_trips
   count = 0
   Trip.all.each do |trip|
-    puts "Made #{count} relations"
+    puts "Associating trip with conditions #{count}"
     count += 1
-    # binding.pry
-    c_id = Condition.where(date: trip[:start_date]).first.id
-    ConditionTrip.where("condition_id = #{c_id}").each do |record|
-      record.update_attribute(:trip_id, trip.id)
-      binding.pry
-    end
+    condition = Condition.where(date: trip[:start_date]).first.id
+    trip.update(condition_id: condition)
   end
 end
 
@@ -113,7 +115,7 @@ def run
   fast_seed_station(stations)
   fast_seed_trip(trips)
   fast_seed_condition(conditions)
-  # jam
+  associate_trips
 end
 
 run

@@ -35,4 +35,24 @@ class Station < ActiveRecord::Base
     Station.order(:installation_date).first
   end
 
+  def number_of_rides_started_at_this_station(station_id)
+    stations = Trip.group(:start_station_id).count(:id)
+    stations[station_id]
+  end
+
+  def number_of_rides_ended_at_this_station(station_id)
+    stations = Trip.group(:end_station_id).count(:id)
+    stations[station_id]
+  end
+
+  def most_frequent_destination_station(station_id)
+    station = Trip.where(start_station_id: station_id).group(:end_station_id).order('count_id DESC').count(:id).first
+    Station.find(station[0])[:name]
+  end
+
+  def most_frequent_origination_station(station_id)
+    station = Trip.where(end_station_id: station_id).group(:start_station_id).order('count_id DESC').count(:id).first
+    Station.find(station[0])[:name]
+  end
+
 end

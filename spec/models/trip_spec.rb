@@ -121,12 +121,15 @@ describe Trip do
       it "returns a single date with the lowest number of trips and a count" do
         expect(Trip.fewest_trips_by_date).to eq(["2014-06-05", 1])
       end
-      it "returns a count by date by zip code" do
-        count_1 = Trip.find_by_date("5/5/2015")
-        count_2 = Trip.find_by_date("6/5/2014", 94207)
+      it "returns a count by date" do
+        date_array = ["5/5/2015", "5/6/2014"]
+        count_1 = Trip.count_by_date("5/5/2015")
+        count_2 = Trip.count_by_date("5/6/2014")
+        count_3 = Trip.count_by_date(date_array)
 
         expect(count_1).to eq(2)
         expect(count_2).to eq(1)
+        expect(count_3).to eq(3)
       end
     end
   end

@@ -28,5 +28,29 @@ describe Station do
 
       expect(Station.average_bikes_available).to eq(15)
     end
+    it "can find the station with the most bikes" do
+      station1 = Station.create(name: "Test", dock_count: 10, city_id: 1, installation_date: "8/5/2013")
+      station2 = Station.create(name: "Test 2", dock_count: 20, city_id: 1, installation_date: "8/2/2013")
+
+      expect(Station.stations_with_most_bikes).to include(station2)
+    end
+    it "can find the station with the least bikes" do
+      station1 = Station.create(name: "Test", dock_count: 10, city_id: 1, installation_date: "8/5/2013")
+      station2 = Station.create(name: "Test 2", dock_count: 20, city_id: 1, installation_date: "8/2/2013")
+
+      expect(Station.stations_with_least_bikes).to include(station1)
+    end
+    it "can find the station installed most recently" do
+      station1 = Station.create(name: "Test", dock_count: 10, city_id: 1, installation_date: "8/5/2013")
+      station2 = Station.create(name: "Test 2", dock_count: 20, city_id: 1, installation_date: "8/2/2013")
+
+      expect(Station.most_recent_station).to include(station1)
+    end
+    it "can find the oldest station" do
+      station1 = Station.create(name: "Test", dock_count: 10, city_id: 1, installation_date: "8/5/2013")
+      station2 = Station.create(name: "Test 2", dock_count: 20, city_id: 1, installation_date: "8/2/2013")
+
+      expect(Station.oldest_station).to include(station2)
+    end
   end
 end

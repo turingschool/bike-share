@@ -1,3 +1,4 @@
+require 'pry'
 class BikeShareApp < Sinatra::Base
   include WillPaginate::Sinatra::Helpers
 
@@ -89,9 +90,10 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations' do
-    city_name = params["city"]
+    city_name = params["name"]
     city = City.find_or_create_by(city: city_name)
     station = Station.create(params["station"])
+    binding.pry
     redirect "/stations/#{station.id}"
   end
 

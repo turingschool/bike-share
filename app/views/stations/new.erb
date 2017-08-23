@@ -21,8 +21,8 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li class="active"><a href="/stations">Stations<span class="sr-only">(current)</span></a></li>
-          <li><a href="#">Trips</a></li>
-          <li><a href="#">Weather</a></li>
+          <li><a href="/trips">Trips</a></li>
+          <li><a href="/weather">Weather</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
@@ -41,18 +41,18 @@
     <h1>Create a New Station</h1>
   </header>
   <div class="spacer">
-    <form action="/stations" method="post">
+    <form action="/stations" method="POST">
       <div class="row forminput">
         <h4>Name:</h4>
-        <input type="textfield" name="station[name]">
+        <input type="text" name="station[name]" id="name">
       </div>
       <div class="row forminput">
         <h4>Dock Count:</h4>
-        <input type="textfield" name="station[dock_count]">
+        <input type="text" name="station[dock_count]" id="dockcount">
       </div>
       <div class="row forminput">
         <h4>City:</h4>
-        <select name="station[city_id]">
+        <select name="station[city_id]" id="cities">
           <% @cities.each do |city| %>
             <option value=<%= city.id %>><%= city.city %></option>
           <% end %>
@@ -60,7 +60,7 @@
       </div>
       <div class="row forminput">
         <h4>Installation Date:</h4>
-        <input type="textfield" name="station[installation_date]">
+        <input type="text" name="station[installation_date]" id="installdate">
       </div>
       <div class="spacer">
         <input class="btn btn-success" type="submit" value="Create New Station" />
@@ -72,6 +72,6 @@
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>
 

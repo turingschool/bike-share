@@ -1,5 +1,6 @@
 <h1>All Trips</h1>
 
+<a class="btn btn-primary" href="/trips-dashboard"> Trip Dashboard</a>
 <div>
   <% @trips.each do |trip| %>
     <h2><a href="/trips/<%= trip.id %>">Trip <%= trip.id %></a></h2>

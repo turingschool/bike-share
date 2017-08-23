@@ -7,7 +7,23 @@ require_relative '../app/models/condition'
 require 'fastercsv'
 require 'activerecord-import'
 
-loader = CSVLoader.new
+def run(record_one, record_two, record_three)
+  loader = CSVLoader.new
+  dataset_1 = loader.sanitize_station(record_one)
+  dataset_2 = loader.sanitize_weather(record_two)
+  dataset_3 = loader.sanitize_trips(record_three)
+
+  batch,batch_size = [], 1_000
+  CSV.foreach(dataset_1, :headers => true) do |row|
+    batch << Station.new(row)
+
+    if batch.size >= batch_size
+      Station.import batch
+      batch = []
+    end
+  end
+  Station.import batch
+end
 
 station_data = loader.sanitize_station('./db/csv/station.csv')
 binding.pry

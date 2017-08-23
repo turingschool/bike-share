@@ -102,10 +102,10 @@ RSpec.describe Trip do
       Trip.create(duration: 20, start_date: start_date, start_station_id: 1, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345)
       Trip.create(duration: 20, start_date: start_date, start_station_id: 2, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345)
 
-      expect(Trip.station_with_most_rides_as_starting_place).to eq(station_1)
+      expect(Trip.station_with_most_rides_as_starting_place).to eq(station_1.name)
     end
 
-    it "returns station with most rides as a starting place" do
+    it "returns station with most rides as an ending place" do
       start_date = DateTime.new(2001,2,3,4,5,6)
       end_date = DateTime.new(2001,2,3,4,5,7)
       date = DateTime.new(2000,2,3,4,5,7)
@@ -115,7 +115,7 @@ RSpec.describe Trip do
       Trip.create(duration: 20, start_date: start_date, start_station_id: 2, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345)
       Trip.create(duration: 20, start_date: start_date, start_station_id: 2, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345)
 
-      expect(Trip.station_with_most_rides_as_starting_place).to eq(station_2)
+      expect(Trip.station_with_most_rides_as_ending_place).to eq(station_2.name)
     end
 
     it 'returns the most ridden bike with total number of rides for that bike' do
@@ -159,27 +159,27 @@ RSpec.describe Trip do
     end
 
     it 'returns the date with the highest number of trips' do
-      start_date_1 = DateTime.new(2001,2,3,4,5,6)
-      start_date_2 = DateTime.new(2001,2,3,4,5,6)
-      start_date_3 = DateTime.new(2001,2,3,4,5,7)
+      start_date_1 = DateTime.new(2001,2,3)
+      start_date_2 = DateTime.new(2001,1,3)
+      start_date_3 = DateTime.new(2001,3,3)
       end_date = DateTime.new(2001,2,3,4,5,8)
       Trip.create(duration: 10, start_date: start_date_1, start_station_id: 1, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Customer", zip_code: 12345)
       Trip.create(duration: 20, start_date: start_date_2, start_station_id: 2, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Subscriber", zip_code: 12345)
       Trip.create(duration: 20, start_date: start_date_3, start_station_id: 2, end_date: end_date, end_station_id: 2, bike_id: 2, subscription_type: "Subscriber", zip_code: 12345)
 
-      expect(Trip.date_with_highest_number_of_trips).to eq(3)
+      expect(Trip.date_with_highest_number_of_trips).to eq(start_date_2)
     end
 
     it 'returns the date with the lowest number of trips' do
-      start_date_1 = DateTime.new(2001,2,3,4,5,6)
-      start_date_2 = DateTime.new(2001,2,3,4,5,6)
-      start_date_3 = DateTime.new(2001,2,3,4,5,7)
+      start_date_1 = DateTime.new(2001,2,3)
+      start_date_2 = DateTime.new(2001,1,3)
+      start_date_3 = DateTime.new(2001,3,3)
       end_date = DateTime.new(2001,2,3,4,5,8)
       Trip.create(duration: 10, start_date: start_date_1, start_station_id: 1, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Customer", zip_code: 12345)
       Trip.create(duration: 20, start_date: start_date_2, start_station_id: 2, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: "Subscriber", zip_code: 12345)
       Trip.create(duration: 20, start_date: start_date_3, start_station_id: 2, end_date: end_date, end_station_id: 2, bike_id: 2, subscription_type: "Subscriber", zip_code: 12345)
 
-      expect(Trip.date_with_lowest_number_of_trips).to eq(3)
+      expect(Trip.date_with_lowest_number_of_trips).to eq(start_date_2)
     end
 
     it 'returns month by month breakdown' do

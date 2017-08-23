@@ -16,13 +16,6 @@ class BikeShareApp < Sinatra::Base
     erb :'stations/index'
   end
 
-  get '/stations' do
-    Station.connection
-    @pages = Station.paginate(page: params[:page], :per_page => 30)
-    @stations = Station.order('start_date DESC').page(params[:page])
-    erb :'stations/index'
-  end
-
   get '/stations/new' do
     erb :'stations/new'
   end
@@ -36,6 +29,13 @@ class BikeShareApp < Sinatra::Base
     erb :'stations/dashboard'
   end
 #weather conditions
+
+  get '/conditions' do
+    Condition.connection
+    @pages = Condition.paginate(page: params[:page])
+    @conditions = Condition.order('date DESC').page(params[:page])
+    erb :"conditions/index"
+  end
   get '/conditions' do
     @conditions = Condition.all
     erb :'conditions/index'
@@ -68,6 +68,13 @@ class BikeShareApp < Sinatra::Base
   delete '/conditions/:id' do
     Condition.destroy(params[:id])
     redirect '/conditions'
+  end
+
+  get '/trips' do
+    Trip.connection
+    @pages = Trip.paginate(page: params[:page])
+    @trips = Trip.order('start_date DESC').page(params[:page])
+    erb :"trips/index"
   end
 
   get '/trips' do

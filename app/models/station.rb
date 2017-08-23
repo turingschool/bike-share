@@ -7,6 +7,11 @@ class Station < ActiveRecord::Base
   validates :city, presence: true
   validates :installation_date, presence: true
 
+
+  def self.per_page
+    30
+  end
+
   def self.total_stations
     count
   end

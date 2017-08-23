@@ -13,7 +13,8 @@
           <a class="btn btn-warning formbtn" href="/stations/<%= @station.id%>/edit"> Edit this Station</a>
           <form  action="/stations/<%= @station.id%>" method="POST">
             <input type="hidden" name="_method" value="DELETE">
-            <input class="btn btn-danger formbtn" type="submit" value="Delete this Station">
+            <input class="btn btn-danger formbtn" type="submit" value="Delete this Station"><br/>
+            <a class="btn btn-success formbtn" href="/stations/new"> Create a New Station</a>
           </form>
         </div>
       </div>

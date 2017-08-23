@@ -1,3 +1,5 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
 require_relative "station"
 
 class Trip < ActiveRecord::Base

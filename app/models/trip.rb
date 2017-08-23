@@ -14,6 +14,13 @@ class Trip < ActiveRecord::Base
   validates :subscription_type_id, presence: true
   validates :trip_date, presence: true
 
+  def get_start_station
+    Station.find(start_station).name
+  end
+
+  def get_end_station
+    Station.find(end_station).name
+  end
 
   def self.find_thirty_trips(number_of_records = 30)
     first(number_of_records)
@@ -102,6 +109,12 @@ class Trip < ActiveRecord::Base
     parse_string += "<p> #{Date::MONTHNAMES[date.month]} #{date.year} had #{trips} trips </p>"
     end
     parse_string
+  end
+
+  def self.count_by_date(date, zip_code = 94107)
+     joins(:zip_code)
+     .where("zip_code = ? and trip_date IN (?)", zip_code, date)
+     .count
   end
 
 end

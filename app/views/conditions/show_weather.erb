@@ -4,19 +4,18 @@
     <meta charset="utf-8">
   </head>
   <body>
-    <header><h1>Edit Weather</h1></header>
     <button href='/conditions'>back to main page</button>
     <section>
-      <a>Date: <%= condition.date %></a>
-      <a>Max Temperature(&#176;F): <%= condition.max_temperature %></a>
-      <a>Average Temperature(&#176;F): <%= condition.mean_temperature %></a>
-      <a>Min Temperature(&#176;F): <%= condition.min_temperature %></a>
-      <a>Humidity: <%= condition.mean_humidity %>&#37;</a>
-      <a>Visibility(miles): <%= condition.mean_visibility %></a>
-      <a>Wind Speed(mph): <%= condition.mean_wind_speed %></a>
-      <a>Precipitation(inches): <%= condition.precipitation %></a>
-      <button href="/conditions/<%= weather.id %>/edit" value="EDIT"/>
-      <form href="/conditions/<%= weather.id %>" method="post">
+      <a>Date: <%= @condition.date %></a>
+      <a>Max Temperature(&#176;F): <%= @condition.max_temperature %></a>
+      <a>Average Temperature(&#176;F): <%= @condition.mean_temperature %></a>
+      <a>Min Temperature(&#176;F): <%= @condition.min_temperature %></a>
+      <a>Humidity: <%= @condition.mean_humidity %>&#37;</a>
+      <a>Visibility(miles): <%= @condition.mean_visibility %></a>
+      <a>Wind Speed(mph): <%= @condition.mean_wind_speed %></a>
+      <a>Precipitation(inches): <%= @condition.precipitation %></a>
+      <button href="/conditions/<%= @condition.id %>/edit" value="EDIT"/>
+      <form href="/conditions/<%= @condition.id %>" method="post">
         <input type="hidden" name="_method" value="DELETE"/>
         <input type="submit" value="DELETE"/>
       </form>

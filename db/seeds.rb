@@ -34,11 +34,17 @@ CSV.foreach('./db/csv/station.csv', :headers => true, :encoding => 'ISO-8859-1')
 
   city = City.find_or_create_by(city: row["city"])
 
+  name = "Stanford in Redwood City" if name == "Broadway at Main"
+  name = "Santa Clara County Civic Center" if name == "San Jose Government Center"
+  name = "Post at Kearney" if name == "Post at Kearny"
+  name = "Washington at Kearney" if name == "Washington at Kearny"
+
   Station.create(name: row["name"],
                  dock_count: row["dock_count"],
                  installation_date: Date.strptime(row["installation_date"], "%m/%d/%Y"),
                  city_id: city.id
                  )
+  end
 
   puts "There are now #{Station.count} rows in the stations table."
 
@@ -46,7 +52,7 @@ end
 
 header = true
 Ccsv.foreach('db/csv/trip.csv') do |row|
-  if header == false && row[0].to_i < 16000
+  if header == false && row[0].to_i < 6000
       start_station = Station.find_or_create_by(name: row[3])
       end_station = Station.find_or_create_by(name: row[6])
     trip = Trip.new(duration: row[1],

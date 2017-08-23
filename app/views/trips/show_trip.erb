@@ -1,9 +1,86 @@
-<h1>Trip: <%= @trip.id.to_s%></h1>
+<head>
+  <link rel = "stylesheet" type = "text/css" href = <%= url("/main.css")%> />
+  <link href=<%= url("/css/bootstrap.min.css") %> rel="stylesheet">
+</head>
 
-<p>duration: <%= @trip.duration%> minutes </p>
-<p>date: <%= @trip.trip_date%></p>
-<p>start station: <%= @trip.start_station%></p>
-<p>end station: <%= @trip.end_station%></p>
-<p>bike number: <%= @trip.bike_id%></p>
-<p>subscription type: <%= @trip.subscription_type.subscription_type%></p>
-<p>zip code: <%= @trip.zip_code.zip_code%></p>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Bike Share</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/stations">Stations</a></li>
+          <li class="active"><a href="/trips">Trips<span class="sr-only">(current)</span></a></li>
+          <li><a href="/weather">Weather</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Analytics<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/stations/dashboard">Stations</a></li>
+              <li><a href="/trips/dashboard">Trips</a></li>
+              <li><a href="/weather/dashboard">Weather</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <header>
+      <h1>Trip: <%= @trip.id.to_s%></h1>
+    </header>
+
+    <div class="spacer">
+
+      <div class="row">
+        <h4>duration: <%= @trip.duration%> minutes </h4>
+      </div>
+
+      <div class="row">
+        <h4>date: <%= @trip.trip_date%></h4>
+      </div>
+
+      <div class="row">
+        <h4>start station: <%= @trip.start_station%></h4>
+      </div>
+
+      <div class="row">
+        <h4>end station: <%= @trip.end_station%></h4>
+      </div>
+
+      <div class="row">
+        <h4>bike number: <%= @trip.bike_id%></h4>
+      </div>
+
+      <div class="row">
+        <h4>subscription type: <%= @trip.subscription_type.subscription_type%></h4>
+      </div>
+
+      <div class="row">
+        <h4>zip code: <%= @trip.zip_code.zip_code%></h4>
+      </div>
+    </div>
+
+    <a class="btn btn-warning" href="/trips/<%= @trip.id %>/edit">Edit</a><br></br>
+
+    <form action="/trips/<%= @trip.id %>" class="delete-form" method="POST">
+      <input name="_method" type="hidden" value="DELETE"/>
+      <input class="btn btn-danger" type="submit" value="Delete"/>
+    </form>
+
+    <a href='/trips'><button class="btn btn-primary">All Trips</button></a>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  </body>

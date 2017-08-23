@@ -9,22 +9,22 @@
     <section>
       <form>
         <a>Date:</a>
-        <input type="text" name="date" value="<%= condition.date %>"/></br>
+        <input type="text" name="date" value="<%= @condition.date %>"/></br>
         <a>Max Temperature(&#176;F)</a>
-        <input type="text" name="max_temperature" value="<%= condition.max_temperature %>"/></br>
+        <input type="text" name="max_temperature" value="<%= @condition.max_temperature %>"/></br>
         <a>Average Temperature(&#176;F)</a>
-        <input type="text" name="mean_temperature" value="<%= condition.mean_temperature %>"/></br>
+        <input type="text" name="mean_temperature" value="<%= @condition.mean_temperature %>"/></br>
         <a>Min Temperature(&#176;F)</a>
-        <input type="text" name="min_temperature" value="<%= condition.min_temperature %>"/></br>
+        <input type="text" name="min_temperature" value="<%= @condition.min_temperature %>"/></br>
         <a>Humidity</a>
-        <input type="text" name="mean_humidity" value="<%= condition.mean_humidity %>"/></br>
+        <input type="text" name="mean_humidity" value="<%= @condition.mean_humidity %>"/></br>
         <a>Visibility(miles)</a>
-        <input type="text" name="mean_visibility" value="<%= condition.mean_visibility %>"/></br>
+        <input type="text" name="mean_visibility" value="<%= @condition.mean_visibility %>"/></br>
         <a>Wind Speed(mph)</a>
-        <input type="text" name="mean_wind_speed" value="<%= condition.mean_wind_speed %>"/></br>
+        <input type="text" name="mean_wind_speed" value="<%= @condition.mean_wind_speed %>"/></br>
         <a>Precipitation(inches)</a>
-        <input type="text" name="precipitation" value="<%= condition.precipitation %>"/></br>
+        <input type="text" name="precipitation" value="<%= @condition.precipitation %>"/></br>
+        <input type="submit" action="/conditions" method="post" value="UPDATE"/>
       </form>
-      <input type="submit" action="/conditions" method="post" value="UPDATE"/>
   </body>
 </html>

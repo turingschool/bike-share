@@ -18,7 +18,8 @@ class Weather < ActiveRecord::Base
     total_trips = set.reduce(0) do |total, condition|
       total += Trip.count_by_date(condition.date)
     end
-    total_trips / set.count
+    return total_trips / set.count if set.count > 0
+    return total_trips if set.count == 0
   end
 
   def self.find_all_with_max_temp_in_range(low, high)

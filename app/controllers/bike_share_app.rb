@@ -18,7 +18,6 @@ class BikeShareApp < Sinatra::Base
     erb :"trips/trip_new"
   end
 
-
   post '/trips' do
     trip = Trip.find_or_create_by(
     duration: params[:duration],
@@ -33,7 +32,6 @@ class BikeShareApp < Sinatra::Base
 
     redirect"/trips/#{trip.id}"
   end
-
 
   get '/trips/:id' do
     @trip = Trip.find(params["id"])
@@ -80,7 +78,7 @@ class BikeShareApp < Sinatra::Base
     erb :'stations/new'
   end
 
-  get '/stations-dashboard' do
+  get '/stations/dashboard' do
     @stations = Station.all
     erb :'stations/dashboard'
   end
@@ -91,9 +89,10 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations' do
-    city_name = params["city"]
+    city_name = params["name"]
     city = City.find_or_create_by(city: city_name)
     station = Station.create(params["station"])
+    binding.pry
     redirect "/stations/#{station.id}"
   end
 
@@ -180,6 +179,7 @@ class BikeShareApp < Sinatra::Base
 
   post '/conditions' do
     @condition = Weather.create(params)
+    binding.pry
     redirect '/conditions'
   end
 

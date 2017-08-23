@@ -1,12 +1,71 @@
-<h1>All Trips<h1>
+<head>
+  <link rel = "stylesheet" type = "text/css" href = <%= url("/main.css")%>
+  />
+  <link href=<%=
+  url("/css/bootstrap.min.css") %>
+  rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button"
+        class="navbar-toggle collasped"
+        data-toggle="collapse"
+        data-target="#bs-example-navbar-coll-apse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Bike Share</a>
+    </div>
 
-<% @trips.each do |trip| %>
-  <h3><a href="/trips/<%= trip.id%>" ><%= trip.trip_date %></h3>
-  <p><a href="/trips/<%= trip.id%>/edit" > Edit </p>
-  <form action="/trips/<%= trip.id %>" method="post">
-    <input type="hidden" name="_method" value="DELETE" />
-    <input type="submit" value="Delete" />
-  </form>
-<% end %>
 
-<%= will_paginate @trips %>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/stations">Stations</a></li>
+        <li class="active"><a href="/trips">Trips<span class="sr-only">(current)</span></a></li>
+        <li><a href="/weather">Weather</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Analytics<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/stations/dashboard">Stations</a></li>
+            <li><a href="/trips/dashboard">Trips</a></li>
+            <li><a href="/weather/dashboard">Weather</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <header class="spacer">
+    <h1>All Trips</h1>
+  </header>
+  <a href="/trips/new"><button class="btn btn-primary">Create New Trip</button></a>
+    <div class="trips spacer">
+      <table class="table text-center">
+        <% @trips.each do |trip| %>
+        <tr>
+          <td><h4><%= trip.trip_date %></h4></td>
+
+          <td><a href="/trips/<%= trip.id%>"><button class="btn btn-info">More Info</button></a></td>
+          <td><a href="/trips/<%= trip.id%>/edit"><button class="btn btn-success"> Edit</button></td>
+            <td>
+              <form action="/trips/<%= trip.id %>" method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                <button type="submit"
+                class="btn btn-danger">Delete</button>
+              </form>
+            </td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+      <div class="digg_pagination">
+      <%= will_paginate @trips %>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>

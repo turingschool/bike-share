@@ -41,6 +41,16 @@ div {
   padding: 2% 0;
 }
 
+.trips > table {
+  width: 75%;
+  margin: auto;
+  color: #ddd;
+}
+
+.trips > table > td {
+  padding: 2% 0;
+}
+
 .spacer {
   margin: 2% 0;
 }

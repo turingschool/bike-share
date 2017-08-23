@@ -1,0 +1,19 @@
+<h1>All Stations</h1>
+<div>
+  <a class="btn btn-primary" href="/station-dashboard"> Station Analytics</a>
+  <a class="btn btn-success" href="/stations/new"> Create New Station</a>
+</div>
+
+<div class="container-fluid">
+
+<div class="row align-items-center">
+   <div class="col"><% @stations.each do |station| %>
+    <h2><%= station.name %></a></h2>
+    <p>Dock Count: <%= station.dock_count %></p>
+    <p>City: <%= station.city %></p>
+    <p>Installed On: <%= station.installation_date %></p>
+    <a class="btn btn-info" href="/stations/<%= station.id %>">View Station</a>
+  <% end %>
+    </div>
+</div>
+</div>

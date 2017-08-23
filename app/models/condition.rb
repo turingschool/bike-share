@@ -1,5 +1,6 @@
+require 'pry'
 class Condition < ActiveRecord::Base
-
+  # 
   # validates :date, presence: true
   # validates :max_temperature_f, presence: true
   # validates :mean_temperature_f, presence: true

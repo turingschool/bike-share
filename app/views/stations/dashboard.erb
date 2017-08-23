@@ -11,4 +11,4 @@
 <ul>
   <li><a href="/stations/new">Create a Station</a></li>
 </ul>
-<p><%= line_chart Station.group_by_week(:installation_date).count %></p>
+<p><%= pie_chart Station.group(:city).count %></p>

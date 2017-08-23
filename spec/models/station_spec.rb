@@ -93,11 +93,41 @@ RSpec.describe Station do
       expect(Station.oldest_station.name).to eq("StationOne")
     end
 
+    it "returns date with highest number of trips" do
+      date1 = DateTime.new(2001,2,3,4,5,6)
+      date2 = DateTime.new(2002,2,3)
+      condition = Condition.create(date: date2, max_temperature: 45, mean_temperature: 50, min_temperature: 20, mean_humidity: 3, mean_visibility: 3, mean_wind_speed: 20, precipitation: 1)
+      station = Station.create(name: "StationOne", city_id: 1, dock_count: 10, installation_date: date1)
+      Trip.create(duration: 10, start_date: date2, start_station_id: 1, end_date: date2, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345, condition_id: condition.id)
+      Trip.create(duration: 10, start_date: date2, start_station_id: 1, end_date: date2, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345, condition_id: condition.id)
+      Trip.create(duration: 10, start_date: date1, start_station_id: 1, end_date: date1, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345, condition_id: condition.id)
 
+      expect(station.date_with_most_trips(1)).to eq(date2)
+    end
 
+    it "returns most frequent bike id for trips started at this station" do
+      date1 = DateTime.new(2001,1,2)
+      date2 = DateTime.new(2002,2,3)
+      condition = Condition.create(date: date2, max_temperature: 45, mean_temperature: 50, min_temperature: 20, mean_humidity: 3, mean_visibility: 3, mean_wind_speed: 20, precipitation: 1)
+      station = Station.create(name: "StationOne", city_id: 1, dock_count: 10, installation_date: date1)
+      Trip.create(duration: 10, start_date: date2, start_station_id: 1, end_date: date2, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345, condition_id: condition.id)
+      Trip.create(duration: 10, start_date: date2, start_station_id: 1, end_date: date2, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345, condition_id: condition.id)
+      Trip.create(duration: 10, start_date: date2, start_station_id: 1, end_date: date2, end_station_id: 2, bike_id: 2, subscription_type: "Type", zip_code: 12345, condition_id: condition.id)
 
+      expect(station.most_common_bike_id(station.id)).to eq(1)
+    end
 
+    it "returns most frequent zipcode for users started at this station" do
+      date1 = DateTime.new(2001,1,2)
+      date2 = DateTime.new(2002,2,3)
+      condition = Condition.create(date: date2, max_temperature: 45, mean_temperature: 50, min_temperature: 20, mean_humidity: 3, mean_visibility: 3, mean_wind_speed: 20, precipitation: 1)
+      station = Station.create(name: "StationOne", city_id: 1, dock_count: 10, installation_date: date1)
+      Trip.create(duration: 10, start_date: date2, start_station_id: 1, end_date: date2, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345, condition_id: condition.id)
+      Trip.create(duration: 10, start_date: date2, start_station_id: 1, end_date: date2, end_station_id: 2, bike_id: 1, subscription_type: "Type", zip_code: 12345, condition_id: condition.id)
+      Trip.create(duration: 10, start_date: date2, start_station_id: 1, end_date: date2, end_station_id: 2, bike_id: 2, subscription_type: "Type", zip_code: 44444, condition_id: condition.id)
 
+      expect(station.most_frequent_zip_code_for_users(station.id)).to eq(12345)
+    end
 
   end
 end

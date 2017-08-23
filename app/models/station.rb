@@ -55,4 +55,20 @@ class Station < ActiveRecord::Base
     Station.find(station[0])[:name]
   end
 
+  def date_with_most_trips(station_id)
+    trips = Trip.where(start_station_id: station_id)
+    date = trips.group(:start_date).order("count_id DESC").limit(1).count(:id).keys.first # if you .to_date this is returns just the date but in a different format
+    date.to_date
+  end
+
+  def most_frequent_zip_code_for_users(station_id)
+    trips = Trip.where(start_station_id: station_id)
+    zip_code = trips.group(:zip_code).order("count_id DESC").count(:id).keys.first
+  end
+
+  def most_common_bike_id(station_id)
+    trips = Trip.where(start_station_id: station_id)
+    bike_id = trips.group(:bike_id).order("count_id DESC").count(:id).keys.first
+  end
+
 end

@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-lg-12 text-center">
+    <h1>Weather Dashboard</h1>
+    <p class="lead">Rides by Visability</p>
+    <br>
+    <a href="/condition-dashboard"><button type="button" class="btn btn-secondary">Return to Conditions Dashboard</button></a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-2 text-center">
+    <ul class="list-group">
+      <li class="list-group-item active"><h4>1-4 mph</h4></li>
+      <li class="list-group-item"><p><b>Max:</b> <%= @condition.sort_sight_max(1..4) %></p></li>
+      <li class="list-group-item"><p><b>Min:</b> <%= @condition.sort_sight_min(1..4) %></p></li>
+      <li class="list-group-item"><p><b>Avg:</b> <%= @condition.sort_sight_mean(1..4) %></p></li>
+    </ul>
+  </div>
+  <div class="col-sm-2 text-center">
+    <ul class="list-group">
+      <li class="list-group-item active"><h4>5-8 mph</h4></li>
+      <li class="list-group-item"><p><b>Max:</b> <%= @condition.sort_sight_max(5..8) %></p></li>
+      <li class="list-group-item"><p><b>Min:</b> <%= @condition.sort_sight_min(5..8) %></p></li>
+      <li class="list-group-item"><p><b>Avg:</b> <%= @condition.sort_sight_mean(5..8) %></p></li>
+    </ul>
+  </div>
+  <div class="col-sm-2 text-center">
+    <ul class="list-group">
+      <li class="list-group-item active"><h4>9-12 mph</h4></li>
+      <li class="list-group-item"><p><b>Max:</b> <%= @condition.sort_sight_max(9..12) %></p></li>
+      <li class="list-group-item"><p><b>Min:</b> <%= @condition.sort_sight_min(9..12) %></p></li>
+      <li class="list-group-item"><p><b>Avg:</b> <%= @condition.sort_sight_mean(9..12) %></p></li>
+    </ul>
+  </div>
+  <div class="col-sm-2 text-center">
+    <ul class="list-group">
+      <li class="list-group-item active"><h4>13-16 mph</h4></li>
+      <li class="list-group-item"><p><b>Max:</b> <%= @condition.sort_sight_max(13..16) %></p></li>
+      <li class="list-group-item"><p><b>Min:</b> <%= @condition.sort_sight_min(13..16) %></p></li>
+      <li class="list-group-item"><p><b>Avg:</b> <%= @condition.sort_sight_mean(13..16) %></p></li>
+    </ul>
+  </div>
+  <div class="col-sm-2 text-center">
+    <ul class="list-group">
+      <li class="list-group-item active"><h4>17-20 mph</h4></li>
+      <li class="list-group-item"><p><b>Max:</b> <%= @condition.sort_sight_max(17..20) %></p></li>
+      <li class="list-group-item"><p><b>Min:</b> <%= @condition.sort_sight_min(17..20) %></p></li>
+      <li class="list-group-item"><p><b>Avg:</b> <%= @condition.sort_sight_mean(17..20) %></p></li>
+    </ul>
+  </div>
+  <div class="col-sm-2 text-center">
+    <ul class="list-group">
+      <li class="list-group-item active"><h4>21-24 mph</h4></li>
+      <li class="list-group-item"><p><b>Max:</b> <%= @condition.sort_sight_max(21..24) %></p></li>
+      <li class="list-group-item"><p><b>Min:</b> <%= @condition.sort_sight_min(21..24) %></p></li>
+      <li class="list-group-item"><p><b>Avg:</b> <%= @condition.sort_sight_mean(21..24) %></p></li>
+    </ul>
+  </div>  
+</div>

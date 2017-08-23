@@ -1,78 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <h1>Weather Dashboard</h1>
+        <p class="lead">A comprehensive report.</p>
+    </div>
+  </div>
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/overwrite.css" rel="stylesheet">
-</head>
+<div class="container" id="button">
+    <a href="/conditions/temps"><button type="button" class="btn btn-primary btn-block">Rides by Temperature</button></a>
+    <br>
+    <a href="/conditions/visability"><button type="button" class="btn btn-primary btn-block">Rides by Visability</button></a>
+    <br>
+    <a href="/conditions/windspeed"><button type="button" class="btn btn-primary btn-block">Rides by Wind Speed</button></a>
 
-<body>
-       <div class="container">
-
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h1>Weather Dashboard</h1>
-                <p class="lead">A comprehensive report.</p>
-            </div>
-        </div>
-        <h3>Rides by Temperature (F)</h3>
-        <div class="mdl-card__supporting-text">
-            <div>
-                <span class="range"><h4>50-60</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp_max(50..60) %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp_min(50..60) %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp_mean(50..60) %></p></div>
-            </div>
-            <div>
-                <span class="range"><h4>60-70</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp_max(60..70) %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp_min(60..70) %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp_mean(60..70) %></p></div>
-            </div>
-            <div>
-                <span class="range"><h4>70-80</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp_max(70..80) %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp_min(70..80) %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp_mean(70..80) %></p></div>
-            </div>
-            <div>
-                <span class="range"><h4>80-90</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp_max(80..90) %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp_min(80..90) %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp_mean(80..90) %></p></div>
-            </div>
-            <div>
-                <span class="range"><h4>90-100</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp_max(90..100) %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp_min(90..100) %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp_mean(90..100) %></p></div>
-            </div>
-        </div>
-
-        <h3>Rides by Wind Speed</h3>
-        <div class="mdl-card__supporting-text">
-            <div>
-                <span class="range"><h4>20-24mph</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_wind_max(20..24) %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_wind_min(20..24) %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_wind_mean(20..24) %></p></div>
-            </div>
-        </div>
-
-        <h3>Rides by Visability</h3>
-        <div class="mdl-card__supporting-text">
-            <div>
-                <span class="range"><h4>0-4 miles</h4></span>
-                <div class="details"><p><b>Total Rides:</b> <%= @condition.sort_sight_max(0..4.1) %></p></div>
-            </div>
-            <div>
-                <span class="range"><h4>4-8 miles</h4></span>
-                <div class="details"><p><b>Total Rides:</b> <%= @condition.sort_sight_max(4.1..8) %></p></div>
-            </div>
-</body>
-
-</html>
+</div>

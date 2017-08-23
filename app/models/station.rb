@@ -1,5 +1,9 @@
 class Station < ActiveRecord::Base
 
+
+  has_many :started_trips, class_name: "Trip", foreign_key: "start_station_id"
+  has_many :ended_trips, class_name: "Trip", foreign_key: "end_station_id"
+
   validates :name, presence: true
   validates :dock_count, presence: true
   validates :city, presence: true
@@ -37,12 +41,13 @@ class Station < ActiveRecord::Base
     a = Time.now
     stations = []
     CSV.foreach('db/csv/station.csv', {headers: true, header_converters: :symbol}) do |row|
-      stations <<  Station.new(name:             row[:name],
-      lat:               row[:lat],
-      long:              row[:long],
-      dock_count:        row[:dock_count],
-      city:              row[:city],
-      installation_date: Date.strptime(row[:installation_date], '%m/%e/%Y'))
+      stations <<  Station.new(id:                row[:station_id],
+                               name:              row[:name],
+                               lat:               row[:lat],
+                               long:              row[:long],
+                               dock_count:        row[:dock_count],
+                               city:              row[:city],
+                               installation_date: Date.strptime(row[:installation_date], '%m/%e/%Y'))
     end
     b = Time.now
     puts "Creating the stations array took #{b - a} seconds"

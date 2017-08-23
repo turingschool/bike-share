@@ -1,11 +1,15 @@
+require_relative 'subscription_type'
+
 class Trip < ActiveRecord::Base
+
+  belongs_to :start_station, class_name: "Station"
+  belongs_to :end_station, class_name: "Station"
+  belongs_to :subscription_type
 
   validates :duration, presence: true
   validates :start_date, presence: true
-  validates :start_station_name, presence: true
   validates :start_station_id, presence: true
   validates :end_date, presence: true
-  validates :end_station_name, presence: true
   validates :end_station_id, presence: true
   validates :bike_id, presence: true
   validates :subscription_type, presence: true
@@ -13,17 +17,15 @@ class Trip < ActiveRecord::Base
   def self.convert_csv_to_trip_attributes
     a = Time.now
     trips = []
-    CSV.foreach("db/csv/trip.csv", {headers: true, header_converters: :symbol}) do |row|
-      next if row[:zip_code].to_s.length != 5
+    CSV.foreach("db/csv/trip_fixture.csv", {headers: true, header_converters: :symbol}) do |row|
+      row[:zip_code] = 0 if row[:zip_code].to_s.length != 5
       trips << Trip.new(duration:            row[:duration],
                         start_date:          Date.strptime(row[:start_date], '%m/%e/%Y'),
-                        start_station_name:  row[:start_station_name],
                         start_station_id:    row[:start_station_id],
                         end_date:            Date.strptime(row[:end_date], '%m/%e/%Y'),
-                        end_station_name:    row[:end_station_name],
                         end_station_id:      row[:end_station_id],
                         bike_id:             row[:bike_id],
-                        subscription_type:   row[:subscription_type],
+                        subscription_type:   SubscriptionType.where(subscription_type: row[:subscription_type]).first_or_create,
                         zip_code:            row[:zip_code])
     end
     b = Time.now
@@ -89,8 +91,11 @@ class Trip < ActiveRecord::Base
   end
 
   def self.most_used_sub_type
-    sub_type = Trip.group('subscription_type').order("count(*)").pluck(:subscription_type).last
-    Trip.get_sub_count(sub_type)
+    Trip.get_sub_count(sub_type.last)
+  end
+
+  def self.sub_type
+    group(:subscription_type).order("count(*)").pluck('subscription_type')
   end
 
   def self.get_sub_count(sub_type)

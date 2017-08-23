@@ -45,16 +45,34 @@ class Trip < ActiveRecord::Base
     Station.find(station_id).name
   end
 
-  # def self.trip_count_by_month
-  #   months = {}
-  #   count = group("DATE_TRUNC('month', trip_date)").order("count(trips.id) DESC").select("count(trips.id) AS trips_count").limit(1).first.trips_count
-  # end
+  def self.trip_count_by_month
+    group("DATE_TRUNC('month', trip_date)").count(:trip_date)
+  end
+
+  def self.trip_count_by_year
+    group("DATE_TRUNC('year', trip_date)").count(:trip_date)
+  end
+
+  def self.most_trips_by_date
+    date = group(:trip_date).order("count_id DESC").count(:id).first
+    day = date[0]
+    ride_count = date[1]
+    return day.to_s, ride_count
+  end
+
+  def self.fewest_trips_by_date
+    date = group(:trip_date).order("count_id").count(:id).first
+    day = date[0]
+    ride_count = date[1]
+    return day.to_s, ride_count
+  end
+
 
   def self.bike_with_most_rides
-      bike = group(:bike_id).order("count_id DESC").count(:id).first
-      bike_id = bike[0]
-      bike_count = bike[1]
-      return bike_id, bike_count
+    bike = group(:bike_id).order("count_id DESC").count(:id).first
+    bike_id = bike[0]
+    bike_count = bike[1]
+    return bike_id, bike_count
   end
 
   def self.bike_with_least_rides

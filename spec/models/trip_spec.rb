@@ -55,7 +55,7 @@ describe Trip do
           end_station: 2,
           bike_id: 67,
           subscription_type_id: SubscriptionType.find(1).id,
-          trip_date: Date.strptime("6/5/2015", "%m/%d/%Y")
+          trip_date: Date.strptime("6/5/2014", "%m/%d/%Y")
         )
 
         Trip.create(
@@ -98,6 +98,13 @@ describe Trip do
         expect(Trip.bike_with_least_rides).to eq([67, 1])
       end
 
+      it "finds the month by month breakdown of total rides with a total by year" do
+        expect(Trip.trip_count_by_month.keys.first.month).to eq(5)
+        expect(Trip.trip_count_by_year.keys.first.year).to eq(2015)
+        expect(Trip.trip_count_by_month.values.first).to eq(2)
+        expect(Trip.trip_count_by_year.values.first).to eq(2)
+      end
+
       it "returns the count of subscribers and customers" do
         expect(Trip.subscriber_count).to eq([1, 2])
       end
@@ -105,11 +112,11 @@ describe Trip do
       it "returns percentage of subscribers and customers" do
         expect(Trip.subscriber_percentage).to eq([0.33, 0.67])
       end
+      it "returns a single date with the highest number of trips and a count" do
+        expect(Trip.most_trips_by_date).to eq(["2015-05-05", 2])
+      end
+      it "returns a single date with the lowest number of trips and a count" do
+        expect(Trip.fewest_trips_by_date).to eq(["2014-06-05", 1])
+      end
     end
   end
-
-
-
-# it "finds the month by month breakdown of total rides with a total by year" do    expect(Trip.trip_count_by_month).to eq(2)
-#   expect(Trip.trip_count_by_year).to eq(3)
-#   end

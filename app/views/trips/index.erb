@@ -19,11 +19,11 @@
       <td><%= trip.id %></td>
       <td><%= trip.duration %></td>
       <td><%= trip.start_date %></td>
-      <td><%= trip.start_station_name %></td>
+      <td><%= Station.find(trip.start_station_id).name %></td>
       <td><%= trip.end_date %></td>
-      <td><%= trip.end_station_name %></td>
+      <td><%= Station.find(trip.end_station_id).subscription_type %></td>
       <td><%= trip.bike_id %></td>
-      <td><%= trip.subscription_type %></td>
+      <td><%= SubscriptionType.find(trip.subscription_type).subscription_type %></td>
       <td><%= trip.zip_code %></td>
       <td>
         <form action="/trips/<%= trip.id %>/edit" method="get">

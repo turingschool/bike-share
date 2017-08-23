@@ -11,7 +11,7 @@
           <p>The trip started at <%= Station.find(@trip.start_station_id).name %>, and ended at <%= Station.find(@trip.end_station_id).name %></p>
           <p>The trip lasted <%= @trip.duration %> minutes</p>
           <p>The trip was on bike# <%= @trip.bike_id %></p>
-          <p>The person taking the trip was a <%= SubscriptionType.find(trip.subscription_type).subscription_type %></p>
+          <p>The person taking the trip was a <%= SubscriptionType.find(@trip.subscription_type_id).subscription_type %></p>
           <p>The trip zip code was <%= @trip.zip_code %></p><br>
           <form action="/trips/<%= @trip.id %>/edit" method="get">
             <button type="submit" class="btn btn-warning formbtn" role="button" aria-pressed="true" value="edit">Edit</button>

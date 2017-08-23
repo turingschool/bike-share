@@ -1,3 +1,5 @@
+require 'pry'
+
 class Weather < ActiveRecord::Base
   validates :date,
   :max_temperature, :mean_temperature,
@@ -25,15 +27,16 @@ class Weather < ActiveRecord::Base
   end
 
   def self.average_trips_in_weather_set(set)
-    total_trips = set.reduce(0) do |total, condition|
-      total += Trip.count_by_date(condition.date.to_s)
-    end
-    return total_trips / set.count if set.count > 0
+    total_trips = Trip.count_by_date(set.pluck(:date))
+    # total_trips = set.reduce(0) do |total, condition|
+    #   total += Trip.count_by_date(condition.date.to_s)
+    # end
+    return total_trips.to_f / set.count.to_f if set.count > 0
     return total_trips if set.count == 0
   end
 
   def self.find_all_with_max_temp_in_range(low, high)
-    where(:max_temperature => low..high).to_a
+    where(:max_temperature => low..high)
   end
 
   def self.find_max_temp_increment
@@ -47,7 +50,7 @@ class Weather < ActiveRecord::Base
   end
 
   def self.find_all_with_precipitation_in_range(low, high)
-    where(:precipitation => low..high).to_a
+    where(:precipitation => low..high)
   end
 
   def self.find_precipitation_increment
@@ -61,7 +64,7 @@ class Weather < ActiveRecord::Base
   end
 
   def self.find_all_with_mean_wind_speed_in_range(low, high)
-    where(:mean_wind_speed => low..high).to_a
+    where(:mean_wind_speed => low..high)
   end
 
   def self.find_wind_speed_increment
@@ -75,7 +78,7 @@ class Weather < ActiveRecord::Base
   end
 
   def self.find_all_with_mean_visibility_in_range(low, high)
-    where(:mean_visibility => low..high).to_a
+    where(:mean_visibility => low..high)
   end
 
   def self.find_visibility_increment

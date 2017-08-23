@@ -28,7 +28,7 @@ class Condition < ActiveRecord::Base
       dates_in_temp_range = conditions.select(:date).distinct.where(
                             zip_code: ZIP_CODE)
       total_trips = Trip.where(start_date: dates_in_temp_range)
-      total_trips.group(:start_date).order('count_id DESC').count(:id).keys.first
+      total_trips.group(:start_date).order('count_id DESC').count(:id).values.first
     end
 
     def self.low_rides_by_weather(start_of_range)
@@ -37,7 +37,7 @@ class Condition < ActiveRecord::Base
       dates_in_temp_range = conditions.select(:date).distinct.where(
                             zip_code: ZIP_CODE)
       total_trips = Trip.where(start_date: dates_in_temp_range)
-      total_trips.group(:start_date).order('count_id DESC').count(:id).keys.last
+      total_trips.group(:start_date).order('count_id DESC').count(:id).values.last
     end
 
 #precip

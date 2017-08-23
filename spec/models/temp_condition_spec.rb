@@ -223,7 +223,7 @@ describe Condition do
                   precipitation:  1,
                   zip_code: 95113)
 
-      expect(Condition.high_rides_by_weather(70.0)).to eq('2013-08-29')
+      expect(Condition.high_rides_by_weather(70.0)).to eq(3)
     end
     it ".avg_rides_by_weather" do
 
@@ -335,7 +335,7 @@ describe Condition do
                   precipitation:  1,
                   zip_code: 95113)
 
-      expect(Condition.low_rides_by_weather(70.0)).to eq("2013-08-30")
+      expect(Condition.low_rides_by_weather(70.0)).to eq(3)
     end
   end
 end

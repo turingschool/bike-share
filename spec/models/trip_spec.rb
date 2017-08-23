@@ -1,169 +1,122 @@
-<<<<<<< HEAD
-# RSpec.describe Trip do
-#   describe "class methods" do
-#     # describe ".find_thirty_trips" do
-#     #   it "returns thirty trips" do
-#     #     35.times do
-#     #     Trip.create(:duration => 5,
-#     #                 :start_date => '12/3/2015',
-#     #                 :end_date => '12/3/2015',
-#     #                 :start_station => 1,
-#     #                 :end_station => 2,
-#     #                 :bike_id => 68,
-#     #                 :subscription_type_id => 68)
-#     #     end
-#     #      expect(Trip.find_thirty_trips(1).length).to eq(30)
-#     #   end
-#     # end
-#     describe ".sort_trips_by_date" do
-#       it "sorts trips by date" do
-#         20.times do
-#           Trip.create(:duration => 5,
-#                       :start_date => '12/3/2015',
-#                       :end_date => '12/3/2015',
-#                       :start_station => 1,
-#                       :end_station => 2,
-#                       :bike_id => 68,
-#                       :subscription_type_id => 68)
-# 
-#           Trip.create(:duration => 5,
-#                       :start_date => '12/5/2015',
-#                       :end_date => '12/5/2015',
-#                       :start_station => 1,
-#                       :end_station => 2,
-#                       :bike_id => 68,
-#                       :subscription_type_id => 68)
-#         end
+# describe Trip do
 #
-#         expect(Trip.find_thirty_trips(1).second.start_date.strftime).to eq('2015-03-12')
-#         expect(Trip.find_thirty_trips(1).third.start_date.to_s).to eq('2015-03-12')
-#         expect(Trip.find_thirty_trips(1).fourth.start_date.to_s).to eq('2015-03-12')
-#         expect(Trip.find_thirty_trips(1).fifth.start_date.to_s).to eq('2015-03-12')
+#   describe "validations" do
+#     it "has to have all data fields present" do
+#       trip = Trip.create(
+#         duration: 60,
+#         start_station: 54,
+#         end_station: 66,
+#         bike_id: 66,
+#         subscription_type_id: 1,
+#         trip_date: Date.strptime("5/5/2015", "%m/%d/%Y")
+#       )
+#
+#       invalid_trip = Trip.new(
+#         duration: 5,
+#         start_station: 5
+#       )
+#
+#       expect(trip).to be_valid
+#       expect(invalid_trip).to_not be_valid
+#     end
+#   end
+#
+#   describe "class methods" do
+#       before(:each) do
+#         SubscriptionType.create(subscription_type: 'Subscriber')
+#         SubscriptionType.create(subscription_type: 'Customer')
+#
+#         Station.create(
+#           name: "Brandon's Station",
+#           dock_count: 13,
+#           city_id: 1,
+#           installation_date: "8/5/2013"
+#         )
+#
+#         Station.create(
+#           name: "Fancy Mike's Station",
+#           dock_count: 13,
+#           city_id: 1,
+#           installation_date: "8/5/2013"
+#         )
+#
+#         Trip.create(
+#           duration: 60,
+#           start_station: 2,
+#           end_station: 1,
+#           bike_id: 66,
+#           subscription_type_id: SubscriptionType.find(2).id,
+#           trip_date: Date.strptime("5/5/2015", "%m/%d/%Y")
+#         )
+#
+#         Trip.create(
+#           duration: 80,
+#           start_station: 1,
+#           end_station: 2,
+#           bike_id: 67,
+#           subscription_type_id: SubscriptionType.find(1).id,
+#           trip_date: Date.strptime("6/5/2014", "%m/%d/%Y")
+#         )
+#
+#         Trip.create(
+#           duration: 80,
+#           start_station: 1,
+#           end_station: 2,
+#           bike_id: 66,
+#           subscription_type_id: SubscriptionType.find(2).id,
+#           trip_date: Date.strptime("5/5/2015", "%m/%d/%Y"),
+#         )
+#       end
+#
+#       it "returns the average durrration" do
+#         average_duration = Trip.average_duration
+#         expect(average_duration).to eq(73.33)
+#       end
+#
+#
+#       it "returns the single longest ride" do
+#         expect(Trip.longest).to eq(80)
+#       end
+#
+#       it "returns shortest ride" do
+#         expect(Trip.shortest).to eq(60)
+#       end
+#
+#       it "finds the station with the most trips starting from it" do
+#         expect(Trip.station_with_most_starts).to eq("Brandon's Station")
+#       end
+#
+#       it "finds the station with the most trips ending at it" do
+#         expect(Trip.station_with_most_ends).to eq("Fancy Mike's Station")
+#       end
+#
+#       it "finds the most ridden bike with the total number of rides for that bike"  do
+#         expect(Trip.bike_with_most_rides).to eq([66, 2])
+#       end
+#
+#       it "find the least ridden bike with the total number of rides" do
+#         expect(Trip.bike_with_least_rides).to eq([67, 1])
+#       end
+#
+#       it "finds the month by month breakdown of total rides with a total by year" do
+#         expect(Trip.trip_count_by_month.keys.first.month).to eq(5)
+#         expect(Trip.trip_count_by_year.keys.first.year).to eq(2015)
+#         expect(Trip.trip_count_by_month.values.first).to eq(2)
+#         expect(Trip.trip_count_by_year.values.first).to eq(2)
+#       end
+#
+#       it "returns the count of subscribers and customers" do
+#         expect(Trip.subscriber_count).to eq([1, 2])
+#       end
+#
+#       it "returns percentage of subscribers and customers" do
+#         expect(Trip.subscriber_percentage).to eq(["33%", "67%"])
+#       end
+#       it "returns a single date with the highest number of trips and a count" do
+#         expect(Trip.most_trips_by_date).to eq(["2015-05-05", 2])
+#       end
+#       it "returns a single date with the lowest number of trips and a count" do
+#         expect(Trip.fewest_trips_by_date).to eq(["2014-06-05", 1])
 #       end
 #     end
 #   end
-# end
-=======
-describe Trip do
-
-  describe "validations" do
-    it "has to have all data fields present" do
-      trip = Trip.create(
-        duration: 60,
-        start_station: 54,
-        end_station: 66,
-        bike_id: 66,
-        subscription_type_id: 1,
-        trip_date: Date.strptime("5/5/2015", "%m/%d/%Y")
-      )
-
-      invalid_trip = Trip.new(
-        duration: 5,
-        start_station: 5
-      )
-
-      expect(trip).to be_valid
-      expect(invalid_trip).to_not be_valid
-    end
-  end
-
-  describe "class methods" do
-      before(:each) do
-        SubscriptionType.create(subscription_type: 'Subscriber')
-        SubscriptionType.create(subscription_type: 'Customer')
-
-        Station.create(
-          name: "Brandon's Station",
-          dock_count: 13,
-          city_id: 1,
-          installation_date: "8/5/2013"
-        )
-
-        Station.create(
-          name: "Fancy Mike's Station",
-          dock_count: 13,
-          city_id: 1,
-          installation_date: "8/5/2013"
-        )
-
-        Trip.create(
-          duration: 60,
-          start_station: 2,
-          end_station: 1,
-          bike_id: 66,
-          subscription_type_id: SubscriptionType.find(2).id,
-          trip_date: Date.strptime("5/5/2015", "%m/%d/%Y")
-        )
-
-        Trip.create(
-          duration: 80,
-          start_station: 1,
-          end_station: 2,
-          bike_id: 67,
-          subscription_type_id: SubscriptionType.find(1).id,
-          trip_date: Date.strptime("6/5/2014", "%m/%d/%Y")
-        )
-
-        Trip.create(
-          duration: 80,
-          start_station: 1,
-          end_station: 2,
-          bike_id: 66,
-          subscription_type_id: SubscriptionType.find(2).id,
-          trip_date: Date.strptime("5/5/2015", "%m/%d/%Y"),
-        )
-      end
-
-      it "returns the average durrration" do
-        average_duration = Trip.average_duration
-        expect(average_duration).to eq(73.33)
-      end
-
-
-      it "returns the single longest ride" do
-        expect(Trip.longest).to eq(80)
-      end
-
-      it "returns shortest ride" do
-        expect(Trip.shortest).to eq(60)
-      end
-
-      it "finds the station with the most trips starting from it" do
-        expect(Trip.station_with_most_starts).to eq("Brandon's Station")
-      end
-
-      it "finds the station with the most trips ending at it" do
-        expect(Trip.station_with_most_ends).to eq("Fancy Mike's Station")
-      end
-
-      it "finds the most ridden bike with the total number of rides for that bike"  do
-        expect(Trip.bike_with_most_rides).to eq([66, 2])
-      end
-
-      it "find the least ridden bike with the total number of rides" do
-        expect(Trip.bike_with_least_rides).to eq([67, 1])
-      end
-
-      it "finds the month by month breakdown of total rides with a total by year" do
-        expect(Trip.trip_count_by_month.keys.first.month).to eq(5)
-        expect(Trip.trip_count_by_year.keys.first.year).to eq(2015)
-        expect(Trip.trip_count_by_month.values.first).to eq(2)
-        expect(Trip.trip_count_by_year.values.first).to eq(2)
-      end
-
-      it "returns the count of subscribers and customers" do
-        expect(Trip.subscriber_count).to eq([1, 2])
-      end
-
-      it "returns percentage of subscribers and customers" do
-        expect(Trip.subscriber_percentage).to eq(["33%", "67%"])
-      end
-      it "returns a single date with the highest number of trips and a count" do
-        expect(Trip.most_trips_by_date).to eq(["2015-05-05", 2])
-      end
-      it "returns a single date with the lowest number of trips and a count" do
-        expect(Trip.fewest_trips_by_date).to eq(["2014-06-05", 1])
-      end
-    end
-  end
->>>>>>> 24a49870e6bc992736b3a1f220055ec28ac3fd9f

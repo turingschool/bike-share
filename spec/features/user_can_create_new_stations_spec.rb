@@ -10,17 +10,22 @@ describe "User visits ''/stations/new'" do
   end
 
   it "and can create a new station" do
+    city1 = City.create(city: "San Jose")
+    city2 = City.create(city: "Mordor")
+
     visit('/stations/new')
+
+    station_count = Station.count
 
     within("form") do
       fill_in 'name', :with => 'Test Station'
       fill_in 'dockcount', :with => '12'
+      select('Mordor', :from => 'station[city_id]')
       fill_in 'installdate', :with => '2/2/2013'
       click_button "Create New Station"
     end
 
-    save_and_open_page
-
+    expect(Station.count).to eq(station_count + 1)
     expect(page).to have_content("Test Station")
     expect(page).to have_content("Dock Count")
     expect(page).to have_content("12")

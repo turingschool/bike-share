@@ -50,7 +50,7 @@ CSV.foreach('./db/csv/station.csv', :headers => true, :encoding => 'ISO-8859-1')
 
 header = true
 Ccsv.foreach('db/csv/trip.csv') do |row|
-  if header == false && row[0].to_i < 16000
+  if header == false && row[0].to_i < 6000
       start_station = Station.find_or_create_by(name: row[3])
       end_station = Station.find_or_create_by(name: row[6])
     trip = Trip.new(duration: row[1],

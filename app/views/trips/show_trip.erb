@@ -2,8 +2,8 @@
 
 <p>duration: <%= @trip.duration%> minutes </p>
 <p>date: <%= @trip.trip_date%></p>
-<p>start station: <%= @trip.start_station%></p>
-<p>end station: <%= @trip.end_station%></p>
+<p>start station: <%= @trip.get_start_station %></p>
+<p>end station: <%= @trip.get_end_station %></p>
 <p>bike number: <%= @trip.bike_id%></p>
 <p>subscription type: <%= @trip.subscription_type.subscription_type%></p>
 <p>zip code: <%= @trip.zip_code.zip_code%></p>

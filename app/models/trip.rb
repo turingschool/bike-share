@@ -14,6 +14,13 @@ class Trip < ActiveRecord::Base
   validates :subscription_type_id, presence: true
   validates :trip_date, presence: true
 
+  def get_start_station
+    Station.find(start_station).name
+  end
+
+  def get_end_station
+    Station.find(end_station).name
+  end
 
   def self.find_thirty_trips(number_of_records = 30)
     first(number_of_records)

@@ -1,6 +1,7 @@
 require 'pry'
 class Station < ActiveRecord::Base
   belongs_to :city
+  belongs_to :trip
 
   validates :name, presence: true, uniqueness: true
   validates :dock_count, :city_id, :installation_date, presence: true

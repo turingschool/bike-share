@@ -47,7 +47,7 @@ describe Trip do
           bike_id: 66,
           subscription_type_id: SubscriptionType.find(2).id,
           trip_date: Date.strptime("5/5/2015", "%m/%d/%Y"),
-                    zip_code: ZipCode.find_or_create_by(zip_code: 94107)
+          zip_code: ZipCode.find_or_create_by(zip_code: 94107)
         )
 
         Trip.create(
@@ -57,7 +57,7 @@ describe Trip do
           bike_id: 67,
           subscription_type_id: SubscriptionType.find(1).id,
           trip_date: Date.strptime("6/5/2014", "%m/%d/%Y"),
-          zip_code: ZipCode.find_or_create_by(zip_code: 94207)
+          zip_code: ZipCode.find_or_create_by(zip_code: 94107)
         )
 
         Trip.create(
@@ -67,8 +67,10 @@ describe Trip do
           bike_id: 66,
           subscription_type_id: SubscriptionType.find(2).id,
           trip_date: Date.strptime("5/5/2015", "%m/%d/%Y"),
-          zip_code: ZipCode.find_or_create_by(zip_code: 94107)
+          zip_code: ZipCode.find_or_create_by(zip_code: 94207)
         )
+
+
       end
 
       it "returns the average durrration" do
@@ -122,14 +124,14 @@ describe Trip do
         expect(Trip.fewest_trips_by_date).to eq(["2014-06-05", 1])
       end
       it "returns a count by date" do
-        date_array = ["5/5/2015", "5/6/2014"]
+        date_array = ["5/5/2015", "6/5/2014"]
         count_1 = Trip.count_by_date("5/5/2015")
-        count_2 = Trip.count_by_date("5/6/2014")
+        count_2 = Trip.count_by_date("6/5/2014")
         count_3 = Trip.count_by_date(date_array)
 
-        expect(count_1).to eq(2)
+        expect(count_1).to eq(1)
         expect(count_2).to eq(1)
-        expect(count_3).to eq(3)
+        expect(count_3).to eq(2)
       end
     end
   end

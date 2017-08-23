@@ -106,7 +106,7 @@ class Trip < ActiveRecord::Base
 
   def self.count_by_date(date, zip_code = 94107)
      joins(:zip_code)
-     .where(trip_date: date)
+     .where("zip_code = ? and trip_date IN (?)", zip_code, date)
      .count
   end
 

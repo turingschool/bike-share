@@ -14,22 +14,21 @@ class Condition < ActiveRecord::Base
 		find_by(weather_date: date).id
 	end
 	
-	def self.join_table
-		self.joins(:trips)
-	end
+	# def self.join_table
+	# 	self.joins(:trips)
+	# end
 		
 	def breakout_temp(temp_range)
-		max = trip_arr(temp_range).max
-		min = trip_arr(temp_range).min
-		# range = Condition.where(max_temperature: (temp_range...(temp_range + 10))).map(&:trips).map(&:count)
-		# [max] = Condition.where(max_temperature: (temp_range...(temp_range + 10))).map(&:trips).map(&:count).max
-		# [min] = Condition.where(max_temperature: (temp_range...(temp_range + 10))).map(&:trips).map(&:count).min
-		average = trip_arr(temp_range).sum / trip_arr(temp_range).count 
-		
+		range = trip_arr(temp_range)
+		min   = range.values.last
+		max   = range.values.first
+		avg   = range.values.sum / range.values.count
+		require "pry"; binding.pry
 	end
 	
 	def trip_arr(temp_range)
-		join_table..where(max_temperature: (temp_range...(temp_range + 10)))
+		self.joins(:trips).where(max_temperature: (temp_range...(temp_range + 10)))
+			.group(:conditions).order("count_id DESC").count(:id)
 	end
 	
 	def breakout_temps

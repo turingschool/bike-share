@@ -1,11 +1,11 @@
 <h1>Conditions On: <%= @condition.date %></h1>
-<p><a class=class="btn btn-link" href="/conditions/<%= @condition.id %>/edit">Edit Condition</a></p>
   <p>Max Temp: <%= @condition.max_temperature %> °F</p>
   <p>Min Temp: <%= @condition.min_temperature %> °F</p>
   <p>Mean Humidity: <%= @condition.mean_humidity %> %</p>
   <p>Mean Visibility: <%= @condition.mean_visibility %> miles</p>
   <p>Mean Windspeed: <%= @condition.mean_windspeed %> mph</p>
   <p>Precipitation: <%= @condition.precipitation %> %</p>
+  <p><a class=class="btn btn-link" href="/conditions/<%= @condition.id %>/edit">Edit Condition</a></p>
 <form action="/conditions/<%= @condition.id %>" method="POST">
   <input type="hidden" name="_method" value="delete">
   <input class="btn btn-danger" type="submit" value="Delete Condition"/>

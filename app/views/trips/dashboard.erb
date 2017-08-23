@@ -12,4 +12,4 @@
 <p>The date with the fewest rides was <%=Trip.lowest_date%></p>
 <p>The most used subscription type is <%= Trip.most_used_sub_type.subscription_type %></p>
 <p>The least used subscription type is <%= Trip.least_used_sub_type.subscription_type %></p>
-<p>Key: 1 = Subscriber, 2 = Customer<%= pie_chart Trip.group(:subscription_type_id).count, label: "Subscriber" %></p>
+<p>Key: 1 = Subscriber, 2 = Customer<%= pie_chart Trip.group(:subscription_type_id).count %></p>

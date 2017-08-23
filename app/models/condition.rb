@@ -17,6 +17,7 @@ class Condition < ActiveRecord::Base
                     max_temperature_f:     row[:max_temperature_f],
                     mean_temperature_f:    row[:mean_temperature_f],
                     min_temperature_f:     row[:min_temperature_f],
+                    max_humidity:          row[:max_humidity],
                     mean_humidity:         row[:mean_humidity],
                     mean_visibility_miles: row[:mean_visibility_miles],
                     mean_wind_speed_mph:   row[:mean_wind_speed_mph],

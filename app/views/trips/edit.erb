@@ -17,14 +17,10 @@
                 <input type='text' name='trip[duration]' value=<%= @trips.duration %>><br/>
                 Start Date:<br>
                 <input type='text' name='trip[start_date]'value=<%= @trips.start_date %>><br/>
-                Start Station Name:<br>
-                <input type='text' name='trip[start_station_name]' value=<%= @trips.start_station_name %>><br/>
                 Start Station ID:<br>
                 <input type='text' name='trip[start_station_id]' value=<%= @trips.start_station_id %>><br/>
                 End Date:<br>
                 <input type='text' name='trip[end_date]' value=<%= @trips.end_date %>><br/>
-                End Station Name:<br>
-                <input type='text' name='trip[end_station_name]' value=<%= @trips.end_station_name %>><br/>
                 End Station ID:<br>
                 <input type='text' name='trip[end_station_id]' value=<%= @trips.end_station_id %>><br/>
               </div>
@@ -34,9 +30,10 @@
                 Zip Code:<br>
                 <input type='text' name='trip[zip_code]' value=<%= @trips.zip_code %>><br/><br>
                 Subscription Type:<br>
-                <select name="trip[subscription_type]">
-                  <option value="Subscriber">Subscriber</option>
-                  <option value="Customer">Customer</option>
+                <select name="trip[subscription_type_id]">
+                  <option value="<%= SubscriptionType.first.id.to_i %>"><%= SubscriptionType.first.subscription_type %></option>
+                  <option value="<%= SubscriptionType.last.id.to_i %>"><%= SubscriptionType.last.subscription_type %></option>
+                  <option><%= SubscriptionType.last.id %></option>
                 </select><br><br>
                 <input class="btn-warning formbtn" type="submit" value="Submit">
               </fieldset>

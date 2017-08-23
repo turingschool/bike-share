@@ -19,3 +19,28 @@
   <input type="textfield" name="trip[zip_code]" value="<%= @trip.zip_code %>">
   <input type="submit" value="Edit Trip" />
 </form>
+
+<form action="/trips/<%= @trip.id %>" method="POST" class="container" id="needs-validation" novalidate>
+  <div class="row">
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom01">Duration: </label>
+      <input type="text" class="form-control" id="validationCustom01" placeholder= "trip[duration]"value="<%= @trip.duration %>" required>
+    </div>
+    <div class="col-md-5 mb-1">
+      <label for="validationCustom02">Start Date (YYYY-MM-DD): </label>
+      <input type="text" class="form-control" id="validationCustom02" placeholder="trip[start_date]" value="<%= @trip.start_date %>" required>
+    </div>
+    <div class="col-md-4 mb-1">
+      <label for="validationCustom03">City: </label>
+      <input type="text" class="form-control" id="validationCustom03" placeholder="" value="" required>
+    </div>
+    <div class="col-md-3 mb-1">
+      <label for="validationCustom04">Installation Date: </label>
+      <input type="text" class="form-control" id="validationCustom04" placeholder="station[installation_date]" value="YYYY-MM-DD"required>
+      <div class="invalid-feedback">
+        Please provide a date in the correct format.
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Update Station</button>
+</form>

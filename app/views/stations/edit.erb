@@ -13,15 +13,12 @@
     <div class="col-md-4 mb-1">
       <label for="validationCustom03">City: </label>
       <input type="text" class="form-control" id="validationCustom03" placeholder="station[city]" value="<%= @station.city %>" required>
-      <div class="invalid-feedback">
-        Please provide a valid city.
-      </div>
     </div>
     <div class="col-md-3 mb-1">
       <label for="validationCustom04">Installation Date: </label>
-      <input type="text" class="form-control" id="validationCustom04" placeholder="station[installation_date]" value="<%= @station.installation_date %>"required>
+      <input type="text" class="form-control" id="validationCustom04" placeholder="station[installation_date]" value="YYYY-MM-DD"required>
       <div class="invalid-feedback">
-        Please provide a date.
+        Please provide a date in the correct format.
       </div>
     </div>
   </div>

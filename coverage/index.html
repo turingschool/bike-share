@@ -14,27 +14,27 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-08-21T22:53:30-06:00">2017-08-21T22:53:30-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-08-22T13:25:40-06:00">2017-08-22T13:25:40-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">86.48%</span></span>
+    (<span class="covered_percent"><span class="yellow">84.73%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.88
+         0.94
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>11</b> files in total.
-    <b>355</b> relevant lines. 
-    <span class="green"><b>307</b> lines covered</span> and
-    <span class="red"><b>48</b> lines missed </span>
+    <b>393</b> relevant lines. 
+    <span class="green"><b>333</b> lines covered</span> and
+    <span class="red"><b>60</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -52,11 +52,11 @@
       
       <tr>
         <td class="strong"><a href="#b44fa04814c85b99ed5abbaf3efeeba569b8d6ea" class="src_link" title="app/controllers/bike_share_app.rb">app/controllers/bike_share_app.rb</a></td>
-        <td class="red strong">32.35 %</td>
-        <td>108</td>
-        <td>68</td>
-        <td>22</td>
-        <td>46</td>
+        <td class="red strong">31.76 %</td>
+        <td>158</td>
+        <td>85</td>
+        <td>27</td>
+        <td>58</td>
         <td>0.3</td>
       </tr>
       
@@ -92,12 +92,12 @@
       
       <tr>
         <td class="strong"><a href="#90d3b8a640feede765b6d72ffc2b6c00e79f2f0f" class="src_link" title="app/models/trip.rb">app/models/trip.rb</a></td>
-        <td class="green strong">95.56 %</td>
-        <td>74</td>
-        <td>45</td>
-        <td>43</td>
+        <td class="green strong">96.49 %</td>
+        <td>87</td>
+        <td>57</td>
+        <td>55</td>
         <td>2</td>
-        <td>1.0</td>
+        <td>1.5</td>
       </tr>
       
       <tr>
@@ -153,9 +153,9 @@
       <tr>
         <td class="strong"><a href="#4431b7716a2c7373c66f2bfb35bfc4030178d348" class="src_link" title="spec/models/trip_spec.rb">spec/models/trip_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>185</td>
-        <td>126</td>
-        <td>126</td>
+        <td>197</td>
+        <td>135</td>
+        <td>135</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -179,11 +179,11 @@
         <div class="source_table" id="b44fa04814c85b99ed5abbaf3efeeba569b8d6ea">
   <div class="header">
     <h3>app/controllers/bike_share_app.rb</h3>
-    <h4><span class="red">32.35 %</span> covered</h4>
+    <h4><span class="red">31.76 %</span> covered</h4>
     <div>
-      <b>68</b> relevant lines. 
-      <span class="green"><b>22</b> lines covered</span> and
-      <span class="red"><b>46</b> lines missed.</span>
+      <b>85</b> relevant lines. 
+      <span class="green"><b>27</b> lines covered</span> and
+      <span class="red"><b>58</b> lines missed.</span>
     </div>
   </div>
   
@@ -199,187 +199,187 @@
         <li class="never" data-hits="" data-linenumber="2">
           
           
-          <code class="ruby"></code>
+          <code class="ruby"># require &quot;sinatra/namespace&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="3">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="3">
           
-          <code class="ruby">class BikeShareApp &lt; Sinatra::Base</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="4">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;/&#39; do</code>
+          <code class="ruby">class BikeShareApp &lt; Sinatra::Base</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="5">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="5">
           
-          <code class="ruby">    erb :&#39;home/index&#39;</code>
+          
+          <code class="ruby">  # register Sinatra::Namespace</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="6">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="7">
           
           
+          <code class="ruby">  # namespace &#39;/api/v1&#39; do</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
+          
+          
+          <code class="ruby">  #   before do</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="9">
+          
+          
+          <code class="ruby">  #     content_type &#39;application/json&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="10">
+          
+          
+          <code class="ruby">  #   end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
           <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="8">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  get &#39;/stations&#39; do</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="9">
-          
-          
-          <code class="ruby">    @cities = City.all</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="10">
-          
-          
-          <code class="ruby">    @stations = Station.all</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="11">
-          
-          
-          <code class="ruby">    erb :&#39;stations/index&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="12">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">  #   get &#39;/stations&#39; do</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="13">
           
           
+          <code class="ruby">  #     Station.all.to_json</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="14">
+          
+          
+          <code class="ruby">  #   end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="15">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="14">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  get &#39;/stations/new&#39; do</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="15">
+        <li class="never" data-hits="" data-linenumber="16">
           
           
-          <code class="ruby">    @cities = City.all</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="16">
-          
-          
-          <code class="ruby">    erb :&#39;stations/new&#39;</code>
+          <code class="ruby">  #   get &#39;/stations/:id&#39; do</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="17">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">  #     Station.find(params[:id]).to_json</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="18">
           
           
+          <code class="ruby">  #   end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="19">
+          
+          
+          <code class="ruby">  # end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="20">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="19">
+        <li class="covered" data-hits="1" data-linenumber="21">
           <span class="hits">1</span>
           
-          <code class="ruby">  post &#39;/stations&#39; do</code>
+          <code class="ruby">  get &#39;/&#39; do</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="20">
+        <li class="covered" data-hits="1" data-linenumber="22">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    city = City.find(params[:station][:city_id])</code>
+          <code class="ruby">    erb :&#39;home/index&#39;</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="21">
+        <li class="never" data-hits="" data-linenumber="23">
           
           
-          <code class="ruby">    @station = Station.create(params[:station])</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="22">
-          
-          
-          <code class="ruby">    city.stations &lt;&lt; @station</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="23">
-          
-          
-          <code class="ruby">    redirect &quot;/stations/#{@station.id}&quot;</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="24">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="25">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="26">
+        <li class="covered" data-hits="1" data-linenumber="25">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;/stations/:id&#39; do</code>
+          <code class="ruby">  get &#39;/stations&#39; do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="26">
+          
+          
+          <code class="ruby">    @cities = City.all</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="27">
           
           
-          <code class="ruby">    @station = Station.find(params[:id])</code>
+          <code class="ruby">    @stations = Station.all</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="28">
-          
-          
-          <code class="ruby">    erb :&#39;stations/show&#39;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="29">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="30">
+        <li class="never" data-hits="" data-linenumber="28">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="31">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="29">
           
-          <code class="ruby">  get &#39;/stations/:id/edit&#39; do</code>
+          
+          <code class="ruby">    erb :&#39;stations/index&#39;</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="32">
+        <li class="never" data-hits="" data-linenumber="30">
           
           
-          <code class="ruby">    @station = Station.find(params[:id])</code>
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="31">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="32">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  get &#39;/stations/new&#39; do</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="33">
@@ -391,7 +391,7 @@
         <li class="missed" data-hits="0" data-linenumber="34">
           
           
-          <code class="ruby">    erb :&#39;stations/edit&#39;</code>
+          <code class="ruby">    erb :&#39;stations/new&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="35">
@@ -409,319 +409,319 @@
         <li class="covered" data-hits="1" data-linenumber="37">
           <span class="hits">1</span>
           
-          <code class="ruby">  put &#39;/stations/:id&#39; do |id|</code>
+          <code class="ruby">  post &#39;/stations&#39; do</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="38">
           
           
-          <code class="ruby">    station = Station.find(id)</code>
+          <code class="ruby">    city = City.find(params[:station][:city_id])</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="39">
           
           
-          <code class="ruby">    station.update(params[:station])</code>
+          <code class="ruby">    @station = Station.create(params[:station])</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="40">
           
           
-          <code class="ruby">    redirect &quot;/stations/#{id}&quot;</code>
+          <code class="ruby">    city.stations &lt;&lt; @station</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="41">
+        <li class="missed" data-hits="0" data-linenumber="41">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    redirect &quot;/stations/#{@station.id}&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="42">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="43">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="43">
+        <li class="covered" data-hits="1" data-linenumber="44">
           <span class="hits">1</span>
           
-          <code class="ruby">  delete &#39;/stations/:id&#39; do |id|</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="44">
-          
-          
-          <code class="ruby">    Station.destroy(id)</code>
+          <code class="ruby">  get &#39;/stations/:id&#39; do</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="45">
           
           
-          <code class="ruby">    redirect &#39;/stations&#39;</code>
+          <code class="ruby">    @station = Station.find(params[:id])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="46">
+        <li class="missed" data-hits="0" data-linenumber="46">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    erb :&#39;stations/show&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="47">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="48">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="48">
+        <li class="covered" data-hits="1" data-linenumber="49">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;/cities&#39; do</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="49">
-          
-          
-          <code class="ruby">    @cities = City.all</code>
+          <code class="ruby">  get &#39;/stations/:id/edit&#39; do</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="50">
           
           
-          <code class="ruby">    @stations = Station.all</code>
+          <code class="ruby">    @station = Station.find(params[:id])</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="51">
           
           
-          <code class="ruby">    erb :&#39;cities/index&#39;</code>
+          <code class="ruby">    @cities = City.all</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="52">
+        <li class="missed" data-hits="0" data-linenumber="52">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    erb :&#39;stations/edit&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="53">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="54">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="54">
+        <li class="covered" data-hits="1" data-linenumber="55">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;/cities/:id&#39; do</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="55">
-          
-          
-          <code class="ruby">    @city = City.find(params[:id])</code>
+          <code class="ruby">  put &#39;/stations/:id&#39; do |id|</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="56">
           
           
-          <code class="ruby">    erb :&#39;cities/show&#39;</code>
+          <code class="ruby">    station = Station.find(id)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="57">
+        <li class="missed" data-hits="0" data-linenumber="57">
+          
+          
+          <code class="ruby">    station.update(params[:station])</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="58">
+          
+          
+          <code class="ruby">    redirect &quot;/stations/#{id}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="59">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="58">
+        <li class="never" data-hits="" data-linenumber="60">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="59">
+        <li class="covered" data-hits="1" data-linenumber="61">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  delete &#39;/stations/:id&#39; do |id|</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="62">
+          
+          
+          <code class="ruby">    Station.destroy(id)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="63">
+          
+          
+          <code class="ruby">    redirect &#39;/stations&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="64">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="65">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="66">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  get &#39;/cities&#39; do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="67">
+          
+          
+          <code class="ruby">    @cities = City.all</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="68">
+          
+          
+          <code class="ruby">    @stations = Station.all</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="69">
+          
+          
+          <code class="ruby">    erb :&#39;cities/index&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="70">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="71">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="72">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  get &#39;/cities/:id&#39; do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="73">
+          
+          
+          <code class="ruby">    @city = City.find(params[:id])</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="74">
+          
+          
+          <code class="ruby">    erb :&#39;cities/show&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="75">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="76">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="77">
           <span class="hits">1</span>
           
           <code class="ruby">  get &#39;/station-dashboard&#39; do</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="60">
+        <li class="missed" data-hits="0" data-linenumber="78">
           
           
           <code class="ruby">    @stations = Station.all</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="61">
+        <li class="missed" data-hits="0" data-linenumber="79">
           
           
           <code class="ruby">    erb :&#39;stations/station-index&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="62">
+        <li class="never" data-hits="" data-linenumber="80">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="63">
+        <li class="never" data-hits="" data-linenumber="81">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="64">
+        <li class="covered" data-hits="1" data-linenumber="82">
           <span class="hits">1</span>
           
           <code class="ruby">  get &#39;/trips&#39; do</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="65">
+        <li class="missed" data-hits="0" data-linenumber="83">
           
           
           <code class="ruby">    @trips = Trip.all</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="66">
+        <li class="missed" data-hits="0" data-linenumber="84">
           
           
           <code class="ruby">    erb :&#39;trips/index&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="67">
+        <li class="never" data-hits="" data-linenumber="85">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="68">
+        <li class="never" data-hits="" data-linenumber="86">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="69">
+        <li class="covered" data-hits="1" data-linenumber="87">
           <span class="hits">1</span>
           
           <code class="ruby">  get &#39;/trips/new&#39; do</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="70">
+        <li class="missed" data-hits="0" data-linenumber="88">
           
           
           <code class="ruby">    @stations = Station.all</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="71">
-          
-          
-          <code class="ruby">    erb :&#39;trips/new&#39;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="72">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="73">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="74">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  post &#39;/trips&#39; do</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="75">
-          
-          
-          <code class="ruby">    @trip = Trip.create(params[:trip])</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="76">
-          
-          
-          <code class="ruby">    redirect &quot;/trips/#{@trip.id}&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="77">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="78">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="79">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  put &#39;/trips/:id&#39; do |id|</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="80">
-          
-          
-          <code class="ruby">    binding.pry</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="81">
-          
-          
-          <code class="ruby">    trip = Trip.find(id)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="82">
-          
-          
-          <code class="ruby">    trip.update(params[:trip])</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="83">
-          
-          
-          <code class="ruby">    redirect &quot;/trip/#{id}&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="84">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="85">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="86">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  get &#39;/trips/:id&#39; do</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="87">
-          
-          
-          <code class="ruby">        binding.pry</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="88">
-          
-          
-          <code class="ruby">    @trips = Trip.find(params[:id])</code>
-        </li>
-      
         <li class="missed" data-hits="0" data-linenumber="89">
           
           
-          <code class="ruby">    erb :&#39;trips/show&#39;</code>
+          <code class="ruby">    erb :&#39;trips/new&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="90">
@@ -739,100 +739,400 @@
         <li class="covered" data-hits="1" data-linenumber="92">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;/trips/:id/edit&#39; do</code>
+          <code class="ruby">  post &#39;/trips&#39; do</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="93">
           
           
-          <code class="ruby">    @stations = Station.all</code>
+          <code class="ruby">    @trip = Trip.create(params[:trip])</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="94">
           
           
-          <code class="ruby">    @trips = Trip.find(params[:id])</code>
+          <code class="ruby">    redirect &quot;/trips/#{@trip.id}&quot;</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="95">
+        <li class="never" data-hits="" data-linenumber="95">
           
           
-          <code class="ruby">    erb &#39;/trips/edit&#39;</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="96">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="97">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="98">
+        <li class="covered" data-hits="1" data-linenumber="97">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;/conditions&#39; do</code>
+          <code class="ruby">  put &#39;/trips/:id&#39; do |id|</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="98">
+          
+          
+          <code class="ruby">    binding.pry</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="99">
           
           
-          <code class="ruby">    @conditions = Condition.all</code>
+          <code class="ruby">    trip = Trip.find(id)</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="100">
           
           
-          <code class="ruby">    erb :&#39;/conditions/index&#39;</code>
+          <code class="ruby">    trip.update(params[:trip])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="101">
+        <li class="missed" data-hits="0" data-linenumber="101">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    redirect &quot;/trip/#{id}&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="102">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="103">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="103">
+        <li class="covered" data-hits="1" data-linenumber="104">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;/conditions/new&#39; do</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="104">
-          
-          
-          <code class="ruby">    @conditions = Condition.all</code>
+          <code class="ruby">  get &#39;/trips/:id&#39; do</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="105">
           
           
-          <code class="ruby">    erb :&#39;/conditions/new&#39;</code>
+          <code class="ruby">        binding.pry</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="106">
+        <li class="missed" data-hits="0" data-linenumber="106">
+          
+          
+          <code class="ruby">    @trips = Trip.find(params[:id])</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="107">
+          
+          
+          <code class="ruby">    erb :&#39;trips/show&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="108">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="107">
+        <li class="never" data-hits="" data-linenumber="109">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="108">
+        <li class="covered" data-hits="1" data-linenumber="110">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  get &#39;/trips/:id/edit&#39; do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="111">
+          
+          
+          <code class="ruby">    @stations = Station.all</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="112">
+          
+          
+          <code class="ruby">    @trips = Trip.find(params[:id])</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="113">
+          
+          
+          <code class="ruby">    erb &#39;/trips/edit&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="114">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="115">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="116">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  get &#39;/conditions&#39; do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="117">
+          
+          
+          <code class="ruby">    @conditions = Condition.all</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="118">
+          
+          
+          <code class="ruby">    erb :&#39;/conditions/index&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="119">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="120">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="121">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  get &#39;/conditions/new&#39; do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="122">
+          
+          
+          <code class="ruby">    @conditions = Condition.all</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="123">
+          
+          
+          <code class="ruby">    erb :&#39;/conditions/new&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="124">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="125">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="126">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  post &#39;/conditions&#39; do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="127">
+          
+          
+          <code class="ruby">    @condition = Condition.create(params[:condition])</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="128">
+          
+          
+          <code class="ruby">    redirect &quot;/conditions/#{@condition.id}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="129">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="130">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="131">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  get &#39;/conditions/:id&#39; do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="132">
+          
+          
+          <code class="ruby">    @condition = Condition.find(params[:id])</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="133">
+          
+          
+          <code class="ruby">    erb :&#39;conditions/show&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="134">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="135">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="136">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  get &#39;/conditions/:id/edit&#39; do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="137">
+          
+          
+          <code class="ruby">    @conditions = Condition.all</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="138">
+          
+          
+          <code class="ruby">    @condition = Condition.find(params[:id])</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="139">
+          
+          
+          <code class="ruby">    erb :&#39;/conditions/edit&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="140">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="141">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="142">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  put &#39;/conditions/:id&#39; do |id|</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="143">
+          
+          
+          <code class="ruby">    condition = Condition.find(id)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="144">
+          
+          
+          <code class="ruby">    condition.update(params[:condition])</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="145">
+          
+          
+          <code class="ruby">    redirect &quot;/conditions/#{id}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="146">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="147">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="148">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  delete &#39;/conditions/:id&#39; do |id|</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="149">
+          
+          
+          <code class="ruby">    Condition.destroy(id)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="150">
+          
+          
+          <code class="ruby">    redirect &#39;/conditions&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="151">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="152">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="153">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="154">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="155">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="156">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="157">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="158">
           
           
           <code class="ruby">end</code>
@@ -1193,10 +1493,10 @@
         <div class="source_table" id="90d3b8a640feede765b6d72ffc2b6c00e79f2f0f">
   <div class="header">
     <h3>app/models/trip.rb</h3>
-    <h4><span class="green">95.56 %</span> covered</h4>
+    <h4><span class="green">96.49 %</span> covered</h4>
     <div>
-      <b>45</b> relevant lines. 
-      <span class="green"><b>43</b> lines covered</span> and
+      <b>57</b> relevant lines. 
+      <span class="green"><b>55</b> lines covered</span> and
       <span class="red"><b>2</b> lines missed.</span>
     </div>
   </div>
@@ -1612,37 +1912,115 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="69">
+        <li class="covered" data-hits="1" data-linenumber="69">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.month_by_month_breakdown</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="70">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    start_year = 2013</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="71">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    month = 1</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="72">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    months = {}</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="73">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    years= {}</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="74">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    12.times do</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="75">
+          
+          
+          <code class="ruby">      # binding.pry</code>
+        </li>
+      
+        <li class="covered" data-hits="12" data-linenumber="76">
+          <span class="hits">12</span>
+          
+          <code class="ruby">      months[month] = where(&quot;extract(month from start_date) = ?&quot;, month).count</code>
+        </li>
+      
+        <li class="covered" data-hits="12" data-linenumber="77">
+          <span class="hits">12</span>
+          
+          <code class="ruby">      month += 1</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="78">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="79">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="70">
+        <li class="covered" data-hits="1" data-linenumber="80">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    (Time.new.year - start_year).times do</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="81">
+          <span class="hits">4</span>
+          
+          <code class="ruby">      years[start_year] = where(&#39;extract(year from start_date) = ?&#39;, start_year).count</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="82">
+          <span class="hits">4</span>
+          
+          <code class="ruby">      start_year += 1</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="83">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="84">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="71">
+        <li class="covered" data-hits="1" data-linenumber="85">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">    {months: months, years: years}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="72">
+        <li class="never" data-hits="" data-linenumber="86">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="73">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="74">
+        <li class="never" data-hits="" data-linenumber="87">
           
           
           <code class="ruby">end</code>
@@ -1981,7 +2359,7 @@
         <li class="covered" data-hits="1" data-linenumber="10">
           <span class="hits">1</span>
           
-          <code class="ruby">        expect(page).to have_content(&quot;City Index&quot;)</code>
+          <code class="ruby">        expect(page).to have_content(&quot;Trip Index&quot;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="11">
@@ -2815,8 +3193,8 @@
     <h3>spec/models/trip_spec.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>126</b> relevant lines. 
-      <span class="green"><b>126</b> lines covered</span> and
+      <b>135</b> relevant lines. 
+      <span class="green"><b>135</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -3925,10 +4303,82 @@
         <li class="never" data-hits="" data-linenumber="184">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="185">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it &#39;returns month by month breakdown&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="186">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      start_date_1 = DateTime.new(2001,2,3,4,5,6)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="187">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      start_date_2 = DateTime.new(2001,2,3,4,5,6)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="188">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      start_date_3 = DateTime.new(2001,2,3,4,5,7)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="189">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      end_date = DateTime.new(2001,2,3,4,5,8)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="190">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      Trip.create(duration: 10, start_date: start_date_1, start_station_id: 1, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: &quot;Customer&quot;, zip_code: 12345)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="191">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      Trip.create(duration: 20, start_date: start_date_2, start_station_id: 2, end_date: end_date, end_station_id: 2, bike_id: 1, subscription_type: &quot;Subscriber&quot;, zip_code: 12345)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="192">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      Trip.create(duration: 20, start_date: start_date_3, start_station_id: 2, end_date: end_date, end_station_id: 2, bike_id: 2, subscription_type: &quot;Subscriber&quot;, zip_code: 12345)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="193">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="194">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(Trip.month_by_month_breakdown).to eq({:months=&gt;{1=&gt;0, 2=&gt;3, 3=&gt;0, 4=&gt;0, 5=&gt;0, 6=&gt;0, 7=&gt;0, 8=&gt;0, 9=&gt;0, 10=&gt;0, 11=&gt;0, 12=&gt;0}, :years=&gt;{2013=&gt;0, 2014=&gt;0, 2015=&gt;0, 2016=&gt;0}})</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="195">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="196">
+          
+          
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="185">
+        <li class="never" data-hits="" data-linenumber="197">
           
           
           <code class="ruby">end</code>

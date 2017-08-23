@@ -56,8 +56,6 @@ class CSVLoader
     end
   end
 
-  private
-
   def date_formatter(date)
     date_array = date.split('/')
     date = "#{date_array[1]}/#{date_array[0]}/#{date_array[2]}"

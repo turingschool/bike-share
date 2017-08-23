@@ -42,7 +42,7 @@
     <h1><%= @station.name %></h1>
   </header>
 
-  <div class="spacer">
+  <div class="spacer station-info">
     <div class="row">
       <h4>City: <%= @station.city.city %></h4>
     </div>
@@ -54,6 +54,7 @@
     </div>
   </div>
 
+  <div id="map"></div>
 
   <a class="btn btn-warning" href="/stations/<%= @station.id %>/edit">Edit</a><br></br>
 
@@ -68,6 +69,23 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script>
+      function initMap() {
+        var uluru = {lat: <%= @station.lat %>, lng: <%= @station.long %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywRPlJLZnaCAn1mDM5LevTGBZeYdEl24&callback=initMap">
+    </script>
+
 </body>
 
 

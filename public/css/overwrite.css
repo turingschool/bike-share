@@ -22,11 +22,12 @@ position: absolute;
 }
 
 .navbar-brand {
-	margin-top: 12px;
+	margin-top: 15px;
 }
 
 .navbar-inverse .navbar-brand {
 	color: 	#748CAB;
+	margin-bottom: 20px;
 }
 
 .navbar-inverse .navbar-brand:focus,

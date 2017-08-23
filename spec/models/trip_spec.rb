@@ -28,7 +28,7 @@ describe Trip do
 
       SubscriptionType.create(subscription_type: 'Subscriber')
       SubscriptionType.create(subscription_type: 'Customer')
-      
+
       Station.create(
       name: "Brandon's Station",
       dock_count: 13,
@@ -49,7 +49,7 @@ describe Trip do
       start_station: 2,
       end_station: 1,
       bike_id: 66,
-      subscription_type_id: SubscriptionType.find(2),
+      subscription_type_id: SubscriptionType.find(2).id,
       trip_date: Date.strptime("5/5/2015", "%m/%d/%Y")
       )
     Trip.create(
@@ -57,7 +57,7 @@ describe Trip do
     start_station: 1,
     end_station: 2,
     bike_id: 67,
-    subscription_type_id: SubscriptionType.find(1),
+    subscription_type_id: SubscriptionType.find(1).id,
     trip_date: Date.strptime("6/5/2015", "%m/%d/%Y")
     )
 
@@ -66,7 +66,7 @@ describe Trip do
     start_station: 1,
     end_station: 2,
     bike_id: 66,
-    subscription_type_id: SubscriptionType.find(2),
+    subscription_type_id: SubscriptionType.find(2).id,
     trip_date: Date.strptime("5/5/2015", "%m/%d/%Y"),
     )
     end

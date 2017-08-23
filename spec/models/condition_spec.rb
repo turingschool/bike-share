@@ -48,6 +48,7 @@ describe Condition do
 
       Trip.create(duration: 174,
                   start_date: "2013-08-29",
+                  start_date: "2013-08-29 09:08:00",
                   start_station_name: "Turing",
                   end_date: "2013-08-29 09:11:00",
                   end_station_name: "Turing",
@@ -59,6 +60,7 @@ describe Condition do
 
       Trip.create(duration: 174,
                   start_date: "2013-08-29",
+                  start_date: "2013-08-29 09:08:00",
                   start_station_name: "Panera",
                   end_date: "2013-08-29 09:11:00",
                   end_station_name: "Panera",
@@ -77,6 +79,8 @@ describe Condition do
                    mean_windspeed: 50,
                    precipitation:  3,
                    zip_code: 95113)
+                   precipitation:  3)
+
 
       Condition.create(date:'2013-08-29',
                    max_temperature: 77,
@@ -87,6 +91,7 @@ describe Condition do
                    mean_windspeed: 30,
                    precipitation:  1,
                    zip_code: 95113)
+                   precipitation:  1)
 
       Condition.create(date:'2013-08-29',
                   max_temperature: 70,
@@ -97,6 +102,7 @@ describe Condition do
                   mean_windspeed: 50,
                   precipitation:  3,
                   zip_code: 95113)
+                  precipitation:  3)
 
 
       Condition.create(date:'2013-08-30',
@@ -109,10 +115,12 @@ describe Condition do
                   precipitation:  1,
                   zip_code: 95113)
 
-      require 'pry';binding.pry
+   
       expect(Condition.avg_rides_by_weather(70.0)).to eq(1.5)
 
     end
   end
 end
 
+
+              

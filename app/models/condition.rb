@@ -17,7 +17,9 @@ class Condition < ActiveRecord::Base
                             zip_code: ZIP_CODE)
       total_trips = Trip.where(start_date: dates_in_temp_range)          #takes A COLLECTION of dates as an argument to give us all the trips
                                                                          #for the dates in temp range
-      total_trips.count / dates_in_temp_range.count
+      avg = total_trips.count / dates_in_temp_range.count
+
+      avg.round(2)
     end
 
     def self.high_rides_by_weather(start_of_range)

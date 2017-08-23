@@ -10,6 +10,7 @@ class Condition < ActiveRecord::Base
 	validates :precipitation,    presence: true
 	
 	has_many :trips, class_name: "Trip", foreign_key: "condition_id"
+	
 	def self.id_by_date(date)
 		find_by(weather_date: date).id
 	end
@@ -23,7 +24,6 @@ class Condition < ActiveRecord::Base
 		min   = range.values.last
 		max   = range.values.first
 		avg   = range.values.sum / range.values.count
-		require "pry"; binding.pry
 	end
 	
 	def trip_arr(temp_range)
@@ -39,3 +39,7 @@ class Condition < ActiveRecord::Base
 		end
 	end
 end
+
+# Condition.select("conditions.*, sum(trip.condition_id) AS total_trips")
+# 	.joins(:trips).where(max_temperature: (50.0...60.0))
+# 	.group(:conditions).order("count_id DESC").count(:id)

@@ -1,7 +1,6 @@
 require 'pry'
 class Condition < ActiveRecord::Base
-  has_many :condition_trips
-  has_many :trips, :through => :condition_trips
+  has_many :trips
   validates :date, :max_temperature, :mean_temperature, :min_temperature, :mean_humidity, :mean_visibility, :mean_wind_speed, :precipitation, presence: true
 
   def self.sort_temp_max(range)
@@ -47,6 +46,7 @@ class Condition < ActiveRecord::Base
   def self.sort_wind_mean(range)
     amount = 0
     length = where(mean_wind_speed: range).count
+    binding.pry
     where(mean_wind_speed: range).each do |condition|
       amount += Trip.where(start_date: condition[:date]).count
     end

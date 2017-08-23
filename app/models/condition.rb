@@ -78,19 +78,16 @@ class Condition < ActiveRecord::Base
     amount.size
   end
 
-  # ############## NEEDS REFACTOR, TOO MANY SQL QUERIES SLOWS PAGE DOWN
-  # def self.sort_precip_mean(range)
-  #   max = self.sort_precip_max(range)
-  #   min = self.sort_precip_min(range)
-
-  #   max + min / 2
-  #   # amount = 0
-  #   # length = where(precipitation: range).count
-  #   # where(precipitation: range).each do |condition|
-  #   #   amount += Trip.where(start_date: condition[:date]).count
-  #   # end
-  #   # amount / length
-  # end
+  def self.sort_precip_mean(range)
+    amount = 0
+    length = where(precipitation: range).count
+    where(precipitation: range).each do |condition|
+      condition.trips.each do |trip|
+        amount += 1 if trip.start_date == condition.date
+      end
+    end
+    amount / length
+  end
 
   # def self.sort_sight_max(range)
   #   dates = []

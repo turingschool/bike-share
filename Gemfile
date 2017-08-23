@@ -7,7 +7,7 @@ gem 'sinatra-activerecord'
 gem 'postgres-copy'
 
 group :development, :test do
-  gem 'will_paginate'
+  gem 'will_paginate', '~> 3.1.0'
   gem 'shotgun'
   gem 'rspec'
   gem 'rspec-core'

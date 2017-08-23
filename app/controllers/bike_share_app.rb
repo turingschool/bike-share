@@ -1,11 +1,10 @@
-require 'will_paginate'
-require 'will_paginate/active_record'
+# require 'will_paginate'
+# require 'will_paginate/active_record'
 
 class BikeShareApp < Sinatra::Base
   get '/' do
     erb :index
   end
-  
 
   get '/stations' do
     @stations = Station.all
@@ -36,8 +35,6 @@ class BikeShareApp < Sinatra::Base
 
   post '/conditions' do
     @condition = Condition.create(params[:condition])
-
-    #require 'pry';binding.pry
     redirect :"conditions/#{@condition.id}"
   end
 
@@ -98,6 +95,7 @@ class BikeShareApp < Sinatra::Base
     Station.destroy(params[:id])
     redirect '/stations'
   end
+
   get '/trips/:id' do
     @trip = Trip.find(params[:id])
     erb :'trips/show'

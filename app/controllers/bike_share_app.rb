@@ -146,6 +146,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/condition-dashboard' do
+    Condition.eager_load(:date)
     @condition = Condition.all
     @temp_range = params[:temp_range].to_i
     erb :'/conditions/condition-dashboard'

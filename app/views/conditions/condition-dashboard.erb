@@ -48,107 +48,11 @@
         <div class="mdl-card__supporting-text">
             <div>
                 <span class="range"><h4>50-60</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp(50..60)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp(50..60)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp(50..60)[:avg] %></p></div>
+                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp_max(50..60) %></p></div>
+                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp_min(50..60) %></p></div>
+                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp_avg(50..60) %></p></div>
             </div>
-            <div>
-                <span class="range"><h4>60-70</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp(60..70)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp(60..70)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp(60..70)[:avg] %></p></div>
-            </div>
-            <div>
-                <span class="range"><h4>70-80</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp(70..80)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp(70..80)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp(70..80)[:avg] %></p></div>
-            </div>
-            <div>
-                <span class="range"><h4>80-90</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp(80..90)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp(80..90)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp(80..90)[:avg] %></p></div>
-            </div>
-            <div>
-                <span class="range"><h4>90-100</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp(90..100)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp(90..100)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp(90..100)[:avg] %></p></div>
-            </div>
-        </div>
 
-        <h3>Rides by Wind Speed <i>(Click Ranges to Expand)</i></h3>
-        <div class="mdl-card__supporting-text">
-            <div>
-                <span class="range"><h4>20-24mph</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_wind(20..24)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_wind(20..24)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_wind(20..24)[:avg] %></p></div>
-            </div>
-        </div>
-
-        <h3>Rides by Visability <i>(Click Ranges to Expand)</i></h3>
-        <div class="mdl-card__supporting-text">
-            <div>
-                <span class="range"><h4>0-4 miles</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_sight(0..4.1)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_sight(0..4.1)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_sight(0..4.1)[:avg] %></p></div>
-            </div>
-            <div>
-                <span class="range"><h4>4-8 miles</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_sight(8..8)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_sight(8..8)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_sight(8..8)[:avg] %></p></div>
-            </div>
-            <div>
-                <span class="range"><h4>8-12 miles</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_sight(8..12)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_sight(8..12)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_sight(8..12)[:avg] %></p></div>
-            </div>
-            <div>
-                <span class="range"><h4>12-14 miles</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_sight(12..14)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_sight(12..14)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_sight(12..14)[:avg] %></p></div>
-            </div>
-            <div>
-                <span class="range"><h4>14-18 miles</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_sight(14..18)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_sight(14..18)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_sight(14..18)[:avg] %></p></div>
-            </div>
-            <div>
-                <span class="range"><h4>18-22 miles</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_sight(18..22)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_sight(18..22)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_sight(18..22)[:avg] %></p></div>
-            </div>
-        </div>
-  </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
 
 
 

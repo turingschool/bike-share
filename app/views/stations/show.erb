@@ -1,7 +1,5 @@
 <h1><%= @station.name %></h1>
-<p><a class=class="btn btn-link" href="/stations/<%= @station.id %>/edit">Edit Station</a></p>
 <div class="station info">
-  <h3>Station Info:</h3>
     <p>Dock Count: <%= @station.dock_count %></p>
     <p>City: <%= @station.city %></p>
     <p>Installation Date: <%= @station.installation_date %></p>
@@ -19,6 +17,7 @@
     <p>Most frequently use bike starting at this station: <%= Trip.most_frequent_bike_starting(@station.id) %></p>
 </div>
 
+<p><a class=class="btn btn-link" href="/stations/<%= @station.id %>/edit">Edit Station</a></p>
 
 <form action="/stations/<%= @station.id %>" method="post">
   <input type="hidden" name="_method" value="delete">

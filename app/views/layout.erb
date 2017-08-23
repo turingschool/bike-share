@@ -1,0 +1,46 @@
+<html>
+<header>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/custom.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="//www.google.com/jsapi"></script>
+  <script src="/css/chartkick.js"></script>
+    <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/" class="navbar-brand">Becki's Boombastic BikeShare</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/stations" class="header-button hbmain">Stations</a></li>
+          <li><a href="/trips" class="header-button hbmain">Trips</a></li>
+          <li><a href="/conditions" class="header-button hbmain">Weather</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid nav2">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a class="header-button hbstatbtn">Statistical Dashboards: </a></li>
+            <li><a href="/stations-dashboard" class="header-button hbstatbtn">Stations</a></li>
+            <li><a href="/trips-dashboard" class="header-button hbstatbtn">Trips</a></li>
+            <li><a href="/conditions" class="header-button hbstatbtn">Weather</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+  </nav>
+</header>
+</body>
+<%= yield %>
+<footer>
+  <nav class="navbar navbar-default navbar-bottom" role="navigation">
+    <div class="container navbar-left">
+      <h5 class"footer-text" > ®  FOOTER FOOTER FOOTER! THIS IS THE FOOTER! GET SCHWIFTY WITH THE FOOTER!!!</h5>
+      <p class"footer-text"> Nothing is reserved, but it should be. Data is freely shared. BELIEVE THAT!</p>
+    </div>
+  </nav>
+</footer>
+</html>

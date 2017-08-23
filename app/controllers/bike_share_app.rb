@@ -1,35 +1,47 @@
-require 'pry'
-
 class BikeShareApp < Sinatra::Base
-
   include WillPaginate::Sinatra::Helpers
 
   set :method_override, true
 
   get '/trips' do
     @trips = Trip.paginate(:page => params[:page], :per_page => 30)
-    erb :'trips/trip_index'
+    erb :"trips/trip_index"
   end
 
-  post '/trips' do
-    @trip = Trip.new(params)
-    trip.save
-    redirect'/trips'
+  get '/trips/dashboard' do
+    erb :"trips/trips_dashboard"
   end
 
   get '/trips/new' do
-    erb :trip_new
+    erb :"trips/trip_new"
   end
+
+
+  post '/trips' do
+    trip = Trip.find_or_create_by(
+    duration: params[:duration],
+    start_station: params[:start_station],
+    end_station: params[:end_station],
+    trip_date: Date.strptime(params[:trip_date], "%m/%d/%Y"),
+    bike_id: params[:bike_id],
+    subscription_type: SubscriptionType.find_or_create_by(subscription_type:
+    params[:subscription_type]),
+    zip_code: ZipCode.find_or_create_by(zip_code: params[:zip_code])
+    )
+
+    redirect"/trips/#{trip.id}"
+  end
+
 
   get '/trips/:id' do
     @trip = Trip.find(params["id"])
-    erb :show_trip
+    erb :"trips/show_trip"
 
   end
 
   get '/trips/:id/edit' do
     @trip = Trip.find(params["id"])
-    erb :trip_edit
+    erb :"trips/trip_edit"
   end
 
   put '/trips/:id/edit' do
@@ -38,10 +50,9 @@ class BikeShareApp < Sinatra::Base
     duration: params[:duration],
     start_station: params[:start_station],
     end_station: params[:end_station],
-    start_date: StartDate.find_or_create_by(date: params[:start_date]),
-    end_date: EndDate.find_or_create_by(date: params[:end_date]),
-    subscription_type: SubscriptionType.find_or_create_by(subscription_type:
-    params[:subscription_type]),
+    trip_date: Date.strptime(params[:trip_date], "%Y-%d-%m"),
+    bike_id: params[:bike_id],
+    subscription_type: SubscriptionType.find_or_create_by(subscription_type: params[:subscription_type]),
     zip_code: ZipCode.find_or_create_by(zip_code: params[:zip_code])
     )
 
@@ -50,7 +61,6 @@ class BikeShareApp < Sinatra::Base
 
   delete '/trips/:id' do
     Trip.destroy(params[:id])
-    Trip.reset_ids
     redirect "/trips"
   end
 

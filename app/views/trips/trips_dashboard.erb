@@ -1,0 +1,14 @@
+  <h1>Trip Analysis<h1>
+
+    <p>Average duration of a ride: <%= Trip.average_duration %> minutes. </p>
+    <p>Longest ride: <%= Trip.longest %> minutes. </p>
+    <p>Shortest ride: <%= Trip.shortest %> minutes. </p>
+    <p>Station with the most rides as a starting place: <%= Trip.station_with_most_starts %> </p>
+    <p>Station with the most rides as an ending place: <%= Trip.station_with_most_ends %> </p>
+    <p>Most ridden bike with total number of rides for that bike: Bike <%= Trip.bike_with_most_rides.first %> had the most rides at <%= Trip.bike_with_most_rides.second %>  </p>
+    <p>Least ridden bike with total number of rides for that bike: Bike <%= Trip.bike_with_least_rides.first %> had the least rides at <%= Trip.bike_with_least_rides.second %>  </p>
+    <p>User subscription type breakout with both count and percentage: Subscribers: <%= Trip.subscriber_percentage.first %> and Non-subscribers: <%= Trip.subscriber_percentage.second %>   </p>
+    <p>Single date with the highest number of trips with a count of those trips: <%= Trip.most_trips_by_date.first %> had the most trips with <%= Trip.most_trips_by_date.second %> trips. </p>
+    <p>Single date with the lowest number of trips with a count of those trips: <%= Trip.fewest_trips_by_date.first %> had the most trips with <%= Trip.fewest_trips_by_date.second %> trips.</p>
+
+    <p>Month by Month breakdown of number of rides with subtotals for each year: <%= Trip.parse_yearly_trips_as_html %> </p>

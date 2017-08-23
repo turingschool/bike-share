@@ -110,7 +110,7 @@ describe Trip do
       end
 
       it "returns percentage of subscribers and customers" do
-        expect(Trip.subscriber_percentage).to eq([0.33, 0.67])
+        expect(Trip.subscriber_percentage).to eq(["33%", "67%"])
       end
       it "returns a single date with the highest number of trips and a count" do
         expect(Trip.most_trips_by_date).to eq(["2015-05-05", 2])

@@ -24,15 +24,15 @@ class Trip < ActiveRecord::Base
   end
 
   def self.average_duration
-    average(:duration).to_f.round(2)
+    (average(:duration) / 60).floor
   end
 
   def self.longest
-    maximum(:duration)
+    maximum(:duration) / 60
   end
 
   def self.shortest
-    minimum(:duration)
+    minimum(:duration) / 60
   end
 
   def self.station_with_most_starts
@@ -43,14 +43,6 @@ class Trip < ActiveRecord::Base
   def self.station_with_most_ends
     station_id = group(:end_station).order("count_id DESC").count(:id).first[0]
     Station.find(station_id).name
-  end
-
-  def self.trip_count_by_month
-    group("DATE_TRUNC('month', trip_date)").count(:trip_date)
-  end
-
-  def self.trip_count_by_year
-    group("DATE_TRUNC('year', trip_date)").count(:trip_date)
   end
 
   def self.most_trips_by_date
@@ -84,8 +76,8 @@ class Trip < ActiveRecord::Base
 
   def self.subscriber_percentage
     total = group(:subscription_type_id).order("count_id").count(:id).values
-    sub_percentage = (total.first.to_f / total.reduce(:+)).round(2)
-    cust_percentage = (total.second.to_f / total.reduce(:+)).round(2)
+    sub_percentage = (total.first.to_f / total.reduce(:+) * 100).round.to_s + '%'
+    cust_percentage = (total.second.to_f / total.reduce(:+) * 100).round.to_s + '%'
     return sub_percentage, cust_percentage
   end
 
@@ -94,6 +86,22 @@ class Trip < ActiveRecord::Base
     subscribers = count[1]
     customers = count[2]
     return subscribers, customers
+  end
+
+  def self.trip_count_by_month
+    group("DATE_TRUNC('month', trip_date)").count(:trip_date)
+  end
+
+  def self.trip_count_by_year
+    group("DATE_TRUNC('year', trip_date)").count(:trip_date)
+  end
+
+  def self.parse_yearly_trips_as_html
+    parse_string = ""
+    trip_count_by_month.each do |date, trips|
+    parse_string += "<p> #{Date::MONTHNAMES[date.month]} #{date.year} had #{trips} trips </p>"
+    end
+    parse_string
   end
 
 end

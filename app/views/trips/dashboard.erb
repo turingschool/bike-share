@@ -1,0 +1,15 @@
+<h3>Trips Dashboard</h3>
+<p>The average duration of a ride is <%= Trip.average_duration%> minutes</p>
+<p>The longest ride was <%=Trip.longest_ride%> minutes.</p>
+<p>The shortest ride was <%=Trip.shortest_ride%> minutes.</p>
+<p>The station with the most rides as a starting point is <a href="/stations/<%= Trip.station_with_most_rides_as_starting_point.id %>"> <%= Trip.station_with_most_rides_as_starting_point.name %></a></p><br>
+<p>The station with the most rides as an end point is <a href="/stations/<%= Trip.station_with_the_most_rides_as_end_point.id %>"> <%= Trip.station_with_the_most_rides_as_end_point.name %></a></p><br>
+<p>Bike trips by month:</p>
+<p><%= column_chart Trip.chart_it_brah, id: "users-chart", colors: ["FF69B4"], xtitle: "Month of Year", ytitle: "Trips" %></p>
+<p>The bike with the most rides was <%=Trip.most_ridden_bike_id%></p>
+<p>The bike with the fewest rides was <%=Trip.least_ridden_bike_id%></p>
+<p>The date with the most rides was <%=Trip.highest_date%></p>
+<p>The date with the fewest rides was <%=Trip.lowest_date%></p>
+<p>The most used subscription type is <%= Trip.most_used_sub_type.subscription_type %></p>
+<p>The least used subscription type is <%= Trip.least_used_sub_type.subscription_type %></p>
+<p>Key: 1 = Subscriber, 2 = Customer<%= pie_chart Trip.group(:subscription_type_id).count %></p>

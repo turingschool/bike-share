@@ -47,15 +47,16 @@ class Condition < ActiveRecord::Base
     amount.size
   end
 
-  # def self.sort_wind_mean(range)
-  #   amount = 0
-  #   length = where(mean_wind_speed: range).count
-  #   binding.pry
-  #   where(mean_wind_speed: range).each do |condition|
-  #     amount += Trip.where(start_date: condition[:date]).count
-  #   end
-  #   amount / length
-  # end
+  def self.sort_wind_mean(range)
+    amount = 0
+    length = where(mean_wind_speed: range).count
+    where(mean_wind_speed: range).each do |condition|
+      condition.trips.each do |trip|
+        amount += 1 if trip.start_date == condition.date
+      end
+    end
+    amount / length
+  end
 
   # def self.sort_precip_max(range)
   #   amount = []

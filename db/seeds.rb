@@ -14,7 +14,7 @@ def fast_seed_station(data)
     puts "Seeded #{count} records (station)"
     count += 1
 
-    city = City.where(name: row[:name]).first_or_create
+    city = City.where(name: row[:city]).first_or_create
 
 
     batch << Station.new(id: row[:id].to_i,

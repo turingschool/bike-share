@@ -18,9 +18,9 @@ RSpec.describe "User can edit a trip" do
     select("Customer", from: "trip[subscription_type_id]")
     fill_in("trip[zip_code]", with: 90210)
     click_on("Submit Changes")
-    expect(current_path).to eq('/trips/1')
+
     expect(page).to have_content("The trip lasted 45 minutes")
-    expect(page).to have_content("The trip started at Over There, and ended at Over Here")
+    expect(page).to have_content("The trip started at Station_1, and ended at Station_1")
     expect(page).to have_content("The trip was on bike# 547835")
     expect(page).to have_content("The trip zip code was 90210")
   end

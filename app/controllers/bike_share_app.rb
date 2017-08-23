@@ -77,6 +77,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations/:id' do
     @station = Station.find(params[:id])
+    #require 'pry';binding.pry
     erb :'stations/show'
   end
 

@@ -17,14 +17,10 @@
                     <input type='text' name='trip[duration]'><br/>
                     Start Date:<br>
                     <input type='text' name='trip[start_date]'><br/>
-                    Start Station Name:<br>
-                    <input type='text' name='trip[start_station_name]'><br/>
                     Start Station ID:<br>
                     <input type='integer' name='trip[start_station_id]'><br/>
                     End Date:<br>
                     <input type='text' name='trip[end_date]'><br/>
-                    End Station Name:<br>
-                    <input type='text' name='trip[end_station_name]'><br/>
                     End Station ID:<br>
                     <input type='integer' name='trip[end_station_id]'><br/>
                   </div>
@@ -33,8 +29,8 @@
                     <input type='text' name='trip[bike_id]'><br/>
                     Subscription Type:<br>
                     <select name="trip[subscription_type]">
-                      <option value="Subscriber">Subscriber</option>
-                      <option value="Customer">Customer</option>
+                      <option value=<%= 1 %>>Subscriber</option>
+                      <option value=<%= 2 %>>Customer</option>
                     </select><br>
                     Zip Code:<br>
                     <input type='text' name='trip[zip_code]'><br/><br>

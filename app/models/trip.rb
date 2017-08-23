@@ -39,21 +39,21 @@ class Trip < ActiveRecord::Base
   end
 
   def self.longest_ride
-    secs = Trip.maximum(:duration)
+    secs = Trip.maximum(:duration).to_i
     (secs / 60)
   end
 
   def self.shortest_ride
-    secs = Trip.minimum(:duration)
+    secs = Trip.minimum(:duration).to_i
     (secs / 60)
   end
 
   def self.station_with_most_rides_as_starting_point
-    Trip.group('start_station_name').order('count(*)').pluck(:start_station_name).last
+    Station.find(Trip.group(:start_station_id).order('count(*)').pluck(:start_station_id).last)
   end
 
   def self.station_with_the_most_rides_as_end_point
-    Trip.group('end_station_name').order('count(*)').pluck(:end_station_name).last
+    Station.find(Trip.group(:end_station_id).order('count(*)').pluck(:end_station_id).last)
   end
 
   def self.chart_it_brah
@@ -91,22 +91,17 @@ class Trip < ActiveRecord::Base
   end
 
   def self.most_used_sub_type
-    Trip.get_sub_count(sub_type.last)
-  end
-
-  def self.sub_type
-    group(:subscription_type).order("count(*)").pluck('subscription_type')
+    SubscriptionType.find(group(:subscription_type_id).order("count(*)").pluck(:subscription_type_id).last)
   end
 
   def self.get_sub_count(sub_type)
-    b = Trip.group('subscription_type').order('count(*)').count[sub_type]
+    b = Trip.group(:subscription_type_id).order('count(*)')
     total = Trip.all.count
     "There are #{b} #{sub_type} subscriptions, which accounts for #{((b.to_f / total.to_f) * 100).round(2)} percent of the total."
   end
 
   def self.least_used_sub_type
-    sub_type = Trip.group('subscription_type').order("count(*)").pluck(:subscription_type).first
-    Trip.get_sub_count(sub_type)
+    SubscriptionType.find(group(:subscription_type_id).order("count(*)").pluck(:subscription_type_id).first)
   end
 
 end

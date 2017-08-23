@@ -6,7 +6,7 @@ class Condition < ActiveRecord::Base
   def self.sort_temp_max(range)
     amount = []
     where(max_temperature: range).each do |condition|
-      amount << condition.trips
+      amount << condition.trip if condition.date == 
     end
     amount.size
   end

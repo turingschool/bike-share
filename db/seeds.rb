@@ -39,6 +39,8 @@ def fast_seed_condition(data)
     puts "Seeded #{count} records (condition)"
     count += 1
 
+    trip = Trip.where(start_date: row[:date]).first.id
+
     c = Condition.new(date: row[:date],
                          max_temperature: row[:max_temperature],
                          mean_temperature: row[:mean_temperature],
@@ -47,10 +49,11 @@ def fast_seed_condition(data)
                          mean_visibility: row[:mean_visibility],
                          mean_wind_speed: row[:mean_wind_speed],
                          precipitation: row[:precipitation],
+                         trip_id: trip
                          )
     batch << c
     if batch.size >= batch_size
-      Trip.import batch
+      Condition.import batch
       batch = []
     end
   end
@@ -98,10 +101,21 @@ def conditions
   @loader.sanitize_weather('./db/csv/weather.csv')
 end
 
+def associate_trips
+  count = 0
+  Trip.all.each do |trip|
+    puts "Associating trip with conditions #{count}"
+    count += 1
+    condition = Condition.where(date: trip[:start_date]).first.id
+    trip.update(condition_id: condition)
+  end
+end
+
 def run
   fast_seed_station(stations)
   fast_seed_trip(trips)
   fast_seed_condition(conditions)
+  associate_trips
 end
 
 run

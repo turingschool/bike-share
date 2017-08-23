@@ -1,5 +1,5 @@
 <h1>Trip <%= @trip.id %></h1>
-
+<p><a class=class="btn btn-link" href="/trips/<%= @trip.id %>/edit">Edit Trip</a></p>
 <h3>Trip Info:</h3>
 <p>Duration: <%= @trip.duration %></p>
 <p>Start Date: <%= @trip.start_date %></p>
@@ -11,6 +11,5 @@
 <p>Zip Code: <%= @trip.zip_code %></p>
 <form action="/trips/<%= @trip.id %>" method="post">
   <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="delete" />
+  <input class="btn btn-danger" type="submit" value="Delete Trip" />
 </form>
-<a href="/trips/<%= @trip.id %>/edit">Edit</a>

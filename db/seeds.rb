@@ -39,8 +39,6 @@ def fast_seed_condition(data)
     puts "Seeded #{count} records (condition)"
     count += 1
 
-    trip = Trip.where(start_date: row[:date]).first.id
-
     c = Condition.new(date: row[:date],
                          max_temperature: row[:max_temperature],
                          mean_temperature: row[:mean_temperature],
@@ -48,8 +46,7 @@ def fast_seed_condition(data)
                          mean_humidity: row[:mean_humidity],
                          mean_visibility: row[:mean_visibility],
                          mean_wind_speed: row[:mean_wind_speed],
-                         precipitation: row[:precipitation],
-                         trip_id: trip
+                         precipitation: row[:precipitation]
                          )
     batch << c
     if batch.size >= batch_size
@@ -62,13 +59,14 @@ end
 
 def fast_seed_trip(data)
   count = 0
-  batch,batch_size = [], 10_000
+  batch,batch_size = [], 2_000
   data.each do |row|
     count += 1
     puts "Seeded #{count} records (trip)"
 
     start_station = Station.find(row[:start_station_id])
     end_station = Station.find(row[:start_station_id])
+    condition = Condition.where(date: row[:start_date]).first.id
 
     t = Trip.new(duration: row[:duration],
                  start_date: row[:start_date],
@@ -77,7 +75,8 @@ def fast_seed_trip(data)
                  end_station_id: end_station.id,
                  bike_id: row[:bike_id],
                  subscription_type: row[:subscription_type],
-                 zip_code: row[:zip_code]
+                 zip_code: row[:zip_code],
+                 condition_id: condition
                  )
     batch << t
     if batch.size >= batch_size
@@ -101,10 +100,10 @@ def conditions
   @loader.sanitize_weather('./db/csv/weather.csv')
 end
 
-def associate_trips
+def associate_conditions
   count = 0
   Trip.all.each do |trip|
-    puts "Associating trip with conditions #{count}"
+    puts "Associating conditions with trip #{count}"
     count += 1
     condition = Condition.where(date: trip[:start_date]).first.id
     trip.update(condition_id: condition)
@@ -113,9 +112,9 @@ end
 
 def run
   fast_seed_station(stations)
-  fast_seed_trip(trips)
   fast_seed_condition(conditions)
-  associate_trips
+  fast_seed_trip(trips)
+  associate_conditions
 end
 
 run

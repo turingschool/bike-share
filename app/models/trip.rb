@@ -14,14 +14,17 @@ class Trip < ActiveRecord::Base
     30
   end
 
+
   def self.avg_duration_of_a_ride
     seconds = average(:duration)
     minutes = seconds / 60
-    minutes.round(2)
+    minutes.round
   end
 
   def self.longest_ride
-    maximum(:duration)
+    seconds = maximum(:duration)
+    minutes = seconds / 60
+    minutes / 60
   end
 
   def self.shortest_ride

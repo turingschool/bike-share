@@ -2,8 +2,8 @@
 
 <div>
   <p>Average duration of a ride: <%= Trip.avg_duration_of_a_ride %> minutes</p>
-  <p>Longest ride: <%= Trip.longest_ride %></p>
-  <p>Shortest ride: <%= Trip.shortest_ride %></p>
+  <p>Longest ride: <%= Trip.longest_ride %> hours</p>
+  <p>Shortest ride: <%= Trip.shortest_ride %> seconds</p>
   <p>Station with the most rides as a starting place: <%= (Trip.station_with_most_ride_starts) %></p>
   <p>Station with the most rides as an ending place: <%= (Trip.station_with_most_rides_ends) %></p>
   <p>Month by Month breakdown of number of rides with subtotals for each year: <%= Trip.month_breakdown %></p>

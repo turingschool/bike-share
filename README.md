@@ -1,5 +1,7 @@
 # Bike Share
 
+[![Stories in Ready](https://badge.waffle.io/sidewinder2020/bike-share.png?label=ready&title=Ready)](http://waffle.io/sidewinder2020/bike-share)
+
 ## Abstract
 
 In this project you'll use Ruby, Sinatra, and Activerecord to build a site that analyzes bike share usage in San Francisco.
@@ -258,7 +260,7 @@ The project will be assessed with the following rubric:
 ### 3. User Experience and Conventions
 
 * 4: Project uses Sinatra methods and ERB templates to display both resources and non-resource related views with appropriate routes, and HTTP verbs. All functionality can be accessed in the application where expected based on the spec. User experience is exceptional ('client ready') and all pieces of the application can be accessed without entering addresses manually in the navbar.
-* 3: Project still uses appropriate routes and HTTP verbs. All pieces of the application can be accessed without entering addresses manually in the navbar. User experience is pleasant, but may need additional improvement before truly being ready to be deployed to production for a client. 
+* 3: Project still uses appropriate routes and HTTP verbs. All pieces of the application can be accessed without entering addresses manually in the navbar. User experience is pleasant, but may need additional improvement before truly being ready to be deployed to production for a client.
 * 2: Appication is difficult to navigate, and may not follow RESTful conventions. This project may have limited styling.
 * 1: Application does not follow conve
 

@@ -21,7 +21,6 @@
                         <span>Mean Wind Speed (mph): <%= condition.mean_wind_speed %></span>
                         <br />
                         <span>Precipitation (inches): <%= condition.precipitation %></span>
-
                       </li>
                     <br />
                     <br />
@@ -30,3 +29,4 @@
         </div>
     </div>
 </div>
+<%= will_paginate @conditions %>

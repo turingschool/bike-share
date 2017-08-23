@@ -67,5 +67,29 @@ class Condition < ActiveRecord::Base
 			.joins(:trips).where(precipitation: (range...(range + 0.5)))
 			.group(:conditions).order("count_id DESC").count(:id)
 	end
+	
+	def self.breakout_speed
+		counter = 0.0
+		speed = Hash.new
+		until counter == 16.0
+			speed.merge!(counter=>breakout_mph(counter))
+			count += 4.0
+		end
+	end
+	
+	def self.wind_speed_trips(range)
+		select("condition.*, sum(trip.condition_id) AS total_trips")
+			.joins(:trips).where(mean_wind_speed: (range...(range + 4.0)))
+			.group(:conditions).order("count_id DESC").count(:id)
+	end
+	
+	def self.breakout_mph(speed_range)
+		range = wind_speed_trips(speed_range)
+		answers = Hash.new(0)
+		answers[:min] = range.values.last
+		answers[:max] = range.values.first
+		answers[:avg] = range.values.sum / range.values.count
+		answers
+	end
 
 end

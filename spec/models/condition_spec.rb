@@ -1,8 +1,9 @@
 describe Condition do
   describe "Class Methods" do
     it ".avg_rides_by_weather" do
+
       Trip.create(duration: 174,
-                  start_date: "2013-08-21 09:08:00",
+                  start_date: "2013-08-29",
                   start_station_name: "Panera",
                   end_date: "2013-08-29 09:11:00",
                   end_station_name: "Turing",
@@ -13,7 +14,7 @@ describe Condition do
                   zip_code: "94114")
 
       Trip.create(duration: 174,
-                  start_date: "2013-08-30 09:08:00",
+                  start_date: "2013-08-30",
                   start_station_name: "Turing",
                   end_date: "2013-08-29 09:11:00",
                   end_station_name: "King Sooper",
@@ -24,7 +25,7 @@ describe Condition do
                   zip_code: "94114")
 
       Trip.create(duration: 174,
-                  start_date: "2013-08-30 09:08:00",
+                  start_date: "2013-08-30",
                   start_station_name: "Trader Joes",
                   end_date: "2013-08-29 09:11:00",
                   end_station_name: "Turing",
@@ -35,7 +36,7 @@ describe Condition do
                   zip_code: "94114")
 
       Trip.create(duration: 174,
-                  start_date: "2013-08-30 09:08:00",
+                  start_date: "2013-08-30",
                   start_station_name: "Panera",
                   end_date: "2013-08-29 09:11:00",
                   end_station_name: "Turing",
@@ -46,6 +47,7 @@ describe Condition do
                   zip_code: "94114")
 
       Trip.create(duration: 174,
+                  start_date: "2013-08-29",
                   start_date: "2013-08-29 09:08:00",
                   start_station_name: "Turing",
                   end_date: "2013-08-29 09:11:00",
@@ -57,6 +59,7 @@ describe Condition do
                   zip_code: "94114")
 
       Trip.create(duration: 174,
+                  start_date: "2013-08-29",
                   start_date: "2013-08-29 09:08:00",
                   start_station_name: "Panera",
                   end_date: "2013-08-29 09:11:00",
@@ -74,7 +77,10 @@ describe Condition do
                    mean_humidity: 40,
                    mean_visibility: 20,
                    mean_windspeed: 50,
+                   precipitation:  3,
+                   zip_code: 95113)
                    precipitation:  3)
+
 
       Condition.create(date:'2013-08-29',
                    max_temperature: 77,
@@ -83,6 +89,8 @@ describe Condition do
                    mean_humidity: 43,
                    mean_visibility: 22,
                    mean_windspeed: 30,
+                   precipitation:  1,
+                   zip_code: 95113)
                    precipitation:  1)
 
       Condition.create(date:'2013-08-29',
@@ -92,7 +100,10 @@ describe Condition do
                   mean_humidity: 40,
                   mean_visibility: 20,
                   mean_windspeed: 50,
+                  precipitation:  3,
+                  zip_code: 95113)
                   precipitation:  3)
+
 
       Condition.create(date:'2013-08-30',
                   max_temperature: 77,
@@ -101,9 +112,15 @@ describe Condition do
                   mean_humidity: 43,
                   mean_visibility: 22,
                   mean_windspeed: 30,
-                  precipitation:  1)
+                  precipitation:  1,
+                  zip_code: 95113)
 
-      expect(Condition.breakout_avg_num_of_rides_by_temp_chunk.to eq("Yoyoyo")
+   
+      expect(Condition.avg_rides_by_weather(70.0)).to eq(1.5)
+
     end
   end
 end
+
+
+              

@@ -89,37 +89,36 @@ class Condition < ActiveRecord::Base
     amount / length
   end
 
-  # def self.sort_sight_max(range)
-  #   dates = []
-  #   where(mean_visibility: range).each do |condition|
-  #     dates << condition.date
-  #   end
-  #   nums = []
-  #   dates.each do |date|
-  #     nums << Trip.where(start_date: date).count
-  #   end
-  #   nums.sort.last
-  # end
+  def self.sort_sight_max(range)
+    amount = []
+    where(mean_visibility: range).each do |condition|
+      condition.trips.each do |trip|
+        amount << trip if trip.start_date == condition.date
+      end
+    end
+    amount.size
+  end
 
-  # def self.sort_sight_min(range)
-    
-  # end
+  def self.sort_sight_min(range)
+    amount = []
+    where(mean_visibility: range).each do |condition|
+      condition.trips.each do |trip|
+        amount << trip if trip.start_date == condition.date
+      end
+    end
+    amount.size
+  end
 
-  # def self.sort_sight_mean(range)
-    
-  # end
-
-  # def self.sort_sight(range)
-  #   array = Condition.where(mean_visibility: range).all.map {|condition| condition.date}
-  #   trip_nums = array.map do |date|
-  #     Trip.where(start_date: date.beginning_of_day...date.end_of_day).count
-  #   end
-  #   output = {}
-  #   output[:max] = trip_nums.sort.last
-  #   output[:min] = trip_nums.sort.first
-  #   output[:avg] = trip_nums.inject(:+) / trip_nums.length unless trip_nums.length == 0
-  #   output
-  # end
+  def self.sort_sight_mean(range)
+    amount = 0
+    length = where(mean_visibility: range).count
+    where(mean_visibility: range).each do |condition|
+      condition.trips.each do |trip|
+        amount += 1 if trip.start_date == condition.date
+      end
+    end
+    amount / length
+  end
 
   # Show Methods
   def self.condition_on_day_with_highest_rides

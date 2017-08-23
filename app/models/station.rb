@@ -1,6 +1,3 @@
-require 'will_paginate'
-require 'will_paginate/active_record'
-
 class Station < ActiveRecord::Base
   validates :name, presence: true
   validates :dock_count, presence: true

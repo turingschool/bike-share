@@ -21,7 +21,7 @@
       <td><%= trip.start_date %></td>
       <td><%= Station.find(trip.start_station_id).name %></td>
       <td><%= trip.end_date %></td>
-      <td><%= Station.find(trip.end_station_id).subscription_type_id %></td>
+      <td><%= Station.find(trip.end_station_id).name %></td>
       <td><%= trip.bike_id %></td>
       <td><%= SubscriptionType.find(trip.subscription_type_id).subscription_type %></td>
       <td><%= trip.zip_code %></td>

@@ -11,7 +11,6 @@ describe "User visits ''/stations/new'" do
 
   it "and can create a new station" do
     visit('/stations/new')
-    save_and_open_page
 
     within("form") do
       fill_in 'name', :with => 'Test Station'
@@ -19,6 +18,8 @@ describe "User visits ''/stations/new'" do
       fill_in 'installdate', :with => '2/2/2013'
       click_button "Create New Station"
     end
+
+    save_and_open_page
 
     expect(page).to have_content("Test Station")
     expect(page).to have_content("Dock Count")

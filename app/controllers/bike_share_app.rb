@@ -102,4 +102,11 @@ class BikeShareApp < Sinatra::Base
     Trip.delete(params[:id])
     redirect '/trips'
   end
+
+  get '/conditions' do
+    Condition.connection
+    @pages = Condition.paginate(page: params[:page], :per_page => 20)
+    @conditions = Condition.order('id ASC').page(params[:page])
+    erb :'/conditions/index'
+  end
 end

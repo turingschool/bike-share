@@ -1,0 +1,19 @@
+<h1>Create a New Station</h1>
+
+<form action="/stations" method="post">
+  <label>Name:</label>
+  <input type="textfield" name="station[name]">
+  <label>Dock Count:</label>
+  <input type="textfield" name="station[dock_count]">
+  <label>City:</label>
+  <select name="station[city_id]">
+    <% @cities.each do |city| %>
+      <option value=<%= city.id %>><%= city.city %></option>
+    <% end %>
+  </select>
+  <label>Installation Date:</label>
+  <input type="textfield" name="station[installation_date]">
+  <input type="submit" value="Create New Station" />
+</form>
+
+<a href="/stations"><button>Cancel</button></a>

@@ -99,11 +99,11 @@ describe Trip do
       end
 
       it "returns the count of subscribers and customers" do
-        expect(Trip.subscriber_count).to eq([2, 1])
+        expect(Trip.subscriber_count).to eq([1, 2])
       end
 
       it "returns percentage of subscribers and customers" do
-        expect(Trip.subscriber_percentage).to eq([0.66, 0.33])
+        expect(Trip.subscriber_percentage).to eq([0.33, 0.67])
       end
     end
   end

@@ -64,15 +64,18 @@ class Trip < ActiveRecord::Base
     return bike_id, bike_count
   end
 
-  # def self.subscriber_percentage
-  #
-  # end
+  def self.subscriber_percentage
+    total = group(:subscription_type_id).order("count_id").count(:id).values
+    sub_percentage = (total.first.to_f / total.reduce(:+)).round(2)
+    cust_percentage = (total.second.to_f / total.reduce(:+)).round(2)
+    return sub_percentage, cust_percentage
+  end
 
   def self.subscriber_count
-    count = Trip.group(:subscription_type_id).order("count_id").count(:id)
+    count = group(:subscription_type_id).order("count_id").count(:id)
     subscribers = count[1]
     customers = count[2]
-    return customers, subscribers
+    return subscribers, customers
   end
 
 end

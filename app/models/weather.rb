@@ -16,32 +16,72 @@ class Weather < ActiveRecord::Base
 
   def self.average_trips_in_weather_set(set)
     total_trips = set.reduce(0) do |total, condition|
-      total += condition.trips.count
+      total += Trip.count_by_date(condition.date)
     end
     total_trips / set.count
   end
 
   def self.find_all_with_max_temp_in_range(low, high)
-    where(:max_temperature => low...high)
+    where(:max_temperature => low..high)
+  end
+
+  def self.find_max_temp_increment
+    low = 40
+    conditions = []
+    until low == 100
+      conditions << find_all_with_max_temp_in_range(low, (low + 10))
+      low += 10
+    end
+    return conditions
   end
 
   def self.find_all_with_precipitation_in_range(low, high)
-    where(:precipitation => low...high)
+    where(:precipitation => low..high)
+  end
+
+  def self.find_precipitation_increment
+    low = 0.0
+    conditions = []
+    until low == 3.5
+      conditions << find_all_with_precipitation_in_range(low, (low + 0.5))
+      low += 0.5
+    end
+    return conditions
   end
 
   def self.find_all_with_mean_wind_speed_in_range(low, high)
-    where(:mean_wind_speed => low...high)
+    where(:mean_wind_speed => low..high)
+  end
+
+  def self.find_wind_speed_increment
+    low = 0.0
+    conditions = []
+    until low == 25.0
+      conditions << find_all_with_mean_wind_speed_in_range(low, (low + 4.0))
+      low += 5.0
+    end
+    return conditions
   end
 
   def self.find_all_with_mean_visibility_in_range(low, high)
-    self.where(:mean_visibility => low...high)
+    where(:mean_visibility => low..high)
+  end
+
+  def self.find_visibility_increment
+    low = 5.0
+    conditions = []
+    until low == 15.0
+      conditions << find_all_with_mean_visibility_in_range(low, (low + 4.0))
+      low += 5.0
+    end
+    return conditions
   end
 
   def self.highest_rides_weather
-    self.maximum(&:trips.count)
+    where(:date => Trip.most_trips_by_date[0].to_s)
   end
 
-  def self.lowest_rides_weather
-    self.minimum(&:trips.count)
+  def self.fewest_rides_weather
+    where(:date => Trip.fewest_trips_by_date[0].to_s)
   end
 end

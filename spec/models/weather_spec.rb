@@ -12,16 +12,39 @@ describe Weather do
   end
   describe "Class Methods" do
     before(:each) do
-      date = Date.new("8/29/2013")
+      date1 = Date.new("8/29/2013")
+      date2 = Date.new("7/12/2014")
+      date3 = Date.new("6/23/2015")
       zip_code = 94107
-      weather = Weather.new(date: date,
+      weather1 = Weather.new(date: date1,
                             max_temperature: 45.2,
-                            mean_temperature: 55.4,
+                            mean_temperature: 55.2,
                             min_temperature: 23.4,
                             mean_humidity: 12.0,
-                            mean_visibility: 22.5,
-                            mean_wind_speed: 65.2,
-                            precipitation: 43.2)
+                            mean_visibility: 13.0,
+                            mean_wind_speed: 1.2,
+                            precipitation: 0.6
+                      )
+      weather2 = Weather.new(date: date2,
+                            max_temperature: 45.2,
+                            mean_temperature: 55.2,
+                            min_temperature: 23.4,
+                            mean_humidity: 12.0,
+                            mean_visibility: 13.0,
+                            mean_wind_speed: 1.2,
+                            precipitation: 0.5
+                      )
+      weather3 = Weather.new(date: date3,
+                            max_temperature: 55.3,
+                            mean_temperature: 55.2,
+                            min_temperature: 23.4,
+                            mean_humidity: 12.0,
+                            mean_visibility: 6.7,
+                            mean_wind_speed: 0.3,
+                            precipitation: 0.0
+                      )
     end
+
+    it "can find
 
 end

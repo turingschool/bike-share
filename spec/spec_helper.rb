@@ -10,6 +10,8 @@ require 'shoulda-matchers'
 
 Capybara.app = BikeShareApp
 
+DatabaseCleaner.strategy = :truncation
+
 RSpec.configure do |c|
   c.include Capybara::DSL
   c.include FactoryGirl::Syntax::Methods
@@ -17,5 +19,13 @@ RSpec.configure do |c|
   c.include(Shoulda::Matchers::ActiveRecord, type: :model)
   c.before(:suite) do
     FactoryGirl.find_definitions
+  end
+
+  c.before(:all) do
+    DatabaseCleaner.clean
+  end
+
+  c.after(:each) do
+    DatabaseCleaner.clean
   end
 end

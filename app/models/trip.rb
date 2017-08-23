@@ -25,22 +25,22 @@ class Trip < ActiveRecord::Base
 
   def self.station_with_most_rides_as_starting_place
     station = Trip.group(:start_station_id).order("count_id DESC").limit(1).count(:id)
-    Station.find(station.keys.first)
+    Station.find(station.keys.first).name
   end
 
   def self.station_with_most_rides_as_ending_place
     station = Trip.group(:end_station_id).order("count_id DESC").limit(1).count(:id)
-    Station.find(station.keys.first)
+    Station.find(station.keys.first).name
   end
 
   def self.most_ridden_bike_with_total_number_of_rides
     bike = Trip.group(:bike_id).order("count_id DESC").count(:id)
-    bike.keys
+    bike.first
   end
 
   def self.least_ridden_bike_with_total_number_of_rides
     bike = Trip.group(:bike_id).order("count_id ASC").count(:id)
-    bike.keys
+    bike.first
   end
 
   def self.subscriber_count_and_percentage
@@ -61,12 +61,14 @@ class Trip < ActiveRecord::Base
 
   def self.date_with_highest_number_of_trips # this returns the date and time, do we just want the date?
     date = Trip.group(:start_date).order("count_id DESC").limit(1).count(:id).keys.first # if you .to_date this is returns just the date but in a different format
-    Trip.where(start_date: date).count
+    number = Trip.where(start_date: date).count
+    return "Date: #{date}, Count: #{number}"
   end
 
   def self.date_with_lowest_number_of_trips
     date = Trip.group(:start_date).order("count_id ASC").limit(1).count(:id).keys.first
-    Trip.where(start_date: date).count
+    number = Trip.where(start_date: date).count
+    return "Date: #{date}, Count: #{number}"
   end
 
   def self.month_by_month_breakdown
@@ -85,6 +87,7 @@ class Trip < ActiveRecord::Base
       start_year += 1
     end
 
-    {months: months, years: years}
+   {months: months, years: years}
   end
+
 end

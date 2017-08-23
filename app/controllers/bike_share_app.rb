@@ -80,6 +80,12 @@ class BikeShareApp < Sinatra::Base
     erb :'trips/new'
   end
 
+  get '/trips-dashboard' do
+    @stations = Station.all
+    @trips = Trip.all
+    erb :'trips/dashboard'
+  end
+
   post '/trips/' do
     @trip = Trip.create(params[:trip])
     binding.pry

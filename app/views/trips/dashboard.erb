@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="col-lg-12 text-center">
+    <h1>Trip Dashboard</h1>
+    <br>
+    <ul class="list-group">
+      <li class="list-group-item">Average duration of a ride:
+        <b><%= Trip.average_duration_of_ride.round %></b>
+        minutes</li>
+      <li class="list-group-item">Longest ride:
+        <b><%= Trip.longest_ride %></b>
+        minutes</li>
+      <li class="list-group-item">Shortest ride:
+        <b><%= Trip.shortest_ride %></b>
+        minutes</li>
+      <li class="list-group-item">Station with the most rides as a starting place:
+        <b><%= Trip.station_with_most_rides_as_starting_place %></b>
+      </li>
+      <li class="list-group-item">Station with the most rides as an ending place:
+        <b><%= Trip.station_with_most_rides_as_ending_place %></b>
+      </li>
+      <li class="list-group-item">Most ridden bike with total number of rides for that bike:
+        <b>Bike:
+          <%= Trip.most_ridden_bike_with_total_number_of_rides[0] %>
+          Rides:
+          <%= Trip.most_ridden_bike_with_total_number_of_rides[1] %></b>
+      </li>
+      <li class="list-group-item">Least ridden bike with total number of rides for that bike:
+        <b>Bike:
+          <%= Trip.least_ridden_bike_with_total_number_of_rides[0] %>
+          Rides:
+          <%= Trip.least_ridden_bike_with_total_number_of_rides[1] %></b>
+      </li>
+      <li class="list-group-item">User subscription type breakout with both count and percentage:
+        <b><%= Trip.subscriber_count_and_percentage %></b>
+      </li>
+      <li class="list-group-item">Single date with the highest number of trips with a count of those trips:
+        <b><%= Trip.date_with_highest_number_of_trips %></b>
+      </li>
+      <li class="list-group-item">Single date with the lowest number of trips with a count of those trips:
+        <b><%= Trip.date_with_lowest_number_of_trips %></b>
+      </li>
+
+</ul>
+</div>
+
+<div class="row text-center">
+<h2>
+  Breakdown of rides:
+</h2>
+<br>
+</div>
+
+<% Trip.month_by_month_breakdown[:months].each_pair do |month, value| %>
+<div class="col-sm-4 text-center">
+      <ul class="list-group">
+        <li class="list-group-item">
+  <b><%= Date::MONTHNAMES[month] %></b>:
+  <%= value.to_i %>
+</li>
+</div>
+<% end %>
+
+<% Trip.month_by_month_breakdown[:years].each_pair do |year, value| %>
+<div class="col-sm-6 text-center">
+      <ul class="list-group">
+        <li class="list-group-item">
+  <b><%= year.to_i %></b>:
+  <%= value.to_i %>
+</li>
+</div>
+<% end %>
+
+</div>
+</div>

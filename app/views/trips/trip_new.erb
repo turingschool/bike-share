@@ -1,12 +1,78 @@
-<form action="/trips" method="post">
-<h1>Make a trip</h1>
+<head>
+  <link rel = "stylesheet" type = "text/css" href = <%= url("/main.css")%> />
+  <link href=<%= url("/css/bootstrap.min.css") %> rel="stylesheet">
+</head>
 
-<p>duration in minutes: <input type='text' name='duration'></p><br>
-<p>trip date: <input type='text' name='trip_date'></p><br>
-<p>start station: <input type='text' name='start_station'></p><br>
-<p>end station: <input type='text' name='end_station' ></p><br>
-<p>bike id: <input type='text' name='bike_id'></p><br>
-<p>subscription type: <input type='text' name='subscription_type'></p>
-<p>zip code: <input type='text' name='zip_code'></p>
-<input id='thing' type='submit'/>
-</form>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Bike Share</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/stations">Stations</a></li>
+          <li class="active"><a href="/trips">Trips<span class="sr-only">(current)</span></a></li>
+          <li><a href="/weather">Weather</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Analytics<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/stations/dashboard">Stations</a></li>
+              <li><a href="/trips/dashboard">Trips</a></li>
+              <li><a href="/weather/dashboard">Weather</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <header>
+      <h1>Make a trip</h1>
+    </header>
+    <div class="spacer">
+      <form action="/trips" method="post">
+        <div class="row forminput">
+          <h4>Duration in minutes:</h4> <input type='text' name='duration'>
+        </div>
+
+        <div class="row forminput">
+          <h4>Trip date:</h4> <input type='text' name='trip_date'>
+        </div>
+
+        <div class="row forminput">
+          <h4>Start station:</h4> <input type='text' name='start_station'><
+        </div>
+
+        <div class="row forminput">
+          <h4>End station:</h4> <input type='text' name='end_station' ><
+        </div>
+
+        <div class="row forminput">
+          <h4>Bike id:</h4> <input type='text' name='bike_id'>
+        </div>
+
+        <div class="row forminput">
+          <h4>Subscription type:</h4> <input type='text' name='subscription_type'>
+        </div>
+
+        <div class="row forminput">
+          <h4>Zip code:</h4> <input type='text' name='zip_code'>
+        </div>
+
+        <a href="/trips"><button class="btn btn-danger">Cancel</button></a>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+      </body>

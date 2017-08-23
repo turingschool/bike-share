@@ -105,16 +105,16 @@ RSpec.describe Condition do
 				 														 min_temperature: 40.1,   mean_temperature: 45.3,
 																		 mean_humidity: 20.1,     mean_visibility: 2,
 																		 mean_wind_speed: 9,      precipitation: 3.1,zip_code: "80113")
-			 trip_1 = condition.trips.create!(duration: 600, start_date: "1969/4/20", end_date: "1969/4/21",
+			 trip_1 = condition.trips.create!(duration: 600, start_date: "1991/8/14", end_date: "1969/4/21",
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
 
-				trip_2 = condition.trips.create!(duration: 1200, start_date: "1969/4/20", end_date: "1969/4/21",
+				trip_2 = condition.trips.create!(duration: 1200, start_date: "1991/8/14", end_date: "1969/4/21",
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
 
 
-				trip_3 = condition.trips.create!(duration: 180000, start_date: "1969/4/20", end_date: "1969/4/21",
+				trip_3 = condition.trips.create!(duration: 180000, start_date: "1991/8/14", end_date: "1969/4/21",
 													 start_station_id: 1, end_station_id: 2, bike_id: 4,
 													 subscription_type: "Some Nonsense", zip_code: "80113")
 
@@ -212,6 +212,68 @@ RSpec.describe Condition do
 				expect(Condition.breakout_sight(0.0)[:min]).to eq(1)
 				expect(Condition.breakout_sight(0.0)[:max]).to eq(3)
 				expect(Condition.breakout_sight(0.0)[:avg]).to eq(2)
+			end
+		end
+		
+		describe ".best_weather_trip_day" do
+			it "returns weather for day with most rides" do
+				condition = Condition.create!(weather_date: "1991/8/14", max_temperature: 40.0,
+				 														 min_temperature: 40.1,   mean_temperature: 45.3,
+																		 mean_humidity: 20.1,     mean_visibility: 2.0,
+																		 mean_wind_speed: 9.0,      precipitation: 3.1,zip_code: "80113")
+				condition_2 = Condition.create!(weather_date: "1991/8/15", max_temperature: 40.0,
+					 														 min_temperature: 40.1,   mean_temperature: 45.3,
+																			 mean_humidity: 20.1,     mean_visibility: 3.0,
+																			 mean_wind_speed: 10.0,      precipitation: 3.1,zip_code: "80113")
+			 	trip_1 = condition.trips.create!(duration: 600, start_date: "1969/4/20", end_date: "1969/4/21",
+													 start_station_id: 1, end_station_id: 2, bike_id: 4,
+													 subscription_type: "Some Nonsense", zip_code: "80113")
+
+				trip_2 = condition.trips.create!(duration: 1200, start_date: "1969/4/20", end_date: "1969/4/21",
+													 start_station_id: 1, end_station_id: 2, bike_id: 4,
+													 subscription_type: "Some Nonsense", zip_code: "80113")
+
+
+				trip_3 = condition.trips.create!(duration: 180000, start_date: "1969/4/20", end_date: "1969/4/21",
+													 start_station_id: 1, end_station_id: 2, bike_id: 4,
+													 subscription_type: "Some Nonsense", zip_code: "80113")
+													 
+				trip_4 = condition_2.trips.create!(duration: 180000, start_date: "1991/8/15", end_date: "1991/8/15",
+													 start_station_id: 1, end_station_id: 2, bike_id: 4,
+													 subscription_type: "Some Nonsense", zip_code: "80113")
+						
+				expect(Condition.best_weather_trip_day).to eq(Date.parse('Wed, 14 Aug 1991'))
+			end
+		end
+		
+		describe ".worst_weather_trip_day" do
+			it "returns weather for day with fewest rides" do
+				condition = Condition.create!(weather_date: "1991/8/14", max_temperature: 40.0,
+				 														 min_temperature: 40.1,   mean_temperature: 45.3,
+																		 mean_humidity: 20.1,     mean_visibility: 2.0,
+																		 mean_wind_speed: 9.0,      precipitation: 3.1,zip_code: "80113")
+				condition_2 = Condition.create!(weather_date: "1991/8/15", max_temperature: 40.0,
+					 														 min_temperature: 40.1,   mean_temperature: 45.3,
+																			 mean_humidity: 20.1,     mean_visibility: 3.0,
+																			 mean_wind_speed: 10.0,      precipitation: 3.1,zip_code: "80113")
+			 	trip_1 = condition.trips.create!(duration: 600, start_date: "1969/4/20", end_date: "1969/4/21",
+													 start_station_id: 1, end_station_id: 2, bike_id: 4,
+													 subscription_type: "Some Nonsense", zip_code: "80113")
+
+				trip_2 = condition.trips.create!(duration: 1200, start_date: "1969/4/20", end_date: "1969/4/21",
+													 start_station_id: 1, end_station_id: 2, bike_id: 4,
+													 subscription_type: "Some Nonsense", zip_code: "80113")
+
+
+				trip_3 = condition.trips.create!(duration: 180000, start_date: "1969/4/20", end_date: "1969/4/21",
+													 start_station_id: 1, end_station_id: 2, bike_id: 4,
+													 subscription_type: "Some Nonsense", zip_code: "80113")
+													 
+				trip_4 = condition_2.trips.create!(duration: 180000, start_date: "1991/8/15", end_date: "1991/8/15",
+													 start_station_id: 1, end_station_id: 2, bike_id: 4,
+													 subscription_type: "Some Nonsense", zip_code: "80113")
+						
+				expect(Condition.worst_weather_trip_day).to eq(Date.parse('Thu, 15 Aug 1991'))
 			end
 		end
 	end

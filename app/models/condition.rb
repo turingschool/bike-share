@@ -115,5 +115,15 @@ class Condition < ActiveRecord::Base
 		answers[:avg] = range.values.sum / range.values.count
 		answers
 	end
+	
+	def self.best_weather_trip_day
+		find( Trip.joins(:condition).group(:condition_id)
+			.order("count_id DESC").count(:id).keys.first).weather_date
+	end
+	
+	def self.worst_weather_trip_day
+		find( Trip.joins(:condition).group(:condition_id)
+			.order("count_id DESC").count(:id).keys.last).weather_date
+	end
 
 end

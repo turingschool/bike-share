@@ -14,14 +14,14 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-08-23T11:28:01-06:00">2017-08-23T11:28:01-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-08-23T11:31:01-06:00">2017-08-23T11:31:01-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">85.59%</span></span>
+    (<span class="covered_percent"><span class="yellow">86.06%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
@@ -32,8 +32,8 @@
   <a name="AllFiles"></a>
   <div>
     <b>13</b> files in total.
-    <b>479</b> relevant lines. 
-    <span class="green"><b>410</b> lines covered</span> and
+    <b>495</b> relevant lines. 
+    <span class="green"><b>426</b> lines covered</span> and
     <span class="red"><b>69</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -72,10 +72,10 @@
       
       <tr>
         <td class="strong"><a href="#f2ac396de0888b249a200acb23c63de9ee323740" class="src_link" title="app/models/condition.rb">app/models/condition.rb</a></td>
-        <td class="yellow strong">87.1 %</td>
-        <td>132</td>
-        <td>31</td>
-        <td>27</td>
+        <td class="yellow strong">89.19 %</td>
+        <td>134</td>
+        <td>37</td>
+        <td>33</td>
         <td>4</td>
         <td>0.9</td>
       </tr>
@@ -153,9 +153,9 @@
       <tr>
         <td class="strong"><a href="#1519ce6e52dc9827412bc84c4b367aa9c40dc1fd" class="src_link" title="spec/models/condition_spec.rb">spec/models/condition_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>58</td>
-        <td>41</td>
-        <td>41</td>
+        <td>72</td>
+        <td>51</td>
+        <td>51</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -1201,10 +1201,10 @@
         <div class="source_table" id="f2ac396de0888b249a200acb23c63de9ee323740">
   <div class="header">
     <h3>app/models/condition.rb</h3>
-    <h4><span class="yellow">87.1 %</span> covered</h4>
+    <h4><span class="yellow">89.19 %</span> covered</h4>
     <div>
-      <b>31</b> relevant lines. 
-      <span class="green"><b>27</b> lines covered</span> and
+      <b>37</b> relevant lines. 
+      <span class="green"><b>33</b> lines covered</span> and
       <span class="red"><b>4</b> lines missed.</span>
     </div>
   </div>
@@ -1446,559 +1446,571 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="40">
+        <li class="covered" data-hits="1" data-linenumber="40">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  # def self.sort_wind_min(range)</code>
+          <code class="ruby">  def self.sort_wind_min(range)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="41">
+        <li class="covered" data-hits="1" data-linenumber="41">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  #   amount = []</code>
+          <code class="ruby">    amount = []</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="42">
+        <li class="covered" data-hits="1" data-linenumber="42">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  #   where(mean_wind_speed: range).order(&#39;mean_wind_speed ASC&#39;).each do |condition|</code>
+          <code class="ruby">    where(mean_wind_speed: range).order(&#39;mean_wind_speed ASC&#39;).each do |condition|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="43">
+        <li class="covered" data-hits="1" data-linenumber="43">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  #     amount &lt;&lt; condition.trips</code>
+          <code class="ruby">      condition.trips.each do |trip|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="44">
+        <li class="covered" data-hits="1" data-linenumber="44">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  #   end</code>
+          <code class="ruby">        amount &lt;&lt; trip if trip.start_date == condition.date</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="45">
           
           
-          <code class="ruby">  #   amount.size</code>
+          <code class="ruby">      end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="46">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="47">
+        <li class="covered" data-hits="1" data-linenumber="47">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">    amount.size</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="48">
           
           
-          <code class="ruby">  # def self.sort_wind_mean(range)</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="49">
           
           
-          <code class="ruby">  #   amount = 0</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="50">
           
           
-          <code class="ruby">  #   length = where(mean_wind_speed: range).count</code>
+          <code class="ruby">  # def self.sort_wind_mean(range)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="51">
           
           
-          <code class="ruby">  #   binding.pry</code>
+          <code class="ruby">  #   amount = 0</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="52">
           
           
-          <code class="ruby">  #   where(mean_wind_speed: range).each do |condition|</code>
+          <code class="ruby">  #   length = where(mean_wind_speed: range).count</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="53">
           
           
-          <code class="ruby">  #     amount += Trip.where(start_date: condition[:date]).count</code>
+          <code class="ruby">  #   binding.pry</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="54">
           
           
-          <code class="ruby">  #   end</code>
+          <code class="ruby">  #   where(mean_wind_speed: range).each do |condition|</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="55">
           
           
-          <code class="ruby">  #   amount / length</code>
+          <code class="ruby">  #     amount += Trip.where(start_date: condition[:date]).count</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="56">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">  #   end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="57">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #   amount / length</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="58">
           
           
-          <code class="ruby">  # def self.sort_precip_max(range)</code>
+          <code class="ruby">  # end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="59">
           
           
-          <code class="ruby">  #   amount = []</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="60">
           
           
-          <code class="ruby">  #   where(precipitation: range).order(&#39;precipitation DESC&#39;).each do |condition|</code>
+          <code class="ruby">  # def self.sort_precip_max(range)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="61">
           
           
-          <code class="ruby">  #     amount &lt;&lt; condition.trips</code>
+          <code class="ruby">  #   amount = []</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="62">
           
           
-          <code class="ruby">  #   end</code>
+          <code class="ruby">  #   where(precipitation: range).order(&#39;precipitation DESC&#39;).each do |condition|</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="63">
           
           
-          <code class="ruby">  #   amount.size</code>
+          <code class="ruby">  #     amount &lt;&lt; condition.trips</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="64">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">  #   end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="65">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #   amount.size</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="66">
           
           
-          <code class="ruby">  # def self.sort_precip_min(range)</code>
+          <code class="ruby">  # end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="67">
           
           
-          <code class="ruby">  #   amount = []</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="68">
           
           
-          <code class="ruby">  #   where(precipitation: range).order(&#39;precipitation ASC&#39;).each do |condition|</code>
+          <code class="ruby">  # def self.sort_precip_min(range)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="69">
           
           
-          <code class="ruby">  #     amount &lt;&lt; condition.trips</code>
+          <code class="ruby">  #   amount = []</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="70">
           
           
-          <code class="ruby">  #   end</code>
+          <code class="ruby">  #   where(precipitation: range).order(&#39;precipitation ASC&#39;).each do |condition|</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="71">
           
           
-          <code class="ruby">  #   amount.size</code>
+          <code class="ruby">  #     amount &lt;&lt; condition.trips</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="72">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">  #   end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="73">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #   amount.size</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="74">
           
           
-          <code class="ruby">  # ############## NEEDS REFACTOR, TOO MANY SQL QUERIES SLOWS PAGE DOWN</code>
+          <code class="ruby">  # end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="75">
           
           
-          <code class="ruby">  # def self.sort_precip_mean(range)</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="76">
           
           
-          <code class="ruby">  #   max = self.sort_precip_max(range)</code>
+          <code class="ruby">  # ############## NEEDS REFACTOR, TOO MANY SQL QUERIES SLOWS PAGE DOWN</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="77">
           
           
-          <code class="ruby">  #   min = self.sort_precip_min(range)</code>
+          <code class="ruby">  # def self.sort_precip_mean(range)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="78">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #   max = self.sort_precip_max(range)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="79">
           
           
-          <code class="ruby">  #   max + min / 2</code>
+          <code class="ruby">  #   min = self.sort_precip_min(range)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="80">
           
           
-          <code class="ruby">  #   # amount = 0</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="81">
           
           
-          <code class="ruby">  #   # length = where(precipitation: range).count</code>
+          <code class="ruby">  #   max + min / 2</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="82">
           
           
-          <code class="ruby">  #   # where(precipitation: range).each do |condition|</code>
+          <code class="ruby">  #   # amount = 0</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="83">
           
           
-          <code class="ruby">  #   #   amount += Trip.where(start_date: condition[:date]).count</code>
+          <code class="ruby">  #   # length = where(precipitation: range).count</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="84">
           
           
-          <code class="ruby">  #   # end</code>
+          <code class="ruby">  #   # where(precipitation: range).each do |condition|</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="85">
           
           
-          <code class="ruby">  #   # amount / length</code>
+          <code class="ruby">  #   #   amount += Trip.where(start_date: condition[:date]).count</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="86">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">  #   # end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="87">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #   # amount / length</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="88">
           
           
-          <code class="ruby">  # def self.sort_sight_max(range)</code>
+          <code class="ruby">  # end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="89">
           
           
-          <code class="ruby">  #   dates = []</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="90">
           
           
-          <code class="ruby">  #   where(mean_visibility: range).each do |condition|</code>
+          <code class="ruby">  # def self.sort_sight_max(range)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="91">
           
           
-          <code class="ruby">  #     dates &lt;&lt; condition.date</code>
+          <code class="ruby">  #   dates = []</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="92">
           
           
-          <code class="ruby">  #   end</code>
+          <code class="ruby">  #   where(mean_visibility: range).each do |condition|</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="93">
           
           
-          <code class="ruby">  #   nums = []</code>
+          <code class="ruby">  #     dates &lt;&lt; condition.date</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="94">
           
           
-          <code class="ruby">  #   dates.each do |date|</code>
+          <code class="ruby">  #   end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="95">
           
           
-          <code class="ruby">  #     nums &lt;&lt; Trip.where(start_date: date).count</code>
+          <code class="ruby">  #   nums = []</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="96">
           
           
-          <code class="ruby">  #   end</code>
+          <code class="ruby">  #   dates.each do |date|</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="97">
           
           
-          <code class="ruby">  #   nums.sort.last</code>
+          <code class="ruby">  #     nums &lt;&lt; Trip.where(start_date: date).count</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="98">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">  #   end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="99">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #   nums.sort.last</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="100">
           
           
-          <code class="ruby">  # def self.sort_sight_min(range)</code>
+          <code class="ruby">  # end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="101">
           
           
-          <code class="ruby">    </code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="102">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">  # def self.sort_sight_min(range)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="103">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="104">
           
           
-          <code class="ruby">  # def self.sort_sight_mean(range)</code>
+          <code class="ruby">  # end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="105">
           
           
-          <code class="ruby">    </code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="106">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">  # def self.sort_sight_mean(range)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="107">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="108">
           
           
-          <code class="ruby">  # def self.sort_sight(range)</code>
+          <code class="ruby">  # end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="109">
           
           
-          <code class="ruby">  #   array = Condition.where(mean_visibility: range).all.map {|condition| condition.date}</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="110">
           
           
-          <code class="ruby">  #   trip_nums = array.map do |date|</code>
+          <code class="ruby">  # def self.sort_sight(range)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="111">
           
           
-          <code class="ruby">  #     Trip.where(start_date: date.beginning_of_day...date.end_of_day).count</code>
+          <code class="ruby">  #   array = Condition.where(mean_visibility: range).all.map {|condition| condition.date}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="112">
           
           
-          <code class="ruby">  #   end</code>
+          <code class="ruby">  #   trip_nums = array.map do |date|</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="113">
           
           
-          <code class="ruby">  #   output = {}</code>
+          <code class="ruby">  #     Trip.where(start_date: date.beginning_of_day...date.end_of_day).count</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="114">
           
           
-          <code class="ruby">  #   output[:max] = trip_nums.sort.last</code>
+          <code class="ruby">  #   end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="115">
           
           
-          <code class="ruby">  #   output[:min] = trip_nums.sort.first</code>
+          <code class="ruby">  #   output = {}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="116">
           
           
-          <code class="ruby">  #   output[:avg] = trip_nums.inject(:+) / trip_nums.length unless trip_nums.length == 0</code>
+          <code class="ruby">  #   output[:max] = trip_nums.sort.last</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="117">
           
           
-          <code class="ruby">  #   output</code>
+          <code class="ruby">  #   output[:min] = trip_nums.sort.first</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="118">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">  #   output[:avg] = trip_nums.inject(:+) / trip_nums.length unless trip_nums.length == 0</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="119">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #   output</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="120">
           
           
+          <code class="ruby">  # end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="121">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="122">
+          
+          
           <code class="ruby">  # Show Methods</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="121">
+        <li class="covered" data-hits="1" data-linenumber="123">
           <span class="hits">1</span>
           
           <code class="ruby">  def self.condition_on_day_with_highest_rides</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="122">
+        <li class="missed" data-hits="0" data-linenumber="124">
           
           
           <code class="ruby">    day_with_highest_rides = Trip.date_with_highest_number_of_trips</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="123">
+        <li class="missed" data-hits="0" data-linenumber="125">
           
           
           <code class="ruby">    Condition.find_by(date: day_with_highest_rides)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="124">
+        <li class="never" data-hits="" data-linenumber="126">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="125">
+        <li class="never" data-hits="" data-linenumber="127">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="126">
+        <li class="covered" data-hits="1" data-linenumber="128">
           <span class="hits">1</span>
           
           <code class="ruby">  def self.condition_on_day_with_lowest_rides</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="127">
+        <li class="missed" data-hits="0" data-linenumber="129">
           
           
           <code class="ruby">    day_with_lowest_rides = Trip.date_with_lowest_number_of_trips</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="128">
+        <li class="missed" data-hits="0" data-linenumber="130">
           
           
           <code class="ruby">    Condition.find_by(date: day_with_lowest_rides)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="129">
+        <li class="never" data-hits="" data-linenumber="131">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="130">
+        <li class="never" data-hits="" data-linenumber="132">
           
           
           <code class="ruby">end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="131">
+        <li class="never" data-hits="" data-linenumber="133">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="132">
+        <li class="never" data-hits="" data-linenumber="134">
           
           
           <code class="ruby"></code>
@@ -3381,8 +3393,8 @@
     <h3>spec/models/condition_spec.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>41</b> relevant lines. 
-      <span class="green"><b>41</b> lines covered</span> and
+      <b>51</b> relevant lines. 
+      <span class="green"><b>51</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -3711,7 +3723,7 @@
         <li class="covered" data-hits="1" data-linenumber="54">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(Condition.sort_wind_max(2..10)).to eq(5)</code>
+          <code class="ruby">      expect(Condition.sort_wind_max(2..10)).to eq(1)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="55">
@@ -3732,7 +3744,91 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="58">
+        <li class="covered" data-hits="1" data-linenumber="58">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  describe &quot;.sort_wind_min&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="59">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it &#39;finds the min amount of trips for a given wind_speed range&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="60">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      start_date = DateTime.new(2001,2,3,4,5,6)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="61">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      t_1 = Trip.create(duration: 10, start_date: start_date, start_station_id: 1, end_date: start_date, end_station_id: 2, bike_id: 1, subscription_type: &quot;Type&quot;, zip_code: 12345)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="62">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      t_2 = Trip.create(duration: 20, start_date: start_date, start_station_id: 2, end_date: start_date, end_station_id:3, bike_id: 2, subscription_type: &quot;Type&quot;, zip_code: 12345)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="63">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      c_1 = Condition.create(date: start_date, max_temperature: 45, mean_temperature: 50, min_temperature: 20, mean_humidity: 3, mean_visibility: 3, mean_wind_speed: 20, precipitation: 1, trip_id: t_1.id)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="64">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      c_2 = Condition.create(date: start_date, max_temperature: 55, mean_temperature: 40, min_temperature: 10, mean_humidity: 2, mean_visibility: 2, mean_wind_speed: 10, precipitation: 2, trip_id: t_2.id)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="65">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      t_1.update(condition_id: c_1.id)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="66">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      t_2.update(condition_id: c_2.id)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="67">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="68">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(Condition.sort_wind_min(15..25)).to eq(1)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="69">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="70">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="71">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="72">
           
           
           <code class="ruby">end</code>

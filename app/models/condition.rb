@@ -37,13 +37,15 @@ class Condition < ActiveRecord::Base
     amount.size
   end
 
-  # def self.sort_wind_min(range)
-  #   amount = []
-  #   where(mean_wind_speed: range).order('mean_wind_speed ASC').each do |condition|
-  #     amount << condition.trips
-  #   end
-  #   amount.size
-  # end
+  def self.sort_wind_min(range)
+    amount = []
+    where(mean_wind_speed: range).order('mean_wind_speed ASC').each do |condition|
+      condition.trips.each do |trip|
+        amount << trip if trip.start_date == condition.date
+      end
+    end
+    amount.size
+  end
 
   # def self.sort_wind_mean(range)
   #   amount = 0

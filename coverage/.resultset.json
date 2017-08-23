@@ -231,12 +231,14 @@
         1,
         null,
         null,
+        1,
+        1,
+        1,
+        1,
+        1,
         null,
         null,
-        null,
-        null,
-        null,
-        null,
+        1,
         null,
         null,
         null,
@@ -523,6 +525,20 @@
       ],
       "/Users/sam/turing/2module/projects/bike-share/spec/models/condition_spec.rb": [
         1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
         1,
         1,
         1,
@@ -886,6 +902,6 @@
         null
       ]
     },
-    "timestamp": 1503509281
+    "timestamp": 1503509461
   }
 }

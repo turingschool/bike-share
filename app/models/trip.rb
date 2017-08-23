@@ -61,15 +61,13 @@ class Trip < ActiveRecord::Base
   def self.date_with_highest_number_of_trips # this returns the date and time, do we just want the date?
     date = Trip.group(:start_date).order("count_id DESC").limit(1).count(:id).keys.first # if you .to_date this is returns just the date but in a different format
     number = Trip.where(start_date: date).count
-    date
-    # return "Date: #{date}, Count: #{number}"
+    return "Date: #{date}, Count: #{number}"
   end
 
   def self.date_with_lowest_number_of_trips
     date = Trip.group(:start_date).order("count_id ASC").limit(1).count(:id).keys.first
     number = Trip.where(start_date: date).count
-    date
-    # return "Date: #{date}, Count: #{number}"
+    return "Date: #{date}, Count: #{number}"
   end
 
   def self.month_by_month_breakdown

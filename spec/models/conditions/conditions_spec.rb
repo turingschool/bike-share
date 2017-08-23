@@ -117,7 +117,10 @@ RSpec.describe Condition do
 			trip_3 = condition.trips.create!(duration: 180000, start_date: "1969/4/20", end_date: "1969/4/21",
 												 start_station_id: 1, end_station_id: 2, bike_id: 4,
 												 subscription_type: "Some Nonsense", zip_code: "80113")
-			expect(Condition.breakout_temps).to eq(2)
+
+			expect(Condition.breakout_temp(50.0)[:min]).to eq(3)
+			expect(Condition.breakout_temp(50.0)[:max]).to eq(3)
+			expect(Condition.breakout_temp(50.0)[:avg]).to eq(3)
 		end
 	end
 end

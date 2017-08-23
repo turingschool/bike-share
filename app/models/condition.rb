@@ -22,9 +22,11 @@ class Condition < ActiveRecord::Base
 		
 	def self.breakout_temp(temp_range)
 		range = trip_arr(temp_range)
-		min   = range.values.last
-		max   = range.values.first
-		avg   = range.values.sum / range.values.count
+		answers = Hash.new(0)
+		answers[:min] = range.values.last
+		answers[:max] = range.values.first
+		answers[:avg] = range.values.sum / range.values.count
+		answers
 	end
 	
 	def self.trip_arr(temp_range)
@@ -37,10 +39,10 @@ class Condition < ActiveRecord::Base
 	
 	def self.breakout_temps
 		counter = 50.0
+		breakout = Hash.new(0)
 		until counter == 100
-			breakout_temp(counter)
+			breakout.merge!(counter=>breakout_temp(counter))
 			counter += 10
-			require "pry"; binding.pry
 		end
 	end
 

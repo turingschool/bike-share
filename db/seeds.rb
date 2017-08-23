@@ -59,7 +59,7 @@ end
 
 def fast_seed_trip(data)
   count = 0
-  batch,batch_size = [], 10_000
+  batch,batch_size = [], 2_000
   data.each do |row|
     count += 1
     puts "Seeded #{count} records (trip)"

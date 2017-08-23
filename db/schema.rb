@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823022448) do
+ActiveRecord::Schema.define(version: 20170823061748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,11 +30,9 @@ ActiveRecord::Schema.define(version: 20170823022448) do
     t.float "precipitation"
   end
 
-  create_table "conditions_trips", id: false, force: :cascade do |t|
-    t.bigint "condition_id", null: false
-    t.bigint "trip_id", null: false
-    t.index ["condition_id"], name: "index_conditions_trips_on_condition_id"
-    t.index ["trip_id"], name: "index_conditions_trips_on_trip_id"
+  create_table "conditions_trips", force: :cascade do |t|
+    t.integer "condition_id"
+    t.integer "trip_id"
   end
 
   create_table "stations", force: :cascade do |t|

@@ -4,7 +4,6 @@ require 'time'
 require 'pry'
 
 class CSVLoader
-
   def sanitize_station(path)
     data = CSV.open(path, headers: true, header_converters: :symbol)
 
@@ -63,7 +62,7 @@ class CSVLoader
 
   def date_formatter_trip(date)
     date_array = date.split(/[\/ ]/)
-    date = "#{date_array[1]}/#{date_array[0]}/#{date_array[2]} #{date_array[3]}"
+    date = "#{date_array[1]}/#{date_array[0]}/#{date_array[2]}"
   end
 
 end

@@ -7,13 +7,11 @@ RSpec.describe "User can create a new trip" do
 
     fill_in("trip[duration]", with: 45)
     fill_in("trip[start_date]", with: "2017-08-20 19:20:22")
-    fill_in("trip[start_station_name]", with: "Over There")
     fill_in("trip[start_station_id]", with: 9099)
     fill_in("trip[end_date]", with: "2017-08-20 19:20:22")
-    fill_in("trip[end_station_name]", with: "Over Here")
     fill_in("trip[end_station_id]", with: 7566)
     fill_in("trip[bike_id]", with: 547835)
-    select("Customer", from: "trip[subscription_type]")
+    select("Subscriber", from: "trip[subscription_type_id]")
     fill_in("trip[zip_code]", with: 90210)
     click_button("Submit")
 

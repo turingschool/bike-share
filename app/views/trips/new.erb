@@ -29,6 +29,7 @@
                     Subscription Type:<br>
                     <select name="trip[subscription_type_id]">
                       <option value="<%= SubscriptionType.first.id.to_i %>"><%= SubscriptionType.first.subscription_type %></option>
+                      <option value="<%= SubscriptionType.last.id.to_i %>"><%= SubscriptionType.last.subscription_type %></option>
                       <option><%= SubscriptionType.last.id %></option>
                     </select><br>
                     Zip Code:<br>

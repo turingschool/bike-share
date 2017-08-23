@@ -1,43 +1,43 @@
 <div class="row">
-  <div class="col-lg-12 text-center">
+  <div class="col-lg-3 text-center">
     <h1>Trip Dashboard</h1>
     <br>
     <ul class="list-group">
-      <li class="list-group-item">Average duration of a ride:
-        <b><%= Trip.average_duration_of_ride.round %></b>
+      <li class="list-group-item"><b>Average duration of a ride:</b>
+        <%= Trip.average_duration_of_ride.round %>
         minutes</li>
-      <li class="list-group-item">Longest ride:
-        <b><%= Trip.longest_ride %></b>
+      <li class="list-group-item"><b>Longest ride:</b>
+        <%= (((Trip.longest_ride)/60)/24).round(1) %>
+        days</li>
+      <li class="list-group-item"><b>Shortest ride:</b>
+        <%= Trip.shortest_ride %>
         minutes</li>
-      <li class="list-group-item">Shortest ride:
-        <b><%= Trip.shortest_ride %></b>
-        minutes</li>
-      <li class="list-group-item">Station with the most rides as a starting place:
-        <b><%= Trip.station_with_most_rides_as_starting_place %></b>
+      <li class="list-group-item"><b>Station with the most rides as a starting place:</b>
+        <%= Trip.station_with_most_rides_as_starting_place %>
       </li>
-      <li class="list-group-item">Station with the most rides as an ending place:
-        <b><%= Trip.station_with_most_rides_as_ending_place %></b>
+      <li class="list-group-item"><b>Station with the most rides as an ending place:</b>
+        <%= Trip.station_with_most_rides_as_ending_place %>
       </li>
-      <li class="list-group-item">Most ridden bike with total number of rides for that bike:
-        <b>Bike:
+      <li class="list-group-item"><b>Most ridden bike with total number of rides for that bike:</b>
+        Bike:
           <%= Trip.most_ridden_bike_with_total_number_of_rides[0] %>
           Rides:
-          <%= Trip.most_ridden_bike_with_total_number_of_rides[1] %></b>
+          <%= Trip.most_ridden_bike_with_total_number_of_rides[1] %>
       </li>
-      <li class="list-group-item">Least ridden bike with total number of rides for that bike:
-        <b>Bike:
+      <li class="list-group-item"><b>Least ridden bike with total number of rides for that bike:</b>
+        Bike:
           <%= Trip.least_ridden_bike_with_total_number_of_rides[0] %>
           Rides:
-          <%= Trip.least_ridden_bike_with_total_number_of_rides[1] %></b>
+          <%= Trip.least_ridden_bike_with_total_number_of_rides[1] %>
       </li>
-      <li class="list-group-item">User subscription type breakout with both count and percentage:
-        <b><%= Trip.subscriber_count_and_percentage %></b>
+      <li class="list-group-item"><b>User subscription type breakout with both count and percentage:</b>
+        <%= Trip.subscriber_count_and_percentage %>
       </li>
-      <li class="list-group-item">Single date with the highest number of trips with a count of those trips:
-        <b><%= Trip.date_with_highest_number_of_trips %></b>
+      <li class="list-group-item"><b>Single date with the highest number of trips with a count of those trips:</b>
+        <%= Trip.date_with_highest_number_of_trips %>
       </li>
-      <li class="list-group-item">Single date with the lowest number of trips with a count of those trips:
-        <b><%= Trip.date_with_lowest_number_of_trips %></b>
+      <li class="list-group-item"><b>Single date with the lowest number of trips with a count of those trips:</b>
+        <%= Trip.date_with_lowest_number_of_trips %>
       </li>
 
 </ul>

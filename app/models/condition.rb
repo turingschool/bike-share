@@ -68,13 +68,15 @@ class Condition < ActiveRecord::Base
     amount.size
   end
 
-  # def self.sort_precip_min(range)
-  #   amount = []
-  #   where(precipitation: range).order('precipitation ASC').each do |condition|
-  #     amount << condition.trips
-  #   end
-  #   amount.size
-  # end
+  def self.sort_precip_min(range)
+    amount = []
+    where(precipitation: range).each do |condition|
+      condition.trips.each do |trip|
+        amount << trip if trip.start_date == condition.date
+      end
+    end
+    amount.size
+  end
 
   # ############## NEEDS REFACTOR, TOO MANY SQL QUERIES SLOWS PAGE DOWN
   # def self.sort_precip_mean(range)

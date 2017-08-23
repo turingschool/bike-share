@@ -1,12 +1,12 @@
 <h1>All Stations<a href="/station-dashboard"> Station Dashboard</a></h1>
 
-<div class="card" style="width: 20rem;">
-  <div class="card-body">
+<div class="container-fluid">
+  <div>
   <% @stations.each do |station| %>
-    <h2 class="card-title"><%= station.name %></a></h2>
-    <p class="card-text">Dock Count: <%= station.dock_count %>
-    City: <%= station.city %></p>
-    Installed On: <%= station.installation_date %></p>
-    <a href="/stations/<%= station.id %>">View Station</a>
+    <h2><%= station.name %></a></h2>
+    <p>Dock Count: <%= station.dock_count %></p>
+    <p>City: <%= station.city %></p>
+    <p>Installed On: <%= station.installation_date %></p>
+    <a class="btn btn-primary" href="/stations/<%= station.id %>">View Station</a>
   <% end %>
 </div>

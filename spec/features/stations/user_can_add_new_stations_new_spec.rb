@@ -10,6 +10,6 @@ RSpec.describe "User creates station" do
     click_on("Submit")
 
     expect(page).to have_content("Station_1")
-    expect(page).to have_content("Located in cityville")
+    expect(page).to have_content("cityville")
   end
 end

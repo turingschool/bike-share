@@ -104,4 +104,23 @@ class Trip < ActiveRecord::Base
     SubscriptionType.find(group(:subscription_type_id).order("count(*)").pluck(:subscription_type_id).first)
   end
 
+  def self.most_trips_go_to(station_id)
+    where(start_station_id: station_id).group(:end_station_id).order('count(*)').pluck(:end_station_id).last
+  end
+
+  def self.most_trips_come_from(station_id)
+    where(end_station_id: station_id).group(:start_station_id).order('count(*)').pluck(:start_station_id).last
+  end
+
+  def self.find_record_date(station_id)
+    where(start_station_id: station_id).group(:start_date).order('count(*)').pluck(:start_date).last
+  end
+
+  def self.find_highest_zip(station_id)
+    where(start_station_id: station_id).group(:zip_code).order('count(*)').pluck(:zip_code).last
+  end
+
+  def self.find_most_popular_bike(station_id)
+    where(start_station_id: station_id).group(:bike_id).order('count(*)').pluck(:bike_id).last
+  end
 end

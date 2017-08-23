@@ -1,6 +1,6 @@
 <div class="row newshoweditrow">
   <div class="col-md-1"></div>
-  <div class="col-md-4">
+  <div class="col-md-5">
     <div class="left-pane">
       <div class="panel panel-default show-panel">
         <div class="panel-heading">
@@ -10,17 +10,25 @@
           <h4>Dock Count: <%= @station.dock_count %></h4>
           <h4>City: <%= @station.city %></h4>
           <h5>Install Date: <%= @station.installation_date %></h5>
+          <p>There were <%= Trip.where(start_station_id: @station.id).count %> trips that started here</p>
+          <p>There were <%= Trip.where(end_station_id: @station.id).count %> trips that ended here</p>
+          <p>This is where most of them go: <%= Station.find(Trip.most_trips_go_to(@station.id)).name %></p>
+          <p>This is where most of them come from: <%=Station.find(Trip.most_trips_come_from(@station.id)).name %></p>
+          <p>The record date for trips started here is <%= Trip.find_record_date(@station.id) %></p>
+          <p>Most frequent zip code for users starting trips at this station is <%= Trip.find_highest_zip(@station.id) %></p>
+          <p>The Bike ID most frequently starting a trip at this station is <%= Trip.find_most_popular_bike(@station.id) %></p><br>
           <a class="btn btn-warning formbtn" href="/stations/<%= @station.id%>/edit"> Edit this Station</a>
           <form  action="/stations/<%= @station.id%>" method="POST">
             <input type="hidden" name="_method" value="DELETE">
             <input class="btn btn-danger formbtn" type="submit" value="Delete this Station"><br/>
             <a class="btn btn-success formbtn" href="/stations/new"> Create a New Station</a>
           </form>
+
         </div>
       </div>
     </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-5">
     <div id="map"></div>
     <script>
       function initMap() {

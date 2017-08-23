@@ -1,10 +1,10 @@
-<h1>All Stations</h1>
+<h1>All Stations<a href="/station-dashboard"> Station Dashboard</a></h1>
 
 <div>
   <% @stations.each do |station| %>
     <h2><a href="/stations/<%= station.id %>"><%= station.name %></a></h2>
-    <p><%= station.dock_count %></p>
-    <p><%= station.city %></p>
-    <p><%= station.installation_date %></p>
+    <p>Dock Count: <%= station.dock_count %></p>
+    <p>City: <%= station.city %></p>
+    <p>Installed On: <%= station.installation_date %></p>
   <% end %>
 </div>

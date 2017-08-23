@@ -11,31 +11,6 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse navbar-sticky-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" id="text" href="/">BikeShare</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a id="text" href="/stations"><button class="btn btn-primary navbar-btn">Station Index</button></a>
-                    </li>
-                    <li>
-                        <a id="text" href="/trips"><button class="btn btn-primary navbar-btn">Trip Index</button></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
        <div class="container">
 
         <div class="row">
@@ -44,125 +19,60 @@
                 <p class="lead">A comprehensive report.</p>
             </div>
         </div>
-        <h3>Rides by Temperature (F) <i>(Click Ranges to Expand)</i></h3>
+        <h3>Rides by Temperature (F)</h3>
         <div class="mdl-card__supporting-text">
             <div>
                 <span class="range"><h4>50-60</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp(50..60)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp(50..60)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp(50..60)[:avg] %></p></div>
+                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp_max(50..60) %></p></div>
+                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp_min(50..60) %></p></div>
+                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp_mean(50..60) %></p></div>
             </div>
             <div>
                 <span class="range"><h4>60-70</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp(60..70)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp(60..70)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp(60..70)[:avg] %></p></div>
+                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp_max(60..70) %></p></div>
+                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp_min(60..70) %></p></div>
+                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp_mean(60..70) %></p></div>
             </div>
             <div>
                 <span class="range"><h4>70-80</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp(70..80)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp(70..80)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp(70..80)[:avg] %></p></div>
+                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp_max(70..80) %></p></div>
+                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp_min(70..80) %></p></div>
+                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp_mean(70..80) %></p></div>
             </div>
             <div>
                 <span class="range"><h4>80-90</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp(80..90)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp(80..90)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp(80..90)[:avg] %></p></div>
+                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp_max(80..90) %></p></div>
+                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp_min(80..90) %></p></div>
+                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp_mean(80..90) %></p></div>
             </div>
             <div>
                 <span class="range"><h4>90-100</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp(90..100)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp(90..100)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp(90..100)[:avg] %></p></div>
+                <div class="details"><p><b>Max:</b> <%= @condition.sort_temp_max(90..100) %></p></div>
+                <div class="details"><p><b>Min:</b> <%= @condition.sort_temp_min(90..100) %></p></div>
+                <div class="details"><p><b>Avg:</b> <%= @condition.sort_temp_mean(90..100) %></p></div>
             </div>
         </div>
 
-        <h3>Rides by Wind Speed <i>(Click Ranges to Expand)</i></h3>
+        <h3>Rides by Wind Speed</h3>
         <div class="mdl-card__supporting-text">
             <div>
                 <span class="range"><h4>20-24mph</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_wind(20..24)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_wind(20..24)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_wind(20..24)[:avg] %></p></div>
+                <div class="details"><p><b>Max:</b> <%= @condition.sort_wind_max(20..24) %></p></div>
+                <div class="details"><p><b>Min:</b> <%= @condition.sort_wind_min(20..24) %></p></div>
+                <div class="details"><p><b>Avg:</b> <%= @condition.sort_wind_mean(20..24) %></p></div>
             </div>
         </div>
 
-        <h3>Rides by Visability <i>(Click Ranges to Expand)</i></h3>
+        <h3>Rides by Visability</h3>
         <div class="mdl-card__supporting-text">
             <div>
                 <span class="range"><h4>0-4 miles</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_sight(0..4.1)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_sight(0..4.1)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_sight(0..4.1)[:avg] %></p></div>
+                <div class="details"><p><b>Total Rides:</b> <%= @condition.sort_sight_max(0..4.1) %></p></div>
             </div>
             <div>
                 <span class="range"><h4>4-8 miles</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_sight(8..8)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_sight(8..8)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_sight(8..8)[:avg] %></p></div>
+                <div class="details"><p><b>Total Rides:</b> <%= @condition.sort_sight_max(4.1..8) %></p></div>
             </div>
-            <div>
-                <span class="range"><h4>8-12 miles</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_sight(8..12)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_sight(8..12)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_sight(8..12)[:avg] %></p></div>
-            </div>
-            <div>
-                <span class="range"><h4>12-14 miles</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_sight(12..14)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_sight(12..14)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_sight(12..14)[:avg] %></p></div>
-            </div>
-            <div>
-                <span class="range"><h4>14-18 miles</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_sight(14..18)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_sight(14..18)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_sight(14..18)[:avg] %></p></div>
-            </div>
-            <div>
-                <span class="range"><h4>18-22 miles</h4></span>
-                <div class="details"><p><b>Max:</b> <%= @condition.sort_sight(18..22)[:max] %></p></div>
-                <div class="details"><p><b>Min:</b> <%= @condition.sort_sight(18..22)[:min] %></p></div>
-                <div class="details"><p><b>Avg:</b> <%= @condition.sort_sight(18..22)[:avg] %></p></div>
-            </div>
-        </div>
-  </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-
-
-
-    <footer class="footer">
-      <div class="container">
-        <p class="text-muted">BikeShare August 17</p>
-        <p class="text-muted" id="right">Built with ActiveRecord and Sinatra</p>
-      </div>
-    </footer>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 </body>
 
 </html>

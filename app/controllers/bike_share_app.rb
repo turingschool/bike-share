@@ -80,6 +80,12 @@ class BikeShareApp < Sinatra::Base
     erb :'trips/new'
   end
 
+  get '/trips-dashboard' do
+    @stations = Station.all
+    @trips = Trip.all
+    erb :'trips/dashboard'
+  end
+
   post '/trips/' do
     @trip = Trip.create(params[:trip])
     binding.pry
@@ -109,7 +115,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/conditions' do
-    @conditions = Condition.all
+    @conditions = Condition.all.paginate(:page => params[:page], :per_page => 30)
     erb :'/conditions/index'
   end
 
@@ -146,6 +152,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/condition-dashboard' do
+    Condition.eager_load(:date)
     @condition = Condition.all
     @temp_range = params[:temp_range].to_i
     erb :'/conditions/condition-dashboard'

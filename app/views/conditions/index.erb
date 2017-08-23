@@ -4,7 +4,7 @@
             <h1>Conditions Index</h1>
             <% @conditions.each do |condition| %>
                 <ul class="list-group">
-                    <li class="list-group-item"><b><a href="condition/<%= condition.id %>"><%= condition.date %></a></b></li>
+                    <li class="list-group-item"><b><a href="conditions/<%= condition.id %>"><%= condition.date.strftime("%m/%d/%Y") %></a></b></li>
                 </ul>
                 <ul class="list-group">
                     <li class="list-group-item">
@@ -21,7 +21,6 @@
                         <span>Mean Wind Speed (mph): <%= condition.mean_wind_speed %></span>
                         <br />
                         <span>Precipitation (inches): <%= condition.precipitation %></span>
-
                       </li>
                     <br />
                     <br />
@@ -30,3 +29,4 @@
         </div>
     </div>
 </div>
+<%= will_paginate @conditions %>

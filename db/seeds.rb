@@ -81,7 +81,7 @@ puts "finished with csvs"
 start_time = Time.now
 
   count = 0
-  
+
   trips.each do |row|
     row = row.to_h
     row[:start_station_id] = Station.id_by_name(row.delete(:start_station_name))

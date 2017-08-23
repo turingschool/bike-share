@@ -29,7 +29,7 @@ class Condition < ActiveRecord::Base
 	end
 	
 	def trip_arr(temp_range)
-		Condition.where(max_temperature: (temp_range...(temp_range + 10))).map(&:trips).map(&:count)
+		join_table..where(max_temperature: (temp_range...(temp_range + 10)))
 	end
 	
 	def breakout_temps

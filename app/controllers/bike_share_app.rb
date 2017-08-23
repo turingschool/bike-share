@@ -29,13 +29,13 @@ class BikeShareApp < Sinatra::Base
     erb :'stations/dashboard'
   end
 #weather conditions
-
   get '/conditions' do
     Condition.connection
     @pages = Condition.paginate(page: params[:page])
     @conditions = Condition.order('date DESC').page(params[:page])
     erb :"conditions/index"
   end
+  
   get '/conditions' do
     @conditions = Condition.all
     erb :'conditions/index'

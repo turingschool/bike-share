@@ -1,16 +1,8 @@
-require 'will_paginate'
-require 'will_paginate/active_record'
-
 class Station < ActiveRecord::Base
   validates :name, presence: true
   validates :dock_count, presence: true
   validates :city, presence: true
   validates :installation_date, presence: true
-
-
-  def self.per_page
-    30
-  end
 
   def self.total_stations
     count

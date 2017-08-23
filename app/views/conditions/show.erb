@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1>Viewing Date: <%= @condition.date %></h1>
+            <br>
+                <ul class="list-group">
+                    <li class="list-group-item">Max Temperature:
+                        <%= @condition.max_temperature %>
+                    </li>
+                    <li class="list-group-item">Mean Temperature:
+                        <%= @condition.mean_temperature %>
+                    </li>
+                    <li class="list-group-item">Mean Temperature:
+                        <%= @condition.min_temperature %>
+                    </li>
+                    <li class="list-group-item">Mean Temperature:
+                        <%= @condition.mean_humidity %>
+                    </li>
+                    <li class="list-group-item">Mean Visibility:
+                        <%= @condition.mean_visibility %>
+                    </li>
+                    <li class="list-group-item">Mean Wind Spped:
+                        <%= @condition.mean_wind_speed %>
+                    </li>
+                    <li class="list-group-item">Precipitation:
+                        <%= @condition.precipitation %>
+                    </li>
+                </ul>
+                    <form action="/conditions/<%= @condition.id %>" method="post">
+                        <input type="hidden" name="_method" value="DELETE" />
+                        <input type="submit" value="Delete" />
+                    </form>
+                    <form action="/conditions/<%= @condition.id %>/edit">
+                        <input type="submit" value="Edit" />
+                    </form>
+        </div>
+    </div>
+</div>

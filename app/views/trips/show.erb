@@ -1,0 +1,33 @@
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1>Viewing Trip: <%= @trip.id %></h1>
+                <br>
+                    <ul class="list-group">
+                        <li class="list-group-item">Duration:
+                            <%= @trip.duration %></li>
+                        <li class="list-group-item">Start Date:
+                            <%= @trip.start_date %></li>
+                        <li class="list-group-item">End Date:
+                            <%= @trip.end_date %></li>
+                        <li class="list-group-item">Start Station ID:
+                            <%= @trip.start_station_id %></li>
+                        <li class="list-group-item">End Station ID:
+                            <%= @trip.end_station_id %></li>
+                        <li class="list-group-item">Bike ID:
+                            <%= @trip.end_station_id %></li>
+                        <li class="list-group-item">Subscription Type:
+                            <%= @trip.end_station_id %></li>
+                        <li class="list-group-item">Zip Code:
+                            <%= @trip.zip_code %></li>
+                    </ul>
+                    <form action="/trips/<%= @trip.id %>" method="post">
+                        <input type="hidden" name="_method" value="DELETE" />
+                        <input type="submit" value="Delete" />
+                    </form>
+                    <form action="/trips/<%= @trip.id %>/edit">
+                        <input type="submit" value="Edit" />
+                    </form>
+                  </br>
+                </div>
+              </div>
+            </div>

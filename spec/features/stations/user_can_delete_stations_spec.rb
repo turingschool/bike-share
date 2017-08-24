@@ -72,7 +72,7 @@ describe "User can delete station" do
                 zip_code: "94114")
 
     visit '/stations/2'
-    click_on("delete")
+    click_on("Delete Station")
 
     expect(current_path).to eq('/stations')
     expect(page).to_not have_content("Galvanize")

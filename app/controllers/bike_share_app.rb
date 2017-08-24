@@ -131,7 +131,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/conditions/:id/edit' do
-    @conditions = Conditions.all
+    @conditions = Condition.all
     erb '/conditions/edit'
   end
 

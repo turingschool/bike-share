@@ -20,7 +20,7 @@ class Condition < ActiveRecord::Base
 
       avg = total_trips.count / dates_in_temp_range.count
 
-      avg.round(2)
+      avg.round
     end
 
     def self.high_rides_by_weather(start_of_range)

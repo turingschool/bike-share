@@ -1,1 +1,52 @@
 <h1>Weather Condition Analytics</h1>
+<div class="table-responsive">
+  <h3>Rides by High Temperature</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Temperature</th>
+        <th>Average # of Rides</th>
+        <th>Highest # of Rides</th>
+        <th>Lowest # of Rides</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>90°F - 99.9°F</td>
+        <td><%= Condition.avg_rides_by_weather(90) %></td>
+        <td><%= Condition.high_rides_by_weather(90) %></td>
+        <td><%= Condition.low_rides_by_weather(90) %></td>
+      </tr>
+      <tr>
+        <td>80°F - 89.9°F</td>
+        <td><%= Condition.avg_rides_by_weather(80) %></td>
+        <td><%= Condition.high_rides_by_weather(80) %></td>
+        <td><%= Condition.low_rides_by_weather(80) %></td>
+      </tr>
+      <tr>
+        <td>70°F - 79.9°F</td>
+        <td><%= Condition.avg_rides_by_weather(70) %></td>
+        <td><%= Condition.high_rides_by_weather(70) %></td>
+        <td><%= Condition.low_rides_by_weather(70) %></td>
+      </tr>
+      <tr>
+        <td>60°F - 69.9°F</td>
+        <td><%= Condition.avg_rides_by_weather(60) %></td>
+        <td><%= Condition.high_rides_by_weather(60) %></td>
+        <td><%= Condition.low_rides_by_weather(60) %></td>
+      </tr>
+      <tr>
+        <td>50°F - 59.9°F</td>
+        <td><%= Condition.avg_rides_by_weather(50) %></td>
+        <td><%= Condition.high_rides_by_weather(50) %></td>
+        <td><%= Condition.low_rides_by_weather(50) %></td>
+      </tr>
+      <tr>
+        <td>40°F - 49.9°F</td>
+        <td><%= Condition.avg_rides_by_weather(40) %></td>
+        <td><%= Condition.high_rides_by_weather(40) %></td>
+        <td><%= Condition.low_rides_by_weather(40) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

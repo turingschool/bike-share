@@ -33,7 +33,7 @@
             <input class="button btn btn-delete" type="hidden" name="_method" value="DELETE">
             <input id="delete_trip" type="submit" value="Delete"/>
           </form></td>
-          <td><a id="Update_<%= trip.id %>" class="btn btn-update button" href="/trips/<%=trip.id%>/edit">Update Trip<a/></td>
+          <td><a id="Update_<%= trip.id %>" type="button" class="btn btn-info" href="/trips/<%=trip.id%>/edit">Update<a/></td>
         </tr>
         <% end %>
       </tbody>

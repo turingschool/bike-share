@@ -53,7 +53,7 @@ class Condition < ActiveRecord::Base
         "no data"
       else
         avg = total_trips.count / dates_in_temp_range.count
-        avg.round(2)
+        avg.round
       end
     end
 
@@ -88,7 +88,7 @@ class Condition < ActiveRecord::Base
         "no data"
       else
         avg = total_trips.count / dates_in_temp_range.count
-        avg.round(2)
+        avg.round
       end
     end
 
@@ -123,11 +123,11 @@ class Condition < ActiveRecord::Base
         "no data"
       else
         avg = total_trips.count / dates_in_temp_range.count
-        avg.round(2)
+        avg.round
       end
    end
 
-    def self.high_rides_by_visbility(start_of_range)
+    def self.high_rides_by_visibility(start_of_range)
       conditions = Condition.where(mean_visibility:
                              start_of_range..(start_of_range+4))
       dates_in_temp_range = conditions.select(:date).distinct.where(

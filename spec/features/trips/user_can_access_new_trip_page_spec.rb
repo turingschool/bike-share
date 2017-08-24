@@ -22,7 +22,6 @@ describe "User can access new trip page" do
                    dock_count: 15,
                    city: "Denver",
                    installation_date: "2014-04-09")
-    # require 'pry'; binding.pry
 
     visit '/trips/new'
 
@@ -37,7 +36,6 @@ describe "User can access new trip page" do
     fill_in("trip[subscription_type]", with: "Subscriber")
     fill_in("trip[zip_code]", with: "90210")
     click_on("Create New Trip")
-    save_and_open_page
 
     expect(page).to have_content("173")
     expect(page).to have_content("Panera")

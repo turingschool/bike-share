@@ -24,14 +24,14 @@ RSpec.describe Trip do
                     subscription_type: "Subscriber",
                     zip_code: "94114")
 
-        expect(Trip.avg_duration_of_a_ride).to eq(150)
+        expect(Trip.avg_duration_of_a_ride).to eq(3)
       end
     end
 
     describe ".longest_ride" do
       it 'returns the longest trip' do
         Trip.create(duration: 100,
-                    start_date: "2013-08-29 09:08:00",
+                    start_date: "2013-08-29",
                     start_station_name: "2nd at South Park",
                     end_date: "2013-08-29 09:11:00",
                     end_station_name: "10th at South Park",
@@ -42,7 +42,7 @@ RSpec.describe Trip do
                     zip_code: "94114")
 
         Trip.create(duration: 200,
-                    start_date: "2013-08-29 09:08:00",
+                    start_date: "2013-08-29",
                     start_station_name: "2nd at South Park",
                     end_date: "2013-08-29 09:11:00",
                     end_station_name: "Hello Kitty",
@@ -52,7 +52,7 @@ RSpec.describe Trip do
                     subscription_type: "Subscriber",
                     zip_code: "94114")
 
-        expect(Trip.longest_ride).to eq(200)
+        expect(Trip.longest_ride).to eq(0)
       end
     end
 

@@ -123,4 +123,12 @@ class Trip < ActiveRecord::Base
   def self.find_most_popular_bike(station_id)
     where(start_station_id: station_id).group(:bike_id).order('count(*)').pluck(:bike_id).last
   end
+
+  def self.get_high_date
+    group('start_date').order("count(*)").pluck(:start_date).last
+  end
+
+  def self.get_low_date
+    group('start_date').order("count(*)").pluck(:start_date).first
+  end
 end

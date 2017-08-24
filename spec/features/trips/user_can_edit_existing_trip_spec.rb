@@ -7,6 +7,8 @@ describe "User can access edit trip page" do
                            end_date: "2013-08-29 09:11:00",
                            end_station_name: "10th at South Park",
                            bike_id: 288,
+                           start_station_id: 1,
+                           end_station_id: 1,
                            subscription_type: "Subscriber",
                            zip_code: "94114")
 
@@ -21,6 +23,8 @@ describe "User can access edit trip page" do
                            end_date: "2013-08-29 09:11:00",
                            end_station_name: "10th at South Park",
                            bike_id: 288,
+                           start_station_id: 1,
+                           end_station_id: 1,
                            subscription_type: "Subscriber",
                            zip_code: "94114")
     visit "/trips/#{trip_one.id}/edit"

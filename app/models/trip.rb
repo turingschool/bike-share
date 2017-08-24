@@ -7,7 +7,13 @@ require 'groupdate'
 
 class Trip < ActiveRecord::Base
 
-  validates_presence_of :duration, :start_date, :end_date, :bike_id, :subscription_type
+  validates_presence_of :duration,
+                        :start_date,
+                        :end_date,
+                        :bike_id,
+                        :subscription_type,
+                        :start_station_id,
+                        :end_station_id
 
   belongs_to :conditions
 

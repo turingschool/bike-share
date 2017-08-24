@@ -8,6 +8,8 @@ RSpec.describe Trip do
                     end_date: "2013-08-29 09:11:00",
                     end_station_name: "10th at South Park",
                     bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
 
@@ -17,6 +19,8 @@ RSpec.describe Trip do
                     end_date: "2013-08-29 09:11:00",
                     end_station_name: "Hello Kitty",
                     bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
 
@@ -32,6 +36,8 @@ RSpec.describe Trip do
                     end_date: "2013-08-29 09:11:00",
                     end_station_name: "10th at South Park",
                     bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
 
@@ -41,6 +47,8 @@ RSpec.describe Trip do
                     end_date: "2013-08-29 09:11:00",
                     end_station_name: "Hello Kitty",
                     bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
 
@@ -56,6 +64,8 @@ RSpec.describe Trip do
                     end_date: "2013-08-29 09:11:00",
                     end_station_name: "10th at South Park",
                     bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
 
@@ -65,6 +75,8 @@ RSpec.describe Trip do
                     end_date: "2013-08-29 09:11:00",
                     end_station_name: "Hello Kitty",
                     bike_id: 288,
+                    start_station_id: 1,
+                    end_station_id: 1,
                     subscription_type: "Subscriber",
                     zip_code: "94114")
 
@@ -1432,7 +1444,7 @@ RSpec.describe Trip do
           expect(trip_1).to_not be_valid
         end
 
-        xit 'is invalid without a start station id' do
+        it 'is invalid without a start station id' do
           trip_1 = Trip.create(duration: 174,
                       start_date: "2013-08-27 09:08:00",
                       start_station_name: "Panera",
@@ -1446,7 +1458,7 @@ RSpec.describe Trip do
           expect(trip_1).to_not be_valid
         end
 
-        xit 'is invalid without an end station id' do
+        it 'is invalid without an end station id' do
           trip_1 = Trip.create(duration: 174,
                       start_date: "2013-08-27 09:08:00",
                       start_station_name: "Panera",
@@ -1454,7 +1466,6 @@ RSpec.describe Trip do
                       end_station_name: "Panera",
                       bike_id: 288,
                       start_station_id: 1,
-                      end_station_id: 1,
                       subscription_type: "Subscriber",
                       zip_code: "94113")
 

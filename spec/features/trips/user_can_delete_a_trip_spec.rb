@@ -1,5 +1,5 @@
 RSpec.describe "User can delete a trip" do
-  it "when visiting 'trips/:id'" do
+  it "when visiting '/trips'" do
     subscription = SubscriptionType.create(subscription_type: "Customer")
     subscription_1 = SubscriptionType.create(subscription_type: "Subscriber")
     station = Station.create(name: "Station_1", dock_count: 20, city: "bike town", installation_date: "3/4/15")

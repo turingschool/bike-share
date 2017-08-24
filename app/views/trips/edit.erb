@@ -1,0 +1,42 @@
+<h1>Edit Trip <%= @trip.id %>:</h1>
+
+<form action="/trips/<%= @trip.id %>" method="POST" class="container">
+  <input type="hidden" name="_method" value="PUT" />
+  <div class="row">
+    <div class="col-md-6 mb-1">
+      <label>Duration: </label>
+      <input type="text" class="form-control" name= "trip[duration]" value="<%= @trip.duration %>">
+    </div>
+    <div class="col-md-6 mb-1">
+      <label>Start Date: </label>
+      <input type="text" class="form-control" name="trip[start_date]" value="YYYY-MM-DD">
+    </div>
+    <div class="col-md-6 mb-1">
+      <label>Start Station Name: </label>
+      <input type="text" class="form-control" name="trip[start_station_name]" value="<%= @trip.start_station_name %>">
+    </div>
+    <div class="col-md-6 mb-1">
+      <label>End Date: </label>
+      <input type="text" class="form-control" name="trip[end_date]" value="YYYY-MM-DD">
+    </div>
+
+    <div class="col-md-6 mb-1">
+      <label>End Station Name: </label>
+      <input type="text" class="form-control" name="trip[end_station_name]" value="<%= @trip.end_station_name %>">
+    </div>
+    <div class="col-md-6 mb-1">
+      <label>Bike ID: </label>
+      <input type="text" class="form-control" name="trip[bike_id]" value="<%= @trip.bike_id %>">
+    </div>
+    <div class="col-md-6 mb-1">
+      <label>Subscription Type: </label>
+      <input type="text" class="form-control" name="trip[subscription_type]" value="<%= @trip.subscription_type %>">
+    </div>
+    <div class="col-md-6 mb-1">
+      <label>Zip Code: </label>
+      <input type="text" class="form-control" name="trip[zip_code]" value="<%= @trip.zip_code %>">
+    </div>
+  </div>
+    <br>
+  <button class="btn btn-primary" type="submit">Update Trip</button>
+</form>

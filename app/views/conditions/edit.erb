@@ -1,0 +1,41 @@
+<h1>Edit Condition from <%= @condition.date %>:</h1>
+
+<form action="/conditions/<%= @condition.id %>" method="POST" class="container">
+  <input type="hidden" name="_method" value="PUT"  />
+  <div class="row">
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom01">Date: </label>
+      <input type="text" class="form-control" name="condition[date]" value="YYYY-MM-DD" />
+    </div>
+    <div class="col-md-6 mb-1">
+      <label>Max Temperature: </label>
+      <input type="text" class="form-control" name="condition[max_temperature]" value="<%= @condition.max_temperature %>" />
+    </div>
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom01">Mean Temperature: </label>
+      <input type="text" class="form-control" name="condition[mean_temperature]" value="<%= @condition.mean_temperature %>" />
+    </div>
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom01">Min Temperature: </label>
+      <input type="text" class="form-control" name="condition[min_temperature]" value="<%= @condition.min_temperature %>" />
+    </div>
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom01">Mean Humidity: </label>
+      <input type="text" class="form-control" name="condition[mean_humidity]" value="<%= @condition.mean_humidity %>" />
+    </div>
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom01">Mean Visibility: </label>
+      <input type="text" class="form-control" name="condition[mean_visibility]" value="<%= @condition.mean_visibility %>" />
+    </div>
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom01">Mean Windspeed: </label>
+      <input type="text" class="form-control" name="condition[mean_windspeed]" value="<%= @condition.mean_windspeed %>" />
+    </div>
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom01">Precipitation: </label>
+      <input type="text" class="form-control" name="condition[precipitation]" value="<%= @condition.precipitation %>" />
+    </div>
+  </div>
+    <br>
+  <button class="btn btn-primary" type="submit">Update Condition</button>
+</form>

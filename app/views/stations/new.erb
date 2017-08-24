@@ -1,0 +1,24 @@
+<h1>Add a new station:</h1>
+
+<form action="/stations" method="POST" class="container">
+  <div class="row">
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom01">Name: </label>
+      <input type="text" class="form-control" name= "station[name]" placeholder="Name of Station"/>
+    </div>
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom02">Dock Count: </label>
+      <input type="text" class="form-control" name="station[dock_count]" placeholder="Number of Bikes at this Station"/>
+    </div>
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom03">City: </label>
+      <input type="text" class="form-control" name="station[city]" placeholder="City"/>
+    </div>
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom04">Installation Date: </label>
+      <input type="text" class="form-control" name="station[installation_date]" placeholder="YYYY-MM-DD"/>
+    </div>
+  </div>
+    <br>
+  <button class="btn btn-success" type="submit">Create New Station</button>
+</form>

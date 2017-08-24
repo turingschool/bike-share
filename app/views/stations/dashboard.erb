@@ -1,0 +1,12 @@
+<h1>Station Analytics</h1>
+
+<div>
+  <p><b>Total Stations:</b> <%= Station.total_stations %></p>
+  <p><b>Average Bikes Available (Per Station):</b> <%= Station.avg_bikes_avail.round(2) %></p>
+  <p><b>Most Bikes Available at a Station:</b> <%= Station.most_bikes_avail %></p>
+  <p><b>Station with Most Bikes Available:</b> <%= Station.station_with_most_bikes %></p>
+  <p><b>Least Bikes Available at a Station:</b> <%= Station.fewest_bikes_avail %></p>
+  <p><b>Station with Fewest Bikes Available:</b> <%= Station.station_with_fewest_bikes %></p>
+  <p><b>Newest Station:</b> <%= Station.most_recent_install_station %></p>
+  <p><b>Oldest Station:</b> <%= Station.oldest_install_station %></p>
+</div>

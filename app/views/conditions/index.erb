@@ -1,0 +1,32 @@
+<h1>Weather Conditions</h1>
+<div>
+  <a class="btn btn-primary" href="/weather-dashboard">Condition Analytics</a>
+  <a class="btn btn-info" href="/conditions/new"> Create New Condition</a>
+</div>
+
+<% @conditions.each do |condition| %>
+  <h3>
+    <a href="conditions/<%= condition.id %>"><%= condition.date %></a>
+  </h3>
+
+  <p>Max Temp: <%= condition.max_temperature %> °F</p>
+
+  <p>Min Temp: <%= condition.min_temperature %> °F</p>
+
+  <p>Mean Humidity: <%= condition.mean_humidity %> %</p>
+
+  <p>Mean Visibility: <%= condition.mean_visibility %> miles</p>
+
+  <p>Mean Windspeed: <%= condition.mean_windspeed %> mph</p>
+
+  <p>Precipitation: <%= condition.precipitation %> %</p>
+
+  <form action="/conditions/<%= condition.id %>" method="POST">
+    <input type="hidden" name="_method" value="delete">
+    <input class="btn btn-danger" type="submit" value="Delete Condition"/>
+  </form>
+
+<% end %>
+
+
+<h3 class="text-center"> <%= will_paginate @pages %> </h3>

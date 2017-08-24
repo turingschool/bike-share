@@ -1,0 +1,40 @@
+<h1>Add a new weather condition:</h1>
+
+<form action="/conditions" method="POST" class="container">
+  <div class="row">
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom01">Date: </label>
+      <input type="text" class="form-control" name= "condition[date]" placeholder="YYYY-MM-DD" />
+    </div>
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom02">Max Temperature: </label>
+      <input type="text" class="form-control" name="condition[max_temperature]" placeholder="Unit: Farenheit" />
+    </div>
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom03">Min Temperature: </label>
+      <input type="text" class="form-control" name="condition[min_temperature]" placeholder="Unit: Farenheit"/>
+    </div>
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom04">Mean Temperature: </label>
+      <input type="text" class="form-control" name="condition[mean_temperature]" placeholder="Unit: Farenheit"/>
+    </div>
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom05">Mean Humidity: </label>
+      <input type="text" class="form-control" name="condition[mean_humidity]" placeholder="Percentage"/>
+    </div>
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom06">Mean Visibility: </label>
+      <input type="text" class="form-control" name="condition[mean_visibility]" placeholder="Unit: Miles"/>
+    </div>
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom07">Mean Wind Speed: </label>
+      <input type="text" class="form-control" name="condition[mean_windspeed]" placeholder="Unit: MPH"/>
+    </div>
+    <div class="col-md-6 mb-1">
+      <label for="validationCustom08">Precipitation (in): </label>
+      <input type="text" class="form-control" name="condition[precipitation]" placeholder="Unit: Inches" />
+    </div>
+  </div>
+    <br>
+  <input type='submit' class="btn btn-success" value="Create New Condition"/>
+</form>

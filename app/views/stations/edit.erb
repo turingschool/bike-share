@@ -4,20 +4,20 @@
   <input type="hidden" name="_method" value="PUT"  />
   <div class="row">
     <div class="col-md-6 mb-1">
-      <label for="validationCustom01">Name: </label>
-      <input type="text" class="form-control" id="station[name]" value="<%= @station.name %>"/>
+      <label>Name: </label>
+      <input type="text" class="form-control" name="station[name]" value="<%= @station.name %>"/>
     </div>
     <div class="col-md-5 mb-1">
-      <label for="validationCustom02">Dock Count: </label>
-      <input type="text" class="form-control" id="station[dock_count]" value="<%= @station.dock_count %>"/>
+      <label>Dock Count: </label>
+      <input type="text" class="form-control" name="station[dock_count]" value="<%= @station.dock_count %>"/>
     </div>
     <div class="col-md-4 mb-1">
-      <label for="validationCustom03">City: </label>
-      <input type="text" class="form-control" id="station[city]" value="<%= @station.city %>"/>
+      <label>City: </label>
+      <input type="text" class="form-control" name="station[city]" value="<%= @station.city %>"/>
     </div>
     <div class="col-md-3 mb-1">
-      <label for="validationCustom04">Installation Date: </label>
-      <input type="text" class="form-control" id="station[installation_date]" value="YYYY-MM-DD"/>
+      <label>Installation Date: </label>
+      <input type="text" class="form-control" name="station[installation_date]" value="YYYY-MM-DD"/>
       <div class="invalid-feedback">
         Please provide a date in the correct format.
       </div>

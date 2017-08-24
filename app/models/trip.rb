@@ -79,12 +79,6 @@ class Trip < ActiveRecord::Base
     Date.parse(date_string)
   end
 
-  def self.date_with_highest_trips
-    date = Trip.group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all DESC').count.first
-    date_string = "#{date[0][2]}-#{date[0][0]}-#{date[0][1]}"
-    Date.parse(date_string)
-  end
-
   def self.count_of_highest_trips
     date = Trip.group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all DESC').count.first
     "#{date[1]}"

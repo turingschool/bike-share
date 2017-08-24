@@ -17,4 +17,6 @@ group :development, :test do
   gem 'rack-test'
   gem 'database_cleaner'
   gem 'pry'
+  gem "chartkick"
+  gem 'groupdate', '~> 2.5', '>= 2.5.2'
 end

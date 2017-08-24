@@ -1,46 +1,16 @@
 <h1>Trip Analytics</h1>
 
 <div>
-  <p>Average duration of a ride: <%= Trip.avg_duration_of_a_ride %> minutes</p>
-  <p>Longest ride: <%= Trip.longest_ride %> hours</p>
-  <p>Shortest ride: <%= Trip.shortest_ride %> seconds</p>
-  <p>Station with the most rides as a starting place: <%= (Trip.station_with_most_ride_starts) %></p>
-  <p>Station with the most rides as an ending place: <%= (Trip.station_with_most_rides_ends) %></p>
-  <p>Month by Month breakdown of number of rides with subtotals for each year: <%= Trip.month_breakdown %></p>
-  <table class="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-  <p>Most ridden bike: #<%= Trip.most_ridden_bike %> with <%= Trip.count_for_most_ridden_bike %> rides</p>
-  <p>Least ridden bike: #<%= Trip.least_ridden_bike %> with <%= Trip.count_for_least_ridden_bike %> rides</p>
-  <p>Date with the highest number of trips: <%= Trip.date_with_highest_trips %> with <%= Trip.count_of_highest_trips %> trips</p>
-  <p>Date with the lowest number of trips: <%= Trip.date_with_fewest_trips %> with <%= Trip.count_of_fewest_trips %> trips</p>
+  <p><b>Average duration of a ride:</b> <%= Trip.avg_duration_of_a_ride %> minutes</p>
+  <p><b>Longest ride:</b> <%= Trip.longest_ride %> hours</p>
+  <p><b>Shortest ride:</b> <%= Trip.shortest_ride %> seconds</p>
+  <p><b>Station with the most rides as a starting place:</b> <%= (Trip.station_with_most_ride_starts) %></p>
+  <p><b>Station with the most rides as an ending place:</b> <%= (Trip.station_with_most_rides_ends) %></p>
+  <p><b>Month by Month breakdown of number of rides with subtotals for each year:</b> <%= line_chart Trip.chart %></p>
+  <p><b>Most ridden bike:</b> #<%= Trip.most_ridden_bike %> with <%= Trip.count_for_most_ridden_bike %> rides</p>
+  <p><b>Least ridden bike:</b> #<%= Trip.least_ridden_bike %> with <%= Trip.count_for_least_ridden_bike %> rides</p>
+  <p><b>Date with the highest number of trips:</b> <%= Trip.date_with_highest_trips %> with <%= Trip.count_of_highest_trips %> trips</p>
+  <p><b>Date with the lowest number of trips:</b> <%= Trip.date_with_fewest_trips %> with <%= Trip.count_of_fewest_trips %> trips</p>
   <div id="piechart">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">

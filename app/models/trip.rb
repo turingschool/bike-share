@@ -1,6 +1,9 @@
 require 'will_paginate'
 require 'will_paginate/active_record'
 require_relative "station"
+require 'chartkick'
+require 'groupdate'
+
 
 class Trip < ActiveRecord::Base
 
@@ -43,6 +46,10 @@ class Trip < ActiveRecord::Base
 
   def self.month_breakdown
     group('(EXTRACT(YEAR FROM end_date))::integer').group('(EXTRACT(MONTH FROM end_date))::integer').order('count_all DESC').count
+  end
+
+  def self.chart
+    group_by_month(:end_date).count
   end
 
   def self.most_ridden_bike

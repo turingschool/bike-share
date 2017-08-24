@@ -121,11 +121,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/conditions/:id' do
     @condition = Condition.find(params[:id])
-<<<<<<< HEAD
-    erb :'/condition/show'
-=======
     erb :'/conditions/show'
->>>>>>> master
   end
 
   post '/conditions' do |id|
@@ -134,11 +130,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/conditions/:id/edit' do
-<<<<<<< HEAD
     @condition = Condition.find(params[:id])
-=======
-    @conditions = Condition.all
->>>>>>> master
     erb :'/conditions/edit'
   end
 

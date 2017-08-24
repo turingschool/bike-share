@@ -14,6 +14,7 @@ RSpec.describe "User creates condition" do
     fill_in("precipitation_inches", with: 20.0)
     click_on("Submit")
 
+    # save_and_open_page
 
     expect(page).to have_content("10/20/1990")
     expect(page).to have_content(10.0)

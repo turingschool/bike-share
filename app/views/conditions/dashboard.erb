@@ -49,4 +49,60 @@
       </tr>
     </tbody>
   </table>
+
+<div class="table-responsive">
+  <h3>Rides by Precipitation</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Precipitation</th>
+        <th>Average # of Rides</th>
+        <th>Highest # of Rides</th>
+        <th>Lowest # of Rides</th>
+      </tr>
+    </thead>
+    <tr>
+      <td>3.0 in - 3.4 in</td>
+      <td><%= Condition.avg_rides_by_precip(3) %></td>
+      <td><%= Condition.high_rides_by_precip(3) %></td>
+      <td><%= Condition.low_rides_by_precip(3) %></td>
+    </tr>
+      <tr>
+        <td>2.5 in - 2.9 in</td>
+        <td><%= Condition.avg_rides_by_precip(2.5) %></td>
+        <td><%= Condition.high_rides_by_precip(2.5) %></td>
+        <td><%= Condition.low_rides_by_precip(2.5) %></td>
+      </tr>
+      <tr>
+        <td>2.0 in - 2.4 in</td>
+        <td><%= Condition.avg_rides_by_precip(2) %></td>
+        <td><%= Condition.high_rides_by_precip(2) %></td>
+        <td><%= Condition.low_rides_by_precip(2) %></td>
+      </tr>
+      <tr>
+        <td>1.5 in - 1.9 in</td>
+        <td><%= Condition.avg_rides_by_precip(1.5) %></td>
+        <td><%= Condition.high_rides_by_precip(1.5) %></td>
+        <td><%= Condition.low_rides_by_precip(1.5) %></td>
+      </tr>
+      <tr>
+        <td>1.0 in. - 1.4 in</td>
+        <td><%= Condition.avg_rides_by_precip(1) %></td>
+        <td><%= Condition.high_rides_by_precip(1) %></td>
+        <td><%= Condition.low_rides_by_precip(1) %></td>
+      </tr>
+      <tr>
+        <td>0.5 in - 0.9 in</td>
+        <td><%= Condition.avg_rides_by_precip(0.5) %></td>
+        <td><%= Condition.high_rides_by_precip(0.5) %></td>
+        <td><%= Condition.low_rides_by_precip(0.5) %></td>
+      </tr>
+      <tr>
+        <td>0.0 in - 0.4 in</td>
+        <td><%= Condition.avg_rides_by_precip(0) %></td>
+        <td><%= Condition.high_rides_by_precip(0) %></td>
+        <td><%= Condition.low_rides_by_precip(0) %></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

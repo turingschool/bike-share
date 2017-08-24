@@ -54,7 +54,7 @@ class BikeShareApp < Sinatra::Base
   put '/stations/:id' do |id|
     Station.update(id, params[:station])
     redirect "/stations/#{id}"
-  end  #fixed by adding end tag, but unsure if the route is right. Did not edit what was already written. -joel
+  end
 
   delete '/stations/:id' do |id|
     Station.destroy(id)
@@ -125,8 +125,8 @@ class BikeShareApp < Sinatra::Base
     erb :'/conditions/show'
   end
 
-  post '/conditions' do |id|
-    condition = Condition.create(params[:condition])
+  post '/conditions' do
+    condition = Condition.create(params)
     redirect "/conditions/#{condition.id}"
   end
 

@@ -2,6 +2,12 @@ input {
   width: 300px;
 }
 
+#map {
+  width: 100%;
+  height: 515px;
+  background-color: grey;
+}
+
 .hbmain {
   font-size: 22px;
   font-style: italic;
@@ -84,12 +90,15 @@ input {
   border-color: lightgrey;
   background-color: #AFCEFF;
 }
+
 .show-panel {
   height: 515px;
 }
+
 .new-station-panel {
   height: 320px;
 }
+
 .edit-station-panel-form-item {
   text-align: left;
   margin-left: 15px;
@@ -98,6 +107,7 @@ input {
 .trip-show-panel {
   height: 420px;
 }
+
 .right-pane-trip {
   text-align: center;
   height: 420px;
@@ -120,14 +130,14 @@ input {
   width: 250px;
 }
 
-.center-text {
-  text-align: center;
+.pad-root-img {
+  margin: 10px;
+  height: 230px;
+  width: 230px;
 }
 
-#map {
-  width: 100%;
-  height: 515px;
-  background-color: grey;
+.center-text {
+  text-align: center;
 }
 
 .full-width-button {

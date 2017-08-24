@@ -110,7 +110,7 @@ class BikeShareApp < Sinatra::Base
     erb :'/conditions/index'
   end
 
-  get '/conditions-dashboard' do
+  get '/condition-dashboard' do
     @conditions = Condition.all
     erb :'/conditions/dashboard'
   end

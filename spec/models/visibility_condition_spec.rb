@@ -223,7 +223,7 @@ describe Condition do
                   precipitation:  1,
                   zip_code: 95113)
 
-      expect(Condition.high_rides_by_visbility(20)).to eq(3)
+      expect(Condition.high_rides_by_visibility(20)).to eq(3)
     end
     it ".low_rides_by_visibility" do
 

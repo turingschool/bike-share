@@ -116,7 +116,7 @@ describe Condition do
                   zip_code: 95113)
 
 
-      expect(Condition.avg_rides_by_weather(70.0)).to eq(2)
+      expect(Condition.avg_rides_by_weather(70.0)).to eq(3)
 
     end
   end

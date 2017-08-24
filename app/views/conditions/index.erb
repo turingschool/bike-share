@@ -1,0 +1,45 @@
+<div class="center-text">
+  <a class="btn btn-primary btn full-width-button" href="/conditions/new">Add a New Weather Condition Record</a>
+</div>
+<div class="table-responsive">
+  <table class="table text-left table-hover">
+    <tr>
+      <th>Date</th>
+      <th>Max Temp</th>
+      <th>Mean Temp</th>
+      <th>Min Temp</th>
+      <th>Max Humidity</th>
+      <th>Mean Humidity</th>
+      <th>Mean Visibility Mi</th>
+      <th>Mean Windspeed</th>
+      <th>Precipitation</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <% @conditions.each do |condition| %>
+    <tr onclick="window.location.href = '/conditions/<%= condition.id %>';">
+      <td><%= condition.date %></td>
+      <td><%= condition.max_temperature_f%> F</td>
+      <td><%= condition.mean_temperature_f %> F</td>
+      <td><%= condition.min_temperature_f %> F</td>
+      <td><%= condition.max_humidity %></td>
+      <td><%= condition.mean_humidity %></td>
+      <td><%= condition.mean_visibility_miles %> miles</td>
+      <td><%= condition.mean_wind_speed_mph %> MPH</td>
+      <td><%= condition.precipitation_inches %> inches</td>
+      <td>
+        <form action="/conditions/<%= condition.id %>/edit" method="get">
+          <button type="submit" class="btn btn-warning btn active btn-sm" role="button" aria-pressed="true" value="edit">Edit</button>
+        </form>
+      </td>
+      <td>
+        <form action="/conditions/<%= condition.id %>" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <button type="submit" class="btn btn-danger btn active btn-sm" role="button" aria-pressed="true" value="delete">Delete</button>
+        </form>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+  <%= will_paginate @conditions, renderer: BootstrapPagination::Sinatra %>
+</div>

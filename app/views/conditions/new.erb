@@ -1,0 +1,27 @@
+<div class="row newshoweditrow">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="left-pane">
+      <div class="panel panel-default new-station-panel">
+        <div class="panel-heading">
+          <h1 class="panel-title">Create a new Weather Condition</h1>
+        </div>
+        <form action="/conditions" method="post">
+          <p>Please make sure to fill out all Weather Conditions fields</p>
+          <input type='text' name='date' placeholder="Date" /><br/>
+          <input type='number' name='max_temperature_f' placeholder="Max Temperature" /><br>
+          <input type='number' name='mean_temperature_f' placeholder="Mean Temperature" /><br>
+          <input type='number' name='min_temperature_f' placeholder="Min Temperature" /><br>
+          <input type='number' name='max_humidity' placeholder="Max Humidity" /><br>
+          <input type='number' name='mean_humidity' placeholder="Mean Humidity" /><br>
+          <input type='number' name='mean_visibility_miles' placeholder="Average Visibility Miles" /><br>
+          <input type='number' name='mean_wind_speed_mph' placeholder="Average Wind Speed (MPH)" /><br>
+          <input type='number' name='precipitation_inches' placeholder="Inches of Precipitation" /><br>
+          <input class="btn btn-primary formbtn" type='submit' value = "Submit"/>
+        </form>
+        </div>
+
+    </div>
+  </div>
+  <div class="col-md-4"></div>
+</div>

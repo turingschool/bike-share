@@ -13,14 +13,15 @@ class Condition < ActiveRecord::Base
     a = Time.now
     conditions = []
     CSV.foreach('db/csv/weather.csv', {headers: true, header_converters: :symbol}) do |row|
-    row[:max_temperature_f] = 0 if row[:max_temperature_f].nil?
-    row[:mean_temperature_f] = 0 if row[:mean_temperature_f].nil?
-    row[:min_temperature_f] = 0 if row[:min_temperature_f].nil?
-    row[:max_humidity] = 0 if row[:max_humidity].nil?
-    row[:mean_humidity] = 0 if row[:mean_humidity].nil?
-    row[:mean_visibility_miles] = 0 if row[:mean_visibility_miles].nil?
-    row[:mean_wind_speed_mph] = 0 if row[:mean_wind_speed_mph].nil?
-    row[:precipitation_inches] = 0 if row[:precipitation_inches].nil?
+    next if row[:zip_code] != "94107"
+    # row[:max_temperature_f] = 0 if row[:max_temperature_f].nil?
+    # row[:mean_temperature_f] = 0 if row[:mean_temperature_f].nil?
+    # row[:min_temperature_f] = 0 if row[:min_temperature_f].nil?
+    # row[:max_humidity] = 0 if row[:max_humidity].nil?
+    # row[:mean_humidity] = 0 if row[:mean_humidity].nil?
+    # row[:mean_visibility_miles] = 0 if row[:mean_visibility_miles].nil?
+    # row[:mean_wind_speed_mph] = 0 if row[:mean_wind_speed_mph].nil?
+    # row[:precipitation_inches] = 0 if row[:precipitation_inches].nil?
     conditions << Condition.new(
                     date:     Date.strptime(row[:date], '%m/%e/%Y'),
                     max_temperature_f:     row[:max_temperature_f],

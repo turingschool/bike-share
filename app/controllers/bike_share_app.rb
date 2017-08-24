@@ -94,7 +94,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/trips/:id' do |id|
-
     Trip.update(id, params[:trip])
     redirect "/trips/#{id}"
   end
@@ -131,7 +130,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/conditions/:id/edit' do
-    @conditions = Conditions.all
+    @conditions = Condition.all
     erb '/conditions/edit'
   end
 

@@ -1,0 +1,36 @@
+      <div class="row">
+          <div class="col-lg-12 text-center">
+    <h1>Station Dashboard</h1>
+    <br>
+        <ul class="list-group">
+        <li class="list-group-item">
+          <b>Total Station Count:</b>
+          <%= @stations.all.count %>
+        <li class="list-group-item">
+          <b>Average Bikes per Station:</b>
+          <%= @stations.average_per_station.round %>
+        <li class="list-group-item">
+          <b>Most bikes available:</b>
+    <%= @stations.most_bikes_available_at_station %>
+        <li class="list-group-item">
+          <b>Most bikes available at:</b>
+          <%= @stations.stations_with_most_bikes[1].name %>
+          <%= @stations.stations_with_most_bikes[2].name %>
+          <%= @stations.stations_with_most_bikes[3].name %>
+        <li class="list-group-item">
+          <b>Fewest bikes available at:</b>
+          <%= @stations.stations_with_least_bikes[1].name %>
+          <%= @stations.stations_with_least_bikes[2].name %>
+          <%= @stations.stations_with_least_bikes[3].name %>
+        <li class="list-group-item">
+          <b>Fewest Bikes available:</b>
+          <%= @stations.least_bikes_available_at_station %>
+        <li class="list-group-item">
+          <b>Newest station:</b>
+          <%= @stations.most_recent_installed_station.name %>
+        <li class="list-group-item">
+          <b>Oldest Station:</b>
+          <%= @stations.oldest_station.name %>
+        </div>
+      </div>
+<%= will_paginate @conditions %>

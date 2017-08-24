@@ -1,0 +1,193 @@
+<div class="row">
+  <div class="col-lg-12 text-center">
+    <h1>Weather Dashboard</h1>
+    <p class="lead">Rides by Temperature</p>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-2 text-center">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        <b>30&deg;-40&deg;F</b>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Max:</b>
+          <%= @condition.sort_temp_max(30..40) %></p>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Min:</b>
+          <%= @condition.sort_temp_min(30..40) %></p>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Avg:</b>
+          <%= @condition.sort_temp_mean(30..40) %></p>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-2 text-center">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        <b>40&deg;-50&deg;F</b>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Max:</b>
+          <%= @condition.sort_temp_max(40..50) %></p>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Min:</b>
+          <%= @condition.sort_temp_min(40..50) %></p>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Avg:</b>
+          <%= @condition.sort_temp_mean(40..50) %></p>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-2 text-center">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        <b>50&deg;-60&deg;F</b>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Max:</b>
+          <%= @condition.sort_temp_max(50..60) %></p>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Min:</b>
+          <%= @condition.sort_temp_min(50..60) %></p>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Avg:</b>
+          <%= @condition.sort_temp_mean(50..60) %></p>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-2 text-center">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-warning">
+        <b>60&deg;-70&deg;F</b>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Max:</b>
+          <%= @condition.sort_temp_max(60..70) %></p>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Min:</b>
+          <%= @condition.sort_temp_min(60..70) %></p>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Avg:</b>
+          <%= @condition.sort_temp_mean(60..70) %></p>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-2 text-center">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-warning">
+        <b>70&deg;-80&deg;F</b>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Max:</b>
+          <%= @condition.sort_temp_max(70..80) %></p>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Min:</b>
+          <%= @condition.sort_temp_min(70..80) %></p>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Avg:</b>
+          <%= @condition.sort_temp_mean(70..80) %></p>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-2 text-center">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-danger">
+        <b>80&deg;-90&deg;F</b>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Max:</b>
+          <%= @condition.sort_temp_max(80..90) %></p>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Min:</b>
+          <%= @condition.sort_temp_min(80..90) %></p>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Avg:</b>
+          <%= @condition.sort_temp_mean(80..90) %></p>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-2 text-center">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-danger">
+        <b>90&deg;-100&deg;F</b>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Max:</b>
+          <%= @condition.sort_temp_max(90..100) %></p>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Min:</b>
+          <%= @condition.sort_temp_min(90..100) %></p>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Avg:</b>
+          <%= @condition.sort_temp_mean(90..100) %></p>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-2 text-center">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-danger">
+        <b>100&deg;-110&deg;F</b>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Max:</b>
+          <%= @condition.sort_temp_max(100..110) %></p>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Min:</b>
+          <%= @condition.sort_temp_min(100..110) %></p>
+      </li>
+      <li class="list-group-item">
+        <p>
+          <b>Avg:</b>
+          <%= @condition.sort_temp_mean(100..110) %></p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12 text-center">
+    <a href="/condition-dashboard">
+      <button type="button" class="btn btn-secondary">Return to Conditions Dashboard</button>
+    </a>
+  </div>
+</div>

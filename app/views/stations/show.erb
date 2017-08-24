@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <h1>Viewing Station: <%= @station.name %></h1>
+        <br>
+            <ul class="list-group">
+                <li class="list-group-item">City:
+                    <a href="/cities/<%= @station.city_id %>">
+                        <%= @station.city.name %>
+                    </a>
+                </li>
+                <li class="list-group-item">Dock Count:
+                    <%= @station.dock_count %>
+                </li>
+                <li class="list-group-item">Installation Date:
+                    <%= @station.installation_date.strftime("%m/%d/%Y") %>
+                </li>
+                <li class="list-group-item">Number of Rides Started At This Station:
+                    <%= @station.number_of_rides_started_at_this_station(@station.id) %>
+                </li>
+                <li class="list-group-item">Number of Rides Ended At This Station:
+                    <%= @station.number_of_rides_ended_at_this_station(@station.id) %>
+                </li>
+                <li class="list-group-item">Most Frequent Destination Station:
+                    <%= @station.most_frequent_destination_station(@station.id) %>
+                </li>
+                <li class="list-group-item">Most Frequent Origination Station:
+                    <%= @station.most_frequent_origination_station(@station.id) %>
+                </li>
+                <li class="list-group-item">Date with Most Trips:
+                    <%= @station.date_with_most_trips(@station.id) %>
+                </li>
+                <li class="list-group-item">Most Frequent Zip Code for Users of Station:
+                    <%= @station.most_frequent_zip_code_for_users(@station.id) %>
+                </li>
+                <li class="list-group-item">Most Common Bike Id for this Station:
+                    <%= @station.most_common_bike_id(@station.id) %>
+                </li>
+
+
+
+            </ul>
+                <form action="/stations/<%= @station.id %>" method="post">
+                    <input type="hidden" name="_method" value="DELETE" />
+                    <input type="submit" value="Delete" />
+                </form>
+                <form action="/stations/<%= @station.id %>/edit">
+                    <input type="submit" value="Edit" />
+                </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <h1>City Index</h1>
+        <br>
+        <% @cities.order(:name).each do |city| %>
+            <ul class="list-group">
+                <li class="list-group-item"><b><a href="cities/<%= city.id %>"><%= city.name %></a></b></li>
+            </ul>
+        <% end %>
+    </div>
+</div>

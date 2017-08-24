@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1>Edit <%= @condition.date.strftime("%m/%d/%Y") %></h1>
+            <form action="/conditions/<%= @condition.id %>" method="post">
+            <input type="hidden" name="_method" value="PUT" />
+              <label>Date:</label>
+              <input type="text" name="condition[date]">
+              <label>Max Temperature:</label>
+              <input type="text" name="condition[max_temperature]">
+              <label>Mean Temperature:</label>
+              <input type="text" name="condition[mean_temperature]">
+              <label>Min Temperature:</label>
+              <input type="text" name="condition[min_temperature]">
+              <label>Mean Humidity:</label>
+              <input type="text" name="condition[mean_humidity]">
+              <label>Mean Visibility(miles):</label>
+              <input type="text" name="condition[mean_visibility]">
+              <label>Mean Wind Speed(miles):</label>
+              <input type="text" name="condition[mean_wind_speed]">
+              </br>
+              <label>Precipation(inches)</label>
+              <input type="text" name="condition[precipitation]">
+              </br>
+
+              <input type="submit" value="Update Condition" />
+            </form>
+        </div>
+    </div>
+</div>

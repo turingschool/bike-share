@@ -8,40 +8,40 @@ RSpec.describe "User visits '/trips'" do
 
     Trip.create(duration: 400, start_date: start_date_1, start_station_id: 15, end_date: end_date_1, end_station_id: 16, bike_id: 420, subscription_type: "Subscriber")
     Trip.create(duration: 500, start_date: start_date_2, start_station_id: 20, end_date: end_date_2, end_station_id: 21, bike_id: 223, subscription_type: "Customer")
+    save_and_open_page
+    visit('/trips')
   end
 
-  it 'and sees all trip durations' do
-    visit('/trips')
-
-    save_and_open_page
-
+  it 'and sees all the trip durations' do
     expect(page).to have_content('400')
     expect(page).to have_content('500')
   end
 
   it 'and sees the start dates' do
-    visit('/trips')
+    expect(page).to have_content('2001-02-03')
+  end
 
-    save_and_open_page
-
+  it 'and sees the start dates' do
     expect(page).to have_content('2001-02-03')
   end
 
   it 'and sees the start station id' do
-    visit('/trips')
-
-    save_and_open_page
-
     expect(page).to have_content('15')
     expect(page).to have_content('20')
   end
 
   it 'and sees the end station id' do
-    visit('/trips')
-
-    save_and_open_page
-
     expect(page).to have_content('16')
     expect(page).to have_content('21')
+  end
+
+  it 'and sees the bike ids' do
+    expect(page).to have_content('420')
+    expect(page).to have_content('223')
+  end
+
+  it 'and sees the subscription types' do
+    expect(page).to have_content('Subscriber')
+    expect(page).to have_content('Customer')
   end
 end

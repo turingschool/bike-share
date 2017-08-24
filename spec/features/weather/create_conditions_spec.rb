@@ -12,7 +12,6 @@ describe "user" do
     fill_in("condition[precipitation]", with: "10")
 
     click_on("Create New Condition")
-    save_and_open_page1 
 
     expect(page).to have_content("2010-10-11")
 

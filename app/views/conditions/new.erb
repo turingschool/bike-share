@@ -1,28 +1,44 @@
 <div class="container">
-    <div class="row">
-        <div class="col-lg-12 text-center">
+        <div class="col-lg-12 text-justified">
             <h1>Create New Condition</h1>
             <form action="/conditions" method="post">
+              <div class="col">
                 <label>Date:</label>
                 <input type="text" name="condition[date]">
+              </div>
+              <div class="col">
                 <label>Max Temperature:</label>
                 <input type="text" name="condition[max_temperature]">
+              </div>
+              <div class="col">
                 <label>Mean Temperature:</label>
                 <input type="text" name="condition[mean_temperature]">
+              </div>
+              <div class="col">
                 <label>Min Temperature:</label>
                 <input type="text" name="condition[min_temperature]">
+              </div>
+              <div class="col">
                 <label>Mean Humidity:</label>
                 <input type="text" name="condition[mean_humidity]">
+              </div>
+              <div class="col">
                 <label>Mean Visibility(miles):</label>
                 <input type="text" name="condition[mean_visibility]">
+              </div>
+              <div class="col">
                 <label>Mean Wind Speed(miles):</label>
                 <input type="text" name="condition[mean_wind_speed]">
-                </br>
+              </div>
+
+              <div class="col">
                 <label>Precipation(inches)</label>
                 <input type="text" name="condition[precipitation]">
-                </br>
+              </div>
+              <div class="col">
 
                 <input type="submit" value="Create Condition" />
+                              </div>
             </form>
         </div>
     </div>

@@ -83,6 +83,7 @@ class BikeShareApp < Sinatra::Base
   get '/trips-dashboard' do
     @stations = Station.all
     @trips = Trip.all
+    @conditions = Condition.all
     erb :'trips/dashboard'
   end
 

@@ -123,13 +123,13 @@ class Condition < ActiveRecord::Base
   # Show Methods
   def self.condition_on_day_with_highest_rides
     day_with_highest_rides = Trip.date_with_highest_number_of_trips
-    Condition.find_by(date: day_with_highest_rides)
+    result = Condition.find_by(date: day_with_highest_rides)
+    return "Average Temp: #{result.mean_temperature}, Average Windspeed: #{result.mean_wind_speed}, Precipitation: #{result.precipitation}"
   end
 
   def self.condition_on_day_with_lowest_rides
     day_with_lowest_rides = Trip.date_with_lowest_number_of_trips
-    Condition.find_by(date: day_with_lowest_rides)
+    result = Condition.find_by(date: day_with_lowest_rides)
+    return "Average Temp: #{result.mean_temperature}, Average Windspeed: #{result.mean_wind_speed}, Precipitation: #{result.precipitation}"
   end
 end
-
-

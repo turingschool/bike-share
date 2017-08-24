@@ -11,6 +11,10 @@
   <p><b>Least ridden bike:</b> #<%= Trip.least_ridden_bike %> with <%= Trip.count_for_least_ridden_bike %> rides</p>
   <p><b>Date with the highest number of trips:</b> <%= Trip.date_with_highest_trips %> with <%= Trip.count_of_highest_trips %> trips</p>
   <p><b>Date with the lowest number of trips:</b> <%= Trip.date_with_fewest_trips %> with <%= Trip.count_of_fewest_trips %> trips</p>
+  <p><b>Weather on the day with the highest rides:</b></p>
+  <p><%= Condition.weather_on_day_with_highest_rides.max_temperature %>°F <i>(max)</i> | <%= Condition.weather_on_day_with_highest_rides.mean_temperature %>°F <i>(mean)</i> | <%= Condition.weather_on_day_with_highest_rides.min_temperature %>°F <i>(min)</i> | <%= Condition.weather_on_day_with_highest_rides.mean_humidity %>% <i>(humidity)</i> | <%= Condition.weather_on_day_with_highest_rides.mean_visibility %> miles <i>(visibility)</i> | <%= Condition.weather_on_day_with_highest_rides.mean_windspeed %> mph <i>(windspeed)</i> | <%= Condition.weather_on_day_with_highest_rides.precipitation %> in <i>(precipitation)</i></p>
+  <p><b>Weather on the day with the lowest rides:</b></p>
+  <p><%= Condition.weather_on_day_with_lowest_rides.max_temperature %>°F <i>(max)</i> | <%= Condition.weather_on_day_with_lowest_rides.mean_temperature %>°F <i>(mean)</i> | <%= Condition.weather_on_day_with_lowest_rides.min_temperature %>°F <i>(min)</i> | <%= Condition.weather_on_day_with_lowest_rides.mean_humidity %>% <i>(humidity)</i> | <%= Condition.weather_on_day_with_lowest_rides.mean_visibility %> miles <i>(visibility)</i> | <%= Condition.weather_on_day_with_lowest_rides.mean_windspeed %> mph <i>(windspeed)</i> | <%= Condition.weather_on_day_with_lowest_rides.precipitation %> in <i>(precipitation)</i></p>
   <p><b>User subscription type breakout with both count and percentage:</b></p>
   <div id="piechart">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

@@ -37,10 +37,10 @@
     </tr>
   </tbody>
 </table>
-  <p>Most ridden bike with total number of rides for that bike: #<%= Trip.most_ridden_bike %></p>
-  <p>Least ridden bike with total number of rides for that bike: #<%= Trip.least_ridden_bike %></p>
-  <p>Single date with the highest number of trips with a count of those trips: <%= Trip.date_with_highest_trips %> (<%= Trip.count_of_highest_trips %> trips)</p>
-  <p>Single date with the lowest number of trips with a count of those trips: <%= Trip.date_with_fewest_trips %> (<%= Trip.count_of_fewest_trips %> trips)</p>
+  <p>Most ridden bike: #<%= Trip.most_ridden_bike %> with <%= Trip.count_for_most_ridden_bike %> rides</p>
+  <p>Least ridden bike: #<%= Trip.least_ridden_bike %> with <%= Trip.count_for_least_ridden_bike %> rides</p>
+  <p>Date with the highest number of trips: <%= Trip.date_with_highest_trips %> with <%= Trip.count_of_highest_trips %> trips</p>
+  <p>Date with the lowest number of trips: <%= Trip.date_with_fewest_trips %> with <%= Trip.count_of_fewest_trips %> trips</p>
   <div id="piechart">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">

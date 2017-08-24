@@ -54,8 +54,12 @@ class Trip < ActiveRecord::Base
     group('(EXTRACT(YEAR FROM end_date))::integer').group('(EXTRACT(MONTH FROM end_date))::integer').order('count_all DESC').count
   end
 
-  def self.chart
+  def self.month_chart
     group_by_month(:end_date).count
+  end
+
+  def self.year_chart
+    group_by_year(:end_date).count
   end
 
   def self.most_ridden_bike

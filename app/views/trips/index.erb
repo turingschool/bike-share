@@ -4,7 +4,7 @@
   <a class="btn btn-info" href="/trips/new"> Create New Trip</a>
 </div>
 <div>
-  <% @trips[0..30].each do |trip| %>
+  <% @trips.each do |trip| %>
     <h2><a href="/trips/<%= trip.id %>">Trip <%= trip.id %></a></h2>
     <p>Duration: <%= trip.duration %> seconds</p>
     <p>Start Date: <%= trip.start_date %></p>

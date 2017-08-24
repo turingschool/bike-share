@@ -85,7 +85,7 @@ input {
   background-color: #AFCEFF;
 }
 .show-panel {
-  height: 280px;
+  height: 515px;
 }
 .new-station-panel {
   height: 320px;
@@ -96,11 +96,11 @@ input {
 }
 
 .trip-show-panel {
-  height: 380px;
+  height: 420px;
 }
 .right-pane-trip {
   text-align: center;
-  height: 380px;
+  height: 420px;
   font-size: 30;
   color: white;
   text-shadow: 2px 2px #333333;
@@ -126,7 +126,7 @@ input {
 
 #map {
   width: 100%;
-  height: 400px;
+  height: 515px;
   background-color: grey;
 }
 

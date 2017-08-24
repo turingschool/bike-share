@@ -9,7 +9,6 @@
         </div>
         <h4>Please be sure all fields are filled out correctly.</h4>
         <div class="row">
-          <div class="col-md-6">
             <form action="/trips/<%= @trips.id %>" method="post">
                 <input type="hidden" name="_method" value="PUT" />
                 Duration:<br>
@@ -22,7 +21,6 @@
                 <input type='text' name='trip[end_date]' value='<%= @trips.end_date %>'><br/>
                 End Station ID:<br>
                 <input type='text' name='trip[end_station_id]' value='<%= @trips.end_station_id %>'><br/>
-              <!-- <div class="col-md-6"> -->
                 Bike ID:<br/>
                 <input type='text' name='trip[bike_id]' value='<%= @trips.bike_id %>'><br/>
                 Zip Code:<br>
@@ -34,7 +32,6 @@
                 </select><br><br>
                 <input type="submit" class="btn-warning formbtn" value="Submit Changes">
             </form>
-          </div>
         </div>
       </div>
     </div>

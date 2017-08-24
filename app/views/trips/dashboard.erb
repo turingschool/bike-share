@@ -43,7 +43,7 @@
         Average Temp: <%= Trip.date_with_lowest_number_of_trips %>
       </li>
       <li class="list-group-item"><b>Weather on day with the lowest trips:</b>
-        <%= Condition.condition_on_day_with_lowest_rides %>
+        <%= @conditions.condition_on_day_with_lowest_rides %>
       </li>
 
 </ul>

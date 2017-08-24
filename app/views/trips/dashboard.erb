@@ -6,7 +6,8 @@
   <p><b>Shortest ride:</b> <%= Trip.shortest_ride %> seconds</p>
   <p><b>Station with the most rides as a starting place:</b> <%= (Trip.station_with_most_ride_starts) %></p>
   <p><b>Station with the most rides as an ending place:</b> <%= (Trip.station_with_most_rides_ends) %></p>
-  <p><b>Month by Month breakdown of number of rides with subtotals for each year:</b> <%= line_chart Trip.chart %></p>
+  <p><b>Month by Month breakdown of number of rides:</b> <%= line_chart Trip.month_chart %></p>
+  <p><b>Year by Year breakdown of number of rides:</b> <%= line_chart Trip.year_chart %></p>
   <p><b>Most ridden bike:</b> #<%= Trip.most_ridden_bike %> with <%= Trip.count_for_most_ridden_bike %> rides</p>
   <p><b>Least ridden bike:</b> #<%= Trip.least_ridden_bike %> with <%= Trip.count_for_least_ridden_bike %> rides</p>
   <p><b>Date with the highest number of trips:</b> <%= Trip.date_with_highest_trips %> with <%= Trip.count_of_highest_trips %> trips</p>

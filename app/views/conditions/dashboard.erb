@@ -106,3 +106,59 @@
     </tbody>
   </table>
 </div>
+<div class="table-responsive">
+  <h3>Rides by Wind Speeds</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Wind Speeds</th>
+        <th>Average # of Rides</th>
+        <th>Highest # of Rides</th>
+        <th>Lowest # of Rides</th>
+      </tr>
+    </thead>
+    <tr>
+      <td>3.0 in - 3.4 in</td>
+      <td><%= Condition.avg_rides_by_precip(3) %></td>
+      <td><%= Condition.high_rides_by_precip(3) %></td>
+      <td><%= Condition.low_rides_by_precip(3) %></td>
+    </tr>
+      <tr>
+        <td>20.0 mph - 23.9 mph</td>
+        <td><%= Condition.avg_rides_by_windspeed(20) %></td>
+        <td><%= Condition.high_rides_by_windspeed(20) %></td>
+        <td><%= Condition.low_rides_by_windspeed(20) %></td>
+      </tr>
+      <tr>
+        <td>16.0 mph - 19.9 mph</td>
+        <td><%= Condition.avg_rides_by_windspeed(16) %></td>
+        <td><%= Condition.high_rides_by_windspeed(16) %></td>
+        <td><%= Condition.low_rides_by_windspeed(16) %></td>
+      </tr>
+      <tr>
+        <td>12.0 mph - 15.9 mph</td>
+        <td><%= Condition.avg_rides_by_windspeed(12) %></td>
+        <td><%= Condition.high_rides_by_windspeed(12) %></td>
+        <td><%= Condition.low_rides_by_windspeed(12) %></td>
+      </tr>
+      <tr>
+        <td>8.0 mph - 11.9 mph</td>
+        <td><%= Condition.avg_rides_by_windspeed(8) %></td>
+        <td><%= Condition.high_rides_by_windspeed(8) %></td>
+        <td><%= Condition.low_rides_by_windspeed(8) %></td>
+      </tr>
+      <tr>
+        <td>4.0 mph - 7.9 mph</td>
+        <td><%= Condition.avg_rides_by_windspeed(4) %></td>
+        <td><%= Condition.high_rides_by_windspeed(4) %></td>
+        <td><%= Condition.low_rides_by_windspeed(4) %></td>
+      </tr>
+      <tr>
+        <td>0.0 mph - 3.9 mph</td>
+        <td><%= Condition.avg_rides_by_windspeed(0) %></td>
+        <td><%= Condition.high_rides_by_windspeed(0) %></td>
+        <td><%= Condition.low_rides_by_windspeed(0) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

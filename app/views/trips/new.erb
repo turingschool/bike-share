@@ -20,10 +20,10 @@
     </div>
     <div class="col-md-6 mb-1">
       <label for="validationCustom03">Start Station Name: </label>
-      <select type="text" class="form-control" name="trip[start_station_name]" placeholder="Name of the station trip started at">
+      <select type="text" class="form-control" id="start-name-drop-down" name="trip[start_station_name]" placeholder="Name of the station trip started at">
         <option value="" disabled selected>Name of the station trip started at</option>
         <% @stations.each do |station| %>
-        <option value="start_station_id"><%= station.name %></option>
+        <option name="trip[start_station_id]"><%= station.name %></option>
         <% end %>
       </select>
     </div>
@@ -32,16 +32,16 @@
       <select type="text" class="form-control" name="trip[start_station_id]" placeholder="ID of the station trip started at">
         <option value="" disabled selected>ID of the station trip started at</option>
         <% @stations.each do |station| %>
-        <option value="start_station_id"><%= station.id %></option>
+        <option name="trip[start_station_id]"><%= station.id %></option>
         <% end %>
       </select>
     </div>
     <div class="col-md-6 mb-1">
       <label for="validationCustom05">End Station Name: </label>
-      <select type="text" class="form-control" name="trip[end_station_name]" placeholder="Name of the station trip ended at">
+      <select type="text" class="form-control" id="end-name-drop-down" name="trip[end_station_name]" placeholder="Name of the station trip ended at">
         <option value="" disabled selected>Name of the station trip ended at</option>
         <% @stations.each do |station| %>
-        <option value="start_station_id"><%= station.name %></option>
+        <option name="trip[end_station_name]"><%= station.name %></option>
         <% end %>
       </select>
     </div>
@@ -50,7 +50,7 @@
       <select type="text" class="form-control" name="trip[end_station_id]" placeholder="ID of the station trip ended at">
         <option value="" disabled selected>ID of the station trip started at</option>
         <% @stations.each do |station| %>
-        <option value="end_station_id"><%= station.id %></option>
+        <option name="trip[end_station_id]"><%= station.id %></option>
         <% end %>
       </select>
     </div>

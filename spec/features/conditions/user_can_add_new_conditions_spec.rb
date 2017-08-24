@@ -19,7 +19,12 @@ RSpec.describe "User creates condition" do
 
     expect(page).to have_content("2013-08-29")
     expect(page).to have_content(10.0)
-
-
+    expect(page).to have_content(5.0)
+    expect(page).to have_content(0.0)
+    expect(page).to have_content(100.0)
+    expect(page).to have_content(0.0)
+    expect(page).to have_content(8.0)
+    expect(page).to have_content(40.0)
+    expect(page).to have_content(20.0)
   end
 end

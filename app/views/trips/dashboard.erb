@@ -21,8 +21,11 @@
   <div class="col-md-4"><br><br>
     <p>The bike with the most rides was <%=Trip.most_ridden_bike_id%></p>
     <p>The bike with the fewest rides was <%=Trip.least_ridden_bike_id%></p>
+    <% @high_weather, @low_weather = Condition.where(date: Trip.get_high_date).first, Condition.where(date: Trip.get_low_date).first %>
     <p>The date with the most rides was <%=Trip.highest_date%></p>
+    <p>Click <a href="/conditions/<%= @high_weather.id %>">here</a> for that day's weather</p>
     <p>The date with the fewest rides was <%=Trip.lowest_date%></p>
+    <p>Click <a href="/conditions/<%= @low_weather.id %>">here</a> for that day's weather</p>
     <p>The most used subscription type is <%= Trip.most_used_sub_type.subscription_type %></p>
     <p>The least used subscription type is <%= Trip.least_used_sub_type.subscription_type %></p><br>
 

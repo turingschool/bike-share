@@ -129,3 +129,11 @@ input {
   height: 400px;
   background-color: grey;
 }
+
+.full-width-button {
+margin: 5px;
+width: 100%;
+letter-spacing: 10px;
+font-size: 20px;
+  text-shadow: 2px 2px #333333;
+}

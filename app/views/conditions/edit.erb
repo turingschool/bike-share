@@ -11,17 +11,24 @@
         <form action="/conditions/<%=@condition.id %>" method= "post">
           <input type="hidden" class="edit-station-panel-form-item" name="_method" value= "PUT" />
           <h5>Date of Weather</h5>
-          <input type='text' class="edit-station-panel-form-item" name='condition[date]' placeholder="Date" value='<%= @condition.name %>'/><br>
+          <input type='text' class="edit-station-panel-form-item" name='condition[date]' placeholder="Date" value='<%= @condition.date %>'/><br>
           <h5>Temperature High</h5>
-          <input type='number' class="edit-station-panel-form-item" name= 'condition[max_temperature_f]' placeholder="Dock Count" value='<%= @station.dock_count %>'/><br>
-          <h5>Lattitude</h5>
-          <input type='text' class="edit-station-panel-form-item" name='station[lat]' placeholder="Lattitude" value='<%= @station.lat %>'/><br>
-          <h5>Longitude</h5>
-          <input type='text' class="edit-station-panel-form-item" name='station[long]' placeholder="Longitude" value='<%= @station.long %>'/><br>
-          <h5>City</h5>
-          <input type='text' class="edit-station-panel-form-item" name='station[city]' placeholder="City" value='<%= @station.city %>'/><br>
-          <h5>Installation Date</h5>
-          <input type='date' class="edit-station-panel-form-item" name='station[installation_date]' placeholder="Date of Installation" value='<%= @station.installation_date %>'/><br><br>
+          <input type='number' class="edit-station-panel-form-item" name='condition[max_temperature_f]' placeholder="Temperature High" value='<%= @condition.max_temperature_f %>'/><br>
+          <h5>Temperature Low</h5>
+          <input type='number' class="edit-station-panel-form-item" name='condition[min_temperature_f]' placeholder="Temperature Low" value='<%= @condition.min_temperature_f %>'/><br>
+          <h5>Temperature Average</h5>
+          <input type='number' class="edit-station-panel-form-item" name='condition[mean_temperature_f]' placeholder="Temperature Average" value='<%= @condition.mean_temperature_f %>'/><br>
+          <h5>Max Humidty</h5>
+          <input type='number' class="edit-station-panel-form-item" name='condition[max_humidity]' placeholder="Max Humidity" value='<%= @condition.max_humidity %>'/><br>
+          <h5>Average Humidity</h5>
+          <input type='number' class="edit-station-panel-form-item" name='condition[mean_humidity]' placeholder="Average Humidity" value='<%= @condition.mean_humidity %>'/><br>
+          <h5>Average Visibility Miles</h5>
+          <input type='number' class="edit-station-panel-form-item" name='condition[mean_visibility_miles]' placeholder="Average Visibility Miles" value='<%= @condition.mean_visibility_miles %>'/><br>
+          <h5>Average Wind Speed</h5>
+          <input type='number' class="edit-station-panel-form-item" name='condition[mean_wind_speed_mph]' placeholder="Average Wind Speed" value='<%= @condition.mean_wind_speed_mph %>'/><br>
+          <h5>Precipitation In Inches</h5>
+          <input type='number' class="edit-station-panel-form-item" name='condition[precipitation_inches]' placeholder="Precipitation In Inches" value='<%= @condition.precipitation_inches %>'/><br>
+          <br>
           <input type='submit' class="btn-warning formbtn" value="Submit Changes"/>
         </form>
       </div>

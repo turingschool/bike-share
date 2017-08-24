@@ -1,11 +1,5 @@
 RSpec.describe Trip do
   describe "Class Methods" do
-    describe ".per_page" do
-      xit 'returns certain number of trips per page' do
-
-      end
-    end
-
     describe ".avg_duration_of_a_ride" do
       it 'returns average duration of a trip' do
         Trip.create(duration: 100,
@@ -1491,7 +1485,7 @@ RSpec.describe Trip do
                       start_station_id: 1,
                       end_station_id: 1,
                       zip_code: "94113")
-                      
+
           expect(trip_1).to_not be_valid
         end
 

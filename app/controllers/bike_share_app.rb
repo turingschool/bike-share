@@ -121,7 +121,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/conditions/:id' do
     @condition = Condition.find(params[:id])
-    erb '/condition/show'
+    erb :'/conditions/show'
   end
 
   post '/conditions' do |id|
@@ -131,7 +131,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/conditions/:id/edit' do
     @conditions = Condition.all
-    erb '/conditions/edit'
+    erb :'/conditions/edit'
   end
 
   put '/conditions/:id' do |id|

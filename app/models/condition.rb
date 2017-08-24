@@ -35,7 +35,7 @@ class Condition < ActiveRecord::Base
                     )
     end
     b = Time.now
-    puts "Creating the trips array took #{b - a} seconds"
+    puts "Creating the conditions array took #{b - a} seconds"
     conditions
   end
 

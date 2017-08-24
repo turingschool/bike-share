@@ -1,14 +1,20 @@
 <p>Breakout of average number of rides, highest number of rides, and lowest number of rides on days with a high temperature in 10 degree chunks (e.g.
 average number of rides on days with high temps between fifty and sixty degrees)
-<p>Between 40-49 F daily rides averaged <%= Condition.get_average_rides(40..49) %>. The most rides on one day was <%= Condition.get_best_day(40..49) %>. The fewest rides on one day was <%= Condition.get_worst_day(40..49) %>.</p>
-<p>Between 50-59 F daily rides averaged <%= Condition.get_average_rides(50..59) %>.  The most rides on one day was <%= Condition.get_best_day(50..59) %>. The fewest rides on one day was <%= Condition.get_worst_day(50..59) %>.</p>
-<p>Between 60-69 F daily rides averaged <%= Condition.get_average_rides(60..69) %>.  The most rides on one day was <%= Condition.get_best_day(60..69) %>. The fewest rides on one day was <%= Condition.get_worst_day(60..69) %>.</p>
-<p>Between 70-79 F daily rides averaged <%= Condition.get_average_rides(70..79) %>.  The most rides on one day was <%= Condition.get_best_day(70..79) %>. The fewest rides on one day was <%= Condition.get_worst_day(70..79) %>.</p>
-<p>Between 80-89 F daily rides averaged <%= Condition.get_average_rides(80..89) %>.  The most rides on one day was <%= Condition.get_best_day(80..89) %>. The fewest rides on one day was <%= Condition.get_worst_day(80..89) %>.</p>
-<p>Between 90-99 F daily rides averaged <%= Condition.get_average_rides(90..99) %>.  The most rides on one day was <%= Condition.get_best_day(90..99) %>. The fewest rides on one day was <%= Condition.get_worst_day(90..99) %>.</p>
+<p>Between 40-49 F daily rides averaged <%= Condition.get_average_rides_temp(40..49) %>. The most rides on one day was <%= Condition.get_best_day_temp(40..49) %>. The fewest rides on one day was <%= Condition.get_worst_day_temp(40..49) %>.</p>
+<p>Between 50-59 F daily rides averaged <%= Condition.get_average_rides_temp(50..59) %>.  The most rides on one day was <%= Condition.get_best_day_temp(50..59) %>. The fewest rides on one day was <%= Condition.get_worst_day_temp(50..59) %>.</p>
+<p>Between 60-69 F daily rides averaged <%= Condition.get_average_rides_temp(60..69) %>.  The most rides on one day was <%= Condition.get_best_day_temp(60..69) %>. The fewest rides on one day was <%= Condition.get_worst_day_temp(60..69) %>.</p>
+<p>Between 70-79 F daily rides averaged <%= Condition.get_average_rides_temp(70..79) %>.  The most rides on one day was <%= Condition.get_best_day_temp(70..79) %>. The fewest rides on one day was <%= Condition.get_worst_day_temp(70..79) %>.</p>
+<p>Between 80-89 F daily rides averaged <%= Condition.get_average_rides_temp(80..89) %>.  The most rides on one day was <%= Condition.get_best_day_temp(80..89) %>. The fewest rides on one day was <%= Condition.get_worst_day_temp(80..89) %>.</p>
+<p>Between 90-99 F daily rides averaged <%= Condition.get_average_rides_temp(90..99) %>.  The most rides on one day was <%= Condition.get_best_day_temp(90..99) %>. The fewest rides on one day was <%= Condition.get_worst_day_temp(90..99) %>.</p>
 
 Breakout of average number of rides, highest number of rides, and lowest number of rides on days with precipitation in half-inch increments.
-<%= %>
+<p>Between 0"-0.5" of percipitation daily rides averaged <%= Condition.get_average_rides_percip(0.0..0.5) %>. The most rides on one day was <%= Condition.get_best_day_percip(0.0..0.5) %>. The fewest rides on one day was <%= Condition.get_worst_day_percip(0.0..0.5) %>.</p>
+<p>Between 0.6"-1.0" of percipitation daily rides averaged <%= Condition.get_average_rides_percip(0.6..1.0) %>.  The most rides on one day was <%= Condition.get_best_day_percip(0.6..1.0) %>. The fewest rides on one day was <%= Condition.get_worst_day_percip(0.6..1.0) %>.</p>
+<p>Between 1.1"-1.5" of percipitation daily rides averaged <%= Condition.get_average_rides_percip(1.1..1.5) %>.  The most rides on one day was <%= Condition.get_best_day_percip(1.1..1.5) %>. The fewest rides on one day was <%= Condition.get_worst_day_percip(1.1..1.5) %>.</p>
+<p>Between 1.6"-2.0" of percipitation daily rides averaged <%= Condition.get_average_rides_percip(1.6..2.0) %>.  The most rides on one day was <%= Condition.get_best_day_percip(1.6..2.0) %>. The fewest rides on one day was <%= Condition.get_worst_day_percip(1.6..2.0) %>.</p>
+<p>Between 2.1"-2.5" of percipitation daily rides averaged <%= Condition.get_average_rides_percip(2.1..2.5) %>.  The most rides on one day was <%= Condition.get_best_day_percip(2.1..2.5) %>. The fewest rides on one day was <%= Condition.get_worst_day_percip(2.1..2.5) %>.</p>
+<p>Between 2.6"-3.0" of percipitation daily rides averaged <%= Condition.get_average_rides_percip(2.6..3.0) %>.  The most rides on one day was <%= Condition.get_best_day_percip(2.6..3.0) %>. The fewest rides on one day was <%= Condition.get_worst_day_percip(2.6..3.0) %>.</p>
+<p>Between 3.1"-3.5" of percipitation daily rides averaged <%= Condition.get_average_rides_percip(3.1..3.5) %>.  The most rides on one day was <%= Condition.get_best_day_percip(3.1..3.5) %>. The fewest rides on one day was <%= Condition.get_worst_day_percip(3.1..3.5) %>.</p>
 Breakout of average number of rides, highest number of rides, and lowest number of rides on days with mean wind speeds in four mile increments.
 <%= %>
 Breakout of average number of rides, highest number of rides, and lowest number of rides on days with mean visibility in miles in four mile increments.</p>

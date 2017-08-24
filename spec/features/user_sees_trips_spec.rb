@@ -1,6 +1,6 @@
 RSpec.describe "User visits '/trips'" do
 
-  before :each do
+  before :all do
     start_date_1 = DateTime.new(2001,2,3,4,5)
     end_date_1 = DateTime.new(2001,3,3,4,5)
     start_date_2 = DateTime.new(2001,2,3,4,6)

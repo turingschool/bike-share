@@ -1,23 +1,23 @@
 <h1>Add a new station:</h1>
 
-<form action="/conditions/new" method="POST" class="container" id="needs-validation" novalidate>
+<form action="/stations" method="POST" class="container">
   <div class="row">
     <div class="col-md-6 mb-1">
       <label for="validationCustom01">Name: </label>
-      <input type="text" class="form-control" id="validationCustom01" placeholder= "station[name]" value="Name of Station" required>
+      <input type="text" class="form-control" name= "station[name]" value="Name of Station"/>
     </div>
     <div class="col-md-6 mb-1">
       <label for="validationCustom02">Dock Count: </label>
-      <input type="text" class="form-control" id="validationCustom02" placeholder="station[dock_count]" value="Number of Bikes at this Station" required>
+      <input type="text" class="form-control" name="station[dock_count]" value="Number of Bikes at this Station"/>
     </div>
     <div class="col-md-6 mb-1">
       <label for="validationCustom03">City: </label>
-      <input type="text" class="form-control" id="validationCustom03" placeholder="station[city]" value="City"required>
+      <input type="text" class="form-control" name="station[city]" value="City"/>
     </div>
     <div class="col-md-6 mb-1">
       <label for="validationCustom04">Installation Date: </label>
-      <input type="text" class="form-control" id="validationCustom04" placeholder="station[installation_date]" value="YYYY-MM-DD"required>
+      <input type="text" class="form-control" name="station[installation_date]" value="YYYY-MM-DD"/>
     </div>
   </div>
-  <button class="btn btn-success" type="submit">Create New Condition</button>
+  <button class="btn btn-success" type="submit">Create New Station</button>
 </form>

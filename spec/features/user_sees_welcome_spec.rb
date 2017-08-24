@@ -3,6 +3,9 @@ describe "User visits '/'" do
 
     visit '/'
 
-    expect(page).to have_content("Welcome!")
+    expect(page).to have_content("San Francisco Bike Share")
+    expect(page).to have_content("Conditions")
+    expect(page).to have_content("Trips")
+    expect(page).to have_content("Stations")
   end
 end

@@ -35,7 +35,7 @@ describe "User can delete trip" do
                 zip_code: "94114")
 
     visit '/trips/1'
-    click_on("delete")
+    click_on("Delete Trip")
 
     expect(current_path).to eq('/trips')
     expect(page).to_not have_content("10th at South Park")

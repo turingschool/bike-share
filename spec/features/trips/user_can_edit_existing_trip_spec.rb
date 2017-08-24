@@ -33,7 +33,7 @@ describe "User can access edit trip page" do
     fill_in("trip[bike_id]", with: 299)
     fill_in("trip[subscription_type]", with: "Subscriber")
     fill_in("trip[zip_code]", with: "90210")
-    click_on("Edit Trip")
+    click_on("Update Trip")
 
     expect(page).to have_content("173")
     expect(page).to have_content("Yoyo")

@@ -30,7 +30,8 @@
   </div>
   <div class="col-md-5">
     <div id="map">
-      <script>
+
+    <script>
       function initMap() {
         var uluru = {lat: parseFloat("<%= @lat %>"), lng: parseFloat("<%= @long %>")};
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -42,12 +43,12 @@
           map: map
         });
       }
-      </script>
-      <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFr55IGO5Y2eTqm3f9oD-ppghraPJqACc&callback=initMap">
-      </script>
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFr55IGO5Y2eTqm3f9oD-ppghraPJqACc&callback=initMap">
+    </script>
     </div>
-  </div>
-  <div class="col-md-1">
+
   </div>
 </div>

@@ -11,12 +11,12 @@ class Condition < ActiveRecord::Base
 
 #temp
     def self.avg_rides_by_weather(start_of_range)
-      conditions = Condition.where(max_temperature:                      #gives us conditions in temp tange
+      conditions = Condition.where(max_temperature:
                                    start_of_range..(start_of_range+9))
-      dates_in_temp_range = conditions.select(:date).distinct.where(     #dates_for_zipcode_in_temp_range
+      dates_in_temp_range = conditions.select(:date).distinct.where(
                             zip_code: ZIP_CODE)
-      total_trips = Trip.where(start_date: dates_in_temp_range)          #takes A COLLECTION of dates as an argument to give us all the trips
-                                                                         #for the dates in temp range
+      total_trips = Trip.where(start_date: dates_in_temp_range)
+
       avg = total_trips.count / dates_in_temp_range.count
 
       avg.round(2)
@@ -28,23 +28,110 @@ class Condition < ActiveRecord::Base
       dates_in_temp_range = conditions.select(:date).distinct.where(
                             zip_code: ZIP_CODE)
       total_trips = Trip.where(start_date: dates_in_temp_range)
-      total_trips.group(:start_date).order('count_id DESC').count(:id).keys.first
+      total_trips.group(:start_date).order('count_id DESC').count(:id).values.first
     end
 
-    def self.high_rides_by_weather(start_of_range)
+    def self.low_rides_by_weather(start_of_range)
       conditions = Condition.where(max_temperature:
                                    start_of_range..(start_of_range+9))
       dates_in_temp_range = conditions.select(:date).distinct.where(
                             zip_code: ZIP_CODE)
       total_trips = Trip.where(start_date: dates_in_temp_range)
-      total_trips.group(:start_date).order('count_id DESC').count(:id).keys.last
+      total_trips.group(:start_date).order('count_id DESC').count(:id).values.last
     end
 
 #precip
 
+    def self.avg_rides_by_precip(start_of_range)
+      conditions = Condition.where(precipitation:
+                                   start_of_range..(start_of_range+0.5))
+      dates_in_temp_range = conditions.select(:date).distinct.where(
+                            zip_code: ZIP_CODE)
+      total_trips = Trip.where(start_date: dates_in_temp_range)
+
+      avg = total_trips.count / dates_in_temp_range.count
+
+      avg.round(2)
+    end
+
+    def self.high_rides_by_precip(start_of_range)
+      conditions = Condition.where(precipitation:
+                             start_of_range..(start_of_range+0.5))
+      dates_in_temp_range = conditions.select(:date).distinct.where(
+                            zip_code: ZIP_CODE)
+      total_trips = Trip.where(start_date: dates_in_temp_range)
+      total_trips.group(:start_date).order('count_id DESC').count(:id).values.first
+    end
+
+    def self.low_rides_by_precip(start_of_range)
+      conditions = Condition.where(precipitation:
+                             start_of_range..(start_of_range+0.5))
+      dates_in_temp_range = conditions.select(:date).distinct.where(
+                            zip_code: ZIP_CODE)
+      total_trips = Trip.where(start_date: dates_in_temp_range)
+      total_trips.group(:start_date).order('count_id DESC').count(:id).values.last
+    end
 #wind_speed
 
+    def self.avg_rides_by_windspeed(start_of_range)
+      conditions = Condition.where(mean_windspeed:
+                                   start_of_range..(start_of_range+4))
+      dates_in_temp_range = conditions.select(:date).distinct.where(
+                            zip_code: ZIP_CODE)
+      total_trips = Trip.where(start_date: dates_in_temp_range)
+
+      avg = total_trips.count / dates_in_temp_range.count
+
+      avg.round(2)
+    end
+
+    def self.high_rides_by_windspeed(start_of_range)
+      conditions = Condition.where(mean_windspeed:
+                             start_of_range..(start_of_range+4))
+      dates_in_temp_range = conditions.select(:date).distinct.where(
+                            zip_code: ZIP_CODE)
+      total_trips = Trip.where(start_date: dates_in_temp_range)
+      total_trips.group(:start_date).order('count_id DESC').count(:id).values.first
+    end
+
+    def self.low_rides_by_windspeed(start_of_range)
+      conditions = Condition.where(mean_windspeed:
+                             start_of_range..(start_of_range+4))
+      dates_in_temp_range = conditions.select(:date).distinct.where(
+                            zip_code: ZIP_CODE)
+      total_trips = Trip.where(start_date: dates_in_temp_range)
+      total_trips.group(:start_date).order('count_id DESC').count(:id).values.last
+    end
 #visibility
+   def self.avg_rides_by_visibility(start_of_range)
+      conditions = Condition.where(mean_visibility:
+                                   start_of_range..(start_of_range+4))
+      dates_in_temp_range = conditions.select(:date).distinct.where(
+                            zip_code: ZIP_CODE)
+      total_trips = Trip.where(start_date: dates_in_temp_range)
+
+      avg = total_trips.count / dates_in_temp_range.count
+
+      avg.round(2)
+    end
+
+    def self.high_rides_by_visbility(start_of_range)
+      conditions = Condition.where(mean_visibility:
+                             start_of_range..(start_of_range+4))
+      dates_in_temp_range = conditions.select(:date).distinct.where(
+                            zip_code: ZIP_CODE)
+      total_trips = Trip.where(start_date: dates_in_temp_range)
+      total_trips.group(:start_date).order('count_id DESC').count(:id).values.first
+    end
+
+    def self.low_rides_by_visibility(start_of_range)
+      conditions = Condition.where(mean_visibility:
+                             start_of_range..(start_of_range+4))
+      dates_in_temp_range = conditions.select(:date).distinct.where(
+                            zip_code: ZIP_CODE)
+      total_trips = Trip.where(start_date: dates_in_temp_range)
+      total_trips.group(:start_date).order('count_id DESC').count(:id).values.last
+    end
 
 #for trips db
 

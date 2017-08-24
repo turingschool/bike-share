@@ -18,8 +18,3 @@
 </div>
 
 <p><a class=class="btn btn-link" href="/stations/<%= @station.id %>/edit">Edit Station</a></p>
-
-<form action="/stations/<%= @station.id %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input class="btn btn-danger" type="submit" value="Delete Station" />
-</form>

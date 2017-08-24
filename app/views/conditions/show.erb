@@ -6,7 +6,3 @@
   <p>Mean Windspeed: <%= @condition.mean_windspeed %> mph</p>
   <p>Precipitation: <%= @condition.precipitation %> %</p>
   <p><a class=class="btn btn-link" href="/conditions/<%= @condition.id %>/edit">Edit Condition</a></p>
-<form action="/conditions/<%= @condition.id %>" method="POST">
-  <input type="hidden" name="_method" value="delete">
-  <input class="btn btn-danger" type="submit" value="Delete Condition"/>
-</form>

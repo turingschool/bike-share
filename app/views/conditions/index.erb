@@ -21,6 +21,11 @@
 
   <p>Precipitation: <%= condition.precipitation %> %</p>
 
+  <form action="/conditions/<%= condition.id %>" method="POST">
+    <input type="hidden" name="_method" value="delete">
+    <input class="btn btn-danger" type="submit" value="Delete Condition"/>
+  </form>
+
 <% end %>
 
 

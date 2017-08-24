@@ -13,6 +13,12 @@
     <p>City: <%= station.city %></p>
     <p>Installed On: <%= station.installation_date %></p>
     <a class="btn btn-info" href="/stations/<%= station.id %>">View Station</a>
+    <br>
+    <br>
+    <form action="/stations/<%= station.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input class="btn btn-danger" type="submit" value="Delete Station" />
+    </form>
   <% end %>
     </div>
 </div>

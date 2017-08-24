@@ -10,6 +10,7 @@ class Condition < ActiveRecord::Base
     ZIP_CODE = 95113 #just picks one zip_code for analytics
 
 #temp
+
     def self.avg_rides_by_weather(start_of_range)
       conditions = Condition.where(max_temperature:
                                    start_of_range..(start_of_range+9))
@@ -71,6 +72,7 @@ class Condition < ActiveRecord::Base
       total_trips = Trip.where(start_date: dates_in_temp_range)
       total_trips.group(:start_date).order('count_id DESC').count(:id).values.last
     end
+
 #wind_speed
 
     def self.avg_rides_by_windspeed(start_of_range)
@@ -102,7 +104,9 @@ class Condition < ActiveRecord::Base
       total_trips = Trip.where(start_date: dates_in_temp_range)
       total_trips.group(:start_date).order('count_id DESC').count(:id).values.last
     end
+
 #visibility
+
    def self.avg_rides_by_visibility(start_of_range)
       conditions = Condition.where(mean_visibility:
                                    start_of_range..(start_of_range+4))
@@ -133,16 +137,16 @@ class Condition < ActiveRecord::Base
       total_trips.group(:start_date).order('count_id DESC').count(:id).values.last
     end
 
-#for trips db
+#for trips dashboard
 
-   def weather_on_day_with_highest_rides
-
-   end
-
-
-   def weather_on_day_with_lowest_rides
-
-   end
+    def self.weather_on_day_with_highest_rides
+      date = Trip.group(:start_date).order('count_id DESC').count(:id).keys.first
+      Condition.find_by(date: date)
+    end
 
 
+    def self.weather_on_day_with_lowest_rides
+      date = Trip.group(:start_date).order('count_id DESC').count(:id).keys.last
+      Condition.find_by(date: date)
+    end
 end

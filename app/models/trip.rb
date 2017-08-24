@@ -1,6 +1,9 @@
 require 'will_paginate'
 require 'will_paginate/active_record'
 require_relative "station"
+require 'chartkick'
+require 'groupdate'
+
 
 class Trip < ActiveRecord::Base
 
@@ -20,12 +23,17 @@ class Trip < ActiveRecord::Base
     30
   end
 
+
   def self.avg_duration_of_a_ride
-    average(:duration)
+    seconds = average(:duration)
+    minutes = seconds / 60
+    minutes.round
   end
 
   def self.longest_ride
-    maximum(:duration)
+    seconds = maximum(:duration)
+    minutes = seconds / 60
+    minutes / 60
   end
 
   def self.shortest_ride
@@ -46,12 +54,24 @@ class Trip < ActiveRecord::Base
     group('(EXTRACT(YEAR FROM end_date))::integer').group('(EXTRACT(MONTH FROM end_date))::integer').order('count_all DESC').count
   end
 
+  def self.chart
+    group_by_month(:end_date).count
+  end
+
   def self.most_ridden_bike
     group(:bike_id).order('count_id DESC').count(:id).first.first
   end
 
+  def self.count_for_most_ridden_bike
+    group(:bike_id).order('count_id DESC').count(:id).count
+  end
+
   def self.least_ridden_bike
     group(:bike_id).order('count_id ASC').count(:id).first.first
+  end
+
+  def self.count_for_least_ridden_bike
+    group(:bike_id).order('count_id ASC').count(:id).count
   end
 
   def self.subscription_info
@@ -72,12 +92,6 @@ class Trip < ActiveRecord::Base
     .count(:id)
     total = subscription_hash.values.reduce(:+).to_f
     (subscription_hash["Customer"] / total * 100).round(2)
-  end
-
-  def self.date_with_highest_trips
-    date = Trip.group('(EXTRACT(MONTH FROM start_date))::integer').group('(EXTRACT(DAY FROM start_date))::integer').group('(EXTRACT(YEAR FROM start_date))::integer').order('count_all DESC').count.first
-    date_string = "#{date[0][2]}-#{date[0][0]}-#{date[0][1]}"
-    Date.parse(date_string)
   end
 
   def self.date_with_highest_trips

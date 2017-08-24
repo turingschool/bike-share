@@ -1,6 +1,5 @@
 RSpec.describe Trip do
   describe "Class Methods" do
-
     describe ".avg_duration_of_a_ride" do
       it 'returns average duration of a trip' do
         Trip.create(duration: 100,

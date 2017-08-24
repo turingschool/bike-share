@@ -1,1 +1,202 @@
 <h1>Weather Condition Analytics</h1>
+<div class="table-responsive">
+  <h3>Rides by High Temperature</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Temperature</th>
+        <th>Average # of Rides</th>
+        <th>Highest # of Rides</th>
+        <th>Lowest # of Rides</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>90°F - 99.9°F</td>
+        <td><%= Condition.avg_rides_by_weather(90) %></td>
+        <td><%= Condition.high_rides_by_weather(90) %></td>
+        <td><%= Condition.low_rides_by_weather(90) %></td>
+      </tr>
+      <tr>
+        <td>80°F - 89.9°F</td>
+        <td><%= Condition.avg_rides_by_weather(80) %></td>
+        <td><%= Condition.high_rides_by_weather(80) %></td>
+        <td><%= Condition.low_rides_by_weather(80) %></td>
+      </tr>
+      <tr>
+        <td>70°F - 79.9°F</td>
+        <td><%= Condition.avg_rides_by_weather(70) %></td>
+        <td><%= Condition.high_rides_by_weather(70) %></td>
+        <td><%= Condition.low_rides_by_weather(70) %></td>
+      </tr>
+      <tr>
+        <td>60°F - 69.9°F</td>
+        <td><%= Condition.avg_rides_by_weather(60) %></td>
+        <td><%= Condition.high_rides_by_weather(60) %></td>
+        <td><%= Condition.low_rides_by_weather(60) %></td>
+      </tr>
+      <tr>
+        <td>50°F - 59.9°F</td>
+        <td><%= Condition.avg_rides_by_weather(50) %></td>
+        <td><%= Condition.high_rides_by_weather(50) %></td>
+        <td><%= Condition.low_rides_by_weather(50) %></td>
+      </tr>
+      <tr>
+        <td>40°F - 49.9°F</td>
+        <td><%= Condition.avg_rides_by_weather(40) %></td>
+        <td><%= Condition.high_rides_by_weather(40) %></td>
+        <td><%= Condition.low_rides_by_weather(40) %></td>
+      </tr>
+    </tbody>
+  </table>
+
+<div class="table-responsive">
+  <h3>Rides by Precipitation</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Precipitation</th>
+        <th>Average # of Rides</th>
+        <th>Highest # of Rides</th>
+        <th>Lowest # of Rides</th>
+      </tr>
+    </thead>
+    <tr>
+      <td>3.0 in - 3.4 in</td>
+      <td><%= Condition.avg_rides_by_precip(3) %></td>
+      <td><%= Condition.high_rides_by_precip(3) %></td>
+      <td><%= Condition.low_rides_by_precip(3) %></td>
+    </tr>
+      <tr>
+        <td>2.5 in - 2.9 in</td>
+        <td><%= Condition.avg_rides_by_precip(2.5) %></td>
+        <td><%= Condition.high_rides_by_precip(2.5) %></td>
+        <td><%= Condition.low_rides_by_precip(2.5) %></td>
+      </tr>
+      <tr>
+        <td>2.0 in - 2.4 in</td>
+        <td><%= Condition.avg_rides_by_precip(2) %></td>
+        <td><%= Condition.high_rides_by_precip(2) %></td>
+        <td><%= Condition.low_rides_by_precip(2) %></td>
+      </tr>
+      <tr>
+        <td>1.5 in - 1.9 in</td>
+        <td><%= Condition.avg_rides_by_precip(1.5) %></td>
+        <td><%= Condition.high_rides_by_precip(1.5) %></td>
+        <td><%= Condition.low_rides_by_precip(1.5) %></td>
+      </tr>
+      <tr>
+        <td>1.0 in. - 1.4 in</td>
+        <td><%= Condition.avg_rides_by_precip(1) %></td>
+        <td><%= Condition.high_rides_by_precip(1) %></td>
+        <td><%= Condition.low_rides_by_precip(1) %></td>
+      </tr>
+      <tr>
+        <td>0.5 in - 0.9 in</td>
+        <td><%= Condition.avg_rides_by_precip(0.5) %></td>
+        <td><%= Condition.high_rides_by_precip(0.5) %></td>
+        <td><%= Condition.low_rides_by_precip(0.5) %></td>
+      </tr>
+      <tr>
+        <td>0.0 in - 0.4 in</td>
+        <td><%= Condition.avg_rides_by_precip(0) %></td>
+        <td><%= Condition.high_rides_by_precip(0) %></td>
+        <td><%= Condition.low_rides_by_precip(0) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="table-responsive">
+  <h3>Rides by Wind Speeds</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Wind Speeds</th>
+        <th>Average # of Rides</th>
+        <th>Highest # of Rides</th>
+        <th>Lowest # of Rides</th>
+      </tr>
+    </thead>
+    <tr>
+      <td>20.0 mph - 24.4 mph</td>
+      <td><%= Condition.avg_rides_by_windspeed(20) %></td>
+      <td><%= Condition.high_rides_by_windspeed(20) %></td>
+      <td><%= Condition.low_rides_by_windspeed(20) %></td>
+    </tr>
+      <tr>
+        <td>16.0 mph - 19.9 mph</td>
+        <td><%= Condition.avg_rides_by_windspeed(16) %></td>
+        <td><%= Condition.high_rides_by_windspeed(16) %></td>
+        <td><%= Condition.low_rides_by_windspeed(16) %></td>
+      </tr>
+      <tr>
+        <td>12.0 mph - 15.9 mph</td>
+        <td><%= Condition.avg_rides_by_windspeed(12) %></td>
+        <td><%= Condition.high_rides_by_windspeed(12) %></td>
+        <td><%= Condition.low_rides_by_windspeed(12) %></td>
+      </tr>
+      <tr>
+        <td>8.0 mph - 11.9 mph</td>
+        <td><%= Condition.avg_rides_by_windspeed(8) %></td>
+        <td><%= Condition.high_rides_by_windspeed(8) %></td>
+        <td><%= Condition.low_rides_by_windspeed(8) %></td>
+      </tr>
+      <tr>
+        <td>4.0 mph - 7.9 mph</td>
+        <td><%= Condition.avg_rides_by_windspeed(4) %></td>
+        <td><%= Condition.high_rides_by_windspeed(4) %></td>
+        <td><%= Condition.low_rides_by_windspeed(4) %></td>
+      </tr>
+      <tr>
+        <td>0.0 mph - 3.9 mph</td>
+        <td><%= Condition.avg_rides_by_windspeed(0) %></td>
+        <td><%= Condition.high_rides_by_windspeed(0) %></td>
+        <td><%= Condition.low_rides_by_windspeed(0) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="table-responsive">
+  <h3>Rides by Visibility</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Visibility</th>
+        <th>Average # of Rides</th>
+        <th>Highest # of Rides</th>
+        <th>Lowest # of Rides</th>
+      </tr>
+    </thead>
+      <tr>
+        <td>16.0 miles - 20 miles</td>
+        <td><%= Condition.avg_rides_by_visibility(16) %></td>
+        <td><%= Condition.high_rides_by_visibility(16) %></td>
+        <td><%= Condition.low_rides_by_visibility(16) %></td>
+      </tr>
+      <tr>
+        <td>12.0 miles - 15.9 miles</td>
+        <td><%= Condition.avg_rides_by_visibility(12) %></td>
+        <td><%= Condition.high_rides_by_visibility(12) %></td>
+        <td><%= Condition.low_rides_by_visibility(12) %></td>
+      </tr>
+      <tr>
+        <td>8.0 miles - 11.9 miles</td>
+        <td><%= Condition.avg_rides_by_visibility(8) %></td>
+        <td><%= Condition.high_rides_by_visibility(8) %></td>
+        <td><%= Condition.low_rides_by_visibility(8) %></td>
+      </tr>
+      <tr>
+        <td>4.0 miles - 7.9 miles</td>
+        <td><%= Condition.avg_rides_by_visibility(4) %></td>
+        <td><%= Condition.high_rides_by_visibility(4) %></td>
+        <td><%= Condition.low_rides_by_visibility(4) %></td>
+      </tr>
+      <tr>
+        <td>0.0 miles - 3.9 miles</td>
+        <td><%= Condition.avg_rides_by_visibility(0) %></td>
+        <td><%= Condition.high_rides_by_visibility(0) %></td>
+        <td><%= Condition.low_rides_by_visibility(0) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

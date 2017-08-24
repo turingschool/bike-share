@@ -1,7 +1,8 @@
 
+
 describe Condition do
   describe "Class Methods" do
-    it ".avg_rides_by_precip" do
+    it ".avg_rides_by_wind" do
 
       Trip.create(duration: 174,
                   start_date: "2013-08-29",
@@ -111,9 +112,9 @@ describe Condition do
                   precipitation:  1,
                   zip_code: 95113)
 
-      expect(Condition.avg_rides_by_precip(1.0)).to eq(3.0)
+      expect(Condition.avg_rides_by_windspeed(50)).to eq(3.0)
     end
-    it ".high_rides_by_precip" do
+    it ".high_rides_by_windspeed" do
 
       Trip.create(duration: 174,
                   start_date: "2013-08-29",
@@ -224,9 +225,9 @@ describe Condition do
                   precipitation:  1,
                   zip_code: 95113)
 
-      expect(Condition.high_rides_by_precip(3)).to eq(3)
+      expect(Condition.high_rides_by_windspeed(30)).to eq(3)
     end
-    it ".low_rides_by_precip" do
+    it ".low_rides_by_windspeed" do
 
       Trip.create(duration: 174,
                   start_date: "2013-08-29",
@@ -336,7 +337,7 @@ describe Condition do
                   precipitation:  1,
                   zip_code: 95113)
 
-      expect(Condition.low_rides_by_precip(3)).to eq(3)
+      expect(Condition.low_rides_by_windspeed(30)).to eq(3)
     end
   end
 end

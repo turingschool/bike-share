@@ -1,22 +1,23 @@
 <h1>Edit <%= @station.name %> Station:</h1>
 
-<form action="/stations/<%= @station.id %>" method="POST" class="container" id="needs-validation" novalidate>
+<form action="/stations/<%= @station.id %>" method="POST" class="container">
+  <input type="hidden" name="_method" value="PUT"  />
   <div class="row">
     <div class="col-md-6 mb-1">
       <label for="validationCustom01">Name: </label>
-      <input type="text" class="form-control" id="validationCustom01" placeholder="station[name]" value="<%= @station.name %>" required>
+      <input type="text" class="form-control" id="station[name]" value="<%= @station.name %>"/>
     </div>
     <div class="col-md-5 mb-1">
       <label for="validationCustom02">Dock Count: </label>
-      <input type="text" class="form-control" id="validationCustom02" placeholder="station[dock_count]" value="<%= @station.dock_count %>" required>
+      <input type="text" class="form-control" id="station[dock_count]" value="<%= @station.dock_count %>"/>
     </div>
     <div class="col-md-4 mb-1">
       <label for="validationCustom03">City: </label>
-      <input type="text" class="form-control" id="validationCustom03" placeholder="station[city]" value="<%= @station.city %>" required>
+      <input type="text" class="form-control" id="station[city]" value="<%= @station.city %>"/>
     </div>
     <div class="col-md-3 mb-1">
       <label for="validationCustom04">Installation Date: </label>
-      <input type="text" class="form-control" id="validationCustom04" placeholder="station[installation_date]" value="YYYY-MM-DD"required>
+      <input type="text" class="form-control" id="station[installation_date]" value="YYYY-MM-DD"/>
       <div class="invalid-feedback">
         Please provide a date in the correct format.
       </div>

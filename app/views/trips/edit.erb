@@ -1,39 +1,40 @@
 <h1>Edit Trip <%= @trip.id %>:</h1>
 
-<form action="/trips/<%= @trip.id %>" method="POST" class="container" id="needs-validation" novalidate>
+<form action="/trips/<%= @trip.id %>" method="POST" class="container">
+  <input type="hidden" name="_method" value="PUT"  />
   <div class="row">
     <div class="col-md-6 mb-1">
       <label for="validationCustom01">Duration: </label>
-      <input type="text" class="form-control" id="validationCustom01" placeholder= "trip[duration]"value="<%= @trip.duration %>" required>
+      <input type="text" class="form-control" id= "trip[duration]" value="<%= @trip.duration %>">
     </div>
     <div class="col-md-6 mb-1">
       <label for="validationCustom02">Start Date: </label>
-      <input type="text" class="form-control" id="validationCustom02" placeholder="trip[start_date]" value="YYYY-MM-DD" required>
+      <input type="text" class="form-control" id="trip[start_date]" value="YYYY-MM-DD">
     </div>
     <div class="col-md-6 mb-1">
       <label for="validationCustom03">Start Station Name: </label>
-      <input type="text" class="form-control" id="validationCustom03" placeholder="trip[start_station_name]" value="<%= @trip.start_station_name %>" required>
+      <input type="text" class="form-control" id="trip[start_station_name]" value="<%= @trip.start_station_name %>">
     </div>
     <div class="col-md-6 mb-1">
       <label for="validationCustom04">End Date: </label>
-      <input type="text" class="form-control" id="validationCustom04" placeholder="trip[end_date]" value="YYYY-MM-DD"required>
+      <input type="text" class="form-control" id="trip[end_date]" value="YYYY-MM-DD">
     </div>
 
     <div class="col-md-6 mb-1">
       <label for="validationCustom05">End Station Name: </label>
-      <input type="text" class="form-control" id="validationCustom03" placeholder="trip[end_station_name]" value="<%= @trip.end_station_name %>" required>
+      <input type="text" class="form-control" id="trip[end_station_name]" value="<%= @trip.end_station_name %>">
     </div>
     <div class="col-md-6 mb-1">
       <label for="validationCustom06">Bike ID: </label>
-      <input type="text" class="form-control" id="validationCustom03" placeholder="trip[bike_id]" value="<%= @trip.bike_id %>" required>
+      <input type="text" class="form-control" id="trip[bike_id]" value="<%= @trip.bike_id %>">
     </div>
     <div class="col-md-6 mb-1">
       <label for="validationCustom07">Subscription Type: </label>
-      <input type="text" class="form-control" id="validationCustom03" placeholder="trip[subscription_type]" value="<%= @trip.subscription_type %>" required>
+      <input type="text" class="form-control" id="trip[subscription_type]" value="<%= @trip.subscription_type %>">
     </div>
     <div class="col-md-6 mb-1">
       <label for="validationCustom08">Zip Code: </label>
-      <input type="text" class="form-control" id="validationCustom03" placeholder="trip[zip_code]" value="<%= @trip.zip_code %>" required>
+      <input type="text" class="form-control" id="trip[zip_code]" value="<%= @trip.zip_code %>">
     </div>
   </div>
   <button class="btn btn-primary" type="submit">Update Trip</button>

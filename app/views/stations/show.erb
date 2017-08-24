@@ -29,7 +29,7 @@
     </div>
   </div>
   <div class="col-md-5">
-    <div id="map"></div>
+    <div id="map">
     <script>
       function initMap() {
         var uluru = {lat: parseFloat("<%= @lat %>"), lng: parseFloat("<%= @long %>")};
@@ -46,7 +46,7 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFr55IGO5Y2eTqm3f9oD-ppghraPJqACc&callback=initMap">
     </script>
-      </div>
+    </div>
   </div>
   <div class="col-md-1"></div>
 </div>

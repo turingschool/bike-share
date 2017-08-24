@@ -14,7 +14,12 @@
     <p>Bike ID: <%= trip.bike_id %></p>
     <p>Subscription Type: <%= trip.subscription_type %></p>
     <p>Zip Code: <%= trip.zip_code %></p>
+    <form action="/trips/<%= trip.id %>" method="POST">
+      <input type="hidden" name="_method" value="delete">
+      <input class="btn btn-danger" type="submit" value="Delete Trip" />
+    </form>
   <% end %>
 </div>
+
 
 <h3 class="text-center"> <%= will_paginate @pages %> </h3>

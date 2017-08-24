@@ -1,6 +1,6 @@
 <div class="row newshoweditrow">
   <div class="col-md-1"></div>
-  <div class="col-md-4">
+  <div class="col-md-7">
     <div class="left-pane">
       <div class="panel panel-default trip-show-panel">
         <div class="panel-heading">
@@ -19,13 +19,13 @@
           <form action="/trips/<%= @trip.id %>" method="POST">
             <input type="hidden" name="_method" value="DELETE">
             <button type="submit" class="btn btn-danger formbtn" role="button" aria-pressed="true" value="delete">Delete</button>
-            <a class="btn btn-success formbtn" href="/trips/new"> Create a New Trip</a>
           </form>
+          <a class="btn btn-success formbtn" href="/trips/new"> Create a New Trip</a>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-3">
     <div class="right-pane-trip">
       THIS IS WHERE THE MAP GOES <br>
       POINT A TO POINT B
@@ -33,4 +33,3 @@
   </div>
   <div class="col-md-1"></div>
 </div>
-<p><a href='/trips'>Back to the trip index</a></p>

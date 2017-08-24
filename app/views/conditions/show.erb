@@ -1,0 +1,32 @@
+<div class="row newshoweditrow">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-5">
+    <div class="left-pane">
+      <div class="panel panel-default show-panel">
+        <div class="panel-heading">
+          <h1 class="panel-title"><%= @condition.date%></h1>
+        </div>
+        <div class="panel-body">
+          <p>Max Temp(F): <%= @condition.max_temperature_f %></p>
+          <p>Mean Temp(F): <%= @condition.mean_temperature_f %></p>
+          <p>Min Temp(F): <%= @condition.min_temperature_f %></p>
+          <p>Max Humidity:<%= @condition.max_humidity %></p>
+          <p>Mean Humidity: <%= @condition.mean_humidity%></p>
+          <p>Mean Visibility(miles): <%= @condition.mean_visibility_miles %></p>
+          <p>Mean Wind Speed(mph): <%=@condition.mean_wind_speed_mph %></p>
+          <p>Precipitation(in): <%= @condition.precipitation_inches %></p>
+          <a class="btn btn-warning formbtn" href="/conditions/<%= @condition.id%>/edit"> Edit this Condition</a>
+          <form  action="/conditions/<%= @condition.id%>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input class="btn btn-danger formbtn" type="submit" value="Delete this Station"><br/>
+            <a class="btn btn-success formbtn" href="/conditions/new"> Enter New Conditions</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-5"></div>
+
+  </div>
+</div>

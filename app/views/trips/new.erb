@@ -24,7 +24,12 @@
     </div>
     <div class="col-md-6 mb-1">
       <label for="validationCustom03">Start Station ID: </label>
-      <input type="text" class="form-control" name="trip[start_station_id]" placeholder="ID of the station trip started at"/>
+      <select type="text" class="form-control" name="trip[start_station_id]" placeholder="ID of the station trip started at">
+        <option value="" disabled selected>ID of the station trip started at</option>
+        <% @stations.each do |station| %>
+        <option value="start_station_id"><%= station.id %></option>
+        <% end %>
+      </select>
     </div>
     <div class="col-md-6 mb-1">
       <label for="validationCustom05">End Station Name: </label>
@@ -32,7 +37,12 @@
     </div>
     <div class="col-md-6 mb-1">
       <label for="validationCustom05">End Station ID: </label>
-      <input type="text" class="form-control" name="trip[end_station_id]" placeholder="ID of the station trip ended at"/>
+      <select type="text" class="form-control" name="trip[end_station_id]" placeholder="ID of the station trip ended at">
+        <option value="" disabled selected>ID of the station trip started at</option>
+        <% @stations.each do |station| %>
+        <option value="end_station_id"><%= station.id %></option>
+        <% end %>
+      </select>
     </div>
     <div class="col-md-6 mb-1">
       <label for="validationCustom06">Bike ID: </label>

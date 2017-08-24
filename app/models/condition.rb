@@ -49,10 +49,12 @@ class Condition < ActiveRecord::Base
       dates_in_temp_range = conditions.select(:date).distinct.where(
                             zip_code: ZIP_CODE)
       total_trips = Trip.where(start_date: dates_in_temp_range)
-
-      avg = total_trips.count / dates_in_temp_range.count
-
-      avg.round(2)
+      if dates_in_temp_range.count
+        "no data"
+      else
+        avg = total_trips.count / dates_in_temp_range.count
+        avg.round(2)
+      end
     end
 
     def self.high_rides_by_precip(start_of_range)
@@ -82,9 +84,12 @@ class Condition < ActiveRecord::Base
                             zip_code: ZIP_CODE)
       total_trips = Trip.where(start_date: dates_in_temp_range)
 
-      avg = total_trips.count / dates_in_temp_range.count
-
-      avg.round(2)
+      if dates_in_temp_range.count
+        "no data"
+      else
+        avg = total_trips.count / dates_in_temp_range.count
+        avg.round(2)
+      end
     end
 
     def self.high_rides_by_windspeed(start_of_range)
@@ -114,10 +119,13 @@ class Condition < ActiveRecord::Base
                             zip_code: ZIP_CODE)
       total_trips = Trip.where(start_date: dates_in_temp_range)
 
-      avg = total_trips.count / dates_in_temp_range.count
-
-      avg.round(2)
-    end
+      if dates_in_temp_range.count
+        "no data"
+      else
+        avg = total_trips.count / dates_in_temp_range.count
+        avg.round(2)
+      end
+   end
 
     def self.high_rides_by_visbility(start_of_range)
       conditions = Condition.where(mean_visibility:

@@ -41,7 +41,38 @@ RSpec.describe "User visits '/trips-dashboard'" do
     expect(page).to have_content("Most ridden bike with total number of rides for that bike: Bike: 318 Rides: 3")
   end
 
-  it "text" do
+  it "least ridden bike and total number of rides for it" do
+    expect(page).to have_content("Least ridden bike with total number of rides for that bike: Bike: 348 Rides: 2")
+  end
 
+  it "user subscription type with count and percentage" do
+    expect(page).to have_content("User subscription type breakout with both count and percentage: Subscribers total: 3 Percentage: 60.0")
+  end
+
+  it "date with highest number of trips and its count" do
+    expect(page).to have_content("Single date with the highest number of trips with a count of those trips: Date: 2001-02-03, Count: 5")
+  end
+
+  it "date with lowest number of trips and its count" do
+    expect(page).to have_content("Single date with the lowest number of trips with a count of those trips: Date: 2001-02-03, Count: 5")
+  end
+
+  it "has a breakdown of rides by month and year" do
+    expect(page).to have_content("January")
+    expect(page).to have_content("February")
+    expect(page).to have_content("March")
+    expect(page).to have_content("April")
+    expect(page).to have_content("May")
+    expect(page).to have_content("June")
+    expect(page).to have_content("July")
+    expect(page).to have_content("August")
+    expect(page).to have_content("September")
+    expect(page).to have_content("October")
+    expect(page).to have_content("November")
+    expect(page).to have_content("December")
+    expect(page).to have_content("2013")
+    expect(page).to have_content("2014")
+    expect(page).to have_content("2015")
+    expect(page).to have_content("2016")
   end
 end

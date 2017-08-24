@@ -49,7 +49,7 @@ class Condition < ActiveRecord::Base
       dates_in_temp_range = conditions.select(:date).distinct.where(
                             zip_code: ZIP_CODE)
       total_trips = Trip.where(start_date: dates_in_temp_range)
-      if dates_in_temp_range.count
+      if dates_in_temp_range.count == 0
         "no data"
       else
         avg = total_trips.count / dates_in_temp_range.count
@@ -84,7 +84,7 @@ class Condition < ActiveRecord::Base
                             zip_code: ZIP_CODE)
       total_trips = Trip.where(start_date: dates_in_temp_range)
 
-      if dates_in_temp_range.count
+      if dates_in_temp_range.count == 0
         "no data"
       else
         avg = total_trips.count / dates_in_temp_range.count
@@ -119,7 +119,7 @@ class Condition < ActiveRecord::Base
                             zip_code: ZIP_CODE)
       total_trips = Trip.where(start_date: dates_in_temp_range)
 
-      if dates_in_temp_range.count
+      if dates_in_temp_range.count == 0
         "no data"
       else
         avg = total_trips.count / dates_in_temp_range.count
@@ -155,6 +155,10 @@ class Condition < ActiveRecord::Base
 
     def self.weather_on_day_with_lowest_rides
       date = Trip.group(:start_date).order('count_id DESC').count(:id).keys.last
-      Condition.find_by(date: date)
+      if Condition.find_by(date: date) == []
+        "no data"
+      else
+        Condition.find_by(date: date)
+      end
     end
 end

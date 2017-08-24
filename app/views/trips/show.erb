@@ -8,3 +8,7 @@
 <p>Subcription Type: <%= @trip.subscription_type %></p>
 <p>Zip Code: <%= @trip.zip_code %></p>
 <p><a class=class="btn btn-link" href="/trips/<%= @trip.id %>/edit">Edit Trip</a></p>
+<form action="/trips/<%= @trip.id %>" method="POST">
+  <input type="hidden" name="_method" value="delete">
+  <input class="btn btn-danger" type="submit" value="Delete Trip" />
+</form>

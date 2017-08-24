@@ -6,7 +6,7 @@
 <div>
   <% @trips[0..30].each do |trip| %>
     <h2><a href="/trips/<%= trip.id %>">Trip <%= trip.id %></a></h2>
-    <p>Duration: <%= trip.duration %></p>
+    <p>Duration: <%= trip.duration %> seconds</p>
     <p>Start Date: <%= trip.start_date %></p>
     <p>Start Station: <%= trip.start_station_name %></p>
     <p>End Date: <%= trip.end_date %></p>
@@ -17,4 +17,4 @@
   <% end %>
 </div>
 
-<h2> <%= will_paginate @pages %> </h2>
+<h3 class="text-center"> <%= will_paginate @pages %> </h3>

@@ -21,19 +21,19 @@
       <tr>
         <td>Average Rides</td>
         <% @by_max_temp.each do |conditions| %>
-        <td><%= Weather.average_trips_in_weather_set(conditions).to_f.round(2) %></td>
+        <td class="average_temperature"><%= Weather.average_trips_in_weather_set(conditions).to_f.round(2) %></td>
         <% end %>
       </tr>
       <tr>
         <td>Greatest Rides</td>
         <% @by_max_temp.each do |conditions| %>
-        <td><%= Weather.max_trips_in_weather_set(conditions) %></td>
+        <td class="max_temperature"><%= Weather.max_trips_in_weather_set(conditions) %></td>
         <% end %>
       </tr>
       <tr>
         <td>Fewest Rides</td>
         <% @by_max_temp.each do |conditions| %>
-        <td><%= Weather.min_trips_in_weather_set(conditions) %></td>
+        <td class="fewest_temperature"><%= Weather.min_trips_in_weather_set(conditions) %></td>
         <% end %>
       </tr>
     </table>
@@ -52,19 +52,19 @@
       <tr>
         <td>Average Rides</td>
         <% @by_precipitation.each do |conditions| %>
-        <td><%= Weather.average_trips_in_weather_set(conditions).to_f.round(2) %></td>
+        <td class="average_precipitation"><%= Weather.average_trips_in_weather_set(conditions).to_f.round(2) %></td>
         <% end %>
       </tr>
       <tr>
         <td>Greatest Rides</td>
         <% @by_precipitation.each do |conditions| %>
-        <td><%= Weather.max_trips_in_weather_set(conditions) %></td>
+        <td class="max_precipitation"><%= Weather.max_trips_in_weather_set(conditions) %></td>
         <% end %>
       </tr>
       <tr>
         <td>Fewest Rides</td>
         <% @by_precipitation.each do |conditions| %>
-        <td><%= Weather.min_trips_in_weather_set(conditions) %></td>
+        <td class="fewest_precipitation"><%= Weather.min_trips_in_weather_set(conditions) %></td>
         <% end %>
       </tr>
     </table>
@@ -81,19 +81,19 @@
       <tr>
         <td>Average Rides</td>
         <% @by_wind_speed.each do |conditions| %>
-        <td><%= Weather.average_trips_in_weather_set(conditions).to_f.round(2) %></td>
+        <td class="average_wind_speed"><%= Weather.average_trips_in_weather_set(conditions).to_f.round(2) %></td>
         <% end %>
       </tr>
       <tr>
         <td>Greatest Rides</td>
         <% @by_wind_speed.each do |conditions| %>
-        <td><%= Weather.max_trips_in_weather_set(conditions) %></td>
+        <td class="max_wind_speed"><%= Weather.max_trips_in_weather_set(conditions) %></td>
         <% end %>
       </tr>
       <tr>
         <td>Fewest Rides</td>
         <% @by_wind_speed.each do |conditions| %>
-        <td><%= Weather.min_trips_in_weather_set(conditions) %></td>
+        <td class="fewest_wind_speed"><%= Weather.min_trips_in_weather_set(conditions) %></td>
         <% end %>
       </tr>
     </table>
@@ -107,19 +107,19 @@
       <tr>
         <td>Average Rides</td>
         <% @by_visibility.each do |conditions| %>
-        <td><%= Weather.average_trips_in_weather_set(conditions).to_f.round(2) %></td>
+        <td class="average_visibility"><%= Weather.average_trips_in_weather_set(conditions).to_f.round(2) %></td>
         <% end %>
       </tr>
       <tr>
         <td>Greatest Rides</td>
         <% @by_visibility.each do |conditions| %>
-        <td><%= Weather.max_trips_in_weather_set(conditions) %></td>
+        <td class="max_visibility"><%= Weather.max_trips_in_weather_set(conditions) %></td>
         <% end %>
       </tr>
       <tr>
         <td>Fewest Rides</td>
         <% @by_visibility.each do |conditions| %>
-        <td><%= Weather.min_trips_in_weather_set(conditions) %></td>
+        <td class="fewest_visibility"><%= Weather.min_trips_in_weather_set(conditions) %></td>
         <% end %>
       </tr>
     </table>

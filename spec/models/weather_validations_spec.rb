@@ -10,10 +10,4 @@ describe Weather do
     it { should validate_presence_of(:mean_wind_speed) }
     it { should validate_presence_of(:precipitation) }
   end
-  describe "Class Methods" do
-    before(:each) do
-      
-
-    it "can find"
-
 end

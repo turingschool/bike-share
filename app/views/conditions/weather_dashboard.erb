@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1>Weather Dashboard</h1>
+    <a>Day with highest number of rides:<p href="/conditions/<%= @highest.id %>"><%= @highest.date %></p></a>
+    <a>Day with lowest number of rides:<p href="/conditions/<%= @fewest.id %>"><%= @fewest.date %></p></a>
+    <h2>Rides By Max Temperature</h2>
+    <table>
+      <tr>
+        <th></th>
+        <th>40-50&#176;</th>
+        <th>50-60&#176;</th>
+        <th>60-70&#176;</th>
+        <th>70-80&#176;</th>
+        <th>80-90&#176;</th>
+        <th>90-100&#176;</th>
+      </tr>
+      <tr>
+        <td>Average Rides</td>
+        <% @by_max_temp.each do |conditions| %>
+        <td class="average_temperature"><%= Weather.average_trips_in_weather_set(conditions).to_f.round(2) %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>Greatest Rides</td>
+        <% @by_max_temp.each do |conditions| %>
+        <td class="max_temperature"><%= Weather.max_trips_in_weather_set(conditions) %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>Fewest Rides</td>
+        <% @by_max_temp.each do |conditions| %>
+        <td class="fewest_temperature"><%= Weather.min_trips_in_weather_set(conditions) %></td>
+        <% end %>
+      </tr>
+    </table>
+    <h2>Rides By Precipitation</h2>
+    <table>
+      <tr>
+        <th></th>
+        <th>0-0.5in</th>
+        <th>0.5-1.0in</th>
+        <th>1.0-1.5in</th>
+        <th>1.5-2.0in</th>
+        <th>2.0-2.5in</th>
+        <th>2.5-3.0in</th>
+        <th>3.0-3.5in</th>
+      </tr>
+      <tr>
+        <td>Average Rides</td>
+        <% @by_precipitation.each do |conditions| %>
+        <td class="average_precipitation"><%= Weather.average_trips_in_weather_set(conditions).to_f.round(2) %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>Greatest Rides</td>
+        <% @by_precipitation.each do |conditions| %>
+        <td class="max_precipitation"><%= Weather.max_trips_in_weather_set(conditions) %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>Fewest Rides</td>
+        <% @by_precipitation.each do |conditions| %>
+        <td class="fewest_precipitation"><%= Weather.min_trips_in_weather_set(conditions) %></td>
+        <% end %>
+      </tr>
+    </table>
+    <h2>Rides By Wind Speed</h2>
+    <table>
+      <tr>
+        <th></th>
+        <th>0-4mph</th>
+        <th>5-9mph</th>
+        <th>10-14mph</th>
+        <th>15-19mph</th>
+        <th>20-24mph</th>
+      </tr>
+      <tr>
+        <td>Average Rides</td>
+        <% @by_wind_speed.each do |conditions| %>
+        <td class="average_wind_speed"><%= Weather.average_trips_in_weather_set(conditions).to_f.round(2) %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>Greatest Rides</td>
+        <% @by_wind_speed.each do |conditions| %>
+        <td class="max_wind_speed"><%= Weather.max_trips_in_weather_set(conditions) %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>Fewest Rides</td>
+        <% @by_wind_speed.each do |conditions| %>
+        <td class="fewest_wind_speed"><%= Weather.min_trips_in_weather_set(conditions) %></td>
+        <% end %>
+      </tr>
+    </table>
+    <h2>Rides By Visibility</h2>
+    <table>
+      <tr>
+        <th></th>
+        <th>5-9miles</th>
+        <th>10-14miles</th>
+      </tr>
+      <tr>
+        <td>Average Rides</td>
+        <% @by_visibility.each do |conditions| %>
+        <td class="average_visibility"><%= Weather.average_trips_in_weather_set(conditions).to_f.round(2) %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>Greatest Rides</td>
+        <% @by_visibility.each do |conditions| %>
+        <td class="max_visibility"><%= Weather.max_trips_in_weather_set(conditions) %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>Fewest Rides</td>
+        <% @by_visibility.each do |conditions| %>
+        <td class="fewest_visibility"><%= Weather.min_trips_in_weather_set(conditions) %></td>
+        <% end %>
+      </tr>
+    </table>
+
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <header><h1>Edit Weather</h1></header>
+    <button href='/conditions'>back to main page</button>
+    <section>
+      <form  action="/conditions/<%= @condition.id %>" method="post">
+        <input type="hidden" name="_method" value="PUT"/>
+        <a>Date:</a>
+        <input type="text" name="condition[date]" value="<%= @condition.date %>"/></br>
+        <a>Max Temperature(&#176;F)</a>
+        <input type="text" name="condition[max_temperature]" value="<%= @condition.max_temperature %>"/></br>
+        <a>Average Temperature(&#176;F)</a>
+        <input type="text" name="condition[mean_temperature]" value="<%= @condition.mean_temperature %>"/></br>
+        <a>Min Temperature(&#176;F)</a>
+        <input type="text" name="condition[min_temperature]" value="<%= @condition.min_temperature %>"/></br>
+        <a>Humidity</a>
+        <input type="text" name="condition[mean_humidity]" value="<%= @condition.mean_humidity %>"/></br>
+        <a>Visibility(miles)</a>
+        <input type="text" name="condition[mean_visibility]" value="<%= @condition.mean_visibility %>"/></br>
+        <a>Wind Speed(mph)</a>
+        <input type="text" name="condition[mean_wind_speed]" value="<%= @condition.mean_wind_speed %>"/></br>
+        <a>Precipitation(inches)</a>
+        <input type="text" name="condition[precipitation]" value="<%= @condition.precipitation %>"/></br>
+        <input type="submit" value="UPDATE"/>
+      </form>
+  </body>
+</html>

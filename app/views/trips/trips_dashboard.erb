@@ -1,0 +1,77 @@
+<head>
+  <link rel = "stylesheet" type = "text/css" href = <%= url("/main.css")%> />
+  <link href=<%= url("/css/bootstrap.min.css") %> rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Bike Share</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/stations">Stations</a></li>
+          <li class="active"><a href="/trips">Trips<span class="sr-only">(current)</span></a></li>
+          <li><a href="/weather">Weather</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Analytics<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/stations/dashboard">Stations</a></li>
+              <li><a href="/trips/dashboard">Trips</a></li>
+              <li><a href="/weather/dashboard">Weather</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+<header>
+  <h1>Trip Analysis<h1>
+</header>
+<div class="container">
+  <div class="row">
+    <h5>Average duration of a ride: <%= Trip.average_duration %> minutes. </h5>
+  </div>
+  <div class="row">
+    <h5>Longest ride: <%= Trip.longest %> minutes. </h5>
+  <div>
+    <div class="row">
+    <h5>Shortest ride: <%= Trip.shortest %> minutes. </h5>
+  </div>
+  <div class="row">
+    <h5>Station with the most rides as a starting place: <%= Trip.station_with_most_starts %> </h5>
+  </div>
+  <div class="row">
+    <h5>Station with the most rides as an ending place: <%= Trip.station_with_most_ends %> </h5>
+  </div>
+  <div class="row">
+    <h5>Most ridden bike with total number of rides for that bike: Bike <%= Trip.bike_with_most_rides.first %> had the most rides at <%= Trip.bike_with_most_rides.second %>  </h5>
+  </div>
+  <div class="row">
+    <h5>Least ridden bike with total number of rides for that bike: Bike <%= Trip.bike_with_least_rides.first %> had the least rides at <%= Trip.bike_with_least_rides.second %>  </h5>
+    <div class="row">
+    <h5>User subscription type breakout with both count and percentage: Subscribers: <%= Trip.subscriber_percentage.first %> and Non-subscribers: <%= Trip.subscriber_percentage.second %>   </h5>
+  </div>
+  <div class="row">
+    <h5>Single date with the highest number of trips with a count of those trips: <%= Trip.most_trips_by_date.first %> had the most trips with <%= Trip.most_trips_by_date.second %> trips. </h5>
+  </div>
+  <div class="row">
+    <h5>Single date with the lowest number of trips with a count of those trips: <%= Trip.fewest_trips_by_date.first %> had the most trips with <%= Trip.fewest_trips_by_date.second %> trips.</h5>
+  </div>
+  <div class="row">
+    <h5>Month by Month breakdown of number of rides with subtotals for each year: <%= Trip.parse_yearly_trips_as_html %> </h5>
+  </div>
+<a href='/trips'><button class="btn btn-primary">All Trips</button></a>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>

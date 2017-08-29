@@ -1,0 +1,92 @@
+<head>
+  <link rel = "stylesheet" type = "text/css" href = <%= url("/main.css")%> />
+  <link href=<%= url("/css/bootstrap.min.css") %> rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Bike Share</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/stations">Stations<span class="sr-only">(current)</span></a></li>
+          <li><a href="/trips">Trips</a></li>
+          <li><a href="/weather">Weather</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Analytics<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/stations/dashboard">Stations</a></li>
+              <li><a href="/trips/dashboard">Trips</a></li>
+              <li><a href="/weather/dashboard">Weather</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <header>
+    <h1><%= @station.name %></h1>
+  </header>
+
+  <div class="spacer station-info">
+    <div class="row">
+      <h4>City: <%= @station.city.city %></h4>
+    </div>
+    <div class="row">
+      <h4>Dock Count: <%= @station.dock_count %></h4>
+    </div>
+    <div class="row">
+      <h4>Installation Date: <%= @station.installation_date.inspect %></h4>
+    </div>
+  </div>
+
+  <div id="map"></div>
+
+  <a class="btn btn-warning" href="/stations/<%= @station.id %>/edit">Edit</a><br></br>
+
+  <form action="/stations/<%= @station.id %>" class="delete-form" method="POST">
+    <input name="_method" type="hidden" value="DELETE"/>
+    <input class="btn btn-danger" type="submit" value="Delete"/>
+  </form>
+
+  <a href='/stations'><button class="btn btn-primary">All Stations</button></a>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script>
+      function initMap() {
+        var uluru = {lat: <%= @station.lat %>, lng: <%= @station.long %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywRPlJLZnaCAn1mDM5LevTGBZeYdEl24&callback=initMap">
+    </script>
+
+</body>
+
+
+

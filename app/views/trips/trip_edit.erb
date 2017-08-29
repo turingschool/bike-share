@@ -1,0 +1,107 @@
+<head>
+  <link rel = "stylesheet" type = "text/css" href = <%= url("/main.css")%> />
+  <link href=<%= url("/css/bootstrap.min.css") %> rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Bike Share</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/stations">Stations</a></li>
+          <li class="active"><a href="/trips">Trips<span class="sr-only">(current)</span></a></li>
+          <li><a href="/weather">Weather</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Analytics<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/stations/dashboard">Stations</a></li>
+              <li><a href="/trips/dashboard">Trips</a></li>
+              <li><a href="/weathers/dashboard">Weather</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <div>
+    <h1>Update a trip</h1>
+  </div>
+
+  <div>
+    <form id="edit" action="/trips/<%= @trip.id %>/edit" method="post">
+
+      <div>
+        <input type="hidden" name="_method" value="PUT" />
+      </div>
+      <div class=row>
+        <h4>duration:</h4>
+        <input type='text' name='duration' value="<%= @trip.duration %>"/><br>
+      </div>
+
+      <div class="row">
+        <h4>trip date:</h4>
+        <input type='text' name='trip_date' value="<%= @trip.trip_date %>"/><br>
+      </div>
+
+      <div class="row">
+        <h4>start station:</h4>
+        <input type='text' name='start_station' value="<%=@trip.start_station%>"/><br>
+      </div>
+
+      <div class="row">
+        <h4>end station:</h4>
+        <input type='text' name='end_station' value="<%=@trip.end_station%>"/><br>
+      </div>
+
+      <div class="row">
+        <h4>bike id:</h4>
+        <input type='text' name='bike_id' value="<%=@trip.bike_id%>"/><br>
+      </div>
+
+      <div class="row">
+        <h4>subscription type:</h4><input type='text' name='subscription_type' value="<%=@trip.subscription_type.subscription_type%>"/><br>
+      </div>
+
+      <div class="row">
+        <h4>zip code:</h4>
+        <input type='text' name='zip_code' value="<%= @trip.zip_code.zip_code %>"/>
+      </div>
+
+      <div class="spacer">
+        <button type="submit" class="btn btn-success">Submit</button>
+        <a href="/trips/"><button class="btn btn-danger">Cancel</button></a>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+
+  <!-- <input id='thing' type='submit'/>
+</form> -->
+</body>
+
+
+
+
+
+<!-- <button type="button">
+
+</button> -->

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <header><h1>Conditions By Day</h1></header>
+    <a>
+      <button href="/conditions/new">NEW</button>
+    </a>
+
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Average Temperature</th>
+        <th>Precipitation</th>
+        <th>More Info</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      <% @conditions.each do |weather| %>
+      <tr>
+        <td><%= weather.date %></td>
+        <td><%= weather.mean_temperature %>&#176;F</td>
+        <td><%= weather.mean_humidity %>&#37;</td>
+        <td><%= weather.precipitation %>in</td>
+        <td href="/conditions/<% weather.id %>">More Info</td>
+        <td><button href="/conditions/<%= weather.id %>/edit" value="EDIT"/></td>
+        <td>
+          <form href="/conditions/<%= weather.id %>" method="post">
+            <input type="hidden" name="_method" value="DELETE"/>
+            <input type="submit" value="DELETE"/>
+          </form>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </body>
+</html>

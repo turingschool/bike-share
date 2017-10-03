@@ -26,10 +26,17 @@ class BikeShareApp < Sinatra::Base
     erb :show
   end
 
-  #   require 'pry'; binding.pry
+  get '/stations/:id/edit' do
+    @station = Station.find(params[:id])
+    erb :edit
+  end
 
-#TODO route to see form to update station
-#TODO route to actually update station
+  put '/stations/:id' do
+    station = Station.find(params[:id])
+    station.update(params[:station])
+    redirect "/stations/#{params[:id]}"
+  end
+
 #TODO route to delete station
 
 

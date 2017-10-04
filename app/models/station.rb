@@ -1,7 +1,7 @@
 class Station < ActiveRecord::Base
-  # validate stuff
-  # name
-  # dock count
-  # city
-  # installation date
+  validates :name,
+            :dock_count,
+            :city,
+            :installation_date,
+             presence: true
 end

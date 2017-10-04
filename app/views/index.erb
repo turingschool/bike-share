@@ -1,14 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../index.css">
+  </head>
+  <body>
+    <header>
+      <h1>BikeShare Stations</h1>
+    </header>
 
-<a href='/stations/new'>New Station</a>
-<% @stations.each do |station| %>
-  <h1><%= station.name %> </h1>
-  <h1><%= station.dock_count %> </h1>
-  <h1><%= station.city %> </h1>
-  <h1><%= station.installation_date %> </h1>
-  <a href="/stations/<%= station.id %>/edit">Edit</a>
-  <form action="/stations/<%= station.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="delete"/>
-  </form>
-  <a href="/stations/<%= station.id %>">Show</a>
-<% end %>
+    <h2><a href='/stations/new'>New Station</a></h2>
+
+      <% @stations.each do |station| %>
+    <div class="station">
+      <h1><%= station.name %> </h1>
+      <h1><%= station.dock_count %> </h1>
+      <h1><%= station.city.name %> </h1>
+      <h1><%= station.installation_date %> </h1>
+    </div>
+
+    <div class="routes">
+      <form action="/stations/<%= station.id %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="delete"/>
+      </form>
+      <a href="/stations/<%= station.id %>/edit">Edit</a>
+      <a href="/stations/<%= station.id %>">Show</a>
+    </div>
+    <% end %>
+
+  </body>
+</html>

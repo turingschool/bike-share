@@ -6,6 +6,19 @@ class BikeShareApp < Sinatra::Base
     erb :index
   end
 
+  get '/station-dashboard' do
+    @station_count = Station.count
+    @bike_average = Station.average(:dock_count)
+    @bike_maximum = Station.maximum(:dock_count)
+    @big_stations = Station.where(:dock_count => @bike_maximum)
+    @bike_minimum = Station.minimum(:dock_count)
+    @small_stations = Station.where(:dock_count => @bike_minimum)
+    @new_station = Station.find_by(:installation_date => Station.maximum(:installation_date))
+    @old_station = Station.find_by(:installation_date => Station.minimum(:installation_date))
+
+    erb :station_index
+  end
+
   get '/stations/new' do
     erb :new
   end

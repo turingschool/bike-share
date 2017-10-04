@@ -4,5 +4,9 @@
   <h1><%= station.dock_count %> </h1>
   <h1><%= station.city %> </h1>
   <h1><%= station.installation_date %> </h1>
-  <a href="/stations/<%= station.id %>/edit">edit</a>
+  <a href="/stations/<%= station.id %>/edit">Edit</a>
+  <form action="/stations/<%= station.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="delete"/>
+  </form>
 <% end %>

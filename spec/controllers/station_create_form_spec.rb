@@ -1,6 +1,6 @@
 require './spec/spec_helper'
 
-feature 'Single station page' do
+feature 'Create station page' do
   background { visit '/stations/new' }
 
   it 'has status code 200' do

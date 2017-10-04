@@ -1,7 +1,7 @@
 # rake db:test:prepare
 
 RSpec.describe Station do
-  context 'Station Methods' do
+  context 'Class Methods' do
 
     before do 
       City.create(name: 'San Francisco') 

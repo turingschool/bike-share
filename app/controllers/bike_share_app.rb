@@ -16,10 +16,13 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations' do
-    Station.create(name: params[:station][:name],
-                   dock_count: params[:station][:dock_count],
-                   city: params[:station][:city],
-                   installation_date: DateTime.strptime((params[:station][:installation_date]), "%Y-%m-%d"))
+    new_city = City.create(name: params[:station][:city])
+    new_station = Station.new(name: params[:station][:name],
+                              dock_count: params[:station][:dock_count],
+                              installation_date: DateTime.strptime((params[:station][:installation_date]), "%Y-%m-%d"))
+    new_station.city = City.duplicate(new_city)
+    new_station.save
+
     redirect '/stations'
   end
 
@@ -29,7 +32,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/stations/:id' do |id|
-    Station.update(id.to_i, params[:station])
+    station_update = Station.update(id.to_i, params[:station])
+    City.update(station_update.city_id, params[:city])
     redirect "/stations/#{id}"
   end
 

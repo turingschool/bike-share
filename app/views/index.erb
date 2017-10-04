@@ -1,8 +1,10 @@
 
+<a href='/stations/new'>New Station</a>
 <% @stations.each do |station| %>
   <h1><%= station.name %> </h1>
   <h1><%= station.dock_count %> </h1>
   <h1><%= station.city %> </h1>
   <h1><%= station.installation_date %> </h1>
+  <a href="/stations/<%= station.id %>">Show</a>
   <a href="/stations/<%= station.id %>/edit">edit</a>
 <% end %>

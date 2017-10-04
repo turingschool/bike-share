@@ -4,7 +4,7 @@ class CreateStations < ActiveRecord::Migration[5.1]
       t.text        :name
       t.integer     :dock_count
       t.text        :city
-      t.datetime    :installation_date
+      t.date        :installation_date
 
       t.timestamps null: false
     end

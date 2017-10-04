@@ -6,20 +6,20 @@ class BikeShareApp < Sinatra::Base
     erb :index
   end
 
+  get '/stations/new' do
+    erb :new
+  end
+
   get '/stations/:id' do
     @station = Station.find(params[:id])
     erb :show
-  end
-
-  get '/stations/new' do
-    erb :new
   end
 
   post '/stations' do
     Station.create(name: params[:station][:name],
                    dock_count: params[:station][:dock_count],
                    city: params[:station][:city],
-                   installation_date: params[:station][:installation_date])
+                   installation_date: DateTime.strptime((params[:station][:installation_date]), "%Y-%m-%d"))
     redirect '/stations'
   end
 

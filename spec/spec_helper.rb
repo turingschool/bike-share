@@ -3,6 +3,9 @@ ENV["RACK_ENV"] ||= "test"
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec'
 require 'capybara/dsl'
+require 'bundler'
+bundler.require(:default, :test)
+require 'database_cleaner'
 
 Capybara.app = BikeShareApp
 

@@ -38,8 +38,9 @@ RSpec.describe Station do
     it "is valid with all data" do
       station = Station.new(name: "Station 42", dock_count: 5, city: "San Francisco", installation_date: Date.strptime("8/15/2017", '%m/%d/%Y'), lat: 37.332808, long: -121.88389099999999)
       # require "pry"; binding.pry
-      expect(station).to exist
+      expect(station).to respond_to(:class)
     end
+
 
   end
 

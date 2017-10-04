@@ -19,6 +19,7 @@ class BikeShareApp < Sinatra::Base
     erb :show
   end
 
+
   # get 'station-dashboard' do
   #
   # end
@@ -41,6 +42,10 @@ class BikeShareApp < Sinatra::Base
   delete '/stations/:id' do |id|
     Station.destroy(id.to_i)
     redirect '/stations'
+  end
+
+  not_found do
+    erb :not_found
   end
 
 end

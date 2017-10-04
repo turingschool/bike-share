@@ -1,4 +1,4 @@
-require "ActiveRecord"
+require "sinatra/activerecord"
 
 class Station < ActiveRecord::Base
 

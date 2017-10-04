@@ -1,5 +1,3 @@
-require "sinatra/activerecord"
-
 class Station < ActiveRecord::Base
 
   validates_presence_of :name,

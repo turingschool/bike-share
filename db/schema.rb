@@ -16,19 +16,20 @@ ActiveRecord::Schema.define(version: 20171005211223) do
   enable_extension "plpgsql"
 
   create_table "cities", force: :cascade do |t|
-    t.string   "name"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "stations", force: :cascade do |t|
-    t.text     "name"
-    t.integer  "dock_count"
-    t.integer  "city_id"
-    t.date     "installation_date"
+    t.text "name"
+    t.integer "dock_count"
+    t.integer "city_id"
+    t.date "installation_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "lat"
-    t.integer  "lng"
+    t.float "lat"
+    t.float "lng"
   end
+
 end

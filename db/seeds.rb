@@ -13,6 +13,10 @@ class Seed
     end
   end
 
+  def self.trip
+    #we need to process the date column here. 
+  end 
+
 end
 
 Seed.station

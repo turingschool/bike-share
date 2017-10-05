@@ -1,6 +1,6 @@
 class CreateTrips < ActiveRecord::Migration[5.1]
   def change
-    create_table :trips do |t|
+    create_table    :trips do |t|
       t.integer     :duration
       t.date        :start_date
       t.text        :start_station

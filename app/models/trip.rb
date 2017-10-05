@@ -7,6 +7,5 @@ class Trip < ActiveRecord::Base
                         :bike_id
                         :subscription_type
                         :zip_code
-  belongs_to 
-  belongs_to :end_station
+                        presence: true
 end

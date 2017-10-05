@@ -44,7 +44,7 @@ class BikeShareApp < Sinatra::Base
     redirect '/stations'
   end
 
-  get '/trips/new'
+  get '/trips/new' do
     erb :new_trips
   end
 
@@ -58,12 +58,12 @@ class BikeShareApp < Sinatra::Base
   erb :trips_index
   end
 
-  get '/trips/:id'
+  get '/trips/:id' do
     @trips = Trip.find(params[:trip])
   redirect "/trips/#{trips_id}"
   end
 
-  post '/trips/:id'
+  post '/trips/:id' do
     Trip.update(params[:trip_id])
   redirect "/trips/edit"
   end
@@ -72,8 +72,4 @@ class BikeShareApp < Sinatra::Base
     Trip.destroy(id.to_i)
   redirect "/trips"
   end
-
-
-
-
 end

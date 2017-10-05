@@ -15,6 +15,7 @@ class Seed
 
   def self.trip
     #we need to process the date column here. 
+    
   end 
 
 end

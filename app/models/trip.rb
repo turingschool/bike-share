@@ -11,24 +11,8 @@ class Trip < ActiveRecord::Base
                           :subscription_type,
                           :zip_code
 
-  def self.
-  end
+
 
 
 
 end
-
-=begin
-
-Create full CRUD functionality for a trip with the following characteristics:
-
-* Duration - 
-* Start Date
-* Start Station
-* End Date
-* End Station
-* Bike ID
-* Subscription Type
-* Zip Code
-
-=end

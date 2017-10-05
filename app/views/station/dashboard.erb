@@ -6,13 +6,13 @@
     <link rel="stylesheet" href="/stylesheets/custom.css">
   </head>
   <body>
-    <p>Total count of stations: <%= Station.count %></p><br>
-    <p>Average bikes available per station: <%= Station.average(:dock_count) %></p><br>
-    <p>Most bikes available at a station: <%= Station.maximum(:dock_count) %></p><br>
-    <p>Station(s) with most bikes: <%= Station.with_most_bikes.map{&:name}.join(', ')%></p><br>
-    <p>Fewest bikes available at a station: <%=Station.mininum(:dock_count) %></p><br>
-    <p>Station(s) where the fewest bikes are available: <%= Station.with_least_bikes.map{&:name}.join(', ')%></p><br>
-    <p>Most recently installed station(s): <%= Station.newest.map{&:name}.join(', ')%></p><br>
-    <p>Oldest Station(s): <%= Station.oldest.map{&:name}.join(', ')%></p>
+    <p>Total count of stations: <%= @stations.count %></p><br>
+    <p>Average bikes available per station: <%= @stations.average(:dock_count) %></p><br>
+    <p>Most bikes available at a station: <%= @stations.maximum(:dock_count) %></p><br>
+    <p>Station(s) with most bikes: <%= @stations.with_most_bikes.map{&:name}.join(', ')%></p><br>
+    <p>Fewest bikes available at a station: <%=@stations.mininum(:dock_count) %></p><br>
+    <p>Station(s) where the fewest bikes are available: <%= @stations.with_least_bikes.map{&:name}.join(', ')%></p><br>
+    <p>Most recently installed station(s): <%= @stations.newest.map{&:name}.join(', ')%></p><br>
+    <p>Oldest Station(s): <%= @stations.oldest.map{&:name}.join(', ')%></p>
   </body>
 </html>

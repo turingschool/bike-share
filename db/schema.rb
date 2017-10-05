@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20171004224851) do
     t.date "installation_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "lat"
+    t.float "lng"
   end
 
   create_table "trips", force: :cascade do |t|

@@ -1,6 +1,10 @@
 <form action="/stations" method="post">
   <input type="text" name="station[name]" placeholder="name"/>
   <br>
+  <input type="number" name="station[lat]" placeholder="latitude" step="0.0001"/>
+  <br>
+  <input type="number" name="station[lng]" placeholder="longitude" step="0.0001"/>
+  <br>
   <input type="integer" name="station[dock_count]" placeholder="dock count"/>
   <br>
   <select name="station[city_id]">

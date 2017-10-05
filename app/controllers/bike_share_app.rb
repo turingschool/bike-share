@@ -22,7 +22,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations' do
-    params[:station][:installation_date] = DateTime.strptime((params[:station][:installation_date]), "%Y-%m-%d")
+    params[:station][:installation_date] = Date.strptime((params[:station][:installation_date]), "%Y-%m-%d")
 
     Station.create(params[:station])
     redirect '/stations'

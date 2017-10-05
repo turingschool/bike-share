@@ -19,11 +19,11 @@ class Station < ActiveRecord::Base
   end
 
   def self.newest
-    where installation_date: minimum(:installation_date)
+    where installation_date: maximum(:installation_date)
   end
 
   def self.oldest
-    where installation_date: maximum(:installation_date)
+    where installation_date: minimum(:installation_date)
   end
 
 end

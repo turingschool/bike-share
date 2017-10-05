@@ -11,20 +11,19 @@ class Station < ActiveRecord::Base
 
 
   def self.with_most_bikes
-    where dock_count: maximum( :dock_count)
+    where dock_count: maximum(:dock_count)
   end
 
   def self.with_least_bikes
-    where dock_count: minimum( :dock_count)
+    where dock_count: minimum(:dock_count)
   end
 
   def self.newest
-    where installation_date: minimum( :installation_date)
+    where installation_date: minimum(:installation_date)
   end
 
   def self.oldest
-    where installation_date: maximum( :installation_date)
+    where installation_date: maximum(:installation_date)
   end
-
 
 end

@@ -26,7 +26,8 @@ class BikeShareApp < Sinatra::Base
     erb :'station/details'
   end
 
-  get 'station-dashboard' do
+
+  get '/station-dashboard' do
     erb :'station/dashboard'
   end
 
@@ -36,13 +37,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations' do
-<<<<<<< HEAD
-    stations = Station.create(params[:station])
-    redirect '/stations'
-=======
     id = Station.create(params[:station]).id
     redirect "stations/#{id}"
->>>>>>> master
   end
 
   put '/stations/:id' do |id|
@@ -55,7 +51,6 @@ class BikeShareApp < Sinatra::Base
     redirect '/stations'
   end
 
-###############
   # get 'trip-dashboard' do
   #
   # end
@@ -94,7 +89,6 @@ class BikeShareApp < Sinatra::Base
     redirect '/trips'
   end
 
-###################
 
   not_found do
     erb :not_found

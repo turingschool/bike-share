@@ -22,7 +22,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/station-dashboard' do
     @stations = Station.all
-    erb :dashboard
+    erb :"station/dashboard"
   end
 
   get '/stations/:id/edit' do

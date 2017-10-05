@@ -1,5 +1,4 @@
 require_relative '../models/station.rb'
-
 class BikeShareApp < Sinatra::Base
 
   set :root, File.expand_path("..", __dir__)
@@ -7,26 +6,26 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations' do
     @stations = Station.all
-    erb :index
+    erb :'station/station_index'
   end
 
   get '/stations/new' do
-    erb :new
+    erb :'station/station_new'
   end
 
   get '/stations/:id' do
     @station = Station.find(params[:id])
-    erb :show
+    erb :'station/station'
   end
 
 
   # get 'station-dashboard' do
-  #
+    # @station = Station.all
   # end
 
   get '/stations/:id/edit' do
     @station = Station.find(params[:id])
-    erb :edit
+    erb :'station/station_edit'
   end
 
   post '/stations' do

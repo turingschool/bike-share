@@ -1,5 +1,7 @@
+
 body {
-  background-color: #D3D4D9;
+  font-family: arial, sans-serif;
+  background-color: #d3d4d9;
 }
 
 header {
@@ -7,32 +9,32 @@ header {
 }
 
 h1 {
-  color: #2E4057;
+  color: #2e4057;
 }
 
 h2 a {
-  color: #2E4057;
+  color: #2e4057;
 }
 
 h3 {
-  color: #48628C;
+  color: #48628c;
 }
 
 h4 {
   margin-top: 1px;
   margin-bottom: 1px;
-}
+  }
 
 table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
+  width: 100%;
+  border-collapse: collapse;
+  }
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+td,
+th {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
 }
 
 tr:nth-child(even) {
@@ -40,9 +42,7 @@ tr:nth-child(even) {
 }
 
 .new_form {
- align-self: center;
- text-align: -webkit-center;
- margin-top: 212px;
+  text-align: -webkit-center;
 }
 
 .new_form input {
@@ -51,6 +51,10 @@ tr:nth-child(even) {
 }
 
 .new_view {
+  display: flex;
+  height: 100vh;
   background-image: url('https://c1.staticflickr.com/6/5089/5233128586_16def34bac_b.jpg');
   background-size: 100% 100%;
+  justify-content: center;
+  align-items: center;
 }

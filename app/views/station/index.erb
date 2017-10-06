@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel=”stylesheet” type=”text/css” href=”/stylesheets/custom.css” />
-</head>
-  <body>
-  <h1>All Stations</h1>
-  
-  <% @Stations[0..29].each do |station| %>
-      <h3><a href="/station/<%=station.id%>"><%= station.name%></a></h3>
-      <p><%= station.dock_count %></p>
-      <p><%= station.city %></p>
-      <p><%= station.installation_date %></p>
-      <form action="/stations/<%=@station.id%>/delete" method="post">
-        <p>Delete</p>
-        <input type="hidden" name="_method" value="DELETE">
-        <input type='Delete'>
-      </form>
-  <% end %>
 
-</body>
+<h2>All Stations</h2>
+  
+<% @Stations[0..29].each do |station| %>
+    <h3><a href="/station/<%=station.id%>"><%= station.name%></a></h3>
+    <p><%= station.dock_count %></p>
+    <p><%= station.city %></p>
+    <p><%= station.installation_date %></p>
+    <form action="/stations/<%=@station.id%>/delete" method="post">
+      <p>Delete</p>
+      <input type="hidden" name="_method" value="DELETE">
+      <input type='Delete'>
+    </form>
+<% end %>

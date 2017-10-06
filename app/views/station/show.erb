@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel=”stylesheet” type=”text/css” href=”/stylesheets/custom.css” />
-</head>
-  <body>
-    <h1>"Station Details"</h1>
-    
-        <p><%= @station.name %></p>
-        <p><%= @station.dock_count %></p>
-        <p><%= @station.city %></p>
-        <p><%= @station.installation_date %></p>
-    
-    <form action="/stations/<%=@station.id%>/delete" method="post">
-      <p>Delete</p>
-      <input type="hidden" name="_method" value="DELETE">
-      <input type='Delete'>
-    </form>
 
-    <a href="/stations">Back to Index</a>
-  </body>
+<h2>"Station Details"</h2>
+<a href="/stations">Back to Index</a>
+
+<p><%= @station.name %></p>
+<p><%= @station.dock_count %></p>
+<p><%= @station.city %></p>
+<p><%= @station.installation_date %></p>
+
+<form action="/stations/<%=@station.id%>/delete" method="post">
+  <p>Delete</p>
+  <input type="hidden" name="_method" value="DELETE">
+  <input type='Delete'>
+</form>

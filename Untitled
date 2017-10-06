@@ -1,0 +1,35 @@
+As a returning user
+In order to know at a glance how many things I have to do
+When I visit the todo list
+Then I see the amount of number of todos at the top
+
+
+As a returning user
+In order to see something a glance that I've saved a todo
+When I visit the todo list
+  and I make another todo
+Then I see the amount of todos go up
+
+As a user
+In order to actually make a todo
+When I visit the todos list
+  Within new todo form
+    I fill in the title
+    I fill in the description
+    I fill in the
+
+Strategic
+Achiever
+Context
+Intellection
+Belief
+
+Deliberate
+Adaptability
+
+
+Achiever
+Relator
+Ideation
+Learner
+Strategic

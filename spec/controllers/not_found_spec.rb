@@ -1,5 +1,5 @@
-require './app/models/station'
 require './spec/spec_helper'
+require './app/models/station'
 
 
 feature 'Not Found page' do

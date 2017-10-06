@@ -1,0 +1,24 @@
+<!-- When a user visits the `/trips` path, they should only see the first thirty trips taken organized by date. On that page, there should also be a button to see the next thirty trips. Once a user visits a second page, there should be buttons to move both forward and backward in time.-->
+
+<!-- Additionally, users should be able to delete a trip from the views rendered at both `/trips/:id` and `/trips`.  This just means that the delete button has to be inside the  loop for creating each listing.-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel=”stylesheet” type=”text/css” href=”/stylesheets/custom.css” />
+</head>
+<body>
+  <h1>"Trip Details"</h1>
+
+      <p><%= @trip.id %></p>
+      <p><%= @trip.duration %></p>
+      <p><%= @trip.station %></p>
+      <p><%= @trip.end_date %></p>
+      <p><%= @trip.end_station %></p>
+      <p><%= @trip.bike_id %></p>
+      <p><%= @trip.subscription_type %></p>
+      <p><%= @trip.zip_code %></p>
+      
+  <a href="/trips">Back to Index</a>
+</body>

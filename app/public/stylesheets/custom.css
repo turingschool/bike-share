@@ -36,5 +36,21 @@ td, th {
 }
 
 tr:nth-child(even) {
-    background-color: white;
+  background-color: white;
+}
+
+.new_form {
+ align-self: center;
+ text-align: -webkit-center;
+ margin-top: 212px;
+}
+
+.new_form input {
+  display: flex;
+  justify-content: center;
+}
+
+.new_view {
+  background-image: url('https://c1.staticflickr.com/6/5089/5233128586_16def34bac_b.jpg');
+  background-size: 100% 100%;
 }

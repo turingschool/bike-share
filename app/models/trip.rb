@@ -1,5 +1,5 @@
 class Trip < ActiveRecord::Base
-  validates_presence_of :duration
+  validates             :duration
                         :start_date
                         :start_station
                         :end_date
@@ -7,4 +7,5 @@ class Trip < ActiveRecord::Base
                         :bike_id
                         :subscription_type
                         :zip_code
+                        presence: true
 end

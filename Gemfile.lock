@@ -78,6 +78,7 @@ GEM
     sinatra-activerecord (2.0.13)
       activerecord (>= 3.2)
       sinatra (>= 1.0)
+    smarter_csv (1.1.4)
     thread_safe (0.3.6)
     tilt (2.0.8)
     tux (0.3.0)
@@ -106,6 +107,7 @@ DEPENDENCIES
   shotgun
   sinatra
   sinatra-activerecord
+  smarter_csv
   tux
 
 BUNDLED WITH

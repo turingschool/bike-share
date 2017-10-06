@@ -1,0 +1,15 @@
+<form action="/conditions/<%= @condition.id %>" method="post">
+  <h1>Edit</h1>
+  <input type="hidden" name="_method" value="PUT" />
+
+  <p>Date: <input type='text' name='condition[date]' value="<%= @condition.date %>"/></p>
+  <p>Max Temperature: <input type='float' name='condition[max_temperature]' value="<%= @condition.max_temperature %>"/></p>
+  <p>Min Temperature: <input type='float' name='condition[min_temperature]' value="<%= @condition.min_temperature %>"/></p>
+  <p>Mean Temperature: <input type='float' name='condition[mean_temperature]' value="<%= @condition.mean_temperature %>"/></p>
+  <p>Mean Humidity: <input type='float' name='condition[mean_humidity]' value="<%= @condition.mean_humidity %>"/></p>
+  <p>Mean Visibility: <input type='float' name='condition[mean_visibility_miles]' value="<%= @condition.mean_visibility_miles %>"/></p>
+  <p>Mean Wind Speed: <input type='float' name='condition[mean_wind_speed_mph]' value="<%= @condition.mean_wind_speed_mph %>"/></p>
+  <p>Precipitation: <input type='float' name='condition[mean_precipitation_inches]' value="<%= @condition.mean_precipitation_inches %>"/></p>
+
+  <p><input type='submit'/></p>
+</form>

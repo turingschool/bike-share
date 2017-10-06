@@ -11,5 +11,6 @@ class CreateCondition < ActiveRecord::Migration[5.1]
       c.float :mean_wind_speed_mph
       c.float :mean_precipitation_inches
 
+    end
   end
 end

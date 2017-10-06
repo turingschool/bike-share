@@ -1,0 +1,56 @@
+body {
+  background-color: #D3D4D9;
+}
+
+header {
+  text-align: center;
+}
+
+h1 {
+  color: #2E4057;
+}
+
+h2 a {
+  color: #2E4057;
+}
+
+h3 {
+  color: #48628C;
+}
+
+h4 {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: white;
+}
+
+.new_form {
+ align-self: center;
+ text-align: -webkit-center;
+ margin-top: 212px;
+}
+
+.new_form input {
+  display: flex;
+  justify-content: center;
+}
+
+.new_view {
+  background-image: url('https://c1.staticflickr.com/6/5089/5233128586_16def34bac_b.jpg');
+  background-size: 100% 100%;
+}

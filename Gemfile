@@ -13,6 +13,7 @@ group :development, :test do
   gem 'tux'
   gem 'capybara'
   gem 'launchy'
+  gem 'smarter_csv'
   gem 'rack-test'
   gem 'database_cleaner'
 end

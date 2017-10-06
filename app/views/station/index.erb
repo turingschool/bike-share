@@ -4,4 +4,14 @@
 <link rel=”stylesheet” type=”text/css” href=”/stylesheets/custom.css” />
 </head>
   <body>
+  <h1>All Stations</h1>
+  
+  <% @Stations[0..29].each do |station| %>
+    
+      <h3><a href="/station/<%=station.id%>"><%= station.name%></a></h3>
+      <p><%= station.dock_count %></p>
+      <p><%= station.city %></p>
+      <p><%= station.installation_date %></p>
+  
+  <% end %>
   </body>

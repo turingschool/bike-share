@@ -9,25 +9,16 @@
 <link rel=”stylesheet” type=”text/css” href=”/stylesheets/custom.css” />
 </head>
 <body>
+  <h1>"Trip Details"</h1>
 
-  <h1>All Trips</h1>
-    <p>30 Most Recent Trips </p>
-
-  <div>
-    <ul>
-      <% @trips.each do |trip| %> !!!"where" or "limit" to get the first 30?
-       <li> Duration: <%= trip.duration%></li>
-       <li> Start Date: <%= trip.start_date%></li>
-       <li> Starting Station: <%= trip.start_station%></li>
-       <li> End Date: <%= trip.end_date%></li>
-       <li> Ending Station: <%= trip.end_station%></li>
-       <li> Subscription Type: <%= trip.subscription_type%></li>
-       <li> Zip Code: <%= trip.zip_code%></li>
-        *** LINKS TO EDIT, ...ALSO DELETE?
-       <% end %>
-     </ul>
-
-    INSERT BUTTONS HERE??
-  </div>
-
+      <p><%= @trip.id %></p>
+      <p><%= @trip.duration %></p>
+      <p><%= @trip.station %></p>
+      <p><%= @trip.end_date %></p>
+      <p><%= @trip.end_station %></p>
+      <p><%= @trip.bike_id %></p>
+      <p><%= @trip.subscription_type %></p>
+      <p><%= @trip.zip_code %></p>
+      
+  <a href="/trips">Back to Index</a>
 </body>

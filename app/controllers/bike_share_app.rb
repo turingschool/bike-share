@@ -5,15 +5,17 @@ class BikeShareApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
   set :method_override, true
 
-    get '/' do
-      erb :home
-    end
+  get '/' do
+    erb :home
+  end
 
-    get '/films/new' do
-      erb :film_new
-    end
+  get '/films/new' do
+    erb :film_new
+  end
+
   get '/stations' do
     @stations = Station.all
+    require 'pry'; binding.pry
     erb :'station/index'
   end
 

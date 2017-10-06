@@ -26,4 +26,10 @@ class Station < ActiveRecord::Base
     where installation_date: minimum(:installation_date)
   end
 
+  def self.average_dock_count
+    average(:dock_count)
+  end
+
+  # def self.maximum
+
 end

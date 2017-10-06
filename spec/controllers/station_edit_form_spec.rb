@@ -17,7 +17,7 @@ feature 'edit station page' do
   end
 
   it 'has a form' do
-    expect(page).to have_selector('form')
+    expect(page).to have_css('form')
   end
 
   it 'has city field' do

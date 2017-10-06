@@ -86,5 +86,17 @@ RSpec.describe Station do
 
       expect(station).to_not be_valid
     end
+
+    it "existence of latitude" do
+      station = City.first.stations.create(name: "cowabunga", installation_date: "2015-09-05")
+
+      expect(station).to_not be_valid
+    end
+
+    it "existence of longitude" do
+      station = City.first.stations.create(dock_count: 30, installation_date: "2015-09-04")
+
+      expect(station).to_not be_valid
+    end
   end
 end

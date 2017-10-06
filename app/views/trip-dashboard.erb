@@ -1,5 +1,5 @@
 <h1>All Trips</h1>
 
 <% @trips.each do |trip|%>
-  <h3><%=trip.duration%></h3>
+  <h3><%=truncate(trip.duration, length: 40)%></h3>
   <% end %>

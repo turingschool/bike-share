@@ -1,5 +1,6 @@
 require 'csv'
 require './app/models/station'
+require './app/models/trip'
 
 class Seed
 
@@ -15,13 +16,18 @@ class Seed
   end
 
   def self.trip
-    #we need to process the date column here. 
   	options = {headers: true, header_converters: :symbol, converters: :numeric}
 		CSV.foreach('./db/csv/trip.csv', options) do |row|
-			row.delete(:id)
-			Station.create!(row.to_h) 
+      row = row.to_h
+      row.delete(:id)
+      row.delete(:start_station_id)
+      row.delete(:end_station_id)
+      #need to create a buffer for huge zip codes 
+      row.delete(:zip_code) if row[:zip_code].to_s.length > 5
+			Trip.create!(row.to_h) 
 	  end 
 	end 
 end
 
 Seed.station
+Seed.trip

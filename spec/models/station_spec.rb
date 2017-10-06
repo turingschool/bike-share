@@ -11,6 +11,9 @@ dummy_data = {
     lat: 37.332808,
     long: -121.883890
   }
+  Trip => {
+
+  }
 }
 
 dummy_data.each do |model, data|

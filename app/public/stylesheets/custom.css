@@ -2,6 +2,22 @@ body {
   background-color: #D3D4D9;
 }
 
+section input {
+  border: 2px solid lightblue;
+  border-radius: 4px;
+  height: 40px;
+  width: 30%;
+  font-size: 20px;
+}
+
+select {
+  border: 2px solid lightblue;
+  border-radius: 4px;
+  height: 40px;
+  width: 30%;
+  font-size: 20px;
+}
+
 header {
   text-align: center;
 }

@@ -1,6 +1,12 @@
-require_relative '../models/station.rb'
-class BikeShareApp < Sinatra::Base
+require 'will_paginate'
+require 'will_paginate/active_record'
 
+require_relative '../models/station.rb'
+
+class BikeShareApp < Sinatra::Base
+  configure do
+    register WillPaginate::Sinatra
+  end
   set :root, File.expand_path("..", __dir__)
   set :method_override, true
 
@@ -9,7 +15,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations' do
-    @stations = Station.paginate(page: params:[page], per_page: 30)
+    @stations = Station.paginate(page: params[:page], per_page: 30)
     erb :'station/index'
   end
 

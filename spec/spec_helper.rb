@@ -1,12 +1,12 @@
 ENV["RACK_ENV"] ||= "test"
 
-require File.expand_path("../../config/environment", __FILE__)
 require 'bundler'
+Bundler.require(:default, :test)
+require File.expand_path("../../config/environment", __FILE__)
 require 'capybara/dsl'
 require 'capybara/rspec'
 require 'database_cleaner'
 
-Bundler.require(:default, :test)
 Capybara.app = BikeShareApp
 DatabaseCleaner.strategy = :truncation
 RSpec.configure do |c|

@@ -41,7 +41,7 @@ feature 'Station index page' do
 
   it 'displays multiple items' do
     stations = all '#stations *'
-    expect(stations.count).to eq 2
+    expect(Station.count).to eq 2
   end
 
 

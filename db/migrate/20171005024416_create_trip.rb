@@ -4,7 +4,7 @@ class CreateTrip < ActiveRecord::Migration[5.1]
 
       t.integer    :duration
       t.text      :start_date
-      t.text      :start_station
+      t.text      :start_station_name
       t.text      :end_date
       t.text      :end_station_name
       t.integer   :bike_id

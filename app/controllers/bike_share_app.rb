@@ -22,7 +22,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations' do
-    params[:station][:installation_date] = DateTime.strptime((params[:station][:installation_date]), "%Y-%m-%d")
+    params[:station][:installation_date] = Date.strptime((params[:station][:installation_date]), "%Y-%m-%d")
 
     Station.create(params[:station])
     redirect '/stations'
@@ -44,32 +44,38 @@ class BikeShareApp < Sinatra::Base
     redirect '/stations'
   end
 
-  get '/trips/new' do
-    erb :new_trips
-  end
-
-  put '/trips' do |id|
-    Trip.create(id.to_i, params[:trips])
-  redirect '/trips'
-  end
 
   get '/trips' do
     @trips = Trip.all
-  erb :trips_index
+    erb :'/trips/index'
+  end
+
+  get '/trips/new' do
+    erb :'/trips/new'
   end
 
   get '/trips/:id' do
     @trips = Trip.find(params[:trip])
-  redirect "/trips/#{trips_id}"
+    erb :'/trips/show'
   end
 
-  post '/trips/:id' do
+  post '/trips' do
     Trip.update(params[:trip_id])
-  redirect "/trips/edit"
+    redirect "/trips"
+  end
+
+  get '/trips/:id/edit' do
+    @trip = Trip.find(params[:id])
+    erb :'/trips/edit'
+  end
+
+  put '/trips' do |id|
+    Trip.create(id.to_i, params[:trips])
+    redirect "/trips/#{id}"
   end
 
   delete '/trips/:id' do |id|
     Trip.destroy(id.to_i)
-  redirect "/trips"
+    redirect "/trips"
   end
 end

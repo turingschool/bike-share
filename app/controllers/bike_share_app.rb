@@ -4,13 +4,10 @@ class BikeShareApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
   set :method_override, true
 
-    get '/' do
-      erb :home
-    end
+  get '/' do
+    erb :home
+  end
 
-    get '/films/new' do
-      erb :film_new
-    end
   get '/stations' do
     @stations = Station.all
     erb :'station/index'
@@ -22,9 +19,8 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations/:id' do
     @station = Station.find(params[:id])
-    erb :'station/details'
+    erb :'station/show'
   end
-
 
   get '/station-dashboard' do
     erb :'station/dashboard'
@@ -50,27 +46,27 @@ class BikeShareApp < Sinatra::Base
     redirect '/stations'
   end
 
-  # get 'trip-dashboard' do
-  #
-  # end
+  get 'trip-dashboard' do
+    erb :'trip/dashboard'
+  end
 
   get '/trips' do
     @trips = Trip.all
-    erb :details
+    erb :'trip/index'
   end
 
   get '/trips/new' do
-    erb :new
+    erb :'trip/new'
   end
 
   get '/trips/:id' do
-    @trips = Trip.find(params[:id])
-    erb :show
+    @trip = Trip.find(params[:id])
+    erb :'trip/show'
   end
 
   get '/trips/:id/edit' do
-    @trips = Trip.find(params[:id])
-    erb :edit
+    @trip = Trip.find(params[:id])
+    erb :'trip/edit'
   end
 
   post '/trips' do
@@ -83,14 +79,12 @@ class BikeShareApp < Sinatra::Base
     redirect "/trips/#{id}"
   end
 
-  delete '/trips/:id' do |id|
+  delete '/trips/:id/delete' do |id|
     Trip.destroy(id.to_i)
     redirect '/trips'
   end
 
-
   not_found do
     erb :not_found
   end
-
 end

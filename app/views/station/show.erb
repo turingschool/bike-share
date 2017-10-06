@@ -11,5 +11,11 @@
         <p><%= @station.city %></p>
         <p><%= @station.installation_date %></p>
     
+    <form action="/stations/<%=@station.id%>/delete" method="post">
+      <p>Delete</p>
+      <input type="hidden" name="_method" value="DELETE">
+      <input type='Delete'>
+    </form>
+
     <a href="/stations">Back to Index</a>
   </body>

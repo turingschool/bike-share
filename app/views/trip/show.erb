@@ -19,6 +19,12 @@
       <p><%= @trip.bike_id %></p>
       <p><%= @trip.subscription_type %></p>
       <p><%= @trip.zip_code %></p>
-      
+  
+  <form action="/trips/<%=@trip.id%>/delete" method="post">
+    <p>Delete</p>
+    <input type="hidden" name="_method" value="DELETE">
+    <input type='Delete'>
+  </form>
+
   <a href="/trips">Back to Index</a>
 </body>

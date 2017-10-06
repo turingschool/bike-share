@@ -10,14 +10,14 @@
       <div>
         <ul>
           <% @trips.each do |trip| %> !!!"where" or "limit" to get the first 30?
-          <li> Duration: <%= trip.duration%></li>
-          <li> Start Date: <%= trip.start_date%></li>
-          <li> Starting Station: <%= trip.start_station%></li>
-          <li> End Date: <%= trip.end_date%></li>
-          <li> Ending Station: <%= trip.end_station%></li>
-          <li> Subscription Type: <%= trip.subscription_type%></li>
-          <li> Zip Code: <%= trip.zip_code%></li>
-            *** LINKS TO EDIT, ...ALSO DELETE?
+            <li> Duration: <%= trip.duration%></li>
+            <li> Start Date: <%= trip.start_date%></li>
+            <li> Starting Station: <%= trip.start_station%></li>
+            <li> End Date: <%= trip.end_date%></li>
+            <li> Ending Station: <%= trip.end_station%></li>
+            <li> Subscription Type: <%= trip.subscription_type%></li>
+            <li> Zip Code: <%= trip.zip_code%></li>
+            <a href="/trips/<%=trip.id%>">EDIT OR DELETE TRIP</a>
           <% end %>
         </ul>
 

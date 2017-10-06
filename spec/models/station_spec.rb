@@ -5,11 +5,11 @@ RSpec.describe Station do
 
     before do
       City.create(name: 'San Francisco')
-      City.first.stations.create(name: 'chillest',   dock_count: 20, installation_date: "2017-08-06")
-      City.first.stations.create(name: 'surf shack', dock_count: 10, installation_date: "2011-10-06")
-      City.first.stations.create(name: 'burritos',   dock_count: 7,  installation_date: "2012-09-07")
-      City.first.stations.create(name: 'whatever',   dock_count: 32, installation_date: "2015-08-06")
-      City.first.stations.create(name: 'duplicate',  dock_count: 32, installation_date: "2015-08-06")
+      City.first.stations.create(name: 'chillest',   dock_count: 20, installation_date: "2017-08-06", lat: 100, lng: 200)
+      City.first.stations.create(name: 'surf shack', dock_count: 10, installation_date: "2011-10-06", lat: 100, lng: 200)
+      City.first.stations.create(name: 'burritos',   dock_count: 7,  installation_date: "2012-09-07", lat: 100, lng: 200)
+      City.first.stations.create(name: 'whatever',   dock_count: 32, installation_date: "2015-08-06", lat: 100, lng: 200)
+      City.first.stations.create(name: 'duplicate',  dock_count: 32, installation_date: "2015-08-06", lat: 100, lng: 200)
     end
 
     describe ".total_station_count" do
@@ -65,7 +65,7 @@ RSpec.describe Station do
     before { City.create(name: 'cool town') }
 
     it "creates a city given valid params" do
-      station = City.first.stations.create(name: 'whatever', dock_count: 27, installation_date: "2014-08-06")
+      station = City.first.stations.create(name: 'whatever', dock_count: 27, installation_date: "2014-08-06", lat: 100, lng: 200)
       expect(station).to be_valid
     end
 

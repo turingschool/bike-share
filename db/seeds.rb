@@ -16,9 +16,12 @@ class Seed
 
   def self.trip
     #we need to process the date column here. 
-    
-  end 
-
+  	options = {headers: true, header_converters: :symbol, converters: :numeric}
+		CSV.foreach('./db/csv/trip.csv', options) do |row|
+			row.delete(:id)
+			Station.create!(row.to_h) 
+	  end 
+	end 
 end
 
 Seed.station

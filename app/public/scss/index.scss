@@ -1,12 +1,11 @@
-// $ `sass app/public/scss/index.scss app/public/stylesheets/index.css`
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
-@import url('https://fonts.googleapis.com/css?family=Arvo:400,700');
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Arvo:400,700");
 @import "variables";
 
 body {
   font-family: arial, sans-serif;
-  background-color: $badass;
 }
 
 header {
@@ -85,4 +84,40 @@ select {
   background-size: 100% 100%;
   justify-content: center;
   align-items: center;
+}
+
+/* Trip Index TODO */
+.trip-index-container {
+  font-family: $open-sans;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  h1 {
+    font-color: $black-pearl;
+    font-size: 2em;
+    margin: 35px 0px 25px 0px;
+    span {
+      font-weight: 700;
+    }
+  }
+}
+
+.trip-card {
+  color: $black-pearl;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border: 3px solid $strong-opal;
+  margin: 10px;
+  padding: 10px;
+  width: 500px;
+
+  li {
+    padding: 10px;
+  }
+
+  span {
+    font-weight: 700;
+  }
 }

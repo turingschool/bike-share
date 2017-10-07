@@ -11,7 +11,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations' do
-    @stations = Station.all
+    @stations = Station.paginate(page: params[:page], per_page: 30)
     erb :'/stations/index'
   end
 
@@ -48,14 +48,14 @@ class BikeShareApp < Sinatra::Base
     redirect '/stations'
   end
 
+  get '/trips' do
+    @paginated = Trip.paginate(page: params[:page], per_page: 30)
+    erb :'/trips/index'
+  end
+
   get '/trips/dashboard' do
     @cool_variable = ['stuff', 'and', 'things']
     erb :'trips/dashboard'
-  end
-
-  get '/trips' do
-    @trips = Trip.paginate(page: params[:page], per_page: 30)
-    erb :'/trips/index'
   end
 
   get '/trips/new' do

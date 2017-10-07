@@ -1,5 +1,43 @@
-<% @trips.each do |thing| %>
-  <%= thing.duration %>
-<% end %>
-
-<%= will_paginate @trips %>
+<div class='trip-index-container'>
+  <header>
+    <h1><span>All</span> Trips</h1>
+  </header>
+  <% @paginated.each do |trip| %>
+    <div class='trip-card'>
+      <ul>
+        <li><a href="/trips/<%= trip.id %>">Trip #<%= trip.id %></a></li>
+        <li><span>Trip Duration:</span>
+          <%= trip.duration %>
+        </li>
+        <li><span>Start Date:</span>
+          <%= trip.start_date %>
+        </li>
+        <li><span>Start Time:</span>
+          <%= trip.start_time %>
+        </li>
+        <li><span>Start Station name:</span>
+          <%= trip.start_station.name if trip.start_station  %>
+        </li>
+        <li><span>End Date:</span>
+          <%= trip.end_date %>
+        </li>
+        <li><span>End Time:</span>
+          <%= trip.end_time %>
+        </li>
+        <li><span>End Station</span> Name:
+          <%= trip.end_station.name if trip.end_station %>
+        </li>
+        <li><span>Bike ID:</span>
+          <%= trip.bike_id %>
+        </li>
+        <li><span>Subscription Type:</span>
+          <%= trip.subscription_type%>
+        </li>
+        <li><span>User Zip Code:</span>
+          <%= trip.zip_code%>
+        </li>
+      </ul>
+    </div>
+    <% end %>
+    <%= will_paginate @paginated, :page_links => false %>
+</div>

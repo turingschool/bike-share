@@ -1,18 +1,19 @@
 <h2>All Trips</h2>
-
 <div>
-  <ul>
     <% @trips.each do |trip| %>
-      <li> Duration: <%= trip.duration%></li>
-      <li> Start Date: <%= trip.start_date%></li>
-      <li> Starting Station: <%= trip.start_station_id%></li>
-      <li> End Date: <%= trip.end_date%></li>
-      <li> Ending Station: <%= trip.end_station_id%></li>
-      <li> Bike ID: <%= trip.bike_id%></li>
-      <li> Subscription Type: <%= trip.subscription_type%></li>
-      <li> Zip Code: <%= trip.zip_code%></li>
+
+      <p> Duration: <%= trip.duration%></p>
+      <p> Start Date: <%= trip.start_date%></p>
+      <p> Starting Station: <%= trip.start_station%></p>
+      <p> End Date: <%= trip.end_date%></p>
+      <p> Ending Station: <%= trip.end_station%></p>
+      <p> Bike ID: <%= trip.bike_id%></p>
+      <p> Subscription Type: <%= trip.subscription_type%></p>
+      <p> Zip Code: <%= trip.zip_code%></p>
+
       <a href="/trips/<%=trip.id%>">EDIT OR DELETE TRIP</a>
     <% end %>
-  </ul>
+
+<%= will_paginate @trips %>
 
 </div>

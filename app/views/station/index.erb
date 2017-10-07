@@ -1,5 +1,5 @@
-
 <h2>All Stations</h2>
+<div>
 
 <% @stations.each do |station| %>
     <h3><a href="/stations/<%=station.id%>"><%= station.name%></a></h3>
@@ -9,3 +9,5 @@
 <% end %>
 
 <%= will_paginate @stations %>
+
+</div>

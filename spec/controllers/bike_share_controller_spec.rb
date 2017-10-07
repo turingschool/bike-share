@@ -1,4 +1,4 @@
-RSpec.describe 'Bike Share Controller' do
+RSpec.context 'Bike Share Controller' do
 
   before do
     City.create(name: 'San Francisco')
@@ -10,14 +10,16 @@ RSpec.describe 'Bike Share Controller' do
   end
 
   describe "GET '/station-dashboard" do
-
     it "loads dashboard" do
       get '/station-dashboard'
+
       expect(last_response).to be_ok
+      expect(last_response.status).to eq 200
     end
 
     it "displays dashboard content" do
       get '/station-dashboard'
+
       expect(last_response.body).to include("chillest")
     end
   end

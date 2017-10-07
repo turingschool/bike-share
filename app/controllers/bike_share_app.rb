@@ -75,6 +75,7 @@ class BikeShareApp < Sinatra::Base
   delete '/conditions/:id' do
     Condition.destroy(params[:id])
     redirect '/conditions'
+  end
 
   get '/station-dashboard' do
     @stations = Station.all

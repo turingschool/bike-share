@@ -1,5 +1,5 @@
 <h2>Edit Station</h2>
-<form action = "/stations/<%= @station.name %>" method="post">
+<form action = "/stations/<%= @station.id %>" method="post">
 
   <input type="hidden" name="_method" value="PUT" />
 
@@ -23,7 +23,8 @@
   </label><br/>
 
   <input type="submit"/>
-  <form action = "/stations/delete<%= @station.name %>" method="post">
+  <form action = "/stations/<%= @station.id %>" method="post">
     <input type="hidden" name="_method" value="DELETE" />
-  <button type="submit" name="delete" value="Delete"> delete </button>
+    <button type="submit" name="delete" value="Delete"> delete </button>
+  </form>
 </form>

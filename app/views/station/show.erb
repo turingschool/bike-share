@@ -7,10 +7,9 @@
 <p>Latitude: <%= @station.lat %>
 <p>Longetude: <%= @station.long %>
 
-<form action="/stations/<%=@station.id%>/delete" method="post">
-  <p>Delete</p>
+<form action="/stations/<%=@station.id%>" method="post">
   <input type="hidden" name="_method" value="DELETE">
-  <input type='Delete'>
+  <input type='submit' name="delete" value="Delete">
 </form>
 
 <a href="/stations">Back to Index</a>

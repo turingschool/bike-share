@@ -1,8 +1,8 @@
 require './spec/spec_helper'
-require './app/models/station'
 
 
-feature 'Not Found page' do
+
+feature 'When a User Visits Non-existant Page' do
 
   background do
     visit '/so_fake'

@@ -10,6 +10,7 @@ class CreateCondition < ActiveRecord::Migration[5.1]
       c.float :mean_visibility_miles
       c.float :mean_wind_speed_mph
       c.float :precipitation_inches
+      c.text :zip_code
 
     end
   end

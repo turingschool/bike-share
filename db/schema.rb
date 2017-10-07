@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20171005205606) do
     t.float "mean_visibility_miles"
     t.float "mean_wind_speed_mph"
     t.float "precipitation_inches"
+    t.text "zip_code"
   end
 
   create_table "stations", force: :cascade do |t|

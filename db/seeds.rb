@@ -34,7 +34,6 @@ class Seed
       row.delete(:max_gust_speed_mph)
       row.delete(:cloud_cover)
       row.delete(:events)
-      row.delete(:zip_code)
       Condition.create!(row.to_h)
     end
   end

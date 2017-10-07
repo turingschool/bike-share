@@ -8,6 +8,7 @@ class Seed
     options = {headers: true, header_converters: :symbol, converters: :numeric}
 
     CSV.foreach("./db/csv/station.csv", options ) do |row|
+      next if Station.exists?(row[:id])
       convert_date(row, :installation_date)
       Station.create!(row.to_hash)
     end

@@ -8,6 +8,6 @@ class Trip < ActiveRecord::Base
             :subscription_type,
             :zip_code,
              presence: true
-             
+
   has_many :stations
 end

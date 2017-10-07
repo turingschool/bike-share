@@ -41,4 +41,8 @@ feature 'When a user visits the create station page' do
     expect(page).to have_field('station[installation_date]')
   end
 
+  it 'they see a submit button' do
+    expect(page).to have_selector('input[type=submit]')
+  end
+
 end

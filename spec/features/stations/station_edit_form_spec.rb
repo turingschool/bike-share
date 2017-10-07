@@ -39,8 +39,8 @@ feature 'edit station page' do
     expect(page).to have_field('station[lat]')
   end
 
-  it 'has longetude field' do
-    expect(page).to have_content(/longetude/i)
+  it 'has longitude field' do
+    expect(page).to have_content(/longitude/i)
     expect(page).to have_field('station[long]')
   end
 

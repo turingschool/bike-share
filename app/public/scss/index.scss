@@ -86,7 +86,7 @@ select {
   align-items: center;
 }
 
-/* Trip Index TODO */
+/* Trip Index */
 .trip-index-container {
   font-family: $open-sans;
   display: flex;
@@ -100,6 +100,83 @@ select {
     span {
       font-weight: 700;
     }
+  }
+
+  div {
+    position: relative;
+    z-index: 1;
+    backface-visibility: hidden;
+  }
+
+  div a {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    outline: none;
+    color: #404d5b;
+    text-decoration: none;
+    white-space: nowrap;
+    position: relative;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+
+  .previous_page {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    outline: none;
+    color: #404d5b;
+    text-decoration: none;
+    white-space: nowrap;
+    position: relative;
+    display: inline-block;
+    vertical-align: bottom;
+    padding: 12px 10px 10px;
+    text-shadow: none;
+    font-weight: 700;
+  }
+
+  div a::before,
+  div a::after {
+    pointer-events: none;
+    backface-visibility: hidden;
+  }
+
+  a {
+    padding: 12px 10px 10px;
+    color: #566473;
+    text-shadow: none;
+    font-weight: 700;
+  }
+
+  a::before,
+  a::after {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: $strong-opal;
+    content: '';
+    transition: transform 0.3s;
+    transform: scale(0.85);
+  }
+
+  a::after {
+    opacity: 0;
+    transition: top 0.3s, opacity 0.3s, transform 0.3s;
+  }
+
+  a:hover::before,
+  a:hover::after,
+  a:focus::before,
+  a:focus::after {
+    transform: scale(1);
+  }
+
+  a:hover::after,
+  a:focus::after {
+    top: 0%;
+    opacity: 1;
   }
 }
 

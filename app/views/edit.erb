@@ -1,0 +1,14 @@
+<form action="/stations/<%= @station.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT" />
+  <input type="text" name="station[name]" value="<%= @station.name %>" />
+  <input type="integer" name="station[dock_count]" value="<%= @station.dock_count %>" />
+  <select name="station[city_id]">
+    <% @cities.sort_by(&:name).each do |city| %>
+    <option value="<%= city.id %>">
+      <%= city.name.upcase %>
+    </option>
+    <% end %>
+  </select>
+  <input type="text" name="station[installation_date]" value="<%= @station.installation_date %>" />
+  <input type="submit" value="Submit">
+</form>

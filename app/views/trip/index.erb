@@ -5,9 +5,10 @@
     <% @trips.each do |trip| %>
       <li> Duration: <%= trip.duration%></li>
       <li> Start Date: <%= trip.start_date%></li>
-      <li> Starting Station: <%= trip.start_station%></li>
+      <li> Starting Station: <%= trip.start_station_id%></li>
       <li> End Date: <%= trip.end_date%></li>
-      <li> Ending Station: <%= trip.end_station%></li>
+      <li> Ending Station: <%= trip.end_station_id%></li>
+      <li> Bike ID: <%= trip.bike_id%></li>
       <li> Subscription Type: <%= trip.subscription_type%></li>
       <li> Zip Code: <%= trip.zip_code%></li>
       <a href="/trips/<%=trip.id%>">EDIT OR DELETE TRIP</a>

@@ -49,10 +49,41 @@ header {
   align-items: center; }
 
 /* Station Edit */
-select {
-  height: 25px;
-  border: 3px solid lightblue;
-  border-radius: 25px; }
+.station-edit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 75vh; }
+  .station-edit-container form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center; }
+    .station-edit-container form input,
+    .station-edit-container form select {
+      margin: 10px;
+      font-weight: 400;
+      text-align: center;
+      color: #011627;
+      border-radius: 7px;
+      background: white;
+      width: 420px;
+      padding: 5px 0px 5px 0px;
+      font-size: 20px;
+      border: 1px solid #2EC4B6;
+      height: 54px;
+      appearance: none; }
+    .station-edit-container form select {
+      text-align-last: center; }
+    .station-edit-container form input:hover {
+      border: 1px solid #011627;
+      color: #2EC4B6; }
+    .station-edit-container form h1 {
+      font-size: 1.8em;
+      color: #004264;
+      font-weight: 700;
+      margin-bottom: 45px; }
 
 /* Trip Index */
 .trip-index-container {

@@ -11,13 +11,12 @@ $picton-blue           : #59A5D8;
 $light-sky-blue        : #84D2F6;
 $blizzard-blue         : #91E5F6;
 
-
-$open-sans : 'Open Sans', sans-serif;
-$arvo      : 'Arvo', serif;
-$light     : 300;
-$regular   : 400;
-$semi-bold : 600;
-$bold      : 700;
+$open-sans             : 'Open Sans', sans-serif;
+$arvo                  : 'Arvo', serif;
+$light                 : 300;
+$regular               : 400;
+$semi-bold             : 600;
+$bold                  : 700;
 
 @mixin cool-links {
   font-size: 1.5em;

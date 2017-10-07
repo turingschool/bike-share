@@ -1,7 +1,7 @@
+// $ sass app/public/scss/index.scss app/public/stylesheets/index.css
+
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
-
 @import url("https://fonts.googleapis.com/css?family=Arvo:400,700");
-
 @import "variables";
 
 body {
@@ -68,11 +68,49 @@ header {
 
 /* Station Edit */
 
-select {
-  height: 25px;
-  border: 3px solid lightblue;
-  border-radius: 25px;
+.station-edit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 75vh;
+  form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    input,
+    select {
+      margin: 10px;
+      font-weight: 400;
+      text-align: center;
+      color: $black-pearl;
+      border-radius: 7px;
+      background: white;
+      width: 420px;
+      padding: 5px 0px 5px 0px;
+      font-size: 20px;
+      border: 1px solid $strong-opal;
+      height: 54px;
+      appearance: none;
+    }
+    select {
+      text-align-last: center;
+    }
+    input:hover {
+      border: 1px solid $black-pearl;
+      color: $strong-opal;
+    }
+    h1 {
+      font-size: 1.8em;
+      color: $prussian-blue;
+      font-weight: 700;
+      margin-bottom: 45px;
+    }
+  }
 }
+
+
 
 /* Trip Index */
 

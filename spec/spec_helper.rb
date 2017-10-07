@@ -8,6 +8,9 @@ Bundler.require(:default, :test)
 
 require 'capybara/dsl'
 Capybara.app = BikeShareApp
+Capybara.save_path = 'tmp/capybara'
+
+DatabaseCleaner.strategy = :truncation
 
 RSpec.configure do |c|
   c.before(:all) do

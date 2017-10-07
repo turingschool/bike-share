@@ -1,13 +1,23 @@
-<form action = "/station/<%= @station.name %>" method="post">
+<h2>New Station</p>
 
-    <p>New Station</p>
-
-    <input type="hidden" name="_method" value="PUT" />
-
-    <input type="text" name="station[name]"              value="<%= @station.name %>"/><br/>
-    <input type="text" name="station[dock_count]"        value="<%= @station.dock_count %>"/><br/>
-    <input type="text" name="station[city]"              value="<%= @station.city %>"/><br/>
-    <input type="text" name="station[installation_date]" value="<%= @station.installation_date %>"/><br/>
-
-    <input type="submit"/>
+<form action = "/stations" method="post">
+  <label>Name:
+    <input type="text" name="station[name]"/>
+  </label><br/>
+  <label>Dock Count:
+    <input type="text" name="station[dock_count]"/>
+  </label><br/>
+  <label>City:
+    <input type="text" name="station[city]"/>
+  </label><br/>
+  <label>Installation Date:
+    <input type="date" name="station[installation_date]"/>
+  </label><br/>
+  <label>Latitude:
+    <input type="date" name="station[lat]"/>
+  </label><br/>
+  <label>Longitude:
+    <input type="date" name="station[long]"/>
+  </label><br/>
+  <input type="submit"/>
 </form>

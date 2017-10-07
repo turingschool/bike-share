@@ -19,8 +19,8 @@ feature 'When a user visits the Station Dashboard' do
     Station.create! name: 'new_A',            dock_count: 55,  installation_date: '5/5/5558', city: 'a', lat: 55.55, long: 55.55
     Station.create! name: 'new_B',            dock_count: 55,  installation_date: '5/5/5558', city: 'a', lat: 55.55, long: 55.55
 
-    Station.create! name: 'boring!!!',        dock_count: 55, installation_date: '5/5/5555', city: 'a', lat: 55.55, long: 55.55
-    Station.create! name: 'boring!!!',        dock_count: 55, installation_date: '5/5/5555', city: 'a', lat: 55.55, long: 55.55
+    Station.create! name: 'boring!!!',        dock_count: 55, installation_date: '5/5/5555',  city: 'a', lat: 55.55, long: 55.55
+    Station.create! name: 'boring!!!',        dock_count: 55, installation_date: '5/5/5555',  city: 'a', lat: 55.55, long: 55.55
 
     visit '/station-dashboard'
   end
@@ -29,25 +29,25 @@ feature 'When a user visits the Station Dashboard' do
     expect(page.status_code).to eq(200)
   end
 
-  it 'they see the number of total docks' do
-    expect(page).to have_content(/total docks/i)
-    expect(page).to have_content('3')
+  it 'they seen the total docks' do
+    expect(page).to have_content(/total/i)
+    expect(page).to have_content('14')
   end
 
-  it 'they see the average dock count' do
-    expect(page).to have_content(/average docks/i)
-    expect(page).to have_content( '216' )
+  it 'they seen the average dock count' do
+    expect(page).to have_content(/average bikes/i)
+    expect(page).to have_content( '182' )
   end
 
-  it 'they see the stations with fewest docks' do
-    expect(page).to have_content(/fewest docks/i)
+  it 'they seen the stations with fewest docks' do
+    expect(page).to have_content(/least bikes/i)
     expect(page).to have_content('fewest_docks_A')
     expect(page).to have_content('fewest_docks_B')
     expect(page).to have_content('1')
   end
 
   it 'they see the stations with most docks' do
-    expect(page).to have_content(/most docks/i)
+    expect(page).to have_content(/most bikes/i)
     expect(page).to have_content('most_docks_A')
     expect(page).to have_content('most_docks_B')
     expect(page).to have_content('999')

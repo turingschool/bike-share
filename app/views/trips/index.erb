@@ -5,7 +5,7 @@
   <% @paginated.each do |trip| %>
     <div class='trip-card'>
       <ul>
-        <li><a href="/trips/<%= trip.id %>">Trip #<%= trip.id %></a></li>
+        <a href="/trips/<%= trip.id %>">Trip #<%= trip.id %></a>
         <li><span>Trip Duration:</span>
           <%= trip.duration %>
         </li>

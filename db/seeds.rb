@@ -20,7 +20,7 @@ end
 
 SmarterCSV.process('db/csv/trip.csv').each do |row|
   start_station = Station.find_or_create_by(name: row[:start_station_name])
-  end_station.  = Station.find_or_create_by(name: row[:end_station_name])
+  end_station   = Station.find_or_create_by(name: row[:end_station_name])
   start_time    = row[:start_date].split(' ')[-1]
   start_date    = Date.strptime(row[:start_date], "%m/%d/%Y")
   end_date      = Date.strptime(row[:end_date], "%m/%d/%Y")

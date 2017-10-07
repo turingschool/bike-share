@@ -5,6 +5,12 @@ $panache               : #FDFFFC;
 $strong-opal           : #2EC4B6;
 $alizarin              : #E71D36;
 $dark-tangerine        : #FF9F1C;
+$prussian-blue         : #004264;
+$lochmara              : #386FA4;
+$picton-blue           : #59A5D8;
+$light-sky-blue        : #84D2F6;
+$blizzard-blue         : #91E5F6;
+
 
 $open-sans : 'Open Sans', sans-serif;
 $arvo      : 'Arvo', serif;
@@ -12,3 +18,32 @@ $light     : 300;
 $regular   : 400;
 $semi-bold : 600;
 $bold      : 700;
+
+@mixin cool-links {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+  outline: none;
+  color: #404d5b;
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+  padding: 12px 10px 10px;
+  text-shadow: none;
+  font-weight: 700;
+}
+
+@mixin cool-inputs {
+  margin: 10px;
+  text-align: center;
+  color: $black-pearl;
+  // background: white;
+  width: 120px;
+  padding: 5px 35px 5px 5px;
+  font-size: 12px;
+  border: 1px solid $strong-opal;
+  height: 34px;
+  appearance: none;
+  background: url('../images/favicon.ico') 96% / 30% no-repeat white;
+}

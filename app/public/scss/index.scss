@@ -120,6 +120,24 @@ select {
     vertical-align: bottom;
   }
 
+  input {
+    margin: 10px;
+    text-align: center;
+    color: $black-pearl;
+    // background: white;
+    width: 120px;
+    padding: 5px 35px 5px 5px;
+    font-size: 12px;
+    border: 1px solid $strong-opal;
+    height: 34px;
+    appearance: none;
+    background: url('../images/favicon.ico') 96% / 30% no-repeat white;
+  }
+
+  input:hover {
+    border: 2px solid $black-pearl;
+  }
+
   .previous_page {
     font-size: 1.5em;
     margin-bottom: 5px;

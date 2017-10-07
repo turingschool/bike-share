@@ -94,6 +94,19 @@ select {
     position: relative;
     display: inline-block;
     vertical-align: bottom; }
+  .trip-index-container input {
+    margin: 10px;
+    text-align: center;
+    color: #011627;
+    width: 120px;
+    padding: 5px 35px 5px 5px;
+    font-size: 12px;
+    border: 1px solid #2EC4B6;
+    height: 34px;
+    appearance: none;
+    background: url("../images/favicon.ico") 96%/30% no-repeat white; }
+  .trip-index-container input:hover {
+    border: 2px solid #011627; }
   .trip-index-container .previous_page {
     font-size: 1.5em;
     margin-bottom: 5px;

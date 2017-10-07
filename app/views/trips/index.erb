@@ -37,6 +37,13 @@
           <%= trip.zip_code%>
         </li>
       </ul>
+      <form action="/trips/<%= trip.id %>/edit" method="GET">
+        <input type="submit" value="EDIT">
+      </form>
+      <form action="/trips/<%= trip.id %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="DELETE">
+      </form>
     </div>
     <% end %>
     <%= will_paginate @paginated, :page_links => false %>

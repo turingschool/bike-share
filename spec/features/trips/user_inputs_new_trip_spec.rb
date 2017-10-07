@@ -47,49 +47,10 @@ feature 'when user visits the create new trip page' do
         expect(page).to have_selector('input[type=submit]')
     end
 end
-
-# # As an (administrative)user? from the dashboard,
-# # they navigate to the sidebar
-# # they click on the new trip button
-
-    # # # they then see a form that accepts all informaiton required by our station database
-    #     They see a form
-    #         fields for:
-    #             duration
-    #             start date
-    #             start station id
-    #             end date
-    #             end station
-    #             bike id
-    #             subscription type
-    #             zipcode
     
-
-
-# # they fill out each form accordingly
-# # (should we have drop down forms for certain attributes?)
 # # they press the create new station button
 # # they then are routed to the show page for the new station
 
-
-
-
-
-# # Navigating to dasboard
-
-# # When a user goes to the home page 
-# # And they navigate to the navbar(topbar)
-# # and they click on the stations button
-# # They then see the stations dashboard
-
-# # to index
-
-# # As a user from the dashboard, 
-# # and they navigate to the sidebar
-# # and they click on the index button
-# # they then see a page with a list of all stations
-
-# # to new station
 
 # # to edit station
 

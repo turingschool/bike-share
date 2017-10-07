@@ -1,7 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel=”stylesheet” type=”text/css” href=”/stylesheets/custom.css” />
-</head>
-  <body>
-  </body>
+<h2>New Station</p>
+
+<form action = "/stations" method="post">
+  <label>Name:
+    <input type="text" name="station[name]"/>
+  </label><br/>
+  <label>Dock Count:
+    <input type="text" name="station[dock_count]"/>
+  </label><br/>
+  <label>City:
+    <input type="text" name="station[city]"/>
+  </label><br/>
+  <label>Installation Date:
+    <input type="date" name="station[installation_date]"/>
+  </label><br/>
+  <label>Latitude:
+    <input type="date" name="station[lat]"/>
+  </label><br/>
+  <label>Longitude:
+    <input type="date" name="station[long]"/>
+  </label><br/>
+  <input type="submit"/>
+</form>

@@ -1,7 +1,12 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 require_relative '../models/station.rb'
 
 class BikeShareApp < Sinatra::Base
-
+  configure do
+    register WillPaginate::Sinatra
+  end
   set :root, File.expand_path("..", __dir__)
   set :method_override, true
 
@@ -9,13 +14,8 @@ class BikeShareApp < Sinatra::Base
     erb :home
   end
 
-  get '/films/new' do
-    erb :film_new
-  end
-
   get '/stations' do
-    @stations = Station.all
-    require 'pry'; binding.pry
+    @stations = Station.paginate(page: params[:page], per_page: 30)
     erb :'station/index'
   end
 
@@ -25,9 +25,8 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations/:id' do
     @station = Station.find(params[:id])
-    erb :'station/details'
+    erb :'station/show'
   end
-
 
   get '/station-dashboard' do
     @stations = Station.all
@@ -54,27 +53,27 @@ class BikeShareApp < Sinatra::Base
     redirect '/stations'
   end
 
-  # get 'trip-dashboard' do
-  #
-  # end
+  get 'trip-dashboard' do
+    erb :'trip/dashboard'
+  end
 
   get '/trips' do
-    @trips = Trip.all
-    erb :details
+    @trips = Trip.paginate(page: params[:page], per_page: 30)
+    erb :'trip/index'
   end
 
   get '/trips/new' do
-    erb :new
+    erb :'trip/new'
   end
 
   get '/trips/:id' do
-    @trips = Trip.find(params[:id])
-    erb :show
+    @trip = Trip.find(params[:id])
+    erb :'trip/show'
   end
 
   get '/trips/:id/edit' do
-    @trips = Trip.find(params[:id])
-    erb :edit
+    @trip = Trip.find(params[:id])
+    erb :'trip/edit'
   end
 
   post '/trips' do
@@ -92,9 +91,7 @@ class BikeShareApp < Sinatra::Base
     redirect '/trips'
   end
 
-
   not_found do
     erb :not_found
   end
-
 end

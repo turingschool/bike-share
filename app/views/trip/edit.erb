@@ -1,7 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel=”stylesheet” type=”text/css” href=”/stylesheets/custom.css” />
-</head>
-  <body>
-  </body>
+<h2>Edit Trip</h2>
+
+<form action = "/trip/<%= @trip.name %>" method="post">
+  
+  <input type="hidden" name="_method" value="PUT" />
+  <label>Duration:
+    <input type="text" name="trip[duration]"            value="<%= @trip.duration %>"/><br/>
+  </label>
+  <label>Start Date
+    <input type="date" name="trip[start_date]"          value="<%= @trip.start_date %>"/><br/>
+  </label>
+  <label>Start Station:
+    <input type="text" name="trip[start_station]"       value="<%= @trip.start_station %>"/><br/>
+  </label>
+  <label>End Date:
+    <input type="text" name="trip[end_date]"            value="<%= @trip.end_date %>"/><br/>
+  </label>
+  <label>End Station
+    <input type="text" name="trip[end_station]"         value="<%= @trip.end_station %>"/><br/>
+  </label>
+  <label>Bike:
+    <input type="text" name="trip[bike_id]"             value="<%= @trip.bike_id %>"/><br/>
+  </label>
+  <label>Subscription Type
+    <input type="text" name="trip[subscription_type]"   value="<%= @trip.subscription_type %>"/><br/>
+  </label>
+  <label>Zip Code
+    <input type="text" name="trip[zip_code]"            value="<%= @trip.zip_code %>"/><br/>
+  </label>
+
+  <input type="submit"/>
+</form>
+
+<form action="/trips/<%=@trip.id%>" method="post">
+  <p>Delete</p>
+  <input type="hidden" name="_method" value="DELETE">
+  <input type='Delete'>
+</form>

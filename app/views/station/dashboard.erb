@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>San Francisco Bike Share Dashboard</title>
-    <link rel="stylesheet" href="/stylesheets/custom.css">
-  </head>
-  <body>
-    <p>Total count of stations: <%= @stations.count %></p><br>
-    <p>Average bikes available per station: <%= @stations.average_dock_count %></p><br>
-    <p>Most bikes available at a station: <%= @stations.maximum_dock_count %></p><br>
-    <p>Station(s) with most bikes: <%= @stations.with_most_bikes.names %></p><br>
-    <p>Fewest bikes available at a station: <%=@stations.minimum_dock_count %></p><br>
-    <p>Station(s) where the fewest bikes are available: <%= @stations.with_least_bikes.names%></p><br>
-    <p>Most recently installed station(s): <%= @stations.newest.names %></p><br>
-    <p>Oldest Station(s): <%= @stations.oldest.names %></p>
-  </body>
-</html>
+
+<h2>Station Dashboard</h2>
+
+<a href="/stations">view all stations</a>
+
+<p>Total stations: <%= @stations.count %></p>
+<p>Average bikes available per station: <%= @stations.average_dock_count %></p>
+<p>Most bikes available at a station: <%= @stations.maximum_dock_count %></p>
+<p>Stations with most bikes: <%= @stations.with_most_bikes.names %></p>
+<p>Fewest bikes available at a station: <%=@stations.minimum_dock_count %></p>
+<p>Stations with least bikes: <%= @stations.with_least_bikes.names %></p>
+<p>Newest stations: <%= @stations.newest.names %></p>
+<p>Oldest Stations: <%= @stations.oldest.names %></p>

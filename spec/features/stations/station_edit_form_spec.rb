@@ -1,7 +1,6 @@
 require './spec/spec_helper'
 
-
-feature 'Single station page' do
+feature 'edit station page' do
   background do
     Station.create! id: 9876543210,
                     city: 'land of bikes',
@@ -17,36 +16,37 @@ feature 'Single station page' do
     expect(page.status_code).to eq(200)
   end
 
-  it 'displays city' do
+  it 'has a form' do
+    expect(page).to have_css('form')
+  end
+
+  it 'has name field' do
+    expect(page).to have_field('station[name]')
+  end
+
+  it 'has city field' do
     expect(page).to have_content(/city/i)
-    expect(page).to have_content('pile of bikes')
+    expect(page).to have_field('station[city]')
   end
 
-  it 'displays name' do
-    expect(page).to have_content(/name/i)
-    expect(page).to have_content('pile of bikes')
-  end
-
-  it 'displays dock count' do
+  it 'has dock count field' do
     expect(page).to have_content(/dock count/i)
-    expect(page).to have_content('999999')
+    expect(page).to have_field('station[dock_count]')
   end
 
-  it 'displays latitude' do
+  it 'has latitude field' do
     expect(page).to have_content(/latitude/i)
-    expect(page).to have_content('888.888')
+    expect(page).to have_field('station[lat]')
   end
 
-  it 'displays longetude' do
+  it 'has longetude field' do
     expect(page).to have_content(/longetude/i)
-    expect(page).to have_content('777.777')
+    expect(page).to have_field('station[long]')
   end
 
-  it 'displays installation date' do
+  it 'has installation date field' do
     expect(page).to have_content(/installation date/i)
-    expect(page).to have_content('1')
-    expect(page).to have_content('22')
-    expect(page).to have_content('3333')
+    expect(page).to have_field('station[installation_date]')
   end
 
 end

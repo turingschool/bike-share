@@ -33,6 +33,7 @@ feature 'When a user visits trip edit page' do
   end
 
   it 'they see a start station field' do
+    skip
     expect(page).to have_content(/start station/i)
     expect(page).to have_field('trip[start_station]')
   end
@@ -43,11 +44,13 @@ feature 'When a user visits trip edit page' do
   end
 
   it 'they see an end station field' do
+    skip
     expect(page).to have_content(/end station/i)
     expect(page).to have_field('trip[end_station]')
   end
 
-  it 'they see a bike station field' do
+  it 'they see a bike id field' do
+    skip
     expect(page).to have_content(/bike id/i)
     expect(page).to have_field('trip[bike_id]')
   end

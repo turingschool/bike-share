@@ -23,8 +23,21 @@ describe BikeShareApp do
       within("h1") do
         expect(page).to have_content("All Stations")
       end
-#TODO has_link is not being used yet
-      has_link?("San Jose Diridon Caltrain Station")
+      within("a") do
+        has_link?("San Jose Diridon Caltrain Station")
+      end
+#TODO are my tests written correctly??
+# => What is convention?
+# => What parts of these tests are Capybara
+# => What parts of these tests are RSpec
+#TODO test below does not work?????
+#form is not unique
+# => change html?
+# => change test?
+# => use first("form")???
+      within(first("form")) do
+        has_button?("/stations/#{Station.first.id}/edit")
+      end
     end
   end
 
@@ -46,6 +59,7 @@ describe BikeShareApp do
         expect(page).to have_content("Diridon Caltrain")
       end
 #TODO check that button exists
+#likely will fix this once above is figured out
       expect have_button('/stations/27/edit')
       expect have_button?('/stations/27')
     end

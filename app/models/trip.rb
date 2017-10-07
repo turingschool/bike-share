@@ -51,7 +51,17 @@ class Trip < ActiveRecord::Base
     group(:bike_id).count
   end
 
+  def self.subscription_types_counts
+    group(:subscription_types).count
+  end
 
+  def self.subscription_types_and_info
+    subscription_data = {}
+    subscription_types_counts.each do |type, count|
+      pct_info = ((count.to_f/all.count) * 100).truncate(1)
+      subscription_data[type] { count: count, pct: pct_info }
+    end
+  end
 
 #TODO not active record!!! =[
   # def self.most_departed_station

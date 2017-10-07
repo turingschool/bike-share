@@ -16,5 +16,6 @@ group :development, :test do
   gem 'smarter_csv'
   gem 'rack-test'
   gem 'sass'
+  gem 'will_paginate'
   gem 'database_cleaner'
 end

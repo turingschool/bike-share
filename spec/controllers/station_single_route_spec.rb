@@ -10,20 +10,19 @@ feature 'Single station page' do
                     lat: 888.888,
                     long: 777.777,
                     installation_date: Date.parse('22/1/3333')
-    visit '/stations/9876543210/edit'
+    visit '/stations/9876543210'
   end
 
   it 'has status code 200' do
     expect(page.status_code).to eq(200)
   end
 
-  it 'displays city' do
-    expect(page).to have_content(/city/i)
+  it 'displays name' do
     expect(page).to have_content('pile of bikes')
   end
 
-  it 'displays name' do
-    expect(page).to have_content(/name/i)
+  it 'displays city' do
+    expect(page).to have_content(/city/i)
     expect(page).to have_content('pile of bikes')
   end
 

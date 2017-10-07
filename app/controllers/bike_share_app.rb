@@ -63,7 +63,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips/:id' do
-    @trips = Trip.find(params[:trip])
+    @trips = Trip.find(params[:id])
     erb :'/trips/show'
   end
 
@@ -78,7 +78,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/trips' do |id|
-    Trip.create(id.to_i, params[:trips])
+    Trip.create(id.to_i, params[:id])
     redirect "/trips/#{id}"
   end
 

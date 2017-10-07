@@ -1,37 +1,24 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
 @import url("https://fonts.googleapis.com/css?family=Arvo:400,700");
 body {
-  font-family: arial, sans-serif; }
+  font-family: "Open Sans", sans-serif; }
 
 header {
   text-align: center; }
 
-h1 {
-  color: #2e4057; }
-
-h2 a {
-  color: #2e4057; }
-
-h3 {
-  color: #48628c; }
-
-h4 {
-  margin-top: 1px;
-  margin-bottom: 1px; }
-
-table {
+/* Station Index */
+.stations-table {
   width: 100%;
   border-collapse: collapse; }
+  .stations-table td,
+  .stations-table th {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd; }
+  .stations-table tr:nth-child(even) {
+    background-color: #d3d4d9; }
 
-td,
-th {
-  padding: 8px;
-  text-align: left;
-  border: 1px solid #ddd; }
-
-tr:nth-child(even) {
-  background-color: white; }
-
+/* Station New */
 #new_h1 {
   color: white;
   font-size: 150%;
@@ -53,12 +40,6 @@ tr:nth-child(even) {
   color: lightblue;
   text-align: center; }
 
-select {
-  height: 25px;
-  width: 130%;
-  border: 3px solid lightblue;
-  border-radius: 25px; }
-
 .new_view {
   display: flex;
   height: 100vh;
@@ -66,6 +47,12 @@ select {
   background-size: 100% 100%;
   justify-content: center;
   align-items: center; }
+
+/* Station Edit */
+select {
+  height: 25px;
+  border: 3px solid lightblue;
+  border-radius: 25px; }
 
 /* Trip Index */
 .trip-index-container {

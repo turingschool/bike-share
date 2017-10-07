@@ -3,10 +3,24 @@
 
   <input type="hidden" name="_method" value="PUT" />
 
-  <input type="text" name="station[name]"              value="<%= @station.name %>"/><br/>
-  <input type="text" name="station[dock_count]"        value="<%= @station.dock_count %>"/><br/>
-  <input type="text" name="station[city]"              value="<%= @station.city %>"/><br/>
-  <input type="text" name="station[installation_date]" value="<%= @station.installation_date %>"/><br/>
+  <label>Name:
+    <input type="text" name="station[name]"               value="<%= @station.name %>"/><br/>
+  </label>
+  <label>Dock Count:
+    <input type="text" name="station[dock_count]"         value="<%= @station.dock_count %>"/><br/>
+  </label>
+  <label>City:
+    <input type="text" name="station[city]"               value="<%= @station.city %>"/><br/>
+  </label>
+  <label>Installation Date:
+    <input type="date" name="station[installation_date]"  value="<%= @station.installation_date %>"/><br/>
+  </label>
+  <label>Latitude:
+    <input type="date" name="station[lat]"                value="<%= @station.lat %>"/><br/>
+  </label><br/>
+  <label>Longetude:
+    <input type="date" name="station[long]"               value="<%= @station.long %>"/><br/>
+  </label><br/>
 
   <input type="submit"/>
 </form>

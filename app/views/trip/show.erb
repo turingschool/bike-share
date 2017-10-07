@@ -4,14 +4,13 @@
 
 <h1>"Trip Details"</h1>
 
-<p><%= @trip.id %></p>
-<p><%= @trip.duration %></p>
-<p><%= @trip.station %></p>
-<p><%= @trip.end_date %></p>
-<p><%= @trip.end_station %></p>
-<p><%= @trip.bike_id %></p>
-<p><%= @trip.subscription_type %></p>
-<p><%= @trip.zip_code %></p>
+<p>Duration: <%= @trip.duration %></p>
+<p>Start Station: <%= @trip.start_station %></p>
+<p>End Date: <%= @trip.end_date %></p>
+<p>End Station: <%= @trip.end_station %></p>
+<p>Bike: <%= @trip.bike_id %></p>
+<p>Subscription Type: <%= @trip.subscription_type %></p>
+<p>Zip Code: <%= @trip.zip_code %></p>
 
 <form action="/trips/<%=@trip.id%>/delete" method="post">
   <p>Delete</p>

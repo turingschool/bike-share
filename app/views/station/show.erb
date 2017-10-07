@@ -1,14 +1,16 @@
 
-<h2>"Station Details"</h2>
-<a href="/stations">Back to Index</a>
+<h2><%= @station.name %></h2>
 
-<p><%= @station.name %></p>
-<p><%= @station.dock_count %></p>
-<p><%= @station.city %></p>
-<p><%= @station.installation_date %></p>
+<p>Dock Count: <%= @station.dock_count %></p>
+<p>City: <%= @station.city %></p>
+<p>Installation Date: <%= @station.installation_date %></p>
+<p>Latitude: <%= @station.lat %>
+<p>Longetude: <%= @station.long %>
 
 <form action="/stations/<%=@station.id%>/delete" method="post">
   <p>Delete</p>
   <input type="hidden" name="_method" value="DELETE">
   <input type='Delete'>
 </form>
+
+<a href="/stations">Back to Index</a>

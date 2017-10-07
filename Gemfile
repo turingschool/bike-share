@@ -15,5 +15,6 @@ group :development, :test do
   gem 'launchy'
   gem 'smarter_csv'
   gem 'rack-test'
+  gem 'sass'
   gem 'database_cleaner'
 end

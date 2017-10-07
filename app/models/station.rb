@@ -10,6 +10,10 @@ class Station < ActiveRecord::Base
                         :long
 
 
+  def self.names
+    all.map(&:name).join(', ')
+  end
+
   def self.with_most_bikes
     where dock_count: maximum(:dock_count)
   end
@@ -24,6 +28,18 @@ class Station < ActiveRecord::Base
 
   def self.oldest
     where installation_date: minimum(:installation_date)
+  end
+
+  def self.average_dock_count
+    average(:dock_count)
+  end
+
+  def self.maximum_dock_count
+    maximum(:dock_count)
+  end
+
+  def self.minimum_dock_count
+    minimum(:dock_count)
   end
 
 end

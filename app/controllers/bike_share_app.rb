@@ -1,6 +1,9 @@
 require_relative '../models/station.rb'
+require 'will_paginate/view_helpers/sinatra'
+require 'will_paginate/active_record'
 
 class BikeShareApp < Sinatra::Base
+	include WillPaginate::Sinatra::Helpers
   set :root, File.expand_path("..", __dir__)
 
   get '/' do
@@ -48,7 +51,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do 
-    @trips = Trip.all
+    @trips = Trip.paginate(page: params[:page], per_page: 30)
     erb :'trip-dashboard'
   end
 

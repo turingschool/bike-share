@@ -1,3 +1,6 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 class Trip <ActiveRecord::Base
 #validates_presence_of :duration,
  #                     :start_date,
@@ -6,4 +9,5 @@ class Trip <ActiveRecord::Base
     #                  :end_station,
      #                 :bike_id,
       #                :subscription_type
+	self.per_page = 30
 end 

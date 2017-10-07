@@ -63,6 +63,25 @@ class Trip < ActiveRecord::Base
     end
   end
 
+  def self.busiest_day
+    day_data = days_and_trips
+    day_data.max_by do |day_and_count|
+      day_and_count.values.first
+    end.keys.first
+  end
+
+  def self.slowest_day
+    day_data = days_and_trips
+    day_data.min_by do |day_and_count|
+      day_and_count.values.first
+    end.keys.first
+  end
+
+  def self.days_and_trips
+#TODO the check that trips dates are saved as YYYY-MM-DD
+    group(:start_date).count
+  end
+
 #TODO not active record!!! =[
   # def self.most_departed_station
   #   stations = all_start_stations

@@ -8,6 +8,7 @@ class Station < ActiveRecord::Base
               presence: true
 
   belongs_to :city
+  belongs_to :trip
 
   def self.station_count
     count

@@ -20,7 +20,27 @@ RSpec.context 'Bike Share Controller' do
     it "displays dashboard content" do
       get '/station-dashboard'
 
-      expect(last_response.body).to include("chillest")
+      expect(last_response.body).to include("Average bikes/station:")
+      expect(last_response.body).to include("Max bikes/station:")
     end
   end
+
+  describe "GET '/stations" do
+    it "loads all stations" do
+      get '/stations'
+
+      expect(last_response).to be_ok
+      expect(last_response.status).to eq 200
+    end
+
+    it "displays stations" do
+      get '/stations'
+
+      expect(last_response.status).to eq 200
+      expect(last_response.body).to include("San Francisco")
+      expect(last_response.body).to include("burritos")
+      expect(last_response.body).to include("whatever")
+    end
+  end
+
 end

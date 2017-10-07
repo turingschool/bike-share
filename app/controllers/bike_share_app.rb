@@ -1,4 +1,8 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 class BikeShareApp < Sinatra::Base
+  configure { register WillPaginate::Sinatra }
   set :method_override, true
 
   get '/stations/dashboard' do
@@ -50,7 +54,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trips = Trip.all
+    @trips = Trip.paginate(page: params[:page], per_page: 30)
     erb :'/trips/index'
   end
 

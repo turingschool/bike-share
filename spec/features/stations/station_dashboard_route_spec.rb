@@ -1,7 +1,7 @@
 require './spec/spec_helper'
 
 
-feature 'Station Dashboard' do
+feature 'When a user visits the Station Dashboard' do
   background do
     Station.create! name: 'boring!!!',        dock_count: 55,  installation_date: '5/5/5555', city: 'a', lat: 55.55, long: 55.55
     Station.create! name: 'boring!!!',        dock_count: 55,  installation_date: '5/5/5555', city: 'a', lat: 55.55, long: 55.55
@@ -19,8 +19,8 @@ feature 'Station Dashboard' do
     Station.create! name: 'new_A',            dock_count: 55,  installation_date: '5/5/5558', city: 'a', lat: 55.55, long: 55.55
     Station.create! name: 'new_B',            dock_count: 55,  installation_date: '5/5/5558', city: 'a', lat: 55.55, long: 55.55
 
-    Station.create! name: 'boring!!!',        dock_count: 55, installation_date: '5/5/5555', lcity: 'a', at: 55.55, long: 55.55
-    Station.create! name: 'boring!!!',        dock_count: 55, installation_date: '5/5/5555', lcity: 'a', at: 55.55, long: 55.55
+    Station.create! name: 'boring!!!',        dock_count: 55, installation_date: '5/5/5555', city: 'a', lat: 55.55, long: 55.55
+    Station.create! name: 'boring!!!',        dock_count: 55, installation_date: '5/5/5555', city: 'a', lat: 55.55, long: 55.55
 
     visit '/station-dashboard'
   end
@@ -29,43 +29,43 @@ feature 'Station Dashboard' do
     expect(page.status_code).to eq(200)
   end
 
-  it 'displays total docks' do
+  it 'they see the number of total docks' do
     expect(page).to have_content(/total docks/i)
     expect(page).to have_content('3')
   end
 
-  it 'displays average dock count' do
+  it 'they see the average dock count' do
     expect(page).to have_content(/average docks/i)
     expect(page).to have_content( '216' )
   end
 
-  it 'displays stations with fewest docks' do
+  it 'they see the stations with fewest docks' do
     expect(page).to have_content(/fewest docks/i)
     expect(page).to have_content('fewest_docks_A')
     expect(page).to have_content('fewest_docks_B')
     expect(page).to have_content('1')
   end
 
-  it 'displays stations with most docks' do
+  it 'they see the stations with most docks' do
     expect(page).to have_content(/most docks/i)
     expect(page).to have_content('most_docks_A')
     expect(page).to have_content('most_docks_B')
     expect(page).to have_content('999')
   end
 
-  it 'displays oldest station(s)' do
+  it 'they see the oldest station(s)' do
     expect(page).to have_content(/oldest/i)
     expect(page).to have_content('old_A')
     expect(page).to have_content('old_B')
   end
 
-  it 'displays newest station(s)' do
+  it 'they see the newest station(s)' do
     expect(page).to have_content(/newest/i)
     expect(page).to have_content('new_A')
     expect(page).to have_content('new_B')
   end
 
-  it 'doesn\'t display boring stations' do
+  it 'they see or don\'t see boring stations' do
     expect(page).not_to have_content('boring!!!')
   end
 

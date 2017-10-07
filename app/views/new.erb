@@ -1,5 +1,7 @@
 <div class="new_view">
   <div class="new_form">
+    <h1 id="new_h1">New Station </h1>
+    <br>
     <form action="/stations" method="post">
       <input type="text" name="station[name]" placeholder="name"/>
       <br>
@@ -16,6 +18,7 @@
         </option>
         <% end %>
       </select>
+      <br>
       <br>
       <input type="date" name="station[installation_date]" placeholder="installation date"/>
       <br>

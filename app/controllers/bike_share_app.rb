@@ -57,7 +57,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trips = Trip.all
+    @trips = Trip.paginate(page: params[:page], per_page: 30)
     erb :'trip/index'
   end
 
@@ -85,7 +85,7 @@ class BikeShareApp < Sinatra::Base
     redirect "/trips/#{id}"
   end
 
-  delete '/trips/:id/delete' do |id|
+  delete '/trips/:id' do |id|
     Trip.destroy(id.to_i)
     redirect '/trips'
   end

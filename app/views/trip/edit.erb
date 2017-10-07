@@ -1,10 +1,8 @@
+<h2>Edit Trip</h2>
 
 <form action = "/trip/<%= @trip.name %>" method="post">
-
-  <p>Edit Trip</p>
-
+  
   <input type="hidden" name="_method" value="PUT" />
-
   <label>Duration:
     <input type="text" name="trip[duration]"            value="<%= @trip.duration %>"/><br/>
   </label>

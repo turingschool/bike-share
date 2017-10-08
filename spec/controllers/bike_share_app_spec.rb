@@ -7,7 +7,7 @@ describe BikeShareApp do
       within("h1") do
         expect(page).to have_content("Welcome to BikeShare!")
       end
-      has_link?("All Stations")
+      expect(has_link?("All Stations")).to eq(true)
     end
   end
 
@@ -35,9 +35,8 @@ describe BikeShareApp do
 # => change html?
 # => change test?
 # => use first("form")???
-      within(first("form")) do
-        has_button?("/stations/#{Station.first.id}/edit")
-      end
+      # require 'pry'; binding.pry
+      expect(has_button?("edit")).to be(true)
     end
   end
 

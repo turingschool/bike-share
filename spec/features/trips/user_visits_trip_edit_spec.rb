@@ -36,7 +36,7 @@ feature 'When a user visits trip edit page' do
     it 'they see a start station field' do
       skip
       expect(page).to have_content(/start station/i)
-      expect(page).to have_field('trip[start_station]')
+      expect(page).to have_field('trip[start_station_id]')
     end
 
     it 'they see an end date field' do
@@ -47,7 +47,7 @@ feature 'When a user visits trip edit page' do
     it 'they see an end station field' do
       skip
       expect(page).to have_content(/end station/i)
-      expect(page).to have_field('trip[end_station]')
+      expect(page).to have_field('trip[end_station_id]')
     end
 
     it 'they see a bike id field' do
@@ -70,15 +70,15 @@ feature 'When a user visits trip edit page' do
       background do
         fill_in "trip[duration]" with: 10
         fill_in "trip[start_date]" with: "01/01/2001"
-        fill_in "trip[start_station]" with: "42"
+        fill_in "trip[start_station_id]" with: "42"
         fill_in "trip[end_date]" with: "02/01/2001"
-        fill_in "trip[end_station]" with: "43"
+        fill_in "trip[end_station_id]" with: "43"
         fill_in "trip[bike_id]" with: 1001
         fill_in "trip[subscription_type]" with: "Subscriber"
         fill_in "trip[zip_code]" with: 80303
         click_button 'Submit'
       end
-
+      
       it 'then the user is redirected to show page with success message'
         has_current_path?("/trips/#{trip.id}", only_path: true)
         expect(page).to have_content(/saved/i)
@@ -89,28 +89,37 @@ feature 'When a user visits trip edit page' do
       background do
         fill_in "trip[duration]" with: "long"
         fill_in "trip[start_date]" with: "01/01/2001"
-        fill_in "trip[start_station]" with: "42"
+        fill_in "trip[start_station_id]" with: "42"
         fill_in "trip[end_date]" with: "02/01/2001"
-        fill_in "trip[end_station]" with: "43"
+        fill_in "trip[end_station_id]" with: "43"
         fill_in "trip[bike_id]" with: 1001
         fill_in "trip[subscription_type]" with: "Subscriber"
         fill_in "trip[zip_code]" with: 80303
-        click_button 'Submit'
+        click_button 'submit'
       end
 
       it 'then the user is redirected to edit page with error flag on invalid data field'
-        has_current_path?("/trips/1/edit", only_path: true )
+        has_current_path?("/trips/1/edit", only_path: true)
         expect(page).to have_content(/error/i)
       end
     end
   end
-  context 'for a trip that does not exist'
-    visit '/trips/1/edit'
 
+  context 'for a trip that does not exist'
     it 'then the user is redirected to 404 error message'
-      has_current_path?("/trips/1/edit", only_path: true)
-      expect(page).to have_content(/error 404/i)
+      visit '/trips/1/edit'
+      expect(page).to have_content(/not found/i)
     end
   end
 
+  context 'when user clicks on delete button'
+    background do
+      click_button 'delete'
+    end
+
+    it 'then user is redirected to index page'
+      has_current_path?("/trips", only_path: true)
+      expect(page).to have_content(/delete successful/i)
+    end
+  end
 end

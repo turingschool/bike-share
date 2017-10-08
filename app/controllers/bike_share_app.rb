@@ -52,16 +52,38 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips' do 
     @trips = Trip.paginate(page: params[:page], per_page: 30)
-    erb :'trip-dashboard'
+    erb :'trip-index'
   end
 
-	get '/trips/:id' do
-		@trip = Trip.find(params[:id])
-    erb :'trip-show'
-	end 
   
   get '/trips/new' do 
 		erb :'trip-new'    
   end 
+  
+	post '/trips' do 
+		Trip.create(params[:trip])
+		redirect '/trips'
+	end 
+  
+  get '/trips/:id' do
+    @trip = Trip.find(params[:id])
+    erb :'trip-show'
+  end 
+	
  
+	get '/trips/:id/edit' do
+		@trip = Trip.find(params[:id])
+		erb :'trip-edit'
+  end 
+  
+  put '/trips/:id' do 
+    trip = Trip.find(params[:id])
+    trip.update(params[:trip])
+    redirect "/trips/#{params[:id]}"
+  end 
+
+  delete '/trips/:id' do 
+    Trip.destroy(params[:id])
+    redirect '/trips'
+  end 
 end

@@ -41,5 +41,5 @@ class Trip < ActiveRecord::Base
       end_station.name
     end
 
-    group count DESC first
+    # group count DESC first
 end

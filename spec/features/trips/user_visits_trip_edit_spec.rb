@@ -107,7 +107,7 @@ feature 'When a user visits trip edit page' do
   context 'for a trip that does not exist'
     it 'then the user is redirected to 404 error message'
       visit '/trips/1/edit'
-      expect(page).to have_content(/error 404/i)
+      expect(page).to have_content(/not found/i)
     end
   end
 

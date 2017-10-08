@@ -1,5 +1,9 @@
 <h1>All Conditions</h1>
 
+<form action="/conditions/new" method="GET">
+  <input type="hidden" name="_method" value="POST">
+  <input type="submit" value="post"/>
+</form>
 <% @conditions.each do |condition| %>
   <h3>Date: <a href="/conditions/<%= condition.id %>"><%= condition.date %></a></h3>
   <p>ID: <%= condition.id %></p>
@@ -18,8 +22,4 @@
     <input type="submit" value="delete"/>
   </form>
 <% end %>
-<form action="/conditions/new" method="GET">
-  <input type="hidden" name="_method" value="POST">
-  <input type="submit" value="post"/>
-</form>
 <%= will_paginate(@conditions)%>

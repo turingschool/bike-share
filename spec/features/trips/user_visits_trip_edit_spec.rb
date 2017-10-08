@@ -109,6 +109,7 @@ feature 'When a user visits trip edit page' do
 
     it 'then the user is redirected to 404 error message'
       has_current_path?("/trips/1/edit", only_path: true)
+      expect(page).to have_content(/error 404/i)
     end
 
 end

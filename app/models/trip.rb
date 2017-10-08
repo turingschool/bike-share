@@ -11,6 +11,7 @@ class Trip < ActiveRecord::Base
                           :subscription_type,
                           :zip_code
 
+
   def self.average_ride_length
     where duration: (average :duration)
   end
@@ -24,12 +25,45 @@ class Trip < ActiveRecord::Base
   end
 
   def self.starting_station_with_most_rides #THIS WORKS!!!
-    var = group(:start_station_id).order(start_station_id: :desc).count(:id).first[0]
-    Station.find(var).name
+    get_id = group(:start_station_id).order(start_station_id: :desc).count(:id).first[0]
+    Station.find(get_id).name
+  end
+
+  def self.starting_station_with_most_rides
+    get_id = group(:end_station_id).order(end_station_id: :desc).count(:id).first[0]
+    Station.find(get_id).name
   end
 
 
+  def to_s
+    "Trip ##{id} #{route}"
+  end
 
+  def route
+    return "near #{start_station_name}" if round_trip?
+    "from #{start_station_name} to #{end_station_name}"
+  end
+
+  def timeframe
+    return "on #{start_date}" if same_day?
+    "from #{start_date} to #{end_date}"
+  end
+
+  def round_trip?
+    start_station_id == end_station_id
+  end
+
+  def same_day?
+    start_date == end_date
+  end
+
+  def start_station_name
+    start_station.name
+  end
+
+  def end_station_name
+    end_station.name
+  end
 
 end
 
@@ -51,12 +85,22 @@ returns an array based on id descending. Not sure what's up with the duration.
 Station.find(group(:starting_station_id).order(:id).count(:id)).name
 
 
-Station with the most rides as an ending place.
 Month by Month breakdown of number of rides with subtotals for each year.
 Most ridden bike with total number of rides for that bike.
 Least ridden bike with total number of rides for that bike.
 User subscription type breakout with both count and percentage.
 Single date with the highest number of trips with a count of those trips.
 Single date with the lowest number of trips with a count of those trips.
+yearly_rides_per_month
+rides_per_year
+top_biker
+rides_per_bike
+bottom_biker
+subscription_count
+subscription_percentage
+date_with_highest_trips
+date_with_lowest_trips
+
+
 
 =end

@@ -1,8 +1,18 @@
-h1 {
-  font-size: 5em;
-  background-color: orange;
+body {
+  font-family: Papyrus; /* 😉 */
 }
 
-p {
-  background-color: orange;
+.trip {
+  text-decoration: none;
+  border: 1px solid black;
+  padding: 10px;
+  background-color: skyblue;
+}
+
+.trip p {
+  text-decoration: none;
+}
+
+.trip:hover {
+  background-color: hotpink;
 }

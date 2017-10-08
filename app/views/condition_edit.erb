@@ -2,7 +2,7 @@
   <h1>Edit</h1>
   <input type="hidden" name="_method" value="PUT" />
 
-  <p>Date: <input type='text' name='condition[date]' value="<%= @condition.date %>"/></p>
+  <p>Date: <input type='date' name='condition[date]' value="<%= @condition.date %>"/></p>
   <p>Max Temperature: <input type='float' name='condition[max_temperature_f]' value="<%= @condition.max_temperature_f %>"/></p>
   <p>Min Temperature: <input type='float' name='condition[min_temperature_f]' value="<%= @condition.min_temperature_f %>"/></p>
   <p>Mean Temperature: <input type='float' name='condition[mean_temperature_f]' value="<%= @condition.mean_temperature_f %>"/></p>

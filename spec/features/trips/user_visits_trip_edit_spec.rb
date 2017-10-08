@@ -78,7 +78,7 @@ feature 'When a user visits trip edit page' do
         fill_in "trip[zip_code]" with: 80303
         click_button 'Submit'
       end
-
+      
       it 'then the user is redirected to show page with success message'
         has_current_path?("/trips/#{trip.id}", only_path: true)
         expect(page).to have_content(/saved/i)
@@ -104,6 +104,7 @@ feature 'When a user visits trip edit page' do
       end
     end
   end
+
   context 'for a trip that does not exist'
     it 'then the user is redirected to 404 error message'
       visit '/trips/1/edit'
@@ -115,10 +116,10 @@ feature 'When a user visits trip edit page' do
     background do
       click_button 'delete'
     end
-      it 'then user is redirected to index page'
-        has_current_path?("/trips", only_path: true)
-        expect(page).to have_content(/delete successful/i)
-      end
-  end
 
+    it 'then user is redirected to index page'
+      has_current_path?("/trips", only_path: true)
+      expect(page).to have_content(/delete successful/i)
+    end
+  end
 end

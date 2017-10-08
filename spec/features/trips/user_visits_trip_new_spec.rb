@@ -54,8 +54,8 @@ feature 'When a user visits trip new page' do
 
     context 'when user inputs valid data' do
       background do
-        fill_in "trip[start_station]" with: "42"
-        fill_in "trip[end_station]" with: "43"
+        fill_in "trip[start_station_id]" with: "42"
+        fill_in "trip[end_station_id]" with: "43"
         fill_in "trip[duration]" with: 10
         fill_in "trip[start_date]" with: "01/01/2001"
         fill_in "trip[end_date]" with: "02/01/2001"
@@ -73,8 +73,8 @@ feature 'When a user visits trip new page' do
 
     context 'when user inputs invalid data' do
       background do
-        fill_in "trip[start_station]" with: "42"
-        fill_in "trip[end_station]" with: "43"
+        fill_in "trip[start_station_id]" with: "42"
+        fill_in "trip[end_station_id]" with: "43"
         fill_in "trip[duration]" with: "long"
         fill_in "trip[start_date]" with: "01/01/2001"
         fill_in "trip[end_date]" with: "02/01/2001"

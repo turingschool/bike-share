@@ -11,8 +11,16 @@ class Trip < ActiveRecord::Base
                           :subscription_type,
                           :zip_code
 
+    # self.starting_station_with_most_rides
+    #     start = (where start_station_id: maximum :start_station_id)
+    #     start.stations.name
+    # end
+
+    Trip.find_by_sql("SELECT COUNT(stations.id) FROM trips INNER JOIN trips.start_station_id ON stations.id") 
 
 
+    Research SQL/AR query commands
+    
 
-
+    group count DESC first
 end

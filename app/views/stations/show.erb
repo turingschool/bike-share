@@ -1,0 +1,13 @@
+<a href="/stations">Stations Index</a>
+
+<h3><%= @station.name %></h3>
+<p><%= @station.dock_count %></p>
+<p><%= @station.city.name %></p>
+<p><%= @station.installation_date %></p>
+<p><%= Trip.rides_started(@station.id) %></p>
+<p><%= Trip.rides_ended(@station.id) %></p>
+<p><%= Trip.frequent_destination(@station.id) %></p>
+<p><%= Trip.origin_destination(@station.id) %></p>
+<p><%= Trip.busiest_date(@station.id) %></p>
+<p><%= Trip.frequent_zipcode(@station.id) %></p>
+<p><%= Trip.frequent_bike(@station.id) %></p>

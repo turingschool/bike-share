@@ -1,46 +1,52 @@
 <h2>Edit Trip</h2>
 
-<form action = "/trip/<%= @trip.id %>" method="post">
+<form action = "/trips/<%= @trip.id %>" method="post">
 
   <input type="hidden" name="_method" value="PUT" />
-  <label>Duration:
-    <input type="number" name="trip[duration]"          value="<%= @trip.duration %>"/><br/>
-  </label>
-  <label>Start Date
-    <input type="date" name="trip[start_date]"          value="<%= @trip.start_date %>"/><br/>
-  </label>
+
   <label>Start Station:
-    <select name="trip[start_station]">
+    <select name="trip[start_station_id]">
       <% @stations.each do |station| %>
-        <option value="<%=station.id%>" label="<%=station.name%>" <%= "selected" if @trip.start_station_id == station.id %> >
+        <option value="<%=station.id%>" label="<%=station.name%>" <%= "selected" if @trip.start_station_id == station.id %> />
       <% end %>
     </select>
   </label><br/>
-  <label>End Date:
-    <input type="date" name="trip[end_date]"            value="<%= @trip.end_date %>"/><br/>
-  </label>
+
   <label>End Station
-    <select name="trip[end_station]">
+    <select name="trip[end_station_id]">
       <% @stations.each do |station| %>
-        <option value="<%=station.id%>" label="<%=station.name%>" <%= "selected" if @trip.end_station_id == station.id %> >
+        <option value="<%=station.id%>" label="<%=station.name%>" <%= "selected" if @trip.end_station_id == station.id %> />
       <% end %>
     </select><br/>
   </label>
+
+  <label>Duration:
+    <input type="number" name="trip[duration]"          value="<%= @trip.duration %>"/><br/>
+  </label>
+
+  <label>Start Date
+    <input type="date" name="trip[start_date]"          value="<%= @trip.start_date %>"/><br/>
+  </label>
+
+  <label>End Date:
+    <input type="date" name="trip[end_date]"            value="<%= @trip.end_date %>"/><br/>
+  </label>
+
   <label>Bike:
     <input disabled type="text" name="trip[bike_id]"             value="<%= @trip.bike_id %>"/><br/>
   </label>
+
   <label>Subscription Type
     <input disabled type="text" name="trip[subscription_type]"   value="<%= @trip.subscription_type %>"/><br/>
   </label>
+
   <label>Zip Code
     <input  type="text" name="trip[zip_code]"            value="<%= @trip.zip_code %>"/><br/>
   </label>
 
-  <input type="submit" name='submit'/>
-</form>
-
-<form action="/trips/<%=@trip.id%>" method="post">
-  <p>Delete</p>
-  <input type="hidden" name="_method" value="DELETE">
-  <input type='Delete'>
+  <input type="submit"/>
+  <form action="/trips/<%=@trip.id%>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type='submit' name="delete" value="Delete" formaction="/trips/<%=@trip.id%>">
+  </form>
 </form>

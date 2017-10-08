@@ -38,7 +38,7 @@ feature 'when user visits trip show page' do
         expect(page).to have_content("2001-01-01")
     end
 
-    it 'they see the start station' do #has this been updated in the page so that the station name from the Station table is returned instead of the station number from the trip table
+    it 'they see the start station' do #has this been updated in the page so that the station name from the Station table is returned instead of the station number from the trip table?
         expect(page).to have_content(/start station/i)
         expect(page).to have_content("pile of bikes")
     end

@@ -3,7 +3,7 @@ require 'will_paginate/view_helpers/sinatra'
 require 'will_paginate/active_record'
 
 class BikeShareApp < Sinatra::Base
-  include WillPaginate::Sinatra::Helpers
+	include WillPaginate::Sinatra::Helpers
   set :root, File.expand_path("..", __dir__)
 
   get '/' do
@@ -12,11 +12,11 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations' do
     @stations = Station.all
-    erb :index
+    erb :'station_index'
   end
 
   get '/stations/new' do
-    erb :new
+    erb :'station_new'
   end
 
   post '/stations' do
@@ -26,12 +26,12 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations/:id' do
     @station = Station.find(params[:id])
-    erb :show
+    erb :'station_show'
   end
 
   get '/stations/:id/edit' do
     @station = Station.find(params[:id])
-    erb :edit
+    erb :'station_edit'
   end
 
   put '/stations/:id' do
@@ -82,7 +82,44 @@ class BikeShareApp < Sinatra::Base
 
   get '/station-dashboard' do
     @stations = Station.all
-    erb :'station-dashboard'
+    erb :'station_dashboard'
   end
 
+  get '/trips' do
+    @trips = Trip.paginate(page: params[:page], per_page: 30)
+    erb :'trip_index'
+  end
+
+
+  get '/trips/new' do
+
+    erb :'trip_new'
+  end
+
+	post '/trips' do
+		Trip.create(params[:trip])
+		redirect '/trips'
+	end
+
+  get '/trips/:id' do
+    @trip = Trip.find(params[:id])
+    erb :'trip_show'
+  end
+
+
+	get '/trips/:id/edit' do
+		@trip = Trip.find(params[:id])
+		erb :'trip_edit'
+  end
+
+  put '/trips/:id' do
+    trip = Trip.find(params[:id])
+    trip.update(params[:trip])
+    redirect "/trips/#{params[:id]}"
+  end
+
+  delete '/trips/:id' do
+    Trip.destroy(params[:id])
+    redirect '/trips'
+  end
 end

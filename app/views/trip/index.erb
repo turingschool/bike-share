@@ -2,13 +2,9 @@
 <div>
     <% @trips.each do |trip| %>
       <a href="/trips/<%=trip.id%>">
-        <div class="trip">
-          <h3> <%= trip.start_station.name %> to <%= trip.end_station.name %></h3>
-          <p> Duration: <%= trip.duration%> minutes</p>
-          <p> Start Date: <%= trip.start_date%></p>
-          <p> End Date: <%= trip.end_date%></p>
-          <p> Subscription Type: <%= trip.subscription_type%></p>
-          <p> Zip Code: <%= trip.zip_code%></p>
+        <div class="summary">
+          <h3><%= trip %></h3>
+          <p><%= trip.duration%> minutes <%= trip.timeframe %></p>
         </div>
       </a>
     <% end %>

@@ -1,6 +1,6 @@
 require './spec/spec_helper'
 
-feature 'edit trips index page' do
+feature 'when user visits the trips index page' do
   background do
     Trip.create!  duration: 10,
                   start_date: "01/01/2001",
@@ -13,54 +13,54 @@ feature 'edit trips index page' do
     visit '/trips'
   end
 
-  it 'has status code 200' do
+  it 'they experience status code 200' do
     expect(page.status_code).to eq(200)
   end
 
-  it 'displays duration' do
+  it 'they see the duration' do
     expect(page).to have_content(/duration/i)
     expect(page).to have_content("10")
   end
 
-  it 'displays start date' do
+  it 'they see the start date' do
     expect(page).to have_content(/start date/i)
     expect(page).to have_content("2001-01-02")
   end
 
-  it 'displays start station' do
+  it 'they see the start station' do
     skip
     expect(page).to have_content(/start station/i)
     expect(page).to have_content("42")
   end
 
-  it 'displays end date' do
+  it 'they see the end date' do
     expect(page).to have_content(/end date/i)
     expect(page).to have_content("2001-01-01")
   end
 
-  it 'displays end station' do
+  it 'they see the end station' do
     skip
     expect(page).to have_content(/end station/i)
     expect(page).to have_content("43")
   end
 
-  it 'displays bike id' do
+  it 'they see the bike id' do
     expect(page).to have_content(/bike id/i)
     expect(page).to have_content("1001")
   end
 
-  it 'displays subscription' do
+  it 'they see the subscription' do
     expect(page).to have_content(/subscription/i)
     expect(page).to have_content("Subscriber")
   end
 
-  it 'displays zip code' do
+  it 'they see the zip code' do
     expect(page).to have_content(/zip code/i)
     expect(page).to have_content("80303")
   end
 
 
-  # it 'displays multiple items' do
+  # it 'they see the multiple items' do
   #   stations = all '#trips *'
   #   expect(trip.count).to eq 2
   # end

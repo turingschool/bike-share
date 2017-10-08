@@ -39,13 +39,9 @@ class Seed
     end
   end
 
-end
-
-
-Seed.condition
   def self.trip
-  	options = {headers: true, header_converters: :symbol, converters: :numeric}
-		CSV.foreach('./db/csv/trip.csv', options) do |row|
+    options = {headers: true, header_converters: :symbol, converters: :numeric}
+    CSV.foreach('./db/csv/trip.csv', options) do |row|
       row = row.to_h
       row[:start_date] = row[:start_date].split(" ").first
       row[:start_date] = Date.strptime(row[:start_date], "%m/%d/%Y")
@@ -55,10 +51,11 @@ Seed.condition
       row.delete(:start_station_id)
       row.delete(:end_station_id)
       row.delete(:zip_code) if row[:zip_code].to_s.length > 5
-			Trip.create!(row.to_h)
-	  end
-	end
+      Trip.create!(row.to_h)
+    end
+  end
 end
+
 
 Seed.station
 Seed.trip

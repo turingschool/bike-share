@@ -95,22 +95,30 @@ feature 'When a user visits trip edit page' do
         fill_in "trip[bike_id]" with: 1001
         fill_in "trip[subscription_type]" with: "Subscriber"
         fill_in "trip[zip_code]" with: 80303
-        click_button 'Submit'
+        click_button 'submit'
       end
 
       it 'then the user is redirected to edit page with error flag on invalid data field'
-        has_current_path?("/trips/1/edit", only_path: true )
+        has_current_path?("/trips/1/edit", only_path: true)
         expect(page).to have_content(/error/i)
       end
     end
   end
   context 'for a trip that does not exist'
-    visit '/trips/1/edit'
-
     it 'then the user is redirected to 404 error message'
-      has_current_path?("/trips/1/edit", only_path: true)
+      visit '/trips/1/edit'
       expect(page).to have_content(/error 404/i)
     end
+  end
+
+  context 'when user clicks on delete button'
+    background do
+      click_button 'delete'
+    end
+      it 'then user is redirected to index page'
+        has_current_path?("/trips", only_path: true)
+        expect(page).to have_content(/delete successful/i)
+      end
   end
 
 end

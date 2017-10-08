@@ -11,8 +11,34 @@ class Trip < ActiveRecord::Base
                           :subscription_type,
                           :zip_code
 
+    def to_s
+      "Trip ##{id} #{route}"
+    end
 
+    def route
+      return "near #{start_station_name}" if round_trip?
+      "from #{start_station_name} to #{end_station_name}"
+    end
 
+    def timeframe
+      return "on #{start_date}" if same_day?
+      "from #{start_date} to #{end_date}"
+    end
 
+    def round_trip?
+      start_station_id == end_station_id
+    end
+
+    def same_day?
+      start_date == end_date
+    end
+
+    def start_station_name
+      start_station.name
+    end
+
+    def end_station_name
+      end_station.name
+    end
 
 end

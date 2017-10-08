@@ -91,11 +91,11 @@ feature 'edit station page' do
     end
   end
 
-  context 'when user click on delete button'
+  context 'when user clicks on delete button'
     background do
       click_button 'delete'
     end
-    
+
     it 'then user is redirected to index page'
       has_current_path?("/stations", only_path: true)
       expect(page).to have_content(/delete successful/i)

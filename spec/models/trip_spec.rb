@@ -1,5 +1,36 @@
 RSpec.context Trip do
   describe 'Class Methods' do
+    before do
+      Trip.create(duration: 20,
+                  start_date: "11-3-2014 14:44",
+                  start_station_id: 222,
+                  end_station_id: 2233,
+                  end_date: "10-2-2015 14:55",
+                  bike_id: 12,
+                  subscription_type: "Subscriber",
+                  zip_code: 1029)
+      Trip.create(duration: 35,
+                  start_date: "11-3-2014 10:10",
+                  start_station_id: 2,
+                  end_station_id: 4,
+                  end_date: "11-3-2014 14:55",
+                  bike_id: 2,
+                  subscription_type: "Customer",
+                  zip_code: 33156)
+    end
+
+    describe '.average_duration' do
+      it 'returns average trip duration' do
+        expect(Trip.average_duration).to eql(27.5)
+      end
+    end
+
+    describe '.longest_ride' do
+      it 'returns the longest ride' do
+        expect(Trip.longest_ride).to eql(35)
+      end
+
+    end
   end
 
   describe "Validates" do

@@ -1,5 +1,7 @@
+
 <div class='edit-container'>
   <form action="/trips/<%= @trip.id %>" method="post">
+    <h1>EDIT THIS TRIP</h1>
     <input type="hidden"  name ="_method"                 value ="PUT" />
     <input type="integer" name ="trip[duration]"          value ="<%= @trip.duration %>" />
     <input type="text"    name ="trip[start_date]"        value ="<%= @trip.start_date %>" />

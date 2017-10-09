@@ -5,7 +5,7 @@
 <p>City: <%= @station.city %></p>
 <p>Installation Date: <%= @station.installation_date %></p>
 <p>Latitude: <%= @station.lat %>
-<p>Longetude: <%= @station.long %>
+<p>Longitude: <%= @station.long %>
 
 <form action="/stations/<%=@station.id%>" method="post">
   <input type="hidden" name="_method" value="DELETE">

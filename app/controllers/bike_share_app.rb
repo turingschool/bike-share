@@ -40,7 +40,7 @@ class BikeShareApp < Sinatra::Base
 
   post '/stations' do
     id = Station.create(params[:station]).id
-    redirect "stations/#{id}"
+    redirect "/stations/#{id}"
   end
 
   put '/stations/:id' do |id|

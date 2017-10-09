@@ -1,6 +1,7 @@
 require_relative "./../app/models/city"
 require_relative "./../app/models/station"
 require_relative "./../app/models/trip"
+require_relative "./../app/models/condition"
 require 'csv'
 require 'smarter_csv'
 
@@ -36,4 +37,15 @@ SmarterCSV.process('db/csv/trip.csv').each do |row|
               bike_id:           row[:bike_id],
               subscription_type: row[:subscription_type],
               zip_code:          row[:zip_code])
+end
+
+CSV.foreach('./db/csv/weather.csv', headers: true, header_converters: :symbol) do |row|
+
+  Condition.create(date:               row[:date],
+                   max_temperature:    row[:max_temperature_f],                 mean_temperature:   row[:mean_temperature_f],
+                   min_temperature:    row[:min_temperature_f],
+                   mean_humidity:      row[:mean_humidity],
+                   mean_visibility:    row[:mean_visibility_miles],
+                   mean_wind_speed:    row[:mean_wind_speed_mph],
+                   precipitation:      row[:precipitation_inches])
 end

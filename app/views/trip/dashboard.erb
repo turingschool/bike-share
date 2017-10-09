@@ -1,1 +1,14 @@
-<p><%= @trips.starting_station_with_most_rides%></p>
+<p>Starting Station with most rides <%= @trips.starting_station_with_most_rides%></p>
+<p>Top Rider: <%= @trips.top_rider%> No. of Rides: <%= @trips.rides_per_top_rider%></p>
+<p>Bottom Rider: <%= @trips.bottom_rider%> No. of Rides: <%= @trips.rides_per_bottom_rider%></p>
+
+<p>Subscription Type: <%= @trips.subscription_count%>
+  <p>Number: <%= @trips.subscription_percentage.each do |type|%></p>
+
+
+if I wanted to get the values like this...
+
+
+  group('subscription_type').count["Customer"] / group('subscription_type').count
+  group('subscription_type').count["Subscription"] / group('subscription_type').count
+  group('subscription_type').count["Monthly"] / group('subscription_type').count

@@ -13,15 +13,15 @@ class Trip < ActiveRecord::Base
 
 
   def self.average_ride_length
-    where duration: (average :duration)
+    average :duration
   end
 
   def self.trip_of_longest_length
-    where duration: (maximum :duration)
+    maximum :duration
   end
 
   def self.trip_of_longest_length
-    where duration: (minimum :duration)
+    minimum :duration
   end
 
   def self.starting_station_with_most_rides #THIS WORKS!!!
@@ -65,6 +65,34 @@ class Trip < ActiveRecord::Base
     end_station.name
   end
 
+  def self.top_rider
+    group('bike_id').order('bike_id DESC').count.first[0]
+  end
+
+  def self.rides_per_top_rider
+    group('bike_id').order("bike_id DESC").count.first[1]
+  end
+
+  def self.bottom_rider
+    group('bike_id').order('bike_id ASC').count.first[0]
+  end
+
+  def self.rides_per_bottom_rider
+    group('bike_id').order("bike_id ASC").count.first[1]
+  end
+
+User subscription type breakout with both count and percentage.
+
+  def self.subscription_count
+    count('subscription_type')
+  end
+
+
+  def self.subscription_percentage
+    group('subscription_type').count #returns a collection of each subscription_type
+  end 
+
+
 end
 
 =begin
@@ -91,11 +119,7 @@ Least ridden bike with total number of rides for that bike.
 User subscription type breakout with both count and percentage.
 Single date with the highest number of trips with a count of those trips.
 Single date with the lowest number of trips with a count of those trips.
-yearly_rides_per_month
-rides_per_year
-top_biker
-rides_per_bike
-bottom_biker
+
 subscription_count
 subscription_percentage
 date_with_highest_trips

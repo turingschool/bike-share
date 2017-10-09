@@ -258,7 +258,7 @@ The project will be assessed with the following rubric:
 ### 3. User Experience and Conventions
 
 * 4: Project uses Sinatra methods and ERB templates to display both resources and non-resource related views with appropriate routes, and HTTP verbs. All functionality can be accessed in the application where expected based on the spec. User experience is exceptional ('client ready') and all pieces of the application can be accessed without entering addresses manually in the navbar.
-* 3: Project still uses appropriate routes and HTTP verbs. All pieces of the application can be accessed without entering addresses manually in the navbar. User experience is pleasant, but may need additional improvement before truly being ready to be deployed to production for a client. 
+* 3: Project still uses appropriate routes and HTTP verbs. All pieces of the application can be accessed without entering addresses manually in the navbar. User experience is pleasant, but may need additional improvement before truly being ready to be deployed to production for a client.
 * 2: Appication is difficult to navigate, and may not follow RESTful conventions. This project may have limited styling.
 * 1: Application does not follow conve
 
@@ -282,3 +282,9 @@ The project will be assessed with the following rubric:
 * 3: Good use of branches, pull requests, and a project-management tool.
 * 2: Sporadic use of branches, pull requests, and/or project-management tool.
 * 1: Little use of branches, pull requests, and/or a project-management tool.
+
+
+
+
+
+Simple complete example: SELECT count(*), record_date FROM anytable WHERE anytable.anycolumn = 'anycondition' GROUP BY YEAR(record_date), month(record_date); note: record_date is a date type TIMESTAMP

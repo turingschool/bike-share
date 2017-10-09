@@ -44,7 +44,7 @@
     <input  type="text" name="trip[zip_code]"            value="<%= @trip.zip_code %>"/><br/>
   </label>
 
-  <input type="submit"/>
+  <input type="submit" name="submit"/>
   <form action="/trips/<%=@trip.id%>" method="post">
     <input type="hidden" name="_method" value="DELETE">
     <input type='submit' name="delete" value="Delete" formaction="/trips/<%=@trip.id%>">

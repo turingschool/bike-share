@@ -4,12 +4,36 @@ RSpec.context Trip do
       ['SF', 'Santa Cruz', 'Ocean Beach'].each { |city| City.create(name: city) }
       sf, santa_cruz, ocean_beach = City.find(1), City.find(2), City.find(3)
 
-      sf.stations.create(         name: 'chillest',   dock_count: 20, installation_date: "2017-08-06", lat: 100, lng: 200)
-      sf.stations.create(         name: 'surf shack', dock_count: 10, installation_date: "2011-10-06", lat: 100, lng: 200)
-      santa_cruz.stations.create( name: 'burritos',   dock_count: 7,  installation_date: "2012-09-07", lat: 100, lng: 200)
-      santa_cruz.stations.create( name: 'whatever',   dock_count: 32, installation_date: "2015-08-06", lat: 100, lng: 200)
-      ocean_beach.stations.create(name: 'Noriega',    dock_count: 20, installation_date: "2017-02-02", lat: 100, lng: 250)
-      ocean_beach.stations.create(name: 'Moraga',     dock_count: 25, installation_date: "2015-03-02", lat: 150, lng: 250)
+      sf.stations.create(         name: 'chillest',
+                                  dock_count: 20,
+                                  installation_date: "2017-08-06",
+                                  lat: 100,
+                                  lng: 200)
+      sf.stations.create(         name: 'surf shack',
+                                  dock_count: 10,
+                                  installation_date: "2011-10-06",
+                                  lat: 100,
+                                  lng: 200)
+      santa_cruz.stations.create( name: 'burritos',
+                                  dock_count: 7,
+                                  installation_date: "2012-09-07",
+                                  lat: 100,
+                                  lng: 200)
+      santa_cruz.stations.create( name: 'whatever',
+                                  dock_count: 32,
+                                  installation_date: "2015-08-06",
+                                  lat: 100,
+                                  lng: 200)
+      ocean_beach.stations.create(name: 'Noriega',
+                                  dock_count: 20,
+                                  installation_date: "2017-02-02",
+                                  lat: 100,
+                                  lng: 250)
+      ocean_beach.stations.create(name: 'Moraga',
+                                  dock_count: 25,
+                                  installation_date: "2015-03-02",
+                                  lat: 150,
+                                  lng: 250)
 
       Trip.create(duration: 20,
                   start_date: "11-3-2014",

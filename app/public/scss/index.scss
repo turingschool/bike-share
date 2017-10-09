@@ -1,7 +1,9 @@
 // $ sass app/public/scss/index.scss app/public/stylesheets/index.css
 
+@import url("https://fonts.googleapis.com/css?family=Droid+Sans:400,700");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
-@import url("https://fonts.googleapis.com/css?family=Arvo:400,700");
+@import url("https://fonts.googleapis.com/css?family=Abril+Fatface");
+@import url("https://fonts.googleapis.com/css?family=Lobster");
 @import "variables";
 
 body {
@@ -11,6 +13,135 @@ body {
 header {
   text-align: center;
 }
+
+/*Bike Share Nav*/
+
+.header {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  height: 100vh;
+  min-width: 300px;
+  color: $black-pearl;
+}
+
+.header:after {
+  content: "";
+  width: 100%;
+  height: 40%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(27, 32, 48, 1) 100%);
+}
+
+.header:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0) scale(1, 1);
+  transform: translateZ(0);
+  background: #1B2030 url(https://images.unsplash.com/photo-1467087073423-7d287513b0cd) top center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  animation: grow 60s  linear 10ms infinite;
+  transition: all 0.2s ease-in-out;
+  z-index: -2;
+}
+
+.header a {
+  color: $black-pearl;
+}
+
+.logo {
+  border: 2px solid $black-pearl;
+  border-radius: 3px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 20px;
+  padding: 5px 10px;
+  font-weight: 600;
+  font-size: 1.2em;
+  box-sizing: border-box;
+}
+
+.logo:hover {
+  border: 2px solid $strong-opal;
+  color: $strong-opal;
+  cursor: pointer;
+}
+
+.sides, .info {
+  flex: 0 0 auto;
+  color: $black-pearl;
+  width: 50%;
+}
+
+.sides {
+  align-items:center;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  color: $black-pearl;
+  a {
+  color: $black-pearl;
+  }
+  .a-logo {
+    border: none;
+    font-family: lobster;
+    font-size: 2em;
+    text-decoration: none;
+  }
+  .a-logo:hover {
+    color: $strong-opal;
+    text-decoration: underline;
+  }
+}
+
+.info {
+  width: 100%;
+  padding: 15% 10% 0 10%;
+  text-align: center;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.bs-logo {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  h1 {
+    font-family: $lobster;
+    font-size: 6em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* Station Dashboard*/
+
 
 /* Station Index */
 
@@ -74,11 +205,13 @@ header {
   align-items: center;
   justify-content: center;
   min-height: 75vh;
+
   form {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+
     input,
     select {
       margin: 10px;
@@ -94,13 +227,16 @@ header {
       height: 54px;
       appearance: none;
     }
+
     select {
       text-align-last: center;
     }
+
     input:hover {
       border: 1px solid $black-pearl;
       color: $strong-opal;
     }
+
     h1 {
       font-size: 1.8em;
       color: $prussian-blue;
@@ -109,8 +245,6 @@ header {
     }
   }
 }
-
-
 
 /* Trip Index */
 

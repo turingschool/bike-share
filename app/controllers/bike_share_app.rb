@@ -90,7 +90,6 @@ class BikeShareApp < Sinatra::Base
     erb :'trip_index'
   end
 
-
   get '/trips/new' do
     erb :'trip_new'
   end
@@ -104,7 +103,6 @@ class BikeShareApp < Sinatra::Base
     @trip = Trip.find(params[:id])
     erb :'trip_show'
   end
-
 
 	get '/trips/:id/edit' do
 		@trip = Trip.find(params[:id])

@@ -157,19 +157,19 @@ header {
   align-items: center; }
 
 /* Station Edit */
-.station-edit-container {
+.edit-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 75vh; }
-  .station-edit-container form {
+  .edit-container form {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center; }
-    .station-edit-container form input,
-    .station-edit-container form select {
+    .edit-container form input,
+    .edit-container form select {
       margin: 10px;
       font-weight: 400;
       text-align: center;
@@ -182,12 +182,12 @@ header {
       border: 1px solid #2EC4B6;
       height: 54px;
       appearance: none; }
-    .station-edit-container form select {
+    .edit-container form select {
       text-align-last: center; }
-    .station-edit-container form input:hover {
+    .edit-container form input:hover {
       border: 1px solid #011627;
       color: #2EC4B6; }
-    .station-edit-container form h1 {
+    .edit-container form h1 {
       font-size: 1.8em;
       color: #004264;
       font-weight: 700;

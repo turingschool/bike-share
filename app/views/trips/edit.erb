@@ -1,4 +1,4 @@
-<div class='station-edit-container'>
+<div class='edit-container'>
   <form action="/trips/<%= @trip.id %>" method="post">
     <input type="hidden"  name ="_method"                 value ="PUT" />
     <input type="integer" name ="trip[duration]"          value ="<%= @trip.duration %>" />

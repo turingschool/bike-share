@@ -2,8 +2,9 @@
 
 <% @stations.each do |station| %>
   <h3><a href="/stations/<%= station.id %>"><%= station.name %></a></h3>
-  <p><%= station.dock_count %> in <%= station.city %> as of <%= station.installation_date %><p>
-  <!-- <a href="/stations/<%= station.id %>/edit">Edit</a> -->
+  <p>Dock Count: <%= station.dock_count %> Docks</p>
+  <p>City: <%= station.city %></p>
+  <p>Installation Date: <%= station.installation_date %></p>
   <form action="/stations/<%= station.id %>/edit" method="GET">
     <input type="hidden" name="_method" value="EDIT">
     <input type="submit" value="edit"/>

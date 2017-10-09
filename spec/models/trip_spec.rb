@@ -1,6 +1,9 @@
 RSpec.context Trip do
   describe 'Class Methods' do
     before do
+      ['SF', 'Santa Cruz', 'Ocean Beach'].each { |city| City.create(name: city) }
+      sf, santa_cruz, ocean_beach = City.find(1), City.find(2), City.find(3)
+
       Trip.create(duration: 20,
                   start_date: "11-3-2014 14:44",
                   start_station_id: 222,

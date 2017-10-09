@@ -5,7 +5,6 @@
   <p>Dock Count: <%= station.dock_count %> Docks</p>
   <p>City: <%= station.city %></p>
   <p>Installation Date: <%= station.installation_date %></p>
-  <!-- <a href="/stations/<%= station.id %>/edit">Edit</a> -->
   <form action="/stations/<%= station.id %>/edit" method="GET">
     <input type="hidden" name="_method" value="EDIT">
     <input type="submit" value="edit"/>

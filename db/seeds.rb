@@ -1,5 +1,6 @@
 require 'csv'
 require './app/models/station'
+require './app/models/condition'
 require './app/models/trip'
 
 class Seed
@@ -15,19 +16,47 @@ class Seed
     end
   end
 
+  def self.condition
+    options = {headers: true, header_converters: :symbol, converters: :numeric}
+    CSV.foreach('./db/csv/weather.csv', options) do |row|
+      row[:date] = Date.strptime(row[:date], "%m/%d/%Y")
+      row.delete(:max_dew_point_f)
+      row.delete(:mean_dew_point_f)
+      row.delete(:min_dew_point_f)
+      row.delete(:max_humidity)
+      row.delete(:min_humidity)
+      row.delete(:max_sea_level_pressure_inches)
+      row.delete(:mean_sea_level_pressure_inches)
+      row.delete(:min_sea_level_pressure_inches)
+      row.delete(:max_visibility_miles)
+      row.delete(:min_visibility_miles)
+      row.delete(:wind_dir_degrees)
+      row.delete(:max_wind_speed_mph)
+      row.delete(:max_gust_speed_mph)
+      row.delete(:cloud_cover)
+      row.delete(:events)
+      Condition.create!(row.to_h)
+    end
+  end
+
   def self.trip
-  	options = {headers: true, header_converters: :symbol, converters: :numeric}
-		CSV.foreach('./db/csv/trip.csv', options) do |row|
+    options = {headers: true, header_converters: :symbol, converters: :numeric}
+    CSV.foreach('./db/csv/trip.csv', options) do |row|
       row = row.to_h
+      row[:start_date] = row[:start_date].split(" ").first
+      row[:start_date] = Date.strptime(row[:start_date], "%m/%d/%Y")
+      row[:end_date] = row[:end_date].split(' ').first
+      row[:end_date] = Date.strptime(row[:end_date], "%m/%d/%Y")
       row.delete(:id)
       row.delete(:start_station_id)
       row.delete(:end_station_id)
-      #need to create a buffer for huge zip codes 
       row.delete(:zip_code) if row[:zip_code].to_s.length > 5
-			Trip.create!(row.to_h) 
-	  end 
-	end 
+      Trip.create!(row.to_h)
+    end
+  end
 end
+
 
 Seed.station
 Seed.trip
+Seed.condition

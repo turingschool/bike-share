@@ -1,0 +1,11 @@
+<form action="/trips/<%= @trip.id %>" method="post">
+  <h1>Edit</h1>
+  <input type="hidden" name="_method" value="PUT" />
+  <p>Dates: <input type='date' name='trip[start_date]' value="<%= @trip.start_date %>"/> to <input type='date' name='trip[end_date]' value="<%= @trip.end_date %>"/></p>
+  <p>Duration(seconds): <input type='integer' name='trip[duration]' value="<%= @trip.duration %>"/></p>
+  <p>Start Station Name: <input type='text' name='trip[start_station_name]' value="<%= @trip.start_station_name %>"/></p>
+  <p>End Station Name: <input type='text' name='trip[end_station_name]' value="<%= @trip.end_station_name %>"/></p>
+  <p>Bike ID: <input type='integer' name='trip[bike_id]' value="<%= @trip.bike_id %>"/></p>
+  <p>Subscription: <input type='text' name='trip[subscription_type]' value="<%= @trip.subscription_type %>"/></p>
+  <p><input type='submit'/></p>
+</form>

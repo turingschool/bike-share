@@ -1,5 +1,6 @@
 class Station < ActiveRecord::Base
   validates_presence_of :name, :dock_count, :city, :installation_date
+  validates :name, uniqueness: { scope: :dock_count }
 
   def self.average_available_bikes
     average(:dock_count)

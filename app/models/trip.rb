@@ -90,7 +90,18 @@ User subscription type breakout with both count and percentage.
 
   def self.subscription_percentage
     group('subscription_type').count #returns a collection of each subscription_type
-  end 
+  end
+
+  def subscription_type_breakout
+    total = count
+    var = group('subscription_type').count
+    var.transform_values do |subtotal|
+      {
+        subtotal: subtotal,
+        percentage: subtotal/total
+      }
+    end
+  end
 
 
 end

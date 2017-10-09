@@ -5,6 +5,10 @@ class BikeShareApp < Sinatra::Base
   configure { register WillPaginate::Sinatra }
   set :method_override, true
 
+  get '/' do
+    erb :index
+  end
+
   get '/stations/dashboard' do
     @stations = Station.all
     erb :'/stations/dashboard'

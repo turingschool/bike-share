@@ -58,4 +58,14 @@ class Station < ActiveRecord::Base
     # require 'pry';binding.pry
     date.strftime("%B %d, %Y")
   end
+
+  def most_popular_zip
+    trips = Trip.where(start_station_id: station_id)
+    trips.group(:zip_code).order("count_all DESC").limit(1).count.keys.first
+  end
+
+  def most_frequent_bike_id
+    trips = Trip.where(start_station_id: station_id)
+    trips.group(:bike_id).order("count_all DESC").limit(1).count.keys.first
+  end
 end

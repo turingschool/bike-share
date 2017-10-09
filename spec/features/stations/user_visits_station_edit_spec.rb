@@ -1,15 +1,15 @@
 require './spec/spec_helper'
 
-feature 'edit station page' do
+feature 'When a user visits station edit page' do
   context 'for a station that exists'
     background do
       Station.create! id: 3,
                       city: "San Jose",
                       name: "San Jose Civic Center",
-                      dock_count: 15,
-                      lat: 37.330698,
-                      long: -121.888979,
-                      installation_date: '8/5/2013'
+                      dock_count: "15",
+                      lat: "37.330698",
+                      long: "-121.888979",
+                      installation_date: "8/5/2013"
       visit '/stations/3/edit'
     end
 
@@ -54,9 +54,9 @@ feature 'edit station page' do
       background do
         fill_in "station[name]"               with: "San Jose Civic Center"
         fill_in "station[city]"               with: "San Jose"
-        fill_in "station[dock_count]"         with: 15
-        fill_in "station[lat]"                with: 37.330698
-        fill_in "station[long]"               with: -121.888979
+        fill_in "station[dock_count]"         with: "20"
+        fill_in "station[lat]"                with: "37.330698"
+        fill_in "station[long]"               with: "-121.888979"
         fill_in "station[installation_date]"  with: "8/5/2013"
         click_button "submit"
       end
@@ -70,15 +70,15 @@ feature 'edit station page' do
     context 'when user inputs invalid data'
       background do
         fill_in "station[name]"               with: "San Jose Civic Center"
-        fill_in "station[city]"               with: 42
-        fill_in "station[dock_count]"         with: 15
-        fill_in "station[lat]"                with: 37.330698
-        fill_in "station[long]"               with: -121.888979
+        fill_in "station[city]"               with: "42"
+        fill_in "station[dock_count]"         with: "15"
+        fill_in "station[lat]"                with: "37.330698"
+        fill_in "station[long]"               with: "-121.888979"
         fill_in "station[installation_date]"  with: "8/5/2013"
         click_button "submit"
       end
 
-      it 'then user is redirected to eidt page with error flag on invalid data field'
+      it 'then user is redirected to edit page with error flag on invalid data field'
         has_current_path?("stations/3/edit", only_path: true)
         expect(page).to have_content(/error/i)
       end

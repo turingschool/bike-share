@@ -108,22 +108,16 @@ class Trip < ActiveRecord::Base
 
   def self.busiest_date(id)
     trips = where(start_station_id: id)
-    date = trips.group(:start_date).order("start_date DESC").count(:start_date).to_a
-    date = date.max_by{|array| array[1]}
-    date[0]
+    date = trips.group(:start_date).order("count(start_date) DESC").count(:start_date).first[0]
   end
 
   def self.frequent_zipcode(id)
     trips = where(start_station_id: id)
-    zip_code = trips.group(:zip_code).count(:start_date).to_a
-    zip_code = zip_code.max_by{|array| array[1]}[0]
+    zip_code = trips.group(:zip_code).order("count(zip_code) DESC").count(:zip_code).first[0]
   end
 
   def self.frequent_bike(id)
     trips = where(start_station_id: id)
-    bike_id = trips.group(:bike_id).count(:start_date).to_a
-    bike_id = bike_id.max_by{|array| array[1]}[0]
+    bike_id = trips.group(:bike_id).order("count(bike_id) DESC").count(:bike_id).first[0]
   end
 end
-
-# Bike ID most frequently starting a trip at this station.

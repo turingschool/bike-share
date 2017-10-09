@@ -3,8 +3,8 @@
 <p>Bottom Rider: <%= @trips.bottom_rider%> No. of Rides: <%= @trips.rides_per_bottom_rider%></p>
 
 
-<%@trips.subscription_type_breakout.each do |hash|%>
-  <p>Subscription Type: <%= hash.keys %>
-    <p>Number: <%= hash.values[0]%>
-    <p>Percentage: <%=hash.values[1] %>
+<%@trips.subscription_type_breakout.each do |outer, inner|%>
+  <h3>Subscription Type: <%= outer %></h3>
+    <p>Number: <%= inner[:subtotal]%></p>
+    <p>Percentage: <%=inner[:percentage] %>%</p>
 <%end%>

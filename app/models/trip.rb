@@ -78,10 +78,8 @@ class Trip < ActiveRecord::Base
   end
 
   def self.rides_per_bottom_rider
-    group('bike_id').order("bike_id ASC").count.first[1]
+    group('bike_id').order("bike_id ASC").count.first[0]
   end
-
-User subscription type breakout with both count and percentage.
 
   def self.subscription_count
     count('subscription_type')
@@ -89,16 +87,16 @@ User subscription type breakout with both count and percentage.
 
 
   def self.subscription_percentage
-    group('subscription_type').count #returns a collection of each subscription_type
+    group('subscription_type').count
   end
 
-  def subscription_type_breakout
+  def self.subscription_type_breakout
     total = count
     var = group('subscription_type').count
-    var.transform_values do |subtotal|
+    var2 = var.transform_values do |subtotal|
       {
         subtotal: subtotal,
-        percentage: subtotal/total
+        percentage: subtotal * 100 / total
       }
     end
   end
@@ -107,22 +105,6 @@ User subscription type breakout with both count and percentage.
 end
 
 =begin
-User.order(:name, email: :desc)
-=> SELECT "users".* FROM "users" ORDER BY "users"."name" ASC, "users"."email" DESC
- :name is the column name from the table that I want to return.
- I want to order the name column by the email address - descending email alphabetization.
-
-Trip.order(:id, duration: :desc)
-this still sorted by id in descending order. not sure what descending was doing.
-
-User.order('name DESC, email')
-=> SELECT "users".* FROM "users" ORDER BY name DESC, email
-
-Trip.order('id DESC, duration')
-returns an array based on id descending. Not sure what's up with the duration.
-
-Station.find(group(:starting_station_id).order(:id).count(:id)).name
-
 
 Month by Month breakdown of number of rides with subtotals for each year.
 Most ridden bike with total number of rides for that bike.

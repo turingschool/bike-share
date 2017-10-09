@@ -9,26 +9,31 @@ RSpec.context Trip do
                                   installation_date: "2017-08-06",
                                   lat: 100,
                                   lng: 200)
+
       sf.stations.create(         name: 'surf shack',
                                   dock_count: 10,
                                   installation_date: "2011-10-06",
                                   lat: 100,
                                   lng: 200)
+
       santa_cruz.stations.create( name: 'burritos',
                                   dock_count: 7,
                                   installation_date: "2012-09-07",
                                   lat: 100,
                                   lng: 200)
+
       santa_cruz.stations.create( name: 'whatever',
                                   dock_count: 32,
                                   installation_date: "2015-08-06",
                                   lat: 100,
                                   lng: 200)
+
       ocean_beach.stations.create(name: 'Noriega',
                                   dock_count: 20,
                                   installation_date: "2017-02-02",
                                   lat: 100,
                                   lng: 250)
+
       ocean_beach.stations.create(name: 'Moraga',
                                   dock_count: 25,
                                   installation_date: "2015-03-02",

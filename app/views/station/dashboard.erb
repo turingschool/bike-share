@@ -1,0 +1,85 @@
+<head>
+  <title>Station Dashboard</title>
+  <link rel="stylesheet" href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="station/dashboard.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<div class="container-fluid bg-1 text-center">
+  <h1> Station Dashboard</h1>
+</div>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="well">
+        <h4>Station Count</h4>
+          <p><%= @stations.station_count %></p>
+      </div>
+    </div>
+    <div class="col-sm-3" >
+      <div class="well">
+        <h4>Average Bikes per Station</h4>
+        <p><%= @stations.average_bikes_per_stations %></p>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="well">
+        <h4>Highest Bike Count Available</h4>
+        <p><%= @stations.highest.first.dock_count %></p>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="well">
+        <h4>Lowest Bike Count Available</h4>
+        <p><%= @stations.lowest.first.dock_count %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="well">
+        <h4>Station with the Highest Bike Count Available</h4>
+        <ul class="list-group">
+          <% @stations.highest.each do |station| %>
+          <li class="list-group-item"><%= station.name %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+      <div class="col-sm-6">
+        <div class="well">
+          <h4>Station with the Lowest Bike Count Available</h4>
+          <ul class="list-group">
+          <% @stations.lowest.each do |station| %>
+            <li class="list-group-item"><%= station.name %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="well">
+          <h4>Newest Station(s)</h4>
+          <ul class="list-group">
+          <% @stations.newest.each do |station|%>
+            <li class="list-group-item"><%= station.name %></li>
+          <% end %>
+        </ul>
+        </div>
+      </div>
+        <div class="col-sm-6">
+          <div class="well">
+            <h4>Oldest Station(s)</h4>
+            <ul class="list-group">
+            <% @stations.oldest.each do |station| %>
+              <li class="list-group-item"><%= station.name %></li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+    </div>
+</body>

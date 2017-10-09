@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+body {
+  background-image: url("/images/diego-duarte-cereceda-210903.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: #333;
+  padding: 40px 20px 40px 20px;
+  font-family: "Indie Flower";
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 60px;
+  background: rgba(255,255,255,.5)
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+p {
+  font-size: 30px;
+}
+li {
+  font-size: 20px;
+}
+.well {
+  color: black;
+  background-color: #DDDDDD;
+        }

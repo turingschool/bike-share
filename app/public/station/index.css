@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+body {
+  background-image: url("/images/joshua-sortino-228788.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: #333;
+  padding: 40px 20px 40px 20px;
+  font-family: "Indie Flower";
+
+}
+
+div + div, #body-content div:first-child {
+  margin-top: 20px;
+}
+
+h5 {
+  font-weight: 600;
+}
+
+#body-content {
+  border-radius: 7px;
+  padding: 20px;
+  background-color: rgba(255,255,255,.5);
+}
+
+#create-btn {
+  margin: 20px;
+}

@@ -12,11 +12,11 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations' do
     @stations = Station.all
-    erb :'station_index'
+    erb :station_index
   end
 
   get '/stations/new' do
-    erb :'station_new'
+    erb :station_new
   end
 
   post '/stations' do
@@ -26,12 +26,12 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations/:id' do
     @station = Station.find(params[:id])
-    erb :'station_show'
+    erb :station_show
   end
 
   get '/stations/:id/edit' do
     @station = Station.find(params[:id])
-    erb :'station_edit'
+    erb :station_edit
   end
 
   put '/stations/:id' do
@@ -82,17 +82,16 @@ class BikeShareApp < Sinatra::Base
 
   get '/station-dashboard' do
     @stations = Station.all
-    erb :'station_dashboard'
+    erb :station_dashboard
   end
 
   get '/trips' do
     @trips = Trip.paginate(page: params[:page], per_page: 30)
-    erb :'trip_index'
+    erb :trip_index
   end
 
-
   get '/trips/new' do
-    erb :'trip_new'
+    erb :trip_new
   end
 
 	post '/trips' do
@@ -102,13 +101,12 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips/:id' do
     @trip = Trip.find(params[:id])
-    erb :'trip_show'
+    erb :trip_show
   end
-
 
 	get '/trips/:id/edit' do
 		@trip = Trip.find(params[:id])
-		erb :'trip_edit'
+		erb :trip_edit
   end
 
   put '/trips/:id' do

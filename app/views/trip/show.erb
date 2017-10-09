@@ -3,8 +3,3 @@
 <p>Bike ID: <%= @trip.bike_id %></p>
 <p>Subscription Type: <%= @trip.subscription_type %></p>
 <p>Zip Code: <%= @trip.zip_code %></p>
-
-<form action="/trips/<%=@trip.id%>" method="post">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" name="delete" value='Delete'>
-</form>

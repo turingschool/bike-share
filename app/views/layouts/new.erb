@@ -1,0 +1,7 @@
+<main id="create-page">
+  <h2>New <%= @model.capitalize %></h2>
+  <form action = "/<%= @model %>s" method="put">
+    <%= yield %>
+    <input type="submit" name="submit"/>
+  </form>
+</main>

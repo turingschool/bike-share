@@ -1,1 +1,4 @@
+<a href="/conditions/<%=@record.id%>"><h3>Weather record #<%= @record.id %></h3></a>
+<p>Date: <%= @record.date %></p>
 
+Trip.find_by_sql("SELECT COUNT (*) as end_date, EXTRACT (MONTH FROM start_date) as start_date FROM trips GROUP BY date_part('month', start_date)")

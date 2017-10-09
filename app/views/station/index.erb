@@ -1,14 +1,5 @@
-<h2>All Stations</h2>
+<h3><a href="/stations/<%=station.id%>"><%= @record.name%></a></h3>
 
-<% @stations.each do |station| %>
-    <h3><a href="/stations/<%=station.id%>"><%= station.name%></a></h3>
-    <p>Dock Count: <%= station.dock_count %></p>
-    <p>City: <%= station.city %></p>
-    <p>installation Date: <%= station.installation_date %></p>
-    <form action="/trips/<%=station.id%>" method="post">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" name="delete" value='Delete'>
-    </form>
-<% end %>
-
-<%= will_paginate @stations %>
+<p>Dock Count: <%= @record.dock_count %></p>
+<p>City: <%= @record.city %></p>
+<p>installation Date: <%= @record.installation_date %></p>

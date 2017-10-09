@@ -32,4 +32,40 @@ class Station < ActiveRecord::Base
     where(installation_date: min).map { |station| station.name }
   end
 
+  def start_ride_count
+    Trip.where(start_station_id: station_id).count
+  end
+
+  def end_ride_count
+    Trip.where(end_station_id: station_id).count
+  end
+
+  def most_frequent_destination
+    trips = Trip.where(start_station_id: station_id)
+    station = trips.group(:end_station_id).order("count_all DESC").limit(1).count
+    Station.find_by(station_id: station.keys.first).name
+  end
+
+  def most_frequent_origin
+    trips = Trip.where(end_station_id: station_id)
+    station = trips.group(:start_station_id).order("count_all DESC").limit(1).count
+    Station.find_by(station_id: station.keys.first).name
+  end
+
+  def most_popular_date
+    trips = Trip.where(start_station_id: station_id)
+    date = trips.group(:start_date).order("count_all DESC").limit(1).count.keys.first
+    # require 'pry';binding.pry
+    date.strftime("%B %d, %Y")
+  end
+
+  def most_popular_zip
+    trips = Trip.where(start_station_id: station_id)
+    trips.group(:zip_code).order("count_all DESC").limit(1).count.keys.first
+  end
+
+  def most_frequent_bike_id
+    trips = Trip.where(start_station_id: station_id)
+    trips.group(:bike_id).order("count_all DESC").limit(1).count.keys.first
+  end
 end

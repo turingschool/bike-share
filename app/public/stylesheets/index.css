@@ -192,6 +192,13 @@ header {
       color: #004264;
       font-weight: 700;
       margin-bottom: 45px; }
+  .edit-container .submit-btn {
+    border: 4px solid #2EC4B6;
+    font-weight: 700; }
+  .edit-container .submit-btn:hover {
+    border: 4px solid #011627;
+    color: #011627;
+    cursor: pointer; }
 
 /* Trip Index */
 .trip-index-container {

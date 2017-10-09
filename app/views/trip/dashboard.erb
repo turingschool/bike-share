@@ -1,0 +1,16 @@
+<p>Starting station with most rides: <%= @trips.starting_station_with_most_rides%></p>
+<p>Ending station with most rides: <%= @trips.ending_station_with_most_rides%></p>
+
+<h2>Bike ride totals per year:</h2>
+<ul>
+<%@trips.year_month_subtotals.each do |year, totals|%>
+    <li>
+        <h3><%=year%></h3>
+        <ul>
+            <% totals.each do |month, total| %>
+                <li><%=month%>: <%=total%> trips</li> 
+            <%end%>
+        </ul>
+    </li>
+<%end%>
+</ul>

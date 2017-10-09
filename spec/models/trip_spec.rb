@@ -1,63 +1,92 @@
 require './app/models/trip'
+require './app/models/station'
 require './spec/spec_helper'
 
-dummy_data = {
-    Trip => {
-        duration: 8,
-        start_date: "1989-01-01",
-        start_station: 4,
-        end_date: "2001-01-01",
-        end_station: 47,
-        bike_id: 404,
-        subscription_type: "Yearly",
-        zip_code: 80202
-            }
-            }
 
 RSpec.describe 'trip model helper methods' do
-    before do 
-        Trip.create({duration: 8, start_date: "1989-01-01", start_station: 4, end_date: "2001-01-01", end_station: 47, bike_id: 404, subscription_type: "Yearly", zip_code: 80202})
-        Trip.create({duration: 6, start_date: "1999-01-01", start_station: 2, end_date: "2000-01-01", end_station: 67, bike_id: 94, subscription_type: "Monthly", zip_code: 90702})
-        Trip.create({duration: 6, start_date: "1999-01-01", start_station: 2, end_date: "2000-01-01", end_station: 67, bike_id: 94, subscription_type: "Monthly", zip_code: 90702})        
-    end
-    
-    it 'returns station with the most rides as a starting place' do
-        expected = Trip.starting_station_with_most_rides
-        expect(expected).to eq 2
+    before do
+
+      # NEED TO SEED LOTS OF DUMMY DATA
+          #
+          # Trip.create! duration: ,
+          #              start_date: ,
+          #              start_station_id: ,
+          #              end_date: ,
+          #              end_station_id: ,
+          #              bike_id: ,
+          #              subscription_type: ,
+          #              zip_code:
+          #
+          # Trip.create! duration: ,
+          #              start_date: ,
+          #              start_station_id: ,
+          #              end_date: ,
+          #              end_station_id: ,
+          #              bike_id: ,
+          #              subscription_type: ,
+          #              zip_code:
+
+      visit ' /trip-dashboard '
     end
 
-    #station.find_by(max start station )
+    it 'returns station with the most rides as a starting place' do
+      expected = Trip.starting_station_with_most_rides
+      expect(expected).to eq "UNKNOWN"
+    end
+
 
     it 'returns station with the most rides as a ending place' do
-        
+      expected = Trip.ending_station_with_most_rides
+      expect(expected).to eq "UNKNOWN"
     end
 
-    it 'returns month by month breakdown of number of rides with subtotals for each year' do
-        
+    it 'returns month by month breakdown of number of rides' do
+      expected = Trip.yearly_rides_per_month
+      expect(expected).to eq "UNKNOWN"
     end
 
-    it 'returns most ridden bike with total number of rides for that bike' do
-        
+    it 'returns  yearly subtotals for number of rides' do
+      expected = Trip.rides_per_year
+      expect(expected).to eq "UNKNOWN"
     end
 
-    it 'returns least ridden bike with total number of rides for that bike' do
-        
+    it 'returns most ridden bike' do
+      expected = Trip.top_biker
+      expect(expected).to eq "UNKNOWN"
     end
 
-    it 'returns user subscription type breakout with both count and percentage' do
-        
+    it 'returns total number of rides per bike' do
+      expected = Trip.rides_per_bike
+      expect(expected).to eq "UNKNOWN"
     end
 
-    it 'returns single date with the highest number of trips with a count of those trips' do
-        
+    it 'returns biker with fewest rides' do
+      expected = Trip.bottom_biker
+      expect(expected).to eq "UNKNOWN"
     end
 
-    it 'returns single date with the lowest number of trips with a count of those trips' do
-        
+    it 'returns user subscription type breakout with percentage' do
+      expected = Trip.subscription_count
+      expect(expected).to eq "UNKNOWN"
     end
 
+    it 'returns user subscription type breakout with both count' do
+      expected = Trip.subscription_percentage
+      expect(expected).to eq "UNKNOWN"
+    end
 
+    it 'returns single date with the highest number of trips' do
+      expected_1 = Trip.date_with_highest_trips
+      expected_2 = Trip.date_with_highest_trips.count
+      expect(expected_1).to eq "UNKNOWN"
+      expect(expected_2).to eq "UNKNOWN"
+    end
 
-# Average duration of a ride.
-# Longest ride.
-# Shortest ride.
+    it 'returns single date with the lowest number of trips' do
+      expected_1 = Trip.date_with_lowest_trips
+      expected_2 = Trip.date_with_lowest_trips.count
+      expect(expected_1).to eq "UNKNOWN"
+      expect(expected_2).to eq "UNKNOWN"
+    end
+
+  end

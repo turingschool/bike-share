@@ -22,16 +22,16 @@ dummy_data = {
       subscription_type: "Yearly",
       zip_code: 80202
     },
-    Condition => {
-      date: '1/1/2017',
-      max_temperature_f: 75.0,
-      mean_temperature_f: 73.0,
-      min_temperature_f: 71.0,
-      mean_humidity: 75.0,
-      mean_visibility_miles: 10.0,
-      mean_wind_speed: 10.0,
-      precipitation_inches: 0
-    }
+    # Condition => {
+    #   date: '1/1/2017',
+    #   max_temperature_f: 75.0,
+    #   mean_temperature_f: 73.0,
+    #   min_temperature_f: 71.0,
+    #   mean_humidity: 75.0,
+    #   mean_visibility_miles: 10.0,
+    #   mean_wind_speed: 10.0,
+    #   precipitation_inches: 0
+    # }
   }
 
   dummy_data.each do |model, data|

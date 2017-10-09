@@ -40,11 +40,22 @@ class Station < ActiveRecord::Base
     Trip.where(end_station_id: station_id).count
   end
 
-  def most_popular_destination
-    #of all trips starting at this station, where do they most
+  def most_frequent_destination
     trips = Trip.where(start_station_id: station_id)
     station = trips.group(:end_station_id).order("count_all DESC").limit(1).count
     Station.find_by(station_id: station.keys.first).name
   end
 
+  def most_frequent_origin
+    trips = Trip.where(end_station_id: station_id)
+    station = trips.group(:start_station_id).order("count_all DESC").limit(1).count
+    Station.find_by(station_id: station.keys.first).name
+  end
+
+  def most_popular_date
+    trips = Trip.where(start_station_id: station_id)
+    date = trips.group(:start_date).order("count_all DESC").limit(1).count.keys.first
+    # require 'pry';binding.pry
+    date.strftime("%B %d, %Y")
+  end
 end

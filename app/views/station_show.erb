@@ -6,7 +6,9 @@
 
 <p>Number of departures: <%= @station.start_ride_count %></p>
 <p>Number of arrivals: <%= @station.end_ride_count %></p>
-<p>Most Popular Destination: <%= @station.most_popular_destination %></p>
+<p>Most Frequent Destination: <%= @station.most_frequent_destination %></p>
+<p>Most Frequent Origin: <%= @station.most_frequent_origin %></p>
+<p>Most Popular Date: <%= @station.most_popular_date %></p>
 
 <form action="/stations/<%= @station.id %>/edit" method="GET">
   <input type="hidden" name="_method" value="EDIT">

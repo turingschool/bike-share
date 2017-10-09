@@ -4,6 +4,10 @@
 
 <p><%= @station.dock_count %> in <%= @station.city %> as of <%= @station.installation_date %></p>
 
+<p>Number of departures: <%= @station.start_ride_count %></p>
+<p>Number of arrivals: <%= @station.end_ride_count %></p>
+<p>Most Popular Destination: <%= @station.most_popular_destination %></p>
+
 <form action="/stations/<%= @station.id %>/edit" method="GET">
   <input type="hidden" name="_method" value="EDIT">
   <input type="submit" value="edit"/>

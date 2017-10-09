@@ -29,7 +29,12 @@ RSpec.context Trip do
       it 'returns the longest ride' do
         expect(Trip.longest_ride).to eql(35)
       end
+    end
 
+    describe '.shortest_ride' do
+      it 'returns the shortest ride' do
+        expect(Trip.shortest_ride).to eql(20)
+      end
     end
   end
 

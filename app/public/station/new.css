@@ -1,0 +1,23 @@
+body {
+  margin: 5%;
+  float: right;
+  background-image: url("/images/red-bike-station.jpg");
+  /*Photo by Jordan Andrews on Unsplash*/
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+form {
+  padding: 8%;
+}
+
+div.transbox {
+  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 2%;
+  opacity: 0.85;
+}
+
+.form-horizontal {
+  font-weight: bold;
+}

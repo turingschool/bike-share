@@ -1,0 +1,41 @@
+body {
+  background-image: url("/images/bike2.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 50% 1%; 
+}
+
+.words {
+
+  font-family: "Trebuchet MS";
+  font-size: 20px;
+  font-style: italic;
+  font-variant: normal;
+  font-weight: bold;
+  line-height: 22px;
+
+  text-align: center;
+  text-shadow: 2px 2px blue;
+  color: white;
+  background-color: powderblue;
+}
+
+.info {
+  font-family: "Trebuchet MS";
+  font-size: 20px;
+  font-style: italic;
+  font-variant: normal;
+  font-weight: bold;
+  line-height: 22px;
+
+  text-align: center;
+  text-shadow: 2px 2px blue;
+  color: white;
+  background-color: lightblue;
+}
+
+.dropdown {
+  margin: .5%;
+}
+

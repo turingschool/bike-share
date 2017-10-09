@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="../station/show.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</head>
+  <body> 
+  
+    <form class="form-horizontal">
+     
+     <legend> <h2 class="words">Here is yo Station! <h2></legend>
+      
+        <h3 class="words"><%= @stations.name %></h3>
+        <div class="line-separator"></div>
+
+      
+          <h5 class="info"> City: <%= @stations.city %> </h5>
+          <h5 class="info"> Dock Count: <%= @stations.dock_count %> </h5>
+          <h5 class="info"> Install Date: <%= @stations.installation_date %> </h5>
+        
+     
+      
+
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          Options <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="/stations/<%=@stations.id%>/edit">Edit</a></li>
+            <li class="delete-button"><form action="/stations/<%=@stations.id %>" method="POST" >
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="Delete Station">
+            </form></li>
+      </div><br>
+ 
+    </form>
+  </body>
+</html>
+
+
+
+
+
+
+
+<!-- 
+    <div class="dropdown">
+      <a class="dropdown-toggle">
+        <a  href="/stations/<%=@stations.id%>/edit" class="btn btn-info"> Edit </a>
+       
+        <form action="/stations/<%=@stations.id %>" method="POST" >
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Delete Station">
+        </form>
+
+      </div>
+    </div>   
+ -->
+   <!--  <select class="drop">
+        <option><a href="/stations/<%=@stations.id%>/edit"><i class="icon-pencil"></i> Edit</a></option>
+        <option>
+          <form action="/stations/<%=@stations.id%>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+          </form>
+        </option>
+    </select>
+ -->
+
+
+

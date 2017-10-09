@@ -9,6 +9,7 @@ class Seed
     options = {headers: true, header_converters: :symbol, converters: :numeric}
     CSV.foreach('./db/csv/station.csv', options) do |row|
       row[:installation_date] = Date.strptime(row[:installation_date], "%m/%d/%Y")
+      row[:station_id] = row[:id]
       row.delete(:id)
       row.delete(:long)
       row.delete(:lat)
@@ -48,8 +49,6 @@ class Seed
       row[:end_date] = row[:end_date].split(' ').first
       row[:end_date] = Date.strptime(row[:end_date], "%m/%d/%Y")
       row.delete(:id)
-      row.delete(:start_station_id)
-      row.delete(:end_station_id)
       row.delete(:zip_code) if row[:zip_code].to_s.length > 5
       Trip.create!(row.to_h)
     end

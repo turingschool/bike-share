@@ -2,6 +2,8 @@ require 'will_paginate'
 require 'will_paginate/active_record'
 
 class Trip <ActiveRecord::Base
+  # belongs_to :start_station_id, class_name: 'Station', foreign_key: 'station_id'
+  # belongs_to :end_station_id, class_name: 'Station', foreign_key: 'station_id'
   validates :bike_id, uniqueness: { scope: [:duration,
                                           :start_date,
                                           :start_station_name,
@@ -12,8 +14,10 @@ class Trip <ActiveRecord::Base
   validates_presence_of :duration,
                         :start_date,
                         :start_station_name,
+                        :start_station_id,
                         :end_date,
                         :end_station_name,
+                        :end_station_id,
                         :bike_id,
                         :subscription_type
 	self.per_page = 30
@@ -33,18 +37,30 @@ class Trip <ActiveRecord::Base
     Time.at(time).utc.strftime("%H:%M:%S")
   end
 
-  def self.most_departed_station
-    station_data = station_and_departures
-    station_data.max_by do |info|
-      info.last
-    end.first
+  def self.most_departures
+    trip = group(:start_station_id).order("count_all DESC").limit(1).count
+    Station.find_by(station_id: trip.keys.first).name
   end
 
-  def self.least_departed_station
-    station_data = station_and_departures
-    station_data.min_by do |name_and_count|
-      name_and_count.last
-    end.first
+  def self.most_arrivals
+    trip = group(:end_station_id).order("count_all DESC").limit(1).count
+    Station.find_by(station_id: trip.keys.first).name
+  end
+
+  def self.month_year_breakdown
+    month_break = group("DATE_TRUNC('month', start_date)").count.to_a
+    sorted = month_break.sort_by { |i| i[0]}
+    sorted.map do |i|
+      [i.first.strftime("%B %Y"), i.last]
+    end
+  end
+
+  def self.year_breakdown
+    year_breakdown = group("DATE_TRUNC('year', start_date)").count.to_a
+    sorted = year_breakdown.sort_by { |i| i[0]}
+    sorted.map do |i|
+      [i.first.strftime("%Y"), i.last]
+    end
   end
 
   def self.station_and_departures

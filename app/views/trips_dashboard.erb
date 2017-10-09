@@ -3,17 +3,17 @@
   <li>Average Ride Duration: <%= @trips.avg_duration %></li>
   <li>Longest Ride: <%= @trips.longest_ride %></li>
   <li>Shortest Ride: <%= @trips.shortest_ride %></li>
-  <li>Station with Most Departures: <%= @trips.most_departed_station %></li>
-  <li>Station with Least Departures: <%= @trips.least_departed_station %></li>
+  <li>Station with Most Departures: <%= @trips.most_departures %></li>
+  <li>Station with Most Arrivals: <%= @trips.most_arrivals %></li>
   <li>Rides Breakdown by Year/Month:
-  <!-- <ul><%  %> We want to start an ordered list with each year and have the title of that UL be the actual year and ride count:
-  -Year (total)
-    -January: total
-    -Feburary: total
-    -...
-    <li></li>
-  </ul> -->
-  </li>
+    <ul>
+      <% @trips.month_year_breakdown.each do |entry| %></li>
+        <li><%= entry[0] %>: <%= entry[1] %></li>
+        <% end %>
+      </ul>
+      <% @trips.year_breakdown.each do |entry| %>
+        <p><%= entry[0] %>: <%= entry[1] %></p>
+        <% end %>
   <li>ID of Most Ridden Bike: <%= @trips.most_ridden_bike %> (<%= @trips.ride_count(@trips.most_ridden_bike)%> rides)</li>
   <li>ID of Least Ridden Bike: <%= @trips.least_ridden_bike %> (<%= @trips.ride_count(@trips.least_ridden_bike)%> rides)</li>
   <li><p>User Subscription types:</p>

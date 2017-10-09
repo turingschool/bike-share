@@ -29,17 +29,20 @@ ActiveRecord::Schema.define(version: 20171005205606) do
 
   create_table "stations", force: :cascade do |t|
     t.text "name"
+    t.text "station_id"
     t.integer "dock_count"
     t.text "city"
-    t.text "installation_date"
+    t.date "installation_date"
   end
 
   create_table "trips", force: :cascade do |t|
     t.integer "duration"
     t.date "start_date"
     t.text "start_station_name"
+    t.text "start_station_id"
     t.date "end_date"
     t.text "end_station_name"
+    t.text "end_station_id"
     t.integer "bike_id"
     t.text "subscription_type"
     t.integer "zip_code"

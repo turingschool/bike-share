@@ -42,7 +42,7 @@ class Seed
       row.delete(:events)
       row.delete(:wind_dir_degrees)
       row.delete(:zip_code)
-      Condition.create!(row.to_hash)
+      Condition.create(row.to_hash)
     end
 
   end

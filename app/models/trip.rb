@@ -9,7 +9,7 @@ class Trip < ActiveRecord::Base
                           :end_station_id,
                           :bike_id,
                           :subscription_type,
-                          :zip_code
+                          #do NOT validate zip code per Sal.
 
 
   def self.average_ride_length
@@ -100,6 +100,25 @@ class Trip < ActiveRecord::Base
       }
     end
   end
+
+  def self.single_date_with_highest_trips  #Single date with the highest number of trips with a count of those trips.
+    group(end_date).order('count_id DESC').count(:id).first
+  end
+
+  def self.single_date_with_fewest_trips  #Single date with the highest number of trips with a count of those trips.
+    group(end_date).order('count_id ASC').count(:id).first
+  end
+
+* Weather on the day with the highest rides.
+
+  def self.weather_during_highest_rides
+
+    Conditions.where( date = single_date_with_highest_trips)
+
+* Weather on the day with the lowest rides.
+
+
+
 
 
 end

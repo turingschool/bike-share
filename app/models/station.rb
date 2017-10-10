@@ -9,7 +9,6 @@ class Station < ActiveRecord::Base
                         :lat,
                         :long
 
-
   def self.names
     all.map(&:name).join(', ')
   end

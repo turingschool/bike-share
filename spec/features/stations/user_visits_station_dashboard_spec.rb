@@ -29,17 +29,17 @@ feature 'When a user visits the Station Dashboard' do
     expect(page.status_code).to eq(200)
   end
 
-  it 'they seen the total docks' do
+  it 'they see the total docks' do
     expect(page).to have_content(/total/i)
     expect(page).to have_content('14')
   end
 
-  it 'they seen the average dock count' do
+  it 'they see the average dock count' do
     expect(page).to have_content(/average bikes/i)
     expect(page).to have_content( '182' )
   end
 
-  it 'they seen the stations with fewest docks' do
+  it 'they see the stations with fewest docks' do
     expect(page).to have_content(/least bikes/i)
     expect(page).to have_content('fewest_docks_A')
     expect(page).to have_content('fewest_docks_B')

@@ -20,6 +20,7 @@ class Seed
   def self.condition
     options = {headers: true, header_converters: :symbol, converters: :numeric}
     CSV.foreach('./db/csv/weather.csv', options) do |row|
+      next if row[:zip_code] != 94107
       row[:date] = Date.strptime(row[:date], "%m/%d/%Y")
       row.delete(:max_dew_point_f)
       row.delete(:mean_dew_point_f)

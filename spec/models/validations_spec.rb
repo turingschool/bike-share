@@ -45,7 +45,6 @@ dummy_data = {
         record = model.new(@data)
         expect(record).to be_valid
       end
-
       context "is not not valid without property" do
         data.keys.each do |property|
           it(property) do

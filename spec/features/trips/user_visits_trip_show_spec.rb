@@ -1,9 +1,32 @@
 require './spec/spec_helper'
 
-feature 'when a user visits trip show page' do
-  context 'for a trip that exists' do
 
-    background { visit '/trips/1' }
+feature 'when user visits trip show page' do
+    background do
+      Trip.create!    id: 1,
+                      duration: 10,
+                      start_date: "2001-01-01",
+                      start_station_id: 8,
+                      end_date: "2001-02-01",
+                      end_station_id: 7,
+                      bike_id: 404,
+                      subscription_type: "Monthly",
+                      zip_code: 32210
+
+      Station.create! id: 8,
+                      city: 'land of bikes',
+                      name: 'pile of bikes',
+                      dock_count: 999999,
+                      lat: 888.888,
+                      long: 777.777,
+                      installation_date: Date.parse('22/1/3333')
+
+      visit '/trips/1'
+    end
+
+feature 'when a user visits trip show page' do
+  context 'for a trip that exists'
+    background do { visit '/trips/1' }
 
     it 'has status code 200' do
       expect(page.status_code).to eq(200)

@@ -1,15 +1,17 @@
 class Trip < ActiveRecord::Base
-  belongs_to :start_station, class_name: "Station"
-  belongs_to :end_station,   class_name: "Station"
 
-  validates_presence_of :duration,
-                        :start_date,
-                        :start_station_id,
-                        :end_date,
-                        :end_station_id,
-                        :bike_id,
-                        :subscription_type,
-                        :zip_code
+    belongs_to :start_station, class_name: "Station"
+    belongs_to :end_station,   class_name: "Station"
+
+    validates_presence_of :duration,
+                          :start_date,
+                          :start_station_id,
+                          :end_date,
+                          :end_station_id,
+                          :bike_id,
+                          :subscription_type,
+                          #do NOT validate zip code per Sal.
+
 
   def to_s
     "Trip ##{id} #{route}"
@@ -55,17 +57,25 @@ class Trip < ActiveRecord::Base
     where duration: (minimum :duration)
   end
 
-  def self.starting_station_with_most_trips
-    get_id = group(:start_station_id).order(start_station_id: :desc).count(:start_station_id).first.id
+  def self.starting_station_with_most_rides
+    get_id = group(:start_station_id).order('count_id DESC').count(:id).first[0]
     Station.find(get_id).name
   end
 
   def self.ending_station_with_most_rides
-    get_id = group(:end_station_id).order(end_station_id: :desc).count(:end_station_id).first[0]
+    get_id = group(:end_station_id).order('count_id DESC').count(:id).first[0]
     Station.find(get_id).name
   end
 
-  def self.most_used_bike
+  def self.rides_per_month
+    group("DATE_TRUNC('month', end_date)").count
+  end
+
+  def self.rides_per_year
+    group("DATE_TRUNC('year', end_date)").count
+  end
+
+  def self.top_rider
     group('bike_id').order('bike_id ASC').count.first[0]
   end
 
@@ -92,7 +102,7 @@ class Trip < ActiveRecord::Base
   def self.subscription_type_breakout
     total = count
     var = group('subscription_type').count
-    var2 = var.transform_values do |subtotal|
+    var.transform_values do |subtotal|
       {
         subtotal: subtotal,
         percentage: subtotal * 100 / total
@@ -100,13 +110,6 @@ class Trip < ActiveRecord::Base
     end
   end
 
-  def self.rides_per_month
-    group("DATE_TRUNC('month', end_date)").count
-  end
-
-  def self.rides_per_year
-    group("DATE_TRUNC('year', end_date)").count
-  end
 
   def self.year_month_subtotals
     years = {}
@@ -146,4 +149,18 @@ class Trip < ActiveRecord::Base
   def self.trips_by_day
     group("start_date").count
   end
+
+
+
+# NOTES - the two methods below are similar to the ones above. Not sure which to use.
+
+  def self.single_date_with_highest_trips  #Single date with the highest number of trips with a count of those trips.
+    group('end_date').order('count_id DESC').count(:id).first
+  end
+
+  def self.single_date_with_fewest_trips  #Single date with the highest number of trips with a count of those trips.
+    group(:end_date).order('count_id ASC').count(:id).first
+  end
+
+
 end

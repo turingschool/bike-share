@@ -59,7 +59,7 @@ describe BikeShareApp do
 
   describe 'put methods' do
     describe "/stations/:id" do
-      it "redirects to stations/:id without error if given correct params" do
+      it "redirects to stations/:id without error if given valid param" do
         Station.create({name: "San Jose Diridon Caltrain Station",
                         station_id: "10",
                         dock_count: 27,
@@ -79,6 +79,21 @@ describe BikeShareApp do
     end
   end
 
-end
+  describe 'delete methods' do
+    describe "/stations/:id" do
+      it "redirects to /stations without error if given a valid param" do
+        Station.create({name: "San Jose Diridon Caltrain Station",
+                        station_id: "10",
+                        dock_count: 27,
+                        city: "San Jose",
+                        installation_date: "8/6/2013"
+                        })
+        delete '/stations/1', params = {id: 1}
 
-# require 'pry'; binding.pry
+        expect(last_response).to be_redirect
+        expect(last_response.header["Location"]).to eq("http://example.org/stations")
+      end
+    end
+  end
+
+end

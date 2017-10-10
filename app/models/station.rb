@@ -41,4 +41,24 @@ class Station < ActiveRecord::Base
     minimum(:dock_count)
   end
 
+  def self.with_most_trips_started
+    # get_id = group(:start_station_id).order(start_station_id: :desc).count(:start_station_id).first.id
+  end
+
+  def self.with_least_trips_started
+  end
+  #   select('count(trips_started)').joins(:trips)
+  #
+  #   select("songs.id, OTHER_ATTRS_YOU_NEED, count(listens.id) AS listens_count").
+  #   joins(:listens).
+  #   group("songs.id").
+  #   order("listens_count DESC").
+  #   limit(5)
+  #
+  #
+  #
+  # Station.select("station.id, count(trips_started.id) AS tsc")
+  #   .joins(:trips_started)
+  #   .group("station.id")
+  #   .order("tsc DESC")
 end

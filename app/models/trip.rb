@@ -41,20 +41,22 @@ class Trip < ActiveRecord::Base
     end_station.name
   end
 
-  def self.average_ride_length
+
+
+  def self.average_duration
     average :duration
   end
 
-  def self.trip_of_longest_length
+  def self.longest_trip
     where duration: (maximum :duration)
   end
 
-  def self.trip_of_shortest_length
+  def self.shortest_trip
     where duration: (minimum :duration)
   end
 
-  def self.starting_station_with_most_rides #THIS WORKS!!!
-    get_id = group(:start_station_id).order(start_station_id: :desc).count(:start_station_id).first[0]
+  def self.starting_station_with_most_trips
+    get_id = group(:start_station_id).order(start_station_id: :desc).count(:start_station_id).first.id
     Station.find(get_id).name
   end
 
@@ -63,7 +65,7 @@ class Trip < ActiveRecord::Base
     Station.find(get_id).name
   end
 
-  def self.top_rider
+  def self.most_used_bike
     group('bike_id').order('bike_id ASC').count.first[0]
   end
 

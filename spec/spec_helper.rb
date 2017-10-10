@@ -6,6 +6,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'capybara/dsl'
 require 'capybara/rspec'
 require 'database_cleaner'
+require './db/seed'
 
 Capybara.app = BikeShareApp
 DatabaseCleaner.strategy = :truncation

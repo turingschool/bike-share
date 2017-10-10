@@ -13,14 +13,13 @@ class Seed
       Station.create!(row.to_hash)
     end
 
-    CSV.foreach("./db/csv/trip_fixture.csv", options ) do |row|
+    CSV.foreach("./db/csv/trip.csv", options ) do |row|
       next if Trip.exists?(row[:id])
       convert_date(row, :start_date)
       convert_date(row, :end_date)
       row.delete(:start_station_name)
       row.delete(:end_station_name)
       Trip.create(row.to_hash)
-
     end
 
   end

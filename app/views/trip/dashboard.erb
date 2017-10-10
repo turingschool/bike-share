@@ -1,24 +1,36 @@
+
 <p>Starting station with most rides: <%= @trips.starting_station_with_most_rides%></p>
 <p>Ending station with most rides: <%= @trips.ending_station_with_most_rides%></p>
-<p>Top Rider: <%= @trips.top_rider%>  (No. of Rides: <%= @trips.rides_per_top_rider%>)</p>
-<p>Bottom Rider: <%= @trips.bottom_rider%>  (No. of Rides: <%= @trips.rides_per_bottom_rider%>)</p>
+<p>Top Rider: #<%= @trips.top_rider%>  (No. of Rides: <%= @trips.rides_per_top_rider%>)</p>
+<p>Bottom Rider: #<%= @trips.bottom_rider%>  (No. of Rides: <%= @trips.rides_per_bottom_rider%>)</p>
+
+<p>=======</p>
+
 <p>Subscriptions: <%= @trips.subscription_count%></p>
+<ul>
     <%@trips.subscription_type_breakout.each do |outer, inner|%>
-    <h3>Subscription Type: <%= outer %></h3>
-        <p>Number: <%= inner[:subtotal]%></p>
-        <p>Percentage: <%=inner[:percentage] %>%</p>
+    <p>Subscription Type: <%= outer %></p>
+        <li>Number: <%= inner[:subtotal]%>
+        <li>Percentage: <%=inner[:percentage] %>
     <%end%>
+  </ul>
+
+<p>=======</p>
 <p>Most Active Day: <%= @trips.most_active_date%> (<%=@trips.trips_by_most_active_date%> trips)</p>
 <p>Least Active Day: <%= @trips.least_active_date%> (<%=@trips.trips_by_least_active_date%> trip(s))</p>
 
-<h2>Bike ride totals per year:</h2>
+<p>TEST Single date with the highest number of trips: <%= @trips.single_date_with_highest_trips %>,    No. of trips: <%= @trips.single_date_with_highest_trips[1] %></p>
+<p>TEST Single date with the fewest number of trips: <%= @trips.single_date_with_fewest_trips[0] %>,    No. of trips: <%=@trips.single_date_with_fewest_trips[1] %></p>
+
+<p>=======</p>
+<p>Bike ride totals per year:</p>
 <ul>
 <%@trips.year_month_subtotals.each do |year, totals|%>
     <li>
         <h3><%=year%></h3>
         <ul>
             <% totals.each do |month, total| %>
-                <li><%=month%>: <%=total%> trips</li> 
+                <li><%=month%>: <%=total%> trips</li>
             <%end%>
         </ul>
     </li>

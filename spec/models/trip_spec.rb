@@ -41,7 +41,7 @@ RSpec.describe 'trip model helper methods' do
     end
 
     it 'returns month by month breakdown of number of rides' do
-      expected = Trip.yearly_rides_per_month
+      expected = Trip.rides_per_month
       expect(expected).to eq "UNKNOWN"
     end
 

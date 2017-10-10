@@ -12,12 +12,3 @@
     <input class='submit-btn' type="submit" value="submit">
   </form>
 </div>
-
-
-<select name="station[name]">
-  <% @stations.sort_by(&:name).each do |station| %>
-    <option value="<%= station.name %>">
-      <%= station.name.upcase %>
-    </option>
-    <% end %>
-</select>

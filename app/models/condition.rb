@@ -1,4 +1,4 @@
-class Station < ActiveRecord::Base
+class Condition < ActiveRecord::Base
   validates_presence_of(
     :date,
     :max_temperature_f,

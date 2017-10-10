@@ -86,7 +86,7 @@ class Trip < ActiveRecord::Base
   def self.subscription_percentage
     group('subscription_type').count
   end
-  
+
   def self.subscription_type_breakout
     total = count
     var = group('subscription_type').count
@@ -107,7 +107,7 @@ class Trip < ActiveRecord::Base
   end
 
   def self.year_month_subtotals
-    years = {}  
+    years = {}
     rides_per_month.each do |timestamp, month_count|
       y = timestamp.year
       years[y] ||= { "January"=> 0,  "February"=> 0, "March"=> 0,
@@ -126,7 +126,7 @@ class Trip < ActiveRecord::Base
   end
 
   def self.trips_by_most_active_date
-    group("start_date").count.max_by(&:last)[1]    
+    group("start_date").count.max_by(&:last)[1]
   end
 
   def self.least_active_date
@@ -134,13 +134,13 @@ class Trip < ActiveRecord::Base
   end
 
   def self.trips_by_least_active_date
-    group("start_date").count.min_by(&:last)[1]    
+    group("start_date").count.min_by(&:last)[1]
   end
 
   def self.trips_by_day
     Trip.group("start_date").order('start_date DESC').count.first
   end
-  
+
   def self.trips_by_day
     group("start_date").count
   end

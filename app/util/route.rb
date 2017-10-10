@@ -16,22 +16,22 @@ module Route
   end
 end
 
-# Patten[:model]
+# Route[:model]
 # => ^\/station$
 # => /station
 
-# Patten[:model, :new]
+# Route[:model, :new]
 # => ^\/station\/new$
 # => /station/new
 
-# Patten[:model, :id]
+# Route[:model, :id]
 # => ^\/station\/\d+$
 # => /station/23
 
-# Patten[:model, :id, :edit]
+# Route[:model, :id, :edit]
 # => ^\/station\/\d+\/edit$
 # => /station/23
 
-# Patten[:model, :dashboard]
+# Route[:model, :dashboard]
 # => ^\/station-dashboard$
 # => /station-dashboard

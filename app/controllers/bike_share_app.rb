@@ -15,6 +15,7 @@ class BikeShareApp < Sinatra::Base
     register WillPaginate::Sinatra
   end
   set :root, File.expand_path("..", __dir__)
+  set :protection, :except => :path_traversal
   enable :method_override
 
 
@@ -47,7 +48,9 @@ class BikeShareApp < Sinatra::Base
     erb :home
   end
 
-  get Route[:model, :dashboard] do
+  get Route[:model, :dashboard] do |model_match|
+    @model = self.class.const_get model_match.capitalize
+    @records = @model.all
     sub_erb :dashboard
   end
 

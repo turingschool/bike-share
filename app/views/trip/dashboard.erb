@@ -1,24 +1,24 @@
-<p>Starting station with most rides: <%= @trips.starting_station_with_most_rides%></p>
-<p>Ending station with most rides: <%= @trips.ending_station_with_most_rides%></p>
-<p>Top Rider: <%= @trips.top_rider%>  (No. of Rides: <%= @trips.rides_per_top_rider%>)</p>
-<p>Bottom Rider: <%= @trips.bottom_rider%>  (No. of Rides: <%= @trips.rides_per_bottom_rider%>)</p>
-<p>Subscriptions: <%= @trips.subscription_count%></p>
-    <%@trips.subscription_type_breakout.each do |outer, inner|%>
-    <h3>Subscription Type: <%= outer %></h3>
-        <p>Number: <%= inner[:subtotal]%></p>
-        <p>Percentage: <%=inner[:percentage] %>%</p>
+<p>Starting station with most rides: <%= @records.starting_station_with_most_rides%></p>
+<p>Ending station with most rides: <%= @records.ending_station_with_most_rides%></p>
+<p>Top Rider: <%= @records.top_rider%>  (No. of Rides: <%= @records.rides_per_top_rider%>)</p>
+<p>Bottom Rider: <%= @records.bottom_rider%>  (No. of Rides: <%= @records.rides_per_bottom_rider%>)</p>
+<p>Subscriptions: <%= @records.subscription_count%></p>
+    <%@records.subscription_type_breakout.each do |outer, inner|%>
+      <h3>Subscription Type: <%= outer %></h3>
+      <p>Number: <%= inner[:subtotal]%></p>
+      <p>Percentage: <%=inner[:percentage] %>%</p>
     <%end%>
-<p>Most Active Day: <%= @trips.most_active_date%> (<%=@trips.trips_by_most_active_date%> trips)</p>
-<p>Least Active Day: <%= @trips.least_active_date%> (<%=@trips.trips_by_least_active_date%> trip(s))</p>
+<p>Most Active Day: <%= @records.most_active_date%> (<%=@records.trips_by_most_active_date%> trips)</p>
+<p>Least Active Day: <%= @records.least_active_date%> (<%=@records.trips_by_least_active_date%> trip(s))</p>
 
 <h2>Bike ride totals per year:</h2>
 <ul>
-<%@trips.year_month_subtotals.each do |year, totals|%>
+<%@records.year_month_subtotals.each do |year, totals|%>
     <li>
         <h3><%=year%></h3>
         <ul>
             <% totals.each do |month, total| %>
-                <li><%=month%>: <%=total%> trips</li> 
+                <li><%=month%>: <%=total%> trips</li>
             <%end%>
         </ul>
     </li>

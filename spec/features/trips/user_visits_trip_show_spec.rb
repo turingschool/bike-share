@@ -1,8 +1,8 @@
 require './spec/spec_helper'
 
-feature 'when user visits trip show page' do
+feature 'when a user visits trip show page' do
   context 'for a trip that exists'
-    background { visit '/trips/1' }
+    background do { visit '/trips/1' }
 
     it 'has status code 200' do
       expect(page.status_code).to eq(200)
@@ -54,7 +54,7 @@ feature 'when user visits trip show page' do
 
   context 'for a trip that does not exist'
 
-    it 'has status code 404' do
+    it 'they see a status code 404' do
       visit '/trips/1'
       expect(page).to have_content(/not found/i)
     end
@@ -65,10 +65,9 @@ feature 'when user visits trip show page' do
     background do
       click_button 'delete'
     end
-      it 'then user is redirected to index page'
+      it 'then user is redirected to trip index page'
         has_current_path?("/trips", only_path: true)
         expect(page).to have_content(/delete successful/i)
       end
   end
-
 end

@@ -30,7 +30,7 @@ class Station < ActiveRecord::Base
   end
 
   def self.average_dock_count
-    average(:dock_count)
+    average(:dock_count).round
   end
 
   def self.maximum_dock_count
@@ -41,24 +41,42 @@ class Station < ActiveRecord::Base
     minimum(:dock_count)
   end
 
-  def self.with_most_trips_started
-    # get_id = group(:start_station_id).order(start_station_id: :desc).count(:start_station_id).first.id
+  def started_rides_count
+    trips_started.count
   end
 
-  def self.with_least_trips_started
+  def ended_rides_count
+    trips_ended.count
   end
-  #   select('count(trips_started)').joins(:trips)
-  #
-  #   select("songs.id, OTHER_ATTRS_YOU_NEED, count(listens.id) AS listens_count").
-  #   joins(:listens).
-  #   group("songs.id").
-  #   order("listens_count DESC").
-  #   limit(5)
-  #
-  #
-  #
-  # Station.select("station.id, count(trips_started.id) AS tsc")
-  #   .joins(:trips_started)
-  #   .group("station.id")
-  #   .order("tsc DESC")
+
+  def frequent_destination
+    station_id = trips_started.group("end_station_id").order("count_id DESC").count(:id).first[0]
+    Station.find(station_id)
+  end
+
+  def frequent_destination_name
+    frequent_destination.name
+  end
+
+  def frequent_origination
+    station_id = trips_ended.group("start_station_id").order("count_id DESC").count(:id).first[0]
+    Station.find(station_id)
+  end
+
+  def frequent_origination_name
+    frequent_origination.name
+  end
+
+  def date_with_most_trips
+    trips_started.group("start_date").order("count_id DESC").count(:id).first[0].strftime("%A %B %d %Y")
+  end
+
+  def most_common_user_zip_code
+    trips_started.group("zip_code").order("count_id DESC").count(:id).first[0]
+  end
+
+  def most_common_bike_used
+    trips_started.group("bike_id").order("count_id DESC").count(:id).first[0]
+  end
+
 end

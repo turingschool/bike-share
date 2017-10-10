@@ -87,5 +87,5 @@ feature 'when a user visits trip show page' do
     end
 
   end
-
+  
 end

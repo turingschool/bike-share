@@ -22,7 +22,7 @@ describe "station index" do
   end
 
   it "user clicks delete and goes back to stations index" do
-    click_button("delete")
+    click_button("DELETE")
     expect(current_path).to eq("/stations")
   end
 end

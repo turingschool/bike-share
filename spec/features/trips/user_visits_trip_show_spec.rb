@@ -1,7 +1,5 @@
 require './spec/spec_helper'
 
-<<<<<<< HEAD
-
 feature 'when user visits trip show page' do
     background do
       Trip.create!    id: 1,
@@ -108,5 +106,4 @@ feature 'when a user visits trip show page' do
         expect(page).to have_content(/delete successful/i)
       end
   end
->>>>>>> master
 end

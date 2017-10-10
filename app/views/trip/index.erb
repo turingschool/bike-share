@@ -1,4 +1,4 @@
-<a href="/trips/<%=trip.id%>">
+<a href=<%= show(@record.id) %>>
   <h3><%= @record %></h3>
   <p><%= @record.duration%> minutes <%= @record.timeframe %></p>
 </a>

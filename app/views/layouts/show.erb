@@ -1,6 +1,6 @@
 <main id="show page">
   <%= yield %>
-  <form action="/stations/<%=@record.id%>" method="post">
+  <form action="<%= destroy(@record.id) %>" method="post">
     <input type="hidden" name="_method" value="DELETE">
     <input type='submit' name="delete" value="Delete">
   </form>

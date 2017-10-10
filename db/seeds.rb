@@ -15,6 +15,8 @@ class Seed
 
     CSV.foreach("./db/csv/trip_fixture.csv", options ) do |row|
       next if Trip.exists?(row[:id])
+      next unless Station.exists?(row[:start_station_id])
+      next unless Station.exists?(row[:end_station_id])
       convert_date(row, :start_date)
       convert_date(row, :end_date)
       row.delete(:start_station_name)

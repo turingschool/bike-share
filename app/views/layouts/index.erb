@@ -1,13 +1,13 @@
 <main id="index page">
-  <h2>All <%=@model.capitalize%>s</h2>
-  <% @records.each do |record| %>
+  <h2><%= @model.name %> List</h2>
+  <% @records.each do |record| ; @record = record %>
     <div class="summary">
-      <%= @record = record; yield %>
-      <form action="/trips/<%=record.id%>" method="post">
+      <%= yield %>
+      <form action=<%= destroy(record.id) %> method="post">
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" name="delete" value='Delete'>
       </form>
     </div>
   <% end %>
-  <%= will_paginate @stations %>
+  <%= will_paginate @records %>
 </main>

@@ -10,7 +10,7 @@ feature 'when a user visits trip show page' do
   end
 
   context 'for a trip that exists' do
-    background { visit '/trips/1' }
+    background { visit '/trips/11' }
 
     it 'has status code 200' do
       expect(page.status_code).to eq(200)
@@ -79,6 +79,11 @@ feature 'when a user visits trip show page' do
         has_current_path?('/trips', only_path: true)
         expect(page).to have_content(/delete successful/i)
       end
+
+      it 'the user sees the deleted trip is not listed' do
+        skip
+      end
+
     end
 
   end

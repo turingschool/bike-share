@@ -25,15 +25,16 @@ class BikeShareApp < Sinatra::Base
     end
   end
 
-
-  before Route[:model] do |model_match|
-    @model = self.class.const_get model_match.capitalize
+  def set_model(model)
+    @model = self.class.const_get model.capitalize
   end
 
-  before Route[:model, :id] do |model_match, id_match|
-    @model = self.class.const_get model_match.capitalize
-    @id = id_match.to_i
+  def set_record(model, id)
+    set_model(model)
+    @id = id
+    @record = @model.find(id)
   end
+
 
   before Route['\/trips', :new] do
     @stations = Station.all
@@ -48,44 +49,49 @@ class BikeShareApp < Sinatra::Base
     erb :home
   end
 
-  get Route[:model, :dashboard] do |model_match|
-    @model = self.class.const_get model_match.capitalize
+  get Route[:model, :dashboard] do |model|
+    set_model(model)
     @records = @model.all
     sub_erb :dashboard
   end
 
-  get Route[:model, :new] do
+  get Route[:model, :new] do |model|
+    set_model(model)
     sub_erb :new
   end
 
-  get Route[:model, :id, :edit] do
-    @record = @model.find(@id)
+  get Route[:model, :id, :edit] do |model, id|
+    set_record(model, id)
     sub_erb :edit
   end
 
-  get Route[:model, :id] do
-    @record = @model.find(@id)
+  get Route[:model, :id] do |model, id|
+    set_record(model, id)
     sub_erb :show
   end
 
-  get Route[:model] do
+  get Route[:model] do |model|
+    set_model(model)
     @records = @model.paginate(page: params[:page], per_page: 30)
     sub_erb :index
   end
 
-  post Route[:model, :id] do
-    @model.create(@id, params[@model.view_name])
-    redirect to "/#{@model.name}/#{@id}"
+  post Route[:model] do |model|
+    set_model(model)
+    @model.create(params[@model.name.downcase])
+    redirect to "/#{@model.name.downcase}/#{@id}"
   end
 
-  put Route[:model, :id] do
-    @model.update(@id, params[@model.view_name])
-    redirect to "/#{@model.table_name}/#{@id}"
+  put Route[:model, :id] do |model, id|
+    set_record(model, id)
+    @record.update(params[@model.name.downcase])
+    redirect to "/#{@model.name.downcase}/#{@id}"
   end
 
-  delete Route[:model, :id] do
-    @model.destroy(@id)
-    redirect to "/#{@model.table_name}"
+  delete Route[:model, :id] do |model, id|
+    set_record(model, id)
+    @record.destroy
+    redirect to "/#{@model.name.downcase}"
   end
 
   def not_found

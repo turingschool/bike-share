@@ -14,13 +14,12 @@ dummy_data = {
     },
     Trip => {
       duration: 8,
-      start_date: "1989-01-01",
+      start_date: "01/01/2017",
       start_station_id: 4,
-      end_date: "2001-01-01",
-      end_station_id: 47,
+      end_date: "01/01/2017",
+      end_station_id: 5,
       bike_id: 404,
-      subscription_type: "Yearly",
-      zip_code: 80202
+      subscription_type: "Yearly"
     },
     Condition => {
       date: '1/1/2017',
@@ -45,7 +44,7 @@ dummy_data = {
         record = model.new(@data)
         expect(record).to be_valid
       end
-      context "is not not valid without property" do
+      context "is not valid without property" do
         data.keys.each do |property|
           it(property) do
             @data.delete property

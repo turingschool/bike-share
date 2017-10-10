@@ -1,0 +1,10 @@
+id,duration,start_date,start_station_id,end_date,end_station_id,bike_id,subscription_type,zip_code
+11,1,1/1/1111,1,1/1/1111,9,21,subscription type 1,11111
+12,2,2/2/2222,2,2/2/2222,8,22,subscription type 2,22222
+13,3,3/3/3333,3,3/3/3333,7,23,subscription type 3,33333
+14,4,4/4/4444,4,4/4/4444,6,24,subscription type 4,44444
+15,5,5/5/5555,5,5/5/5555,5,25,subscription type 5,55555
+16,6,6/6/6666,6,6/6/6666,4,26,subscription type 6,66666
+17,7,7/7/7777,7,7/7/7777,3,27,subscription type 7,77777
+18,8,8/8/8888,8,8/8/8888,2,28,subscription type 8,88888
+19,9,9/9/9999,9,9/9/9999,1,29,subscription type 9,99999

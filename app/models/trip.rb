@@ -14,7 +14,7 @@ class Trip < ActiveRecord::Base
                           #do NOT validate zip code per Sal.
 
 
-  def to_s
+  def display
     "Trip ##{id} #{route}"
   end
 
@@ -44,15 +44,17 @@ class Trip < ActiveRecord::Base
     end_station.name
   end
 
-  def self.average_ride_length
+
+
+  def self.average_duration
     average :duration
   end
 
-  def self.trip_of_longest_length
-    minimum :duration
+  def self.longest_trip
+    where duration: (maximum :duration)
   end
 
-  def self.trip_of_shortest_length
+  def self.shortest_trip
     where duration: (minimum :duration)
   end
 
@@ -72,21 +74,6 @@ class Trip < ActiveRecord::Base
 
   def self.rides_per_year
     group("DATE_TRUNC('year', end_date)").count
-  end
-
-  def self.year_month_subtotals
-    years = {}
-    rides_per_month.each do |timestamp, month_count|
-      y = timestamp.year
-      years[y] ||= { "January"=> 0,  "February"=> 0, "March"=> 0,
-                      "April"=> 0,   "May"=> 0,      "June"=> 0,
-                      "July"=> 0,    "August"=> 0,   "September"=> 0,
-                      "October"=> 0, "November"=> 0, "December"=> 0,
-                      "Subtotal"=> 0 }
-      m = timestamp.strftime('%B')
-      years[y][m] += month_count
-    end
-    years.each_value { |counts| counts["Subtotal"] = counts.values.sum }
   end
 
   def self.top_rider
@@ -125,6 +112,20 @@ class Trip < ActiveRecord::Base
   end
 
 
+  def self.year_month_subtotals
+    years = {}
+    rides_per_month.each do |timestamp, month_count|
+      y = timestamp.year
+      years[y] ||= { "January"=> 0,  "February"=> 0, "March"=> 0,
+                      "April"=> 0,   "May"=> 0,      "June"=> 0,
+                      "July"=> 0,    "August"=> 0,   "September"=> 0,
+                      "October"=> 0, "November"=> 0, "December"=> 0,
+                      "Subtotal"=> 0 }
+      m = timestamp.strftime('%B')
+      years[y][m] += month_count
+    end
+    years.each_value { |counts| counts["Subtotal"] = counts.values.sum }
+  end
 
   def self.most_active_date
     group("start_date").count.max_by(&:last)[0].strftime('%A, %B %d, %Y')

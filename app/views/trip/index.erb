@@ -1,18 +1,4 @@
-<h2>All Trips</h2>
-<div>
-    <% @trips.each do |trip| %>
-      <div class="summary">
-        <a href="/trips/<%=trip.id%>">
-          <h3><%= trip %></h3>
-          <p><%= trip.duration%> minutes <%= trip.timeframe %></p>
-        </a>
-        <form action="/trips/<%=trip.id%>" method="post">
-          <input type="hidden" name="_method" value="DELETE">
-          <input type="submit" name="delete" value='Delete'>
-        </form>
-      </div>
-    <% end %>
-
-<%= will_paginate @trips %>
-
-</div>
+<a href=<%= show(@record.id) %>>
+  <h3><%= @record %></h3>
+  <p><%= @record.duration%> minutes <%= @record.timeframe %></p>
+</a>

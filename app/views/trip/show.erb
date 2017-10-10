@@ -1,10 +1,5 @@
-<h2><%= @trip %></h2>
-<p><%= @trip.duration %> minutes <%= @trip.timeframe %></p>
-<p>Bike ID: <%= @trip.bike_id %></p>
-<p>Subscription Type: <%= @trip.subscription_type %></p>
-<p>Zip Code: <%= @trip.zip_code %></p>
-
-<form action="/trips/<%=@trip.id%>" method="post">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" name="delete" value='Delete'>
-</form>
+<h2><%= @record %></h2>
+<p><%= @record.duration %> minutes <%= @record.timeframe %></p>
+<p>Bike ID: <%= @record.bike_id %></p>
+<p>Subscription Type: <%= @record.subscription_type %></p>
+<p>Zip Code: <%= @record.zip_code %></p>

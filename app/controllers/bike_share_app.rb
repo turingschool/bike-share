@@ -2,6 +2,7 @@ require 'will_paginate'
 require 'will_paginate/active_record'
 
 require_relative '../models/station.rb'
+require_relative 'rest_url'
 
 class BikeShareApp < Sinatra::Base
   configure do
@@ -10,88 +11,115 @@ class BikeShareApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
   set :method_override, true
 
+  helpers RestUrl
+
+  def sub_erb(view)
+    erb :"layouts/#{view}" do
+      erb :"#{@model.name}/#{view}"
+    end
+  end
+
   get '/' do
     erb :home
   end
 
   get '/stations' do
-    @stations = Station.paginate(page: params[:page], per_page: 30)
-    erb :'station/index'
+    @model = Station
+    @records = Station.paginate(page: params[:page], per_page: 30)
+    sub_erb :index
   end
 
   get '/stations/new' do
-    erb :'station/new'
+    @model = Station
+    sub_erb :new
   end
 
-  get '/stations/:id' do
-    @station = Station.find(params[:id])
-    erb :'station/show'
+  get '/stations/:id' do |id|
+    @model = Station
+    @id = id
+    @record = Station.find(id)
+    sub_erb :show
   end
 
   get '/station-dashboard' do
-    @stations = Station.all
-    erb :'station/dashboard'
+    @model = Station
+    @records = Station.all
+    sub_erb :dashboard
   end
 
-  get '/stations/:id/edit' do
-    @station = Station.find(params[:id])
-    erb :'station/edit'
+  get '/stations/:id/edit' do |id|
+    @model = Station
+    @id = id
+    @record = Station.find(id)
+    sub_erb :edit
   end
 
   post '/stations' do
+    @model = Station
     id = Station.create(params[:station]).id
-    redirect "/stations/#{id}"
+    redirect to "/stations/#{id}"
   end
 
   put '/stations/:id' do |id|
+    @model = Station
+    @id = id
     Station.update(id.to_i, params[:station])
-    redirect "/station/#{id}"
+    redirect to "/stations/#{id}"
   end
 
   delete '/stations/:id' do |id|
+    @model = Station
+    @id = id
     Station.destroy(id.to_i)
-    redirect '/stations'
+    redirect to '/stations'
   end
 
   get '/trips-dashboard' do
-    @trips = Trip.all
-    erb :'trip/dashboard'
+    @model = Trip
+    @records = Trip.all
+    sub_erb :dashboard
   end
 
   get '/trips' do
-    @trips = Trip.paginate(page: params[:page], per_page: 30)
-    erb :'trip/index'
+    @model = Trip
+    @records = Trip.paginate(page: params[:page], per_page: 30)
+    sub_erb :index
   end
 
   get '/trips/new' do
+    @model = Trip
     @stations = Station.all
-    erb :'trip/new'
+    sub_erb :new
   end
 
-  get '/trips/:id' do
-    @trip = Trip.find(params[:id])
-    erb :'trip/show'
+  get '/trips/:id' do |id|
+    @model = Trip
+    @id = id
+    @record = Trip.find(id)
+    sub_erb :show
   end
 
-  get '/trips/:id/edit' do
+  get '/trips/:id/edit' do |id|
+    @model = Trip
+    @id = id
+    @record = Trip.find(id)
     @stations = Station.all
-    @trip = Trip.find(params[:id])
-    erb :'trip/edit'
+    sub_erb :edit
   end
 
   post '/trips' do
-    id = Trip.create(params[:trip])
-    redirect "/trips/#{id}"
+    id = Trip.create!(params[:trip]).id
+    redirect to "/trips/#{id}"
   end
 
   put '/trips/:id' do |id|
-    Trip.update(id.to_i, params[:trip])
-    redirect "/trips/#{id}"
+    Trip.update!(id.to_i, params[:trip])
+    redirect to "/trips/#{id}"
   end
 
   delete '/trips/:id' do |id|
-    Trip.destroy(id.to_i)
-    redirect '/trips'
+    Trip.destroy!(id.to_i)
+    redirect to '/trips'
   end
 
   not_found do

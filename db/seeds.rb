@@ -36,7 +36,7 @@ class Seed
       row.delete(:min_sea_level_pressure_inches)
       row.delete(:max_visibility_miles)
       row.delete(:min_visibility_miles)
-      row.delete(:max_wind_Speed_mph)
+      row.delete(:max_wind_speed_mph)
       row.delete(:max_gust_speed_mph)
       row.delete(:cloud_cover)
       row.delete(:events)

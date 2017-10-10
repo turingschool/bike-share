@@ -1,12 +1,13 @@
 <main id="edit-page">
-  <h2>Edit <%= @model.capitalize %></h2>
-  <form action = "/<%= @model %>s/<%= @id %>" method="post">
+  <h2>Edit <%= @model.name %></h2>
+  <form action="<%= update(@id) %>" method="post">
     <input type="hidden" name="_method" value="PUT" />
     <%= yield %>
     <input type="submit" name="submit"/>
-    <form action = "/<%= @model %>s/<%= @id %>" method="post">
-      <input type="hidden" name="_method" value="DELETE" />
-      <button type="submit" name="delete" value="Delete"> delete </button>
-    </form>
+    <button type="submit" form="delete" name="delete" value="Delete"> delete </button>
+  </form>
+  <form id="delete" action = "<%= destroy(@id) %>" method="post">
+    <input type="hidden" name="_method" value="DELETE" />
+
   </form>
 </main>

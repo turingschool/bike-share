@@ -6,7 +6,7 @@
   <% @records.each do |record| ; @record = record %>
     <div class="summary">
       <%= yield %>
-      <a href="<%=update_form(record.id)%>">
+      <a href="<%= update_form(record.id) %>">
         <button name="edit"/>Edit</button>
       </a>
       <form action=<%= destroy(record.id) %> method="post">

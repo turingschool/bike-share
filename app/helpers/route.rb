@@ -7,8 +7,8 @@ module Route
 
   def self.parts
     {
-      trip: '\/(trip)',
-      model: '\/(station|trip|condition)s?',
+      trip: '\/(trip).*',
+      model: '\/(station|trip|condition).*',
       dashboard: '-dashboard',
       new: '\/new',
       edit: '\/edit',

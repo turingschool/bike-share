@@ -23,8 +23,8 @@ class Trip <ActiveRecord::Base
 	self.per_page = 30
 
 	def self.avg_duration
-    # time = average(:duration)
-    # Time.at(time).utc.strftime("%H:%M:%S")
+    time = average(:duration)
+    Time.at(time).utc.strftime("%H:%M:%S")
   end
 
   def self.longest_ride

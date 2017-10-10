@@ -61,7 +61,42 @@ class Trip < ActiveRecord::Base
   def self.ending_station_with_most_rides
     get_id = group(:end_station_id).order(end_station_id: :desc).count(:end_station_id).first[0]
     Station.find(get_id).name
-  end             
+  end
+
+  def self.top_rider
+    group('bike_id').order('bike_id ASC').count.first[0]
+  end
+
+  def self.rides_per_top_rider
+    group('bike_id').order("bike_id ASC").count.first[1]
+  end
+
+  def self.bottom_rider
+    group('bike_id').order('bike_id DESC').count.first[0]
+  end
+
+  def self.rides_per_bottom_rider
+    group('bike_id').order("bike_id DESC").count.first[1]
+  end
+
+  def self.subscription_count
+    count('subscription_type')
+  end
+
+  def self.subscription_percentage
+    group('subscription_type').count
+  end
+  
+  def self.subscription_type_breakout
+    total = count
+    var = group('subscription_type').count
+    var2 = var.transform_values do |subtotal|
+      {
+        subtotal: subtotal,
+        percentage: subtotal * 100 / total
+      }
+    end
+  end
 
   def self.rides_per_month
     group("DATE_TRUNC('month', end_date)").count
@@ -85,36 +120,28 @@ class Trip < ActiveRecord::Base
     end
     years.each_value { |counts| counts["Subtotal"] = counts.values.sum }
   end
+
+  def self.most_active_date
+    group("start_date").count.max_by(&:last)[0].strftime('%A, %B %d, %Y')
+  end
+
+  def self.trips_by_most_active_date
+    group("start_date").count.max_by(&:last)[1]    
+  end
+
+  def self.least_active_date
+    group("start_date").count.min_by(&:last)[0].strftime('%A, %B %d, %Y')
+  end
+
+  def self.trips_by_least_active_date
+    group("start_date").count.min_by(&:last)[1]    
+  end
+
+  def self.trips_by_day
+    Trip.group("start_date").order('start_date DESC').count.first
+  end
+  
+  def self.trips_by_day
+    group("start_date").count
+  end
 end
-
-=begin
-
-Month by Month breakdown of number of rides with subtotals for each year.
-Most ridden bike with total number of rides for that bike.
-Least ridden bike with total number of rides for that bike.
-User subscription type breakout with both count and percentage.
-Single date with the highest number of trips with a count of those trips.
-Single date with the lowest number of trips with a count of those trips.
-
-rides_per_year
-    
-yearly_rides_per_month "rides per month per year"
-first_trip = minimum(:date)
-
-SELECT EXTRACT(MONTH FROM "2017-06-15")
-
-subtotal of each year
-subtotal of each month
-
-per row group by ending date column
-order by descending
-
-top_biker
-rides_per_bike
-bottom_biker
-subscription_count
-subscription_percentage
-date_with_highest_trips
-date_with_lowest_trips
-
-=end

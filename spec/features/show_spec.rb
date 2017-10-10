@@ -1,6 +1,7 @@
 describe "/stations/show" do
   before :each do
-    Station.create!(id: 1, name: "San Jose Diridon Caltrain Station", dock_count: 27, city: City.create(id:1, name: "San Jose"), installation_date: "2013-08-06", lat:0, lng:0)
+    city = City.create(id:1, name: "San Jose")
+    Station.create(id: 1, name: "San Jose Diridon Caltrain Station", dock_count: 27, city: city, installation_date: "2013-08-06", lat:0, lng:0)
 
     visit '/stations/1'
   end

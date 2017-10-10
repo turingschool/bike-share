@@ -9,6 +9,15 @@
     <input type="text" name="trip[bike_id]" placeholder="Bike Id">
     <input type="integer" name="trip[subscription_type]" placeholder="Subscription Type">
     <input type="integer" name="trip[zip_code]" placeholder="Zip Code">
-    <input class='submit-btn' type="submit" value="SUBMIT">
+    <input class='submit-btn' type="submit" value="submit">
   </form>
 </div>
+
+
+<select name="station[name]">
+  <% @stations.sort_by(&:name).each do |station| %>
+    <option value="<%= station.name %>">
+      <%= station.name.upcase %>
+    </option>
+    <% end %>
+</select>

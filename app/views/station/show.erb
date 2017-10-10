@@ -5,7 +5,10 @@
 <p>City: <%= @station.city %></p>
 <p>Installation Date: <%= @station.installation_date %></p>
 <p>Latitude: <%= @station.lat %>
-<p>Longetude: <%= @station.long %>
+<p>Longitude: <%= @station.long %>
+<p>Number of rides starting from this station: <%= @station.started_rides_count %></p>
+<p>Number of rides ending at this station:  <%= @station.ended_rides_count %></p>
+<p>Most frequent destination: <%= @station.frequent_destination %></p>
 
 <form action="/stations/<%=@station.id%>" method="post">
   <input type="hidden" name="_method" value="DELETE">

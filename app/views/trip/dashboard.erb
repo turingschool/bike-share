@@ -19,8 +19,8 @@
 <p>Most Active Day: <%= @trips.most_active_date%> (<%=@trips.trips_by_most_active_date%> trips)</p>
 <p>Least Active Day: <%= @trips.least_active_date%> (<%=@trips.trips_by_least_active_date%> trip(s))</p>
 
-<p>TEST Single date with the highest number of trips: <%= @trips.single_date_with_highest_trips %>,    No. of trips: <%= @trips.single_date_with_highest_trips[1] %></p>
-<p>TEST Single date with the fewest number of trips: <%= @trips.single_date_with_fewest_trips %>,    No. of trips: <%=@trips.single_date_with_fewest_trips[1] %></p>
+<p>TEST Single date with the highest number of trips: <%= @trips.single_date_with_highest_trips[0] %>,    No. of trips: <%= @trips.single_date_with_highest_trips[1] %></p>
+<p>TEST Single date with the fewest number of trips: <%= @trips.single_date_with_fewest_trips[0] %>,    No. of trips: <%=@trips.single_date_with_fewest_trips[1] %></p>
 
 <p>=======</p>
 <p>Bike ride totals per year:</p>

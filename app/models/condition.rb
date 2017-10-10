@@ -1,5 +1,6 @@
-class Station < ActiveRecord::Base
+class Condition < ActiveRecord::Base
 
+  has_many :dates 
 
   validates_presence_of(
     :date,

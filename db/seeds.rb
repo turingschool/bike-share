@@ -1,6 +1,7 @@
 require 'csv'
 require './app/models/station'
 require './app/models/trip'
+require './app/models/condition'
 
 class Seed
 
@@ -13,7 +14,7 @@ class Seed
       Station.create!(row.to_hash)
     end
 
-    CSV.foreach("./db/csv/trip_fixture.csv", options ) do |row|
+    CSV.foreach("./db/csv/trip.csv", options ) do |row|
       next if Trip.exists?(row[:id])
       convert_date(row, :start_date)
       convert_date(row, :end_date)
@@ -41,7 +42,6 @@ class Seed
       row.delete(:events)
       row.delete(:wind_dir_degrees)
       row.delete(:zip_code)
-
       Condition.create!(row.to_hash)
     end
 

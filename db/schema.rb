@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20171008071235) do
     t.integer "end_station_id"
     t.integer "bike_id"
     t.text "subscription_type"
-    t.integer "zip_code"
+    t.text "zip_code"
   end
 
 end

@@ -1,15 +1,10 @@
   describe "When a user visits the URI '/'" do
-    it "they see welcome message" do
+    it "they see the contents of the homepage/dashboard" do
       visit '/'
 
       within("h1") do
         expect(page).to have_content("Welcome to BikeShare!")
       end
-    end
-
-    it "they see multiple links" do
-      visit '/'
-
       expect(has_link?("All Stations")).to eq(true)
       expect(has_link?("Add Station")).to eq(true)
       expect(has_link?("All Trips")).to eq(true)
@@ -18,7 +13,8 @@
       expect(has_link?("Add Condition")).to eq(true)
     end
   end
-#
+
+
 #   describe "when the user clicks on the station name on the stations page" do
 #     it "brings the user to a page for that individual station" do
 #       Station.create({name: "San Jose Diridon Caltrain Station",

@@ -56,12 +56,12 @@ class Trip < ActiveRecord::Base
   end
 
   def self.starting_station_with_most_rides
-    get_id = group(:start_station_id).order(start_station_id: :desc).count(:id).first[0]
+    get_id = group(:start_station_id).order('count_id DESC').count(:id).first[0]
     Station.find(get_id).name
   end
 
   def self.ending_station_with_most_rides
-    get_id = group(:end_station_id).order(end_station_id: :desc).count(:id).first[0]
+    get_id = group(:end_station_id).order('count_id DESC').count(:id).first[0]
     Station.find(get_id).name
   end
 
@@ -151,7 +151,7 @@ class Trip < ActiveRecord::Base
 
 
 
-# NOTES - the two methods below can replace the related methods above.
+# NOTES - the two methods below are similar to the ones above. Not sure which to use.
 
   def self.single_date_with_highest_trips  #Single date with the highest number of trips with a count of those trips.
     group('end_date').order('count_id DESC').count(:id).first
@@ -160,5 +160,6 @@ class Trip < ActiveRecord::Base
   def self.single_date_with_fewest_trips  #Single date with the highest number of trips with a count of those trips.
     group(:end_date).order('count_id ASC').count(:id).first
   end
+
 
 end

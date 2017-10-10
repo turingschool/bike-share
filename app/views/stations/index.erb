@@ -1,8 +1,47 @@
-<header>
-  <h1>BikeShare Stations</h1>
+<div class="sides">
+  <a class='a-logo' href='/'>Bike Share</a>
+  <a href="/stations"   class="logo">STATIONS</a>
+  <a href="/trips"      class="logo">TRIPS</a>
+  <a href="/conditions" class="logo">CONDITIONS</a>
+</div>
+<header class="station-new">
+  <a href="/stations/new"><span>New</span> Station</a>
 </header>
 
-<h2><a href='/stations/new'>New Station</a></h2>
+<div class='trip-index-container'>
+  <header>
+    <h1><span>All</span> Stations</h1>
+  </header>
+  <% @stations.each do |station| %>
+    <div class='trip-card'>
+      <ul>
+        <a href="/stations/<%= station.id %>">Station #<%= station.id %></a>
+        <li><span>Station Name:</span>
+          <%= station.name %>
+        </li>
+        <li><span>Dock Count: </span>
+          <%= station.dock_count %>
+        </li>
+        <li><span>City Name:</span>
+          <%= station.city.name %>
+        </li>
+        <li><span>Installation Date:</span>
+          <%= station.installation_date%>
+        </li>
+      </ul>
+      <form action="/stations/<%= station.id %>/edit" method="GET">
+        <input type="submit" value="EDIT">
+      </form>
+      <form action="/stations/<%= station.id %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="DELETE">
+      </form>
+    </div>
+    <% end %>
+    <%= will_paginate @stations, :page_links => false %>
+</div>
+
+<!-- <h2><a href='/stations/new'>New Station</a></h2>
 <table class='stations-table'>
   <tr>
     <th><h3>Station</h3></th>
@@ -28,4 +67,4 @@
   </tr>
 <% end %>
 </table>
-<%= will_paginate @stations, :page_links => false %>
+<%= will_paginate @stations, :page_links => false %> -->

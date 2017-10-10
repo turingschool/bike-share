@@ -3,31 +3,8 @@ require './app/models/station'
 require './spec/spec_helper'
 
 
-RSpec.describe 'trip model helper methods' do
-    before do
-
-      # NEED TO SEED LOTS OF DUMMY DATA
-          #
-          # Trip.create! duration: ,
-          #              start_date: ,
-          #              start_station_id: ,
-          #              end_date: ,
-          #              end_station_id: ,
-          #              bike_id: ,
-          #              subscription_type: ,
-          #              zip_code:
-          #
-          # Trip.create! duration: ,
-          #              start_date: ,
-          #              start_station_id: ,
-          #              end_date: ,
-          #              end_station_id: ,
-          #              bike_id: ,
-          #              subscription_type: ,
-          #              zip_code:
-
-      visit ' /trip-dashboard '
-    end
+RSpec.describe Trip do
+    before{ Seed.seed_trips }
 
     it 'returns station with the most rides as a starting place' do
       expected = Trip.starting_station_with_most_rides
@@ -51,7 +28,7 @@ RSpec.describe 'trip model helper methods' do
     end
 
     it 'returns most ridden bike' do
-      expected = Trip.top_biker
+      expected = Trip.top_rider
       expect(expected).to eq "UNKNOWN"
     end
 
@@ -61,7 +38,7 @@ RSpec.describe 'trip model helper methods' do
     end
 
     it 'returns biker with fewest rides' do
-      expected = Trip.bottom_biker
+      expected = Trip.bottom_rider
       expect(expected).to eq "UNKNOWN"
     end
 

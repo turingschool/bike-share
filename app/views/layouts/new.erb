@@ -1,0 +1,7 @@
+<main id="create-page">
+  <h2>New <%= @model.display %></h2>
+  <form action=<%= create %> method="post">
+    <%= yield %>
+    <input type="submit" name="submit"/>
+  </form>
+</main>

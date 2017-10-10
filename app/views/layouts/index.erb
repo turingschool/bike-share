@@ -1,0 +1,19 @@
+<main id="index page">
+  <h2><%= @model.name %> List</h2>
+  <a href="<%= create_form %>">
+    <button name="new">New <%= @model.name.downcase %></button>
+  </a>
+  <% @records.each do |record| ; @record = record %>
+    <div class="summary">
+      <%= yield %>
+      <a href="<%= update_form(record.id) %>">
+        <button name="edit"/>Edit</button>
+      </a>
+      <form action=<%= destroy(record.id) %> method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" name="delete" value="Delete">
+      </form>
+    </div>
+  <% end %>
+  <%= will_paginate @records %>
+</main>

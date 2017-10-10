@@ -1,16 +1,52 @@
 require './spec/spec_helper'
 
+<<<<<<< HEAD
+
+feature 'when user visits trip show page' do
+    background do
+      Trip.create!    id: 1,
+                      duration: 10,
+                      start_date: "2001-01-01",
+                      start_station_id: 8,
+                      end_date: "2001-02-01",
+                      end_station_id: 7,
+                      bike_id: 404,
+                      subscription_type: "Monthly",
+                      zip_code: 32210
+
+      Station.create! id: 8,
+                      city: 'land of bikes',
+                      name: 'pile of bikes',
+                      dock_count: 999999,
+                      lat: 888.888,
+                      long: 777.777,
+                      installation_date: Date.parse('22/1/3333')
+
+      visit '/trips/1'
+    end
+
 feature 'when a user visits trip show page' do
   context 'for a trip that exists'
     background do { visit '/trips/1' }
+
+=======
+feature 'when a user visits trip show page' do
+  context 'for a trip that exists'
+    background do { visit '/trips/1' }
+>>>>>>> master
 
     it 'has status code 200' do
       expect(page.status_code).to eq(200)
     end
 
     it 'they see the duration' do
+<<<<<<< HEAD
+        expect(page).to have_content(/duration/i)
+        expect(page).to have_content("10")
+=======
       expect(page).to have_content(/duration/i)
       expect(page).to have_content("1")
+>>>>>>> master
     end
 
     it 'they see the start date' do
@@ -52,6 +88,8 @@ feature 'when a user visits trip show page' do
       expect(page).to have_content("32210")
     end
 
+<<<<<<< HEAD
+=======
   context 'for a trip that does not exist'
 
     it 'they see a status code 404' do
@@ -70,4 +108,5 @@ feature 'when a user visits trip show page' do
         expect(page).to have_content(/delete successful/i)
       end
   end
+>>>>>>> master
 end

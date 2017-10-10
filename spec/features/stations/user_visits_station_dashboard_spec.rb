@@ -3,7 +3,7 @@ require './spec/spec_helper'
 
 feature 'When a user visits the Station Dashboard' do
   background do
-    Station.create! name: 'boring!!!',        dock_count: 55,  installation_date: '5/5/5555', city: 'a', lat: 55.55, long: 55.55
+    Station.create!({name: 'boring!!!',        dock_count: 55,  installation_date: '5/5/5555', city: 'a', lat: 55.55, long: 55.55})
     Station.create! name: 'boring!!!',        dock_count: 55,  installation_date: '5/5/5555', city: 'a', lat: 55.55, long: 55.55
 
     Station.create! name: 'fewest_docks_A',   dock_count: 1,   installation_date: '5/5/5555', city: 'a', lat: 55.55, long: 55.55

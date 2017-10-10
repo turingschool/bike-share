@@ -1,0 +1,28 @@
+<h1>Trips Information</h1>
+<ul>
+  <li>Average Ride Duration: <%= @trips.avg_duration %></li>
+  <li>Longest Ride: <%= @trips.longest_ride %></li>
+  <li>Shortest Ride: <%= @trips.shortest_ride %></li>
+  <li>Station with Most Departures: <%= @trips.most_departures %></li>
+  <li>Station with Most Arrivals: <%= @trips.most_arrivals %></li>
+  <li>Rides Breakdown by Year/Month:
+    <ul>
+      <% @trips.month_year_breakdown.each do |entry| %></li>
+        <li><%= entry[0] %>: <%= entry[1] %></li>
+        <% end %>
+      </ul>
+      <% @trips.year_breakdown.each do |entry| %>
+        <p><%= entry[0] %>: <%= entry[1] %></p>
+        <% end %>
+  <li>ID of Most Ridden Bike: <%= @trips.most_ridden_bike %> (<%= @trips.ride_count(@trips.most_ridden_bike)%> rides)</li>
+  <li>ID of Least Ridden Bike: <%= @trips.least_ridden_bike %> (<%= @trips.ride_count(@trips.least_ridden_bike)%> rides)</li>
+  <li><p>User Subscription types:</p>
+    <ul><% @trips.subscription_types_and_info.each_pair do |type, info| %>
+      <p><%= type %></p>
+      <li><%= info[:count] %> subscriptions (<%= info[:pct] %>% of business)</li>
+    <% end %>
+    </ul>
+  </li>
+  <li>Busiest Day: <%= @trips.busiest_day %></li>
+  <li>Slowest Day: <%= @trips.slowest_day %></li>
+</ul>

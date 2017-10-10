@@ -1,8 +1,8 @@
 <ul>
-	<%	Condition.all_days_in_temp_range.each do |increment_block| %>
-		<li>Average Number of Rides: <%=increment_block[0] %></li> 
-	<li>Highest Number of Rides <%=increment_block[1].trips.count%></li>
-	<li>Lowest Number of Rides <%=increment_block[2].trips.count %></li>
-  <li></li>
+	<%	Condition.breakout_temps.each do |range, data| %>
+		<li>Range: <%=range%>-<%=range + 10%></li>
+		<li>Average Number of Rides: <%=data[:avg]%></li> 
+	<li>Highest Number of Rides <%=data[:max]%></li>
+	<li>Lowest Number of Rides <%=data[:min]%></li>
 	<% end %>
 </ul>

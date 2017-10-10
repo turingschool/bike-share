@@ -42,7 +42,8 @@ end
 CSV.foreach('./db/csv/weather.csv', headers: true, header_converters: :symbol) do |row|
 
   Condition.create(date:               row[:date],
-                   max_temperature:    row[:max_temperature_f],                 mean_temperature:   row[:mean_temperature_f],
+                   mean_temperature:   row[:mean_temperature_f],
+                   max_temperature:    row[:max_temperature_f],
                    min_temperature:    row[:min_temperature_f],
                    mean_humidity:      row[:mean_humidity],
                    mean_visibility:    row[:mean_visibility_miles],

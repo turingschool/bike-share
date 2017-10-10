@@ -28,8 +28,8 @@ class Trip <ActiveRecord::Base
   end
 
   def self.longest_ride
-    # time = maximum(:duration)
-    # Time.at(time).utc.strftime("%H:%M:%S")
+    time = maximum(:duration)
+    Time.at(time).utc.strftime("%H:%M:%S")
   end
 
   def self.shortest_ride

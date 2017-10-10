@@ -4,24 +4,18 @@ describe BikeShareApp do
     describe "/" do
       it "loads without error" do
         get '/'
-
-        expect(last_response).to be_ok
       end
     end
 
     describe "/stations" do
       it "loads without error" do
         get '/stations'
-
-        expect(last_response).to be_ok
       end
     end
 
     describe "/stations/new" do
       it "loads without error" do
         get '/stations/new'
-
-        expect(last_response).to be_ok
       end
     end
 
@@ -33,7 +27,7 @@ describe BikeShareApp do
                         city: "San Jose",
                         installation_date: "8/6/2013"
                         })
-        get '/stations/new'
+        get '/stations/:id'
 
         expect(last_response).to be_ok
 

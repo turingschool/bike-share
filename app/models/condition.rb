@@ -8,7 +8,7 @@ class Condition < ActiveRecord::Base
     :min_temperature_f,
     :mean_humidity,
     :mean_visibility_miles,
-    :mean_wind_speed,
+    :mean_wind_speed_mph,
     :precipitation_inches
   )
 

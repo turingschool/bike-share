@@ -22,6 +22,6 @@ describe "When a user visits '/' and clicks on 'All stations'" do
     expect(page.has_button?("edit")).to be(true)
     expect(page.has_button?("delete")).to be(true)
     expect(page.has_link?("San Jose Diridon Caltrain Station")).to be(true)
-    expect(page.has_link?("Home")).to be(true)
+    expect(page.has_link?("BikeShare")).to be(true)
   end
 end

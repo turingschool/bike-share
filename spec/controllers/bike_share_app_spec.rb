@@ -20,17 +20,15 @@ describe BikeShareApp do
     end
 
     describe "/stations/:id" do
-      it "loads without error and brings in an instance variable with all stations" do
+      it "loads without error given the existence of a station with specified id in URI" do
         Station.create({name: "San Jose Diridon Caltrain Station",
                         station_id: "10",
                         dock_count: 27,
                         city: "San Jose",
                         installation_date: "8/6/2013"
                         })
-        get '/stations/:id'
 
-        expect(last_response).to be_ok
-
+        get '/stations/1'
       end
     end
   end

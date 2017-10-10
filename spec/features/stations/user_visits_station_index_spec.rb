@@ -9,12 +9,14 @@ feature 'Station index page' do
                     lat: 888.888,
                     long: 777.777,
                     installation_date: '22/1/3333'
+
     Station.create! city: 'land of bikes',
                     name: 'pile of bikes',
                     dock_count: 999999,
                     lat: 888.888,
                     long: 777.777,
                     installation_date: '22/1/3333'
+
     visit '/stations'
   end
 

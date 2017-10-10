@@ -29,4 +29,8 @@ describe "/stations/new" do
       expect(current_path).to eq('/stations')
     end
 
+    #redirect valdiation
+
+    #invalid data validation
+
 end

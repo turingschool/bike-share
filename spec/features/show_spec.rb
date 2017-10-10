@@ -19,7 +19,6 @@ describe "/stations/show" do
   end
 
   it "user sees city" do
-    # require 'pry'/ binding.pry
     expect(page).to have_content("San Jose")
   end
 

@@ -1,5 +1,14 @@
-body {
+.body {
   font-family: Papyrus; /* 😉 */
+}
+
+h1 {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 49px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	line-height: 39.2px;
 }
 
 .trip {

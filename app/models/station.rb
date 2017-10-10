@@ -30,7 +30,7 @@ class Station < ActiveRecord::Base
   end
 
   def self.average_dock_count
-    average(:dock_count)
+    average(:dock_count).round
   end
 
   def self.maximum_dock_count
@@ -40,5 +40,4 @@ class Station < ActiveRecord::Base
   def self.minimum_dock_count
     minimum(:dock_count)
   end
-
 end

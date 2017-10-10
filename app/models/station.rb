@@ -50,7 +50,17 @@ class Station < ActiveRecord::Base
   end
 
   def frequent_destination
-    station = trips_started.group("end_station_id").order("count_id DESC").count(:id).first[0]
-    # Trip.find(id:station)
+    station_id = trips_started.group("end_station_id").order("count_id DESC").count(:id).first[0]
+    Station.find(station_id)
   end
+
+  def frequent_destination_name
+    frequent_destination.name
+  end
+
+  def date_with_most_trips
+    trips_started.group("start_date").order("count_id DESC").count(:id).first[0].strftime("%A %B %d %Y")
+  end
+
+
 end

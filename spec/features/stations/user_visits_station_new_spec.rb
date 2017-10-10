@@ -1,7 +1,7 @@
 require './spec/spec_helper'
 
 feature 'When a user visits station new page' do
-  background do { visit '/stations/new' }
+  background{ visit '/stations/new' }
 
   it 'has status code 200' do
     expect(page.status_code).to eq(200)
@@ -48,35 +48,35 @@ feature 'When a user visits station new page' do
 
   context 'when a user inputs valid data' do
     background do
-      fill_in "station[name]"              with: "Japantown"
-      fill_in "station[dock_count]"        with: "15"
-      fill_in "station[city]"              with: "San Jose"
-      fill_in "station[installation_date]" with: "8/5/2013"
-      fill_in "station[lat]"               with: "37.348742"
-      fill_in "station[long]"              with: "-121.89471499999999"
-      click_button "Submit"
+      fill_in 'station[name]',              with: 'Japantown'
+      fill_in 'station[dock_count]',        with: '15'
+      fill_in 'station[city]',              with: 'San Jose'
+      fill_in 'station[installation_date]', with: '8/5/2013'
+      fill_in 'station[lat]',               with: '37.348742'
+      fill_in 'station[long]',              with: '-121.89471499999999'
+      click_button 'Submit'
     end
 
-    it 'then the user is redirected to show page with success message'
-      has_current_path?("/stations/#{station.id}", only_path: true)
+    it 'then the user is redirected to show page with success message' do
+      has_current_path?(/\/stations\/[1-9]\d*/, only_path: true)
       expect(page).to have_content(/saved/i)
     end
   end
 
   context 'when a user inputs invalid data' do
     background do
-      fill_in "station[name]"              with: "Japantown"
-      fill_in "station[dock_count]"        with: "fifteen"
-      fill_in "station[city]"              with: "San Jose"
-      fill_in "station[installation_date]" with: "8/5/2013"
-      fill_in "station[lat]"               with: "37.348742"
-      fill_in "station[long]"              with: "-121.89471499999999"
-      click_button "Submit"
+      fill_in 'station[name]',              with: 'Japantown'
+      fill_in 'station[dock_count]',        with: 'fifteen'
+      fill_in 'station[city]',              with: 'San Jose'
+      fill_in 'station[installation_date]', with: '8/5/2013'
+      fill_in 'station[lat]',               with: '37.348742'
+      fill_in 'station[long]',              with: '-121.89471499999999'
+      click_button 'Submit'
     end
 
-    it 'then the user is redirected to station new page with error flat on invalid field'
-      has_current_path?("/stations/new", only_path: true)
-      expect(page)to have_content(/error/i)
+    it 'then the user is redirected to station new page with error flat on invalid field' do
+      has_current_path?('/stations/new', only_path: true)
+      expect(page).to have_content(/error/i)
     end
   end
 

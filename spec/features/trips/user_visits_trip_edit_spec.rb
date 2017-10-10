@@ -1,16 +1,16 @@
 require './spec/spec_helper'
 
 feature 'When a user visits trip edit page' do
-  context 'for a trip that exists'
+  context 'for a trip that exists' do
     background do
       Trip.create!  id: 1,
                     duration: 10,
-                    start_date: "01/01/2001",
-                    start_station_id: "42",
-                    end_date: "02/01/2001",
-                    end_station_id: "43",
+                    start_date: '01/01/2001',
+                    start_station_id: '42',
+                    end_date: '02/01/2001',
+                    end_station_id: '43',
                     bike_id: 1001,
-                    subscription_type: "Subscriber",
+                    subscription_type: 'Subscriber',
                     zip_code: 80303
       visit '/trips/1/edit'
     end
@@ -68,58 +68,57 @@ feature 'When a user visits trip edit page' do
 
     context 'when user inputs valid data' do
       background do
-        fill_in "trip[duration]" with: 10
-        fill_in "trip[start_date]" with: "01/01/2001"
-        fill_in "trip[start_station_id]" with: "42"
-        fill_in "trip[end_date]" with: "02/01/2001"
-        fill_in "trip[end_station_id]" with: "43"
-        fill_in "trip[bike_id]" with: 1001
-        fill_in "trip[subscription_type]" with: "Subscriber"
-        fill_in "trip[zip_code]" with: 80303
+        fill_in 'trip[start_station_id]',   with: '42'
+        fill_in 'trip[end_station_id]',     with: '43'
+        fill_in 'trip[duration]',           with: 10
+        fill_in 'trip[start_date]',         with: '01/01/2001'
+        fill_in 'trip[end_date]',           with: '02/01/2001'
+        fill_in 'trip[bike_id]',            with: 1001
+        fill_in 'trip[subscription_type]',  with: 'Subscriber'
+        fill_in 'trip[zip_code]',           with: 80303
         click_button 'Submit'
       end
 
-      it 'then the user is redirected to show page with success message'
-        has_current_path?("/trips/#{trip.id}", only_path: true)
+      it 'then the user is redirected to show page with success message' do
+        has_current_path?(/\/trips\/[1-9]\d*/, only_path: true)
         expect(page).to have_content(/saved/i)
       end
     end
 
     context 'when user inputs invalid data' do
       background do
-        fill_in "trip[duration]" with: "long"
-        fill_in "trip[start_date]" with: "01/01/2001"
-        fill_in "trip[start_station_id]" with: "42"
-        fill_in "trip[end_date]" with: "02/01/2001"
-        fill_in "trip[end_station_id]" with: "43"
-        fill_in "trip[bike_id]" with: 1001
-        fill_in "trip[subscription_type]" with: "Subscriber"
-        fill_in "trip[zip_code]" with: 80303
-        click_button 'submit'
+        fill_in 'trip[start_station_id]',   with: '42'
+        fill_in 'trip[end_station_id]',     with: '43'
+        fill_in 'trip[duration]',           with: 'long'
+        fill_in 'trip[start_date]',         with: '01/01/2001'
+        fill_in 'trip[end_date]',           with: '02/01/2001'
+        fill_in 'trip[bike_id]',            with: 1001
+        fill_in 'trip[subscription_type]',  with: 'Subscriber'
+        fill_in 'trip[zip_code]',           with: 80303
+        click_button 'Submit'
       end
 
-      it 'then the user is redirected to edit page with error flag on invalid data field'
-        has_current_path?("/trips/1/edit", only_path: true)
+      it 'then the user is redirected to edit page with error flag on invalid data field' do
+        has_current_path?('/trips/1/edit', only_path: true)
         expect(page).to have_content(/error/i)
       end
     end
   end
 
-  context 'for a trip that does not exist'
-    it 'then the user is redirected to 404 error message'
+  context 'for a trip that does not exist' do
+    it 'then the user is redirected to 404 error message' do
       visit '/trips/1/edit'
       expect(page).to have_content(/not found/i)
     end
   end
 
-  context 'when user clicks on delete button'
-    background do
-      click_button 'delete'
-    end
+  context 'when user clicks on delete button' do
+    background{ click_button 'delete' }
 
-    it 'then user is redirected to index page'
-      has_current_path?("/trips", only_path: true)
+    it 'then user is redirected to index page' do
+      has_current_path?('/trips', only_path: true)
       expect(page).to have_content(/delete successful/i)
     end
   end
+
 end

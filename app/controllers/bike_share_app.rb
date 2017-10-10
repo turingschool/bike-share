@@ -4,8 +4,8 @@ require 'will_paginate/active_record'
 require_relative '../models/station.rb'
 require_relative '../models/trip.rb'
 require_relative '../models/condition.rb'
-require_relative '../util/route'
-require_relative '../util/rest_url'
+require_relative '../helpers/route'
+require_relative '../helpers/rest_url'
 
 
 class BikeShareApp < Sinatra::Base

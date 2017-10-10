@@ -105,10 +105,6 @@ You can use ActiveRecord's [validations feature](http://guides.rubyonrails.org/a
 
 **Be sure to have a test for each individual validation.**
 
-Also, be sure to normalize the table(s) that you build to hold this information, and to use restful routes. What's normalization you ask? Check out the homework assignments for Day 4 [here](https://github.com/turingschool/homework/blob/master/module-2-homework.markdown) and this [overview](https://gist.github.com/Carmer/f9e060bf1ac30e3ab7b3).
-
-**Hint:** Any data that will be repeated in a significant amount of rows in your `stations` table should probably be extracted to its own table.
-
 At the end of this iteration, you should be able to view an index of all stations, view a page for a single station, create a station, edit a station, and delete a station from either the index or the show pages.
 
 ### Iteration 2
@@ -215,6 +211,8 @@ Additionally, users should be able to delete a the weather conditions for a part
 
 Add the `weather.csv` file to your `db/csv` directory, and update your `seed.rb` file so that it also imports the information in `weather.csv`. Be sure to adjust your seed file so that when it is run it does not create duplicate data.
 
+**Note:** The data in the `weather.csv` file includes information for multiple zip codes. For the purpose of this project, we would like to assume that the weather in San Francisco is uniform across all Station locations. **Only import the weather data from a single zip code.** Ignore the remaining data.
+
 ### Iteration 9
 
 Create a weather dashboard available at `/weather-dashboard` that includes the following information:
@@ -231,54 +229,103 @@ Add the following information to your trip dashboard:
 
 ## Extensions
 
-* Use [Google Charts](https://developers.google.com/chart/) to display information on one or more of your dashboards.
 * Read about [JSON](http://www.ruby-doc.org/stdlib-2.0/libdoc/json/rdoc/JSON.html). Create an endpoint at `api/v1/stations/:id` that responds to requests with JSON instead of HTML.
-* Deploy your application to [Heroku](https://devcenter.heroku.com/articles/rack)
-* Import minute by minute data for stations and use that data to create additional analytics.
+* Use [Google Charts](https://developers.google.com/chart/) to display information on one or more of your dashboards.
 * Add latitude and longitude to your station table. Create a Google map with pins for each of the stations.
 
 ## Evaluation Rubric
 
 The project will be assessed with the following rubric:
 
-### 1. Functional Expectations
+### Base Functionality
 
-* 4: Application fulfills base expectations and adds two extensions
-* 3: Application fulfills base expectations
-* 2: Application has some small missing base functionality
-* 1: Application is not usable
+[] CRUD Functionality
+    [] Full CRUD for a Station
+    [] Full CRUD for a Trip
+    [] Full CRUD for a Condition
+[] Seeding
+    [] Stations seeded
+    [] Trips seeded
+    [] Conditions seeded
+[] UI/UX
+    [] Able to navigate to all pages without typing into the nav bar
+    [] Not relying on default styling
+    [] Styled such that the project could potentially be presented as a prototype
+[] Analytics
+    [] Station Dashboard
+        [] Total Count of Stations
+        [] Average Bikes Available
+        [] Most Bikes Available
+        [] Station(s) where most bikes available
+        [] Fewest Bikes Available
+        [] Station(s) where fewest bikes availalbe
+        [] Most recently installed station
+        [] Oldest station
+    [] Trips Dashboard
+        [] Average duration
+        [] Longest ride
+        [] Shortest ride
+        [] Station with most rides as a starting place
+        [] Station with most rides as an ending place
+        [] Month-by-month breakdown of number of rides
+        [] Subtotals for each year
+        [] Most ridden bike with total number of rides for that bike
+        [] Least ridden bike with total number of rides for that bike
+        [] User subscription type breakout with both count and percentage
+        [] Single date with the highest number of trips with a count of those trips
+        [] Single date with the lowest number of trips with a count of those trips
+        [] Weather on the day with the highest rides
+        [] Weather on the day with the lowest rides
+    [] Weather Dashboard
+        [] Breakout of average number of rides, highest number of rides, and lowest number of rides on days with a high temperature in 10 degree chunks (e.g. average number of rides on days with high temps between fifty and sixty degrees)
+        [] Breakout of average number of rides, highest number of rides, and lowest number of rides on days with precipitation in half-inch increments.
+        [] Breakout of average number of rides, highest number of rides, and lowest number of rides on days with mean wind speeds in four mile increments.
+        [] Breakout of average number of rides, highest number of rides, and lowest number of rides on days with mean visibility in miles in four mile increments.
+    [] Station Show
+        [] Number of rides started at this station.
+        [] Number of rides ended at this station.
+        [] Most frequent destination station (for rides that began at this station).
+        [] Most freuqnet origination station (for rides that ended at this station).
+        [] Date with the highest number of trips started at this station.
+        [] Most frequent zip code for users starting trips at this station.
+        [] Bike ID most frequently starting a trip at this station.
+[] Testing
+    [] Stations
+        [] Attribute validations
+        [] Model methods
+    [] Trips
+        [] Attribute validations
+        [] Model methods
+    [] Conditions
+        [] Attribute validations
+        [] Model methods
+    [] Feature Tests
+        [] CRUD functionality
+        [] Dashboard functionality
+[] Models
+    [] Primarily use ActiveRecord in models
+    [] Validate attributes
+    [] Create associations between models
+[] Views
+    [] No logic in the view used to calculate values
+    [] No logic in the view used to format data
+    [] Organized in a way that is generally easy to understand
+    [] Use instance variables provided by Controller/no messages sent directly to models
+[] Controller(s)
+    [] Routes organized in a way that is easy to follow
+    [] Logic is limited to collecting information from a model/rendering a view (more complex interactions with the database have been pushed to the Model)
+[] GitHub/Waffle
+    [] Pull requests include discussion of code under review
+    [] Pull requests are small in scope and centered around a particular feature (not an iteration or person)
+    [] Students use Waffle/Issues to assign tasks to collaborators
+    [] Students use Waffle/Issues to track features
 
-### 2. ActiveRecord
+### Stretch Goals
 
-* 4: Appropriate ActiveRecord methods are used to query the database and live in the appropriate model. No Ruby is used to organize data after database queries.
-* 3: ActiveRecord methods generally live in the appropriate model, but some Ruby is used to organize data after database queries. A project at this level may have some queries that have not produced the correct results based on the expectations described, but in those cases the query was still generally on the right path and demonstrated some minor misunderstanding.
-* 2: Limited use of ActiveRecord methods (for exxample: frequent use of `.all` followed by data manipulation using Ruby where other ActiveRecord methods would be more appropriate). Projects at this level may also include queries that do not produce correct results, but the query would likely need to be completely rewritten.
-* 1: Applciation shows little understanding of ActiveRecord and likely fails to query the database to obtain the information necessary to meet project requirements.
+[] Nearly all ActiveRecord in model methods (not using other Ruby methods to map/min/max, etc.)
+[] API endpoints
+[] Google charts
+[] Google maps
+[] Client-ready styling
 
-### 3. User Experience and Conventions
 
-* 4: Project uses Sinatra methods and ERB templates to display both resources and non-resource related views with appropriate routes, and HTTP verbs. All functionality can be accessed in the application where expected based on the spec. User experience is exceptional ('client ready') and all pieces of the application can be accessed without entering addresses manually in the navbar.
-* 3: Project still uses appropriate routes and HTTP verbs. All pieces of the application can be accessed without entering addresses manually in the navbar. User experience is pleasant, but may need additional improvement before truly being ready to be deployed to production for a client. 
-* 2: Appication is difficult to navigate, and may not follow RESTful conventions. This project may have limited styling.
-* 1: Application does not follow conve
-
-### 4. Code Organization/Quality
-
-* 4: Code is organized so that the main application file is primarily concerned with HTTP requests/responses. Other logic is refactored to be included in other Ruby objects, and code responsible for analyzing information in the database exists in the appropriate ActiveRecord models. Methods are appropriately refactored to have a specific purpose and generally do not exceed eight to ten lines. The purpose of methods is generally clear and easy to understand/follow. Logic is not included in ERB views, and is instead in the controller or model as appropriate.
-* 3: Some logic not related specifically to HTTP requests/resesponses remains in the main application file. Some methods may be slightly long, or follow unexpected patterns. Limited logic may leak into the views.
-* 2: Code does not represent a significant effort to refactor. Logic leaks into the views or controllers. Long methods may exist, and the purpose behind some methods may be unclear.
-* 1: Code is disorganized and will likely be difficult to understand/maintain.
-
-### 5. Testing
-
-* 4: Application is broken into components which are well tested in both isolation and integration using appropriate data
-* 3: Application is well tested but does not balance isolation and integration/feature tests
-* 2: Application makes some use of tests, but the coverage is insufficient
-* 1: Application does not demonstrate strong use of TDD
-
-### 6. Working Collaboratively
-
-* 4: Excellent use of branches, pull requests, and a project management tool.
-* 3: Good use of branches, pull requests, and a project-management tool.
-* 2: Sporadic use of branches, pull requests, and/or project-management tool.
-* 1: Little use of branches, pull requests, and/or a project-management tool.

@@ -15,6 +15,9 @@ RSpec.configure do |c|
   c.before(:all) do
     DatabaseCleaner.clean
   end
+  c.before do
+    Seed.start
+  end
   c.after(:each) do
     DatabaseCleaner.clean
   end

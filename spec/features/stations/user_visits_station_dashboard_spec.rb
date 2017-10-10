@@ -2,69 +2,31 @@ require './spec/spec_helper'
 
 
 feature 'When a user visits the Station Dashboard' do
-  # background { load "db/seeds.rb" }
 
-  background do
-    Station.create!({name: 'boring!!!',        dock_count: 55,  installation_date: '5/5/5555', city: 'a', lat: 55.55, long: 55.55})
-    Station.create! name: 'boring!!!',        dock_count: 55,  installation_date: '5/5/5555', city: 'a', lat: 55.55, long: 55.55
-
-    Station.create! name: 'fewest_docks_A',   dock_count: 1,   installation_date: '5/5/5555', city: 'a', lat: 55.55, long: 55.55
-    Station.create! name: 'fewest_docks_B',   dock_count: 1,   installation_date: '5/5/5555', city: 'a', lat: 55.55, long: 55.55
-    Station.create! name: 'most_docks_A',     dock_count: 999, installation_date: '5/5/5555', city: 'a', lat: 55.55, long: 55.55
-    Station.create! name: 'most_docks_B',     dock_count: 999, installation_date: '5/5/5555', city: 'a', lat: 55.55, long: 55.55
-
-    Station.create! name: 'boring!!!',        dock_count: 55,  installation_date: '5/5/5555', city: 'a', lat: 55.55, long: 55.55
-    Station.create! name: 'boring!!!',        dock_count: 55,  installation_date: '5/5/5555', city: 'a', lat: 55.55, long: 55.55
-
-    Station.create! name: 'old_A',            dock_count: 55,  installation_date: '5/5/5552', city: 'a', lat: 55.55, long: 55.55
-    Station.create! name: 'old_B',            dock_count: 55,  installation_date: '5/5/5552', city: 'a', lat: 55.55, long: 55.55
-    Station.create! name: 'new_A',            dock_count: 55,  installation_date: '5/5/5558', city: 'a', lat: 55.55, long: 55.55
-    Station.create! name: 'new_B',            dock_count: 55,  installation_date: '5/5/5558', city: 'a', lat: 55.55, long: 55.55
-
-    Station.create! name: 'boring!!!',        dock_count: 55, installation_date: '5/5/5555',  city: 'a', lat: 55.55, long: 55.55
-    Station.create! name: 'boring!!!',        dock_count: 55, installation_date: '5/5/5555',  city: 'a', lat: 55.55, long: 55.55
-
-    visit '/station-dashboard'
-  end
+  background { visit '/station-dashboard' }
 
   it 'they see the total docks' do
-    expect(page).to have_content(/total/i)
-    expect(page).to have_content('14')
+    expect(page).to have_content(/total docks/i)
   end
 
   it 'they see the average dock count' do
-    expect(page).to have_content(/average bikes/i)
-    expect(page).to have_content( '182' )
+    expect(page).to have_content(/average docks/i)
   end
 
   it 'they see the stations with fewest docks' do
-    expect(page).to have_content(/least bikes/i)
-    expect(page).to have_content('fewest_docks_A')
-    expect(page).to have_content('fewest_docks_B')
-    expect(page).to have_content('1')
+    expect(page).to have_content(/least docks/i)
   end
 
   it 'they see the stations with most docks' do
-    expect(page).to have_content(/most bikes/i)
-    expect(page).to have_content('most_docks_A')
-    expect(page).to have_content('most_docks_B')
-    expect(page).to have_content('999')
+    expect(page).to have_content(/most docks/i)
   end
 
   it 'they see the oldest station(s)' do
     expect(page).to have_content(/oldest/i)
-    expect(page).to have_content('old_A')
-    expect(page).to have_content('old_B')
   end
 
   it 'they see the newest station(s)' do
     expect(page).to have_content(/newest/i)
-    expect(page).to have_content('new_A')
-    expect(page).to have_content('new_B')
-  end
-
-  it 'they see or don\'t see boring stations' do
-    expect(page).not_to have_content('boring!!!')
   end
 
 end

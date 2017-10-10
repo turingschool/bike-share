@@ -1,32 +1,16 @@
 require './spec/spec_helper'
 
-
-feature 'when user visits trip show page' do
-    background do
-      Trip.create!    id: 1,
-                      duration: 10,
-                      start_date: "2001-01-01",
-                      start_station_id: 8,
-                      end_date: "2001-02-01",
-                      end_station_id: 7,
-                      bike_id: 404,
-                      subscription_type: "Monthly",
-                      zip_code: 32210
-
-      Station.create! id: 8,
-                      city: 'land of bikes',
-                      name: 'pile of bikes',
-                      dock_count: 999999,
-                      lat: 888.888,
-                      long: 777.777,
-                      installation_date: Date.parse('22/1/3333')
-
-      visit '/trips/1'
-    end
-
 feature 'when a user visits trip show page' do
-  context 'for a trip that exists'
-    background do { visit '/trips/1' }
+  context('for a trip that doesn\'t exist') do
+    background { visit 'trips/0' }
+
+    it 'they see the not found page' do
+      expect(page).to have_content(/not found/i)
+    end
+  end
+
+  context 'for a trip that exists' do
+    background { visit '/trips/11' }
 
     it 'has status code 200' do
       expect(page.status_code).to eq(200)
@@ -83,32 +67,25 @@ feature 'when a user visits trip show page' do
       expect(page).to have_button(/edit/i)
     end
 
-    it 'they see a link to the index' do
-      expect(page).to have_link(//, href: '/trips')
-    end
-
-
     #these are everywhere... test each page seperately or what?
     it 'they see a link to the index' do
       expect(page).to have_link(//, href: '/trips')
     end
 
-  end
+    context 'when user clicks on delete button' do
+      background { click_button 'delete' }
 
-  context 'for a trip that does not exist' do
-    it 'they see a status the not found page' do
-      visit '/trips/1'
-      expect(page).to have_content(/not found/i)
+      it 'then user is redirected to trip index page' do
+        has_current_path?('/trips', only_path: true)
+        expect(page).to have_content(/delete successful/i)
+      end
+
+      it 'the user sees the deleted trip is not listed' do
+        skip
+      end
+
     end
-  end
 
-  context 'when user clicks on delete button' do
-    background{ click_button 'delete' }
-
-    it 'then user is redirected to trip index page' do
-      has_current_path?('/trips', only_path: true)
-      expect(page).to have_content(/delete successful/i)
-    end
   end
 
 end

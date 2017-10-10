@@ -9,11 +9,11 @@ class Trip < ActiveRecord::Base
                           :end_date,
                           :end_station_id,
                           :bike_id,
-                          :subscription_type,
+                          :subscription_type
                           #do NOT validate zip code per Sal.
 
 
-  def to_s
+  def display
     "Trip ##{id} #{route}"
   end
 

@@ -1,0 +1,24 @@
+#header {
+  display: flex;
+  justify-content: center;
+}
+
+.condition {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background: grey;
+  margin-bottom: 12px;
+  width: 342px;
+  }
+
+.condition:hover {
+  background: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.all-conditions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

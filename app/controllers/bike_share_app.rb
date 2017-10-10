@@ -81,6 +81,7 @@ class BikeShareApp < Sinatra::Base
   end
 
 	get '/weather-dashboard' do
+		@conditions = Condition.all
 		erb :weather_dashboard
 	end
 

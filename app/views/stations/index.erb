@@ -1,0 +1,70 @@
+<div class="sides">
+  <a class='a-logo' href='/'>Bike Share</a>
+  <a href="/stations"   class="logo">STATIONS</a>
+  <a href="/trips"      class="logo">TRIPS</a>
+  <a href="/conditions" class="logo">CONDITIONS</a>
+</div>
+<header class="station-new">
+  <a href="/stations/new"><span>New</span> Station</a>
+</header>
+
+<div class='trip-index-container'>
+  <header>
+    <h1><span>All</span> Stations</h1>
+  </header>
+  <% @stations.each do |station| %>
+    <div class='trip-card'>
+      <ul>
+        <a href="/stations/<%= station.id %>">Station #<%= station.id %></a>
+        <li><span>Station Name:</span>
+          <%= station.name %>
+        </li>
+        <li><span>Dock Count: </span>
+          <%= station.dock_count %>
+        </li>
+        <li><span>City Name:</span>
+          <%= station.city.name %>
+        </li>
+        <li><span>Installation Date:</span>
+          <%= station.installation_date%>
+        </li>
+      </ul>
+      <form action="/stations/<%= station.id %>/edit" method="GET">
+        <input type="submit" value="EDIT">
+      </form>
+      <form action="/stations/<%= station.id %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="DELETE">
+      </form>
+    </div>
+    <% end %>
+    <%= will_paginate @stations, :page_links => false %>
+</div>
+
+<!-- <h2><a href='/stations/new'>New Station</a></h2>
+<table class='stations-table'>
+  <tr>
+    <th><h3>Station</h3></th>
+    <th><h3>Dock Count</h3></th>
+    <th><h3>City</h3></th>
+    <th><h3>Installation Date</h3></th>
+  </tr>
+  <% @stations.each do |station| %>
+  <tr>
+    <td><h4><%= station.name %></h4></td>
+    <td><h4><%= station.dock_count %></h4></td>
+    <td><h4><%= station.city.name %></h4></td>
+    <td><h4><%= station.installation_date %></h4></td>
+  </tr>
+
+  <tr>
+    <td><a href="/stations/<%= station.id %>/edit">Edit</a></td>
+    <td><a href="/stations/<%= station.id %>">Show</a></td>
+    <form action="/stations/<%= station.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <td><input type="submit" value="delete"/></td>
+    </form>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @stations, :page_links => false %> -->

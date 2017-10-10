@@ -1,5 +1,7 @@
-.body {
-  font-family: Papyrus; /* 😉 */
+body {
+  /* font-family: Papyrus; 😉 */
+  font-family: 'Lekton', sans-serif;
+  font-size: 20;
 }
 
 h1 {
@@ -11,7 +13,32 @@ h1 {
 	line-height: 39.2px;
 }
 
-.trip {
+header {
+  display: flex;
+  justify-content: baseline;
+  height: 100px;
+  padding-left: 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  padding-top: 36px;
+}
+
+footer {
+  background-color: #000000;
+
+  position: fixed;
+  bottom: 0;
+}
+
+footer p {
+  color:  white;
+  font-size: 10pt;
+}
+/* .trip {
   text-decoration: none;
   border: 1px solid black;
   padding: 10px;
@@ -24,4 +51,4 @@ h1 {
 
 .trip:hover {
   background-color: hotpink;
-}
+} */

@@ -12,11 +12,11 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations' do
     @stations = Station.all
-    erb :station_index
+    erb :'station/index'
   end
 
   get '/stations/new' do
-    erb :station_new
+    erb :'station/new'
   end
 
   post '/stations' do
@@ -26,12 +26,12 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations/:id' do
     @station = Station.find(params[:id])
-    erb :station_show
+    erb :'station/show'
   end
 
   get '/stations/:id/edit' do
     @station = Station.find(params[:id])
-    erb :station_edit
+    erb :'station/edit'
   end
 
   put '/stations/:id' do
@@ -45,13 +45,18 @@ class BikeShareApp < Sinatra::Base
     redirect '/stations'
   end
 
+	get '/station-dashboard' do
+		@stations = Station.all
+		erb :'station/dashboard'
+	end
+
   get '/conditions' do
     @conditions = Condition.paginate(page: params[:page], per_page: 30)
-    erb :condition_index
+    erb :'condition/index'
   end
 
   get '/conditions/new' do
-    erb :condition_new
+    erb :'condition/new'
   end
 
   post '/conditions' do
@@ -61,12 +66,12 @@ class BikeShareApp < Sinatra::Base
 
   get '/conditions/:id' do
     @condition = Condition.find(params[:id])
-    erb :condition_show
+    erb :'condition/show'
   end
 
   get '/conditions/:id/edit' do
     @condition = Condition.find(params[:id])
-    erb :condition_edit
+    erb :'condition/edit'
   end
 
   put '/conditions/:id' do
@@ -80,23 +85,18 @@ class BikeShareApp < Sinatra::Base
     redirect '/conditions'
   end
 
-  get '/station-dashboard' do
-    @stations = Station.all
-    erb :station_dashboard
-  end
-
   get '/trips' do
     @trips = Trip.paginate(page: params[:page], per_page: 30)
-    erb :trip_index
+    erb :'trip/index'
   end
 
 	get '/trips-dashboard' do
 		@trips = Trip.all
-		erb :trips_dashboard
+		erb :'trip/dashboard'
 	end
 
   get '/trips/new' do
-    erb :trip_new
+    erb :'trip/new'
   end
 
 	post '/trips' do
@@ -106,12 +106,12 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips/:id' do
     @trip = Trip.find(params[:id])
-    erb :trip_show
+    erb :'trip/show'
   end
 
 	get '/trips/:id/edit' do
 		@trip = Trip.find(params[:id])
-		erb :trip_edit
+		erb :'trip/edit'
   end
 
   put '/trips/:id' do

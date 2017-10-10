@@ -19,9 +19,9 @@ describe "When a user visits '/' and clicks on 'All stations'" do
     expect(page).to have_content("All Stations")
     expect(page).to have_content("Denver")
     expect(page).to have_content(31)
-    expect(page.has_button?("edit")).to be(true)
-    expect(page.has_button?("delete")).to be(true)
-    expect(page.has_link?("San Jose Diridon Caltrain Station")).to be(true)
-    expect(page.has_link?("BikeShare")).to be(true)
+    expect(page).to have_button("edit")
+    expect(page).to have_button("delete")
+    expect(page).to have_link("San Jose Diridon Caltrain Station")
+    expect(page).to have_link("BikeShare")
   end
 end

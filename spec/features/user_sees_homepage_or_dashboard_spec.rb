@@ -5,12 +5,12 @@
       within("h1") do
         expect(page).to have_content("Welcome to BikeShare!")
       end
-      expect(has_link?("All Stations")).to eq(true)
-      expect(has_link?("Add Station")).to eq(true)
-      expect(has_link?("All Trips")).to eq(true)
-      expect(has_link?("Add Trip")).to eq(true)
-      expect(has_link?("All Conditions")).to eq(true)
-      expect(has_link?("Add Condition")).to eq(true)
+      expect(page).to have_link("All Stations")
+      expect(page).to have_link("Add Station")
+      expect(page).to have_link("All Trips")
+      expect(page).to have_link("Add Trip")
+      expect(page).to have_link("All Conditions")
+      expect(page).to have_link("Add Condition")
     end
   end
 

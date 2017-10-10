@@ -1,3 +1,5 @@
+<a href="/">Dashboard</a>
+
 <h1>All Trips</h1>
 <form action="/trips/new" method="GET">
   <input type="hidden" name="_method" value="POST">
@@ -7,7 +9,7 @@
 <ul>
 
 <% @trips.each do |trip|%>
-	<h3> Dates: <a href = "/trips/<%=trip.id %>"><%=trip.start_date%> to <%= trip.end_date%></a></h3> 
+	<h3> Dates: <a href = "/trips/<%=trip.id %>"><%=trip.start_date%> to <%= trip.end_date%></a></h3>
 	<p>Duration: <%=trip.duration %> seconds</p>
 	<p>Stations: <%=trip.start_station_name%> -> <%= trip.end_station_name%></p>
 	<p>Bike ID: <%=trip.bike_id%></p>

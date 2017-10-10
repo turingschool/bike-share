@@ -8,8 +8,11 @@
 <p>Longitude: <%= @station.long %>
 <p>Number of rides starting from this station: <%= @station.started_rides_count %></p>
 <p>Number of rides ending at this station:  <%= @station.ended_rides_count %></p>
-<p>Most frequent destination: <%= @station.frequent_destination %></p>
-
+<p>Most frequent destination point: <%= @station.frequent_destination_name %></p>
+<p>Most frequent origination point: <%= @station.frequent_origination_name %></p>
+<p>Most popular day: <%= @station.date_with_most_trips %></p>
+<p>Most common user zip code: <%= @station.most_common_user_zip_code %></p>
+<p>Most common bike used from this station: ID# <%= @station.most_common_bike_used %></p>
 <form action="/stations/<%=@station.id%>" method="post">
   <input type="hidden" name="_method" value="DELETE">
   <input type='submit' name="delete" value="Delete">

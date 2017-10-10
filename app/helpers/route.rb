@@ -7,11 +7,12 @@ module Route
 
   def self.parts
     {
+      trip: '\/(trip)',
       model: '\/(station|trip|condition)s?',
       dashboard: '-dashboard',
       new: '\/new',
       edit: '\/edit',
-      id: '\/([1-9]\d*)'
+      id: '\/(\d+)'
     }
   end
 end

@@ -1,5 +1,9 @@
 module RestUrl
 
+  def home
+    '/'
+  end
+
   def sub_path(path_within_model = "")
     url("/#{@model.name.downcase}s#{path_within_model}")
   end
@@ -19,7 +23,7 @@ module RestUrl
   alias destroy show
 
   def dashboard
-    sub_path("-dashboard")
+    url "/#{@model.name.downcase}-dashboard"
   end
 
 end

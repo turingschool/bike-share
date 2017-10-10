@@ -3,7 +3,7 @@ require './spec/spec_helper'
 feature 'When a user visits station edit page' do
   context 'for a station that exists'
     background do
-      Station.create! id: 3,
+      Station.create! id: "3",
                       city: "San Jose",
                       name: "San Jose Civic Center",
                       dock_count: "15",

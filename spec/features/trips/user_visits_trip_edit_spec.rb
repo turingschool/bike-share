@@ -78,7 +78,7 @@ feature 'When a user visits trip edit page' do
         fill_in "trip[zip_code]" with: 80303
         click_button 'Submit'
       end
-      
+
       it 'then the user is redirected to show page with success message'
         has_current_path?("/trips/#{trip.id}", only_path: true)
         expect(page).to have_content(/saved/i)

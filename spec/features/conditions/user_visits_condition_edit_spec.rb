@@ -3,7 +3,8 @@ require './spec/spec_helper'
 feature 'When a user visits condition edit page' do
   context 'for a condition that exists'
     background do
-      Condition.create! date: "8/29/2013",
+      Condition.create! id: "1"
+                        date: "8/29/2013",
                         max_temperature_f: "74.0",
                         mean_temperature_f: "68.0",
                         min_temperature_f: "61.0",
@@ -11,7 +12,7 @@ feature 'When a user visits condition edit page' do
                         mean_visibility_miles: "10.0",
                         mean_wind_speed: "11.0",
                         precipitation_inches: "0"
-      visit '/conditions/2/edit'
+      visit '/conditions/1/edit'
     end
 
     it 'has a form' do
@@ -57,4 +58,59 @@ feature 'When a user visits condition edit page' do
       expect(page).to have_field('condition[precipitation_inches]')
     end
 
+    context 'when user inputs valid data' do
+      background do
+        fill_in "condition[date]"                  with: "4/20/2013"
+        fill_in "condition[max_temperature_f]"     with: "74.0"
+        fill_in "condition[mean_temperature_f]"    with: "68.0"
+        fill_in "condition[min_temperature_f]"     with: "61.0"
+        fill_in "condition[mean_humidity]"         with: "75.0"
+        fill_in "condition[mean_visibility_miles]" with: "10.0"
+        fill_in "condition[mean_wind_speed]'"      with: "11.0"
+        fill_in "condition[precipitation_inches]"  with: "10"
+        click_button "submit"
+      end
+
+      it 'then the user is redirected to show page with success message'
+        has_current_path?("/conditions/#{condition.id}", only_path: true)
+        expect(page).to have_content(/saved/i)
+      end
+    end
+
+    context 'when user inputs invalid data' do
+      background do
+        fill_in "condition[date]"                  with: "4/20/2013"
+        fill_in "condition[max_temperature_f]"     with: "hot"
+        fill_in "condition[mean_temperature_f]"    with: "68.0"
+        fill_in "condition[min_temperature_f]"     with: "61.0"
+        fill_in "condition[mean_humidity]"         with: "75.0"
+        fill_in "condition[mean_visibility_miles]" with: "10.0"
+        fill_in "condition[mean_wind_speed]'"      with: "11.0"
+        fill_in "condition[precipitation_inches]"  with: "0"
+        click_button "submit"
+      end
+
+      it 'then user is redirected to edit page with error flag on invalid data field'
+        has_current_path?("/conditions/#{condition.id}", only_path: true)
+        expect(page).to have_content(/error/i)
+      end
+    end
+
+  context 'for a condition that does not exist'
+    it 'then the user is redirected to 404 error message'
+      visit ("/conditions/#{condition}")
+      expect(page).to have_content(/not found/i)
+    end
+  end
+
+  context 'when user clicks on delete button'
+    background do
+      click_button 'delete'
+    end
+
+    it 'then user is redirected to index page'
+      has_current_path?("/conditions", only_path: true)
+      expect(page).to have_content(/delete successful/i)
+    end
+  end
 end

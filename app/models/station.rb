@@ -41,4 +41,17 @@ class Station < ActiveRecord::Base
     minimum(:dock_count)
   end
 
+  def started_rides_count
+    trips_started.count
+  end
+
+  def ended_rides_count
+    trips_ended.count
+  end
+
+  def frequent_destination
+  	id = trips_started.group("end_station_id").order("count_id DESC").count(:id)
+    # Trip.find(id)
+  end
+
 end

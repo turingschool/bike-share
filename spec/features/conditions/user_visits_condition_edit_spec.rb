@@ -3,7 +3,7 @@ require './spec/spec_helper'
 feature 'When a user visits condition edit page' do
   context 'for a condition that exists' do
     background do
-      Condition.create! id: "1"
+      Condition.create! id: "1",
                         date: "8/29/2013",
                         max_temperature_f: "74.0",
                         mean_temperature_f: "68.0",

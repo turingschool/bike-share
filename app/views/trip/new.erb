@@ -1,0 +1,16 @@
+<nav>
+  <a href="/">Dashboard</a>
+  <a href="/trips">All Trips</a>
+</nav>
+
+<form action="/trips" method="post">
+  <h1>Enter Trip Information</h1>
+  <p>Start Date: <input type='date' name='trip[start_date]'/></p>
+  <p>End Date: <input type='date' name='trip[end_date]'/></p>
+  <p>Duration(seconds): <input type='integer' name='trip[duration]'/></p>
+  <p>Start Station: <input type='text' name='trip[start_station_name]'/></p>
+  <p>End Station: <input type='text' name='trip[end_station_name]'/></p>
+  <p>Bike ID: <input type='text' name='trip[bike_id]'/></p>
+  <p>Subscription Type: <input type='text' name='trip[subscription_type]'/></p>
+  <p><input type='submit'/></p>
+</form>

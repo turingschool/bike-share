@@ -33,7 +33,7 @@
         <div class = "buttons">
           <form action="/conditions/<%= condition.id %>/edit" method="GET">
             <input type="hidden" name="_method" value="EDIT">
-            <input id = "button-edit" class = "buttons" type="submit" value="edit"/>
+            <input class = "buttons" type="submit" value="edit"/>
           </form>
           <form action="/conditions/<%= condition.id %>" method="POST">
             <input  type="hidden" name="_method" value="DELETE">
@@ -43,7 +43,6 @@
       </div>
     </a>
       <% end %>
-      <div class = "bottom-bar">
     <%= will_paginate(@conditions)%>
   </div>
 

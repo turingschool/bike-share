@@ -41,3 +41,7 @@
 	<% end %>
 	<p></<p>
 </ul>
+<% days = Condition.most_and_least_traveled %>
+<h1> The most traveled day was: <%= days[0]%> </h1>
+<h1> The least traveled day was: <%=days[1]%> </h1>
+

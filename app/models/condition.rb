@@ -141,6 +141,23 @@ class Condition < ActiveRecord::Base
       counter += 4.0
     end 
     visibilities
+  end
+  
+  def self.all_days_by_trip_count
+    select("conditions.*")
+          .joins(:trips)
+          .group('conditions.id')
+          .order("count_id DESC").count(:id)
+  end 
+
+  def self.most_and_least_traveled
+    all_days = all_days_by_trip_count
+    max_id = (all_days.keys.first)
+    min_id = (all_days.keys.last)
+    dates = []
+    dates << find(max_id).date
+    dates << find(min_id).date
+    dates
   end 
 end
 

@@ -1,27 +1,47 @@
-<a href="/">Dashboard</a>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" type = "text/css" href = "/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+  </head>
 
-<h1>All Trips</h1>
-<form action="/trips/new" method="GET">
-  <input type="hidden" name="_method" value="POST">
-  <input type="submit" value="post"/>
-</form>
+  <body>
+    <div class = "firstline">
+      <h1 class = "firstline-title">Trips</h1>
 
-<ul>
+      <div class="dropdown">
+        <button class="dropbtn">More</button>
+        <div class="dropdown-content">
+          <a href="/">Home</a>
+          <a href="/trips/new">New</a>
+          <a href="/trips-dashboard">Dashboard</a>
+        </div>
+      </div>
+    </div>
+    <div class = "all-conditions">
+      <% @trips.each do |trip|%>
+        <a href = "/trips/<%=trip.id %>">
+        <div class = "condition">
+      	  <h3 class = "date"><%=trip.start_date%> to <%= trip.end_date%></a></h3>
+        	<p class = "id"><span>Duration:</span> <%=trip.duration %> seconds</p>
+        	<p><span>Stations:</span> <%=trip.start_station_name%> -> <%= trip.end_station_name%></p>
+        	<p><span>Bike ID:</span> <%=trip.bike_id%></p>
+        	<p><span>Subscription Type:</span> <%=trip.subscription_type%></p>
+          <div class = "buttons">
+          	<form action="/trips/<%= trip.id %>/edit" method="GET">
+              <input type="hidden" name="_method" value="EDIT">
+              <input type="submit" value="edit"/>
+            </form>
+            <form action="/trips/<%= trip.id %>" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="delete"/>
+            </form>
+          </div>
+        </div>
+      </a>
+      	<% end %>
+    </div>
+      <footer><%= will_paginate(@trips)%></footer>
 
-<% @trips.each do |trip|%>
-	<h3> Dates: <a href = "/trips/<%=trip.id %>"><%=trip.start_date%> to <%= trip.end_date%></a></h3>
-	<p>Duration: <%=trip.duration %> seconds</p>
-	<p>Stations: <%=trip.start_station_name%> -> <%= trip.end_station_name%></p>
-	<p>Bike ID: <%=trip.bike_id%></p>
-	<p>Subscription Type: <%=trip.subscription_type%></p>
-	<form action="/trips/<%= trip.id %>/edit" method="GET">
-    <input type="hidden" name="_method" value="EDIT">
-    <input type="submit" value="edit"/>
-  </form>
-  <form action="/trips/<%= trip.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="delete"/>
-  </form>
-	<% end %>
-</ul>
-<%= will_paginate(@trips)%>
+  </body>
+</html>

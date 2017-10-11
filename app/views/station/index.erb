@@ -1,18 +1,45 @@
-<a href="/">Dashboard</a>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" type = "text/css" href = "/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+  </head>
 
-<h1>All Stations</h1>
+  <body>
+    <div class = "firstline">
+      <h1 class = "firstline-title">Stations</h1>
 
-<% @stations.each do |station| %>
-  <h3><a href="/stations/<%= station.id %>"><%= station.name %></a></h3>
-  <p>Dock Count: <%= station.dock_count %> Docks</p>
-  <p>City: <%= station.city %></p>
-  <p>Installation Date: <%= station.installation_date %></p>
-  <form action="/stations/<%= station.id %>/edit" method="GET">
-    <input type="hidden" name="_method" value="EDIT">
-    <input type="submit" value="edit"/>
-  </form>
-  <form action="/stations/<%= station.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="delete"/>
-  </form>
-<% end %>
+      <div class="dropdown">
+        <button class="dropbtn">More</button>
+        <div class="dropdown-content">
+          <a href="/">Home</a>
+          <a href="/stations/new">New</a>
+          <a href="/station-dashboard">Dashboard</a>
+        </div>
+      </div>
+    </div>
+    <div class = "all-conditions">
+      <% @stations.each do |station| %>
+        <a href="/stations/<%= station.id %>">
+        <div class = "condition">
+        <h3 class = "date"><%= station.name %></h3>
+        <p class = "id"><span>Dock Count:</span> <%= station.dock_count %> Docks</p>
+        <p><span>City:</span> <%= station.city %></p>
+        <p><span>Installation Date:</span> <%= station.installation_date %></p>
+        <div class = "buttons">
+          <form action="/stations/<%= station.id %>/edit" method="GET">
+            <input type="hidden" name="_method" value="EDIT">
+            <input type="submit" value="edit"/>
+          </form>
+          <form action="/stations/<%= station.id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="delete"/>
+          </form>
+        </div>
+      </div>
+    </a>
+      <% end %>
+    </div>
+
+  </body>
+</html>

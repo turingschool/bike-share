@@ -28,3 +28,4 @@ RSpec.describe Condition do
     expected = Condition.visibility_breakout
     expect(expected).to eq "UNKNOWN"
   end
+end

@@ -123,6 +123,7 @@ a {
   background-color: #f1f1f1;
 }
 
-.bottom-bar {
-
+footer {
+  display:flex;
+  justify-content: center;
 }

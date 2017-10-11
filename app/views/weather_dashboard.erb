@@ -1,0 +1,43 @@
+<ul>
+	<h1>Rides by Temperature Increment:</h1>
+	<%	Condition.total_breakout_temps.each do |range, data| %>
+		<li>Range: <%=range%>-<%=range + 10%></li>
+		<li>Average Number of Rides: <%=data[:avg]%></li> 
+	<li>Highest Number of Rides <%=data[:max]%></li>
+	<li>Lowest Number of Rides <%=data[:min]%></li>
+	<% end %>
+	<p></<p>
+</ul>
+
+<ul> 
+	<h1>Rides by Precipatation Increment: </h2>
+	<%Condition.total_breakout_precips.each do |range, data| %>
+		<li>Range: <%=range%>-<%=range + 0.5%></li>
+		<li>Average Number of Rides: <%=data[:avg]%></li> 
+	<li>Highest Number of Rides <%=data[:max]%></li>
+	<li>Lowest Number of Rides <%=data[:min]%></li>
+	<% end %>
+	<p></<p>
+</ul>
+
+<ul> 
+	<h1>Rides by Wind Speed Increment: </h2>
+	<%Condition.total_breakout_wind_speeds.each do |range, data| %>
+		<li>Range: <%=range%>-<%=range + 4.0%></li>
+		<li>Average Number of Rides: <%=data[:avg]%></li> 
+	<li>Highest Number of Rides <%=data[:max]%></li>
+	<li>Lowest Number of Rides <%=data[:min]%></li>
+	<% end %>
+	<p></<p>
+</ul>
+
+<ul> 
+	<h1>Rides by Visibility Increment: </h2>
+	<%Condition.total_breakout_visibility.each do |range, data| %>
+		<li>Range: <%=range%>-<%=range + 4.0%></li>
+		<li>Average Number of Rides: <%=data[:avg]%></li> 
+	<li>Highest Number of Rides <%=data[:max]%></li>
+	<li>Lowest Number of Rides <%=data[:min]%></li>
+	<% end %>
+	<p></<p>
+</ul>

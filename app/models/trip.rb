@@ -21,6 +21,7 @@ class Trip <ActiveRecord::Base
                         :bike_id,
                         :subscription_type
 	self.per_page = 30
+	belongs_to :condition, class_name: "Condition", foreign_key: "condition_id"
 
 	def self.avg_duration
     time = average(:duration)

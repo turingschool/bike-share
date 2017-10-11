@@ -1,0 +1,44 @@
+<label>Start Station:
+  <select name="trip[start_station_id]">
+    <% @stations.each do |station| %>
+      <option
+        value="<%= station.id %>"
+        label="<%= station.name %>"
+        <%= "selected" if station.id == @record.start_station_id %>
+      />
+    <% end %>
+  </select>
+</label>
+<label>End Station
+  <select name="trip[end_station_id]">
+    <% @stations.each do |station| %>
+      <option
+        value="<%= station.id %>"
+        label="<%= station.name %>"
+        <%= "selected" if station.id == @record.end_station_id %>
+      />
+    <% end %>
+  </select>
+</label>
+<label>Zip Code
+  <input  type="text" name="trip[zip_code]"            value="<%= @record.zip_code %>"/><br/>
+</label>
+<br/>
+
+<label>Start Date
+  <input type="date" name="trip[start_date]"          value="<%= @record.start_date %>"/><br/>
+</label>
+<label>End Date:
+  <input type="date" name="trip[end_date]"            value="<%= @record.end_date %>"/><br/>
+</label>
+<label>Duration:
+  <input type="number" name="trip[duration]"          value="<%= @record.duration %>"/><br/>
+</label>
+<br/>
+
+<label>Bike:
+  <input disabled type="text" name="trip[bike_id]"             value="<%= @record.bike_id %>"/><br/>
+</label>
+<label>Subscription Type
+  <input disabled type="text" name="trip[subscription_type]"   value="<%= @record.subscription_type %>"/><br/>
+</label>

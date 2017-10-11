@@ -1,0 +1,18 @@
+<h2><%= @record.name %></h2>
+
+<p>Dock Count: <%= @record.dock_count %></p>
+<p>City: <%= @record.city %></p>
+<p>Installation Date: <%= @record.installation_date %></p>
+<p>Latitude: <%= @record.lat %>
+<p>Longitude: <%= @record.long %>
+<p>Number of rides starting from this station: <%= @record.started_rides_count %></p>
+<p>Number of rides ending at this station:  <%= @record.ended_rides_count %></p>
+<p>Most frequent destination point: <%= @record.frequent_destination_name %></p>
+<p>Most frequent origination point: <%= @record.frequent_origination_name %></p>
+<p>Most popular day: <%= @record.date_with_most_trips %></p>
+<p>Most common user zip code: <%= @record.most_common_user_zip_code %></p>
+<p>Most common bike used from this station: ID# <%= @record.most_common_bike_used %></p>
+<form action="<%= destroy(@id) %>" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type='submit' name="delete" value="Delete">
+</form>

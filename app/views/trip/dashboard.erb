@@ -1,0 +1,40 @@
+<h2>Trip Dashboard</h2>
+<a href=<%= index %>>Click to See All <% @model.name %></a>
+
+<p>Starting station with most rides: <%= @records.starting_station_with_most_rides%></p>
+<p>Ending station with most rides: <%= @records.ending_station_with_most_rides%></p>
+<p>Top Rider: #<%= @records.top_rider%>  (No. of Rides: <%= @records.rides_per_top_rider%>)</p>
+<p>Bottom Rider: #<%= @records.bottom_rider%>  (No. of Rides: <%= @records.rides_per_bottom_rider%>)</p>
+
+<p>=======</p>
+
+<p>Subscriptions: <%= @records.subscription_count%></p>
+<ul>
+    <%@records.subscription_type_breakout.each do |outer, inner|%>
+    <p>Subscription Type: <%= outer %></p>
+        <li>Number: <%= inner[:subtotal]%>
+        <li>Percentage: <%=inner[:percentage] %>
+    <%end%>
+  </ul>
+
+<p>=======</p>
+<p>Most Active Day: <%= @records.most_active_date%> (<%=@records.trips_by_most_active_date%> trips)</p>
+<p>Least Active Day: <%= @records.least_active_date%> (<%=@records.trips_by_least_active_date%> trip(s))</p>
+
+<p>TEST Single date with the highest number of trips: <%= @records.single_date_with_highest_trips %>,    No. of trips: <%= @records.single_date_with_highest_trips[1] %></p>
+<p>TEST Single date with the fewest number of trips: <%= @records.single_date_with_fewest_trips[0] %>,    No. of trips: <%=@records.single_date_with_fewest_trips[1] %></p>
+
+<p>=======</p>
+<p>Bike ride totals per year:</p>
+<ul>
+<%@records.year_month_subtotals.each do |year, totals|%>
+    <li>
+        <h3><%=year%></h3>
+        <ul>
+            <% totals.each do |month, total| %>
+                <li><%=month%>: <%=total%> trips</li>
+            <%end%>
+        </ul>
+    </li>
+<%end%>
+</ul>

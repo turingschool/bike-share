@@ -1,0 +1,24 @@
+body {
+  margin: 5%;
+  float: right;
+  background-image: url("/images/sf-bridge.jpg");
+  /* Photo by Michal Pechardo on Unsplash */
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+form {
+  padding: 8%;
+}
+
+div.transbox {
+  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 2%;
+  opacity: 0.85;
+  width: 400px;
+}
+
+.form-horizontal {
+  font-weight: bold;
+}

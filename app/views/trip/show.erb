@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/trip/show.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 text-center" id="body-content">
+        <h1 class="display-4">Here is yo Trip Stats ! </h1>
+        <div class="row">
+          <div class="col-md-12">
+            <h3> Duration: <%= @trips.duration %> </h3>
+            <h3> Start Date: <%= @trips.start_date.strftime(format='%m/%d/%Y') %> </h3>
+            <h3> Start Station Name: <%= @trips.start_station_name %> </h3>
+            <h3> End Date: <%= @trips.end_date.strftime(format='%m/%d/%Y') %> </h3>
+            <h3> End Station Name: <%= @trips.end_station_name %> </h3>
+            <h3> Bike ID: <%= @trips.bike_id %> </h3>
+            <h3> Subscription Type: <%= @trips.subscription_type %> </h3>
+            <h3> Zip Code: <%= @trips.zip_code %> </h3>
+
+            <div class="col-sm-12">
+              <form action="/trips/<%=@trips.id %>" method="POST" >
+                <input type="hidden" name="_method" value="DELETE">
+                <div class="btn-group">
+                  <input type="submit" class="btn btn-danger btn-sm" value="Delete Trip">
+                  <a  href="/trips/<%=@trips.id%>/edit" class="btn btn-info btn-sm">Edit</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

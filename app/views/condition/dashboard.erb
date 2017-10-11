@@ -1,0 +1,149 @@
+<head>
+  <title>Condition Dashboard</title>
+  <link rel="stylesheet" href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="condition/dashboard.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="nav">
+      <a href="/">Home</a>
+      <a href="/conditions">All Conditions</a>
+      <a href="/station-dashboard">Station Dashboard</a>
+      <a href="/trips-dashboard">Trip Dashboard</a>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid bg-1 text-center">
+  <h1> Weather Dashboard</h1>
+</div>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="well">
+        <h4>High Temperature 50 - 60 F</h4>
+        <p> Average number of rides: Change me</p>
+        <p> Highest number of rides: Change me</p>
+        <p> Lowest number of rides: Change me</p>
+      </div>
+    </div>
+    <div class="col-sm-3" >
+      <div class="well">
+        <h4>High Temperature 61 - 70 F</h4>
+        <p> Average number of rides: Change me</p>
+        <p> Highest number of rides: Change me</p>
+        <p> Lowest number of rides: Change me</p>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="well">
+        <h4>High Temperature 71 - 80 F</h4>
+        <p> Average number of rides: Change me</h>
+        <p> Highest number of rides: Change me</p>
+        <p> Lowest number of rides: Change me</p>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="well">
+        <h4>High Temperature 81 - 90 F</h4>
+        <p> Average number of rides: Change me</p>
+        <p> Highest number of rides: Change me</p>
+        <p> Lowest number of rides: Change me</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="well">
+        <h4>Precipitation  0 - .5 inches </h4>
+        <p> Average number of rides: Change me</p>
+        <p> Highest number of rides: Change me</p>
+        <p> Lowest number of rides: Change me</p>
+      </div>
+    </div>
+      <div class="col-sm-4">
+        <div class="well">
+          <h4>Precipitation  .5 - 1 inches</h4>
+          <p> Average number of rides: Change me</p>
+          <p> Highest number of rides: Change me</p>
+          <p> Lowest number of rides: Change me</p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="well">
+          <h4>Precipitation  1 - 1.5 inches</h4>
+          <p> Average number of rides: Change me</p>
+          <p> Highest number of rides: Change me</p>
+          <p> Lowest number of rides: Change me</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="well">
+          <h4>Visibilty 4 - 8 Miles </h4>
+          <p> Average number of rides: <%= @conditions.average_trips_with_visibility(4, 8) %></p>
+          <p> Highest number of rides: <%= @conditions.max_trips_with_visibility(4, 8) %></p>
+          <p> Lowest number of rides: <%= @conditions.min_trips_with_visibility(4, 8) %></p>
+        </div>
+      </div>
+      <div class="col-sm-6" >
+        <div class="well">
+          <h4>Visibilty 9 - 12 Miles </h4>
+          <p> Average number of rides: <%= @conditions.average_trips_with_visibility(9, 12)%></p>
+          <p> Highest number of rides: <%= @conditions.max_trips_with_visibility(9, 12) %></p>
+          <p> Lowest number of rides: <%= @conditions.min_trips_with_visibility(9, 12) %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="well">
+          <h4>Wind Speed 0 - 4 MPH </h4>
+          <p> Average number of rides: <%= @conditions.average_trips_with_wind_speed(0, 4) %></p>
+          <p> Highest number of rides: <%= @conditions.max_trips_with_wind_speed(0, 4) %></p>
+          <p> Lowest number of rides: <%= @conditions.min_trips_with_wind_speed(0, 4) %></p>
+        </div>
+      </div>
+      <div class="col-sm-4" >
+        <div class="well">
+          <h4>Wind Speed 5 - 9 MPH  </h4>
+          <p> Average number of rides: <%= @conditions.average_trips_with_wind_speed(5, 9) %></p>
+          <p> Highest number of rides: <%= @conditions.max_trips_with_wind_speed(5, 9) %> </p>
+          <p> Lowest number of rides: <%= @conditions.min_trips_with_wind_speed(5, 9) %></p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="well">
+          <h4>Wind Speed 10 - 14 MPH  </h4>
+          <p> Average number of rides: <%= @conditions.average_trips_with_wind_speed(10, 14) %></p>
+          <p> Highest number of rides: <%= @conditions.max_trips_with_wind_speed(10, 14) %></p>
+          <p> Lowest number of rides: <%= @conditions.min_trips_with_wind_speed(10, 14) %></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="well">
+          <h4>Wind Speed 15 - 19 MPH </h4>
+          <p> Average number of rides: <%= @conditions.average_trips_with_wind_speed(15, 19) %></p>
+          <p> Highest number of rides: <%= @conditions.max_trips_with_wind_speed(15, 19) %></p>
+          <p> Lowest number of rides: <%= @conditions.min_trips_with_wind_speed(15, 19) %></p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="well">
+          <h4>Wind Speed 20 - 24 MPH </h4>
+          <p> Average number of rides: <%= @conditions.average_trips_with_wind_speed(20, 24) %></p>
+          <p> Highest number of rides: <%= @conditions.max_trips_with_wind_speed(20, 24) %></p>
+          <p> Lowest number of rides: <%= @conditions.min_trips_with_wind_speed(20, 24) %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

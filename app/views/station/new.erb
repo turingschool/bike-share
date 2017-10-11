@@ -1,0 +1,42 @@
+<head>
+  <link rel="stylesheet" href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/station/new.css">
+</head>
+
+<div class="transbox">
+  <form class="form-horizontal" action="/stations" method="post">
+    <fieldset>
+      <legend>New Station</legend>
+      <div class="control-group">
+        <label class="control-label" >Station Name</label>
+        <div class="controls">
+          <input type="text" name ="station[name]" placeholder="station">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" >Number of Docks</label>
+        <div class="controls">
+          <input type="integer" name ="station[dock_count]" placeholder="docks">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" >City</label>
+        <div class="controls">
+          <input type="text" name ="station[city]" placeholder="city">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" >Date Installed</label>
+        <div class="controls">
+          <input type="date" name ="station[installation_date]" placeholder="date">
+        </div>
+      </div>
+      <br>
+      <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-info">Add New Station</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>

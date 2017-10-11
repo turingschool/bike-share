@@ -49,19 +49,19 @@ class Trip <ActiveRecord::Base
   end
 
   def self.month_year_breakdown
-    # month_break = group("DATE_TRUNC('month', start_date)").count.to_a
-    # sorted = month_break.sort_by { |i| i[0]}
-    # sorted.map do |i|
-    #   [i.first.strftime("%B %Y"), i.last]
-    # end
+    month_break = group("DATE_TRUNC('month', start_date)").count.to_a
+    sorted = month_break.sort_by { |i| i[0]}
+    sorted.map do |i|
+      [i.first.strftime("%B %Y"), i.last]
+    end
   end
 
   def self.year_breakdown
-    # year_breakdown = group("DATE_TRUNC('year', start_date)").count.to_a
-    # sorted = year_breakdown.sort_by { |i| i[0]}
-    # sorted.map do |i|
-    #   [i.first.strftime("%Y"), i.last]
-    # end
+    year_breakdown = group("DATE_TRUNC('year', start_date)").count.to_a
+    sorted = year_breakdown.sort_by { |i| i[0]}
+    sorted.map do |i|
+      [i.first.strftime("%Y"), i.last]
+    end
   end
 
   def self.station_and_departures

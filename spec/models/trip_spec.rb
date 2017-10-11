@@ -174,5 +174,87 @@ describe Trip do
       end
     end
 
+    describe ".month_year_breakdown" do
+      it "returns an array including month year and total trip count" do
+        Trip.create({duration: 2,
+                     start_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "Union Station",
+                     end_station_id: "3",
+                     bike_id: 215,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+        Trip.create({duration: 98,
+                     start_date: Date.strptime("1/6/2017", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "16th & Larimer",
+                     end_station_id: "3",
+                     bike_id: 989,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+        Trip.create({duration: 1000,
+                     start_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "16th & Larimer",
+                     end_station_id: "3",
+                     bike_id: 989,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+        expected = [["August 2016", 2], ["January 2017", 1]]
+
+        expect(Trip.month_year_breakdown).to eq(expected)
+      end
+    end
+
+    describe ".year_breakdown" do
+      it "returns an array including year and total trip count" do
+        Trip.create({duration: 2,
+                     start_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "Union Station",
+                     end_station_id: "3",
+                     bike_id: 215,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+        Trip.create({duration: 98,
+                     start_date: Date.strptime("1/6/2017", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "16th & Larimer",
+                     end_station_id: "3",
+                     bike_id: 989,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+        Trip.create({duration: 1000,
+                     start_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "16th & Larimer",
+                     end_station_id: "3",
+                     bike_id: 989,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+        expected = [["2016", 2], ["2017", 1]]
+
+        expect(Trip.year_breakdown).to eq(expected)
+      end
+    end
+
   end
 end

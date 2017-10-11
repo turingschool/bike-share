@@ -22,7 +22,7 @@ class Seed
     end
 
     def seed_trips
-      CSV.foreach(csv_file('trip'), options) do |row|
+      CSV.foreach(csv_file('trip_fixture'), options) do |row|
         return if Trip.exists?(row[:id])
         return unless Station.exists?(row[:start_station_id])
         return unless Station.exists?(row[:end_station_id])
@@ -35,7 +35,7 @@ class Seed
     end
 
     def seed_conditions
-      CSV.foreach(csv_file('condition'), options) do |row|
+      CSV.foreach(csv_file('weather_fixture'), options) do |row|
         next if Condition.exists?(row[:id])
         convert_date(row, :date)
         row.delete(:max_dew_point_f)
@@ -54,7 +54,7 @@ class Seed
         row.delete(:events)
         row.delete(:wind_dir_degrees)
         row.delete(:zip_code)
-        Condition.create!(row.to_hash)
+        Condition.create(row.to_hash)
       end
     end
 

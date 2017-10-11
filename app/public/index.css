@@ -53,7 +53,6 @@ a {
   display: flex;
   flex-direction: column;
   text-align: center;
-  /*background: lightgrey;*/
   margin-bottom: 12px;
   width: 342px;
   opacity: .8;
@@ -61,7 +60,6 @@ a {
 }
 
 .condition:hover {
-  /*background: lightgrey;*/
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   opacity: .9;
   background-color: white;
@@ -78,15 +76,6 @@ a {
   justify-content: center;
   margin-bottom: 18px;
 }
-
-#button-edit {
-
-}
-
-#button-delete {
-
-}
-
 
 .dropbtn {
   background-color: white;
@@ -134,6 +123,7 @@ a {
   background-color: #f1f1f1;
 }
 
-.bottom-bar {
-
+footer {
+  display:flex;
+  justify-content: center;
 }

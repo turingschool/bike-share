@@ -122,6 +122,57 @@ class BikeShareApp < Sinatra::Base
     redirect to '/trips'
   end
 
+  get '/conditions' do
+    @model = Condition
+    @records = Condition.paginate(page: params[:page], per_page: 30)
+    sub_erb :index
+  end
+
+  get '/conditions/new' do
+    @model = Condition
+    sub_erb :new
+  end
+
+  get '/conditions/:id' do |id|
+    @model = Condition
+    @id = id
+    @record = Condition.find(id)
+    sub_erb :show
+  end
+
+  get '/weather-dashboard' do  #this has to be "weather-dashboard"
+    @model = Condition
+    @records = Condition.all
+    sub_erb :dashboard
+  end
+
+  get '/conditions/:id/edit' do |id|
+    @model = Condition
+    @id = id
+    @record = Condition.find(id)
+    sub_erb :edit
+  end
+
+  post '/conditions' do
+    @model = Condition
+    id = Condition.create(params[:station]).id
+    redirect to "/conditions/#{id}"
+  end
+
+  put '/conditions/:id' do |id|
+    @model = Condition
+    @id = id
+    Condition.update(id.to_i, params[:station])
+    redirect to "/conditions/#{id}"
+  end
+
+  delete '/conditions/:id' do |id|
+    @model = Condition
+    @id = id
+    Condition.destroy(id.to_i)
+    redirect to '/stations'
+  end
+
   not_found do
     erb :not_found
   end

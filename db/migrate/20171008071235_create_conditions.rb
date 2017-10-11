@@ -7,7 +7,7 @@ class CreateConditions < ActiveRecord::Migration[5.1]
       conditions.float  :min_temperature_f
       conditions.float  :mean_humidity
       conditions.float  :mean_visibility_miles
-      conditions.float  :mean_wind_speed
+      conditions.float  :mean_wind_speed_mph
       conditions.float  :precipitation_inches
     end
   end

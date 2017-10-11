@@ -3,21 +3,22 @@
   <head>
     <title>San Francisco Bike Share</title>
     <meta charset="utf-8">
-    <link rel=”stylesheet” type=”text/css” href="/stylesheets/custom.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lekton" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/custom.css" title="text/css" />
+    <link rel="stylesheet" href="stylesheets/homepage.css" title="text/css" />
   </head>
   <body>
     <header>
-      <h1>Bike Share</h1>
+        <a href="/"><h1>.Bike/share</h1></a>
       <nav>
-        <a href='/stations'>Stations</a>
-        <a href='/trips'>Trips</a>
-        <a href='/conditions'>Weather</a>
+        <a href="/station-dashboard">Stations</a>
+        <a href="/trips-dashboard">Trips</a>
+        <a href="/weather-dashboard">Weather</a>
       </nav>
     </header>
-    <main>
-      <%= yield %>
-    </main>
+    <%= yield %>
     <footer>
+        <p style= "text-align: center">Josie McClellan | Lauren Billington | Young Jung | Iza Jimenez</p>
     </footer>
   </body>
 </html>

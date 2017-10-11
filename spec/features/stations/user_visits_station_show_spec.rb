@@ -1,9 +1,9 @@
 require './spec/spec_helper'
 
 feature 'When a user visits station show page' do
-  context 'for a station that exists'
-    background do { visit '/stations/2' }
+  context 'for a station that exists' do
 
+    background{ visit '/stations/2' }
 
     it 'has status code 200' do
       expect(page.status_code).to eq(200)
@@ -38,20 +38,24 @@ feature 'When a user visits station show page' do
       expect(page).to have_content(/installation date/i)
       expect(page).to have_content('8/6/2013')
     end
-  context 'for a station that does not exist'
-    it 'they see a status code 404'
+
+  end
+
+
+  context 'for a station that does not exist' do
+    it 'they see a status code 404' do
       visit '/stations/1'
       expect(page).to have_content(/not found/i)
     end
   end
 
-  context 'when user clicks on delete button'
-    background do
-      click_button 'delete'
+  context 'when user clicks on delete button' do
+    background{ click_button 'delete' }
+
+    it 'then user is redirected to station index page' do
+      has_current_path?('/trips', only_path: true)
+      expect(page).to have_content(/delete successful/i)
     end
-      it 'then user is redirected to station index page'
-        has_current_path?("/trips", only_path: true)
-        expect(page).to have_content(/delete successful/i)
-      end
   end
+
 end

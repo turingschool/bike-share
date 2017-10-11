@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20171008071235) do
     t.float "min_temperature_f"
     t.float "mean_humidity"
     t.float "mean_visibility_miles"
-    t.float "mean_wind_speed"
+    t.float "mean_wind_speed_mph"
     t.float "precipitation_inches"
   end
 

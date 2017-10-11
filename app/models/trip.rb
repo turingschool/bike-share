@@ -2,6 +2,7 @@ class Trip < ActiveRecord::Base
 
     belongs_to :start_station, class_name: "Station"
     belongs_to :end_station,   class_name: "Station"
+    belongs_to :condition, primary_key: :date, foreign_key: :start_date
 
     validates_presence_of :duration,
                           :start_date,
@@ -9,11 +10,11 @@ class Trip < ActiveRecord::Base
                           :end_date,
                           :end_station_id,
                           :bike_id,
-                          :subscription_type,
+                          :subscription_type
                           #do NOT validate zip code per Sal.
 
 
-  def to_s
+  def display
     "Trip ##{id} #{route}"
   end
 
@@ -43,15 +44,17 @@ class Trip < ActiveRecord::Base
     end_station.name
   end
 
-  def self.average_ride_length
+
+
+  def self.average_duration
     average :duration
   end
 
-  def self.trip_of_longest_length
-    minimum :duration
+  def self.longest_trip
+    where duration: (maximum :duration)
   end
 
-  def self.trip_of_shortest_length
+  def self.shortest_trip
     where duration: (minimum :duration)
   end
 
@@ -71,21 +74,6 @@ class Trip < ActiveRecord::Base
 
   def self.rides_per_year
     group("DATE_TRUNC('year', end_date)").count
-  end
-
-  def self.year_month_subtotals
-    years = {}
-    rides_per_month.each do |timestamp, month_count|
-      y = timestamp.year
-      years[y] ||= { "January"=> 0,  "February"=> 0, "March"=> 0,
-                      "April"=> 0,   "May"=> 0,      "June"=> 0,
-                      "July"=> 0,    "August"=> 0,   "September"=> 0,
-                      "October"=> 0, "November"=> 0, "December"=> 0,
-                      "Subtotal"=> 0 }
-      m = timestamp.strftime('%B')
-      years[y][m] += month_count
-    end
-    years.each_value { |counts| counts["Subtotal"] = counts.values.sum }
   end
 
   def self.top_rider
@@ -124,6 +112,20 @@ class Trip < ActiveRecord::Base
   end
 
 
+  def self.year_month_subtotals
+    years = {}
+    rides_per_month.each do |timestamp, month_count|
+      y = timestamp.year
+      years[y] ||= { "January"=> 0,  "February"=> 0, "March"=> 0,
+                      "April"=> 0,   "May"=> 0,      "June"=> 0,
+                      "July"=> 0,    "August"=> 0,   "September"=> 0,
+                      "October"=> 0, "November"=> 0, "December"=> 0,
+                      "Subtotal"=> 0 }
+      m = timestamp.strftime('%B')
+      years[y][m] += month_count
+    end
+    years.each_value { |counts| counts["Subtotal"] = counts.values.sum }
+  end
 
   def self.most_active_date
     group("start_date").count.max_by(&:last)[0].strftime('%A, %B %d, %Y')
@@ -149,17 +151,86 @@ class Trip < ActiveRecord::Base
     group("start_date").count
   end
 
-
-
 # NOTES - the two methods below are similar to the ones above. Not sure which to use.
 
   def self.single_date_with_highest_trips  #Single date with the highest number of trips with a count of those trips.
-    group('end_date').order('count_id DESC').count(:id).first
+    group('start_date').order('count_id DESC').count(:id).first.first
+  end
+
+  def self.single_date_with_highest_trips_count
+    group('start_date').order('count_id DESC').count(:id).first[-1]
   end
 
   def self.single_date_with_fewest_trips  #Single date with the highest number of trips with a count of those trips.
-    group(:end_date).order('count_id ASC').count(:id).first
+    group(:start_date).order('count_id ASC').count(:id).first.first
   end
 
+  def self.single_date_with_fewest_trips_count
+    group(:start_date).order('count_id ASC').count(:id).first[-1]
+  end
+
+  def self.condition_on_most_popular_day
+    find_by(start_date: single_date_with_highest_trips).condition
+  end
+
+  def self.max_temperature_on_most_popular_day
+    condition_on_most_popular_day.max_temperature_f
+  end
+
+  def self.mean_temperature_on_most_popular_day
+    condition_on_most_popular_day.mean_temperature_f
+  end
+
+  def self.min_temperature_on_most_popular_day
+    condition_on_most_popular_day.min_temperature_f
+  end
+
+  def self.mean_humidity_on_most_popular_day
+    condition_on_most_popular_day.mean_humidity
+  end
+
+  def self.mean_visibility_on_most_popular_day
+    condition_on_most_popular_day.mean_visibility_miles
+  end
+
+  def self.mean_wind_speed_on_most_popular_day
+    condition_on_most_popular_day.mean_wind_speed_mph
+  end
+
+  def self.inches_of_precipitation_on_most_popular_day
+    condition_on_most_popular_day.precipitation_inches
+  end
+
+  def self.condition_on_least_popular_day
+    find_by(start_date: single_date_with_fewest_trips).condition
+  end
+
+  def self.max_temperature_on_least_popular_day
+    condition_on_least_popular_day.max_temperature_f
+  end
+
+  def self.mean_temperature_on_least_popular_day
+    condition_on_least_popular_day.mean_temperature_f
+  end
+
+  def self.min_temperature_on_least_popular_day
+    condition_on_least_popular_day.min_temperature_f
+  end
+
+  def self.mean_humidity_on_least_popular_day
+    condition_on_least_popular_day.mean_humidity
+  end
+
+  def self.mean_visibility_on_least_popular_day
+    condition_on_least_popular_day.mean_visibility_miles
+  end
+
+  def self.mean_wind_speed_on_least_popular_day
+    condition_on_least_popular_day.mean_wind_speed_mph
+  end
+
+  def self.inches_of_precipitation_on_least_popular_day
+    condition_on_least_popular_day.precipitation_inches
+  end
 
 end

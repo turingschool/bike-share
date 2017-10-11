@@ -256,5 +256,237 @@ describe Trip do
       end
     end
 
+    describe ".most_ridden_bike" do
+      it "returns the bike id of the most ridden bike" do
+        Trip.create({duration: 2,
+                     start_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "Union Station",
+                     end_station_id: "3",
+                     bike_id: 215,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+        Trip.create({duration: 98,
+                     start_date: Date.strptime("1/6/2017", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "16th & Larimer",
+                     end_station_id: "3",
+                     bike_id: 989,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+        Trip.create({duration: 1000,
+                     start_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "16th & Larimer",
+                     end_station_id: "3",
+                     bike_id: 989,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+
+        expect(Trip.most_ridden_bike).to eq(989)
+      end
+    end
+
+    describe ".least_ridden_bike" do
+      it "returns the bike id of the least ridden bike" do
+        Trip.create({duration: 2,
+                     start_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "Union Station",
+                     end_station_id: "3",
+                     bike_id: 215,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+        Trip.create({duration: 98,
+                     start_date: Date.strptime("1/6/2017", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "16th & Larimer",
+                     end_station_id: "3",
+                     bike_id: 989,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+        Trip.create({duration: 1000,
+                     start_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "16th & Larimer",
+                     end_station_id: "3",
+                     bike_id: 989,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+
+        expect(Trip.least_ridden_bike).to eq(215)
+      end
+    end
+
+    describe ".ride_count" do
+      it "returns the the ride count of a given bike_id" do
+        Trip.create({duration: 98,
+                     start_date: Date.strptime("1/6/2017", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "16th & Larimer",
+                     end_station_id: "3",
+                     bike_id: 989,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+        Trip.create({duration: 1000,
+                     start_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "16th & Larimer",
+                     end_station_id: "3",
+                     bike_id: 989,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+
+        expect(Trip.ride_count(989)).to eq(2)
+      end
+    end
+
+    describe ".subscription_types_and_info" do
+      it "returns hash of subcription as key and a info hash as a value" do
+        Trip.create({duration: 2,
+                     start_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "Union Station",
+                     end_station_id: "3",
+                     bike_id: 215,
+                     subscription_type: "Customer",
+                     zip_code: 19091
+                    })
+        Trip.create({duration: 98,
+                     start_date: Date.strptime("1/6/2017", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "16th & Larimer",
+                     end_station_id: "3",
+                     bike_id: 989,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+        Trip.create({duration: 1000,
+                     start_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "16th & Larimer",
+                     end_station_id: "3",
+                     bike_id: 989,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+        expected = {"Subscriber" => {count: 2, pct: 66},
+                    "Customer" => {count: 1, pct: 33}
+                   }
+
+        expect(Trip.subscription_types_and_info).to eq(expected)
+      end
+    end
+
+    describe ".busiest_day" do
+      it "returns the date of the busiest day" do
+        Trip.create({duration: 2,
+                     start_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "Union Station",
+                     end_station_id: "3",
+                     bike_id: 215,
+                     subscription_type: "Customer",
+                     zip_code: 19091
+                    })
+        Trip.create({duration: 98,
+                     start_date: Date.strptime("1/6/2017", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "16th & Larimer",
+                     end_station_id: "3",
+                     bike_id: 989,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+        Trip.create({duration: 1000,
+                     start_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "16th & Larimer",
+                     end_station_id: "3",
+                     bike_id: 989,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+
+        expect(Trip.busiest_day).to eq(Date.strptime("8/6/2016", "%m/%d/%Y"))
+      end
+    end
+
+    describe ".slowest_day" do
+      it "returns the date of the slowest day" do
+        Trip.create({duration: 2,
+                     start_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "Union Station",
+                     end_station_id: "3",
+                     bike_id: 215,
+                     subscription_type: "Customer",
+                     zip_code: 19091
+                    })
+        Trip.create({duration: 98,
+                     start_date: Date.strptime("1/6/2017", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "16th & Larimer",
+                     end_station_id: "3",
+                     bike_id: 989,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+        Trip.create({duration: 1000,
+                     start_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     start_station_name: "Union Station",
+                     start_station_id: "12",
+                     end_date: Date.strptime("8/6/2016", "%m/%d/%Y"),
+                     end_station_name: "16th & Larimer",
+                     end_station_id: "3",
+                     bike_id: 989,
+                     subscription_type: "Subscriber",
+                     zip_code: 19091
+                    })
+
+        expect(Trip.slowest_day).to eq(Date.strptime("1/6/2017", "%m/%d/%Y"))
+      end
+    end
+    
   end
 end

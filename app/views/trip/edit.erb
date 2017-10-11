@@ -1,52 +1,44 @@
-<h2>Edit Trip</h2>
+<label>Start Station:
+  <select name="trip[start_station_id]">
+    <% @stations.each do |station| %>
+      <option
+        value="<%= station.id %>"
+        label="<%= station.name %>"
+        <%= "selected" if station.id == @record.start_station_id %>
+      />
+    <% end %>
+  </select>
+</label>
+<label>End Station
+  <select name="trip[end_station_id]">
+    <% @stations.each do |station| %>
+      <option
+        value="<%= station.id %>"
+        label="<%= station.name %>"
+        <%= "selected" if station.id == @record.end_station_id %>
+      />
+    <% end %>
+  </select>
+</label>
+<label>Zip Code
+  <input  type="text" name="trip[zip_code]"            value="<%= @record.zip_code %>"/><br/>
+</label>
+<br/>
 
-<form action = "/trips/<%= @trip.id %>" method="post">
+<label>Start Date
+  <input type="date" name="trip[start_date]"          value="<%= @record.start_date %>"/><br/>
+</label>
+<label>End Date:
+  <input type="date" name="trip[end_date]"            value="<%= @record.end_date %>"/><br/>
+</label>
+<label>Duration:
+  <input type="number" name="trip[duration]"          value="<%= @record.duration %>"/><br/>
+</label>
+<br/>
 
-  <input type="hidden" name="_method" value="PUT" />
-
-  <label>Start Station:
-    <select name="trip[start_station_id]">
-      <% @stations.each do |station| %>
-        <option value="<%=station.id%>" label="<%=station.name%>" <%= "selected" if @trip.start_station_id == station.id %> />
-      <% end %>
-    </select>
-  </label><br/>
-
-  <label>End Station
-    <select name="trip[end_station_id]">
-      <% @stations.each do |station| %>
-        <option value="<%=station.id%>" label="<%=station.name%>" <%= "selected" if @trip.end_station_id == station.id %> />
-      <% end %>
-    </select><br/>
-  </label>
-
-  <label>Duration:
-    <input type="number" name="trip[duration]"          value="<%= @trip.duration %>"/><br/>
-  </label>
-
-  <label>Start Date
-    <input type="date" name="trip[start_date]"          value="<%= @trip.start_date %>"/><br/>
-  </label>
-
-  <label>End Date:
-    <input type="date" name="trip[end_date]"            value="<%= @trip.end_date %>"/><br/>
-  </label>
-
-  <label>Bike:
-    <input disabled type="text" name="trip[bike_id]"             value="<%= @trip.bike_id %>"/><br/>
-  </label>
-
-  <label>Subscription Type
-    <input disabled type="text" name="trip[subscription_type]"   value="<%= @trip.subscription_type %>"/><br/>
-  </label>
-
-  <label>Zip Code
-    <input  type="text" name="trip[zip_code]"            value="<%= @trip.zip_code %>"/><br/>
-  </label>
-
-  <input type="submit" name="submit"/>
-  <form action="/trips/<%=@trip.id%>" method="post">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type='submit' name="delete" value="Delete" formaction="/trips/<%=@trip.id%>">
-  </form>
-</form>
+<label>Bike:
+  <input disabled type="text" name="trip[bike_id]"             value="<%= @record.bike_id %>"/><br/>
+</label>
+<label>Subscription Type
+  <input disabled type="text" name="trip[subscription_type]"   value="<%= @record.subscription_type %>"/><br/>
+</label>

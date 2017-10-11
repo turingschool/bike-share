@@ -34,18 +34,18 @@ class Trip <ActiveRecord::Base
   end
 
   def self.shortest_ride
-    # time = minimum(:duration)
-    # Time.at(time).utc.strftime("%H:%M:%S")
+    time = minimum(:duration)
+    Time.at(time).utc.strftime("%H:%M:%S")
   end
 
   def self.most_departures
-    # trip = group(:start_station_id).order("count_all DESC").limit(1).count
-    # Station.find_by(station_id: trip.keys.first).name
+    trip = group(:start_station_id).order("count_all DESC").limit(1).count
+    Station.find_by(station_id: trip.keys.first).name
   end
 
   def self.most_arrivals
-    # trip = group(:end_station_id).order("count_all DESC").limit(1).count
-    # Station.find_by(station_id: trip.keys.first).name
+    trip = group(:end_station_id).order("count_all DESC").limit(1).count
+    Station.find_by(station_id: trip.keys.first).name
   end
 
   def self.month_year_breakdown

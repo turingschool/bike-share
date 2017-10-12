@@ -1,0 +1,90 @@
+<head>
+  <link rel="stylesheet" href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/condition/edit.css">
+</head>
+
+<body>
+<div class="navbar">
+    <div class="nav">
+      <a href="/">Home</a>
+      <a href="/conditions">All Conditions</a>
+      <a href="/station-dashboard">Station Dashboard</a>
+      <a href="/trips-dashboard">Trip Dashboard</a>
+      <a href="/condition-dashboard">Condition Dashboard</a>
+    </div>
+  </div>
+</div>
+
+<div class="transbox">
+  <form class="form-horizontal" action="/conditions/<%= @conditions.id %>" method="post">
+    <input type="hidden" name="_method" value="PUT" />
+    <fieldset>
+      <legend>Edit Weather Conditions Report</legend>
+      <div class="control-group">
+        <label class="control-label"/>Date</label>
+        <div class="controls">
+          <input type="date" name ="weather[date]" value="<%= @conditions.date %>" placeholder="date">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"/>Temperature High</label>
+        <div class="controls">
+          <input type="integer" name ="weather[max_temperature_f]" value="<%= @conditions.max_temperature_f %>" placeholder="high">
+
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"/>Mean Temperature</label>
+        <div class="controls">
+          <input type="integer" name ="weather[mean_temperature_f]" value="<%= @conditions.mean_temperature_f %>" placeholder="mean">
+
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"/>Temperature Low</label>
+        <div class="controls">
+          <input type="integer" name ="weather[min_temperature_f]" value="<%= @conditions.min_temperature_f %>" placeholder="low">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"/>Mean Humidity</label>
+        <div class="controls">
+          <input type="integer" name ="weather[mean_humidity]" value="<%= @conditions.mean_humidity %>" placeholder="humidity">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"/>Mean Visibility (miles)</label>
+        <div class="controls">
+          <input type="integer" name ="weather[mean_visibility_miles]" value="<%= @conditions.mean_visibility_miles %>" placeholder="visibility (miles)">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"/>Mean Wind Speed (mph)</label>
+        <div class="controls">
+          <input type="integer" name ="weather[mean_wind_speed_mph]" value="<%= @conditions.mean_wind_speed_mph %>" placeholder="wind speed (mph)">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"/>Precipitation (inches)</label>
+        <div class="controls">
+          <input type="integer" name ="weather[precipitation_inches]" value="<%= @conditions.precipitation_inches %>" placeholder="precipitation (inches)">
+
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"/>Zip Code</label>
+        <div class="controls">
+          <input type="integer" name ="weather[zip_code]" value="<%= @conditions.zip_code %>" placeholder="zip code">
+
+        </div>
+      </div>
+      <br>
+      <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-info">Save Changes</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+</body>

@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+.navbar {
+  width: 100%;
+  margin: 0px 0px;
+  padding: 10px 10px;
+  font-size: 20px;
+  background-color: SteelBlue;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar a {
+  color: white;
+  margin: 0px 75px;
+  font-family: "Indie Flower";
+}
+
+body {
+  background-image: url("/images/sf-bridge.jpg");
+  /* Photo by Michal Pechardo on Unsplash */
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+form {
+  padding: 8%;
+}
+
+div.transbox {
+  margin: 5% 5%;
+  float: right;
+  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 2%;
+  opacity: 0.85;
+  width: 400px;
+}
+
+.form-horizontal {
+  font-weight: bold;
+}

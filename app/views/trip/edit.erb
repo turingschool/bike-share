@@ -1,0 +1,92 @@
+<head>
+  <link rel="stylesheet" href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/trip/edit.css">
+</head>
+
+<body>
+<div class="navbar">
+    <div class="nav">
+      <a href="/">Home</a>
+      <a href="/trips">All Trips</a>
+      <a href="/station-dashboard">Station Dashboard</a>
+      <a href="/trips-dashboard">Trip Dashboard</a>
+      <a href="/condition-dashboard">Condition Dashboard</a>
+    </div>
+  </div>
+</div>
+
+<div class="transbox">
+  <form class="form-horizontal" action="/trips/<%= @trips.id %>" method="post">
+    <input type="hidden" name="_method" value="PUT" />
+    <fieldset>
+      <legend>Edit Trip</legend>
+      <div class="control-group">
+        <label class="control-label"/>Trip Duration</label>
+        <div class="controls">
+          <input type="text" name ="trip[duration]" value="<%= @trips.duration %>">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"/>Start Date</label>
+        <div class="controls">
+          <input type="date" name ="trip[start_date]" value="<%= @trips.start_date %>">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"/>Start Station Name</label>
+        <div class="controls">
+          <input type="text" name ="trip[start_station_name]" value="<%= @trips.start_station_name %>">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"/>Start Station ID</label>
+        <div class="controls">
+          <input type="text" name ="trip[start_station_id]" value="<%= @trips.start_station_id %>">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"/>End Date</label>
+        <div class="controls">
+          <input type="date" name ="trip[end_date]" value="<%= @trips.end_date %>">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"/>End Station Name</label>
+        <div class="controls">
+          <input type="text" name ="trip[end_station_name]" value="<%= @trips.end_station_name %>">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"/>End Station ID</label>
+        <div class="controls">
+          <input type="text" name ="trip[end_station_id]" value="<%= @trips.end_station_id %>">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"/>Bike ID</label>
+        <div class="controls">
+          <input type="text" name ="trip[bike_id]" value="<%= @trips.bike_id %>">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"/>Subscription Type</label>
+        <div class="controls">
+          <input type="text" name ="trip[subscription_type]" value="<%= @trips.subscription_type %>">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"/>Zip Code</label>
+        <div class="controls">
+          <input type="text" name ="trip[zip_code]" value="<%= @trips.zip_code %>">
+        </div>
+      </div>
+      <br>
+      <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-info">Save Changes</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+</body>

@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+.navbar {
+  width: 100%;
+  margin: 0px 0px;
+  padding: 10px 10px;
+  font-size: 20px;
+  background-color: SteelBlue;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar a {
+  color: white;
+  margin: 0px 75px;
+  font-family: "Indie Flower";
+}
+
+.container-fluid {
+  padding: 80px 30% 80px 30%;
+}
+
+body {
+  background-image: url("/images/condition-show.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: #333;
+  font-family: "Indie Flower";
+}
+
+div + div, #body-content div:first-child {
+  margin-top: 20px;
+}
+
+h5 {
+  font-weight: 600;
+}
+
+#body-content {
+  border-radius: 7px;
+  padding: 20px;
+  background-color: rgba(255,255,255,.7);
+}
+
+#create-btn {
+  margin: 20px;
+}
+
+.info {
+  color: white;
+}

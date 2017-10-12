@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/trip/index.css">
+</head>
+
+<body>
+  <div class="navbar">
+      <div class="nav">
+        <a href="/">Home</a>
+        <a href="/station-dashboard">Station Dashboard</a>
+        <a href="/trips-dashboard">Trip Dashboard</a>
+        <a href="/condition-dashboard">Condition Dashboard</a>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+  	  <div class="col-sm-12 text-center" id="body-content">
+        <h1 class="display-4">Trips Taken</h1>
+        <a  href="/trips/new" class="btn btn-primary" id="create-btn">Create a new trip</a>
+        <div class="row">
+          <%@trips.each do |trip|%>
+            <div class="col-sm-6 col-md-4">
+              <h4> <%= trip.start_date.strftime(format='%m/%d/%Y') %> </h4>
+              <div class="col-sm-12">
+                <form action="/trips/<%=trip.id %>" method="POST" >
+                  <input type="hidden" name="_method" value="DELETE">
+                  <div class="btn-group">
+                    <input type="submit" class="btn btn-danger btn-sm" value="Delete Trip">
+                    <a  href="/trips/<%=trip.id%>/edit" class="btn btn-info btn-sm">Edit</a>
+                    <a  href="/trips/<%=trip.id%>" class="btn btn-info btn-sm">Show</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+  	</div>
+    <%= will_paginate @trips %>
+  </div>
+</body>
+</html>

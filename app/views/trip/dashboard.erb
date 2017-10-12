@@ -1,0 +1,150 @@
+<head>
+  <title>Trip Dashboard</title>
+  <link rel="stylesheet" href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="trip/dashboard.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="nav">
+      <a href="/">Home</a>
+      <a href="/trips">All Trips</a>
+      <a href="/station-dashboard">Station Dashboard</a>
+      <a href="/condition-dashboard">Conditions Dashboard</a>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid bg-1 text-center">
+  <h1> Trip Dashboard</h1>
+</div>
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="well">
+        <h4>Average Ride</h4>
+          <p><%= @trips.average_ride %> minutes</p>
+      </div>
+    </div>
+    <div class="col-sm-2" >
+      <div class="well">
+        <h4>Longest Ride</h4>
+        <p><%= @trips.longest_ride %> days</p>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="well">
+        <h4>Shortest Ride</h4>
+        <p><%= @trips.shortest_ride %> minute</p>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="well">
+        <h4>Most Popular Start Station</h4>
+            <p><%= @trips.highest_starting_place %></p>
+      </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="well">
+          <h4>Most Popular End Station</h4>
+              <p><%= @trips.highest_ending_place%></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <% trips_2013 = @trips.yearly_rides(2013) %>
+    <% trips_2014 = @trips.yearly_rides(2014) %>
+    <% trips_2015 = @trips.yearly_rides(2015) %>
+    <% months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ] %>
+    <% months.each_with_index do |month, index| %>
+      <% i = (index + 1).to_f %>
+      <% num_2013 = trips_2013[i] != nil ? trips_2013[i] : 0 %>
+      <% num_2014 = trips_2014[i] != nil ? trips_2014[i] : 0 %>
+      <% num_2015 = trips_2015[i] != nil ? trips_2015[i] : 0 %>
+      <% month_sum = num_2013 + num_2014 + num_2015 %>
+      <div class="col-sm-3">
+        <div class="well">
+          <h4><%= month %></h4>
+            <p><%= month_sum %> rides</p>
+            <p>2013: <%= num_2013 %> rides</p>
+            <p>2014: <%= num_2014 %> rides</p>
+            <p>2015: <%= num_2015 %> rides</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="well">
+          <h4>Most Popular Bike</h4>
+            <p>Bike ID: <%= @trips.most_ridden_bike[0] %></p>
+            <p>Number of rides: <%= @trips.most_ridden_bike[1] %></p>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="well">
+          <h4>Least Popular Ride</h4>
+            <p><p>Bike ID: <%= @trips.least_ridden_bike[0] %></p>
+            <p>Number of rides: <%= @trips.least_ridden_bike[1] %></p></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+          <div class="well">
+            <h4>Weather on Most Popular Day</h4>
+              <p>High Temp: <%= @trips.highest_number_of_rides.max_temperature_f %> fahrenheit</p>
+              <p>Low Temp: <%= @trips.highest_number_of_rides.min_temperature_f %> fahrenheit</p>
+              <p>Average Temp: <%= @trips.highest_number_of_rides.mean_temperature_f %> fahrenheit</p>
+              <p>Humidity: <%= @trips.highest_number_of_rides.mean_humidity %></p>
+              <p>Visibility: <%= @trips.highest_number_of_rides.mean_visibility_miles %> miles</p>
+              <p>Wind Speed: <%= @trips.highest_number_of_rides.mean_wind_speed_mph %> mph</p>
+              <p>Precipitation: <%= @trips.highest_number_of_rides.precipitation_inches %> inches</p>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="well">
+            <h4>Weather on Least Popular Day</h4>
+              <p>High Temp: <%= @trips.lowest_number_of_rides.max_temperature_f %> fahrenheit</p>
+              <p>Low Temp: <%= @trips.lowest_number_of_rides.min_temperature_f %> fahrenheit</p>
+              <p>Average Temp: <%= @trips.lowest_number_of_rides.mean_temperature_f %> fahrenheit</p>
+              <p>Humidity: <%= @trips.lowest_number_of_rides.mean_humidity %></p>
+              <p>Visibility: <%= @trips.lowest_number_of_rides.mean_visibility_miles %> miles</p>
+              <p>Wind Speed: <%= @trips.lowest_number_of_rides.mean_wind_speed_mph %> mph</p>
+              <p>Precipitation: <%= @trips.lowest_number_of_rides.precipitation_inches %> inches</p>
+          </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+          <div class="well">
+            <h4>User Subscription Details</h4>
+              <p>Subscribers: <%= @trips.user_subscription["Subscriber"] %></p>
+              <p>Percent: <%= @trips.percentage("Subscriber") %>%</p>
+              <p>Customers: <%= @trips.user_subscription["Customer"] %></p>
+              <p>Percent: <%= @trips.percentage("Customer") %>%</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+            <h4>Most Popular Date</h4>
+              <p>Date: <%= @trips.highest_trip_count[0].strftime(format='%m/%d/%Y') %></p>
+              <p>Trips: <%= @trips.highest_trip_count[1] %></p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+            <h4>Least Popular Date</h4>
+              <p>Date: <%= @trips.lowest_trip_count[0].strftime(format='%m/%d/%Y') %></p>
+              <p>Trips: <%= @trips.lowest_trip_count[1] %></p>
+          </div>
+        </div>
+    </div>
+</body>

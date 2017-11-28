@@ -1,0 +1,22 @@
+Project: Bike Share
+Group Member Names: Lee Chow Timo Tyrrell
+Project Expectations: What does each group member hope to get out of this project?
+More solid foundation of restful conventions, MVC implementation, understanding links between a large file structure and system, SQL and ActiveRecord connection and how to use that to our advantage. 
+Goals and expectations: Finish project and have a solid understanding of Sinatra so that we can be more comfortable in Rails. Check for understanding in all components. Pairing with upper mods and mentors as resources. Use TDD
+Team strengths: 
+Efficient workers. Ruby logic. We already get along and have talked outside of class.
+How to overcome obstacles: Take breaks around every hour. Reach out to upper mods for help (not Miguel). Clear communication. Whiteboarding logic and ideas.
+Schedule Expectations (When are we available to work together and individually?): Timo: Thursday afternoon. Lee: Friday Evening and possibly Saturday Evening. Check-in around lunch each weekday. Set weekend schedule the day before. Turing works for both. 
+Communication Expectations (How and often will we communicate? How do we keep lines of communication open?): Timo: unavailable 11-7 Lee: unavailable 11 or 12 - 7. Slack main communication. Call anytime - Timo 
+Abilities Expectations (Technical strengths and areas for desired improvement): Timo improvement: CSS, HTML, ERB, Routing 
+Lee improvement: TDD, CSS/HTML, Restful conventions
+Workload Expectations (What features do we each want to work on?): All
+Workflow Expectations (Git workflow/Tools/Code Review/Reviewing Pull Requests): 
+Switch Driver navigator often. 
+Pull Request instructors. Timo will clone and add collaborators. Pushing often, merging branches as functionality completed.
+Expectations for giving and receiving feedback: Timo prefer direct and early feedback with regards to work-flow/expectations. Lee: Generally quiet but can work around style and flexible. Prefers direct and constructive feedback. 
+Agenda to discuss project launch:
+Ideas: Going through all of it to understand where it’s heading 
+Tools: Whiteboard, TDD, SQL Schema, Waffle.io 
+Additional Notes:
+

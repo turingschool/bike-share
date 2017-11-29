@@ -1,0 +1,11 @@
+<h1>All Stations</h1>
+
+<div class="stations">
+  <% @stations.each do |station| %>
+    <h3><%= station.name %></h3>
+    <p><%= station.dock_count %></p>
+    <p>$<%= station.city %></p>
+    <p>$<%= station.installation_date %></p>
+  <% end %>
+
+</div>

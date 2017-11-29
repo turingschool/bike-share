@@ -1,11 +1,7 @@
 <h1> all the stations! </h1>
 
 <% @stations.each do |station| %>
-<ul>
-  <li><%= station.name %></li>
-  <li><%= station.dock_count %></li>
-  <li><%= station.city %></li>
-  <li><%= station.installation_date %></li>
-</ul>
-
+  <p> <a href="/stations/<%=station.id%>"> <%= station.name %> </a> </p>
 <% end %>
+
+<a href="/">Back to Homepage</a>

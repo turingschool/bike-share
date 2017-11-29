@@ -5,8 +5,7 @@ gem 'pg'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'tux'
-gem 'pry'
-
+  
 group :development, :test do
   gem 'shotgun'
   gem 'rspec'
@@ -16,4 +15,3 @@ group :development, :test do
   gem 'rack-test'
   gem 'database_cleaner'
 end
-

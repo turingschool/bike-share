@@ -5,8 +5,9 @@ gem 'pg'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'tux'
-  
+
 group :development, :test do
+  gem 'pry'
   gem 'shotgun'
   gem 'rspec'
   gem 'rspec-core'

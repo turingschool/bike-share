@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "as a user when I visit station show page" do
   before :each do
     visit "/stations/1"
+
     @station = Station.create(name: "SF", dock_count: 5,
     city: "San Francisco", installation_date: "2013-08-23")
   end

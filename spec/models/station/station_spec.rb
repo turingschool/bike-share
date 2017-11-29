@@ -26,6 +26,6 @@ RSpec.describe Station do
   end
 
   context "Class Methods" do
-    
+
   end
 end

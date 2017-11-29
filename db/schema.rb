@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20171128234150) do
 
   create_table "stations", force: :cascade do |t|
     t.text "name"
-    t.integer "count"
+    t.integer "dock_count"
     t.text "city"
     t.datetime "installation_date"
   end

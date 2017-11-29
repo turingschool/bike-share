@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe 'as a user when I visit stations index' do
   before :each do
-    visit '/stations/index'
 
     @station_1 = Station.create(name: "SF", dock_count: 5,
     city: "San Francisco", installation_date: "2013-08-23")
@@ -10,6 +9,8 @@ describe 'as a user when I visit stations index' do
     installation_date: "2013-08-14")
     @station_3 = Station.create(name: "WI", dock_count: 3, city: "Madison",
     installation_date: "2013-08-06")
+    
+    visit '/stations/index'
   end
 
   it 'I expect to see details of station 1' do

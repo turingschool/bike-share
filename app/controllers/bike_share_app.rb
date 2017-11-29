@@ -2,7 +2,7 @@ class BikeShareApp < Sinatra::Base
   # set :root, File.expand_path("..", __dir__)
 
   get "/" do
-    erb: dashboard
+    erb :index
   end
 
 end

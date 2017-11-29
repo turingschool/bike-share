@@ -6,7 +6,6 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations' do
     @stations = Station.all
-
     erb :"stations/index"
   end
 
@@ -23,5 +22,17 @@ class BikeShareApp < Sinatra::Base
     Station.create(params[:station])
     redirect '/stations'
   end
+
+  get '/stations/:id/edit' do
+    @station = Station.find(params[:id])
+    erb :"/stations/edit"
+  end
+
+  set :method_override, true
+  put '/stations/:id' do |id|
+    Station.update(id.to_i, params[:station])
+    redirect "/stations/#{id}"
+  end
+
 
 end

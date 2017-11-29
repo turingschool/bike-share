@@ -1,13 +1,38 @@
 class BikeShareApp < Sinatra::Base
 
-  get '/' do  
+  get '/' do
     erb :homepage
-  end 
+  end
 
-  get '/stations' do  
-    @stations = Station.all 
-
+  get '/stations' do
+    @stations = Station.all
     erb :"stations/index"
-  end 
+  end
+
+  get '/stations/new' do
+    erb :"stations/new"
+  end
+
+  get '/stations/:id' do
+    @station = Station.find(params[:id])
+    erb :"stations/show"
+  end
+
+  post '/stations' do
+    Station.create(params[:station])
+    redirect '/stations'
+  end
+
+  get '/stations/:id/edit' do
+    @station = Station.find(params[:id])
+    erb :"/stations/edit"
+  end
+
+  set :method_override, true
+  put '/stations/:id' do |id|
+    Station.update(id.to_i, params[:station])
+    redirect "/stations/#{id}"
+  end
+
 
 end

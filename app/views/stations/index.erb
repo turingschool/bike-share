@@ -7,11 +7,11 @@
   <body>
     <h1>Station Index</h1>
       <% @stations.each do |station| %>
-      <%= station.name %><br>
+      <a href="/stations/<%= station.id %>"><%= station.name %></a><br>
       <%= station.dock_count %><br>
       <%= station.city %><br>
       <%= station.installation_date %><br>
-      <a href="/stations/<%= station.id%>/edit">Edit</a>
+      <a href="/stations/<%= station.id %>/edit">Edit</a>
       <% end %>
   </body>
 </html>

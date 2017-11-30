@@ -25,7 +25,7 @@ describe "as a user when I visit station show page" do
   end
 
   it "I can delete station and redirect to station index" do
-    click_link("Delete")
+    click_button("Delete")
 
     expect(current_path).to eq("/stations/index")
   end

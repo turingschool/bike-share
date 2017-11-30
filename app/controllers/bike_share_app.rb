@@ -1,5 +1,7 @@
 class BikeShareApp < Sinatra::Base
 
+  set :method_override, true
+
   get '/' do
     erb :"/dashboard"
   end
@@ -24,9 +26,13 @@ class BikeShareApp < Sinatra::Base
 
   put '/stations/:id' do |id|
     Station.update(id.to_i, params[:station])
-    redirect '/stations/id'
+
+    redirect "/stations/:id"
   end
 
-  # get '/station/:id/delete'
-  # end
+  delete '/stations/:id' do |id|
+    Station.destroy(id.to_i)
+
+    redirect "/stations/index"
+  end
 end

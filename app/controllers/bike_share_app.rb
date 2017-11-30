@@ -34,5 +34,9 @@ class BikeShareApp < Sinatra::Base
     redirect "/stations/#{id}"
   end
 
+  delete '/stations/:id' do |id|
+    Station.destroy(id.to_i)
+    redirect '/stations'
+  end 
 
 end

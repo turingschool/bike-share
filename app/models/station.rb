@@ -1,4 +1,3 @@
-require "time"
 
 class Station < ActiveRecord::Base
 

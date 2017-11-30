@@ -1,5 +1,5 @@
-
 class BikeShareApp < Sinatra::Base
+	set :method_override, true
   set :root, File.expand_path("..", __dir__)
 
   get '/' do
@@ -16,8 +16,8 @@ class BikeShareApp < Sinatra::Base
 	end
 
 	post '/stations' do
-		station = Station.new(params[:station])
-		station.save
+		# require 'pry'; binding.pry
+		Station.create(params[:station])
 		redirect '/stations'
 	end
 
@@ -31,7 +31,6 @@ class BikeShareApp < Sinatra::Base
 		erb :'stations/edit'
 	end
 
-	set :method_override, true
 
 	put '/stations/:id' do |id|
 		Station.update(id.to_i, params[:station])

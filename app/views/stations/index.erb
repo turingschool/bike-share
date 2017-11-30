@@ -1,8 +1,12 @@
 <h1>All Stations</h1>
 
 <div class="stations">
+  <a href="/stations/new"> Add New Station </a>
+  <br>
+  <br>
   <% @stations.each do |station| %>
-    <h3><%= station.name %></h3>
+    <a href="/stations/<%= station.id %>"><%= station.name %></a>
+
     <p><%= station.dock_count %></p>
     <p><%= station.city %></p>
     <p><%= station.installation_date %></p>

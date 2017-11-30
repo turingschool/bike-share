@@ -17,3 +17,5 @@
 <% Station.with_fewest_bikes.each do |station| %>
   <%= station.name %> <br>
   <% end %> </p>
+
+<p> Most recently installed station: <%= "#{Station.newest_station.first.name}" %> </p>

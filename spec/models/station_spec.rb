@@ -49,6 +49,14 @@ RSpec.describe Station do
       Station.create(name: "MLK Library", dock_count: 15, city: "San Jose", installation_date: "5/8/2013")
       Station.create(name: "Clay at Battery", dock_count: 15, city: "San Francisco", installation_date: "12/8/2013")
 
+      expect(Station.most_bikes).to eql(27)
+    end
+
+    it "can find station with most bikes" do
+      Station.create(name: "San Jose Diridon Caltrain Station", dock_count: 27, city: "San Jose", installation_date: "1/8/2013")
+      Station.create(name: "MLK Library", dock_count: 15, city: "San Jose", installation_date: "5/8/2013")
+      Station.create(name: "Clay at Battery", dock_count: 15, city: "San Francisco", installation_date: "12/8/2013")
+
       expect(Station.with_most_bikes.first.name).to eql("San Jose Diridon Caltrain Station")
     end
 

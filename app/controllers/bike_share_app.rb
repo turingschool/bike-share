@@ -1,4 +1,3 @@
-require 'pry'
 class BikeShareApp < Sinatra::Base
 
   get '/' do
@@ -23,11 +22,6 @@ class BikeShareApp < Sinatra::Base
     erb :"stations/dashboard"
   end
 
-  get '/trips' do
-    @trips = Trip.all 
-    erb :"trips/index"
-  end
-
   post '/stations' do
     Station.create(params[:station])
     redirect '/stations'
@@ -49,4 +43,8 @@ class BikeShareApp < Sinatra::Base
     redirect '/stations'
   end
 
+  get '/trips' do
+    @trips = Trip.all
+    erb :"trips/index"
+  end
 end

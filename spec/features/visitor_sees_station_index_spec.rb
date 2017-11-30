@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe "When a visitor visits welcome/root path" do
-  it "visitor sees a welcome message" do
+describe "When a visitor visits index" do
+  it "visitor sees a full list of stations" do
 
     visit '/stations'
 

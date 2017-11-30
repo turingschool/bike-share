@@ -33,7 +33,10 @@ class Station < ActiveRecord::Base
 
   def self.oldest_install_date
     minimum(:installation_date)
-  end 
+  end
 
+  def self.oldest_station
+    where(installation_date: Station.oldest_install_date)
+  end
 
 end

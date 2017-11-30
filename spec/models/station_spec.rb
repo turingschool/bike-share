@@ -68,6 +68,14 @@ RSpec.describe Station do
       expect(Station.fewest_bikes).to eql(13)
     end
 
+    it "can find station with fewest bikes" do
+      Station.create(name: "San Jose Diridon Caltrain Station", dock_count: 27, city: "San Jose", installation_date: "1/8/2013")
+      Station.create(name: "MLK Library", dock_count: 13, city: "San Jose", installation_date: "5/8/2013")
+      Station.create(name: "Clay at Battery", dock_count: 15, city: "San Francisco", installation_date: "12/8/2013")
+
+      expect(Station.with_fewest_bikes.first.name).to eql("MLK Library")
+    end
+
   end
 
 end

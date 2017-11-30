@@ -4,9 +4,6 @@ require 'date'
 require 'csv'
 require 'pry'
 
-# Station.create(name: "Mission", dock_count: 2, city: "SF", installation_date: Date.parse("2001-02-02"))
-# Station.create(name: "Haight Ashbury", dock_count: 2, city: "SF", installation_date: Date.parse("2010-02-02"))
-# Station.create(name: "Golden Gate Park", dock_count: 2, city: "SF", installation_date: Date.parse("2011-03-04"))
 station_file = "./db/csv/station.csv"
 trip_file = "./db/csv/trip_fixture.csv"
 
@@ -17,10 +14,12 @@ Station.destroy_all
 Trip.destroy_all
 
 stations.each do |station|
+  # binding.pry
   Station.create(name: station['name'],
                  dock_count: station['dock_count'],
                  city: station['city'],
-                 installation_date: station['installation_date'])
+                 installation_date: Date.strptime(station['installation_date'], "%m/%d/%Y")
+                )
 end
 
 trips.each do |trip|

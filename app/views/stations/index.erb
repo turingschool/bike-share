@@ -1,4 +1,9 @@
-<h1> all the stations! </h1>
+<head>
+  <link rel="stylesheet" type="text/css" href="/reset.css">
+  <link rel="stylesheet" type="text/css" href="/index.css">
+</head>
+
+<h1> Bike Share Stations! </h1>
 
 <% @stations.each do |station| %>
   <p> <a href="/stations/<%=station.id%>"> <%= station.name %> </a> </p>
@@ -9,6 +14,6 @@
   </form>
 <% end %>
 
-<a href="/stations-dashboard"> Station Dashboard </a> </br>
+<a href="/stations-dashboard">Station Dashboard</a> </br>
 <a href="/stations/new"> New Station </a> </br>
-<a href="/">Back to Homepage</a>
+<a href="/">Back to Homepage  </a>

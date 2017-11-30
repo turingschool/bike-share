@@ -1,6 +1,6 @@
 class Station < ActiveRecord::Base
   validates_presence_of :name, :dock_count, :city, :installation_date
-  
+
   def self.average_bike_docks_per_station
     average(:dock_count).round(2)
   end
@@ -11,9 +11,7 @@ class Station < ActiveRecord::Base
 
   def self.stations_with_most_bikes
     stations = Station.where(dock_count: most_bikes_at_station)
-    stations.reduce("") do |result, station|
-      result += station[:name] += ", "
-    end.chop.chop
+    station_ouput(stations)
   end
 
   def self.fewest_bikes_at_station
@@ -22,13 +20,11 @@ class Station < ActiveRecord::Base
 
   def self.stations_with_fewest_bikes
     stations = Station.where(dock_count: fewest_bikes_at_station)
-    stations.reduce("") do |result, station|
-      result += station[:name]
-    end
+    station_ouput(stations)
   end
 
   def self.most_recent_station_date
-     maximum(:installation_date)
+    maximum(:installation_date)
   end
 
   def self.oldest_station_date
@@ -37,13 +33,15 @@ class Station < ActiveRecord::Base
 
   def self.most_recent_station
     stations = Station.where(installation_date: most_recent_station_date)
-    stations.reduce("") do |result, station|
-      result += station[:name]
-    end
+    station_ouput(stations)
   end
 
   def self.oldest_station
-     stations = Station.where(installation_date: oldest_station_date)
+    stations = Station.where(installation_date: oldest_station_date)
+    station_ouput(stations)
+  end
+
+  def self.station_ouput(stations)
     stations.reduce("") do |result, station|
       result += station[:name] += ", "
     end.chop.chop

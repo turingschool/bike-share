@@ -9,7 +9,7 @@ describe 'as a user when I visit stations index' do
     installation_date: "2013-08-14")
     @station_3 = Station.create(name: "WI", dock_count: 3, city: "Madison",
     installation_date: "2013-08-06")
-    
+
     visit '/stations/index'
   end
 
@@ -44,5 +44,14 @@ describe 'as a user when I visit stations index' do
     click_link("SF")
 
     expect(current_path).to eq("/stations/#{@station_1.id}")
+  end
+
+  it "I can see a delete button and when I click it, it erases and returns to index" do
+
+    expect(page).to have_content("Delete")
+
+    click_button("Delete")
+
+    expect(current_path).to eq("/stations/index")
   end
 end

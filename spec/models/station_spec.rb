@@ -84,6 +84,14 @@ RSpec.describe Station do
       expect((Station.newest_install_date).strftime("%d/%m/%Y")).to eql("12/08/2013")
     end
 
+    it "can find newest station" do
+      Station.create(name: "San Jose Diridon Caltrain Station", dock_count: 27, city: "San Jose", installation_date: "1/8/2013")
+      Station.create(name: "MLK Library", dock_count: 13, city: "San Jose", installation_date: "5/8/2013")
+      Station.create(name: "Clay at Battery", dock_count: 15, city: "San Francisco", installation_date: "12/8/2013")
+
+      expect(Station.newest_station.first.name).to eql("Clay at Battery")
+    end
+
   end
 
 end

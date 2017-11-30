@@ -1,0 +1,9 @@
+<h1> Station Dashboard </h1>
+
+<p> Total count of stations: <%= "#{@station.all.count}" %></p>
+
+<p> Average bikes available per station: <%= "#{Station.average_bikes_per_station}" %> </p>
+
+<p> Most bikes available at a station: <%="#{Station.most_bikes}" %> </p>
+
+<p> Station(s) where the most bikes are availabe (based on docks): <%="#{Station.with_most_bikes}" %> </p>

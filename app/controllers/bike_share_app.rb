@@ -16,7 +16,6 @@ class BikeShareApp < Sinatra::Base
 	end
 
 	post '/stations' do
-		# require 'pry'; binding.pry
 		Station.create(params[:station])
 		redirect '/stations'
 	end

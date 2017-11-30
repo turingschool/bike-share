@@ -27,4 +27,17 @@ RSpec.describe Station do
     end
   end
 
+  describe "class methods" do
+    it "can find average bikes" do
+      Station.create(name: "San Jose Diridon Caltrain Station", dock_count: 27, city: "San Jose", installation_date: "8/1/2013")
+      Station.create(name: "MLK Library", dock_count: 15, city: "San Jose", installation_date: "8/5/2013")
+      Station.create(name: "Clay at Battery", dock_count: 15, city: "San Francisco", installation_date: "8/15/2013")
+
+      expect(Station.all.count).to eql(3)
+      expect(Station.average_bikes_per_station).to eql(19)
+    end
+
+    it ""
+  end
+
 end

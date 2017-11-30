@@ -6,4 +6,14 @@
 
 <p> Most bikes available at a station: <%="#{Station.most_bikes}" %> </p>
 
-<p> Station(s) where the most bikes are availabe (based on docks): <%="#{Station.with_most_bikes}" %> </p>
+<p> Station(s) where the most bikes are availabe (based on docks): <br>
+<% Station.with_most_bikes.each do |station| %>
+  <%= station.name %> <br>
+  <% end %> </p>
+
+<p> Fewest bikes available at a station: <%="#{Station.fewest_bikes}" %> </p>
+
+<p> Station(s) where the fewest bikes are availabe (based on docks): <br>
+<% Station.with_fewest_bikes.each do |station| %>
+  <%= station.name %> <br>
+  <% end %> </p>

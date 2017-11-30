@@ -12,12 +12,15 @@ class Station < ActiveRecord::Base
   end
 
   def self.with_most_bikes
-    stations = Station.all
-    stations("SELECT * FROM stations WHERE dock_count = ?",
-    Station.most_bikes)
-    stations.each do |station|
-      station.name
-    end
+    where(dock_count: Station.most_bikes)
+  end
+
+  def self.fewest_bikes
+    minimum(:dock_count)
+  end
+
+  def self.with_fewest_bikes
+    where(dock_count: Station.fewest_bikes)
   end
 
 

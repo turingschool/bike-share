@@ -5,16 +5,15 @@
   <br>
   <br>
   <% @trips.each do |trip| %>
-    <a href="/trips/<%= trip.id %>"><%= station.name %></a>
-
-    <p><%= station.dock_count %></p>
-    <p><%= station.city %></p>
-    <p><%= station.installation_date %></p>
-    <a href="/stations/<%= station.id %>/edit">Edit</a>
-    <form action="/stations/<%= station.id %>" method="POST">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="delete"/>
-    </form>
+    <a href="/trips/<%= trip.id %>"><%= trip.id %></a>
+    <p><%= trip.duration %></p>
+    <p><%= trip.start_date %></p>
+    <p><%= trip.start_station %></p>
+    <p><%= trip.end_date %></p>
+    <p><%= trip.end_station %></p>
+    <p><%= trip.bike_id %></p>
+    <p><%= trip.subscription_type %></p>
+    <p><%= trip.zip_code %></p>
   <% end %>
 
 </div>

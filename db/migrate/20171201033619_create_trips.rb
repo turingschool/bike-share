@@ -1,7 +1,7 @@
 class CreateTrips < ActiveRecord::Migration[5.1]
   def change
       create_table   :trips do |trip|
-        trip.text         :duration
+        trip.integer         :duration
         trip.date         :start_date
         trip.text         :start_station
         trip.date         :end_date

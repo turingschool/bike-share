@@ -13,5 +13,23 @@ class Station < ActiveRecord::Base
     maximum(:dock_count)
   end
 
-  def self.
+  def self.station_with_most_bikes_available
+    find_by(dock_count: maximum(:dock_count)).name
+  end
+
+  def self.min_bikes_at_station
+    minimum(:dock_count)
+  end
+
+  def self.station_with_fewest_available
+    find_by(dock_count: minimum(:dock_count)).name
+  end
+
+  def self.most_recent_station
+    order(installation_date: :DESC).first.name
+  end
+
+  def self.oldest_station
+    order(installation_date: :DESC).last.name
+  end
 end

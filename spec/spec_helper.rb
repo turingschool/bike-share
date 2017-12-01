@@ -9,6 +9,7 @@ DatabaseCleaner.strategy = :truncation
 require 'pry'
 
 Capybara.app = BikeShareApp
+Capybara.save_and_open_page_path = 'tmp/capybara'
 
 RSpec.configure do |c|
   c.include Capybara::DSL

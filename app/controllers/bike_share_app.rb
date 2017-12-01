@@ -1,4 +1,5 @@
 class BikeShareApp < Sinatra::Base
+  set :method_override, true
 
   get '/' do
     erb :homepage
@@ -32,7 +33,6 @@ class BikeShareApp < Sinatra::Base
     erb :"/stations/edit"
   end
 
-  set :method_override, true
   put '/stations/:id' do |id|
    Station.update(id.to_i, params[:station])
     redirect "/stations/#{id}"
@@ -43,8 +43,44 @@ class BikeShareApp < Sinatra::Base
     redirect '/stations'
   end
 
+#########################
+
   get '/trips' do
     @trips = Trip.all
-    erb :"trips/index"
+    erb :"/trips/index"
   end
+
+  get '/trips/new' do
+    erb :"/trips/new"
+  end
+
+  get '/trips/:id' do
+    @trip = Trip.find(params[:id])
+    erb :"trips/show"
+  end
+
+  post '/trips' do
+    Trip.create(params[:trip])
+    redirect '/trips'
+  end
+
+  get '/trips/:id/edit' do
+    @trip = Trip.find(params[:id])
+    erb :"/trips/edit"
+  end
+
+  put '/trips/:id' do |id|
+   Trip.update(id.to_i, params[:trip])
+    redirect "/trips/#{id}"
+  end
+
+  delete '/trips/:id' do |id|
+    Trip.destroy(id.to_i)
+    redirect '/trips'
+  end
+
+  get '/trips-dashboard' do
+    erb :"/trips/dashboard"
+  end
+
 end

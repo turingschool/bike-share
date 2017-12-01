@@ -1,0 +1,11 @@
+<form action="/trips/<%=@trip.id%>" method="POST">
+  <p>Edit</p>
+  <p> Trip duration: </p>
+  <input type="number" name="trip[duration]" value="<%=@trip.duration%>"/></br>
+
+  <input type="hidden" name="_method" value="PUT"/>
+  <input type="submit"/>
+</form>
+
+<a href="/trips">Back to Trips Index</a></br>
+<a href="/">Back to Homepage</a>

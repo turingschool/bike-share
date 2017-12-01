@@ -43,6 +43,8 @@ class BikeShareApp < Sinatra::Base
     redirect '/stations'
   end
 
+#########################
+
   get '/trips' do
     @trips = Trip.all
     erb :"/trips/index"
@@ -75,6 +77,10 @@ class BikeShareApp < Sinatra::Base
   delete '/trips/:id' do |id|
     Trip.destroy(id.to_i)
     redirect '/trips'
+  end
+
+  get '/trips-dashboard' do
+    erb :"/trips/dashboard"
   end
 
 end

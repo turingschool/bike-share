@@ -7,6 +7,7 @@ gem 'sinatra-activerecord'
 gem 'tux'
 
 group :development, :test do
+  gem 'activerecord-reset-pk-sequence'
   gem 'pry'
   gem 'shotgun'
   gem 'rspec'

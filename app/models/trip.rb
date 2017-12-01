@@ -1,4 +1,6 @@
 class Trip < ActiveRecord::Base
+  belongs_to :station
+  
   validates_presence_of :duration,
                         :start_date,
                         :start_station_name,
@@ -8,4 +10,5 @@ class Trip < ActiveRecord::Base
                         :end_station_id,
                         :bike_id,
                         :subscription_type
+
 end

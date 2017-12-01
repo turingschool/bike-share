@@ -1,4 +1,7 @@
 class Station < ActiveRecord::Base
+  has_many :trips_starting_here, :class_name => "Trip", :foreign_key => "start_station_id"
+  has_many :trips_ending_here, :class_name => "Trip", :foreign_key => "end_station_id"
+
   validates_presence_of :name, :dock_count, :city, :installation_date
 
   def self.average_bike_docks_per_station

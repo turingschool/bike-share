@@ -1,6 +1,13 @@
 body {
-  background: url(http://cliparting.com/wp-content/uploads/2016/06/Bike-bicycle-clipart-free-clipart-images-2.png) no-repeat center center fixed;
+  background: url(/bike-opaque5.png) no-repeat center center fixed;
+  background-color: #f2efe8;
   background-size: cover;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+  font-family: sans-serif;
 }
 
 h1 {
@@ -36,16 +43,22 @@ nav {
    align-items: center;
    justify-content: space-between;
    flex-flow: row wrap;
-   margin: 75px;
+   margin: 40px;
 }
 
 .individual-station {
-  width: 33%;
-  margin-bottom: 30px;
-  background-color: #e2e2e2;
+  width: 32%;
+  margin-bottom: 20px;
+  /*background-color: #e2e2e2;*/
+  background-color: #cecece;
+  border-radius: 4px;
+  opacity: 0.8;
 }
 
 .station-name {
   display: flex;
   justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 6px;
 }

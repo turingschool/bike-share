@@ -49,4 +49,17 @@ class Station < ActiveRecord::Base
       result += station[:name] += ", "
     end.chop.chop
   end
+
+  def self.most_rides_as_starting_place
+    Station.all.group_by do |station|
+      station.trips_starting_here.count
+    end.max.last[0].name
+  end
+
+  def self.most_rides_as_ending_place
+    Station.all.group_by do |station|
+      station.trips_ending_here.count
+    end.max.last[0].name
+  end
+
 end

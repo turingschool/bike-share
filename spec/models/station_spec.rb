@@ -107,7 +107,6 @@ RSpec.describe Station do
 
       expect(Station.oldest_station.first.name).to eql("San Jose Diridon Caltrain Station")
     end
-
   end
 
 end

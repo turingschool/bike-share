@@ -34,7 +34,7 @@ class Trip < ActiveRecord::Base
 
   def self.total_rides_per_month
     Trip.group("DATE_TRUNC('month',start_date)").count.transform_keys do |key|
-      Date::MONTHNAMES[key.month]
+      "#{Date::MONTHNAMES[key.month]} #{key.year}"
     end
   end
 

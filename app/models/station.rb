@@ -52,7 +52,7 @@ class Station < ActiveRecord::Base
   end
 
   def self.most_rides_as_starting_place
-    x = Station.all.group_by do |station|
+    Station.all.group_by do |station|
       station.trips_starting_here.count
     end.max.last[0].name
   end

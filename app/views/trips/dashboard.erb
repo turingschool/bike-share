@@ -6,6 +6,11 @@
   <li>Shortest Ride: <%= Trip.shortest_ride %> </li>
   <li>Station with most rides as starting place: <%= Station.most_rides_as_starting_place %> </li>
   <li>Station with most rides as ending place: <%= Station.most_rides_as_ending_place %> </li>
+  <li> Month to month breakdown of total rides: </li>
+  
+  <% Trip.total_rides_per_month.each do |monthcount| %>
+  <%= monthcount.first%> : <%=monthcount.last%></br>
+  <% end  %>
   <!-- <li>Most ridden bike: <%= Trip.most_ridden_bike %> </li>
   <li>Least ridden bike: <%= Trip.least_ridden_bike %> </li> -->
 

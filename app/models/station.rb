@@ -105,4 +105,12 @@ class Station < ActiveRecord::Base
    end
  end
 
+ def self.most_frequent_zipcode_starting_here(station_id)
+   if Station.find(station_id).trips_starting_here.group(:zip_code).count.invert.max
+     Station.find(station_id).trips_starting_here.group(:zip_code).count.invert.max.last
+   else
+     "No trips."
+   end
+ end
+
 end

@@ -1,19 +1,32 @@
 <head>
   <link rel="stylesheet" type="text/css" href="/reset.css">
-  <link rel="stylesheet" type="text/css" href="/index.css">
+  <link rel="stylesheet" type="text/css" href="/test.css">
 </head>
 
-<h1> Bike Share Stations! </h1>
+<body>
+  <header>
+    <h1> Bike Share Stations! </h1>
+    <nav>
+    <ul>
+      <li><a href="/stations-dashboard">Station Dashboard</a></li>
+      <li> <a href="/stations/new"> New Station </a></li>
+      <li><a href="/">Back to Homepage  </a></li>
+    </ul>
+    </nav>
+  </header>
+    <main>
+    <% @stations.each do |station| %>
+    <section id="hero">
+      <section>
+        <p> <a href="/stations/<%=station.id%>"> <%= station.name %> </a> </p>
+        <a href="/stations/<%=station.id%>/edit"> Edit </a>
+        <form action='/stations/<%=station.id%>' method='POST'>
+          <input type='hidden' name='_method' value='DELETE'>
+          <input type='submit' value='delete'/>
+        </form>
+      </section>
+    </section>
+    <% end %>
+    </main>
+</body>
 
-<% @stations.each do |station| %>
-  <p> <a href="/stations/<%=station.id%>"> <%= station.name %> </a> </p>
-  <a href="/stations/<%=station.id%>/edit"> Edit </a>
-  <form action='/stations/<%=station.id%>' method='POST'>
-    <input type='hidden' name='_method' value='DELETE'>
-    <input type='submit' value='delete'/>
-  </form>
-<% end %>
-
-<a href="/stations-dashboard">Station Dashboard</a> </br>
-<a href="/stations/new"> New Station </a> </br>
-<a href="/">Back to Homepage  </a>

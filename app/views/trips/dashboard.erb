@@ -1,1 +1,33 @@
 <h1> Trip Dashboard </h1>
+
+<ul>
+  <li>Average Ride Duration: <%= Trip.average_ride_duration %> </li>
+  <li>Longest Ride: <%= Trip.longest_ride %> </li>
+  <li>Shortest Ride: <%= Trip.shortest_ride %> </li>
+  <li>Station with most rides as starting place: <%= Station.most_rides_as_starting_place %> </li>
+  <li>Station with most rides as ending place: <%= Station.most_rides_as_ending_place %> </li>
+  <li> Month to month breakdown of total rides: </li>
+
+  <% Trip.total_rides_per_month.each do |monthcount| %>
+  <%= monthcount.first%> : <%=monthcount.last%></br>
+  <% end  %>
+  <li>Most ridden bike ID: <%= Trip.most_ridden_bike %> </li>
+  <li>Least ridden bike ID: <%= Trip.least_ridden_bike %> </li>
+
+  <li>User subscription breakout by count: </li>
+    <%Trip.subscription_type_breakout.each do |type| %>
+      <%= type.first %>: <%= type.last %></br>
+    <% end  %>
+  <li>User subscription breakout by percentage:</li>
+    <% Trip.percentage_subscription_type.each do |type| %>
+      <%= type.first %>: <%= type.last %></br>
+    <% end %>
+
+  <li>Date with highest trips</li>
+    <%= Trip.date_with_highest_trips.last.to_date %> : <%= Trip.date_with_highest_trips.first %>
+
+  <li>Date with fewest trips</li>
+    <%= Trip.date_with_lowest_trips.last.to_date %> : <%= Trip.date_with_lowest_trips.first %>
+
+
+</ul>

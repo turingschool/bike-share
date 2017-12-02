@@ -1,4 +1,8 @@
+require 'pry'
 class Station < ActiveRecord::Base
+  has_many :trips_starting_here, :class_name => "Trip", :foreign_key => "start_station_id"
+  has_many :trips_ending_here, :class_name => "Trip", :foreign_key => "end_station_id"
+
   validates_presence_of :name, :dock_count, :city, :installation_date
 
   def self.average_bike_docks_per_station
@@ -46,4 +50,18 @@ class Station < ActiveRecord::Base
       result += station[:name] += ", "
     end.chop.chop
   end
+
+  def self.most_rides_as_starting_place
+    Station.all.group_by do |station|
+      station.trips_starting_here.count
+    end.max.last[0].name
+  end
+
+  def self.most_rides_as_ending_place
+    Station.all.group_by do |station|
+      station.trips_ending_here.count
+    end.max.last[0].name
+  end
+
+ 
 end

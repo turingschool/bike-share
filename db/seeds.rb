@@ -23,10 +23,10 @@ end
 
 trips.each do |trip|
   Trip.create(duration: trip["duration"],
-              start_date: DateTime.strptime(trip["end_date"],"%m/%d/%Y %R"),
+              start_date: DateTime.strptime(trip["start_date"],"%m/%d/%Y"),
               start_station_name: trip["start_station_name"],
               start_station_id: trip["start_station_id"],
-              end_date: DateTime.strptime(trip["end_date"],"%m/%d/%Y %R"),
+              end_date: DateTime.strptime(trip["end_date"],"%m/%d/%Y"),
               end_station_name: trip["end_station_name"],
               end_station_id: trip["end_station_id"],
               bike_id: trip["bike_id"],

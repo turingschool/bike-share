@@ -1,0 +1,27 @@
+<%= erb :banner %>
+<head><title>All Trips</title></head>
+
+<ul class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li>Trips</li>
+</ul>
+
+<a class="button" href="/trips/new">New Trip</a>
+
+<main class="flex-parent">
+<% @trips.each do |trip| %>
+  <ul>
+    <section class = "display_object">
+    <li class = "trip_id"><a href="/trips/<%= trip.id %>">Trip <%= trip.id %></a></li>
+    <li>Duration: <%= trip.duration %></li>
+    <li>Start Date: <%= trip.start_date %> </li>
+    <li>Start Station: <%= trip.start_station %> </li>
+    <li>End Date: <%= trip.end_date %></li>
+    <li>End Station: <%= trip.end_station %></li>
+    <li>Bike ID: <%= trip.bike_id %> </li>
+    <li>Subscription Type: <%= trip.subscription_type %></li>
+    <li>Zip Code: <%= trip.zipcode %> </li>
+  </section>
+  </ul>
+<% end %>
+</main>

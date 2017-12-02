@@ -64,7 +64,7 @@ class Station < ActiveRecord::Base
   end
 
  def self.number_of_starting_rides(station_id)
-  if Trip.group(:start_station_id).count[station_id] 
+  if Trip.group(:start_station_id).count[station_id]
      Trip.group(:start_station_id).count[station_id]
   else
     return 0
@@ -72,7 +72,7 @@ class Station < ActiveRecord::Base
  end
 
  def self.number_of_ending_rides(station_id)
-  if Trip.group(:end_station_id).count[station_id] 
+  if Trip.group(:end_station_id).count[station_id]
    Trip.group(:end_station_id).count[station_id]
   else
     return 0
@@ -89,9 +89,20 @@ class Station < ActiveRecord::Base
 
  def self.most_frequent_origination_station(station_id)
   if Station.find(station_id).trips_ending_here.group(:start_station_name).count.invert.max
-  Station.find(station_id).trips_ending_here.group(:start_station_name).count.invert.max.last
+    Station.find(station_id).trips_ending_here.group(:start_station_name).count.invert.max.last
   else
     return "No trips to this station"
   end
  end
+
+ def self.date_with_most_trips(station_id)
+   if Station.find(station_id).trips_starting_here.group("DATE_TRUNC('day',start_date)").count.invert.max
+     Station.find(station_id).trips_starting_here.group("DATE_TRUNC('day',start_date)").count.transform_keys do |key|
+       key.to_date
+     end.invert.max.last
+   else
+     "No trips."
+   end
+ end
+
 end

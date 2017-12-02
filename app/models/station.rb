@@ -64,6 +64,18 @@ class Station < ActiveRecord::Base
   end
 
  def self.number_of_starting_rides(station_id)
-  Trip.group(:start_station_id).count[station_id]
+  if Trip.group(:start_station_id).count[station_id] 
+     Trip.group(:start_station_id).count[station_id]
+  else
+    return 0
+  end
+ end
+
+ def self.number_of_ending_rides(station_id)
+  if Trip.group(:end_station_id).count[station_id] 
+   Trip.group(:end_station_id).count[station_id]
+  else
+    return 0
+  end
  end
 end

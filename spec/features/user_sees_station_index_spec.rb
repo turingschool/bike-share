@@ -48,7 +48,6 @@ describe 'as a user when I visit stations index' do
 
   it "I can see a delete button and when I click it, it erases and returns to index" do
 
-    expect(page).to have_content("Delete")
 
     click_button("Delete")
 

@@ -1,0 +1,16 @@
+<h1>Trip <%= "#{@trip.id}" %></h1>
+
+<div class="trips">
+    <p><%= @trip.duration %></p>
+    <p><%= @trip.start_date %></p>
+    <p><%= @trip.start_station_name %></p>
+    <p><%= @trip.end_date %></p>
+    <p><%= @trip.end_station_name %></p>
+    <p><%= @trip.bike_id %></p>
+    <p><%= @trip.subscription %></p>
+    <p><%= @trip.zip_code %></p>
+    <form action="/trips/<%= @trip.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="delete"/>
+    </form>
+</div>

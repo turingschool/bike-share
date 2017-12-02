@@ -1,0 +1,23 @@
+<h1> New Trip </h1>
+
+<form action="/trips" method="post">
+  <h3>Create a new trip</h3>
+  Duration <input type= "number" name="trip[duration]"/>
+  <br>
+  Start Date<input type= "date" name="trip[start_date]"/>
+  <br>
+  Start Station<input type= "text" name="trip[start_station_name]"/>
+  <br>
+  End Date<input type= "date" name="trip[end_date]"/>
+  <br>
+  End Station<input type= "text" name="trip[end_station_name]"/>
+  <br>
+  Bike Id<input type= "number" name="trip[bike_id]"/>
+  <br>
+  Subscription Type<br><input type= "radio" name="trip[subscription]" checked> Customer<br>
+  <input type= "radio" name="trip[subscription]" > Subscriber<br>
+  <br>
+  Zip Code<input type= "number" name="trip[zip_code]"/>
+  <br>
+  <input type="submit" value="submit" />
+</form>

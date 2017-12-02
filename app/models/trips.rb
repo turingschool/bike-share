@@ -23,4 +23,23 @@ class Trip < ActiveRecord::Base
     minimum(:duration)
   end
 
+  def self.popular_starting_place
+    group('start_station_name').order('count(*) desc').limit(1).pluck(:start_station_name).first
+  end
+
+  def self.least_popular_starting_place
+    group('start_station_name').order('count(*) asc').limit(1).pluck(:start_station_name).first
+  end
+
+  def self.popular_ending_place
+    group('end_station_name').order('count(*) desc').limit(1).pluck(:end_station_name).first
+  end
+
+  def self.popular_bike
+    group(:bike_id).order('count_id desc').limit(1).count(:id)
+  end
+
+  def self.least_popular_bike
+    group(:bike_id).order('count_id asc').limit(1).count(:id)
+  end
 end

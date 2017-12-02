@@ -46,10 +46,22 @@ nav {
    margin: 40px;
 }
 
+.edit-delete {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit {
+  margin-left: 10px;
+}
+
+.delete {
+  margin-left: -50px;
+}
+
 .individual-station {
   width: 32%;
   margin-bottom: 20px;
-  /*background-color: #e2e2e2;*/
   background-color: #cecece;
   border-radius: 4px;
   opacity: 0.8;

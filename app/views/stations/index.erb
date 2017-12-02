@@ -3,19 +3,29 @@
   <head>
     <meta charset="utf-8">
     <title>Bike Share</title>
+    <link rel="stylesheet" type="text/css" href="/reset.css">
+    <link rel="stylesheet" type="text/css" href="/stations_index.css">
   </head>
   <body>
-    <h1>Station Index</h1>
-      <% @stations.each do |station| %>
-      <a href="/stations/<%= station.id %>"><%= station.name %></a><br>
-      <%= station.dock_count %><br>
-      <%= station.city %><br>
-      <%= station.installation_date %><br>
-      <a href="/stations/<%= station.id %>/edit">Edit</a><br>
-      <form action="/stations/<%= station.id %>" method="post">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Delete">
-      </form><br>
-      <% end %>
+    <nav>
+      <!-- <img class="logo" src="http://www.onbikeshare.com/images/cons/on-bike-share-logo.gif"> -->
+      <img class="logo" src="https://bikeshare.metro.net/wp-content/themes/lametro/library/images/logo.png">
+      <h1>Station Index</h1>
+    </nav>
+    <div class="station-container">
+    <% @stations.each do |station| %>
+      <div class="individual-station">
+        <a class="station-name" href="/stations/<%= station.id %>"><%= station.name %></a><br>
+        <p>Number of Bikes: <%= station.dock_count %></p><br>
+        <p>City: <%= station.city %></p><br>
+        <p>Date Installed: <%= station.installation_date %></p><br>
+        <a href="/stations/<%= station.id %>/edit">Edit</a><br>
+        <form action="/stations/<%= station.id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Delete">
+        </form><br>
+      </div>
+    <% end %>
+  </div>
   </body>
 </html>

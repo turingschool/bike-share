@@ -56,8 +56,17 @@ class Trip < ActiveRecord::Base
 
   def self.percentage_subscription_type
     subscription_type_breakout.transform_values do |value|
-      value/total_subscriptions.round(2) * 100
+      (value.to_f/total_subscriptions * 100).round(2)
     end
+  end
+
+  def self.date_with_highest_trips
+    Trip.group("DATE_TRUNC('day',start_date)").count.invert.max
+  end
+
+
+  def self.date_with_lowest_trips
+    Trip.group("DATE_TRUNC('day',start_date)").count.invert.min
   end
 
 

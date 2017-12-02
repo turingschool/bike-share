@@ -23,4 +23,11 @@
       <%= type.first %>: <%= type.last %></br>
     <% end %>
 
+  <li>Date with highest trips</li>
+    <%= Trip.date_with_highest_trips.last.to_date %> : <%= Trip.date_with_highest_trips.first %>
+
+  <li>Date with fewest trips</li>
+    <%= Trip.date_with_lowest_trips.last.to_date %> : <%= Trip.date_with_lowest_trips.first %>
+
+
 </ul>

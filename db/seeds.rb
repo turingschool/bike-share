@@ -15,5 +15,5 @@ Trip.delete_all
 trips = CSV.open './db/fixture/trip_fixture.csv', headers:true, header_converters: :symbol
 trips.each do |row|
   zipcode = row[:zip_code].to_s.rjust(5, "0")[0..4]
-  Trip.create!(duration: row[:duration], start_date: DateTime.strptime(row[:start_date], "%m/%d/%Y"), start_station: row[:start_station], end_date: DateTime.strptime(row[:end_date], "%m/%d/%Y"), end_station: row[:end_station], bike_id: row[:bike_id], subscription: row[:subscription_type], zip_code: zipcode)
+  Trip.create!(duration: row[:duration], start_date: DateTime.strptime(row[:start_date], "%m/%d/%Y"), start_station_name: row[:start_station_name], end_date: DateTime.strptime(row[:end_date], "%m/%d/%Y"), end_station_name: row[:end_station_name], bike_id: row[:bike_id], subscription: row[:subscription_type], zip_code: zipcode)
 end

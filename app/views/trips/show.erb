@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Trip Show</title>
+  </head>
+  <body>
+    <%= @trip.duration %>
+    <%= @trip.start_date %>
+    <%= @trip.start_station_name %>
+    <%= @trip.end_date %>
+    <%= @trip.end_station_name %>
+    <%= @trip.bike_id %>
+    <%= @trip.subscription_type %>
+    <%= @trip.zip_code %>
+    <a href="/trips/<%= @trip.id%>/edit">Edit</a>
+    <form action="/trips/<%= @trip.id %>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete">
+    </form>
+  </body>
+</html>

@@ -46,4 +46,19 @@ class Trip < ActiveRecord::Base
     Trip.group(:bike_id).count.invert.min.last
   end
 
+  def self.subscription_type_breakout
+    Trip.group(:subscription_type).count
+  end
+
+  def self.total_subscriptions
+    subscription_type_breakout.values.sum
+  end
+
+  def self.percentage_subscription_type
+    subscription_type_breakout.transform_values do |value|
+      value/total_subscriptions.round(2) * 100
+    end
+  end
+
+
 end

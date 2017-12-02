@@ -14,4 +14,13 @@
   <li>Most ridden bike ID: <%= Trip.most_ridden_bike %> </li>
   <li>Least ridden bike ID: <%= Trip.least_ridden_bike %> </li>
 
+  <li>User subscription breakout by count: </li>
+    <%Trip.subscription_type_breakout.each do |type| %>
+      <%= type.first %>: <%= type.last %></br>
+    <% end  %>
+  <li>User subscription breakout by percentage:</li>
+    <% Trip.percentage_subscription_type.each do |type| %>
+      <%= type.first %>: <%= type.last %></br>
+    <% end %>
+
 </ul>

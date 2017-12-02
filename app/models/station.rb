@@ -113,4 +113,12 @@ class Station < ActiveRecord::Base
    end
  end
 
+ def self.most_frequent_bike_id_starting_here(station_id)
+   if Station.find(station_id).trips_starting_here.group(:bike_id).count.invert.max
+     Station.find(station_id).trips_starting_here.group(:bike_id).count.invert.max.last
+   else
+     "No trips."
+   end
+ end
+
 end

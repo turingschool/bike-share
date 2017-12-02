@@ -5,6 +5,6 @@ describe "When a visitor visits welcome/root path" do
 
     visit '/'
 
-    expect(page).to have_content("Bikeshare")
+    expect(page).to have_content("BayCycle")
   end
 end

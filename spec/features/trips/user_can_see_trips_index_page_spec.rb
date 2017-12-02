@@ -32,6 +32,11 @@ describe "as a user" do
       expect(page).to have_content("2013-08-28")
     end
 
+    it "I expect to see trip start station name" do
+      expect(page).to have_content("Embarcadero")
+      expect(page).to have_content("SFO")
+    end
+
     it "I expect to see trip end station name" do
       expect(page).to have_content("Market St")
       expect(page).to have_content("Mission District")
@@ -51,5 +56,12 @@ describe "as a user" do
       expect(page).to have_content(94105)
       expect(page).to have_content(94127)
     end
+
+    it "I expect to be able to edit a trip" do
+    end
+
+    it "I expect to ba able to delete a trip" do
+    end
+
   end
 end

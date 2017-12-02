@@ -63,5 +63,7 @@ class Station < ActiveRecord::Base
     end.max.last[0].name
   end
 
- 
+ def self.number_of_starting_rides(station_id)
+  Trip.group(:start_station_id).count[station_id]
+ end
 end

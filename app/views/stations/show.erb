@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Station Page <%= @station.name %></title>
+  </head>
+  <body>
+    <%= @station.name %><br>
+    <%= @station.dock_count %><br>
+    <%= @station.city %><br>
+    <%= @station.installation_date %><br>
+    <a href="/stations/<%= @station.id%>/edit">Edit</a>
+    <form action="/stations/<%= @station.id %>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete">
+    </form>
+  </body>
+</html>

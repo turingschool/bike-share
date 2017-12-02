@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit a Station</title>
+  </head>
+  <body>
+    <form class="edit-station" action="/stations/<%= @station.id %>" method="post">
+      <input type="hidden" name="_method" value="PUT">
+      <p>Station Name</p><input type="text" name="station[name]" value="<%= @station.name %>">
+      <p>Dock Count</p><input type="text" name="station[dock_count]" value="<%= @station.dock_count %>">
+      <p>City</p><input type="text" name="station[city]" value="<%= @station.city %>">
+      <p>Installation Date</p><input type="text" name="station[installation_date]" value="<%= @station.installation_date %>"><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

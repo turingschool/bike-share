@@ -1,3 +1,5 @@
+require 'pry'
+
 class Trip < ActiveRecord::Base
   belongs_to :station
 
@@ -23,14 +25,6 @@ class Trip < ActiveRecord::Base
     minimum(:duration)
   end
 
-  def self.most_ridden_bike
-    array = Trip.pluck(:bike_id)    #this is an array
-    #now find mode of array
-  end
-
-  def self.least_ridden_bike
-    array = Trip.pluck(:bike_id)    #this is an array
-  end
 
   def self.total_rides_per_month
     Trip.group("DATE_TRUNC('month',start_date)").count.transform_keys do |key|
@@ -39,8 +33,17 @@ class Trip < ActiveRecord::Base
   end
 
   def self.total_rides_per_year
-        Trip.group("DATE_TRUNC('year',start_date)").count.transform_keys do |key|
+    Trip.group("DATE_TRUNC('year',start_date)").count.transform_keys do |key|
       key.year
     end
   end
+
+  def self.most_ridden_bike
+    Trip.group(:bike_id).count.invert.max.last
+  end
+
+  def self.least_ridden_bike
+    Trip.group(:bike_id).count.invert.min.last
+  end
+
 end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "when a visitor visits the dashboard" do
-  it 'visitor sees dashboar' do
+  it 'visitor sees dashboard' do
 
   station = Station.create(name: "Japantown", dock_count: 28, city: "San Francisco", installation_date: "6/8/2013")
 

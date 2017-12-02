@@ -8,7 +8,6 @@
   </head>
   <body>
     <nav>
-      <!-- <img class="logo" src="http://www.onbikeshare.com/images/cons/on-bike-share-logo.gif"> -->
       <img class="logo" src="https://bikeshare.metro.net/wp-content/themes/lametro/library/images/logo.png">
       <h1>Station Index</h1>
     </nav>
@@ -19,11 +18,13 @@
         <p>Number of Bikes: <%= station.dock_count %></p><br>
         <p>City: <%= station.city %></p><br>
         <p>Date Installed: <%= station.installation_date %></p><br>
-        <a href="/stations/<%= station.id %>/edit">Edit</a><br>
-        <form action="/stations/<%= station.id %>" method="post">
-          <input type="hidden" name="_method" value="DELETE">
-          <input type="submit" value="Delete">
-        </form><br>
+        <div class="edit-delete">
+          <a class="edit" href="/stations/<%= station.id %>/edit">Edit</a><br>
+          <form action="/stations/<%= station.id %>" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input class="delete" type="submit" value="Delete">
+          </form>
+        </div>
       </div>
     <% end %>
   </div>

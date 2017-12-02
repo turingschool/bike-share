@@ -3,23 +3,34 @@
   <head>
     <meta charset="utf-8">
     <title>Trips Index</title>
+    <link rel="stylesheet" type="text/css" href="/reset.css">
+    <link rel="stylesheet" type="text/css" href="/stations_index.css">
   </head>
   <body>
-    <% @trips.each do |trip| %>
-    <%= trip.duration %>
-    <%= trip.start_date %>
-    <%= trip.start_station_name %>
-    <%= trip.end_date %>
-    <%= trip.end_station_name %>
-    <%= trip.bike_id %>
-    <%= trip.subscription_type %>
-    <%= trip.zip_code %>
-    <a href="/trips/<%= trip.id%>/edit">Edit</a>
-    <form action="/trips/<%= trip.id %>" method="post">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Delete">
-    </form>
-
-    <% end %>
+    <nav>
+      <img class="logo" src="https://bikeshare.metro.net/wp-content/themes/lametro/library/images/logo.png">
+      <h1>Trip Index</h1>
+    </nav>
+    <div class="station-container">
+      <% @trips.each do |trip| %>
+        <div class="individual-station">
+          <p>Duration: <%= trip.duration %></p><br>
+          <p>Start Date: <%= trip.start_date %></p><br>
+          <p>Start Station: <%= trip.start_station_name %></p><br>
+          <p>End Date: <%= trip.end_date %></p><br>
+          <p>Station Name: <%= trip.end_station_name %></p><br>
+          <p>Bike ID: <%= trip.bike_id %></p><br>
+          <p>Subscription Type: <%= trip.subscription_type %></p><br>
+          <p>Zip Code: <%= trip.zip_code %></p><br>
+          <div class="edit-delete">
+            <a class="edit" href="/trips/<%= trip.id%>/edit">Edit</a><br>
+            <form action="/trips/<%= trip.id %>" method="post">
+              <input type="hidden" name="_method" value="DELETE">
+              <input class="delete" type="submit" value="Delete">
+            </form>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </body>
 </html>

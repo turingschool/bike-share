@@ -58,13 +58,12 @@ describe "as a user" do
     end
 
     it "I expect to be able to edit a trip" do
-      click_link("Edit")
-
+      first(".edit").click
       expect(current_path).to eq('/trips/1/edit')
     end
 
     it "I expect to ba able to delete a trip" do
-      click_button("Delete")
+      first(".delete").click
 
       expect(current_path).to eq('/trips')
     end

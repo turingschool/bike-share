@@ -7,6 +7,7 @@ require 'database_cleaner'
 require 'date'
 
 Capybara.app = BikeShareApp
+Capybara.save_and_open_page_path = 'tmp/capybara'
 
 RSpec.configure do |c|
   c.include Capybara::DSL

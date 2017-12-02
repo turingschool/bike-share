@@ -31,4 +31,16 @@ class Trip < ActiveRecord::Base
   def self.least_ridden_bike
     array = Trip.pluck(:bike_id)    #this is an array
   end
+
+  def self.total_rides_per_month
+    Trip.group("DATE_TRUNC('month',start_date)").count.transform_keys do |key|
+      Date::MONTHNAMES[key.month]
+    end
+  end
+
+  def self.total_rides_per_year
+        Trip.group("DATE_TRUNC('year',start_date)").count.transform_keys do |key|
+      key.year
+    end
+  end
 end

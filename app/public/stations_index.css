@@ -1,0 +1,76 @@
+body {
+  background: url(/bike-opaque5.png) no-repeat center center fixed;
+  background-color: #f2efe8;
+  background-size: cover;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 80px;
+  font-family: sans-serif;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  margin: 3px 0 0 15%;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav {
+  border-bottom: 5px solid black;
+  background-color: #257a21;
+  display: flex;
+  flex-direction: row;
+  height: 85px;
+  width: 100%;
+}
+
+.logo {
+  height: 75px;
+  width: auto;
+  padding-top: 5px;
+}
+
+.station-container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   flex-flow: row wrap;
+   margin: 40px;
+}
+
+.edit-delete {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit {
+  margin-left: 10px;
+}
+
+.delete {
+  margin-left: -50px;
+}
+
+.individual-station {
+  width: 32%;
+  margin-bottom: 20px;
+  background-color: #cecece;
+  border-radius: 4px;
+  opacity: 0.8;
+}
+
+.station-name {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 6px;
+}

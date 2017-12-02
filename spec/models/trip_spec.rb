@@ -46,4 +46,9 @@ RSpec.describe Trip do
     end
   end
 
+  describe "Class Mehtods" do
+    it "can find average duration of rides"
+
+
+  end
 end

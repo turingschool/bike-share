@@ -78,4 +78,20 @@ class Station < ActiveRecord::Base
     return 0
   end
  end
+
+ def self.most_frequent_destination_station(station_id)
+  if Station.find(station_id).trips_starting_here.group(:end_station_name).count.invert.max
+    Station.find(station_id).trips_starting_here.group(:end_station_name).count.invert.max.last
+  else
+    return "No trips from this station."
+  end
+ end
+
+ def self.most_frequent_origination_station(station_id)
+  if Station.find(station_id).trips_ending_here.group(:start_station_name).count.invert.max
+  Station.find(station_id).trips_ending_here.group(:start_station_name).count.invert.max.last
+  else
+    return "No trips to this station"
+  end
+ end
 end

@@ -6,3 +6,5 @@
 <p> Installation Date: <%= @station.installation_date%> </p>
 <p> Number of starting rides: <%= Station.number_of_starting_rides(@station.id) %></p>
 <p> Number of ending rides: <%= Station.number_of_ending_rides(@station.id) %></p>
+<p> Most frequent destination: <%= Station.most_frequent_destination_station(@station.id) %>
+<p> Most frequent origination: <%= Station.most_frequent_origination_station(@station.id) %>

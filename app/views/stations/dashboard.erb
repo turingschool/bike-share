@@ -1,6 +1,6 @@
 <head>
   <link rel="stylesheet" type="text/css" href="/reset.css">
-  <link rel="stylesheet" type="text/css" href="/dashboard.css">
+  <link rel="stylesheet" type="text/css" href="/station_dashboard.css">
 </head>
 
 <body>
@@ -32,24 +32,40 @@
       <th class="value"> <%= Station.most_bikes_at_station %> </th>
     </tr>
     <tr>
-      <th>Station With Most Bikes:</th>
-      <th class="value"> <%= Station.stations_with_most_bikes %></th>
-    </tr>
-    <tr>
       <th>Fewest Bikes At Station:</th>
       <th class="value"> <%= Station.fewest_bikes_at_station %></th>
     </tr>
     <tr>
-      <th>Station With Fewest Bikes:</th>
-      <th class="value"><%= Station.stations_with_fewest_bikes %></th>
+      <th>Station(s) With Most Bikes:</th>
+      <th class="value">
+        <% Station.stations_with_most_bikes.each do |station| %>
+          <%= station.name %></br>
+        <% end %>
+      </th>
     </tr>
     <tr>
-      <th>Most Recently Installed Station:</th>
-      <th class="value"><%= Station.most_recent_station %></th>
+      <th>Station(s) with Fewest Bikes:</th>
+      <th class="value">
+        <% Station.stations_with_fewest_bikes.each do |station| %>
+          <%= station.name %></br>
+        <% end %>
+      </th>
     </tr>
     <tr>
-      <th>Oldest Station:</th>
-      <th class="value"><%= Station.oldest_station %></th>
+      <th>Most Recently Installed Station(s):</th>
+      <th class="value">
+        <% Station.most_recent_station.each do |station| %>
+          <%= station.name %></br>
+        <% end  %>
+      </th>
+    </tr>
+    <tr>
+      <th>Oldest Station(s):</th>
+      <th class="value">
+        <% Station.oldest_station.each do |station|%>
+        <%= station.name %></br>
+        <% end %>
+      </th>
     </tr>
   </table>
 

@@ -14,8 +14,7 @@ class Station < ActiveRecord::Base
   end
 
   def self.stations_with_most_bikes
-    stations = Station.where(dock_count: most_bikes_at_station)
-    station_ouput(stations)
+    Station.where(dock_count: most_bikes_at_station)
   end
 
   def self.fewest_bikes_at_station
@@ -23,32 +22,23 @@ class Station < ActiveRecord::Base
   end
 
   def self.stations_with_fewest_bikes
-    stations = Station.where(dock_count: fewest_bikes_at_station)
-    station_ouput(stations)
+    Station.where(dock_count: fewest_bikes_at_station)
   end
 
   def self.most_recent_station_date
     maximum(:installation_date)
   end
 
+  def self.most_recent_station
+    Station.where(installation_date: most_recent_station_date)
+  end
+
   def self.oldest_station_date
     minimum(:installation_date)
   end
 
-  def self.most_recent_station
-    stations = Station.where(installation_date: most_recent_station_date)
-    station_ouput(stations)
-  end
-
   def self.oldest_station
-    stations = Station.where(installation_date: oldest_station_date)
-    station_ouput(stations)
-  end
-
-  def self.station_ouput(stations)
-    stations.reduce("") do |result, station|
-      result += station[:name] += ", "
-    end.chop.chop
+    Station.where(installation_date: oldest_station_date)
   end
 
   def self.most_rides_as_starting_place

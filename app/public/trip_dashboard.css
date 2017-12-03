@@ -32,27 +32,25 @@ header h1 {
 header a:hover{
   color:black;
   transition-duration: 0.5s;
-
 }
 
 .container{
   position: relative;
   display: flex;
   flex-flow: row wrap;
-  height: 100%;
+  align-content: flex-start;
+  height: 500%;
   width: 100%;
   justify-content: center;
-  background: url('../images/bridge1.jpg') no-repeat;
+  background: url('../images/beach.jpg') no-repeat;
   background-attachment: fixed;
-  background-position: center;
   background-size: cover;
 }
 
 table{
-  position: absolute;
   color: white;
   background: rgba(60,60,60, 0.3);
-  bottom: 20%;
+  margin: 10px;
 }
 
 th {

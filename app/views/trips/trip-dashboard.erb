@@ -24,4 +24,7 @@
 
 <p> Single date with the lowest number of trips:  <%= "#{Trip.date_with_lowest_trips}" %> Total trips: <%="#{Trip.lowest_trip_date_count}"%></p>
 
-<p> Month by month breakdown <%= "#{Trip.month_by_month_breakdown}" %>
+<p> Month by month trip count breakdown: <% Trip.month_by_month_breakdown.each do |month_count| %> </p> <br>
+                             <%= month_count.first.strftime("%B %Y") %>
+             <p> Trip Count: <%= month_count.last %> </p>
+                             <%end%>

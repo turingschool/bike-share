@@ -84,8 +84,7 @@ class Trip < ActiveRecord::Base
   end
 
   def self.month_by_month_breakdown
-    group("DATE_TRUNC('month', start_date)").count
+    group("DATE_TRUNC('month', start_date)").count.to_a.sort
   end
 
-  
 end

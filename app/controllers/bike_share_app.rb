@@ -11,7 +11,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations' do
-  	@stations = Station.all
+  	@stations = Station.paginate(:page => params[:page])
   	erb :'stations/index'
 	end
 
@@ -73,7 +73,7 @@ class BikeShareApp < Sinatra::Base
 		erb :'trips/edit'
 	end
 
-	put '/tirps/:id' do |id|
+	put '/trips/:id' do |id|
 		Trip.update(id.to_i, params[:trip])
 		redirect "/trips/#{id}"
 	end

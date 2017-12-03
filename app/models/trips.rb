@@ -2,6 +2,9 @@ require 'will_paginate'
 require 'will_paginate/active_record'
 
 class Trip < ActiveRecord::Base
+  belongs_to :station, class_name: "Station", foreign_key: "start_station_name"
+  belongs_to :station, class_name: "Station", foreign_key: "end_station_name"
+
 
   validates_presence_of :duration,
                         :start_date,

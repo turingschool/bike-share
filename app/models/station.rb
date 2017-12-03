@@ -1,6 +1,11 @@
 class Station < ActiveRecord::Base
+  has_many :trips, class_name: "Trip", foreign_key: "start_station_name"
+  has_many :trips, class_name: "Trip", foreign_key: "end_station_name"
 
-  validates_presence_of :name, :dock_count, :city, :installation_date
+  validates_presence_of :name,
+                        :dock_count,
+                        :city,
+                        :installation_date
 
   def self.average_bikes_per_station
     average(:dock_count).to_i

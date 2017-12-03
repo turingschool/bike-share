@@ -74,4 +74,12 @@ class Trip < ActiveRecord::Base
   def self.highest_trip_date_count
     group(:start_date).order('count_id desc').limit(1).count(:id).first[1]
   end
+
+  def self.date_with_lowest_trips
+    group(:start_date).order('count_id asc').limit(1).count(:id).first[0]
+  end
+
+  def self.lowest_trip_date_count
+    group(:start_date).order('count_id asc').limit(1).count(:id).first[1]
+  end
 end

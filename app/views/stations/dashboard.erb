@@ -10,9 +10,9 @@
     <h1>Station Dashboard</h1>
     <nav>
       <ul>
+        <li><a href="/stations"> Stations </a></li>
         <li><a href="/trips"> Trips </a></li>
         <li><a href="/trips-dashboard"> Trip Dashboard </a></li>
-        <li><a href="/stations"> Stations </a></li>
         <li><a href="/">Home</a></li>
       </ul>
     </nav>
@@ -52,7 +52,7 @@
       </th>
     </tr>
     <tr>
-      <th>Most Recently Installed Station(s):</th>
+      <th>Newest Station(s):</th>
       <th class="value">
         <% Station.most_recent_station.each do |station| %>
           <%= station.name %></br>

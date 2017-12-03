@@ -10,9 +10,9 @@
       <h1>Trip Dashboard</h1>
       <nav>
         <ul>
+          <li><a href="/trips"> Trips </a></li>
           <li><a href="/stations"> Stations </a></li>
           <li><a href="/stations-dashboard"> Station Dashboard </a></li>
-          <li><a href="/trips"> Trips </a></li>
           <li><a href="/">Home</a></li>
         </ul>
       </nav>
@@ -54,7 +54,7 @@
         <th class="value"><%= Trip.date_with_lowest_trips.last.to_date %> => <%= Trip.date_with_lowest_trips.first %></th>
       </tr>
     </table>
-    
+
     <table>
       <tr>
         <th>Most ridden bike ID:</th>
@@ -94,15 +94,6 @@
       </tr>
 
     </table>
-
-
-
-
-
-
-
-  </ul>
-
   </div>
 
 </body>

@@ -5,7 +5,8 @@ describe "as a user" do
     before :each do
       @condition = Condition.create(date: "2014-08-20", max_temperature_f: 70,
       mean_temperature_f: 60, min_temperature_f: 50, mean_humidity: 20,
-      mean_visibility_miles: 50, mean_wind_speed_mph: 12, precipitation_inches: 4)
+      mean_visibility_miles: 50, mean_wind_speed_mph: 12, precipitation_inches: 4,
+      zip_code: 94127)
 
       visit '/conditions'
     end

@@ -92,7 +92,6 @@ class Trip < ActiveRecord::Base
   end
 
   def self.single_date_with_lowest
-    # require 'pry'; binding.pry
     dates = group(:start_date).order(start_date: :asc).count(:start_date)
     converted_dates = dates.reduce(Hash.new(0)) do |result, (date,count)|
       result[date.strftime("%Y-%m-%d")] += count
@@ -101,6 +100,36 @@ class Trip < ActiveRecord::Base
     converted_dates.min_by do |bike,count|
       count
     end
+  end
+
+  def self.number_rides_at_start_station(id)
+    where(start_station_id: id).count
+  end
+
+  def self.number_rides_at_end_station(id)
+    where(end_station_id: id).count
+  end
+
+  def self.most_frequent_destination_station(id)
+    stations = where(start_station_id: id).group(:end_station_id).order(end_station_id: :desc).count(:end_station_id)
+    station_id = stations.max_by do |station,count|
+      count
+    end.first
+    Station.find(station_id).name
+  end
+
+  def self.most_frequent_origination_station(id)
+    stations = where(end_station_id: id).group(:start_station_id).order(start_station_id: :desc).count(:start_station_id)
+    station_id = stations.max_by do |station,count|
+      count
+    end.first
+    Station.find(station_id).name
+  end
+
+  def self.date_with_highest_number_trips_started(id)
+    # require 'pry'; binding.pry
+    dates = where(start_station_id: id).group(:start_date).order(start_date: :desc).count(:start_date)
+    dates.first[0].strftime("%Y-%m-%d")
   end
 
 end

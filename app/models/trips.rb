@@ -51,4 +51,17 @@ class Trip < ActiveRecord::Base
     group(:bike_id).order('count_id asc').limit(1).count(:id).first[1]
   end
 
+  def self.customer_count
+    where(subscription: 'Customer').count
+  end
+
+  def self.customer_percentage
+    (self.customer_count / self.all.count)
+  end
+
+  def self.subscriber_count
+    where(subscription: 'Subscriber').count
+  end
+
+
 end

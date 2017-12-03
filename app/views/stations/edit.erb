@@ -19,33 +19,30 @@
     </nav>
   </header>
 
-  <!-- <section class="entry-form"> -->
-    <form action="/stations/<%=@station.id%>" method="POST">
-      <table>
-        <tr>
-          <th class="field-name">Station Name:</th>
-          <th><input type="text" name="station[name]" value="<%=@station.name%>"/></th>
-        </tr>
-        <tr>
-          <th class="field-name">Number of Docks:</th>
-          <th><input type="number" name="station[dock_count]" value="<%=@station.dock_count%>"/></th>
-        </tr>
-        <tr>
-          <th class="field-name">City:</th>
-          <th><input type="text" name="station[city]" value="<%=@station.city %>"/></th>
-        </tr>
-        <tr>
-          <th class="field-name">Installation Date:</th>
-          <th><input type="date" name="station[installation_date]" value="<%=@station.installation_date%>"/></th>
-        </tr>
-      <table>
-        
-      <input type="hidden" name="_method" value="PUT"/>
-      <input id="submit-button" type="submit"/>
-    </form>
-  <!-- </section> -->
+  <form action="/stations/<%=@station.id%>" method="POST">
+    <table>
+      <tr>
+        <th class="field-name">Station Name:</th>
+        <th><input type="text" name="station[name]" value="<%=@station.name%>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">Number of Docks:</th>
+        <th><input type="number" name="station[dock_count]" value="<%=@station.dock_count%>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">City:</th>
+        <th><input type="text" name="station[city]" value="<%=@station.city %>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">Installation Date:</th>
+        <th><input type="date" name="station[installation_date]" value="<%=@station.installation_date%>"/></th>
+      </tr>
+    <table>
+
+    <input type="hidden" name="_method" value="PUT"/>
+    <input id="submit-button" type="submit"/>
+  </form>
 
 </div>
-
 
 </body>

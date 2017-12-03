@@ -34,6 +34,27 @@ header a:hover{
   transition-duration: 0.5s;
 }
 
+.container{
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  background: url('../images/beach.jpg') no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.field-name{
+  background: rgba(60,60,60, 0.3);
+  color: white;
+  font-size: 20px;
+  text-align: left;
+  padding: 10px;
+}
+
 input{
   background: rgba(60,60,60, 0.3);
   color: white;
@@ -46,27 +67,6 @@ input:focus{
 }
 input:hover{
   background: rgba(60,60,60, 0.7);
-}
-
-.container{
-  position: relative;
-  display: flex;
-  flex-flow: row wrap;
-  height: 100%;
-  width: 100%;
-  justify-content: center;
-  background: url('../images/bridge1.jpg') no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-}
-
-.field-name{
-  background: rgba(60,60,60, 0.3);
-  color: white;
-  font-size: 20px;
-  text-align: left;
-  padding: 10px;
 }
 
 #submit-button{

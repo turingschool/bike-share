@@ -1,11 +1,64 @@
-<form action="/trips/<%=@trip.id%>" method="POST">
-  <p>Edit</p>
-  <p> Trip duration: </p>
-  <input type="number" name="trip[duration]" value="<%=@trip.duration%>"/></br>
+<head>
+  <link rel="stylesheet" type="text/css" href="/reset.css">
+  <link rel="stylesheet" type="text/css" href="/edit_trip.css">
+</head>
 
-  <input type="hidden" name="_method" value="PUT"/>
-  <input type="submit"/>
-</form>
+<body>
 
-<a href="/trips">Back to Trips Index</a></br>
-<a href="/">Back to Homepage</a>
+<div class="container">
+  <header>
+    <h1>Edit Trip</h1>
+    <nav>
+      <ul>
+        <li><a href="/trips"> Trips </a></li>
+        <li><a href="/stations"> Stations </a></li>
+        <li><a href="/trips-dashboard"> Trip Dashboard </a></li>
+        <li><a href="/stations-dashboard"> Station Dashboard </a></li>
+        <li><a href="/">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <form action="/trips/<%=@trip.id%>" method="POST">
+    <table>
+      <tr>
+        <th class="field-name">Duration(minutes):</th>
+        <th><input type="number" name="trip[duration]" value="<%=@trip.duration%>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">Start Date:</th>
+        <th><input type="date" name="trip[start_date]" value="<%=@trip.start_date%>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">End Date:</th>
+        <th><input type="date" name="trip[end_date]" value="<%=@trip.end_date%>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">Start Station:</th>
+        <th><input type="text" name="trip[start_station_name]" value="<%=@trip.start_station_name%>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">End Station:</th>
+        <th><input type="text" name="trip[end_station_name]" value="<%=@trip.end_station_name%>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">Bike ID:</th>
+        <th><input type="number" name="trip[bike_id]" value="<%=@trip.bike_id%>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">Subscription Type:</th>
+        <th><input type="text" name="trip[subscription_type]" value="<%=@trip.subscription_type%>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">Zipcode:</th>
+        <th><input type="number" name="trip[zip_code]" value="<%=@trip.zip_code%>"/></th>
+      </tr>
+    <table>
+
+    <input type="hidden" name="_method" value="PUT"/>
+    <input id="submit-button" type="submit"/>
+  </form>
+
+</div>
+
+</body>

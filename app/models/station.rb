@@ -5,6 +5,8 @@ class Station < ActiveRecord::Base
                         :city,
                         :installation_date
 
+  belongs_to :trip
+
   def self.station_count
     count
   end

@@ -21,7 +21,7 @@
           <p>Zip Code: <%= condition.zip_code %></p><br>
           <div class="edit-delete">
             <a class="edit" href="/conditions/<%= condition.id%>/edit">Edit</a><br>
-            <form action="/conditions/<%= condition.id %>" method="post">
+            <form class="delete" action="/conditions/<%= condition.id %>" method="post">
               <input type="hidden" name="_method" value="DELETE">
               <input class="delete" type="submit" value="Delete">
             </form>

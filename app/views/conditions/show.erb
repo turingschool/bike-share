@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Conditions Show</title>
+  </head>
+  <body>
+    <%= @condition.date %><br>
+    <%= @condition.max_temperature_f %><br>
+    <%= @condition.mean_temperature_f %><br>
+    <%= @condition.min_temperature_f %><br>
+    <%= @condition.mean_humidity %><br>
+    <%= @condition.mean_visibility_miles %><br>
+    <%= @condition.mean_wind_speed_mph %><br>
+    <%= @condition.precipitation_inches %><br>
+    <%= @condition.zip_code %><br>
+    <a href="/conditions/<%= @condition.id%>/edit">Edit</a>
+    <form class="delete" action="/conditions/<%= @condition.id %>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete">
+    </form>
+  </body>
+</html>

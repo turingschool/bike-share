@@ -13,10 +13,10 @@
     <%= @trip.bike_id %>
     <%= @trip.subscription_type %>
     <%= @trip.zip_code %>
-    <a href="/trips/<%= @trip.id%>/edit">Edit</a>
-    <form action="/trips/<%= @trip.id %>" method="post">
+    <a class="edit" href="/trips/<%= @trip.id%>/edit">Edit</a>
+    <form class="delete" action="/trips/<%= @trip.id %>" method="post">
       <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Delete">
+      <input class="delete" type="submit" value="Delete">
     </form>
   </body>
 </html>

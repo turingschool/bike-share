@@ -16,7 +16,7 @@ h1 {
   display: inline-block;
   justify-content: center;
   align-items: center;
-  margin: 3px 0 0 15%;
+  margin: 3px 0 0 15.5%;
 }
 
 a {
@@ -35,7 +35,7 @@ nav {
 .logo {
   height: 75px;
   width: auto;
-  padding-top: 5px;
+  padding: 5px 0 0 10px;
 }
 
 .station-container {
@@ -52,11 +52,11 @@ nav {
 }
 
 .edit {
-  margin-left: 10px;
+  padding: 0 0 5px 10px;
 }
 
 .delete {
-  margin-left: -50px;
+  padding: 0 10px 5px 0;
 }
 
 .individual-station {

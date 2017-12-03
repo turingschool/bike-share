@@ -20,7 +20,7 @@
         <p>Date Installed: <%= station.installation_date %></p><br>
         <div class="edit-delete">
           <a class="edit" href="/stations/<%= station.id %>/edit">Edit</a><br>
-          <form action="/stations/<%= station.id %>" method="post">
+          <form class="delete" action="/stations/<%= station.id %>" method="post">
             <input type="hidden" name="_method" value="DELETE">
             <input class="delete" type="submit" value="Delete">
           </form>

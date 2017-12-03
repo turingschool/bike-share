@@ -5,14 +5,18 @@
     <title>Station Page <%= @station.name %></title>
   </head>
   <body>
-    <%= @station.name %><br>
-    <%= @station.dock_count %><br>
-    <%= @station.city %><br>
-    <%= @station.installation_date %><br>
-    <a href="/stations/<%= @station.id%>/edit">Edit</a>
-    <form action="/stations/<%= @station.id %>" method="post">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Delete">
-    </form>
+    <div class="individual-station">
+      <p>Station Name: <%= @station.name %></p><br>
+      <p>Dock Count: <%= @station.dock_count %></p><br>
+      <p>City: <%= @station.city %></p><br>
+      <p>Installation Date: <%= @station.installation_date %></p><br>
+      <div class="edit-delete">
+        <a href="/stations/<%= @station.id%>/edit">Edit</a>
+        <form class="delete" action="/stations/<%= @station.id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Delete">
+        </form>
+      </div>
+    </div>
   </body>
 </html>

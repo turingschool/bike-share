@@ -24,7 +24,7 @@
           <p>Zip Code: <%= trip.zip_code %></p><br>
           <div class="edit-delete">
             <a class="edit" href="/trips/<%= trip.id%>/edit">Edit</a><br>
-            <form action="/trips/<%= trip.id %>" method="post">
+            <form class='delete' action="/trips/<%= trip.id %>" method="post">
               <input type="hidden" name="_method" value="DELETE">
               <input class="delete" type="submit" value="Delete">
             </form>

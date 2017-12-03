@@ -2,5 +2,12 @@
 
 <h1> <%= @station.name %> </h1>
 <p> <%= @station.city %> </p>
-<p> <%= @station.dock_count %> </p>
-<p> <%= @station.installation_date%> </p>
+<p> Dock Count: <%= @station.dock_count %> </p>
+<p> Installation Date: <%= @station.installation_date%> </p>
+<p> Number of starting rides: <%= Station.number_of_starting_rides(@station.id) %></p>
+<p> Number of ending rides: <%= Station.number_of_ending_rides(@station.id) %></p>
+<p> Most frequent destination: <%= Station.most_frequent_destination_station(@station.id) %>
+<p> Most frequent origination: <%= Station.most_frequent_origination_station(@station.id) %>
+<p> Date with the most trips started here: <%= Station.date_with_most_trips(@station.id) %>
+<p> Most frequent zipcode starting here: <%= Station.most_frequent_zipcode_starting_here(@station.id) %>
+<p> Most frequent bike ID starting here: <%= Station.most_frequent_bike_id_starting_here(@station.id) %>

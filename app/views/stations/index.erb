@@ -20,8 +20,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <p class="w3-text-light-grey">Bike Share for Everybody</p>
   </div>
   <div class="w3-bar-block">
-    <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-light-grey"><i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME</a>
-    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-light-grey"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a>
+    <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-light-grey"><i class="fa fa-home fa-fw w3-margin-right"></i>HOME</a>
+    <a href="#/stations/new" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-light-grey"><i class="fa fa-th-large fa-fw w3-margin-right"></i>Add New Station</a>
     <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-light-grey"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
   </div>
   <div class="w3-panel w3-large">
@@ -52,7 +52,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   <div class="w3-row-padding">
     <% @stations.each do |station| %>
     <div class="w3-third w3-container w3-margin-bottom">
-      <img alt="Station" style="width:100%" class="w3-hover-opacity">
       <div class="w3-container w3-border w3-light-grey w3-center">
         <a href="/stations/<%= station.id %>"><%= station.name %></a>
         <p>Dock Count: <%= station.dock_count %></p>
@@ -60,8 +59,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         <p>Installation Date: <%= station.installation_date %></p>
         <a href="/stations/<%= station.id %>/edit">Edit</a>
         <form action="/stations/<%= station.id %>" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" class="w3-button w3-block w3-pink" value="delete"/>
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" class="w3-button w3-block w3-pink" value="delete"/>
         </form>
       </div>
     </div>

@@ -1,2 +1,2 @@
 class Condition < ActiveRecord::Base
-end 
+end

@@ -15,6 +15,11 @@ describe 'As a visitor' do
       fill_in "condition[max_temperature_f]", with: 80
       fill_in "condition[mean_temperature_f]", with: 70
       fill_in "condition[min_temperature_f]", with: 60
+      fill_in 'condition[mean_humidity]', :with => 20
+      fill_in 'condition[mean_visibility_miles]', :with => 30
+      fill_in 'condition[mean_wind_speed_mph]', :with => 20
+      fill_in 'condition[precipitation_inches]', :with => 4
+      fill_in 'condition[zip_code]', :with => 93019
 
       click_button("Submit")
 

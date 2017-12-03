@@ -36,10 +36,19 @@ class Trip < ActiveRecord::Base
   end
 
   def self.popular_bike
-    group(:bike_id).order('count_id desc').limit(1).count(:id)
+    group('bike_id').order('count(*) desc').limit(1).pluck(:bike_id).first
+  end
+
+  def self.popular_bikes_usage
+    group(:bike_id).order('count_id desc').limit(1).count(:id).first[1]
   end
 
   def self.least_popular_bike
-    group(:bike_id).order('count_id asc').limit(1).count(:id)
+    group('bike_id').order('count(*) asc').limit(1).pluck(:bike_id).first
   end
+
+  def self.least_popular_bikes_usage
+    group(:bike_id).order('count_id asc').limit(1).count(:id).first[1]
+  end
+
 end

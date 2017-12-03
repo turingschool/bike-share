@@ -82,4 +82,10 @@ class Trip < ActiveRecord::Base
   def self.lowest_trip_date_count
     group(:start_date).order('count_id asc').limit(1).count(:id).first[1]
   end
+
+  def self.month_by_month_breakdown
+    group("DATE_TRUNC('month', start_date)").count
+  end
+
+  
 end

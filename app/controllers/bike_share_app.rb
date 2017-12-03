@@ -89,4 +89,10 @@ class BikeShareApp < Sinatra::Base
 
     redirect "/trips"
   end
+
+  get '/conditions' do
+    @conditions = Condition.all
+
+    erb :"/conditions/index"
+  end
 end

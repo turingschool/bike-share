@@ -4,7 +4,7 @@ describe "as a user" do
   describe "when I visit '/conditions' it displays weather conditions" do
     before :each do
       Condition.create(date: "2014-08-20", max_temperature_f: 70,
-      mean_temperatue_f: 60, min_temperature_f: 50, mean_humidity: 20,
+      mean_temperature_f: 60, min_temperature_f: 50, mean_humidity: 20,
       mean_visibility_miles: 50, mean_wind_speed_mph: 12, precipitation_inches: 4)
 
       visit '/conditions'
@@ -29,8 +29,7 @@ describe "as a user" do
     end
 
     it "I expect to see condition mean humidity" do
-      expect(page).to have_content("Market St")
-      expect(page).to have_content("Mission District")
+      expect(page).to have_content(20)
     end
 
     it "I expect to see condition mean visibility in miles" do

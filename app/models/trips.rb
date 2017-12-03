@@ -67,5 +67,11 @@ class Trip < ActiveRecord::Base
     ((self.subscriber_count / self.all.count.to_f)*100).round(2)
   end
 
+  def self.date_with_highest_trips
+    group(:start_date).order('count_id desc').limit(1).count(:id).first[0]
+  end
 
+  def self.highest_trip_date_count
+    group(:start_date).order('count_id desc').limit(1).count(:id).first[1]
+  end
 end

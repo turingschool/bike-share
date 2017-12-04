@@ -21,4 +21,12 @@ RSpec.describe Station do
       expect(station).to be_invalid
     end 
   end
+  describe "Class Methods" do 
+    it "finds average bike docks per station" do
+      Station.create(name: "San Jose Civic Center", dock_count: 0, city: "San Jose", installation_date: "2013-08-06")
+      Station.create(name: "Timo", dock_count: 10, city: "San Jose", installation_date: "2014-04-09")
+
+      expect(Station.average_bike_docks_per_station).to eq(5) 
+    end
+  end
 end

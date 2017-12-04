@@ -22,8 +22,6 @@ describe "when user visits /stations path" do
                              installation_date: "8/5/17")
     visit '/stations'
 
-    save_and_open_page
-
     expect(page).to have_content(station.name)
     expect(page).to have_link("Edit", :href=>"/stations/#{station.id}/edit")
     expect {click_button("delete") }.to change(Station, :count).by(-1)

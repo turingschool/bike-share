@@ -7,6 +7,7 @@ require 'rspec'
 require 'capybara/dsl'
 DatabaseCleaner.strategy = :truncation
 require 'pry'
+require 'date'
 
 Capybara.app = BikeShareApp
 Capybara.save_and_open_page_path = 'tmp/capybara'

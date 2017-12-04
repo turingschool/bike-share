@@ -77,7 +77,9 @@ describe "when user visits /trips/:id/edit path" do
 
     fill_in 'Duration(minutes):', with: 55
 
-    submit_form
+    click_button("Submit")
+
+    
 
     expect(page).to have_content(55)
   end

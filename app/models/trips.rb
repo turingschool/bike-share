@@ -96,7 +96,19 @@ class Trip < ActiveRecord::Base
 
   def self.most_frequent_destination(station_name)
     station = Trip.where(start_station_name: station_name).group(:end_station_name).order('count(*) DESC').count(:start_station_name).first
-    (Station.find_by(name: station.first)).name
+    if station
+      station.first
+    else
+      "Not enough data"
+    end
   end
 
+  def self.most_frequent_origination_station(station_name)
+    station = Trip.where(end_station_name: station_name).group(:start_station_name).order('count(*) DESC').count(:end_station_name).first
+    if station
+      station.first
+    else
+      "Not enough data"
+    end
+  end
 end

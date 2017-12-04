@@ -2,8 +2,8 @@ require 'will_paginate'
 require 'will_paginate/active_record'
 
 class Trip < ActiveRecord::Base
-  belongs_to :station, class_name: "Station", foreign_key: "start_station_name"
-  belongs_to :station, class_name: "Station", foreign_key: "end_station_name"
+  belongs_to :start_station, class_name: "Station", foreign_key: "start_station_id"
+  belongs_to :end_station, class_name: "Station", foreign_key: "end_station_id"
 
 
   validates_presence_of :duration,
@@ -92,6 +92,11 @@ class Trip < ActiveRecord::Base
 
   def self.year_subtotals
     group("DATE_TRUNC('year', start_date)").count.to_a.sort
+  end
+
+  def self.most_frequent_destination(station_name)
+    station = Trip.where(start_station_name: station_name).group(:end_station_name).order('count(*) DESC').count(:start_station_name).first
+    (Station.find_by(name: station.first)).name
   end
 
 end

@@ -6,6 +6,7 @@ gem 'sqlite3'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'will_paginate', '~> 3.0'
+gem 'pry'
 
 group :development, :test do
   gem 'shotgun'

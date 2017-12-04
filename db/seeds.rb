@@ -1,17 +1,21 @@
 require './app/models/station'
 require './app/models/trip'
+require './app/models/condition'
 require 'date'
 require 'csv'
 require 'pry'
 
 station_file = "./db/csv/station.csv"
 trip_file = "./db/csv/trip_fixture.csv"
+condition_file = "./db/csv/weather.csv"
 
 stations = CSV.open(station_file, headers: true).readlines
 trips = CSV.open(trip_file, headers: true).readlines
+conditions = CSV.open(condition_file, headers: true).readlines
 
 Station.destroy_all
 Trip.destroy_all
+Condition.destroy_all
 
 stations.each do |station|
   Station.create(name: station['name'],
@@ -34,7 +38,22 @@ trips.each do |trip|
               zip_code: trip["zip_code"])
 end
 
+conditions.each do |condition|
+  Condition.create!(date: DateTime.strptime(condition["date"], "%m/%d/%Y"),
+                    max_temperature_f: condition["max_temperature_f"],
+                    mean_temperature_f: condition["mean_temperature_f"],
+                    min_temperature_f: condition["min_temperature_f"],
+                    mean_humidity: condition["mean_humidity"],
+                    mean_visibility_miles: condition["mean_visibility_miles"],
+                    mean_wind_speed_mph: condition["mean_wind_speed_mph"],
+                    precipitation_inches: condition["precipitation_inches"])
+end
+
 puts "db populated with #{station_file}"
 puts "db populated with #{trip_file}"
+puts "db populated with #{condition_file}"
+
+
+
 
 #might need to add lat long variables

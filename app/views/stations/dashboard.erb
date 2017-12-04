@@ -1,15 +1,75 @@
-<h1>Bike Share Dashboard</h1>
+<head>
+  <link rel="stylesheet" type="text/css" href="/reset.css">
+  <link rel="stylesheet" type="text/css" href="/station_dashboard.css">
+</head>
 
-<ul>
-  <li>Total Station Count:</br><%= Station.count %></li>
-  <li> Average Bike Docks Per Station: </br> <%= Station.average_bike_docks_per_station %></li>
-  <li> Most Bikes At A Station: </br> <%= Station.most_bikes_at_station %></li>
-  <li> Station With Most Bikes: </br> <%= Station.stations_with_most_bikes %></li>
-  <li> Fewest Bikes At Station: </br> <%= Station.fewest_bikes_at_station %></li>
-  <li> Station With Fewest Bikes: </br> <%= Station.stations_with_fewest_bikes %></li>
-  <li> Most Recently Installed Station: </br> <%= Station.most_recent_station %></li>
-  <li> Oldest Station: </br> <%= Station.oldest_station %></li>
-</ul>
+<body>
 
-<a href="/stations"> Station Index </a> </br>
-<a href="/">Back to Homepage</a>
+<div class="container">
+  <header>
+    <h1>Station Dashboard</h1>
+    <nav>
+      <ul>
+        <li><a href="/stations"> Stations </a></li>
+        <li><a href="/trips"> Trips </a></li>
+        <li><a href="/trips-dashboard"> Trip Dashboard </a></li>
+        <li><a href="/">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <table>
+    <tr>
+      <th>Total Station Count:</th>
+      <th class="value"> <%= Station.count %> </th>
+    </tr>
+    <tr>
+      <th>Average Bike Docks Per Station:</th>
+      <th class="value"> <%= Station.average_bike_docks_per_station %> </th>
+    </tr>
+    <tr>
+      <th>Most Bikes At A Station:</th>
+      <th class="value"> <%= Station.most_bikes_at_station %> </th>
+    </tr>
+    <tr>
+      <th>Fewest Bikes At Station:</th>
+      <th class="value"> <%= Station.fewest_bikes_at_station %></th>
+    </tr>
+    <tr>
+      <th>Station(s) With Most Bikes:</th>
+      <th class="value">
+        <% Station.stations_with_most_bikes.each do |station| %>
+          <%= station.name %></br>
+        <% end %>
+      </th>
+    </tr>
+    <tr>
+      <th>Station(s) with Fewest Bikes:</th>
+      <th class="value">
+        <% Station.stations_with_fewest_bikes.each do |station| %>
+          <%= station.name %></br>
+        <% end %>
+      </th>
+    </tr>
+    <tr>
+      <th>Newest Station(s):</th>
+      <th class="value">
+        <% Station.most_recent_station.each do |station| %>
+          <%= station.name %></br>
+        <% end  %>
+      </th>
+    </tr>
+    <tr>
+      <th>Oldest Station(s):</th>
+      <th class="value">
+        <% Station.oldest_station.each do |station|%>
+        <%= station.name %></br>
+        <% end %>
+      </th>
+    </tr>
+  </table>
+
+</div>
+
+
+</body>

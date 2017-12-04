@@ -1,33 +1,99 @@
-<h1> Trip Dashboard </h1>
+<head>
+  <link rel="stylesheet" type="text/css" href="/reset.css">
+  <link rel="stylesheet" type="text/css" href="/trip_dashboard.css">
+</head>
 
-<ul>
-  <li>Average Ride Duration: <%= Trip.average_ride_duration %> </li>
-  <li>Longest Ride: <%= Trip.longest_ride %> </li>
-  <li>Shortest Ride: <%= Trip.shortest_ride %> </li>
-  <li>Station with most rides as starting place: <%= Station.most_rides_as_starting_place %> </li>
-  <li>Station with most rides as ending place: <%= Station.most_rides_as_ending_place %> </li>
-  <li> Month to month breakdown of total rides: </li>
+<body>
 
-  <% Trip.total_rides_per_month.each do |monthcount| %>
-  <%= monthcount.first%> : <%=monthcount.last%></br>
-  <% end  %>
-  <li>Most ridden bike ID: <%= Trip.most_ridden_bike %> </li>
-  <li>Least ridden bike ID: <%= Trip.least_ridden_bike %> </li>
+  <div class="container">
+    <header>
+      <h1>Trip Dashboard</h1>
+      <nav>
+        <ul>
+          <li><a href="/trips"> Trips </a></li>
+          <li><a href="/stations"> Stations </a></li>
+          <li><a href="/stations-dashboard"> Station Dashboard </a></li>
+          <li><a href="/">Home</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <li>User subscription breakout by count: </li>
-    <%Trip.subscription_type_breakout.each do |type| %>
-      <%= type.first %>: <%= type.last %></br>
-    <% end  %>
-  <li>User subscription breakout by percentage:</li>
-    <% Trip.percentage_subscription_type.each do |type| %>
-      <%= type.first %>: <%= type.last %></br>
-    <% end %>
+    <table>
+      <tr>
+        <th>Station with most rides as starting place:</th>
+        <th class="value"><%= Station.most_rides_as_starting_place %></th>
+      </tr>
+      <tr>
+        <th>Station with most rides as ending place:</th>
+        <th class="value"><%= Station.most_rides_as_ending_place %></th>
+      </tr>
+    </table>
 
-  <li>Date with highest trips</li>
-    <%= Trip.date_with_highest_trips.last.to_date %> : <%= Trip.date_with_highest_trips.first %>
+    <table>
+      <tr>
+        <th>Average Ride Duration:</th>
+        <th class="value"> <%= Trip.average_ride_duration %></th>
+      </tr>
+      <tr>
+        <th>Longest Ride:</th>
+        <th class="value"> <%= Trip.longest_ride %></th>
+      </tr>
+      <tr>
+        <th>Shortest Ride:</th>
+        <th class="value"> <%= Trip.shortest_ride %></th>
+      </tr>
+    </table>
 
-  <li>Date with fewest trips</li>
-    <%= Trip.date_with_lowest_trips.last.to_date %> : <%= Trip.date_with_lowest_trips.first %>
+    <table>
+      <tr>
+        <th>Date with most trips:</th>
+        <th class="value"><%= Trip.date_with_highest_trips.last.to_date %> => <%= Trip.date_with_highest_trips.first %></th>
+      </tr>
+      <tr>
+        <th>Date with fewest trips:</th>
+        <th class="value"><%= Trip.date_with_lowest_trips.last.to_date %> => <%= Trip.date_with_lowest_trips.first %></th>
+      </tr>
+    </table>
 
+    <table>
+      <tr>
+        <th>Most ridden bike ID:</th>
+        <th class="value"><%= Trip.most_ridden_bike %></th>
+      </tr>
+      <tr>
+        <th>Least ridden bike ID:</th>
+        <th class="value"><%= Trip.least_ridden_bike %></th>
+      </tr>
+    </table>
 
-</ul>
+    <table>
+      <tr>
+        <th>User subscription breakout by count:</th>
+        <%Trip.subscription_type_breakout.each do |type| %>
+        <th><%= type.first %>: <%= type.last %></th>
+        <% end  %>
+      </tr>
+      <tr>
+        <th>User subscription breakout by percent:</th>
+        <%Trip.percentage_subscription_type.each do |type| %>
+        <th><%= type.first %>: <%= type.last %>%</th>
+        <% end  %>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <th colspan=2>Month-month breakdown of total rides:</th>
+
+        <% Trip.total_rides_per_month.each do |monthcount| %>
+        <tr>
+          <th><%= monthcount.first%></th>
+          <th><%=monthcount.last%></th>
+        </tr>
+        <% end  %>
+      </tr>
+
+    </table>
+  </div>
+
+</body>

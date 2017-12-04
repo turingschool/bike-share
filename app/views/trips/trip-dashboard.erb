@@ -1,0 +1,35 @@
+<h1> Trip Dashboard </h1>
+
+<p> Average duration of a ride: <%= "#{Trip.average_duration}" %></p>
+
+<p> Longest Ride: <%= "#{Trip.longest_ride}" %></p>
+
+<p> Shortest Ride: <%= "#{Trip.shortest_ride}" %></p>
+
+<p> Start station with most rides: <%= "#{Trip.popular_starting_place}" %></p>
+
+<p> Start station with least rides: <%= "#{Trip.least_popular_starting_place}" %></p>
+
+<p> ending station with most rides: <%= "#{Trip.popular_ending_place}" %></p>
+
+<p> Bike with most rides: <%= "#{Trip.popular_bike}" %> Usage: <%= "#{Trip.popular_bikes_usage}" %></p>
+
+<p> Bike with least rides: <%= "#{Trip.least_popular_bike}" %> Usage: <%= "#{Trip.least_popular_bikes_usage}"%></p>
+
+<p> Customer Count: <%= "#{Trip.customer_count}" %> Percentage: <%= "#{Trip.customer_percentage}" %>%  </p>
+
+<p> Subscriber Count: <%= "#{Trip.subscriber_count}" %> Percentage: <%= "#{Trip.subscriber_percentage}" %>% </p>
+
+<p> Single date with the highest number of trips:  <%= "#{Trip.date_with_highest_trips}" %> Total trips: <%="#{Trip.highest_trip_date_count}"%></p>
+
+<p> Single date with the lowest number of trips:  <%= "#{Trip.date_with_lowest_trips}" %> Total trips: <%="#{Trip.lowest_trip_date_count}"%></p>
+
+<h3> Subtotals by year: <% Trip.year_subtotals.each do |year_count| %> </h3>
+                <h4> Year: <%= year_count.first.strftime("%Y") %>  </h4>
+             <p> Trip Count: <%= year_count.last %> </p>
+                             <%end%>
+
+<h3> Month by month trip count breakdown: <% Trip.month_by_month_breakdown.each do |month_count| %> </h3> <br>
+                             <%= month_count.first.strftime("%B %Y") %>
+             <p> Trip Count: <%= month_count.last %> </p>
+                             <%end%>

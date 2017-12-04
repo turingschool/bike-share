@@ -38,7 +38,7 @@ nav {
   padding: 5px 0 0 10px;
 }
 
-.station-container {
+.body-container {
    display: flex;
    align-items: center;
    justify-content: space-between;
@@ -59,7 +59,7 @@ nav {
   padding: 0 10px 5px 0;
 }
 
-.individual-station {
+.individual-container {
   width: 32%;
   margin-bottom: 20px;
   background-color: #cecece;

@@ -101,7 +101,7 @@ RSpec.describe Trip do
       start_station_name: "SFO", end_date: "2013-02-27", end_station_id: 1,
       end_station_name: "Mission District", bike_id: 510, subscription_type: "Customer",
       zip_code: 94105)
-      @trip_3 = Trip.create(duration: 43, start_date: "2014-08-18", start_station_id: 2,
+      @trip_3 = Trip.create(duration: 43, start_date: "2014-06-22", start_station_id: 2,
       start_station_name: "Turing", end_date: "2014-08-18", end_station_id: 4,
       end_station_name: "Union Station", bike_id: 510, subscription_type: "Subscriber",
       zip_code: 94128)
@@ -166,7 +166,7 @@ RSpec.describe Trip do
       describe ".least_ridden_bike" do
         it "gives least ridden bike with total number of rides for that bike" do
           expect(Trip.least_ridden_bike.class).to eql(Array)
-          expect(Trip.least_ridden_bike).to eq([550,1])
+          expect(Trip.least_ridden_bike).to eq([520,1])
         end
       end
 
@@ -177,24 +177,30 @@ RSpec.describe Trip do
         end
       end
 
-      describe ".user_subscription_type_percentage" do
-        it "user subscription type breakout with percentage" do
-          expect(Trip.user_subscription_type_percentage.class).to eql(Hash)
-          expect(Trip.user_subscription_type_percentage).to have_value(75.0)
+      describe '.customer_subscription_percentage' do
+        it "customer subscription type breakout with percentage" do
+          expect(Trip.customer_subscription_percentage).to eq(25.0)
         end
       end
+
+      describe '.subscriber_subscription_percentage' do
+        it "subscriber subscription type breakout with percentage" do
+          expect(Trip.subscriber_subscription_percentage).to eq(75.0)
+        end
+      end
+
 
       describe ".single_date_with_highest" do
         it "single date with highest number of trips with count of those trips" do
           expect(Trip.single_date_with_highest.class).to eql(Array)
-          expect(Trip.single_date_with_highest).to eq(["2013-02-27", 1])
+          expect(Trip.single_date_with_highest).to eq(["2014-06-22 00:00:00 UTC", 2])
         end
       end
 
       describe ".single_date_with_lowest" do
         it "single date with lowest number of trips with count of those trips" do
           expect(Trip.single_date_with_lowest.class).to eql(Array)
-          expect(Trip.single_date_with_lowest).to eq(["2013-02-27", 1])
+          expect(Trip.single_date_with_lowest).to eq(["2013-02-27 00:00:00 UTC", 1])
         end
       end
     end
@@ -226,7 +232,7 @@ RSpec.describe Trip do
 
       describe ".date_with_highest_number_trips_started" do
         it "gives the date with the highest number of trips started at a particular station" do
-          expect(Trip.date_with_highest_number_trips_started(@station_2.id)).to eq("2014-08-18")
+          expect(Trip.date_with_highest_number_trips_started(@station_2.id)).to eq("2014-06-22")
         end
       end
 

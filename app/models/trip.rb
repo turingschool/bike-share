@@ -37,69 +37,52 @@ class Trip < ActiveRecord::Base
   end
 
   def self.month_by_month
-    dates = group(:start_date).order(start_date: :asc).count(:start_date)
-    dates.reduce(Hash.new(0)) do |result, (date,count)|
-      result[date.strftime("%m/%y")] += count
-      result
-    end
+    group("DATE_TRUNC('month', start_date)").order("DATE_TRUNC('month', start_date)").count
     #we will need to do some addition work in the view to get formatting correct
   end
 
   def self.year_by_year
-    dates = group(:start_date).order(start_date: :asc).count(:start_date)
-    dates.reduce(Hash.new(0)) do |result, (date,count)|
-      result[date.strftime("%Y")] += count
-      result
-    end
+    group("DATE_TRUNC('year', start_date)").order("DATE_TRUNC('year', start_date)").count
     #we will need to do some addition work in the view to get formatting correct
   end
 
   def self.most_ridden_bike
-    bikes = group(:bike_id).order(bike_id: :desc).count(:bike_id)
-    bikes.max_by do |bike,count|
-      count
-    end
+    group(:bike_id).order("count_bike_id desc").count(:bike_id).first
   end
 
   def self.least_ridden_bike
-    bikes = group(:bike_id).order(bike_id: :desc).count(:bike_id)
-    bikes.min_by do |bike,count|
-      count
-    end
+    group(:bike_id).order("count_bike_id asc").count(:bike_id).first
   end
+
+  def self.subscription_breakdown
+    group(:subscription_type).count
+  end
+
 
   def self.user_subscription_type_count
-    group(:subscription_type).count(:subscription_type)
+    group(:subscription_type).order(:subscription_type).count
   end
 
-  def self.user_subscription_type_percentage
+
+  def self.customer_subscription_percentage
     total_subscriptions = Trip.all.count
-    user_subscription_type_count.reduce(Hash.new(0)) do |result, (subscription_type, count)|
-      result[subscription_type] += (count.to_f/total_subscriptions.to_f)*100
-      result
-    end
+    (user_subscription_type_count.values.first.to_f / total_subscriptions.to_f) * 100
+
   end
+
+  def self.subscriber_subscription_percentage
+    total_subscriptions = Trip.all.count
+    (user_subscription_type_count.values.last.to_f / total_subscriptions.to_f) * 100
+  end
+
 
   def self.single_date_with_highest
-    dates = group(:start_date).order(start_date: :asc).count(:start_date)
-    converted_dates = dates.reduce(Hash.new(0)) do |result, (date,count)|
-      result[date.strftime("%Y-%m-%d")] += count
-      result
-    end
-    converted_dates.max_by do |bike,count|
-      count
-    end
+    group("DATE_TRUNC('day', start_date)").order('count_all desc').count.first
+
   end
 
   def self.single_date_with_lowest
-    dates = group(:start_date).order(start_date: :asc).count(:start_date)
-    converted_dates = dates.reduce(Hash.new(0)) do |result, (date,count)|
-      result[date.strftime("%Y-%m-%d")] += count
-      result
-    end
-    converted_dates.min_by do |bike,count|
-      count
-    end
+    group("DATE_TRUNC('day', start_date)").order('count_all asc').count.first
   end
 
   def self.number_rides_at_start_station(id)
@@ -111,23 +94,18 @@ class Trip < ActiveRecord::Base
   end
 
   def self.most_frequent_destination_station(id)
-    stations = where(start_station_id: id).group(:end_station_id).order(end_station_id: :desc).count(:end_station_id)
-    station_id = stations.max_by do |station,count|
-      count
-    end.first
+    station_id = where(start_station_id:id).group(:end_station_id).order("count_end_station_id desc").count(:end_station_id).first[0]
+
     Station.find(station_id).name
   end
 
   def self.most_frequent_origination_station(id)
-    stations = where(end_station_id: id).group(:start_station_id).order(start_station_id: :desc).count(:start_station_id)
-    station_id = stations.max_by do |station,count|
-      count
-    end.first
+    station_id = where(end_station_id:id).group(:start_station_id).order("count_start_station_id desc").count(:start_station_id).first[0]
+
     Station.find(station_id).name
   end
 
   def self.date_with_highest_number_trips_started(id)
-    # require 'pry'; binding.pry
     dates = where(start_station_id: id).group(:start_date).order(start_date: :desc).count(:start_date)
     dates.first[0].strftime("%Y-%m-%d")
   end

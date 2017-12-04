@@ -3,19 +3,27 @@
   <head>
     <meta charset="utf-8">
     <title>Station Page <%= @station.name %></title>
+    <link rel="stylesheet" type="text/css" href="/reset.css">
+    <link rel="stylesheet" type="text/css" href="/main.css">
   </head>
   <body>
-    <div class="individual-station">
-      <p>Station Name: <%= @station.name %></p><br>
-      <p>Dock Count: <%= @station.dock_count %></p><br>
-      <p>City: <%= @station.city %></p><br>
-      <p>Installation Date: <%= @station.installation_date %></p><br>
-      <div class="edit-delete">
-        <a href="/stations/<%= @station.id%>/edit">Edit</a>
-        <form class="delete" action="/stations/<%= @station.id %>" method="post">
-          <input type="hidden" name="_method" value="DELETE">
-          <input type="submit" value="Delete">
-        </form>
+    <nav>
+      <img class="logo" src="https://bikeshare.metro.net/wp-content/themes/lametro/library/images/logo.png">
+      <h1><%= @station.name %></h1>
+    </nav>
+    <div class="body-container">
+      <div class="individual-container">
+        <p>Station Name: <%= @station.name %></p><br>
+        <p>Dock Count: <%= @station.dock_count %></p><br>
+        <p>City: <%= @station.city %></p><br>
+        <p>Installation Date: <%= @station.installation_date %></p><br>
+        <div class="edit-delete">
+          <a href="/stations/<%= @station.id%>/edit">Edit</a>
+          <form class="delete" action="/stations/<%= @station.id %>" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete">
+          </form>
+        </div>
       </div>
     </div>
   </body>

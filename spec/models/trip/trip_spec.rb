@@ -1,4 +1,4 @@
-RSpec.describe Trip do
+homeRSpec.describe Trip do
   context "Validations" do
     it "can't save trip without duration" do
       trip = Trip.create(start_date: "2013-08-29", start_station_id: 4,

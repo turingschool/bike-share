@@ -2,21 +2,31 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Edit Conditions</title>
+    <title>Edit Condition</title>
+    <link rel="stylesheet" type="text/css" href="/reset.css">
+    <link rel="stylesheet" type="text/css" href="/main.css">
   </head>
   <body>
-    <form class="edit-condition" action="/conditions/<%= @condition.id %>" method="post">
-      <input type="hidden" name="_method" value="PUT">
-      <p>Date:</p><input type="text" name="condition[date]" value="<%= @condition.date %>">
-      <p>Max Temp in F:</p><input type="text" name="condition[max_temperature_f]" value="<%= @condition.max_temperature_f %>">
-      <p>Mean Temp in F</p><input type="text" name="condition[mean_temperature_f]" value="<%= @condition.mean_temperature_f %>">
-      <p>Min Temp in F</p><input type="text" name="condition[min_temperature_f]" value="<%= @condition.min_temperature_f %>">
-      <p>Mean Humidity</p><input type="text" name="condition[mean_humidity]" value="<%= @condition.mean_humidity %>">
-      <p>Mean Visibility in Miles</p><input type="text" name="condition[mean_visibility_miles]" value="<%= @condition.mean_visibility_miles %>">
-      <p>Mean Wind Speed in MPH</p><input type="text" name="condition[mean_wind_speed_mph]" value="<%= @condition.mean_wind_speed_mph %>">
-      <p>Precipitation in Inches</p><input type="text" name="condition[precipitation_inches]" value="<%= @condition.precipitation_inches %>">
-      <p>Zip Code</p><input type="text" name="condition[zip_code]" value="<%= @condition.zip_code %>">
-      <input type="submit" value="Submit">
-    </form>
+    <nav>
+      <img class="logo" src="https://bikeshare.metro.net/wp-content/themes/lametro/library/images/logo.png">
+      <h1>Edit Condition</h1>
+    </nav>
+    <div class="body-container">
+      <div class="individual-container">
+        <form class="edit-condition" action="/conditions/<%= @condition.id %>" method="post">
+          <input type="hidden" name="_method" value="PUT">
+          <p>Date:</p><input type="text" name="condition[date]" value="<%= @condition.date %>">
+          <p>Max Temp in F:</p><input type="text" name="condition[max_temperature_f]" value="<%= @condition.max_temperature_f %>">
+          <p>Mean Temp in F</p><input type="text" name="condition[mean_temperature_f]" value="<%= @condition.mean_temperature_f %>">
+          <p>Min Temp in F</p><input type="text" name="condition[min_temperature_f]" value="<%= @condition.min_temperature_f %>">
+          <p>Mean Humidity</p><input type="text" name="condition[mean_humidity]" value="<%= @condition.mean_humidity %>">
+          <p>Mean Visibility in Miles</p><input type="text" name="condition[mean_visibility_miles]" value="<%= @condition.mean_visibility_miles %>">
+          <p>Mean Wind Speed in MPH</p><input type="text" name="condition[mean_wind_speed_mph]" value="<%= @condition.mean_wind_speed_mph %>">
+          <p>Precipitation in Inches</p><input type="text" name="condition[precipitation_inches]" value="<%= @condition.precipitation_inches %>">
+          <p>Zip Code</p><input type="text" name="condition[zip_code]" value="<%= @condition.zip_code %>">
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
   </body>
 </html>

@@ -132,4 +132,12 @@ class Trip < ActiveRecord::Base
     dates.first[0].strftime("%Y-%m-%d")
   end
 
+  def self.most_frequent_user_zipcode(id)
+    where(start_station_id: id).group(:zip_code).order("count_zip_code desc").count(:zip_code).first[0]
+  end
+
+  def self.most_frequent_bike_id(id)
+    where(start_station_id: id).group(:bike_id).order("count_bike_id desc").count(:bike_id).first[0]
+  end
+
 end

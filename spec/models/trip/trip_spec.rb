@@ -1,4 +1,4 @@
-homeRSpec.describe Trip do
+RSpec.describe Trip do
   context "Validations" do
     it "can't save trip without duration" do
       trip = Trip.create(start_date: "2013-08-29", start_station_id: 4,
@@ -105,10 +105,10 @@ homeRSpec.describe Trip do
       start_station_name: "Turing", end_date: "2014-08-18", end_station_id: 4,
       end_station_name: "Union Station", bike_id: 510, subscription_type: "Subscriber",
       zip_code: 94128)
-      @trip_4 = Trip.create(duration: 33, start_date: "2014-06-22", start_station_id: 3,
+      @trip_4 = Trip.create(duration: 33, start_date: "2014-06-22", start_station_id: 2,
       start_station_name: "Capitol Hill", end_date: "2014-06-22", end_station_id: 4,
       end_station_name: "Red Rocks", bike_id: 550, subscription_type: "Subscriber",
-      zip_code: 94101)
+      zip_code: 94105)
     end
 
     context "Trip Methods for Trip Dashboard Page" do
@@ -220,7 +220,7 @@ homeRSpec.describe Trip do
 
       describe ".most_frequent_origination_station" do
         it "gives most frequent origination station for rides that end at this station" do
-          expect(Trip.most_frequent_origination_station(@station_4.id)).to eq("WI")
+          expect(Trip.most_frequent_origination_station(@station_4.id)).to eq("CO")
         end
       end
 
@@ -232,15 +232,14 @@ homeRSpec.describe Trip do
 
       describe ".most_frequent_user_zipcode" do
         it "gives most frequent zipcode for users starting trips at a specific station" do
-          expect(Trip.most_frequent_user_zipcode.class).to eql(Hash)
-          expect(Trip.most_frequent_user_zipcode).to have_value(1)
+          expect(Trip.most_frequent_user_zipcode(@station_2.id)).to eq(94105)
         end
       end
 
       describe ".most_frequent_bike_id" do
         it "gives most frequent bike id starting trips at a specific station" do
-          expect(Trip.most_frequent_bike_id.class).to eql(Hash)
-          expect(Trip.most_frequent_bike_id).to have_value(1)
+          expect(Trip.most_frequent_bike_id(@station_2.id)).to eq(510)
+
         end
       end
     end

@@ -63,5 +63,12 @@ RSpec.describe Station do
       
       expect(Station.most_recent_station_date).to eq(Date.parse("2015-06-09"))
     end 
+    it "finds station with oldest installation date" do
+       Station.create(name: "San Jose Civic Center", dock_count: 15, city: "San Jose", installation_date: "2013-08-06")
+      Station.create(name: "Timo", dock_count: 10, city: "SF", installation_date: "2014-04-09")
+      Station.create(name: "Lee", dock_count: 5, city: "SD", installation_date: "2015-06-09")
+      
+      expect(Station.oldest_station_date).to eq(Date.parse("2013-08-06"))
+    end 
   end
 end

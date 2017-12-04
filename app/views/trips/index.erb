@@ -79,7 +79,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
   <div class="w3-row-padding">
     <% @trips.each do |trip| %>
-  <div class="w3-third w3-container w3-margin-bottom">
+  <div class="w3-half w3-container w3-margin-bottom">
     <div class="w3-container w3-border w3-light-grey w3-center">
       <a href="/trips/<%= trip.id %>"> <h5>Trip Id: <%= trip.id %></h5></a>
       <p>Duration: <%= trip.duration %></p>

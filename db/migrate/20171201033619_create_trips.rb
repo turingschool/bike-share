@@ -13,4 +13,5 @@ class CreateTrips < ActiveRecord::Migration[5.1]
         trip.integer      :zip_code
       end
   end
+
 end

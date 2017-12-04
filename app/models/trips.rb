@@ -2,6 +2,9 @@ require 'will_paginate'
 require 'will_paginate/active_record'
 
 class Trip < ActiveRecord::Base
+  belongs_to :start_station, class_name: "Station", foreign_key: "start_station_id"
+  belongs_to :end_station, class_name: "Station", foreign_key: "end_station_id"
+
 
   validates_presence_of :duration,
                         :start_date,
@@ -49,6 +52,51 @@ class Trip < ActiveRecord::Base
 
   def self.least_popular_bikes_usage
     group(:bike_id).order('count_id asc').limit(1).count(:id).first[1]
+  end
+
+  def self.customer_count
+    where(subscription: 'Customer').count
+  end
+
+  def self.customer_percentage
+    ((self.customer_count / self.all.count.to_f)*100).round(2)
+  end
+
+  def self.subscriber_count
+    where(subscription: 'Subscriber').count
+  end
+
+  def self.subscriber_percentage
+    ((self.subscriber_count / self.all.count.to_f)*100).round(2)
+  end
+
+  def self.date_with_highest_trips
+    group(:start_date).order('count_id desc').limit(1).count(:id).first[0]
+  end
+
+  def self.highest_trip_date_count
+    group(:start_date).order('count_id desc').limit(1).count(:id).first[1]
+  end
+
+  def self.date_with_lowest_trips
+    group(:start_date).order('count_id asc').limit(1).count(:id).first[0]
+  end
+
+  def self.lowest_trip_date_count
+    group(:start_date).order('count_id asc').limit(1).count(:id).first[1]
+  end
+
+  def self.month_by_month_breakdown
+    group("DATE_TRUNC('month', start_date)").count.to_a.sort
+  end
+
+  def self.year_subtotals
+    group("DATE_TRUNC('year', start_date)").count.to_a.sort
+  end
+
+  def self.most_frequent_destination(station_name)
+    station = Trip.where(start_station_name: station_name).group(:end_station_name).order('count(*) DESC').count(:start_station_name).first
+    (Station.find_by(name: station.first)).name
   end
 
 end

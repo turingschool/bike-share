@@ -111,4 +111,23 @@ class Trip < ActiveRecord::Base
       "Not enough data"
     end
   end
+
+  def self.number_trips_started_at_station(station_name)
+    station = Trip.where(start_station_name: station_name).group(:start_station_name).order('count(*) DESC').count.first[1]
+  end
+
+  def self.number_trips_ended_at_station(station_name)
+    station = Trip.where(end_station_name: station_name).group(:end_station_name).order('count(*) DESC').count.first[1]
+  end
+
+  def self.date_with_highest_trips(station_name)
+    date = Trip.where(start_station_name: station_name).group(:start_date).order('count(*) DESC').count.first[0]
+
+  end
+
+  def self.most_frequent_user_zipcodes(station_name)
+    zipcode = Trip.where(start_station_name: station_name).group(:zip_code).order('count(*) DESC').count.first[0]
+  end
+
+
 end

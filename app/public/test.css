@@ -67,7 +67,7 @@ nav li{
 
 .name:hover {
   color: black;
-  transition-duration: 0.5s;
+  transition-duration: 1.0s;
 
 }
 .edit {

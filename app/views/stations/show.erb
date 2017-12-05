@@ -25,6 +25,13 @@
           </form>
         </div>
       </div>
+      <p>Number of Rides started at <%= @station.name %>: <%= Trip.number_rides_at_start_station(@station.id) %> </p><br>
+      <p>Number of Rides ended at <%= @station.name %>: <%= Trip.number_rides_at_end_station(@station.id) %>    </p>
+      <p>Station that is the most frequent destination station from <%= @station.name %>: <%= Trip.most_frequent_destination_station(@station.id) %>    </p>
+      <p>Station that is the most frequent start station for trips that ends at <%= @station.name %>: <%= Trip.most_frequent_origination_station(@station.id) %></p>
+      <p>Date with the highest number of trips started at <%= @station.name %>: <%= Trip.date_with_highest_number_trips_started(@station.id) %></p>
+      <p> Most frequent Zip Code for users starting trips at <%= @station.name %>: <%= Trip.most_frequent_user_zipcode(@station.id) %>    </p>
+      <p>Most frequent Bike ID for Bikes that starts trips at <%= @station.name %>: <%= Trip.most_frequent_bike_id(@station.id) %>       </p>
     </div>
   </body>
 </html>

@@ -1,0 +1,17 @@
+<h1>Weather Conditions</h1>
+<a href="/">Home</a>
+
+<ol>
+  <% @conditions.each do |condition| %>
+  <li><a href="/conditions/<%=condition.id%>"><%= condition.date %></a></li>
+  <section class="delete">
+    <form action='/conditions/<%=condition.id%>' method='POST'>
+      <input type='hidden' name='_method' value='DELETE'>
+      <button type='submit' class="delete_button">delete</button>
+    </form>
+  </section>
+  <%end%>
+</ol>
+
+<a href="/conditions">Forward</a></br>
+<a href="/conditions/new">New</a>

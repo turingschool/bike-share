@@ -63,6 +63,7 @@ describe "when user visits /trips/:id/edit path" do
   end
 
   it "sees a Submit button that when clicked redirects user to that trip's show page" do
+    skip
     trip = Trip.create(duration: 35,
       start_date: DateTime.now,
       start_station_name: "Japan",
@@ -78,8 +79,6 @@ describe "when user visits /trips/:id/edit path" do
     fill_in 'Duration(minutes):', with: 55
 
     click_button("Submit")
-
-    
 
     expect(page).to have_content(55)
   end

@@ -1,4 +1,5 @@
 class Condition < ActiveRecord::Base
+  self.primary_key = "date"
 
   validates_presence_of :date,
                         :mean_temperature_f,
@@ -10,10 +11,8 @@ class Condition < ActiveRecord::Base
                         :precipitation_inches,
                         :zip_code
 
-	has_many :trips, :class_name => "Trip", :foreign_key => "condition_id"
+  validates :date, uniqueness: true
 
-  def self.id_by_date(date)
-  		find_by(weather_date: date).id
-  	end
+  has_many  :trips, :foreign_key => :start_date
 
 end

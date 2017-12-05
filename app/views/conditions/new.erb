@@ -5,6 +5,7 @@
     <title>Create Conditions</title>
     <link rel="stylesheet" type="text/css" href="/reset.css">
     <link rel="stylesheet" type="text/css" href="/main.css">
+    <link rel="stylesheet" type="text/css" href="/form.css">
   </head>
   <body>
     <nav>
@@ -14,7 +15,7 @@
     <div class="body-container">
       <div class="individual-container">
         <form class="new-condition" action="/conditions" method="post">
-          <p>Date</p><input type="text" name="condition[date]" value="Date">
+          <p>Date</p><input type="date" name="condition[date]" value="Date">
           <p>Max Temp in F</p><input type="text" name="condition[max_temperature_f]" value="Max Temp">
           <p>Mean Temp in F</p><input type="text" name="condition[mean_temperature_f]" value="Mean Temp">
           <p>Min Temp in F</p><input type="text" name="condition[min_temperature_f]" value="Min Temp">

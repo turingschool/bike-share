@@ -5,6 +5,7 @@
     <title>Create New Trip</title>
     <link rel="stylesheet" type="text/css" href="/reset.css">
     <link rel="stylesheet" type="text/css" href="/main.css">
+    <link rel="stylesheet" type="text/css" href="/form.css">
   </head>
   <body>
     <nav>
@@ -15,7 +16,7 @@
       <div class="individual-container">
         <form class="new-trip" action="/trips" method="post">
           <p>Duration</p><input type="text" name="trip[duration]" value="Duration">
-          <p>Start Date</p><input type="text" name="trip[start_date]" value="Start Date">
+          <p>Start Date</p><input type="date" name="trip[start_date]" value="Start Date">
           <p>Start Station</p><select name="trip[start_station_id]">
           <% @stations.sort_by(&:name).each do |station| %>
             <option value="<%= station.id %>">
@@ -23,7 +24,7 @@
             </option>
           <% end %>
           </select>
-          <p>End Date</p><input type="text" name="trip[end_date]" value="End Date">
+          <p>End Date</p><input type="date" name="trip[end_date]" value="End Date">
           <p>End Station</p><select name="trip[end_station_id]">
           <% @stations.sort_by(&:name).each do |station| %>
             <option value="<%= station.id %>">

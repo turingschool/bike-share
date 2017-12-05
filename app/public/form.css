@@ -17,6 +17,15 @@ input[type=text], select, textarea{
     resize: vertical;
 }
 
+input[type=date], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
 input[type=submit] {
     background-color: #4286f4;
     color: white;

@@ -43,4 +43,8 @@ class Station < ActiveRecord::Base
     where(installation_date: Station.oldest_install_date)
   end
 
+  def number_of_trips_started_at_station
+    binding.pry
+  end
+
 end

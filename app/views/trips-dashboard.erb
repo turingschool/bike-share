@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Trip Dashboard
+    </title>
+  </head>
+  <body>
+    <h1>Trip Dashboard</h1>
+    <p>Average Duration Per Ride: <%= Trip.average_duration_per_ride %></p><br>
+    <p>Longest_ride: <%= Trip.longest_ride%></p><br>
+    <p>Shortest Ride: <%= Trip.shortest_ride%> </p><br>
+    <p>Station with Most Rides as a Starting Place: <%= Trip.start_station_with_most_rides%></p><br>
+    <p>Station with Most Rides as a Ending Place: <%= Trip.end_station_with_most_rides%></p><br>
+    <table>
+      <caption>Number of Rides per Month</caption>
+      <tr>
+        <th>Month</th>
+        <th>Number of Rides</th>
+      </tr>
+      <% Trip.month_by_month.each do |month,count| %>
+      <tr>
+        <td><%= Date.parse("#{month}").strftime("%Y-%m") %></td>
+        <td><%= count %></td>
+      </tr>
+      <% end %>
+    </table>
+    <table>
+      <caption>Number of Rides per Year</caption>
+      <tr>
+        <th>Year</th>
+        <th>Number of Rides</th>
+      </tr>
+      <% Trip.year_by_year.each do |year,count| %>
+      <tr>
+        <td><%= Date.parse("#{year}").strftime("%Y") %></td>
+        <td><%= count %></td>
+      </tr>
+      <% end %>
+    </table>
+    <p>Most Ridden Bike: <%= Trip.most_ridden_bike.first%></p><br>
+    <p>Most Ridden Bike Count: <%= Trip.most_ridden_bike[1]%></p><br>
+    <p>Least Ridden Bike: <%= Trip.least_ridden_bike.first%></p><br>
+    <p>Least Ridden Bike Count: <%= Trip.least_ridden_bike[1]%></p><br>
+    <table>
+      <caption>Subscription Type Breakdown</caption>
+      <tr>
+        <th>Subscription Type</th>
+        <th>Count</th>
+        <th>Percentage</th>
+      </tr>
+      <tr>
+        <td>Customer</td>
+        <td><%= Trip.subscription_breakdown["Customer"] %></td>
+        <td><%= Trip.customer_subscription_percentage.round(2) %>%</td>
+      </tr>
+      <tr>
+        <td>Subscriber</td>
+        <td><%= Trip.subscription_breakdown["Subscriber"] %></td>
+        <td><%= Trip.subscriber_subscription_percentage.round(2) %>%</td>
+      </tr>
+    </table>
+    <p>Date with Highest Number of Trips: <%= Date.parse("#{Trip.single_date_with_highest.first}").strftime("%Y-%m-%d")%></p><br>
+    <p>Date with Highest Number of Trips Count: <%= Trip.single_date_with_highest[1]%></p><br>
+    <p>Date with Lowest Number of Trips: <%= Date.parse("#{Trip.single_date_with_lowest.first}").strftime("%Y-%m-%d")%></p><br>
+    <p>Date with Lowest Number of Trips Count: <%= Trip.single_date_with_lowest[1]%></p><br>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Create New Trip</title>
+    <link rel="stylesheet" type="text/css" href="/reset.css">
+    <link rel="stylesheet" type="text/css" href="/main.css">
+  </head>
+  <body>
+    <nav>
+      <img class="logo" src="https://bikeshare.metro.net/wp-content/themes/lametro/library/images/logo.png">
+      <h1>Create a New Trip</h1>
+    </nav>
+    <div class="body-container">
+      <div class="individual-container">
+        <form class="new-trip" action="/trips" method="post">
+          <p>Duration</p><input type="text" name="trip[duration]" value="Duration">
+          <p>Start Date</p><input type="text" name="trip[start_date]" value="Start Date">
+          <p>Start Station</p><select name="trip[start_station_id]">
+          <% @stations.sort_by(&:name).each do |station| %>
+            <option value="<%= station.id %>">
+            <%= station.name.upcase %>
+            </option>
+          <% end %>
+          </select>
+          <p>End Date</p><input type="text" name="trip[end_date]" value="End Date">
+          <p>End Station</p><select name="trip[end_station_id]">
+          <% @stations.sort_by(&:name).each do |station| %>
+            <option value="<%= station.id %>">
+            <%= station.name.upcase %>
+            </option>
+          <% end %>
+          </select>
+          <p>Bike ID</p><input type="text" name="trip[bike_id]" value="Bike ID">
+          <p>Subscription Type</p><input type="text" name="trip[subscription_type]" value="Subsciption Type">
+          <p>Zip Code</p><input type="text" name="trip[zip_code]" value="Zip Code">
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -156,6 +156,10 @@ class Trip < ActiveRecord::Base
     end
   end
 
+  def self.number_of_rides_for_date(date)
+    where(start_date: date).count
+  end
+
   # def validate_query(search)
   #   if search
   #     search

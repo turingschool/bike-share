@@ -86,9 +86,18 @@ class BikeShareApp < Sinatra::Base
     erb :"/trips/dashboard"
   end
 
-  get '/conditions' do 
+  get '/conditions' do
     @conditions = Condition.paginate(:page=>params[:page], :per_page=>30)
     erb :"/conditions/index"
+  end
+
+  get '/conditions/new' do
+    erb :'conditions/new'
+  end
+
+  delete '/conditions/:id' do |id|
+    Condition.destroy(id.to_i)
+    redirect '/conditions'
   end
 
 end

@@ -1,0 +1,24 @@
+<form action="/conditions" method="POST">
+  <h1> New Weather Condition </h1>
+
+  <p> Date: </p>
+  <input type="date" name="condition[date]"/></br>
+  <p> Max Temp(f): </p>
+  <input type="number" name="condition[max_temperature_f]"/></br>
+  <p> Min Temp(f): </p>
+  <input type="number" name="condition[min_temperature_f]"/></br>
+  <p> Mean Temp(f): </p>
+  <input type="number" name="condition[mean_temperature_f]"/></br>
+  <p> Mean Humidity: </p>
+  <input type="number" name="condition[mean_humidity]"/></br>
+  <p> Mean Visibility(miles): </p>
+  <input type="number" name="condition[mean_visibility_miles]"/></br>
+  <p> Mean Wind Speed(mph): </p>
+  <input type="number" name="condition[mean_wind_speed_mph]"/></br>
+  <p> Precipitation(inches): </p>
+  <input type="number" name="condition[precipitation_inches]"/></br>
+  <input type="submit"/>
+</form>
+
+<a href="/conditions">Conditions</a></br>
+<a href="/">Home</a>

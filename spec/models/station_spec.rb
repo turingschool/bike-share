@@ -12,12 +12,13 @@ describe Station do
                 start_station_name: "San Jose Civic Center",
                 start_station_id: @station.id,
                 end_date: DateTime.strptime("8/9/2013", "%m/%d/%Y"),
-                end_station_name: "Timo",
-                end_station_id: 2,
+                end_station_name: "San Jose Civic Center",
+                end_station_id: @station.id,
                 bike_id: 3,
                 subscription_type: "Subscriber",
                 zip_code: 94127
                 )
+
   end
 
   describe "Validations" do
@@ -90,7 +91,7 @@ describe Station do
     end
     it "most rides as ending place" do
 
-      expect(Station.most_rides_as_ending_place).to eq("Timo")
+      expect(Station.most_rides_as_ending_place).to eq("San Jose Civic Center")
     end
   end
   describe "Instance Methods" do 
@@ -98,9 +99,13 @@ describe Station do
 
       expect(@station.number_of_starting_rides).to eq(1)
     end
+    it "number of ending rides" do 
+
+      expect(@station.number_of_ending_rides).to eq(1)
+    end
   end
   describe "Associations" do 
     it{ should have_many(:trips_starting_here)}
     it{ should have_many(:trips_ending_here)}    
-  end
+    end
 end

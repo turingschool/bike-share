@@ -217,12 +217,22 @@ RSpec.describe Trip do
       expect(Trip.most_frequent_origination_station("Adobe on Almaden")).to eql("Golden Gate at Polk")
     end
 
-    it "can find the number of trips by station" do
+    it "can find the number of trips started by station" do
       Trip.create(duration: 40, start_date: "14/9/2013 18:54", start_station_name: "Post at Kearney", end_date: "29/8/2013 18:56", end_station_name: "Golden Gate at Polk", bike_id: 527, subscription: "Subscriber", zip_code: 94109)
       Trip.create(duration: 109, start_date: "28/8/2013 13:25", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 13:27", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Subscriber", zip_code: 95112)
       Trip.create(duration: 138, start_date: "29/8/2013 16:57", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 16:59", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Customer", zip_code: 94117)
 
+      expect(Trip.number_trips_started_at_station("Post at Kearney")).to eql(1)
       expect(Trip.number_trips_started_at_station("Golden Gate at Polk")).to eql(2)
+    end
+
+    it "can find the number of trips ended by station" do
+      Trip.create(duration: 40, start_date: "14/9/2013 18:54", start_station_name: "Post at Kearney", end_date: "29/8/2013 18:56", end_station_name: "Golden Gate at Polk", bike_id: 527, subscription: "Subscriber", zip_code: 94109)
+      Trip.create(duration: 109, start_date: "28/8/2013 13:25", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 13:27", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Subscriber", zip_code: 95112)
+      Trip.create(duration: 138, start_date: "29/8/2013 16:57", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 16:59", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Customer", zip_code: 94117)
+
+      expect(Trip.number_trips_ended_at_station("Adobe on Almaden")).to eql(2)
+      expect(Trip.number_trips_ended_at_station("Golden Gate at Polk")).to eql(1)
     end
 
   end

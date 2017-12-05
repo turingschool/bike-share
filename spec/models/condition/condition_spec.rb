@@ -146,21 +146,21 @@ RSpec.describe Condition do
                   subscription_type: 'Subscriber',
                   zip_code: 94127)
       @condition_1 = Condition.create(date: '2014-11-03',
-                       max_temperature_f: 85,
+                       max_temperature_f: 85.0,
                        mean_temperature_f: 80,
                        min_temperature_f: 75,
                        mean_humidity: 75,
                        mean_visibility_miles: 3,
                        mean_wind_speed_mph: 2,
-                       precipitation: 2)
+                       precipitation_inches: 2)
       @conditions_2 = Condition.create(date: '2014-11-04',
-                       max_temperature_f: 85,
+                       max_temperature_f: 85.0,
                        mean_temperature_f: 80,
                        min_temperature_f: 75,
                        mean_humidity: 75,
                        mean_visibility_miles: 3,
                        mean_wind_speed_mph: 6,
-                       precipitation: 1.3)
+                       precipitation_inches: 1.3)
       @conditions_3 = Condition.create(date: '2013-08-29',
                        max_temperature_f: 85,
                        mean_temperature_f: 80,
@@ -168,7 +168,7 @@ RSpec.describe Condition do
                        mean_humidity: 75,
                        mean_visibility_miles: 3,
                        mean_wind_speed_mph: 7,
-                       precipitation: 15)
+                       precipitation_inches: 15)
       @conditions_4 = Condition.create(date: '2013-08-30',
                        max_temperature_f: 85,
                        mean_temperature_f: 80,
@@ -176,7 +176,7 @@ RSpec.describe Condition do
                        mean_humidity: 75,
                        mean_visibility_miles: 3,
                        mean_wind_speed_mph: 12,
-                       precipitation: 2.5)
+                       precipitation_inches: 2.5)
       @conditions_5 = Condition.create(date: "2013-09-29",
                        max_temperature_f: 85,
                        mean_temperature_f: 80,
@@ -184,7 +184,7 @@ RSpec.describe Condition do
                        mean_humidity: 75,
                        mean_visibility_miles: 3,
                        mean_wind_speed_mph: 10,
-                       precipitation: 1)
+                       precipitation_inches: 1)
 
     @station_1 = Station.create( name: 'Sandwich',
                                  city: "San Francisco",
@@ -220,7 +220,8 @@ RSpec.describe Condition do
 
     describe '.days_within_high_temp' do
       it "returns days within temp range" do
-        expect(Condition.days_within_high_temp).to eq(4)
+
+        expect(Condition.days_within_high_temp(80.0,90.0)).to eq(5)
       end
     end
 

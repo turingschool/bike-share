@@ -245,7 +245,6 @@ RSpec.describe Trip do
       describe ".most_frequent_bike_id" do
         it "gives most frequent bike id starting trips at a specific station" do
           expect(Trip.most_frequent_bike_id(@station_2.id)).to eq(510)
-
         end
       end
     end

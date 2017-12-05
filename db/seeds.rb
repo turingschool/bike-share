@@ -15,6 +15,7 @@ class Seed
       city: row[:city],
       dock_count: row[:dock_count])
     end
+    ActiveRecord::Base.connection.reset_pk_sequence!("stations")
   end
 
   def self.trip
@@ -32,6 +33,7 @@ class Seed
         subscription_type: row[:subscription_type],
         zip_code: (row[:zip_code]).to_s.rjust(5,"0")[0..4].to_i)
     end
+    ActiveRecord::Base.connection.reset_pk_sequence!("trips")
   end
 
   def self.condition
@@ -49,6 +51,7 @@ class Seed
                        zip_code: (row[:zip_code]).to_s.rjust(5,"0")[0..4].to_i)
       end
     end
+    ActiveRecord::Base.connection.reset_pk_sequence!("conditions")
   end
 end
 

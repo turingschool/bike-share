@@ -115,7 +115,7 @@ class Trip < ActiveRecord::Base
   def self.number_trips_started_at_station(station_name)
     station = Trip.where(start_station_name: station_name).group(:start_station_name).order('count(*) DESC').count.first
     if station
-      station.first
+      station[1]
     else
       "Not enough data"
     end

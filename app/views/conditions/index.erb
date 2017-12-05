@@ -3,7 +3,7 @@
 
 <ol>
   <% @conditions.each do |condition| %>
-  <li><%= condition.date %></li>
+  <li><a href="/conditions/<%=condition.id%>"><%= condition.date %></a></li>
   <section class="delete">
     <form action='/conditions/<%=condition.id%>' method='POST'>
       <input type='hidden' name='_method' value='DELETE'>

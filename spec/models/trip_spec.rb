@@ -182,5 +182,14 @@ RSpec.describe Trip do
 
       expect(Trip.lowest_trip_date_count).to eql(1)
     end
+
+    it "can analyze trip data by month" do
+      Trip.create(duration: 40, start_date: "14/9/2013 18:54", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 18:56", end_station_name: "Golden Gate at Polk", bike_id: 527, subscription: "Subscriber", zip_code: 94109)
+      Trip.create(duration: 109, start_date: "28/8/2013 13:25", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 13:27", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Subscriber", zip_code: 95112)
+      Trip.create(duration: 138, start_date: "29/8/2013 16:57", start_station_name: "Post at Kearney", end_date: "29/8/2013 16:59", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Customer", zip_code: 94117)
+
+      expect(Trip.month_by_month_breakdown[0].first.strftime("%B %Y")).to eql("August 2013")
+      expect(Trip.month_by_month_breakdown[0].last).to eql(2)
+    end
   end
 end

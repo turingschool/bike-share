@@ -48,9 +48,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <p class="w3-text-light-grey">Bike Share for Everybody</p>
   </div>
   <div class="w3-bar-block">
-    <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-light-grey"><i class="fa fa-home fa-fw w3-margin-right"></i>HOME</a>
-    <a href="/trips/new" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-light-grey"><i class="fa fa-th-large fa-fw w3-margin-right"></i>ADD NEW TRIP</a>
-    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-light-grey"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
+    <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-light-grey"><i class="fa fa-home fa-fw w3-center"></i>HOME</a>
+    <a href="/trips/new" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-light-grey"><i class="fa fa-plus fa-fw w3-center"></i>ADD NEW TRIP</a>
+    <a href="/trip-dashboard" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-light-grey"><i class="fa fa-th-large fa-fw w3-center"></i>TRIP DASHBOARD</a>
   </div>
   <div class="w3-panel w3-large">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
@@ -72,7 +72,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       <div class="w3-section w3-bottombar w3-padding-16">
         <a href="/stations"><button class="w3-button w3-light-grey w3-padding-large w3-hover-grey"><i class="w3-center"></i>Stations</button></a>
         <a href="/trips"><button class="w3-button w3-light-grey w3-padding-large w3-hover-grey"><i class="w3-center"></i>Trips</button></a>
-        <button class="w3-button w3-light-grey w3-padding-large w3-hover-grey"><i class="w3-center"></i>Weather</button>
+        <a href="/conditions"><button class="w3-button w3-light-grey w3-padding-large w3-hover-grey"><i class="w3-center"></i>Weather</button></a>
       </div>
     </div>
   </header>
@@ -81,7 +81,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <% @trips.each do |trip| %>
   <div class="w3-half w3-container w3-margin-bottom">
     <div class="w3-container w3-border w3-light-grey w3-center w3-round">
-      <a href="/trips/<%= trip.id %>"> <h5>Trip Id: <%= trip.id %></h5></a>
+      <a href="/trips/<%= trip.id %>"> <h3>Trip Id: <%= trip.id %></h3></a>
       <p>Duration: <%= trip.duration %></p>
       <p>Start Date: <%= trip.start_date %></p>
       <p>Start Station: <%= trip.start_station_name %></p>

@@ -94,18 +94,18 @@ class Trip < ActiveRecord::Base
   end
 
   def self.most_frequent_destination(station_name)
-    station = Trip.where(start_station_name: station_name).group(:end_station_name).order('count(*) DESC').count(:start_station_name).first[0]
+    station = Trip.where(start_station_name: station_name).group(:end_station_name).order('count(*) DESC').count(:start_station_name).first
     if station
-      station
+      station[0]
     else
       "Not enough data"
     end
   end
 
   def self.most_frequent_origination_station(station_name)
-    station = Trip.where(end_station_name: station_name).group(:start_station_name).order('count(*) DESC').count(:end_station_name).first[0]
+    station = Trip.where(end_station_name: station_name).group(:start_station_name).order('count(*) DESC').count(:end_station_name).first
     if station
-      station
+      station[0]
     else
       "Not enough data"
     end
@@ -123,34 +123,34 @@ class Trip < ActiveRecord::Base
   def self.number_trips_ended_at_station(station_name)
     station = Trip.where(end_station_name: station_name).group(:end_station_name).order('count(*) DESC').count
     if station
-      station.first.last
+      station.values.first
     else
       "Not enough data"
     end
   end
 
   def self.date_with_highest_trips_by_station(station_name)
-    date = Trip.where(start_station_name: station_name).group(:start_date).order('count(*) DESC').count.first[0]
+    date = Trip.where(start_station_name: station_name).group(:start_date).order('count(*) DESC').count.first
     if date
-      date
+      date[0]
     else
       "Not enough data"
     end
   end
 
   def self.most_frequent_user_zipcodes(station_name)
-    zipcode = Trip.where(start_station_name: station_name).group(:zip_code).order('count(*) DESC').count.first[0]
+    zipcode = Trip.where(start_station_name: station_name).group(:zip_code).order('count(*) DESC').count.first
     if zipcode
-      zipcode
+      zipcode[0]
     else
       "Not enough data"
     end
   end
 
   def self.most_frequent_bike_used(station_name)
-    bike = Trip.where(start_station_name: station_name).group(:bike_id).order('count(*) DESC').count.first[0]
+    bike = Trip.where(start_station_name: station_name).group(:bike_id).order('count(*) DESC').count.first
     if bike
-      bike
+      bike[0]
     else
       "Not enough data"
     end

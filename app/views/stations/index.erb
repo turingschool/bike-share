@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      .btn-success{
+        float:right;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+           <ol class="breadcrumb">
+              <li><a href="/">Home</a></li>
+              <li class = "active" >Stations</li>
+            </ol> 
+          <a class="btn btn-success" href="/stations/new"> Create new station</a>
+          <h1>Bike station details</h1>
+          <p>Manage your local stations below or create a new one</p>
+        </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+  <div class="row">
+      <div class="col-xs-12">
+
+      
+
+      <% @stations.each do |station| %>
+        <ul class = "list-group">
+          <li class = "list-group-item">
+            <a href ="/stations/<%= station.id %>" ><h3><%= station.name %></h3></a>
+            <p> Dock Count: <strong><%= station.dock_count %></strong> </p>
+            <p> City: <strong><%= station.city %></strong></p>
+            <p> Installation Date: <strong><%= station.installation_date %></strong> </p>
+
+            <p><a class="btn btn-warning" href='/stations/<%= station.id  %>/edit'>Edit</a></p>
+
+            <form action="/stations/<%= station.id %>" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <input class = "btn btn-danger"type="submit" value="Delete"/>
+            </form>
+
+          </li>
+        </ul>
+
+      <% end %>
+
+
+ 
+
+
+
+
+  
+<%# 
+      <ul class = "list-group">
+        <li class = "list-group-item"><a href="/stations/new"> Create a new station</a></li>
+      </ul> %>
+
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+  </body>
+</html>

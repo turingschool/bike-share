@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+
+   <div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+          <h1>Make new condition</h1>
+          <form action="/conditions" method="post">
+            <p>Enter details for your new condition below</p>
+
+            <label for="date" >Date</label>
+            <input type='date' class="form-control" name='condition[date]' placeholder="e.g. 74.0" required/><br/>
+
+
+            <label for="max_temperature_f" >Max Temp</label>
+            <input type='number' class="form-control" name='condition[max_temperature_f]' placeholder="e.g. 74.0" required/><br/>
+
+            <label for="min_temperature_f">Min Temp</label>
+            <input type='number' class="form-control" name='condition[min_temperature_f]' placeholder="e.g. 58.0" required/><br/>
+
+            <label for="mean_temperature_f">Mean Temp</label>
+            <input type='number' class="form-control" name='condition[mean_temperature_f]' placeholder="e.g. 58.0" required/><br/>
+
+            <label for="mean_humidity"> Mean Humidity</label>
+            <input type='number' class="form-control" name='condition[mean_humidity]' placeholder="e.g. 68.0" required/><br/>
+
+            <label for="mean_visibility_miles"> Mean Visibility</label>
+            <input type='number' class="form-control" name='condition[mean_visibility_miles]' placeholder="e.g. 10.0" required/><br/>
+
+            <label for="mean_wind_speed_mph"> Max Wind speed</label>
+            <input type='number' class="form-control" name='condition[mean_wind_speed_mph]' placeholder="e.g. 13.0" required/><br/>
+
+            <div class="sumbit_button" align="center">
+              <input class="btn btn-success" type='submit'/>
+            </div>
+
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+</html>

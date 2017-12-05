@@ -1,42 +1,42 @@
-### General 
+### General
 * [ ] Navigation to all links
 * [ ] Simple styling present
 
 ### Iteration 1
 
-* [ ] See all stations 
-* [ ] See one station 
-* [ ] Create a new station 
-* [ ] Update a station 
-* [ ] Delete a station (from either index or show)
-* [ ] Cannot save without name, dock count, city, installation date
+* [X] See all stations
+* [X] See one station
+* [X] Create a new station
+* [X] Update a station
+* [X] Delete a station (from either index or show)
+* [X] Cannot save without name, dock count, city, installation date
 
 ### Iteration 2
 
-* [ ] 70 Stations Load from CSV
+* [X] 70 Stations Load from CSV
 
 ### Iteration 3
 
 On `/station-dashboard`:
 
-* [ ] Total count of stations
-* [ ] Average bikes available per station (based on docks).
-* [ ] Most bikes available at a station (based on docks).
-* [ ] Station(s) where the most bikes are available (based on docks).
-* [ ] Fewest bikes available at a station (based on docks).
-* [ ] Station(s) where the fewest bikes are available (based on docks).
-* [ ] Most recently installed station.
-* [ ] Oldest station.
+* [X] Total count of stations
+* [X] Average bikes available per station (based on docks).
+* [X] Most bikes available at a station (based on docks).
+* [X] Station(s) where the most bikes are available (based on docks).
+* [X] Fewest bikes available at a station (based on docks).
+* [X] Station(s) where the fewest bikes are available (based on docks).
+* [X] Most recently installed station.
+* [X] Oldest station.
 
 ### Iteration 4
 
-* [ ] See all trips 
+* [ ] See all trips
 * [ ] See one trip
-* [ ] Create a new trip 
-* [ ] Update a trip 
+* [ ] Create a new trip
+* [ ] Update a trip
 * [ ] Delete a trip (from either index or show)
 * [ ] All attributes (except zip code) must be present: duration, start date, start station, end date, end station, bike ID, subscription type)
-* [ ] Trips are paginated in groups of 30 
+* [ ] Trips are paginated in groups of 30
 
 ### Iteration 5
 

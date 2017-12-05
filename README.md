@@ -69,7 +69,7 @@ This project must use:
 
 This base repo has already configured those three for you.
 
-You'll want to set up the [DatabaseCleaner](https://github.com/DatabaseCleaner/database_cleaner) gem in order to have a clean database each time you run tests. Follow the instructions for setting up the gem. Due to a bug in the most recent version of the gem, you'll need to use this line when you set the strategy in your test helper file:
+You'll want to set up the [DatabaseCleaner](https://github.com/DatabaseCleaner/database_cleaner) gem in order to have a clean database each datetime you run tests. Follow the instructions for setting up the gem. Due to a bug in the most recent version of the gem, you'll need to use this line when you set the strategy in your test helper file:
 
 ```ruby
 DatabaseCleaner.strategy = :truncation
@@ -150,7 +150,7 @@ As with Iteration 1, be sure that you are working to normalize your database. Th
 * `/trips/new`
 * `/trips/:id/edit`
 
-When a user visits the `/trips` path, they should only see the first thirty trips taken organized by date. On that page, there should also be a button to see the next thirty trips. Once a user visits a second page, there should be buttons to move both forward and backward in time.
+When a user visits the `/trips` path, they should only see the first thirty trips taken organized by date. On that page, there should also be a button to see the next thirty trips. Once a user visits a second page, there should be buttons to move both forward and backward in datetime.
 
 Additionally, users should be able to delete a trip from the views rendered at both `/trips/:id` and `/trips`.
 

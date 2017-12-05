@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   
+  </head>
+  <body>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+          <ol class="breadcrumb">
+              <li><a href="/">Home</a></li>
+              <li><a href="/stations">Stations</a></li>
+              <li class="active">Station Dashboard</li>
+          </ol>
+
+          <h1>Station Dashboard</h1>
+          <p>Explore data analytics for stations in your area</p>
+
+        </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+  <div class="row">
+      <div class="col-xs-12">
+
+        <div class = "total_station">
+          <p><span class="label label-primary">Total station count</span></p>
+          <p><span class="label label-primary"><%= @stations.count %></span></p>
+        </div>
+
+      <div class = "average_bike">
+        <p><span class="label label-info">Average bikes per station</span></p>
+        <p><span class="label label-info"><%= @stations.average_dock_count%></span></p>
+      </div>
+        
+      <div class = "most_bike">  
+        <p><span class="label label-success">Most bikes per station</span></p>
+        <p><span class="label label-success"><%= @stations.maximum_dock_count%></span></p>
+      </div>
+
+      <div class = "least_bike">
+        <p><span class="label label-danger">Least bikes per station</span></p>
+        <p><span class="label label-danger"><%= @stations.minimum_dock_count%></span></p>
+      </div>
+
+      <div class = "most_recent">
+        <p><span class="label label-default">Most recently installed station</span></p>
+        <p><span class="label label-default"><%= @stations.recently_installed_station %></span></p>
+      </div>
+
+      <div class = "oldest">
+        <p><span class="label label-warning">Oldest station</span></p>
+        <p><span class="label label-warning"><%= @stations.oldest_station %></span></p>
+      </div>
+
+
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h3 class="panel-title">Stations with most number of bikes</h3>
+          </div>
+          <div class="panel-body">
+            <% @stations.stations_with_max_bikes.each  do |station| %>
+              <p><%= station.name %></p>
+            <%end%>
+          </div>
+        </div>
+
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h3 class="panel-title">Stations with least number of bikes</h3>
+          </div>
+          <div class="panel-body">
+            <% @stations.stations_with_min_bikes.each  do |station| %>
+              <p><%= station.name %></p>
+            <%end%>
+          </div>
+        </div>
+         
+
+     
+      <% if false %>
+      <p><strong>Total Station Count :</strong><p><%= @stations.count %></p></p>
+      <p><strong>Average Bikes per station: </strong><p><%= @stations.average_dock_count%></p></p>
+      <p><strong>Most Bikes availble per station:</strong> <p><%= @stations.maximum_dock_count%></p></p>
+
+      <p><strong>Stations with most number of bikes:</strong> </p>
+          <% @stations.stations_with_max_bikes.each  do |station| %>
+            <p><%= station.name %></p>
+          <%end%>
+
+      <p><strong>Least Bikes availble per station:</strong><p> <%= @stations.minimum_dock_count%></p></p>
+
+      <p><strong>Stations with least number of bikes:</strong> </p>
+          <% @stations.stations_with_min_bikes.each  do |station| %>
+           <p><%= station.name %></p>
+          <%end%>
+
+      <p><strong>Most recently installed station :</strong>  <p><%= @stations.recently_installed_station %></p></p>
+
+      <p><strong>Oldest station :</strong>  <p><%= @stations.oldest_station %></p></p>
+      <% end %>
+     
+      </div>
+  </div>
+</div>
+
+
+
+
+ 
+
+  </body>
+</html>

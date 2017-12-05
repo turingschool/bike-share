@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row">
+          <div class="col-xs-4 col-md-12">
+           <h1>Weather dashboard </h1>
+          </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-4 col-md-12">
+          <h3>For temperatures </h3>
+        <% (40..80).step(10) do |n| %>
+          <p> <%= "#{n} to #{n + 10}" %>  Feihrenheit</p>
+          <p>Average Number of rides in this range: <%=  Condition.average_number_of_rides_from_temp(n) %></p>
+          <p> Highest number of rides in this range: <%= Condition.highest_number_of_rides_from_temp(n) %></p>
+          <p>Lowest number of rides in this range: <%= Condition.lowest_number_of_rides_from_temp(n) %></p>
+        <% end %>
+        </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-md-12">
+          <h3>For precipitation ranges </h3>
+        <% (0..2).step(0.5) do |n| %>
+          <p> <%= "#{n} to #{n + 0.5 }" %>-</p>
+          <p>Average Number of rides with this precipitation: <%= Condition.average_number_of_rides_from_prec(n) %></p>
+          <p>Highest number of rides with this precipitation: <%= Condition.highest_number_of_rides_from_prec(n) %></p>
+          <p>Lowest number of rides with this precipitation: <%= Condition.lowest_number_of_rides_from_prec(n) %></p>
+        <% end %>
+        </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-md-12">
+          <h3>For Visibility Ranges</h3>
+        <% (0..20).step(4) do |n| %>
+          <p> <%= "#{n} to #{n + 4}" %>-</p>
+          <p>Average Number of rides with this visibility: <%= Condition.average_number_of_rides_from_visibility(n) %></p>
+          <p>Highest Number of rides with this visibility: <%= Condition.highest_number_of_rides_from_visiblity(n) %></p>
+          <p>Lowest Number of rides with this visibility: <%= Condition.lowest_number_of_rides_from_visibility(n) %></p>
+        <% end %>
+        </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-md-12">
+          <h3> Weather of date with highest number of rides:</h3>
+            <p>Date: <%=Condition.weather_on_days_with_highest_number_of_rides.first.date%></p>
+            <p> Max Temperature: <%=Condition.weather_on_days_with_highest_number_of_rides.first.max_temperature_f%></p>
+            <p> Mean Temperature: <%=Condition.weather_on_days_with_highest_number_of_rides.first.mean_temperature_f%></p>
+            <p> Min Temperature: <%=Condition.weather_on_days_with_highest_number_of_rides.first.min_temperature_f%></p>
+            <p> Mean Humidity: <%=Condition.weather_on_days_with_highest_number_of_rides.first.mean_humidity%></p>
+            <p> Mean Visibility(Miles)<%=Condition.weather_on_days_with_highest_number_of_rides.first.mean_visibility_miles%></p>
+            <p> Max Wind Speed (MPH) <%=Condition.weather_on_days_with_highest_number_of_rides.first.mean_wind_speed_mph%></p>
+            <p> Precipitation (inches) <%=Condition.weather_on_days_with_highest_number_of_rides.first.precipitation_inches%></p>
+        </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-md-12">
+          <h3> Weather of date with lowest number of rides:</h3>
+            <p>Date: <%=Condition.weather_on_days_with_lowest_number_of_rides.first.date%></p>
+            <p> Max Temperature: <%=Condition.weather_on_days_with_lowest_number_of_rides.first.max_temperature_f%></p>
+            <p> Mean Temperature: <%=Condition.weather_on_days_with_lowest_number_of_rides.first.mean_temperature_f%></p>
+            <p> Min Temperature: <%=Condition.weather_on_days_with_lowest_number_of_rides.first.min_temperature_f%></p>
+            <p> Mean Humidity: <%=Condition.weather_on_days_with_lowest_number_of_rides.first.mean_humidity%></p>
+            <p> Mean Visibility(Miles)<%=Condition.weather_on_days_with_lowest_number_of_rides.first.mean_visibility_miles%></p>
+            <p> Max Wind Speed (MPH) <%=Condition.weather_on_days_with_lowest_number_of_rides.first.mean_wind_speed_mph%></p>
+            <p> Precipitation (inches) <%=Condition.weather_on_days_with_lowest_number_of_rides.first.precipitation_inches%></p>
+        </div>
+    </div>
+  </div>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="/stations">Stations</a></li>
+            <li class="active"><%= @station.name %></li>
+          </ol>
+
+
+
+          <h1><%= @station.name %></h1>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Dock count</th>
+                <th>City</th>
+                <th>Installation date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><%= @station.dock_count %></th>
+                <td><%= @station.city %></td>
+                <td><%= @station.installation_date %></td>
+              </tr>
+            </tbody>
+          </table>
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+
+<p><strong>Number of rides started at this station:</strong></p>
+<p><%= @trips.number_of_rides_started_at_this_station(@station.id) %></p>
+<p><strong>Number of rides ended at this station:</strong></p>
+<p><%= @trips.number_of_rides_ended_at_this_station(@station.id) %></p>
+<p><strong>Most frequent destination station:</strong></p>
+<p><%= @trips.most_frequent_destination(@station.id) %></p>
+<p><strong>Most frequent origination station:</strong></p>
+<p><%= @trips.most_frequent_origination(@station.id) %></p>
+
+<p><strong>Date with highest number of trips:</strong></p>
+<p><%= @trips.date_with_highest_number_of_trips_started_at_this_station(@station.id) %></p>
+<p><strong>Most frequent zip code for users starting trips:</strong></p>
+<p><%= @trips.most_frequent_zip_code_for_users_starting_trips_at_this_station(@station.id) %></p>
+<p><strong>Bike most frequently used when starting a trip:</strong></p>
+<p><%= @trips.bike_id_most_frequently_starting_a_trip_at_this_station(@station.id) %></p>

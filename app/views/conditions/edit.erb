@@ -1,0 +1,30 @@
+<h1>Edit your station</h1>
+
+
+<form action="/conditions/<%= @condition.id %>" method="post">
+  <p>Edit</p>
+  <input type="hidden" name="_method" value="PUT" />
+
+<label for="date">Date</label>
+<input type='date' name='condition[date]' value="<%= @condition.date %>"></input>
+
+<label for="max_temperature_f">Max Temp</label>
+<input type='number' name='condition[max_temperature_f]' value="<%= @condition.max_temperature_f %>"></input>
+
+<label for="min_temperature_f">Mean Temp</label>
+<input type='number' name='condition[mean_temperature_f]' value="<%= @condition.mean_temperature_f %>"></input>
+
+<label for="mean_temperature_f">Min Temp</label>
+<input type='number' name='condition[min_temperature_f]' value="<%= @condition.mean_temperature_f %>"></input>
+
+<label for="mean_humidity">Mean Humidity</label>
+<input type='number' name='condition[mean_humidity]' value="<%= @condition.mean_humidity %>"></input>
+
+<label for="mean_visibility_miles">Mean Visibility</label>
+<input type='number' name='condition[mean_visibility_miles]' value="<%= @condition.mean_visibility_miles %>"></input>
+
+<label for="max_wind_Speed_mph">Max Wind speed</label>
+<input type='number' name='condition[mean_wind_speed_mph]' value="<%= @condition.mean_wind_speed_mph %>"></input>
+
+  <input type='submit'/>
+</form>

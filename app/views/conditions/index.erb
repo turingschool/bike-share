@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <style>
+        .btn-success{
+          float:right;
+          margin-top: 30px;
+        }
+      </style>
+  </head>
+  <body>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+         <ol class="breadcrumb">
+              <li><a href="/">Home</a></li>
+              <li class="active">Conditions</li>
+          </ol>
+          <a class="btn btn-success" href="/conditions/new"> Create new condition</a> 
+
+        <h1>Weather conditions</h1>
+        <p>Explore an overview of recent weather conditions</p>
+        </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+  <div class="row">
+      <div class="col-xs-12">
+      <% @conditions.each do |condition| %>
+        <ul class = "list-group">
+          <li class = "list-group-item">
+            <a href ="/conditions/<%= condition.id %>" ><h3><%= condition.date %></h3></a>
+            <p> Max temperature: <strong><%= condition.max_temperature_f %></strong> </p>
+            <p> Mean temperature: <strong><%= condition.mean_temperature_f %></strong></p>
+            <p> Min Temperature: <strong><%= condition.min_temperature_f %></strong> </p>
+            <p> Mean Humdity: <strong><%= condition.mean_humidity %></strong> </p>
+            <p> Mean  Visibility: <strong><%= condition.mean_visibility_miles %></strong> </p>
+            <p> Mean Wind Speed: <strong><%= condition.mean_wind_speed_mph %></strong> </p>
+            <p> Precipitation: <strong><%= condition.precipitation_inches.to_f%></strong> </p>
+
+
+            <p><a class="btn btn-warning" href='/conditions/<%= condition.id  %>/edit'>Edit</a></p>
+
+            <form action="/conditions/<%= condition.id %>" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <input class = "btn btn-danger"type="submit" value="Delete"/>
+            </form>
+
+          </li>
+        </ul>
+
+      <% end %>
+
+      <ul class = "list-group">
+        <li class = "list-group-item"><a href="/conditions/new"> Create a new condition</a></li>
+      </ul>
+
+      </div>
+  </div>
+</div>
+
+
+<%= will_paginate @conditions, :page_links => false %>
+
+
+  </body>
+</html>

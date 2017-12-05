@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="/trips">Trips</a></li>
+            <li class="active"><%= @trip.id %></li>
+          </ol>
+
+          <h1>Edit your trip</h1>
+
+          <form action="/trips/<%= @trip.id %>" method="post">
+            <p>Alter the details of your trip below</p>
+            <input type="hidden" name="_method" value="PUT" />
+
+            <label for="duration">Duration</label>
+            <input type='number'class="form-control" name='trip[duration]' value="<%= @trip.duration %>"/><br/>
+
+            <label for="start_date">Start Date</label>
+            <input type='date' class="form-control" name='trip[start_date]' value="<%= @trip.start_date %>"/><br/>
+
+            <label for="start_station_name">Start Station Name</label>
+            <input type='text' class="form-control" name='trip[start_station_name]' value="<%= @trip.start_station_name %>"/><br/>
+
+            <label for="end_date">End Date</label>
+            <input type='date' class="form-control" name='trip[end_date]' value="<%= @trip.end_date %>"/><br/>
+
+            <label for="end_station_name">End Station</label>
+            <input type='text' class="form-control" name='trip[end_station_name]' value="<%= @trip.end_station_name %>"/><br/>
+
+            <label for="bike_id">Bike ID</label>
+            <input type='number' class="form-control" name='trip[bike_id]' value="<%= @trip.bike_id %>"/><br/>
+
+            <label for="subscription_type">Subscription</label>
+            <input type='text' class="form-control" name='trip[subscription_type]' value="<%= @trip.subscription_type %>"/><br/>
+
+            <label for="zip_code">Zip Code</label>
+            <input type='number' class="form-control" name='trip[zip_code]' value="<%= @trip.zip_code %>"/><br/>
+
+            <div class="sumbit_button" align="center">
+              <input class="btn btn-success" type='submit'/>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+
+
+  </body>
+</html>

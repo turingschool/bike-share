@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <style>
+        .btn-success{
+          float:right;
+          margin-top: 30px;
+        }
+      </style>
+  </head>
+  <body>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+          <ol class="breadcrumb">
+              <li><a href="/">Home</a></li>
+              <li class="active">Trips</li>
+          </ol>
+          <a class="btn btn-success" href="/trips/new"> Create new trip</a> 
+
+        <h1>Trip details</h1>
+          <p>Explore an overview of recent trip details</p>
+        </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+  <div class="row">
+      <div class="col-xs-12">
+
+         <% @trips.each do |trip| %>
+          <ul class = "list-group">
+            <li class = "list-group-item">
+              <p> Duration: <strong><%=  trip.duration %></strong> </p>
+              <p> Start date: <strong><%= trip.start_date %></strong> </p>
+              <p> Start station: <strong><%= trip.start_station_name %></strong> </p>
+              <p> End date: <strong><%= trip.end_date %></strong> </p>
+              <p> End station: <strong><%= trip.end_station_name %></strong> </p>
+              <p> Bike id: <strong><%= trip.bike_id %></strong> </p>
+              <p> Subscription type: <strong><%= trip.subscription_type %></strong> </p>
+              <p> Zip Code: <strong><%= trip.zip_code %></strong> </p>
+
+              <p><a class="btn btn-warning" href='/trips/<%= trip.id  %>/edit'>Edit</a></p>
+              <p><a class="btn btn-info" href='/trips/<%= trip.id  %>'>View</a></p>
+
+
+              <form action="/trips/<%= trip.id %>" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input class = "btn btn-danger"type="submit" value="Delete"/>
+              </form>
+            </li>
+          </ul>
+
+         <% end %>
+
+        <%= will_paginate @trips, :page_links => false %>
+
+      
+
+
+
+
+      </div>
+  </div>
+</div>
+
+
+
+
+
+  </body>
+</html>

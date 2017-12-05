@@ -1,6 +1,6 @@
 class CreateConditions < ActiveRecord::Migration[5.1]
   def change
-      create_table   :trips do |t|
+      create_table   :conditions do |t|
       t.integer      :duration
       t.date         :start_date
       t.text         :start_station_name
@@ -11,6 +11,6 @@ class CreateConditions < ActiveRecord::Migration[5.1]
       t.integer      :bike_id
       t.text         :subscription
       t.integer      :zip_code
+    end
   end
-  
 end

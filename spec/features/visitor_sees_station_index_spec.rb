@@ -5,6 +5,6 @@ describe "When a visitor visits index" do
 
     visit '/stations'
 
-    expect(page).to have_content("All Stations")
+    expect(page).to have_content("Stations")
   end
 end

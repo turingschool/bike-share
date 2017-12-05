@@ -16,11 +16,8 @@
 
 <p>Most frequent origination station from here: <%= Trip.most_frequent_origination_station(@station.name) %></p>
 
-<p>Date with highest trips started here: <%= Trip.date_with_highest_trips(@station.name) %></p>
+<p>Date with highest trips started here: <%= Trip.date_with_highest_trips_by_station(@station.name) %></p>
 
 <p>Most frequent zipcodes for users started here: <%= Trip.most_frequent_user_zipcodes(@station.name) %></p>
 
 <p>Most frequently used bike started here: <%= Trip.most_frequent_bike_used(@station.name) %></p>
-
-
-

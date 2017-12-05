@@ -46,7 +46,7 @@ RSpec.describe Trip do
     end
   end
 
-  describe "Class Mehtods" do
+  describe "Class Methods" do
     it "can find average duration of rides" do
       Trip.create(duration: 40, start_date: "29/8/2013 18:54", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 18:56", end_station_name: "Golden Gate at Polk", bike_id: 527, subscription: "Subscriber", zip_code: 94109)
       Trip.create(duration: 109, start_date: "29/8/2013 13:25", start_station_name: "Santa Clara at Almaden", end_date: "29/8/2013 13:27", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Subscriber", zip_code: 95112)
@@ -149,6 +149,14 @@ RSpec.describe Trip do
       Trip.create(duration: 138, start_date: "29/8/2013 16:57", start_station_name: "Post at Kearney", end_date: "29/8/2013 16:59", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Customer", zip_code: 94117)
 
       expect(Trip.subscriber_percentage).to eql(66.67)
+    end
+
+    it "can find dates with the highest trip counts" do
+      Trip.create(duration: 40, start_date: "30/8/2013 18:54", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 18:56", end_station_name: "Golden Gate at Polk", bike_id: 527, subscription: "Subscriber", zip_code: 94109)
+      Trip.create(duration: 109, start_date: "29/8/2013 13:25", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 13:27", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Subscriber", zip_code: 95112)
+      Trip.create(duration: 138, start_date: "29/8/2013 16:57", start_station_name: "Post at Kearney", end_date: "29/8/2013 16:59", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Customer", zip_code: 94117)
+
+      expect((Trip.date_with_highest_trips).strftime("%d/%m/%Y")).to eql("29/08/2013")
     end
   end
 end

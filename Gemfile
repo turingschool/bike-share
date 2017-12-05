@@ -17,4 +17,5 @@ group :development, :test do
   gem 'rack-test'
   gem 'database_cleaner'
   gem 'will_paginate'
+  gem 'shoulda'
 end

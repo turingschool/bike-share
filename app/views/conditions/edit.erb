@@ -16,7 +16,7 @@
       <div class="individual-container">
         <form class="edit-condition" action="/conditions/<%= @condition.id %>" method="post">
           <input type="hidden" name="_method" value="PUT">
-          <p>Date:</p><input type="text" name="condition[date]" value="<%= @condition.date %>">
+          <p>Date:</p><input type="date" name="condition[date]" value="<%= @condition.date %>">
           <p>Max Temp in F</p><input type="text" name="condition[max_temperature_f]" value="<%= @condition.max_temperature_f %>">
           <p>Mean Temp in F</p><input type="text" name="condition[mean_temperature_f]" value="<%= @condition.mean_temperature_f %>">
           <p>Min Temp in F</p><input type="text" name="condition[min_temperature_f]" value="<%= @condition.min_temperature_f %>">

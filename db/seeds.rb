@@ -37,8 +37,11 @@ trips.each do |trip|
               bike_id: trip["bike_id"],
               subscription_type: trip["subscription_type"],
               zip_code: trip["zip_code"])
+<<<<<<< HEAD
 
               # condition_id: Condition.find_by(date: trip["start_date"]))
+=======
+>>>>>>> 6c180bd916fd72872ee9a8833e2fb41499f1d444
 end
 
 conditions.each do |condition|

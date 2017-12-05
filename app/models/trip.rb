@@ -27,29 +27,30 @@ class Trip < ActiveRecord::Base
     minimum(:duration)
   end
 
-
   def self.total_rides_per_month
-    Trip.group("DATE_TRUNC('month',start_date)").count.transform_keys do |key|
+    group("DATE_TRUNC('month',start_date)").count.transform_keys do |key|
       "#{Date::MONTHNAMES[key.month]} #{key.year}"
     end
+
+    #loop through the output logic in the VIEW
   end
 
   def self.total_rides_per_year
-    Trip.group("DATE_TRUNC('year',start_date)").count.transform_keys do |key|
+    group("DATE_TRUNC('year',start_date)").count.transform_keys do |key|
       key.year
     end
   end
 
   def self.most_ridden_bike
-    Trip.group(:bike_id).count.invert.max.last
+    group(:bike_id).count.invert.max.last
   end
 
   def self.least_ridden_bike
-    Trip.group(:bike_id).count.invert.min.last
+    group(:bike_id).count.invert.min.last
   end
 
   def self.subscription_type_breakout
-    Trip.group(:subscription_type).count
+    group(:subscription_type).count
   end
 
   def self.total_subscriptions
@@ -63,12 +64,11 @@ class Trip < ActiveRecord::Base
   end
 
   def self.date_with_highest_trips
-    Trip.group("DATE_TRUNC('day',start_date)").count.invert.max
+    group("DATE_TRUNC('day',start_date)").count.invert.max
   end
 
-
   def self.date_with_lowest_trips
-    Trip.group("DATE_TRUNC('day',start_date)").count.invert.min
+    group("DATE_TRUNC('day',start_date)").count.invert.min
   end
 
 

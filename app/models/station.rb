@@ -46,7 +46,7 @@ class Station < ActiveRecord::Base
       station.trips_starting_here.count
     end.max.last[0].name
   end
-
+################# USE ACTIVE RECORD HERE ##########
   def self.most_rides_as_ending_place
     all.group_by do |station|
       station.trips_ending_here.count
@@ -54,11 +54,13 @@ class Station < ActiveRecord::Base
   end
 
  def number_of_starting_rides
-   Trip.group(:start_station_id).count[id]
+   # Trip.group(:start_station_id).count[id]
+   trips_starting_here.count
  end
 
  def number_of_ending_rides
-   Trip.group(:end_station_id).count[id]
+   # Trip.group(:end_station_id).count[id]
+   trips_ending_here.count
  end
 
  def most_frequent_destination_station

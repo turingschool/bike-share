@@ -37,16 +37,13 @@ describe "When user visits '/trips/new' path" do
 
   it "has a Submit button that will bring user back to trips index view" do
     visit '/trips/new'
-    expect(page).to have_content("Submit")
 
-    page.fill_in("Duration", :with => 201)
-    page.fill_in("Subscription Type", :with => "Customer")
+    fill_in "trip[duration]", :with => 201
+    fill_in "trip[subscription_type]", :with => "Customer"
 
-    click_button("Submit")
+    click_button("submit-button")
 
     expect(current_path).to have_current_path('/trips')
-
-    expect(page).to have_content("Submit")
     expect(page).to have_content(201)
     expect(page).to have_content("Customer")
   end

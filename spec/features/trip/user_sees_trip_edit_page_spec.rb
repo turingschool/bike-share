@@ -46,10 +46,10 @@ describe "when user visits /trips/:id/edit path" do
   it "sees a Submit button that when clicked redirects user to that trip's show page" do
     visit '/trips/1/edit'
 
-    page.fill_in 'Bike ID:', :with => 201
-    page.fill_in 'Duration(minutes):', :with => 55
+    fill_in "trip[bike_id]", :with => 201
+    fill_in "trip[duration]", :with => 55
 
-    click_button("Submit")
+    click_button("submit-button")
 
     expect(page).to have_content(55)
     expect(page).to have_content(201)

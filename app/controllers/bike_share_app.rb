@@ -61,6 +61,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips/new' do
+    @stations = Station.all
     erb :"/trips/new"
   end
 
@@ -78,7 +79,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips/:id/edit' do
     @trip = Trip.find(params[:id])
-
+    @stations = Station.all
     erb :"/trips/edit"
   end
 

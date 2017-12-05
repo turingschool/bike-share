@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Station Dashboard
+    </title>
+  </head>
+  <body>
+    <h1>Station Dashboard</h1>
+    <p>Station Count: <%= Station.station_count %></p><br>
+    <p>Average Bikes Per Station: <%= Station.average_bikes_per_station%></p><br>
+    <p>Max Bikes Per Station: <%= Station.max_bikes_per_station%></p><br>
+    <p>Station with Most Bikes Available: <%= Station.station_with_most_bikes_available%></p><br>
+    <p>Minimum Bikes Per Station: <%= Station.min_bikes_at_station%></p><br>
+    <p>Station with Fewest Available Bikes: <%= Station.station_with_fewest_available%></p><br>
+    <p>Most Recent Installed Station: <%= Station.most_recent_station%></p><br>
+    <p>Oldest Installed Station: <%= Station.oldest_station%></p><br>
+  </body>
+</html>

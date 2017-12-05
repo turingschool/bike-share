@@ -6,8 +6,8 @@ class BikeShareApp < Sinatra::Base
     erb :"/dashboard"
   end
 
-  get '/station-dashboard' do
-    erb :"/station-dashboard"
+  get '/stations/dashboard' do
+    erb :"/stations-dashboard"
   end
 
   get '/stations/index' do
@@ -50,6 +50,10 @@ class BikeShareApp < Sinatra::Base
     redirect "/stations/index"
   end
 
+  get '/trips/dashboard' do
+    erb :"/trips-dashboard"
+  end
+
   get '/trips' do
     @trips = Trip.all
 
@@ -88,6 +92,10 @@ class BikeShareApp < Sinatra::Base
     Trip.destroy(id.to_i)
 
     redirect "/trips"
+  end
+
+  get '/conditions-dashboard' do
+    erb :"/conditions-dashboard"
   end
 
   get '/conditions' do

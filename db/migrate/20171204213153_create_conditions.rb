@@ -12,6 +12,5 @@ class CreateConditions < ActiveRecord::Migration[5.1]
     end
   end
 
-  
-
+ 
 end

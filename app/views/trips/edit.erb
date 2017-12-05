@@ -17,10 +17,22 @@
         <form class="edit-trip" action="/trips/<%= @trip.id %>" method="post">
           <input type="hidden" name="_method" value="PUT">
           <p>Duration</p><input type="text" name="trip[duration]" value="<%= @trip.duration %>">
-          <p>Start Date</p><input type="text" name="trip[start_date]" value="<%= @trip.start_date %>">
-          <p>Start Station</p><input type="text" name="trip[start_station_name]" value="<%= @trip.start_station_name %>">
-          <p>End Date</p><input type="text" name="trip[end_date]" value="<%= @trip.end_date %>">
-          <p>End Station</p><input type="text" name="trip[end_station_name]" value="<%= @trip.end_station_name %>">
+          <p>Start Date</p><input type="date" name="trip[start_date]" value="<%= @trip.start_date %>">
+          <p>Start Station</p><select name="trip[start_station_id]">
+          <% @stations.sort_by(&:name).each do |station| %>
+            <option value="<%= station.id %>">
+            <%= station.name.upcase %>
+            </option>
+          <% end %>
+          </select>
+          <p>End Date</p><input type="date" name="trip[end_date]" value="<%= @trip.end_date %>">
+          <p>End Station</p><select name="trip[end_station_id]">
+          <% @stations.sort_by(&:name).each do |station| %>
+            <option value="<%= station.id %>">
+            <%= station.name.upcase %>
+            </option>
+          <% end %>
+          </select>
           <p>Bike ID</p><input type="text" name="trip[bike_id]" value="<%= @trip.bike_id %>">
           <p>Subscription Type</p><input type="text" name="trip[subscription_type]" value="<%= @trip.subscription_type %>">
           <p>Zip Code</p><input type="text" name="trip[zip_code]" value="<%= @trip.zip_code %>">

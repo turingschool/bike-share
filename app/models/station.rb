@@ -44,7 +44,32 @@ class Station < ActiveRecord::Base
   end
 
   def number_of_trips_started_at_station
-    binding.pry
+    trips_leaving.count
   end
 
+  def number_of_trips_ending_at_station
+    trips_arriving.count
+  end
+
+  def most_frequent_destination
+    id = trips_leaving.group(:end_station_id).order('count(*) DESC').count(:start_station_id).first.first
+    Station.find(id).name
+  end
+
+  def most_frequent_origination_station
+    id = trips_arriving.group(:start_station_id).order('count(*) DESC').count(:end_station_id).first.first
+    Station.find(id).name
+  end
+
+  def date_with_highest_trips_by_station
+    trips_leaving.group(:start_date).order('count(*) DESC').count.first[0]
+  end
+
+  def most_frequent_user_zipcodes
+     trips_leaving.group(:zip_code).order('count(*) DESC').count.first[0]
+  end
+
+  def most_frequent_bike_used
+    trips_leaving.group(:bike_id).order('count(*) DESC').count.first[0]
+  end
 end

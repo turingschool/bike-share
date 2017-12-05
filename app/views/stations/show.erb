@@ -8,16 +8,36 @@
 </div>
 
 
-<p>Number of rides started here: <%= Trip.number_trips_started_at_station(@station.name) %></p>
+<p>Number of rides started here: <%= @station.number_of_trips_started_at_station %></p>
 
-<p>Number of rides ended here: <%= Trip.number_trips_ended_at_station(@station.name) %></p>
+<p>Number of rides ended here: <%= @station.number_of_trips_ending_at_station %></p>
 
-<p>Most frequent destination station from here: <%= Trip.most_frequent_destination(@station.name) %></p>
+<p>Most frequent destination station from here: <% if !@station.trips_leaving.empty? %>
+                                                <%= @station.most_frequent_destination %>
+                                                <% else %>
+                                                <%= "Insufficient Data" %>
+                                                <% end %> </p>
 
-<p>Most frequent origination station from here: <%= Trip.most_frequent_origination_station(@station.name) %></p>
+<p>Most frequent origination station from here: <% if !@station.trips_arriving.empty? %>
+                                                <%= @station.most_frequent_origination_station %>
+                                                <% else %>
+                                                <%= "Insufficient Data" %>
+                                                <% end %></p>
 
-<p>Date with highest trips started here: <%= Trip.date_with_highest_trips_by_station(@station.name) %></p>
+<p>Date with highest trips started here: <% if !@station.trips_leaving.empty? %>
+                                                <%= @station.date_with_highest_trips_by_station %>
+                                                <% else %>
+                                                <%= "Insufficient Data" %>
+                                                <% end %></p>
 
-<p>Most frequent zipcodes for users started here: <%= Trip.most_frequent_user_zipcodes(@station.name) %></p>
+<p>Most frequent zipcodes for users started here:  <% if !@station.trips_leaving.empty? %>
+                                                <%= @station.most_frequent_user_zipcodes %>
+                                                <% else %>
+                                                <%= "Insufficient Data" %>
+                                                <% end %></p>
 
-<p>Most frequently used bike started here: <%= Trip.most_frequent_bike_used(@station.name) %></p>
+<p>Most frequently used bike started here: <% if !@station.trips_leaving.empty? %>
+                                                <%= @station.most_frequent_bike_used %>
+                                                <% else %>
+                                                <%= "Insufficient Data" %>
+                                                <% end %></p>

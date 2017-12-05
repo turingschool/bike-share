@@ -2,15 +2,24 @@ body {
   font-family: "Amazon Ember", Arial,sans-serif;
 }
 
+.container{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  background: url('../images/homepage.jpg') no-repeat;
+  opacity: 0.9;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
 header h1{
   margin-bottom: 100px;
   text-align: center;
   padding: 10px;
   color: white;
   font-size: 36px;
-}
-
-header nav{
   padding-bottom: 100px;
 }
 
@@ -20,13 +29,14 @@ section{
   text-align: center;
   height: 100px;
   width: 150px;
-  background: rgba(60,60,60,0.3);
+  background: rgba(60,60,60,0.4);
   margin: 10px;
   border-radius: 50%;
 }
 
 section:hover{
-  background: rgba(60,60,60,0.9);
+  background-color: black;
+  opacity: 0.9;
   transition-duration: 0.5s;
 }
 
@@ -35,16 +45,4 @@ section a{
   text-decoration: none;
   color: white;
   font-size: 24px;
-}
-
-.container{
-  display: flex;
-  flex-flow: column wrap;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  background: url('../images/homepage.jpg') no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
 }

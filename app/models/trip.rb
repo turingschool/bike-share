@@ -13,6 +13,7 @@ class Trip < ActiveRecord::Base
 
   belongs_to :start_station, :class_name => 'Station', :foreign_key => 'start_station_id'
   belongs_to :end_station,   :class_name => 'Station', :foreign_key => 'end_station_id'
+  belongs_to :condition, :class_name => "Condition", :foreign_key => "condition_id"
 
   def self.average_duration_per_ride
     average(:duration).to_i

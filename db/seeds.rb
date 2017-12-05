@@ -18,6 +18,7 @@ class Seed
   end
 
   def self.trip
+
     options = {headers: true, header_converters: :symbol, converters: :numeric}
     CSV.foreach('./db/csv/trip_fixture.csv', options) do |row|
       Trip.create(
@@ -30,7 +31,8 @@ class Seed
         end_station_id: row[:end_station_id],
         bike_id: row[:bike_id],
         subscription_type: row[:subscription_type],
-        zip_code: (row[:zip_code]).to_s.rjust(5,"0")[0..4].to_i)
+        zip_code: (row[:zip_code]).to_s.rjust(5,"0")[0..4].to_i),
+        condition_id: Condition.id_by_date(row[:start_date])
     end
   end
 

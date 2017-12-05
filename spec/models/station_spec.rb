@@ -94,6 +94,7 @@ describe Station do
       expect(Station.most_rides_as_ending_place).to eq("San Jose Civic Center")
     end
   end
+
   describe "Instance Methods" do 
     it "number of starting rides" do
 
@@ -103,7 +104,36 @@ describe Station do
 
       expect(@station.number_of_ending_rides).to eq(1)
     end
+    it "most frequent destination station" do 
+
+      expect(@station.most_frequent_destination_station).to eq([1, "San Jose Civic Center"])
+      expect(@station.most_frequent_destination_station.class).to eq(Array)
+      
+    end 
+    it "most frequent origination station" do
+
+      expect(@station.most_frequent_origination_station).to eq([1, "San Jose Civic Center"])
+      expect(@station.most_frequent_origination_station.class).to eq(Array)
+      
+    end 
+    it "date with most trips" do 
+
+      expect(@station.date_with_most_trips.first).to eq(1)
+      expect(@station.date_with_most_trips.class).to eq(Array)
+    end
+    it "most frequent zipcode starting here" do
+
+      expect(@station.most_frequent_zipcode_starting_here).to eq([1, 94127])
+      expect(@station.most_frequent_zipcode_starting_here.class).to eq(Array)
+    end
+    it "most frequent bike id starting here" do 
+
+      expect(@station.most_frequent_bike_id_starting_here).to eq([1,3])
+      expect(@station.most_frequent_bike_id_starting_here.class).to eq(Array)
+      
+    end
   end
+  
   describe "Associations" do 
     it{ should have_many(:trips_starting_here)}
     it{ should have_many(:trips_ending_here)}    

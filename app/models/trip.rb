@@ -92,4 +92,5 @@ class Trip < ActiveRecord::Base
   def self.year_subtotals
     group("DATE_TRUNC('year', start_date)").count.to_a.sort
   end
+
 end

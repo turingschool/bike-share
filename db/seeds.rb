@@ -5,18 +5,19 @@ require 'csv'
 require 'date'
 require 'pry'
 
-Station.delete_all
+Station.destroy_all
 
 stations = CSV.open './db/csv/station.csv', headers:true, header_converters: :symbol
 stations.each do |row|
-  Station.create!(id:     row[:id],
+  Station.create!(id:                row[:id],
+
                   name:              row[:name],
                   dock_count:        row[:dock_count],
                   city:              row[:city],
                   installation_date: Date.strptime(row[:installation_date], "%m/%d/%Y"))
 end
 
-Trip.delete_all
+Trip.destroy_all
 
 trips = CSV.open './db/fixture/trip_fixture.csv', headers:true, header_converters: :symbol
 trips.each do |row|

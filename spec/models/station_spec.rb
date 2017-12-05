@@ -1,10 +1,6 @@
 require 'spec_helper'
 
 describe Station do
-  # before(:each) do
-  #   @station1 = Station.create(..............)
-  # end
-
   describe "Validations" do
     it "is invalid without a name" do
       station = Station.new(dock_count: 2, city: "SF", installation_date: "10-20-2013")

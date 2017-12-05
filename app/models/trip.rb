@@ -95,46 +95,73 @@ class Trip < ActiveRecord::Base
 
   def self.most_frequent_destination(station_name)
     station = Trip.where(start_station_name: station_name).group(:end_station_name).order('count(*) DESC').count(:start_station_name).first[0]
-    validate_query(station)
+    if station
+      station
+    else
+      "Not enough data"
+    end
   end
 
   def self.most_frequent_origination_station(station_name)
     station = Trip.where(end_station_name: station_name).group(:start_station_name).order('count(*) DESC').count(:end_station_name).first[0]
-    validate_query(station)
+    if station
+      station
+    else
+      "Not enough data"
+    end
   end
 
   def self.number_trips_started_at_station(station_name)
-    station = Trip.where(start_station_name: station_name).group(:start_station_name).order('count(*) DESC').count.first[1]
-    validate_query(station)
+    station = Trip.where(start_station_name: station_name).group(:start_station_name).order('count(*) DESC').count.first
+    if station
+      station.last
+    else
+      "Not enough data"
+    end
   end
 
   def self.number_trips_ended_at_station(station_name)
-    station = Trip.where(end_station_name: station_name).group(:end_station_name).order('count(*) DESC').count.first[1]
-    validate_query(station)
+    station = Trip.where(end_station_name: station_name).group(:end_station_name).order('count(*) DESC').count
+    if station
+      station.first.last
+    else
+      "Not enough data"
+    end
   end
 
   def self.date_with_highest_trips_by_station(station_name)
     date = Trip.where(start_station_name: station_name).group(:start_date).order('count(*) DESC').count.first[0]
-    validate_query(date)
+    if date
+      date
+    else
+      "Not enough data"
+    end
   end
 
   def self.most_frequent_user_zipcodes(station_name)
     zipcode = Trip.where(start_station_name: station_name).group(:zip_code).order('count(*) DESC').count.first[0]
-    validate_query(zipcode)
+    if zipcode
+      zipcode
+    else
+      "Not enough data"
+    end
   end
 
   def self.most_frequent_bike_used(station_name)
     bike = Trip.where(start_station_name: station_name).group(:bike_id).order('count(*) DESC').count.first[0]
-    validate_query(bike)
-  end
-
-  def validate_query(search)
-    if search
-      search
+    if bike
+      bike
     else
       "Not enough data"
-    else
     end
   end
+
+  # def validate_query(search)
+  #   if search
+  #     search
+  #   else
+  #     "Not enough data"
+  #   end
+  # end
 
 end

@@ -4,6 +4,9 @@
 <ol>
   <% @conditions.each do |condition| %>
   <li><a href="/conditions/<%=condition.id%>"><%= condition.date %></a></li>
+  <section class="edit">
+          <a href="/conditions/<%=condition.id%>/edit"> Edit </a>
+  </section>
   <section class="delete">
     <form action='/conditions/<%=condition.id%>' method='POST'>
       <input type='hidden' name='_method' value='DELETE'>

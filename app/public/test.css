@@ -7,7 +7,7 @@ body {
   flex-flow: row wrap;
   height: 5000px;
   justify-content: space-between;
-  background: url('../images/ggb.jpg') no-repeat;
+  background: url('../images/sunset.jpg') no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;

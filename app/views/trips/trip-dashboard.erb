@@ -1,29 +1,4 @@
- <h1> Trip Dashboard </h1>
-<p> Average duration of a ride: <%= "#{Trip.average_duration}" %></p>
-<p> Longest Ride: <%= "#{Trip.longest_ride}" %></p>
-<p> Shortest Ride: <%= "#{Trip.shortest_ride}" %></p>
-<p> Start station with most rides: <%= "#{Trip.popular_starting_place}" %></p>
-<p> Start station with least rides: <%= "#{Trip.least_popular_starting_place}" %></p>
-<p> ending station with most rides: <%= "#{Trip.popular_ending_place}" %></p>
-<p> Bike with most rides: <%= "#{Trip.popular_bike}" %> Usage: <%= "#{Trip.popular_bikes_usage}" %></p>
-<p> Bike with least rides: <%= "#{Trip.least_popular_bike}" %> Usage: <%= "#{Trip.least_popular_bikes_usage}"%></p>
-<p> Customer Count: <%= "#{Trip.customer_count}" %> Percentage: <%= "#{Trip.customer_percentage}" %>%  </p>
-<p> Subscriber Count: <%= "#{Trip.subscriber_count}" %> Percentage: <%= "#{Trip.subscriber_percentage}" %>% </p>
-<p> Single date with the highest number of trips:  <%= "#{Trip.date_with_highest_trips}" %> Total trips: <%="#{Trip.highest_trip_date_count}"%></p>
-<p> Single date with the lowest number of trips:  <%= "#{Trip.date_with_lowest_trips}" %> Total trips: <%="#{Trip.lowest_trip_date_count}"%></p>
-<h3> Subtotals by year: <% Trip.year_subtotals.each do |year_count| %> </h3>
-                <h4> Year: <%= year_count.first.strftime("%Y") %>  </h4>
-             <p> Trip Count: <%= year_count.last %> </p>
-                             <%end%>
-
-<h3> Month by month trip count breakdown: <% Trip.month_by_month_breakdown.each do |month_count| %> </h3> <br>
-                             <%= month_count.first.strftime("%B %Y") %>
-             <p> Trip Count: <%= month_count.last %> </p>
-                             <%end%> -->
-
-
-
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <title>Trip Dashboard</title>
 <meta charset="UTF-8">
@@ -46,8 +21,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     </div>
     <div class="w3-bar-block">
       <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-light-grey"><i class="fa fa-home fa-fw w3-center"></i>HOME</a>
-      <a href="/stations/new" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-light-grey"><i class="fa fa-plus fa-fw w3-center"></i>ADD NEW STATION</a>
-      <a href="/station-dashboard" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-light-grey"><i class="fa fa-th-large fa-fw w3-center"></i>STATION DASHBOARD</a>
+      <a href="/trip/new" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-light-grey"><i class="fa fa-plus fa-fw w3-center"></i>ADD NEW TRIP</a>
+      <a href="/trip-dashboard" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-light-grey"><i class="fa fa-th-large fa-fw w3-center"></i>TRIP DASHBOARD</a>
     </div>
     <div class="w3-panel w3-large">
       <i class="fa fa-facebook-official w3-hover-opacity"></i>
@@ -64,7 +39,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   <div class="w3-main w3-center" style="margin-left:200px">
 
     <header id="TRIP">
-      <div class="w3-container w3-center w3-text-grey">
+      <div class="w3-container w3-text-grey">
       <h1><b>TRIP DASHBOARD</b></h1>
         <div class="w3-section w3-bottombar w3-padding-16">
           <a href="/stations"><button class="w3-button w3-light-grey w3-padding-large w3-hover-grey"><i class="w3-center"></i>Stations</button></a>
@@ -72,36 +47,48 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
           <a href="/conditions"><button class="w3-button w3-light-grey w3-padding-large w3-hover-grey"><i class="w3-center"></i>Weather</button></a>
         </div>
       </div>
-    </header>-->
-    <%# <div class="info"> %>
-      <!--<br>
-      <h1> Trip Dashboard </h1>
-      <p> Average duration of a ride: <%= "#{Trip.average_duration}" %></p>
-      <p> Longest Ride: <%= "#{Trip.longest_ride}" %></p>
-      <p> Shortest Ride: <%= "#{Trip.shortest_ride}" %></p>
-      <p> Start station with most rides: <%= "#{Trip.popular_starting_place}" %></p>
-      <p> Start station with least rides: <%= "#{Trip.least_popular_starting_place}" %></p>
-      <p> ending station with most rides: <%= "#{Trip.popular_ending_place}" %></p>
-      <p> Bike with most rides: <%= "#{Trip.popular_bike}" %> Usage: <%= "#{Trip.popular_bikes_usage}" %></p>
-      <p> Bike with least rides: <%= "#{Trip.least_popular_bike}" %> Usage: <%= "#{Trip.least_popular_bikes_usage}"%></p>
-      <p> Customer Count: <%= "#{Trip.customer_count}" %> Percentage: <%= "#{Trip.customer_percentage}" %>%  </p>
-      <p> Subscriber Count: <%= "#{Trip.subscriber_count}" %> Percentage: <%= "#{Trip.subscriber_percentage}" %>% </p>
-      <p> Single date with the highest number of trips:  <%= "#{Trip.date_with_highest_trips}" %> Total trips: <%="#{Trip.highest_trip_date_count}"%></p>
-      <p> Single date with the lowest number of trips:  <%= "#{Trip.date_with_lowest_trips}" %> Total trips: <%="#{Trip.lowest_trip_date_count}"%></p>
-      <h3> Subtotals by year: <% Trip.year_subtotals.each do |year_count| %> </h3>
-        <h4> Year: <%= year_count.first.strftime("%Y") %>  </h4>
-        <p> Trip Count: <%= year_count.last %> </p>
+    </header>
+    <br>
+    <h3> Month by month trip count breakdown: </h3>
+      <div class="w3-third w3-row-padding w3-container w3-margin-bottom">
+        <% Trip.month_by_month_breakdown.each do |month_count| %>
+          <div class="w3-container w3-border w3-light-grey w3-round">
+          <%= month_count.first.strftime("%B %Y") %>
+          <p> Trip Count: <%= month_count.last %> </p>
+        </div>
+        <br>
       <%end%>
-
-      <h3> Month by month trip count breakdown: <% Trip.month_by_month_breakdown.each do |month_count| %> </h3> <br>
-        <%= month_count.first.strftime("%B %Y") %>
-         <p> Trip Count: <%= month_count.last %> </p>
-      <%end%>
-
-   <!-- </div>
+      </div>
+      <div class="w3-third w3-container w3-margin-bottom">
+        <div class="w3-row-padding w3-container w3-border w3-light-grey w3-round">
+          <h3> Subtotals by year: <% Trip.year_subtotals.each do |year_count| %> </h3>
+            <h4> Year: <%= year_count.first.strftime("%Y") %>  </h4>
+            <p> Trip Count: <%= year_count.last %> </p>
+          <%end%>
+        </div>
+      </div>
+      <div class="w3-container w3-center w3-margin-bottom">
+        <div class="w3-row-padding
+        w3-third w3-container w3-border w3-light-grey w3-center w3-round">
+          <p> Average duration of a ride: <%= "#{Trip.average_duration}" %></p>
+          <p> Longest Ride: <%= "#{Trip.longest_ride}" %></p>
+          <p> Shortest Ride: <%= "#{Trip.shortest_ride}" %></p>
+          <p> Start station with most rides: <%= "#{Trip.popular_starting_place}" %></p>
+          <p> Start station with least rides: <%= "#{Trip.least_popular_starting_place}" %></p>
+          <p> ending station with most rides: <%= "#{Trip.popular_ending_place}" %></p>
+          <p> Bike with most rides: <%= "#{Trip.popular_bike}" %> Usage: <%= "#{Trip.popular_bikes_usage}" %></p>
+          <p> Bike with least rides: <%= "#{Trip.least_popular_bike}" %> Usage: <%= "#{Trip.least_popular_bikes_usage}"%></p>
+          <p> Customer Count: <%= "#{Trip.customer_count}" %> Percentage: <%= "#{Trip.customer_percentage}" %>%  </p>
+          <p> Subscriber Count: <%= "#{Trip.subscriber_count}" %> Percentage: <%= "#{Trip.subscriber_percentage}" %>% </p>
+          <p> Single date with the highest number of trips:  <%= "#{Trip.date_with_highest_trips}" %> Total trips: <%="#{Trip.highest_trip_date_count}"%></p>
+          <p> Single date with the lowest number of trips:  <%= "#{Trip.date_with_lowest_trips}" %> Total trips: <%="#{Trip.lowest_trip_date_count}"%></p>
+        </div>
+      </div>
     <br>
     <br>
+    <footer>
     <div class="w3-black w3-center w3-padding-24" title="BayCycles" target="_blank" class="w3-hover-opacity">BayCyles</a></div>
+    </footer>
   </div>
   <script>
     function w3_open() {

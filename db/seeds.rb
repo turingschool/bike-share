@@ -36,7 +36,7 @@ Condition.delete_all
 
 conditions = CSV.open './db/csv/weather.csv', headers:true, header_converters: :symbol
 conditions.each do |row|
-  Condition.create!(date:        row[:date],
+  Condition.create!(date:        Date.strptime(row[:date], "%m/%d/%Y"),
           max_temperature:       row[:max_temperature_f],
           mean_temperature:   row[:mean_temperature_f],
           min_temperature: row[:min_temperature_f],

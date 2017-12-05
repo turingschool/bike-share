@@ -26,6 +26,7 @@ stations.each do |station|
 end
 
 trips.each do |trip|
+
   Trip.create(duration: trip["duration"],
               start_date: DateTime.strptime(trip["start_date"],"%m/%d/%Y"),
               start_station_name: trip["start_station_name"],
@@ -35,25 +36,24 @@ trips.each do |trip|
               end_station_id: trip["end_station_id"],
               bike_id: trip["bike_id"],
               subscription_type: trip["subscription_type"],
-              zip_code: trip["zip_code"])
+              zip_code: trip["zip_code"],
+
+              # condition_id: Condition.find_by(date: trip["start_date"]))
 end
 
 conditions.each do |condition|
-  Condition.create!(date: DateTime.strptime(condition["date"], "%m/%d/%Y"),
-                    max_temperature_f: condition["max_temperature_f"],
-                    mean_temperature_f: condition["mean_temperature_f"],
-                    min_temperature_f: condition["min_temperature_f"],
-                    mean_humidity: condition["mean_humidity"],
-                    mean_visibility_miles: condition["mean_visibility_miles"],
-                    mean_wind_speed_mph: condition["mean_wind_speed_mph"],
-                    precipitation_inches: condition["precipitation_inches"])
+  unless Condition.find_by(date: DateTime.strptime(condition["date"], "%m/%d/%Y")) != nil
+    Condition.create!(date: DateTime.strptime(condition["date"], "%m/%d/%Y"),
+                      max_temperature_f: condition["max_temperature_f"],
+                      mean_temperature_f: condition["mean_temperature_f"],
+                      min_temperature_f: condition["min_temperature_f"],
+                      mean_humidity: condition["mean_humidity"],
+                      mean_visibility_miles: condition["mean_visibility_miles"],
+                      mean_wind_speed_mph: condition["mean_wind_speed_mph"],
+                      precipitation_inches: condition["precipitation_inches"])
+  end
 end
 
 puts "db populated with #{station_file}"
 puts "db populated with #{trip_file}"
 puts "db populated with #{condition_file}"
-
-
-
-
-#might need to add lat long variables

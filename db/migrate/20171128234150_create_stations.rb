@@ -7,6 +7,5 @@ class CreateStations < ActiveRecord::Migration[5.1]
       t.text             :city
       t.date             :installation_date
     end
-
   end
 end

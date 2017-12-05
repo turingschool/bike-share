@@ -1,5 +1,5 @@
 require './app/models/station'
-require './app/models/trips'
+require './app/models/trip'
 require './app/models/condition'
 require 'csv'
 require 'date'
@@ -38,11 +38,11 @@ conditions = CSV.open './db/csv/weather.csv', headers:true, header_converters: :
 conditions.each do |row|
   Condition.create!(date:        Date.strptime(row[:date], "%m/%d/%Y"),
           max_temperature:       row[:max_temperature_f],
-          mean_temperature:   row[:mean_temperature_f],
-          min_temperature: row[:min_temperature_f],
-          mean_humidity: row[:mean_humidity],
-          mean_visibility: row[:mean_visibility_miles],
-          mean_wind_speed: row[:mean_wind_speed_mph],
-          precipitation: row[:precipitation_inches])
+          mean_temperature:      row[:mean_temperature_f],
+          min_temperature:       row[:min_temperature_f],
+          mean_humidity:         row[:mean_humidity],
+          mean_visibility:       row[:mean_visibility_miles],
+          mean_wind_speed:       row[:mean_wind_speed_mph],
+          precipitation:         row[:precipitation_inches])
 end
   puts "Seed complete"

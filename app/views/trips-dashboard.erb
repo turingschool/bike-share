@@ -21,7 +21,7 @@
       </tr>
       <% Trip.month_by_month.each do |month,count| %>
       <tr>
-        <td><%= Date.parse(month).strftime("%Y-%m") %></td>
+        <td><%= Date.parse("#{month}").strftime("%Y-%m") %></td>
         <td><%= count %></td>
       </tr>
       <% end %>
@@ -34,7 +34,7 @@
       </tr>
       <% Trip.year_by_year.each do |year,count| %>
       <tr>
-        <td><%= Date.parse(year).strftime("%Y") %></td>
+        <td><%= Date.parse("#{year}").strftime("%Y") %></td>
         <td><%= count %></td>
       </tr>
       <% end %>
@@ -53,17 +53,17 @@
       <tr>
         <td>Customer</td>
         <td><%= Trip.subscription_breakdown["Customer"] %></td>
-        <td><%= Trip.customer_subscription_percentage %>%</td>
+        <td><%= Trip.customer_subscription_percentage.round(2) %>%</td>
       </tr>
       <tr>
         <td>Subscriber</td>
         <td><%= Trip.subscription_breakdown["Subscriber"] %></td>
-        <td><%= Trip.subscriber_subscription_percentage %>%</td>
+        <td><%= Trip.subscriber_subscription_percentage.round(2) %>%</td>
       </tr>
     </table>
-    <p>Date with Highest Number of Trips: <%= Date.parse(Trip.single_date_with_highest.first).strftime("%Y-%m-%d")%></p><br>
+    <p>Date with Highest Number of Trips: <%= Date.parse("#{Trip.single_date_with_highest.first}").strftime("%Y-%m-%d")%></p><br>
     <p>Date with Highest Number of Trips Count: <%= Trip.single_date_with_highest[1]%></p><br>
-    <p>Date with Lowest Number of Trips: <%= Date.parse(Trip.single_date_with_lowest.first).strftime("%Y-%m-%d")%></p><br>
+    <p>Date with Lowest Number of Trips: <%= Date.parse("#{Trip.single_date_with_lowest.first}").strftime("%Y-%m-%d")%></p><br>
     <p>Date with Lowest Number of Trips Count: <%= Trip.single_date_with_lowest[1]%></p><br>
   </body>
 </html>

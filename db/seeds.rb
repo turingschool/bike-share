@@ -2,13 +2,15 @@ require 'csv'
 require 'pry'
 require './app/models/station'
 require './app/models/trip'
+require './app/models/condition'
 
 class Seed
 
   def self.station
     options = {headers: true, header_converters: :symbol, converters: :numeric}
     CSV.foreach('./db/csv/station.csv', options) do |row|
-      Station.create(installation_date: Date.strptime(row[:installation_date], "%m/%d/%Y"),
+      Station.create(id: row[:id],
+      installation_date: Date.strptime(row[:installation_date], "%m/%d/%Y"),
       name: row[:name],
       city: row[:city],
       dock_count: row[:dock_count])
@@ -17,7 +19,7 @@ class Seed
 
   def self.trip
     options = {headers: true, header_converters: :symbol, converters: :numeric}
-    CSV.foreach('./db/csv/trip.csv', options) do |row|
+    CSV.foreach('./db/csv/trip_fixture.csv', options) do |row|
       Trip.create(
         duration: row[:duration],
         start_date: Date.strptime(row[:start_date], "%m/%d/%Y"),
@@ -32,9 +34,27 @@ class Seed
     end
   end
 
+  def self.condition
+    options = {headers: true, header_converters: :symbol, converters: :numeric}
+    CSV.foreach('./db/csv/weather.csv', options) do |row|
+      if row[:zip_code] == 94107
+        Condition.create(date:           Date.strptime(row[:date], '%m/%d/%Y'),
+                       mean_temperature_f: row[:mean_temperature_f],
+                       max_temperature_f:  row[:max_temperature_f],
+                       min_temperature_f:  row[:min_temperature_f],
+                       mean_humidity:    row[:mean_humidity],
+                       mean_visibility_miles:  row[:mean_visibility_miles],
+                       mean_wind_speed_mph:  row[:mean_wind_speed_mph],
+                       precipitation_inches:    row[:precipitation_inches],
+                       zip_code: (row[:zip_code]).to_s.rjust(5,"0")[0..4].to_i)
+      end
+    end
+  end
 end
 
 Station.destroy_all
-Trip.destroy_all
 Seed.station
+Trip.destroy_all
 Seed.trip
+Condition.destroy_all
+Seed.condition

@@ -37,7 +37,6 @@ class Trip < ActiveRecord::Base
   end
 
   def self.month_by_month
-    require 'pry'; binding.pry
     group("DATE_TRUNC('month', start_date)").order("DATE_TRUNC('month', start_date)").count
     #we will need to do some addition work in the view to get formatting correct
   end
@@ -60,15 +59,12 @@ class Trip < ActiveRecord::Base
   end
 
   def self.customer_subscription_percentage
-    total_subscriptions = Trip.all.count
-    (user_subscription_type_count.values.first.to_f / total_subscriptions.to_f) * 100
+    (subscription_breakdown.values.first.to_f / Trip.all.count.to_f) * 100
   end
 
   def self.subscriber_subscription_percentage
-    total_subscriptions = Trip.all.count
-    (user_subscription_type_count.values.last.to_f / total_subscriptions.to_f) * 100
+    (subscription_breakdown.values.last.to_f / Trip.all.count.to_f) * 100
   end
-
 
   def self.single_date_with_highest
     group("DATE_TRUNC('day', start_date)").order('count_all desc').count.first

@@ -1,5 +1,9 @@
-class BikeShareApp < Sinatra::Base
+require 'will_paginate'
+require 'will_paginate/active_record'
 
+
+class BikeShareApp < Sinatra::Base
+  configure { register WillPaginate::Sinatra }
   set :method_override, true
 
   get '/' do
@@ -11,7 +15,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations/index' do
-    @stations = Station.all
+    @stations = Station.paginate(:page => params[:page], :per_page => 30)
 
     erb :"/stations/index"
   end
@@ -55,7 +59,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trips = Trip.all
+    @trips = Trip.paginate(:page => params[:page], :per_page => 30)
 
     erb :"/trips/index"
   end
@@ -100,7 +104,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/conditions' do
-    @conditions = Condition.all
+    @conditions = Condition.paginate(:page => params[:page], :per_page => 30)
 
     erb :"/conditions/index"
   end

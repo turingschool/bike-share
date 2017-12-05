@@ -32,5 +32,8 @@
           </div>
         </div>
       <% end %>
+      <div class="page-links">
+        <%= will_paginate @conditions, :page_links => false %>
+      </div>
   </body>
 </html>

@@ -36,9 +36,7 @@ trips.each do |trip|
               end_station_id: trip["end_station_id"],
               bike_id: trip["bike_id"],
               subscription_type: trip["subscription_type"],
-              zip_code: trip["zip_code"],
-
-              # condition_id: Condition.find_by(date: trip["start_date"]))
+              zip_code: trip["zip_code"])
 end
 
 conditions.each do |condition|

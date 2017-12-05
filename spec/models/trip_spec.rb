@@ -46,9 +46,9 @@ RSpec.describe Trip do
     end
   end
 
-  describe "Class Mehtods" do
-    it "can find average duration of rides"
+  describe "Class Methods" do
+    xit "can find average duration of rides" do
 
-
+    end
   end
 end

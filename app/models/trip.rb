@@ -5,7 +5,6 @@ class Trip < ActiveRecord::Base
   belongs_to :start_station, class_name: "Station", foreign_key: "start_station_id"
   belongs_to :end_station, class_name: "Station", foreign_key: "end_station_id"
 
-
   validates_presence_of :duration,
                         :start_date,
                         :start_station_name,

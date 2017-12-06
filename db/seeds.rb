@@ -36,7 +36,7 @@ Trip.destroy_all
 trips = CSV.open './db/csv/trip.csv', headers:true, header_converters: :symbol
 trips.each do |row|
   zipcode = row[:zip_code].to_s.rjust(5, "0")[0..4]
-  condition_id = Condition.date_id(Date.strptime(row[:start_date], "%m/%d/%Y"), zipcode)
+  condition_id = Condition.date_id(Date.strptime(row[:start_date], "%d/%m/%Y"), zipcode)
   Trip.create!(duration:           row[:duration],
                start_date:         DateTime.strptime(row[:start_date], "%m/%d/%Y"),
                start_station_id:   row[:start_station_id],

@@ -10,7 +10,7 @@ class Seed
   def self.station
     options = {headers: true, header_converters: :symbol, converters: :numeric}
     CSV.foreach('./db/csv/station.csv', options) do |row|
-      Station.create(id: row[:id],
+      Station.create!(id: row[:id],
       installation_date: Date.strptime(row[:installation_date], "%m/%d/%Y"),
       name: row[:name],
       city: row[:city],
@@ -41,7 +41,7 @@ class Seed
     options = {headers: true, header_converters: :symbol, converters: :numeric}
     CSV.foreach('./db/csv/weather.csv', options) do |row|
       if row[:zip_code] == 94107
-        Condition.create(date:           Date.strptime(row[:date], '%m/%d/%Y'),
+        Condition.create!(date:           Date.strptime(row[:date], '%m/%d/%Y'),
                        mean_temperature_f: row[:mean_temperature_f],
                        max_temperature_f:  row[:max_temperature_f],
                        min_temperature_f:  row[:min_temperature_f],
@@ -57,6 +57,9 @@ class Seed
 
   def self.test
     DatabaseCleaner.clean
+    Station.destroy_all
+    Trip.destroy_all
+    Condition.destroy_all
     Seed.station
     Seed.condition
     Seed.trip_fixture

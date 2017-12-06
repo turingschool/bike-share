@@ -32,22 +32,30 @@ describe "as a user when I visit station show page" do
   end
 
   it "I see station show details" do
+    # require 'pry'; binding.pry
+    # save_and_open_page
     expect(page.status_code).to eq(200)
 
     expect(page).to have_content("SF")
     expect(page).to have_content(5)
     expect(page).to have_content("San Francisco")
     expect(page).to have_content("2013-08-23")
+    expect(page).to have_content("Edit")
   end
 
   it "I can edit the details" do
-    click_link("Edit")
+    within(".edit") do
+      click_link("Edit")
+    end
 
     expect(current_path).to eq("/stations/#{@station_1.id}/edit")
   end
 
   it "I can delete station and redirect to station index" do
-    click_button("Delete")
+
+    within(".edit-delete") do
+      click_button("Delete")
+    end
 
     expect(current_path).to eq("/stations/index")
   end

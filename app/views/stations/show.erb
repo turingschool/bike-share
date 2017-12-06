@@ -18,7 +18,7 @@
         <p>City: <%= @station.city %></p><br>
         <p>Installation Date: <%= @station.installation_date %></p><br>
         <div class="edit-delete">
-          <a href="/stations/<%= @station.id%>/edit">Edit</a>
+          <a class="edit" href="/stations/<%= @station.id %>/edit">Edit</a>
           <form class="delete" action="/stations/<%= @station.id %>" method="post">
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" value="Delete">

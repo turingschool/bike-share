@@ -3,17 +3,19 @@ require 'spec_helper'
 describe 'As a visitor' do
   describe 'when I go to "/conditions/:id/edit" ' do
     before :each do
-      @condition = Condition.create(date: "2014-08-20", max_temperature_f: 70,
+      # require 'pry'; binding.pry
+      @condition_1 = Condition.create!(id: "2014-08-20", date: "2014-08-20", max_temperature_f: 70,
       mean_temperature_f: 60, min_temperature_f: 50, mean_humidity: 20,
       mean_visibility_miles: 50, mean_wind_speed_mph: 12, precipitation_inches: 4,
       zip_code: 94127)
 
-      visit "/conditions/#{@condition.id}/edit"
+      visit "/conditions/#{@condition_1.id}/edit"
     end
 
     it "should give me a form with several form fields to edit with
     the option to submit which will redirect me to conditions index" do
-      fill_in "condition[date]", with: "2013-08-07"
+    # require 'pry'; binding.pry
+      fill_in "condition[date]", with: "08/07/2014"
       fill_in "condition[max_temperature_f]", with: 80
       fill_in "condition[mean_temperature_f]", with: 70
       fill_in "condition[min_temperature_f]", with: 60
@@ -25,7 +27,7 @@ describe 'As a visitor' do
 
       click_button("Submit")
 
-      expect(current_path).to eq("/conditions/#{@condition.id}")
+      expect(current_path).to eq("/conditions/2013-08-07")
     end
   end
 end

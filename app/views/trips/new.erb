@@ -17,7 +17,7 @@
         <form class="new-trip" action="/trips" method="post">
           <p>Duration</p><input type="text" name="trip[duration]" value="Duration">
           <p>Start Date</p><input type="date" name="trip[start_date]" value="Start Date">
-          <p>Start Station</p><select class="station" name="trip[start_station_id]">
+          <p>Start Station</p><select id="station" name="trip[start_station_id]">
           <% @stations.sort_by(&:name).each do |station| %>
             <option value="<%= station.id %>">
             <%= station.name.upcase %>

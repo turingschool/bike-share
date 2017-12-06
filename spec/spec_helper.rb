@@ -22,12 +22,8 @@ RSpec.configure do |config|
   config.append_after(:all) do
     DatabaseCleaner.clean
   end
- end
 
-RSpec.configure do |c|
-  c.include Capybara::DSL
-
-  c.before(:all, :foo => true) do
+  config.before(:all, :foo => true) do
     DatabaseCleaner.clean
     Seed.test
   end

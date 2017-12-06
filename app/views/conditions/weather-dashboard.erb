@@ -2,16 +2,6 @@
 
 <h3> High Temperature Breakout </h3>
 
-<h4> 100 - 109 degrees</h4>
-<p>most rides: <%= @condition.max_weather_ride_analytics(:max_temperature, 100, 109) %></p>
-<p>least rides: <%= @condition.min_weather_ride_analytics(:max_temperature, 100, 109) %></p>
-<p>avg rides: <%= @condition.avg_weather_ride_analytics(:max_temperature, 100, 109)%></p>
-
-<h4> 90 - 99 degrees</h4>
-<p>most rides: <%= @condition.max_weather_ride_analytics(:max_temperature, 90, 99) %></p>
-<p>least rides: <%= @condition.min_weather_ride_analytics(:max_temperature, 90, 99) %></p>
-<p>avg rides: <%= @condition.avg_weather_ride_analytics(:max_temperature, 90, 99)%></p>
-
 <h4> 80 - 89 degrees</h4>
 <p>most rides: <%= @condition.max_weather_ride_analytics(:max_temperature, 80, 89) %></p>
 <p>least rides: <%= @condition.min_weather_ride_analytics(:max_temperature, 80, 89) %></p>
@@ -99,16 +89,6 @@
 <p>avg rides: <%= @condition.avg_weather_ride_analytics(:mean_wind_speed, 21, 24)%></p>
 
 <h3> Visibility in miles </h3>
-
-<h4> 17 - 20 miles </h4>
-<p>most rides: <%= @condition.max_weather_ride_analytics(:mean_visibility, 17, 20) %></p>
-<p>least rides: <%= @condition.min_weather_ride_analytics(:mean_visibility, 17, 20) %></p>
-<p>avg rides: <%= @condition.avg_weather_ride_analytics(:mean_visibility, 17, 20)%></p>
-
-<h4> 13 - 16 miles </h4>
-<p>most rides: <%= @condition.max_weather_ride_analytics(:mean_visibility, 13, 16) %></p>
-<p>least rides: <%= @condition.min_weather_ride_analytics(:mean_visibility, 13, 16) %></p>
-<p>avg rides: <%= @condition.avg_weather_ride_analytics(:mean_visibility, 13, 16)%></p>
 
 <h4> 9 - 12 miles </h4>
 <p>most rides: <%= @condition.max_weather_ride_analytics(:mean_visibility, 9, 12) %></p>

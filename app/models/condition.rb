@@ -1,12 +1,29 @@
 class Condition < ActiveRecord::Base
-  has_many :trips, class_name: "Trip", foreign_key: "date"
+  has_many :trips, class_name: "Trip", foreign_key: "condition_id"
 
   def self.date_id(date)
     find_by(date: date).id
   end
 
-  def self.max_temp_range_40_to_49
-    select(:id).where(:max_temperature => (40..49)).count
+  # def self.max_temp_range_40_to_49
+  #   where(:max_temperature => (40..49))
+  # end
+
+  def self.max_weather_ride_analytics(min, max)
+    days = where(:max_temperature => (min..max))
+    days.joins(:trips).group(:date).order("count_all DESC").count.first[1]
+  end
+
+  def self.min_weather_ride_analytics(min, max)
+    days = where(:max_temperature => (min..max))
+    days.joins(:trips).group(:date).order("count_all").count.first[1]
+  end
+
+  def self.avg_weather_ride_analytics(min, max)
+    days = where(:max_temperature => (min..max))
+    sum = days.joins(:trips).group(:date).order("count_all").count.values.sum
+    total = total = days.joins(:trips).group(:date).order("count_all").count.count
+    sum/ total
   end
 
 end

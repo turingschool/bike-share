@@ -1,7 +1,21 @@
 <h1> Weather Dashboard </h1>
 
-<p> 40-49: <% Condition.max_temp_range_40_to_49.each do |condition| %>
+<h4> 80 - 89 degrees</h4>
+<p>most rides: <%= @condition.max_weather_ride_analytics(80, 89) %>
+<p>least rides: <%= @condition.min_weather_ride_analytics(80, 89) %>
+<p>avg rides: <%= @condition.avg_weather_ride_analytics(80, 89)%>
 
-          <%= c %> </br>
+<h4> 70 - 79 degrees</h4>
+<p>most rides: <%= @condition.max_weather_ride_analytics(70, 79) %>
+<p>least rides: <%= @condition.min_weather_ride_analytics(70, 79) %>
+<p>avg rides: <%= @condition.avg_weather_ride_analytics(70, 79)%>
 
-          <% end %> </p>
+<h4> 60 - 69 degrees</h4>
+<p>most rides: <%= @condition.max_weather_ride_analytics(60, 69) %>
+<p>least rides: <%= @condition.min_weather_ride_analytics(60, 79) %>
+<p>avg rides: <%= @condition.avg_weather_ride_analytics(60, 79)%>
+
+<h4> 50 - 59 degrees</h4>
+<p>most rides: <%= @condition.max_weather_ride_analytics(50, 59) %>
+<p>least rides: <%= @condition.min_weather_ride_analytics(50, 59) %>
+<p>avg rides: <%= @condition.avg_weather_ride_analytics(50, 59)%>

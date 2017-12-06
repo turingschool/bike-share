@@ -5,4 +5,8 @@ class Condition < ActiveRecord::Base
     find_by(date: date).id
   end
 
+  def self.max_temp_range_40_to_49
+    select(:id).where(:max_temperature => (40..49)).count
+  end
+
 end

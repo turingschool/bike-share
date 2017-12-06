@@ -30,45 +30,64 @@ class Condition < ActiveRecord::Base
     where(mean_visibility_miles: [range..range+4])
   end
 
-  def self.rides_per_day
+  def self.rides_per_day_desc
     joins(:trips).group(:start_date).order("count_start_date desc").count(:start_date)
   end
 
+  def self.rides_per_day_asc
+    joins(:trips).group(:start_date).order("count_start_date asc").count(:start_date)
+  end
+
   def self.min_rides_temp(range)
-    days_within_high_temp(range).rides_per_day.reverse.first[1]
+    days_within_high_temp(range).rides_per_day_asc.first[1]
   end
 
-  def self.average_rides_temp
+  def self.average_rides_temp(range)
+    days = days_within_high_temp(range).rides_per_day_asc.values
+    days.sum/days.count
   end
 
-  def self.max_rides_temp
+  def self.max_rides_temp(range)
+    days_within_high_temp(range).rides_per_day_desc.first[1]
   end
 
-  def self.min_rides_precip
+  def self.min_rides_precip(range)
+    days_within_precipitation(range).rides_per_day_asc.first[1]
   end
 
-  def self.average_rides_precip
+  def self.average_rides_precip(range)
+    days = days_within_precipitation(range).rides_per_day_asc.values
+    days.sum/days.count
   end
 
-  def self.max_rides_precip
+  def self.max_rides_precip(range)
+    days_within_precipitation(range).rides_per_day_desc.first[1]
   end
 
-  def self.min_rides_wind
+  def self.min_rides_wind(range)
+    days_within_wind(range).rides_per_day_asc.first[1]
   end
 
-  def self.average_rides_wind
+  def self.average_rides_wind(range)
+    days = days_within_wind(range).rides_per_day_asc.values
+    days.sum/days.count
   end
 
-  def self.max_rides_wind
+  def self.max_rides_wind(range)
+    days_within_wind(range).rides_per_day_desc.first[1]
   end
 
-  def self.min_rides_visibility
+  def self.min_rides_visibility(range)
+    days_within_visibility(range).rides_per_day_asc.first[1]
   end
 
-  def self.average_rides_visibility
+  def self.average_rides_visibility(range)
+    days = days_within_visibility(range).rides_per_day_asc.values
+    days.sum/days.count
   end
 
-  def self.max_rides_visibility
+  def self.max_rides_visibility(range)
+    days_within_visibility(range).rides_per_day_desc.first[1]
   end
 
   def self.all_rides_within_wind_speed

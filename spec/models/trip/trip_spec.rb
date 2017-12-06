@@ -114,13 +114,13 @@ RSpec.describe Trip do
     context "Trip Methods for Trip Dashboard Page" do
       describe ".average_duration_per_ride" do
         it "gives you average duration of a ride" do
-          expect(Trip.average_duration_per_ride).to eq(48)
+          expect(Trip.average_duration_per_ride).to eq(731)
         end
       end
 
       describe ".longest_ride" do
         it "gives you longest ride" do
-          expect(Trip.longest_ride).to eq(63)
+          expect(Trip.longest_ride).to eq(17396)
         end
       end
 
@@ -132,60 +132,60 @@ RSpec.describe Trip do
 
       describe ".start_station_with_most_rides" do
         it "gives you the start station with the most rides" do
-          expect(Trip.start_station_with_most_rides).to eq("CO")
+          expect(Trip.start_station_with_most_rides).to eq("San Jose Diridon Caltrain Station")
         end
       end
 
       describe ".end_station_with_most_rides" do
         it "gives you the end station with the most rides" do
-          expect(Trip.end_station_with_most_rides).to eq("The Bay")
+          expect(Trip.end_station_with_most_rides).to eq("Steuart at Market")
         end
       end
 
       describe ".month_by_month" do
         it "gives you the month by month breakdown of number of rides with subtotals for each year" do
           expect(Trip.month_by_month.class).to eql(Hash)
-          expect(Trip.month_by_month).to have_value(1)
+          expect(Trip.month_by_month).to have_value(6)
         end
       end
 
       describe ".year_by_year" do
         it "gives you the year by year breakdown of number of rides with subtotals for each year" do
           expect(Trip.year_by_year.class).to eql(Hash)
-          expect(Trip.year_by_year).to have_value(2)
+          expect(Trip.year_by_year).to have_value(76)
         end
       end
 
       describe ".most_ridden_bike" do
         it "gives most ridden bike with total number of rides for that bike" do
           expect(Trip.most_ridden_bike.class).to eql(Array)
-          expect(Trip.most_ridden_bike).to eq([510,2])
+          expect(Trip.most_ridden_bike).to eq([510, 16])
         end
       end
 
       describe ".least_ridden_bike" do
         it "gives least ridden bike with total number of rides for that bike" do
           expect(Trip.least_ridden_bike.class).to eql(Array)
-          expect(Trip.least_ridden_bike).to eq([520,1])
+          expect(Trip.least_ridden_bike).to eq([12, 1])
         end
       end
 
-      describe ".user_subscription_type_count" do
+      describe ".subscription_breakdown" do
         it "user subscription type breakout with count" do
-          expect(Trip.user_subscription_type_count.class).to eql(Hash)
-          expect(Trip.user_subscription_type_count).to have_value(3)
+          expect(Trip.subscription_breakdown.class).to eql(Hash)
+          expect(Trip.subscription_breakdown).to have_value(37)
         end
       end
 
       describe '.customer_subscription_percentage' do
         it "customer subscription type breakout with percentage" do
-          expect(Trip.customer_subscription_percentage).to eq(25.0)
+          expect(Trip.customer_subscription_percentage.round(1)).to eq(14.5)
         end
       end
 
       describe '.subscriber_subscription_percentage' do
         it "subscriber subscription type breakout with percentage" do
-          expect(Trip.subscriber_subscription_percentage).to eq(75.0)
+          expect(Trip.subscriber_subscription_percentage.round(1)).to eq(85.4)
         end
       end
 
@@ -193,7 +193,7 @@ RSpec.describe Trip do
       describe ".single_date_with_highest" do
         it "single date with highest number of trips with count of those trips" do
           expect(Trip.single_date_with_highest.class).to eql(Array)
-          expect(Trip.single_date_with_highest).to eq(["2014-06-22 00:00:00 UTC", 2])
+          expect(Trip.single_date_with_highest).to eq(["2013-11-26 00:00:00 UTC", 36])
         end
       end
 
@@ -208,43 +208,43 @@ RSpec.describe Trip do
     context "Trip Methods for Station Show Page" do
       describe ".number_rides_at_start_station" do
         it "gives number of rides started at a specific station" do
-          expect(Trip.number_rides_at_start_station(@station_1.id)).to eq(1)
+          expect(Trip.number_rides_at_start_station(2)).to eq(21)
         end
       end
 
       describe ".number_rides_at_end_station" do
         it "gives number of rides ended at a specific station" do
-          expect(Trip.number_rides_at_end_station(@station_1.id)).to eq(1)
+          expect(Trip.number_rides_at_end_station(2)).to eq(9)
         end
       end
 
       describe ".most_frequent_destination_station" do
         it "gives most frequent destination station for rides that began at this station" do
-          expect(Trip.most_frequent_destination_station(@station_2.id)).to eq("The Bay")
+          expect(Trip.most_frequent_destination_station(2)).to eq("Santa Clara at Almaden")
         end
       end
 
       describe ".most_frequent_origination_station" do
         it "gives most frequent origination station for rides that end at this station" do
-          expect(Trip.most_frequent_origination_station(@station_4.id)).to eq("CO")
+          expect(Trip.most_frequent_origination_station(5)).to eq("San Jose City Hall")
         end
       end
 
       describe ".date_with_highest_number_trips_started" do
         it "gives the date with the highest number of trips started at a particular station" do
-          expect(Trip.date_with_highest_number_trips_started(@station_2.id)).to eq("2014-06-22")
+          expect(Trip.date_with_highest_number_trips_started(2)).to eq("2015-06-22")
         end
       end
 
       describe ".most_frequent_user_zipcode" do
         it "gives most frequent zipcode for users starting trips at a specific station" do
-          expect(Trip.most_frequent_user_zipcode(@station_2.id)).to eq(94105)
+          expect(Trip.most_frequent_user_zipcode(2)).to eq(94105)
         end
       end
 
       describe ".most_frequent_bike_id" do
         it "gives most frequent bike id starting trips at a specific station" do
-          expect(Trip.most_frequent_bike_id(@station_2.id)).to eq(510)
+          expect(Trip.most_frequent_bike_id(2)).to eq(510)
         end
       end
     end

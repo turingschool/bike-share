@@ -44,35 +44,35 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       </div>
     </div>
   </header>
-  <div class="w3-light-grey w3-content w3-round w3-center w3-padding-large">
+  <div class="w3-light-grey w3-border w3-content w3-round w3-center w3-padding-large">
   <hr>
     <form action="/trips/<%= @trip.id %>" method= "post">
       <h1>Edit Trip</h1>
       <input type="hidden" name="_method" value="PUT"/>
       <div class= "w3-section">
-        Duration <input type= "number" name="trip[duration]" value="<%= @trip.duration %>"/>
+        Duration<br><input type= "number" name="trip[duration]" value="<%= @trip.duration %>" style="width: 210px"/>
       </div>
       <div class= "w3-section">
-        Start Date<input type= "date" name="trip[start_date]" value="<%= @trip.start_date %>"/>
+        Start Date<br><input type= "date" name="trip[start_date]" value="<%= @trip.start_date %>" style="width: 210px"/>
       </div>
       <div class= "w3-section">
-        Start Station<input type= "text" name="trip[start_station_name]" value="<%= @trip.start_station_name %>"/>
+        Start Station<br><input type= "text" name="trip[start_station_name]" value="<%= @trip.start_station_name %>" style="width: 210px"/>
       </div>
       <div class= "w3-section">
-        End Date<input type= "date" name="trip[end_date]" value="<%= @trip.end_date %>"/>
+        End Date<br><input type= "date" name="trip[end_date]" value="<%= @trip.end_date %>" style="width: 210px"/>
       </div>
       <div class= "w3-section">
-        End Station<input type= "text" name="trip[end_station_name]" value="<%= @trip.end_station_name %>"/>
+        End Station<br><input type= "text" name="trip[end_station_name]" value="<%= @trip.end_station_name %>" style="width: 210px"/>
       </div>
       <div class= "w3-section">
-        Bike Id<input type= "number" name="trip[bike_id]" value="<%= @trip.bike_id %>"/>
+        Bike Id<br><input type= "number" name="trip[bike_id]" value="<%= @trip.bike_id %>" style="width: 210px"/>
       </div>
       <div class= "w3-section">
         Subscription Type<br><input type= "radio" name="trip[subscription]" value="<%= @trip.duration %>" checked> Customer<br>
       <input type= "radio" name="trip[subscription]" value="<%= @trip.duration %>"/> Subscriber<br>
       </div>
       <div class= "w3-section">
-        Zip Code<input type= "number" name="trip[zip_code]" value="<%= @trip.zip_code %>"/>
+        Zip Code<br><input type= "number" name="trip[zip_code]" value="<%= @trip.zip_code %>" style="width: 210px"/>
       </div>
         <input type="submit" class="w3-button w3-block w3-pink" value="submit"/>
     </form>

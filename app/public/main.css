@@ -74,3 +74,16 @@ nav {
   font-size: 20px;
   margin-top: 6px;
 }
+
+.home-columns{
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.go-back-link{
+  display:flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-weight:bold;
+}

@@ -32,6 +32,8 @@
       <p>Date with the highest number of trips started at <%= @station.name %>: <%= Trip.date_with_highest_number_trips_started(@station.id) %></p>
       <p> Most frequent Zip Code for users starting trips at <%= @station.name %>: <%= Trip.most_frequent_user_zipcode(@station.id) %>    </p>
       <p>Most frequent Bike ID for Bikes that starts trips at <%= @station.name %>: <%= Trip.most_frequent_bike_id(@station.id) %>       </p>
+    </div>
+    <div class="go-back-link">
       <a href="/stations/index">Go Back to Station Index</a>
     </div>
   </body>

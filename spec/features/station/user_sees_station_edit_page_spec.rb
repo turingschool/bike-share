@@ -31,4 +31,18 @@ describe "when user visits /stations/:id/edit path" do
     expect(page).to have_content("City:")
     expect(page).to have_content("Installation Date:")    
   end
+
+  it "is redirected to stationn when clicking submit" do
+    fill_in("station[name]", with: "Turing")
+    fill_in("station[dock_count]", with: 10)
+    fill_in("station[city]", with: "Denver")
+    fill_in("station[installation_date]", with: "2014-04-09")
+    click_button("submit-button")
+    
+    expect(page).to have_content("Turing")
+    expect(page).to have_content("10")
+    expect(page).to have_content("Denver")
+    expect(page).to have_content("2014-04-09")
+    expect(current_path).to eq("/stations/1")
+  end
 end

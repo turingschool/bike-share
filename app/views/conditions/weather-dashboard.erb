@@ -1,21 +1,45 @@
 <h1> Weather Dashboard </h1>
 
+<h3> High Temperature Breakout </h3>
+
 <h4> 80 - 89 degrees</h4>
-<p>most rides: <%= @condition.max_weather_ride_analytics(80, 89) %>
-<p>least rides: <%= @condition.min_weather_ride_analytics(80, 89) %>
-<p>avg rides: <%= @condition.avg_weather_ride_analytics(80, 89)%>
+<p>most rides: <%= @condition.max_weather_ride_analytics(:max_temperature, 80, 89) %>
+<p>least rides: <%= @condition.min_weather_ride_analytics(:max_temperature, 80, 89) %>
+<p>avg rides: <%= @condition.avg_weather_ride_analytics(:max_temperature, 80, 89)%>
 
 <h4> 70 - 79 degrees</h4>
-<p>most rides: <%= @condition.max_weather_ride_analytics(70, 79) %>
-<p>least rides: <%= @condition.min_weather_ride_analytics(70, 79) %>
-<p>avg rides: <%= @condition.avg_weather_ride_analytics(70, 79)%>
+<p>most rides: <%= @condition.max_weather_ride_analytics(:max_temperature, 70, 79) %>
+<p>least rides: <%= @condition.min_weather_ride_analytics(:max_temperature, 70, 79) %>
+<p>avg rides: <%= @condition.avg_weather_ride_analytics(:max_temperature, 70, 79)%>
 
 <h4> 60 - 69 degrees</h4>
-<p>most rides: <%= @condition.max_weather_ride_analytics(60, 69) %>
-<p>least rides: <%= @condition.min_weather_ride_analytics(60, 79) %>
-<p>avg rides: <%= @condition.avg_weather_ride_analytics(60, 79)%>
+<p>most rides: <%= @condition.max_weather_ride_analytics(:max_temperature, 60, 69) %>
+<p>least rides: <%= @condition.min_weather_ride_analytics(:max_temperature, 60, 79) %>
+<p>avg rides: <%= @condition.avg_weather_ride_analytics(:max_temperature, 60, 79)%>
 
 <h4> 50 - 59 degrees</h4>
-<p>most rides: <%= @condition.max_weather_ride_analytics(50, 59) %>
-<p>least rides: <%= @condition.min_weather_ride_analytics(50, 59) %>
-<p>avg rides: <%= @condition.avg_weather_ride_analytics(50, 59)%>
+<p>most rides: <%= @condition.max_weather_ride_analytics(:max_temperature, 50, 59) %>
+<p>least rides: <%= @condition.min_weather_ride_analytics(:max_temperature, 50, 59) %>
+<p>avg rides: <%= @condition.avg_weather_ride_analytics(:max_temperature, 50, 59)%>
+
+<h4> 40 - 49 degrees</h4>
+<p>most rides: <%= @condition.max_weather_ride_analytics(:max_temperature, 40, 49) %>
+<p>least rides: <%= @condition.min_weather_ride_analytics(:max_temperature, 40, 49) %>
+<p>avg rides: <%= @condition.avg_weather_ride_analytics(:max_temperature, 40, 49)%>
+
+<h3> Precipitation Breakout in inches </h3>
+
+<h4> 0.0 - 0.5 inches</h4>
+<p>most rides: <%= @condition.max_weather_ride_analytics(:precipitation, 0, 0.5) %>
+<p>least rides: <%= @condition.min_weather_ride_analytics(:precipitation, 0, 0.5) %>
+<p>avg rides: <%= @condition.avg_weather_ride_analytics(:precipitation, 0, 0.5)%>
+
+<h4> 0.6 - 1.0 inches</h4>
+<p>most rides: <%= @condition.max_weather_ride_analytics(:precipitation, 0.6, 1.0) %>
+<p>least rides: <%= @condition.min_weather_ride_analytics(:precipitation, 0.6, 1.0) %>
+<p>avg rides: <%= @condition.avg_weather_ride_analytics(:precipitation, 0.6, 1.0)%>
+
+<h4> 1.1 - 1.5 inches</h4>
+<p>most rides: <%= @condition.max_weather_ride_analytics(:precipitation, 1.1, 1.5) %>
+<p>least rides: <%= @condition.min_weather_ride_analytics(:precipitation, 1.1, 1.5) %>
+<p>avg rides: <%= @condition.avg_weather_ride_analytics(:precipitation, 1.1, 1.5)%>

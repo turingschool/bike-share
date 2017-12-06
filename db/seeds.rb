@@ -17,10 +17,25 @@ stations.each do |row|
                   installation_date: Date.strptime(row[:installation_date], "%m/%d/%Y"))
 end
 
+Condition.delete_all
+
+conditions = CSV.open './db/csv/weather.csv', headers:true, header_converters: :symbol
+conditions.each do |row|
+  Condition.create!(date:        Date.strptime(row[:date], "%m/%d/%Y"),
+  max_temperature:       row[:max_temperature_f],
+  mean_temperature:      row[:mean_temperature_f],
+  min_temperature:       row[:min_temperature_f],
+  mean_humidity:         row[:mean_humidity],
+  mean_visibility:       row[:mean_visibility_miles],
+  mean_wind_speed:       row[:mean_wind_speed_mph],
+  precipitation:         row[:precipitation_inches])
+end
+
 Trip.destroy_all
 
 trips = CSV.open './db/fixture/trip_fixture.csv', headers:true, header_converters: :symbol
 trips.each do |row|
+  condition_id = Condition.date_id(Date.strptime(row[:start_date], "%m/%d/%Y"))
   zipcode = row[:zip_code].to_s.rjust(5, "0")[0..4]
   Trip.create!(duration:           row[:duration],
                start_date:         DateTime.strptime(row[:start_date], "%m/%d/%Y"),
@@ -29,20 +44,8 @@ trips.each do |row|
                end_station_id:     row[:end_station_id],
                bike_id:            row[:bike_id],
                subscription:       row[:subscription_type],
-               zip_code:           zipcode)
+               zip_code:           zipcode,
+               condition_id:       condition_id)
 end
 
-Condition.delete_all
-
-conditions = CSV.open './db/csv/weather.csv', headers:true, header_converters: :symbol
-conditions.each do |row|
-  Condition.create!(date:        Date.strptime(row[:date], "%m/%d/%Y"),
-          max_temperature:       row[:max_temperature_f],
-          mean_temperature:      row[:mean_temperature_f],
-          min_temperature:       row[:min_temperature_f],
-          mean_humidity:         row[:mean_humidity],
-          mean_visibility:       row[:mean_visibility_miles],
-          mean_wind_speed:       row[:mean_wind_speed_mph],
-          precipitation:         row[:precipitation_inches])
-end
   puts "Seed complete"

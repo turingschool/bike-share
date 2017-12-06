@@ -9,6 +9,6 @@ describe "when a visitor visits station dashboard" do
 
 
   expect(current_path).to eq("/station-dashboard")
-  expect(page).to have_content("Station Dashboard")
+  expect(page).to have_content("Stations")
   end
 end

@@ -10,7 +10,6 @@ Station.destroy_all
 stations = CSV.open './db/csv/station.csv', headers:true, header_converters: :symbol
 stations.each do |row|
   Station.create!(id:                row[:id],
-
                   name:              row[:name],
                   dock_count:        row[:dock_count],
                   city:              row[:city],
@@ -33,10 +32,10 @@ end
 
 Trip.destroy_all
 
-trips = CSV.open './db/csv/trip.csv', headers:true, header_converters: :symbol
+trips = CSV.open './db/fixture/trip_fixture.csv', headers:true, header_converters: :symbol
 trips.each do |row|
-  condition_id = Condition.date_id(Date.strptime(row[:start_date], "%m/%d/%Y"))
   zipcode = row[:zip_code].to_s.rjust(5, "0")[0..4]
+  condition_id = Condition.date_id(Date.strptime(row[:start_date], "%m/%d/%Y"))
   Trip.create!(duration:           row[:duration],
                start_date:         DateTime.strptime(row[:start_date], "%m/%d/%Y"),
                start_station_id:   row[:start_station_id],

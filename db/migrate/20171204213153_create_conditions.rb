@@ -9,6 +9,7 @@ class CreateConditions < ActiveRecord::Migration[5.1]
     t.integer      :mean_visibility
     t.integer      :mean_wind_speed
     t.integer      :precipitation
+    t.integer      :zip_code
     end
   end
 

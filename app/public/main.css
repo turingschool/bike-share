@@ -11,7 +11,7 @@ p {
 }
 
 h1 {
-  font-size: 80px;
+  font-size: 75px;
   font-family: sans-serif;
   display: inline-block;
   justify-content: center;
@@ -86,4 +86,30 @@ nav {
   justify-content: center;
   margin-bottom: 20px;
   font-weight:bold;
+}
+
+.body-container-show {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  margin: 40px;
+}
+
+.individual-container-show-upper {
+  padding: 20px;
+  width: 25%;
+  margin-bottom: 20px;
+  background-color: #cecece;
+  border-radius: 4px;
+  opacity: 0.8;
+}
+
+.individual-container-show-lower {
+  padding: 20px;
+  width: 52%;
+  margin-bottom: 20px;
+  background-color: #cecece;
+  border-radius: 4px;
+  opacity: 0.8;
 }

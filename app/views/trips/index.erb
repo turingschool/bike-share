@@ -14,7 +14,7 @@
     <div class="body-container">
       <% @trips.each do |trip| %>
         <div class="individual-container">
-          <p><a href="/trips/<%=trip.id%>">View Trip Details</a></p> <br>
+          <p><a class="station-name" href="/trips/<%=trip.id%>">View Trip Details</a></p> <br>
           <p>Duration: <%= trip.duration %></p><br>
           <p>Start Date: <%= trip.start_date %></p><br>
           <p>Start Station: <%= trip.start_station_name %></p><br>

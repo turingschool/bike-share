@@ -14,7 +14,7 @@
     <div class="body-container">
       <% @conditions.each do |condition| %>
         <div class="individual-container">
-          <p><a href="/conditions/<%=condition.id%>">View Condition Details</a></p> <br>
+          <p><a class="station-name" href="/conditions/<%=condition.id%>">View Condition Details</a></p> <br>
           <p>Date: <%= condition.date %></p><br>
           <p>Max Temp: <%= condition.max_temperature_f %></p><br>
           <p>Mean Temp: <%= condition.mean_temperature_f %></p><br>
@@ -36,6 +36,8 @@
       <div class="page-links">
         <%= will_paginate @conditions, :page_links => false %>
       </div>
-      <p> <a href="/">Go Back To Home Dashboard</a>  </p>
+      <div class="go-back-link">
+        <a href="/">Go Back to Home Page</a>
+      </div>
   </body>
 </html>

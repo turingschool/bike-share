@@ -5,9 +5,16 @@
     <title>
       Station Dashboard
     </title>
+    <link rel="stylesheet" type="text/css" href="/reset.css">
+    <link rel="stylesheet" type="text/css" href="/table.css">
+    <link rel="stylesheet" type="text/css" href="/main.css">
   </head>
   <body>
-    <h1>Station Dashboard</h1>
+    <nav>
+      <img class="logo" src="https://bikeshare.metro.net/wp-content/themes/lametro/library/images/logo.png">
+      <h1> Station Dashboard </h1>
+    </nav>
+    <br>
     <p>Station Count: <%= Station.station_count %></p><br>
     <p>Average Bikes Per Station: <%= Station.average_bikes_per_station%></p><br>
     <p>Max Bikes Per Station: <%= Station.max_bikes_per_station%></p><br>
@@ -16,6 +23,8 @@
     <p>Station with Fewest Available Bikes: <%= Station.station_with_fewest_available%></p><br>
     <p>Most Recent Installed Station: <%= Station.most_recent_station%></p><br>
     <p>Oldest Installed Station: <%= Station.oldest_station%></p><br>
-    <a href="/">Go Back to Home Page</a>
+    <div class="go-back-link">
+      <a href="/">Go Back to Home Page</a>
+    </div>
   </body>
 </html>

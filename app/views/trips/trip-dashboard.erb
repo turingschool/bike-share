@@ -1,30 +1,4 @@
 <!DOCTYPE html>
- <h1> Trip Dashboard </h1>
-<p> Average duration of a ride: <%= "#{@trip.average_duration}" %></p>
-<p> Longest Ride: <%= "#{@trip.longest_ride}" %></p>
-<p> Shortest Ride: <%= "#{@trip.shortest_ride}" %></p>
-<p> Start station with most rides: <%= "#{@trip.popular_starting_place}" %></p>
-<p> Start station with least rides: <%= "#{@trip.least_popular_starting_place}" %></p>
-<p> ending station with most rides: <%= "#{@trip.popular_ending_place}" %></p>
-<p> Bike with most rides: <%= "#{@trip.popular_bike}" %> Usage: <%= "#{@trip.popular_bikes_usage}" %></p>
-<p> Bike with least rides: <%= "#{@trip.least_popular_bike}" %> Usage: <%= "#{@trip.least_popular_bikes_usage}"%></p>
-<p> Customer Count: <%= "#{@trip.customer_count}" %> Percentage: <%= "#{@trip.customer_percentage}" %>%  </p>
-<p> Subscriber Count: <%= "#{@trip.subscriber_count}" %> Percentage: <%= "#{@trip.subscriber_percentage}" %>% </p>
-<p> Single date with the highest number of trips:  <%= "#{@trip.date_with_highest_trips}" %> Total trips: <%="#{@trip.highest_trip_date_count}"%></p>
-<p> Single date with the lowest number of trips:  <%= "#{@trip.date_with_lowest_trips}" %> Total trips: <%="#{@trip.lowest_trip_date_count}"%></p>
-<h3> Subtotals by year: <% @trip.year_subtotals.each do |year_count| %> </h3>
-                <h4> Year: <%= year_count.first.strftime("%Y") %>  </h4>
-             <p> Trip Count: <%= year_count.last %> </p>
-                             <%end%>
-
-<h3> Month by month trip count breakdown: <% @trip.month_by_month_breakdown.each do |month_count| %> </h3> <br>
-                             <%= month_count.first.strftime("%B %Y") %>
-             <p> Trip Count: <%= month_count.last %> </p>
-                             <%end%> -->
-
-
-
-<!--<!DOCTYPE html>
 <html>
 <title>Trip Dashboard</title>
 <meta charset="UTF-8">
@@ -67,6 +41,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <header id="TRIP">
       <div class="w3-container w3-text-grey">
       <h1><b>TRIP DASHBOARD</b></h1>
+      <br>
         <div class="w3-section w3-bottombar w3-padding-16">
           <a href="/stations"><button class="w3-button w3-light-grey w3-padding-large w3-hover-grey"><i class="w3-center"></i>Stations</button></a>
           <a href="/trips"><button class="w3-button w3-light-grey w3-padding-large w3-hover-grey"><i class="w3-center"></i>Trips</button></a>
@@ -93,6 +68,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
           <%end%>
         </div>
       </div>
+
       <div class="w3-container w3-center w3-margin-bottom">
         <div class="w3-row-padding
         w3-third w3-container w3-border w3-light-grey w3-center w3-round">
@@ -111,10 +87,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         </div>
       </div>
     <br>
-    <br>
-    <footer>
-    <div class="w3-black w3-center w3-padding-24" title="BayCycles" target="_blank" class="w3-hover-opacity">BayCyles</a></div>
-    </footer>
+
   </div>
   <script>
     function w3_open() {
@@ -128,4 +101,4 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     }
   </script>
 </body>
-</html>
+</html> %>

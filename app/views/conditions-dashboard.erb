@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Weather Dashboard
+    </title>
+
+    <!-- Breakout of average number of rides, highest number of rides, and lowest number of rides on days with a high temperature in 10 degree chunks (e.g. average number of rides on days with high temps between fifty and sixty degrees)
+Breakout of average number of rides, highest number of rides, and lowest number of rides on days with precipitation in half-inch increments.
+Breakout of average number of rides, highest number of rides, and lowest number of rides on days with mean wind speeds in four mile increments.
+Breakout of average number of rides, highest number of rides, and lowest number of rides on days with mean visibility in miles in four mile increments. -->
+  </head>
+  <body>
+    <h1>Weather Dashboard</h1>
+    <p> <%= Condition.station_count %></p><br>
+    <p>Average Rides Per Condition Temperature: <%= Condition.average_rides_temp%></p><br>
+    <p>Most Rides Per Condition Temperature: <%= Condition.max_rides_temp%></p><br>
+    <p>Least Rides Per Condition Temperature: <%= Condition.min_rides_temp%></p><br>
+
+    <p>Average Rides Per Condition Precipitation: <%= Condition.average_rides_precip%></p><br>
+    <p>Most Rides Per Condition Precipitation: <%= Condition.max_rides_precip%></p><br>
+    <p>Least Rides Per Condition Precipitation: <%= Condition.min_rides_precip%></p><br>
+
+    <p>Average Rides Per Condition Wind Speed: <%= Condition.average_rides_wind%></p><br>
+    <p>Most Bikes Per Condition Wind Speed: <%= Condition.max_rides_wind%></p><br>
+    <p>Least Bikes Per Condition Wind Speed: <%= Condition.min_rides_wind%></p><br>
+
+    <p>Average Rides Per Condition Visibility: <%= Condition.average_rides_visibility%></p><br>
+    <p>Most Bikes Per Condition Visibility: <%= Condition.max_rides_visibility%></p><br>
+    <p>Least Bikes Per Condition Visibility: <%= Condition.min_rides_visibility%></p><br>
+  </body>
+</html>

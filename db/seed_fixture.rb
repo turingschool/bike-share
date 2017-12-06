@@ -3,13 +3,14 @@ require 'pry'
 require './app/models/station'
 require './app/models/trip'
 require './app/models/condition'
+require 'database_cleaner'
 
 class Seed
 
   def self.station
     options = {headers: true, header_converters: :symbol, converters: :numeric}
     CSV.foreach('./db/csv/station.csv', options) do |row|
-      Station.create(id: row[:id],
+      Station.create!(id: row[:id],
       installation_date: Date.strptime(row[:installation_date], "%m/%d/%Y"),
       name: row[:name],
       city: row[:city],
@@ -18,10 +19,10 @@ class Seed
     ActiveRecord::Base.connection.reset_pk_sequence!("stations")
   end
 
-  def self.trip
+  def self.trip_fixture
     options = {headers: true, header_converters: :symbol, converters: :numeric}
-    CSV.foreach('./db/csv/trip.csv', options) do |row|
-      Trip.create(
+    CSV.foreach('./db/csv/trip_fixture.csv', options) do |row|
+      Trip.create!(
         duration: row[:duration],
         start_date: Date.strptime(row[:start_date], "%m/%d/%Y"),
         start_station_name: row[:start_station_name],
@@ -40,7 +41,7 @@ class Seed
     options = {headers: true, header_converters: :symbol, converters: :numeric}
     CSV.foreach('./db/csv/weather.csv', options) do |row|
       if row[:zip_code] == 94107
-        Condition.create(date:           Date.strptime(row[:date], '%m/%d/%Y'),
+        Condition.create!(date:           Date.strptime(row[:date], '%m/%d/%Y'),
                        mean_temperature_f: row[:mean_temperature_f],
                        max_temperature_f:  row[:max_temperature_f],
                        min_temperature_f:  row[:min_temperature_f],
@@ -53,11 +54,14 @@ class Seed
     end
     ActiveRecord::Base.connection.reset_pk_sequence!("conditions")
   end
-end
 
-Station.destroy_all
-Seed.station
-Trip.destroy_all
-Seed.trip
-Condition.destroy_all
-Seed.condition
+  def self.test
+    DatabaseCleaner.clean
+    Station.destroy_all
+    Trip.destroy_all
+    Condition.destroy_all
+    Seed.station
+    Seed.condition
+    Seed.trip_fixture
+  end
+end

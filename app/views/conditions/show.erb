@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Conditions Show</title>
+    <link rel="stylesheet" type="text/css" href="/reset.css">
+    <link rel="stylesheet" type="text/css" href="/main.css">
+  </head>
+  <body>
+    <nav>
+      <img class="logo" src="https://bikeshare.metro.net/wp-content/themes/lametro/library/images/logo.png">
+      <h1>Condition Show</h1>
+    </nav>
+    <div class="body-container">
+      <div class="individual-container">
+        <p>Date: <%= @condition.date %></p><br>
+        <p>Max Temp: <%= @condition.max_temperature_f %></p><br>
+        <p>Mean Temp: <%= @condition.mean_temperature_f %></p><br>
+        <p>Min Temp: <%= @condition.min_temperature_f %></p><br>
+        <p>Mean Humidity: <%= @condition.mean_humidity %></p><br>
+        <p>Mean Visibility: <%= @condition.mean_visibility_miles %></p><br>
+        <p>Mean Wind Speed: <%= @condition.mean_wind_speed_mph %></p><br>
+        <p>Precipitation Inches: <%= @condition.precipitation_inches %></p><br>
+        <p>Zip Code: <%= @condition.zip_code %></p><br>
+        <div class="edit-delete">
+          <a href="/conditions/<%= @condition.id%>/edit">Edit</a>
+          <form class="delete" action="/conditions/<%= @condition.id %>" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete">
+          </form>
+        </div>
+      </div>
+    </div>
+      <div class="go-back-link">
+        <a href="/trips">Go Back to Conditions Index</a>
+      </div>
+  </body>
+</html>

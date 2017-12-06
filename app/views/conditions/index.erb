@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Conditions</title>
+    <link rel="stylesheet" type="text/css" href="/reset.css">
+    <link rel="stylesheet" type="text/css" href="/main.css">
+  </head>
+  <body>
+    <nav>
+      <img class="logo" src="https://bikeshare.metro.net/wp-content/themes/lametro/library/images/logo.png">
+      <h1>Conditions Index</h1>
+    </nav>
+    <div class="body-container">
+      <% @conditions.each do |condition| %>
+        <div class="individual-container">
+          <p><a class="station-name" href="/conditions/<%=condition.id%>">View Condition Details</a></p> <br>
+          <p>Date: <%= condition.date %></p><br>
+          <p>Max Temp: <%= condition.max_temperature_f %></p><br>
+          <p>Mean Temp: <%= condition.mean_temperature_f %></p><br>
+          <p>Min Temp: <%= condition.min_temperature_f %></p><br>
+          <p>Mean Humidity: <%= condition.mean_humidity %></p><br>
+          <p>Mean Visibility: <%= condition.mean_visibility_miles %></p><br>
+          <p>Mean Wind Speed: <%= condition.mean_wind_speed_mph %></p><br>
+          <p>Precip: <%= condition.precipitation_inches %></p><br>
+          <p>Zip Code: <%= condition.zip_code %></p><br>
+          <div class="edit-delete">
+            <a class="edit" href="/conditions/<%= condition.id%>/edit">Edit</a><br>
+            <form class="delete" action="/conditions/<%= condition.id %>" method="post">
+              <input type="hidden" name="_method" value="DELETE">
+              <input class="delete" type="submit" value="Delete">
+            </form>
+          </div>
+        </div>
+      <% end %>
+      <div class="page-links">
+        <%= will_paginate @conditions, :page_links => false %>
+      </div>
+      <div class="go-back-link">
+        <a href="/">Go Back to Home Page</a>
+      </div>
+  </body>
+</html>

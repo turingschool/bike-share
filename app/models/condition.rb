@@ -16,6 +16,7 @@ class Condition < ActiveRecord::Base
 
   def self.days_within_high_temp(range)
     where(max_temperature_f: [range..range+9])
+  end
 
   def self.days_within_precipitation(range)
     where(precipitation_inches: [range..range+0.49])

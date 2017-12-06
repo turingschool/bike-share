@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "when a visitor selects a trip" do
   it 'visitor sees trip page' do
 
-  trip = Trip.create(duration: 40, start_date: "29/8/2013 18:54", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 18:56", end_station_name: "Golden Gate at Polk", bike_id: 527, subscription: "Subscriber", zip_code: 94109)
+  trip = Trip.create(duration: 63, start_date: "30/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 66, end_date: "2013-08-29", end_station_name: "South Van Ness at Market", end_station_id: 66, bike_id: 520, subscription: "Subscriber", zip_code: 94127)
 
   visit '/trips'
 
@@ -11,7 +11,7 @@ describe "when a visitor selects a trip" do
 
   expect(current_path).to eq("/trips/#{Trip.first.id}")
 
-  expect(page).to have_content("Golden Gate at Polk")
+  expect(page).to have_content("South Van Ness at Market")
   expect(page).to have_no_content("All Trips")
   end
 end

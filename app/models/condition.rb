@@ -14,24 +14,27 @@ class Condition < ActiveRecord::Base
 
   has_many  :trips, :foreign_key => :start_date
 
-  def self.days_within_high_temp(low_temp,high_temp)
-    where("max_temperature_f > ? AND max_temperature_f < ?", low_temp,high_temp).count
+  def self.days_within_high_temp(range)
+    where(max_temperature_f: [range..range+9])
+
+  def self.days_within_precipitation(range)
+    where(precipitation_inches: [range..range+0.49])
   end
 
-  def self.days_within_precipitation
-
+  def self.days_within_wind(range)
+    where(mean_wind_speed_mph: [range..range+4])
   end
 
-  def self.days_within_wind
-  end
-
-  def self.days_within_visibility
+  def self.days_within_visibility(range)
+    where(mean_visibility_miles: [range..range+4])
   end
 
   def self.rides_per_day
+    joins(:trips).group(:start_date).order("count_start_date desc").count(:start_date)
   end
 
-  def self.min_rides_temp
+  def self.min_rides_temp(range)
+    days_within_high_temp(range).rides_per_day.reverse.first[1]
   end
 
   def self.average_rides_temp

@@ -220,29 +220,33 @@ RSpec.describe Condition do
 
     describe '.days_within_high_temp' do
       it "returns days within temp range" do
-
-        expect(Condition.days_within_high_temp(80.0,90.0)).to eq(5)
+        # require "pry"; binding.pry
+        expect(Condition.days_within_high_temp(81).count).to eq(5)
       end
     end
 
     describe '.days_within_precipitation' do
       it "returns days within a precipitation range" do
-        expect(Condition.days_within_precipitation).to eq(9)
+
+        expect(Condition.days_within_precipitation(1).count).to eq(2)
       end
     end
 
     describe '.days_within_wind' do
       it "returns days within a wind range mph" do
+        expect(Condition.days_within_wind(7).count).to eq(2)
       end
     end
 
     describe '.days_within_visibility' do
       it "returns days within amount of miles" do
+        expect(Condition.days_within_visibility(1).count).to eq(5)
       end
     end
 
     describe '.rides_per_day' do
       it "groups all rides by weather type" do
+        expect(Condition.days_within_high_temp(81)).to eq(5)
       end
     end
 

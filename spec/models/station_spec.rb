@@ -108,63 +108,95 @@ RSpec.describe Station do
       expect(Station.oldest_station.first.name).to eql("San Jose Diridon Caltrain Station")
     end
 
-    # it "can find the most frequent destination by station" do
-    #   Trip.create(duration: 40, start_date: "14/9/2013 18:54", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 18:56", end_station_name: "Golden Gate at Polk", bike_id: 527, subscription: "Subscriber", zip_code: 94109)
-    #   Trip.create(duration: 109, start_date: "28/8/2013 13:25", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 13:27", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Subscriber", zip_code: 95112)
-    #   Trip.create(duration: 138, start_date: "29/8/2013 16:57", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 16:59", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Customer", zip_code: 94117)
-    #
-    #   expect(Trip.most_frequent_destination("Golden Gate at Polk")).to eql("Adobe on Almaden")
-    #  end
+    it "can find the most frequent destination by station" do
+      Trip.create(duration: 63, start_date: "29/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 1, end_date: "2013-08-29", end_station_name: "San Jose City Hall", end_station_id: 2, bike_id: 520, subscription: "Subscriber", zip_code: 94127)
+      Trip.create(duration: 70, start_date: "29/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 1, end_date: "2013-08-29", end_station_name: "San Jose City Hall", end_station_id: 2, bike_id: 520, subscription: "Subscriber", zip_code: 95138)
+      Trip.create(duration: 71, start_date: "29/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 1, end_date: "2013-08-29", end_station_name: "Mountain View City Hall", end_station_id: 3, bike_id: 48, subscription: "Subscriber", zip_code: 97214)
 
-    # it "can find the most frequent origination by station" do
-    #   Trip.create(duration: 40, start_date: "14/9/2013 18:54", start_station_name: "Post at Kearney", end_date: "29/8/2013 18:56", end_station_name: "Golden Gate at Polk", bike_id: 527, subscription: "Subscriber", zip_code: 94109)
-    #   Trip.create(duration: 109, start_date: "28/8/2013 13:25", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 13:27", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Subscriber", zip_code: 95112)
-    #   Trip.create(duration: 138, start_date: "29/8/2013 16:57", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 16:59", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Customer", zip_code: 94117)
-    #
-    #   expect(Trip.most_frequent_origination_station("Adobe on Almaden")).to eql("Golden Gate at Polk")
-    # end
-    #
-    # it "can find the number of trips started by station" do
-    #   Trip.create(duration: 40, start_date: "14/9/2013 18:54", start_station_name: "Post at Kearney", end_date: "29/8/2013 18:56", end_station_name: "Golden Gate at Polk", bike_id: 527, subscription: "Subscriber", zip_code: 94109)
-    #   Trip.create(duration: 109, start_date: "28/8/2013 13:25", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 13:27", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Subscriber", zip_code: 95112)
-    #   Trip.create(duration: 138, start_date: "29/8/2013 16:57", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 16:59", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Customer", zip_code: 94117)
-    #
-    #   expect(Trip.number_trips_started_at_station("Post at Kearney")).to eql(1)
-    #   expect(Trip.number_trips_started_at_station("Golden Gate at Polk")).to eql(2)
-    # end
-    #
-    # it "can find the number of trips ended by station" do
-    #   Trip.create(duration: 40, start_date: "14/9/2013 18:54", start_station_name: "Post at Kearney", end_date: "29/8/2013 18:56", end_station_name: "Golden Gate at Polk", bike_id: 527, subscription: "Subscriber", zip_code: 94109)
-    #   Trip.create(duration: 109, start_date: "28/8/2013 13:25", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 13:27", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Subscriber", zip_code: 95112)
-    #   Trip.create(duration: 138, start_date: "29/8/2013 16:57", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 16:59", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Customer", zip_code: 94117)
-    #
-    #   expect(Trip.number_trips_ended_at_station("Adobe on Almaden")).to eql(2)
-    #   expect(Trip.number_trips_ended_at_station("Golden Gate at Polk")).to eql(1)
-    # end
-    #
-    # it "can find the date with the highest trips by station" do
-    #   Trip.create(duration: 40, start_date: "14/9/2013 18:54", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 18:56", end_station_name: "Golden Gate at Polk", bike_id: 527, subscription: "Subscriber", zip_code: 94109)
-    #   Trip.create(duration: 109, start_date: "28/8/2013 13:25", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 13:27", end_station_name: "Post at Kearney", bike_id: 679, subscription: "Subscriber", zip_code: 95112)
-    #   Trip.create(duration: 138, start_date: "28/8/2013 16:57", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 16:59", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Customer", zip_code: 94117)
-    #
-    #   expect(Trip.date_with_highest_trips_by_station("Golden Gate at Polk").strftime("%m/%d/%Y")).to eql("08/28/2013")
-    # end
-    #
-    # it "can find the most frequent user zipcode" do
-    #   Trip.create(duration: 40, start_date: "14/9/2013 18:54", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 18:56", end_station_name: "Golden Gate at Polk", bike_id: 527, subscription: "Subscriber", zip_code: 94109)
-    #   Trip.create(duration: 109, start_date: "28/8/2013 13:25", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 13:27", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Subscriber", zip_code: 95112)
-    #   Trip.create(duration: 138, start_date: "29/8/2013 16:57", start_station_name: "Golden Gate at Polk", end_date: "29/8/2013 16:59", end_station_name: "Post at Kearney", bike_id: 679, subscription: "Customer", zip_code: 94109)
-    #
-    #   expect(Trip.most_frequent_user_zipcodes("Golden Gate at Polk")).to eql(94109)
-    # end
-    #
-    # it "can find the most frequent user zipcode" do
-    #   Trip.create(duration: 40, start_date: "14/9/2013 18:54", start_station_name: "Post at Kearney", end_date: "29/8/2013 18:56", end_station_name: "Golden Gate at Polk", bike_id: 527, subscription: "Subscriber", zip_code: 94109)
-    #   Trip.create(duration: 109, start_date: "28/8/2013 13:25", start_station_name: "Post at Kearney", end_date: "29/8/2013 13:27", end_station_name: "Adobe on Almaden", bike_id: 679, subscription: "Subscriber", zip_code: 95112)
-    #   Trip.create(duration: 138, start_date: "29/8/2013 16:57", start_station_name: "Post at Kearney", end_date: "29/8/2013 16:59", end_station_name: "Post at Kearney", bike_id: 679, subscription: "Customer", zip_code: 94109)
-    #
-    #   expect(Trip.most_frequent_bike_used("Post at Kearney")).to eql(679)
-    # end
+      Station.create(name: "South Van Ness at Market", dock_count: 27, city: "San Jose", installation_date: "1/8/2013")
+      Station.create(name: "San Jose City Hall", dock_count: 13, city: "San Jose", installation_date: "5/8/2013")
+
+      station = Station.all.first
+
+      expect(station.most_frequent_destination).to eql("San Jose City Hall")
+     end
+
+    it "can find the most frequent origination by station" do
+      Trip.create(duration: 63, start_date: "29/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 1, end_date: "2013-08-29", end_station_name: "San Jose City Hall", end_station_id: 2, bike_id: 520, subscription: "Subscriber", zip_code: 94127)
+      Trip.create(duration: 70, start_date: "29/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 1, end_date: "2013-08-29", end_station_name: "San Jose City Hall", end_station_id: 2, bike_id: 520, subscription: "Subscriber", zip_code: 95138)
+      Trip.create(duration: 71, start_date: "29/8/2013", start_station_name: "San Jose City Hall", start_station_id: 1, end_date: "2013-08-29", end_station_name: "San Jose City Hall", end_station_id: 2, bike_id: 48, subscription: "Subscriber", zip_code: 97214)
+
+      Station.create(name: "South Van Ness at Market", dock_count: 27, city: "San Jose", installation_date: "1/8/2013")
+      Station.create(name: "San Jose City Hall", dock_count: 13, city: "San Jose", installation_date: "5/8/2013")
+
+      station = Station.all[1]
+
+      expect(station.most_frequent_origination_station).to eql("South Van Ness at Market")
+   end
+
+    it "can find the number of trips started by station" do
+      Trip.create(duration: 63, start_date: "29/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 1, end_date: "2013-08-29", end_station_name: "San Jose City Hall", end_station_id: 2, bike_id: 520, subscription: "Subscriber", zip_code: 94127)
+      Trip.create(duration: 70, start_date: "29/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 1, end_date: "2013-08-29", end_station_name: "San Jose City Hall", end_station_id: 2, bike_id: 520, subscription: "Subscriber", zip_code: 95138)
+      Trip.create(duration: 71, start_date: "29/8/2013", start_station_name: "San Jose City Hall", start_station_id: 2, end_date: "2013-08-29", end_station_name: "San Jose City Hall", end_station_id: 2, bike_id: 48, subscription: "Subscriber", zip_code: 97214)
+
+      Station.create(name: "South Van Ness at Market", dock_count: 27, city: "San Jose", installation_date: "1/8/2013")
+      Station.create(name: "San Jose City Hall", dock_count: 13, city: "San Jose", installation_date: "5/8/2013")
+
+      station = Station.all[0]
+
+      expect(station.number_of_trips_started_at_station).to eql(2)
+   end
+
+    it "can find the number of arriving trips by station" do
+      Trip.create(duration: 63, start_date: "29/8/2013", start_station_name: "San Jose City Hall", start_station_id: 2, end_date: "2013-08-29", end_station_name: "San Jose City Hall", end_station_id: 2, bike_id: 520, subscription: "Subscriber", zip_code: 94127)
+      Trip.create(duration: 70, start_date: "29/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 1, end_date: "2013-08-29", end_station_name: "San Jose City Hall", end_station_id: 2, bike_id: 520, subscription: "Subscriber", zip_code: 95138)
+      Trip.create(duration: 71, start_date: "29/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 1, end_date: "2013-08-29", end_station_name: "San Jose City Hall", end_station_id: 2, bike_id: 48, subscription: "Subscriber", zip_code: 97214)
+
+      Station.create(name: "South Van Ness at Market", dock_count: 27, city: "San Jose", installation_date: "1/8/2013")
+      Station.create(name: "San Jose City Hall", dock_count: 13, city: "San Jose", installation_date: "5/8/2013")
+
+      station = Station.all[1]
+
+      expect(station.number_of_trips_ending_at_station).to eql(3)
+   end
+
+    it "can find the date with the highest trips by station" do
+      Trip.create(duration: 63, start_date: "30/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 1, end_date: "2013-08-29", end_station_name: "South Van Ness at Market", end_station_id: 1, bike_id: 520, subscription: "Subscriber", zip_code: 94127)
+      Trip.create(duration: 70, start_date: "29/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 1, end_date: "2013-08-29", end_station_name: "San Jose City Hall", end_station_id: 2, bike_id: 520, subscription: "Subscriber", zip_code: 95138)
+      Trip.create(duration: 71, start_date: "29/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 1, end_date: "2013-08-29", end_station_name: "MLK Library", end_station_id: 3, bike_id: 48, subscription: "Subscriber", zip_code: 97214)
+
+      Station.create(name: "South Van Ness at Market", dock_count: 27, city: "San Jose", installation_date: "1/8/2013")
+      Station.create(name: "San Jose City Hall", dock_count: 13, city: "San Jose", installation_date: "5/8/2013")
+
+      station = Station.all[0]
+
+      expect((station.date_with_highest_trips_by_station).strftime("%m/%d/%Y")).to eql("08/29/2013")
+    end
+
+    it "can find the most frequent user zipcode" do
+      Trip.create(duration: 63, start_date: "30/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 1, end_date: "2013-08-29", end_station_name: "South Van Ness at Market", end_station_id: 1, bike_id: 520, subscription: "Subscriber", zip_code: 97214)
+      Trip.create(duration: 70, start_date: "29/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 1, end_date: "2013-08-29", end_station_name: "San Jose City Hall", end_station_id: 2, bike_id: 520, subscription: "Subscriber", zip_code: 95138)
+      Trip.create(duration: 71, start_date: "29/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 1, end_date: "2013-08-29", end_station_name: "MLK Library", end_station_id: 3, bike_id: 48, subscription: "Subscriber", zip_code: 97214)
+
+      Station.create(name: "South Van Ness at Market", dock_count: 27, city: "San Jose", installation_date: "1/8/2013")
+      Station.create(name: "San Jose City Hall", dock_count: 13, city: "San Jose", installation_date: "5/8/2013")
+
+      station = Station.all[0]
+
+      expect(station.most_frequent_user_zipcodes).to eql(97214)
+    end
+
+    it "can find the most frequent bike used" do
+      Trip.create(duration: 63, start_date: "30/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 1, end_date: "2013-08-29", end_station_name: "South Van Ness at Market", end_station_id: 1, bike_id: 520, subscription: "Subscriber", zip_code: 97214)
+      Trip.create(duration: 70, start_date: "29/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 1, end_date: "2013-08-29", end_station_name: "San Jose City Hall", end_station_id: 2, bike_id: 520, subscription: "Subscriber", zip_code: 95138)
+      Trip.create(duration: 71, start_date: "29/8/2013", start_station_name: "South Van Ness at Market", start_station_id: 1, end_date: "2013-08-29", end_station_name: "MLK Library", end_station_id: 3, bike_id: 48, subscription: "Subscriber", zip_code: 97214)
+
+      Station.create(name: "South Van Ness at Market", dock_count: 27, city: "San Jose", installation_date: "1/8/2013")
+      Station.create(name: "San Jose City Hall", dock_count: 13, city: "San Jose", installation_date: "5/8/2013")
+
+      station = Station.all[0]
+
+      expect(station.most_frequent_bike_used).to eql(520)
+    end
   end
-
 end

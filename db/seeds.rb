@@ -27,15 +27,16 @@ conditions.each do |row|
   mean_humidity:         row[:mean_humidity],
   mean_visibility:       row[:mean_visibility_miles],
   mean_wind_speed:       row[:mean_wind_speed_mph],
-  precipitation:         row[:precipitation_inches])
+  precipitation:         row[:precipitation_inches],
+  zip_code:              row[:zip_code])
 end
 
 Trip.destroy_all
 
-trips = CSV.open './db/fixture/trip_fixture.csv', headers:true, header_converters: :symbol
+trips = CSV.open './db/csv/trip.csv', headers:true, header_converters: :symbol
 trips.each do |row|
   zipcode = row[:zip_code].to_s.rjust(5, "0")[0..4]
-  condition_id = Condition.date_id(Date.strptime(row[:start_date], "%m/%d/%Y"))
+  condition_id = Condition.date_id(Date.strptime(row[:start_date], "%d/%m/%Y"), zipcode)
   Trip.create!(duration:           row[:duration],
                start_date:         DateTime.strptime(row[:start_date], "%m/%d/%Y"),
                start_station_id:   row[:start_station_id],
@@ -47,4 +48,4 @@ trips.each do |row|
                condition_id:       condition_id)
 end
 
-  puts "Seed complete"
+puts "Seed complete"

@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20171206002425) do
     t.integer "mean_visibility"
     t.integer "mean_wind_speed"
     t.integer "precipitation"
+    t.integer "zip_code"
   end
 
   create_table "stations", force: :cascade do |t|

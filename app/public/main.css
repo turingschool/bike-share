@@ -74,3 +74,9 @@ nav {
   font-size: 20px;
   margin-top: 6px;
 }
+
+.home-columns{
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}

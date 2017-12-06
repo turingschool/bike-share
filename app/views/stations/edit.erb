@@ -50,16 +50,16 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       <h1>Edit Station</h1>
       <input type="hidden" name="_method" value="PUT" />
       <div class= "w3-section">
-        <input type='text' name= 'station[name]' value="<%= @station.name %>"/>
+        Station Name<br><input type='text' name= 'station[name]' value="<%= @station.name %>" style="width: 210px"/>
       </div>
       <div class= "w3-section">
-        <input type= "number" name="station[dock_count]" value="<%= @station.dock_count %>"/>
+        Dock Count<br><input type= "number" name="station[dock_count]" value="<%= @station.dock_count %>" style="width: 210px"/>
       </div>
       <div class= "w3-section">
-        <input type= "text" name="station[city]" value="<%= @station.city %>"/>
+        City<br><input type= "text" name="station[city]" value="<%= @station.city %>" style="width: 210px"/>
       </div>
       <div class= "w3-section">
-        <input type= "date" name="station[installation_date]" value="<%=@station.installation_date %>"/><br><br>
+        Installation Date<br><input type= "date" name="station[installation_date]" value="<%=@station.installation_date %>" style="width: 210px"/><br><br>
       </div>
       <input type= 'submit' class="w3-button w3-block w3-pink" value="submit"/>
     </form>

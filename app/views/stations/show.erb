@@ -49,53 +49,52 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       </div>
     </header>
     <div class="info">
-    <h1>Station <%= "#{@station.name}" %></h1>
+        <h1>Station <%= "#{@station.name}" %></h1>
 
-    <div class="stations">
-        <h3><%= @station.name %></h3>
-        <p>Dock Count: <%= @station.dock_count %></p>
-        <p>City: <%= @station.city %></p>
-        <p>Installation Date: <%= @station.installation_date %></p>
-    </div>
-    <p>Number of rides started here: <%= @station.number_of_trips_started_at_station %></p>
+        <div class="stations">
+            <h3><%= @station.name %></h3>
+            <p>Dock Count: <%= @station.dock_count %></p>
+            <p>City: <%= @station.city %></p>
+            <p>Installation Date: <%= @station.installation_date %></p>
+        </div>
+        <p>Number of rides started here: <%= @station.number_of_trips_started_at_station %></p>
 
-    <p>Number of rides ended here: <%= @station.number_of_trips_ending_at_station %></p>
+        <p>Number of rides ended here: <%= @station.number_of_trips_ending_at_station %></p>
 
-    <p>Most frequent destination station from here: <% if !@station.trips_leaving.empty? %>
-                                                    <%= @station.most_frequent_destination %>
-                                                    <% else %>
-                                                    <%= "Insufficient Data" %>
-                                                    <% end %> </p>
+        <p>Most frequent destination station from here: <% if !@station.trips_leaving.empty? %>
+                                                        <%= @station.most_frequent_destination %>
+                                                        <% else %>
+                                                        <%= "Insufficient Data" %>
+                                                        <% end %> </p>
 
-    <p>Most frequent origination station from here: <% if !@station.trips_arriving.empty? %>
-                                                    <%= @station.most_frequent_origination_station %>
-                                                    <% else %>
-                                                    <%= "Insufficient Data" %>
-                                                    <% end %></p>
+        <p>Most frequent origination station from here: <% if !@station.trips_arriving.empty? %>
+                                                        <%= @station.most_frequent_origination_station %>
+                                                        <% else %>
+                                                        <%= "Insufficient Data" %>
+                                                        <% end %></p>
 
-    <p>Date with highest trips started here: <% if !@station.trips_leaving.empty? %>
-                                                    <%= @station.date_with_highest_trips_by_station %>
-                                                    <% else %>
-                                                    <%= "Insufficient Data" %>
-                                                    <% end %></p>
+        <p>Date with highest trips started here: <% if !@station.trips_leaving.empty? %>
+                                                        <%= @station.date_with_highest_trips_by_station %>
+                                                        <% else %>
+                                                        <%= "Insufficient Data" %>
+                                                        <% end %></p>
 
-    <p>Most frequent zipcodes for users started here:  <% if !@station.trips_leaving.empty? %>
-                                                    <%= @station.most_frequent_user_zipcodes %>
-                                                    <% else %>
-                                                    <%= "Insufficient Data" %>
-                                                    <% end %></p>
+        <p>Most frequent zipcodes for users started here:  <% if !@station.trips_leaving.empty? %>
+                                                        <%= @station.most_frequent_user_zipcodes %>
+                                                        <% else %>
+                                                        <%= "Insufficient Data" %>
+                                                        <% end %></p>
 
-    <p>Most frequently used bike started here: <% if !@station.trips_leaving.empty? %>
-                                                    <%= @station.most_frequent_bike_used %>
-                                                    <% else %>
-                                                    <%= "Insufficient Data" %>
-                                                    <% end %></p>
+        <p>Most frequently used bike started here: <% if !@station.trips_leaving.empty? %>
+                                                        <%= @station.most_frequent_bike_used %>
+                                                        <% else %>
+                                                        <%= "Insufficient Data" %>
+                                                        <% end %></p>
     </div>
     <br>
     <br>
     <br>
     <div class="w3-black w3-center w3-padding-24" title="BayCycles" target="_blank" class="w3-hover-opacity">BayCyles</a></div>
-  </div>
   <script>
     function w3_open() {
         document.getElementById("mySidebar").style.display = "block";

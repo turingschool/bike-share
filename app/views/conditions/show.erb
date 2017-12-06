@@ -50,26 +50,25 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         </div>
       </div>
     </header>
-    <div class="info">
-
-
-
-  <h1>Conditions <%= "#{@condition.id}" %></h1>
-  <div class="conditions">
-    <p>Date: <%= @condition.date %></p>
-    <p>Max Temperature: <%= @condition.max_temperature %></p>
-    <p>Mean Temperature: <%= @condition.mean_temperature %></p>
-    <p>Min Temperature: <%= @condition.min_temperature %></p>
-    <p>Mean Humidity: <%= @condition.mean_humidity %></p>
-    <p>Mean Visibility: <%= @condition.mean_visibility %></p>
-    <p>Mean Wind Speed: <%= @condition.mean_wind_speed %></p>
-    <p>Precipitation: <%= @condition.precipitation %></p>
-      <form action="/trips/<%=@condition.id %>" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="delete"/>
-      </form>
-  </div>
-</div>
+    <div class="w3-light-grey w3-border w3-content w3-round w3-center w3-padding-large">
+    <hr>
+      <div class="info">
+        <h1>Conditions <%= "#{@condition.id}" %></h1>
+        <div class="conditions">
+          <p>Date: <%= @condition.date %></p>
+          <p>Max Temperature: <%= @condition.max_temperature %></p>
+          <p>Mean Temperature: <%= @condition.mean_temperature %></p>
+          <p>Min Temperature: <%= @condition.min_temperature %></p>
+          <p>Mean Humidity: <%= @condition.mean_humidity %></p>
+          <p>Mean Visibility: <%= @condition.mean_visibility %></p>
+          <p>Mean Wind Speed: <%= @condition.mean_wind_speed %></p>
+          <p>Precipitation: <%= @condition.precipitation %></p>
+            <form action="/trips/<%=@condition.id %>" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="delete"/>
+            </form>
+        </div>
+      </div>
     <br>
     <br>
     <br>

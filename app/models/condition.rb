@@ -2,14 +2,8 @@ class Condition < ActiveRecord::Base
   has_many :trips, class_name: "Trip", foreign_key: "condition_id"
 
 
-  def self.date_id(date, zipcode)
-    look_up_all = where(date: date)
-    select_condition = look_up_all.find_by(zip_code: zipcode)
-    if select_condition
-      select_condition.id
-    else
-      nil
-    end
+  def self.date_id(date)
+    find_by(date: date).id
   end
 
   def self.max_weather_ride_analytics(category, min, max)

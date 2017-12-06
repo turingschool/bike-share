@@ -2,7 +2,10 @@
 
 <h3> High Temperature Breakout </h3>
 
-<!-- There are max tempertures up to "104", however I'm unable to retreive them--->
+<h4> 100 - 109 degrees</h4>
+<p>most rides: <%= @condition.max_weather_ride_analytics(:max_temperature, 100, 109) %></p>
+<p>least rides: <%= @condition.min_weather_ride_analytics(:max_temperature, 100, 109) %></p>
+<p>avg rides: <%= @condition.avg_weather_ride_analytics(:max_temperature, 100, 109)%></p>
 
 <h4> 90 - 99 degrees</h4>
 <p>most rides: <%= @condition.max_weather_ride_analytics(:max_temperature, 90, 99) %></p>

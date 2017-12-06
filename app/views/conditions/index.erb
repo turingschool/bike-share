@@ -1,5 +1,5 @@
 
-<h1>All Conditons</h1>
+<h1>All Conditions</h1>
 
   <% @conditions.each do |condition| %>
     <p>Date: <%= condition.date %></p>
@@ -11,6 +11,9 @@
     <p>Mean Wind Speed: <%= condition.mean_wind_speed %></p>
     <p>Precipitation: <%= condition.precipitation %></p>
 
+    <a href="/conditions/<%= condition.id %>/edit">Edit</a>
+    <form action="/conditions/<%= condition.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" class="w3-button w3-block w3-pink" value="delete"/>
+
 <% end %>
-
-

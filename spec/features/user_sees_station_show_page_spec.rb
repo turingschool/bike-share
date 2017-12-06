@@ -11,20 +11,20 @@ describe "as a user when I visit station show page" do
     installation_date: "2013-08-06")
     @station_4 = Station.create(name: "The Bay", dock_count: 25, city: "San Francisco", installation_date: "2013-08-14")
 
-    @trip_1 = Trip.create(duration: 63, start_date: "2013-08-29", start_station_id: 1,
-    start_station_name: "Embarcadero", end_date: "2013-08-30", end_station_id: 2,
+    @trip_1 = Trip.create(duration: 63, start_date: "2013-08-29", start_station_id: @station_1.id,
+    start_station_name: "Embarcadero", end_date: "2013-08-30", end_station_id: @station_2.id,
     end_station_name: "Market St", bike_id: 520, subscription_type: "Subscriber",
     zip_code: 94127)
-    @trip_2 = Trip.create(duration: 53, start_date: "2013-02-27", start_station_id: 2,
-    start_station_name: "SFO", end_date: "2013-02-27", end_station_id: 1,
+    @trip_2 = Trip.create(duration: 53, start_date: "2013-02-27", start_station_id: @station_2.id,
+    start_station_name: "SFO", end_date: "2013-02-27", end_station_id: @station_1.id,
     end_station_name: "Mission District", bike_id: 510, subscription_type: "Customer",
     zip_code: 94105)
-    @trip_3 = Trip.create(duration: 43, start_date: "2014-06-22", start_station_id: 2,
-    start_station_name: "Turing", end_date: "2014-08-18", end_station_id: 4,
+    @trip_3 = Trip.create(duration: 43, start_date: "2014-06-22", start_station_id: @station_2.id,
+    start_station_name: "Turing", end_date: "2014-08-18", end_station_id: @station_3.id,
     end_station_name: "Union Station", bike_id: 510, subscription_type: "Subscriber",
     zip_code: 94128)
-    @trip_4 = Trip.create(duration: 33, start_date: "2014-06-22", start_station_id: 2,
-    start_station_name: "Capitol Hill", end_date: "2014-06-22", end_station_id: 4,
+    @trip_4 = Trip.create(duration: 33, start_date: "2014-06-22", start_station_id: @station_2.id,
+    start_station_name: "Capitol Hill", end_date: "2014-06-22", end_station_id: @station_4.id,
     end_station_name: "Red Rocks", bike_id: 550, subscription_type: "Subscriber",
     zip_code: 94105)
 
@@ -38,6 +38,7 @@ describe "as a user when I visit station show page" do
     expect(page).to have_content(5)
     expect(page).to have_content("San Francisco")
     expect(page).to have_content("2013-08-23")
+    expect(page).to have_content("Edit")
   end
 
   it "I can edit the details" do

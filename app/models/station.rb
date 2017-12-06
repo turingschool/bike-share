@@ -5,7 +5,8 @@ class Station < ActiveRecord::Base
                         :city,
                         :installation_date
 
-  belongs_to :trip
+  has_many :started_trips, :class_name => 'Trip', :foreign_key => 'start_station_id'
+  has_many :ended_trips, :class_name => 'Trip', :foreign_key => 'end_station_id'
 
   def self.station_count
     count
@@ -37,5 +38,9 @@ class Station < ActiveRecord::Base
 
   def self.oldest_station
     order(installation_date: :DESC).last.name
+  end
+
+  def number_rides_at_start_station
+    started_trips.count
   end
 end

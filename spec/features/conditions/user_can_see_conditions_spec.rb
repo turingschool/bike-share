@@ -48,7 +48,7 @@ describe "as a user" do
     it "I expect to be able to edit a condition" do
       click_link("Edit")
 
-      expect(current_path).to eq('/conditions/1/edit')
+      expect(current_path).to eq('/conditions/2014-08-20/edit')
     end
 
     it "I expect to ba able to delete a condition" do

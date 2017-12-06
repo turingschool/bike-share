@@ -57,9 +57,6 @@ class Seed
 
   def self.test
     DatabaseCleaner.clean
-    Station.destroy_all
-    Trip.destroy_all
-    Condition.destroy_all
     Seed.station
     Seed.condition
     Seed.trip_fixture

@@ -7,7 +7,7 @@ describe "when I visit '/condition/show' page" do
     mean_visibility_miles: 50, mean_wind_speed_mph: 12, precipitation_inches: 4,
     zip_code: 94127)
 
-    visit '/conditions/1'
+    visit '/conditions/2014-08-20'
   end
 
   it "I expect to see attributes of the condition" do
@@ -27,7 +27,7 @@ describe "when I visit '/condition/show' page" do
   it "I expect to be able to edit a condition" do
     click_link("Edit")
 
-    expect(current_path).to eq('/conditions/1/edit')
+    expect(current_path).to eq('/conditions/2014-08-20/edit')
   end
 
   it "I expect to ba able to delete a condition" do

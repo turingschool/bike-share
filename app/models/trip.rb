@@ -2,18 +2,16 @@ class Trip < ActiveRecord::Base
 
   validates_presence_of :duration,
                         :start_date,
-                        :start_station_name,
                         :start_station_id,
                         :end_date,
-                        :end_station_name,
                         :end_station_id,
                         :bike_id,
                         :subscription_type,
                         :zip_code
 
-  belongs_to :start_station, :class_name => 'Station', :foreign_key => 'start_station_id'
-  belongs_to :end_station,   :class_name => 'Station', :foreign_key => 'end_station_id'
-  belongs_to :condition, :class_name => "Condition", :foreign_key => "condition_id"
+  belongs_to :start_station, :class_name => 'Station'
+  belongs_to :end_station,   :class_name => 'Station'
+  belongs_to :condition, :class_name => "Condition"
 
   def self.average_duration_per_ride
     average(:duration).to_i
@@ -83,13 +81,13 @@ class Trip < ActiveRecord::Base
   end
 
   def self.most_frequent_destination_station(id)
-    station_id = where(start_station_id:id).group(:end_station_id).order("count_end_station_id desc").count(:end_station_id).first[0]
+    station_id = where(start_station_id: id).group(:end_station_id).order("count_end_station_id desc").count(:end_station_id).first[0]
     Station.find(station_id).name
     #refactor
   end
 
   def self.most_frequent_origination_station(id)
-    station_id = where(end_station_id:id).group(:start_station_id).order("count_start_station_id desc").count(:start_station_id).first[0]
+    station_id = where(end_station_id: id).group(:start_station_id).order("count_start_station_id desc").count(:start_station_id).first[0]
     Station.find(station_id).name
   end
 

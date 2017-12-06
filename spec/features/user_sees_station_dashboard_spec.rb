@@ -11,7 +11,7 @@ describe 'As a user' do
       installation_date: "2013-08-06")
       @station_4 = Station.create(name: "The Bay", dock_count: 25, city: "San Francisco", installation_date: "2013-08-14")
 
-      visit '/station-dashboard'
+      visit '/stations/dashboard'
     end
 
     it 'I see the total count of all stations' do

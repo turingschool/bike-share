@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
+<!-- <!DOCTYPE html>
+<html> -->
+  <!-- <head>
     <meta charset="utf-8">
     <title>Station Page <%= @station.name %></title>
     <link rel="stylesheet" type="text/css" href="/reset.css">
     <link rel="stylesheet" type="text/css" href="/main.css">
   </head>
-  <body>
+  <body> -->
     <nav>
       <img class="logo" src="https://bikeshare.metro.net/wp-content/themes/lametro/library/images/logo.png">
       <h1><%= @station.name %></h1>
@@ -18,7 +18,7 @@
         <p>City: <%= @station.city %></p><br>
         <p>Installation Date: <%= @station.installation_date %></p><br>
         <div class="edit-delete">
-          <a href="/stations/<%= @station.id%>/edit">Edit</a>
+          <a class="edit" href="/stations/<%= @station.id %>/edit">Edit</a>
           <form class="delete" action="/stations/<%= @station.id %>" method="post">
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" value="Delete">
@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="individual-container-show-lower">
-        <p>Number of Rides started at <%= @station.name %>: <%= Trip.number_rides_at_start_station(@station.id)%></p><br>
+        <p>Number of Rides started at <%= @station.name %>: <%= @station.number_rides_at_start_station %> </p><br>
         <p>Number of Rides ended at <%= @station.name %>: <%= Trip.number_rides_at_end_station(@station.id)%></p><br>
         <p>Station that is the most frequent destination station from <%= @station.name %>: <%= Trip.most_frequent_destination_station(@station.id)%></p><br>
         <p>Station that is the most frequent start station for trips that ends at <%= @station.name %>: <%= Trip.most_frequent_origination_station(@station.id)%></p><br>
@@ -39,5 +39,5 @@
     <div class="go-back-link">
       <a href="/stations/index">Go Back to Station Index</a>
     </div>
-  </body>
-</html>
+  <!-- </body> -->
+<!-- </html> -->

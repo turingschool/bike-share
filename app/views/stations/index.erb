@@ -29,6 +29,11 @@
     <% end %>
   </div>
   <%= will_paginate @stations, :page_links => false %>
-  <p> <a href="/">Go Back To Home Dashboard</a>  </p>
+  <div class="go-back-link">
+    <a href="/stations/new">Create New Station</a>
+  </div>
+  <div class="go-back-link">
+    <a href="/">Go Back To Home Dashboard</a>
+  </div>
   </body>
 </html>

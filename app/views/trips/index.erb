@@ -36,6 +36,11 @@
     <div class="page-links">
       <%= will_paginate @trips, :page_links => false %>
     </div>
-    <p> <a href="/">Go Back To Home Dashboard</a>  </p>
+    <div class="go-back-link">
+      <a href="/trips/new">Create New Trip</a>
+    </div>
+    <div class="go-back-link">
+      <a href="/">Go Back To Home Dashboard</a>
+    </div>
   </body>
 </html>

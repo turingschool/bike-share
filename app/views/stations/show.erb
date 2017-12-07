@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Station Page <%= @station.name %></title>
+    <link rel="stylesheet" type="text/css" href="/reset.css">
+    <link rel="stylesheet" type="text/css" href="/main.css">
+  </head>
+  <body>
+    <nav>
+      <img class="logo" src="https://bikeshare.metro.net/wp-content/themes/lametro/library/images/logo.png">
+      <h1><%= @station.name %></h1>
+    </nav>
+    <div class="body-container-show">
+      <div class="individual-container-show-upper">
+        <p>Station Name: <%= @station.name %></p><br>
+        <p>Dock Count: <%= @station.dock_count %></p><br>
+        <p>City: <%= @station.city %></p><br>
+        <p>Installation Date: <%= @station.installation_date %></p><br>
+        <div class="edit-delete">
+          <a class="edit" href="/stations/<%= @station.id %>/edit">Edit</a>
+          <form class="delete" action="/stations/<%= @station.id %>" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete">
+          </form>
+        </div>
+      </div>
+      <div class="individual-container-show-lower">
+        <p>Number of Rides started at <%= @station.name %>: <%= @station.number_rides_at_start_station %> </p><br>
+        <p>Number of Rides ended at <%= @station.name %>: <%= @station.number_rides_at_end_station%></p><br>
+        <p>Station that is the most frequent destination station from <%= @station.name %>: <%= @station.most_frequent_destination_station%></p><br>
+        <p>Station that is the most frequent start station for trips that ends at <%= @station.name %>: <%= @station.most_frequent_origination_station%></p><br>
+        <p>Date with the highest number of trips started at <%= @station.name %>: <%= @station.date_with_highest_number_trips_started%></p><br>
+        <p> Most frequent Zip Code for users starting trips at <%= @station.name %>: <%= @station.most_frequent_user_zipcode%></p><br>
+        <p>Most frequent Bike ID for Bikes that starts trips at <%= @station.name %>: <%= @station.most_frequent_bike_id%></p><br>
+      </div>
+    </div>
+
+    <div class="go-back-link">
+      <a href="/stations/index">Go Back to Station Index</a>
+    </div>
+  </body>
+</html>

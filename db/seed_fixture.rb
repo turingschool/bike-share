@@ -3,38 +3,20 @@ require 'pry'
 require './app/models/station'
 require './app/models/trip'
 require './app/models/condition'
+require 'database_cleaner'
 
 class Seed
 
   def self.station
     options = {headers: true, header_converters: :symbol, converters: :numeric}
     CSV.foreach('./db/csv/station.csv', options) do |row|
-      Station.create(
-      id: row[:id],
+      Station.create!(id: row[:id],
       installation_date: Date.strptime(row[:installation_date], "%m/%d/%Y"),
       name: row[:name],
       city: row[:city],
       dock_count: row[:dock_count])
     end
     ActiveRecord::Base.connection.reset_pk_sequence!("stations")
-  end
-
-  def self.trip
-    options = {headers: true, header_converters: :symbol, converters: :numeric}
-    CSV.foreach('./db/csv/trip.csv', options) do |row|
-      Trip.create(
-        duration: row[:duration],
-        start_date: Date.strptime(row[:start_date], "%m/%d/%Y"),
-        start_station_name: row[:start_station_name],
-        start_station_id: row[:start_station_id],
-        end_date: Date.strptime(row[:end_date], "%m/%d/%Y"),
-        end_station_name: row[:end_station_name],
-        end_station_id: row[:end_station_id],
-        bike_id: row[:bike_id],
-        subscription_type: row[:subscription_type],
-        zip_code: (row[:zip_code]).to_s.rjust(5,"0")[0..4].to_i)
-    end
-    ActiveRecord::Base.connection.reset_pk_sequence!("trips")
   end
 
   def self.trip_fixture
@@ -59,7 +41,7 @@ class Seed
     options = {headers: true, header_converters: :symbol, converters: :numeric}
     CSV.foreach('./db/csv/weather.csv', options) do |row|
       if row[:zip_code] == 94107
-        Condition.create(date:           Date.strptime(row[:date], '%m/%d/%Y'),
+        Condition.create!(date:           Date.strptime(row[:date], '%m/%d/%Y'),
                        mean_temperature_f: row[:mean_temperature_f],
                        max_temperature_f:  row[:max_temperature_f],
                        min_temperature_f:  row[:min_temperature_f],
@@ -72,11 +54,11 @@ class Seed
     end
     ActiveRecord::Base.connection.reset_pk_sequence!("conditions")
   end
-end
 
-Station.destroy_all
-Seed.station
-Trip.destroy_all
-Seed.trip
-Condition.destroy_all
-Seed.condition
+  def self.test
+    DatabaseCleaner.clean
+    Seed.station
+    Seed.condition
+    Seed.trip_fixture
+  end
+end

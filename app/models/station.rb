@@ -43,4 +43,31 @@ class Station < ActiveRecord::Base
   def number_rides_at_start_station
     started_trips.count
   end
+
+  def number_rides_at_end_station
+    ended_trips.count
+  end
+
+  def most_frequent_destination_station
+    station_id = started_trips.group(:end_station_id).order("count_end_station_id desc").count(:end_station_id).first[0]
+    Station.find(station_id).name
+  end
+
+  def most_frequent_origination_station
+    station_id = ended_trips.group(:start_station_id).order("count_start_station_id desc").count(:start_station_id).first[0]
+    Station.find(station_id).name
+  end
+
+  def date_with_highest_number_trips_started
+    started_trips.group(:start_date).order(start_date: :desc).count.first[0].strftime("%Y-%m-%d")
+  end
+
+  def most_frequent_user_zipcode
+    started_trips.group(:zip_code).order("count_zip_code desc").count(:zip_code).first[0]
+  end
+
+  def most_frequent_bike_id
+    started_trips.group(:bike_id).order("count_bike_id desc").count(:bike_id).first[0]
+  end
+
 end

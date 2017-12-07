@@ -76,6 +76,6 @@ end
 Station.destroy_all
 Seed.station
 Trip.destroy_all
-Seed.trip_fixture
+Seed.trip
 Condition.destroy_all
 Seed.condition

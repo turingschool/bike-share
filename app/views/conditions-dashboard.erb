@@ -12,20 +12,186 @@
         <img class="logo" src="https://bikeshare.metro.net/wp-content/themes/lametro/library/images/logo.png">
         <h1>Weather Dashboard</h1>
       </nav>
-      <p>Average Rides Per Condition Temperature: <%= Condition.average_rides_temp%></p><br>
-      <p>Most Rides Per Condition Temperature: <%= Condition.max_rides_temp(range)%></p><br>
-      <p>Least Rides Per Condition Temperature: <%= Condition.min_rides_temp(range)%></p><br>
-
-      <p>Average Rides Per Condition Precipitation: <%= Condition.average_rides_precip(range)%></p><br>
-      <p>Most Rides Per Condition Precipitation: <%= Condition.max_rides_precip(range)%></p><br>
-      <p>Least Rides Per Condition Precipitation: <%= Condition.min_rides_precip(range)%></p><br>
-
-      <p>Average Rides Per Condition Wind Speed: <%= Condition.average_rides_wind(range)%></p><br>
-      <p>Most Bikes Per Condition Wind Speed: <%= Condition.max_rides_wind(range)%></p><br>
-      <p>Least Bikes Per Condition Wind Speed: <%= Condition.min_rides_wind(range)%></p><br>
-
-      <p>Average Rides Per Condition Visibility: <%= Condition.average_rides_visibility(range)%></p><br>
-      <p>Most Bikes Per Condition Visibility: <%= Condition.max_rides_visibility(range)%></p><br>
-      <p>Least Bikes Per Condition Visibility: <%= Condition.min_rides_visibility(range)%></p><br>
+      <div class="dashboard-container">
+        <div class="table-container">
+          <table class="table">
+            <caption>Number of Rides per Max Temperature Range</caption>
+            <tr>
+              <th>Temp Range</th>
+              <th>High</th>
+              <th>Average</th>
+              <th>Low</th>
+            </tr>
+            <tr>
+              <td>41° - 45° F</td>
+              <td><%= Condition.max_rides_temp(41) %></td>
+              <td><%= Condition.average_rides_temp(41) %></td>
+              <td><%= Condition.min_rides_temp(41) %></td>
+            </tr>
+            <tr>
+              <td>46° - 55° F</td>
+              <td><%= Condition.max_rides_temp(46) %></td>
+              <td><%= Condition.average_rides_temp(46) %></td>
+              <td><%= Condition.min_rides_temp(46) %></td>
+            </tr>
+            <tr>
+              <td>56° - 65° F</td>
+              <td><%= Condition.max_rides_temp(56) %></td>
+              <td><%= Condition.average_rides_temp(56) %></td>
+              <td><%= Condition.min_rides_temp(56) %></td>
+            </tr>
+            <tr>
+              <td>66° - 75° F</td>
+              <td><%= Condition.max_rides_temp(66) %></td>
+              <td><%= Condition.average_rides_temp(66) %></td>
+              <td><%= Condition.min_rides_temp(66) %></td>
+            </tr>
+            <tr>
+              <td>76° - 85° F</td>
+              <td><%= Condition.max_rides_temp(76) %></td>
+              <td><%= Condition.average_rides_temp(76) %></td>
+              <td><%= Condition.min_rides_temp(76) %></td>
+            </tr>
+            <tr>
+              <td>86° - 95° F</td>
+              <td><%= Condition.max_rides_temp(86) %></td>
+              <td><%= Condition.average_rides_temp(86) %></td>
+              <td><%= Condition.min_rides_temp(86) %></td>
+            </tr>
+            <tr>
+              <td>96° - 100° F</td>
+              <td><%= Condition.max_rides_temp(96) %></td>
+              <td><%= Condition.average_rides_temp(96) %></td>
+              <td><%= Condition.min_rides_temp(96) %></td>
+            </tr>
+            <tr>
+              <td>101° - 105° F</td>
+              <td><%= Condition.max_rides_temp(101) %></td>
+              <td><%= Condition.average_rides_temp(101) %></td>
+              <td><%= Condition.min_rides_temp(101) %></td>
+            </tr>
+          </table>
+          <table class="table">
+            <caption>Number of Rides per Precipitation Range</caption>
+            <tr>
+              <th>Precip Range</th>
+              <th>High</th>
+              <th>Average</th>
+              <th>Low</th>
+            </tr>
+            <tr>
+              <td>0" - 0.49"</td>
+              <td><%= Condition.max_rides_precip(0) %></td>
+              <td><%= Condition.average_rides_precip(0) %></td>
+              <td><%= Condition.min_rides_precip(0) %></td>
+            </tr>
+            <tr>
+              <td>0.5" - 0.99"</td>
+              <td><%= Condition.max_rides_precip(0.5) %></td>
+              <td><%= Condition.average_rides_precip(0.5) %></td>
+              <td><%= Condition.min_rides_precip(0.5) %></td>
+            </tr>
+            <tr>
+              <td>1.0" - 1.49"</td>
+              <td><%= Condition.max_rides_precip(1.0) %></td>
+              <td><%= Condition.average_rides_precip(1.0) %></td>
+              <td><%= Condition.min_rides_precip(1.0) %></td>
+            </tr>
+            <tr>
+              <td>1.5" - 1.99"</td>
+              <td><%= Condition.max_rides_precip(1.5) %></td>
+              <td><%= Condition.average_rides_precip(1.5) %></td>
+              <td><%= Condition.min_rides_precip(1.5) %></td>
+            </tr>
+            <tr>
+              <td>2.0" - 2.49"</td>
+              <td><%= Condition.max_rides_precip(2.0) %></td>
+              <td><%= Condition.average_rides_precip(2.0) %></td>
+              <td><%= Condition.min_rides_precip(2.0) %></td>
+            </tr>
+            <tr>
+              <td>2.5" - 2.99"</td>
+              <td><%= Condition.max_rides_precip(2.5) %></td>
+              <td><%= Condition.average_rides_precip(2.5) %></td>
+              <td><%= Condition.min_rides_precip(2.5) %></td>
+            </tr>
+            <tr>
+              <td>3.0" - 3.49"</td>
+              <td><%= Condition.max_rides_precip(3.0) %></td>
+              <td><%= Condition.average_rides_precip(3.0) %></td>
+              <td><%= Condition.min_rides_precip(3.0) %></td>
+            </tr>
+          </table>
+          <table class="table">
+            <caption>Number of Rides per Mean Wind Speed Range</caption>
+            <tr>
+              <th>Wind Speed Range</th>
+              <th>High</th>
+              <th>Average</th>
+              <th>Low</th>
+            </tr>
+            <tr>
+              <td>0 - 4 mph</td>
+              <td><%= Condition.max_rides_wind(0) %></td>
+              <td><%= Condition.average_rides_wind(0) %></td>
+              <td><%= Condition.min_rides_wind(0) %></td>
+            </tr>
+            <tr>
+              <td>5 - 9 mph</td>
+              <td><%= Condition.max_rides_wind(5) %></td>
+              <td><%= Condition.average_rides_wind(5) %></td>
+              <td><%= Condition.min_rides_wind(5) %></td>
+            </tr>
+            <tr>
+              <td>10 - 14 mph</td>
+              <td><%= Condition.max_rides_wind(10) %></td>
+              <td><%= Condition.average_rides_wind(10) %></td>
+              <td><%= Condition.min_rides_wind(10) %></td>
+            </tr>
+            <tr>
+              <td>15 - 19 mph</td>
+              <td><%= Condition.max_rides_wind(15) %></td>
+              <td><%= Condition.average_rides_wind(15) %></td>
+              <td><%= Condition.min_rides_wind(15) %></td>
+            </tr>
+            <tr>
+              <td>20 - 24 mph</td>
+              <td><%= Condition.max_rides_wind(20) %></td>
+              <td><%= Condition.average_rides_wind(20) %></td>
+              <td><%= Condition.min_rides_wind(20) %></td>
+            </tr>
+          </table>
+          <table class="table">
+            <caption>Number of Rides per Mean Visibility Range</caption>
+            <tr>
+              <th>Visibility Range</th>
+              <th>High</th>
+              <th>Average</th>
+              <th>Low</th>
+            </tr>
+            <tr>
+              <td>0 - 4 Miles</td>
+              <td><%= Condition.max_rides_visibility(0) %></td>
+              <td><%= Condition.average_rides_visibility(0) %></td>
+              <td><%= Condition.min_rides_visibility(0) %></td>
+            </tr>
+            <tr>
+              <td>5 - 9 Miles</td>
+              <td><%= Condition.max_rides_visibility(5) %></td>
+              <td><%= Condition.average_rides_visibility(5) %></td>
+              <td><%= Condition.min_rides_visibility(5) %></td>
+            </tr>
+            <tr>
+              <td>10 - 14 Miles</td>
+              <td><%= Condition.max_rides_visibility(10) %></td>
+              <td><%= Condition.average_rides_visibility(10) %></td>
+              <td><%= Condition.min_rides_visibility(10) %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="go-back-link">
+        <a href="/">Go Back To Home Dashboard</a>
+      </div>
     </body>
 </html>

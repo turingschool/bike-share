@@ -74,6 +74,48 @@
           </tr>
         </table>
       </div>
+      <div class="table-container">
+        <table class="weather-table">
+          <caption>Weather on the Day with the Highest Rides</caption>
+          <tr>
+            <th>Date</th>
+            <th>High Temp</th>
+            <th>Low Temp</th>
+            <th>Precip</th>
+            <th>Mean Wind MPH</th>
+            <th>Mean Visibilty</th>
+          </tr>
+          <tr>
+            <td><%= Condition.weather_on_day_with_highest_rides.date %></td>
+            <td><%= Condition.weather_on_day_with_highest_rides.max_temperature_f %></td>
+            <td><%= Condition.weather_on_day_with_highest_rides.min_temperature_f %></td>
+            <td><%= Condition.weather_on_day_with_highest_rides.precipitation_inches %></td>
+            <td><%= Condition.weather_on_day_with_highest_rides.mean_wind_speed_mph %></td>
+            <td><%= Condition.weather_on_day_with_highest_rides.mean_visibility_miles %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="table-container">
+        <table class="weather-table">
+          <caption>Weather on the Day with the Lowest Rides</caption>
+          <tr>
+            <th>Date</th>
+            <th>High Temp</th>
+            <th>Low Temp</th>
+            <th>Precip</th>
+            <th>Mean Wind MPH</th>
+            <th>Mean Visibilty</th>
+          </tr>
+          <tr>
+            <td><%= Condition.weather_on_day_with_lowest_rides.date %></td>
+            <td><%= Condition.weather_on_day_with_lowest_rides.max_temperature_f %></td>
+            <td><%= Condition.weather_on_day_with_lowest_rides.min_temperature_f %></td>
+            <td><%= Condition.weather_on_day_with_lowest_rides.precipitation_inches %></td>
+            <td><%= Condition.weather_on_day_with_lowest_rides.mean_wind_speed_mph %></td>
+            <td><%= Condition.weather_on_day_with_lowest_rides.mean_visibility_miles %></td>
+          </tr>
+        </table>
+      </div>
     </div>
     <div class="go-back-link">
       <a href="/">Go Back to Home Page</a>

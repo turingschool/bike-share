@@ -12,6 +12,7 @@ td, th {
   border: 1px solid black;
   padding: 8px;
   text-align: center;
+  width: 50px;
 }
 
 tr:nth-child(even) {
@@ -35,6 +36,10 @@ th {
   width: 30%;
 }
 
+.weather-table {
+  width: 500px;;
+}
+
 .dashboard-container {
   margin: 20px;
 }
@@ -43,6 +48,8 @@ th {
   display: flex;
   justify-content: center;
   margin: 20px;
+  flex-direction: column;
+  align-items: center;
 }
 
 .parent-home{
@@ -60,5 +67,4 @@ th {
   font-size: 22px;
   border: 5px solid black;
   padding:20px 10px 10px 10px;
-
 }

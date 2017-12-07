@@ -72,43 +72,4 @@ class Trip < ActiveRecord::Base
     group("DATE_TRUNC('day', start_date)").order('count_all asc').count.first
   end
 
-  def self.number_rides_at_start_station(id)
-    where(start_station_id: id).count
-  end
-
-  def self.number_rides_at_end_station(id)
-    where(end_station_id: id).count
-  end
-
-  def self.most_frequent_destination_station(id)
-    station_id = where(start_station_id: id).group(:end_station_id).order("count_end_station_id desc").count(:end_station_id).first[0]
-    Station.find(station_id).name
-  end
-
-  def self.most_frequent_origination_station(id)
-    station_id = where(end_station_id: id).group(:start_station_id).order("count_start_station_id desc").count(:start_station_id).first[0]
-    Station.find(station_id).name
-  end
-
-  def self.date_with_highest_number_trips_started(id)
-    dates = where(start_station_id: id)
-           .group(:start_date)
-           .order(start_date: :desc)
-           .count(:start_date)
-    dates.first[0].strftime("%Y-%m-%d")
-  end
-
-  def self.most_frequent_user_zipcode(id)
-    where(start_station_id: id)
-      .group(:zip_code)
-      .order("count_zip_code desc")
-      .count(:zip_code).first[0]
-  end
-
-  def self.most_frequent_bike_id(id)
-    where(start_station_id: id)
-      .group(:bike_id)
-      .order("count_bike_id desc")
-      .count(:bike_id).first[0]
-  end
 end

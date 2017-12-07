@@ -11,6 +11,7 @@ describe "when a visitor edits a trip" do
 
   visit '/trips'
 
+
   click_link('Edit')
 
   expect(current_path).to eq("/trips/#{Trip.first.id}/edit")

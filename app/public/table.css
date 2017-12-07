@@ -12,6 +12,7 @@ td, th {
   border: 1px solid black;
   padding: 8px;
   text-align: center;
+  width: 50px;
 }
 
 tr:nth-child(even) {
@@ -39,10 +40,16 @@ th {
   margin: 20px;
 }
 
+.table {
+  padding: 20px;
+}
+
 .table-container {
   display: flex;
   justify-content: center;
   margin: 20px;
+  flex-direction: column;
+  align-items: center;
 }
 
 .parent-home{
@@ -60,5 +67,4 @@ th {
   font-size: 22px;
   border: 5px solid black;
   padding:20px 10px 10px 10px;
-
 }

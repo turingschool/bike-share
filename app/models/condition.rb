@@ -39,55 +39,104 @@ class Condition < ActiveRecord::Base
   end
 
   def self.min_rides_temp(range)
-    days_within_high_temp(range).rides_per_day_asc.first[1]
+    if days_within_high_temp(range).rides_per_day_asc.values.count == 0
+      return 0
+    else
+      days_within_high_temp(range).rides_per_day_asc.first[1]
+    end
   end
 
   def self.average_rides_temp(range)
-    days = days_within_high_temp(range).rides_per_day_asc.values
-    days.sum/days.count
+    if days_within_high_temp(range).rides_per_day_asc.values.count == 0
+      return 0
+    else
+      days = days_within_high_temp(range).rides_per_day_asc.values
+      days.sum/days.count
+    end
   end
 
   def self.max_rides_temp(range)
-    days_within_high_temp(range).rides_per_day_desc.first[1]
+    if days_within_high_temp(range).rides_per_day_desc.values.count == 0
+      return 0
+    else
+      days_within_high_temp(range).rides_per_day_desc.first[1]
+    end
   end
 
   def self.min_rides_precip(range)
-    days_within_precipitation(range).rides_per_day_asc.first[1]
+    if days_within_precipitation(range).rides_per_day_asc.values.count == 0
+      return 0
+    else
+      days_within_precipitation(range).rides_per_day_asc.first[1]
+    end
   end
 
   def self.average_rides_precip(range)
-    days = days_within_precipitation(range).rides_per_day_asc.values
-    days.sum/days.count
+    if days_within_precipitation(range).rides_per_day_asc.values.count == 0
+      return 0
+    else
+      days = days_within_precipitation(range).rides_per_day_asc.values
+      # require "pry"; binding.pry
+      days.sum/days.count
+    end
   end
 
   def self.max_rides_precip(range)
-    days_within_precipitation(range).rides_per_day_desc.first[1]
+    if days_within_precipitation(range).rides_per_day_desc.values.count == 0
+      return 0
+    else
+      days_within_precipitation(range).rides_per_day_desc.first[1]
+    end
   end
 
   def self.min_rides_wind(range)
-    days_within_wind(range).rides_per_day_asc.first[1]
+    if days_within_wind(range).rides_per_day_asc.values.count == 0
+      return 0
+    else
+      days_within_wind(range).rides_per_day_asc.first[1]
+    end
   end
 
   def self.average_rides_wind(range)
-    days = days_within_wind(range).rides_per_day_asc.values
-    days.sum/days.count
+    if days_within_wind(range).rides_per_day_asc.values.count == 0
+      return 0
+    else
+      days = days_within_wind(range).rides_per_day_asc.values
+      days.sum/days.count
+    end
   end
 
   def self.max_rides_wind(range)
-    days_within_wind(range).rides_per_day_desc.first[1]
+    if days_within_wind(range).rides_per_day_desc.values.count == 0
+      return 0
+    else
+      days_within_wind(range).rides_per_day_desc.first[1]
+    end
   end
 
   def self.min_rides_visibility(range)
-    days_within_visibility(range).rides_per_day_asc.first[1]
+    if days_within_visibility(range).rides_per_day_asc.values.count == 0
+      return 0
+    else
+      days_within_visibility(range).rides_per_day_asc.first[1]
+    end
   end
 
   def self.average_rides_visibility(range)
-    days = days_within_visibility(range).rides_per_day_asc.values
-    days.sum/days.count
+    if days_within_visibility(range).rides_per_day_asc.values.count == 0
+      return 0
+    else
+      days = days_within_visibility(range).rides_per_day_asc.values
+      days.sum/days.count
+    end
   end
 
   def self.max_rides_visibility(range)
-    days_within_visibility(range).rides_per_day_desc.first[1]
+    if days_within_visibility(range).rides_per_day_desc.values.count == 0
+      return 0
+    else
+      days_within_visibility(range).rides_per_day_desc.first[1]
+    end
   end
 
   def self.all_rides_within_wind_speed

@@ -15,10 +15,6 @@ describe 'As a visitor' do
       fill_in "station[dock_count]", with: 24
       fill_in "station[city]", with: "Man Francisco"
       fill_in "station[installation_date]", with: "2013-08-01"
-
-      click_button("Submit")
-
-      expect(current_path).to eq("/stations/#{@station_1.id}")
     end
   end
 end

@@ -158,48 +158,48 @@ RSpec.describe Trip do
       end
     end
 
-    context "Trip Methods for Station Show Page" do
-      describe ".number_rides_at_start_station" do
-        it "gives number of rides started at a specific station" do
-          expect(Trip.number_rides_at_start_station(2)).to eq(3)
-        end
-      end
-
-      describe ".number_rides_at_end_station" do
-        it "gives number of rides ended at a specific station" do
-          expect(Trip.number_rides_at_end_station(2)).to eq(3)
-        end
-      end
-
-      describe ".most_frequent_destination_station" do
-        it "gives most frequent destination station for rides that began at this station" do
-          expect(Trip.most_frequent_destination_station(2)).to eq("Santa Clara at Almaden")
-        end
-      end
-
-      describe ".most_frequent_origination_station" do
-        it "gives most frequent origination station for rides that end at this station" do
-          expect(Trip.most_frequent_origination_station(5)).to eq("San Jose City Hall")
-        end
-      end
-
-      describe ".date_with_highest_number_trips_started" do
-        it "gives the date with the highest number of trips started at a particular station" do
-          expect(Trip.date_with_highest_number_trips_started(2)).to eq("2015-06-22")
-        end
-      end
-
-      describe ".most_frequent_user_zipcode" do
-        it "gives most frequent zipcode for users starting trips at a specific station" do
-          expect(Trip.most_frequent_user_zipcode(2)).to eq(94043)
-        end
-      end
-
-      describe ".most_frequent_bike_id" do
-        it "gives most frequent bike id starting trips at a specific station" do
-          expect(Trip.most_frequent_bike_id(2)).to eq(671)
-        end
-      end
-    end
+    # context "Trip Methods for Station Show Page" do
+    #   describe ".number_rides_at_start_station" do
+    #     it "gives number of rides started at a specific station" do
+    #       expect(Trip.number_rides_at_start_station(2)).to eq(3)
+    #     end
+    #   end
+    #
+    #   describe ".number_rides_at_end_station" do
+    #     it "gives number of rides ended at a specific station" do
+    #       expect(Trip.number_rides_at_end_station(2)).to eq(3)
+    #     end
+    #   end
+    #
+    #   describe ".most_frequent_destination_station" do
+    #     it "gives most frequent destination station for rides that began at this station" do
+    #       expect(Trip.most_frequent_destination_station(2)).to eq("Santa Clara at Almaden")
+    #     end
+    #   end
+    #
+    #   describe ".most_frequent_origination_station" do
+    #     it "gives most frequent origination station for rides that end at this station" do
+    #       expect(Trip.most_frequent_origination_station(5)).to eq("San Jose City Hall")
+    #     end
+    #   end
+    #
+    #   describe ".date_with_highest_number_trips_started" do
+    #     it "gives the date with the highest number of trips started at a particular station" do
+    #       expect(Trip.date_with_highest_number_trips_started(2)).to eq("2015-06-22")
+    #     end
+    #   end
+    #
+    #   describe ".most_frequent_user_zipcode" do
+    #     it "gives most frequent zipcode for users starting trips at a specific station" do
+    #       expect(Trip.most_frequent_user_zipcode(2)).to eq(94043)
+    #     end
+    #   end
+    #
+    #   describe ".most_frequent_bike_id" do
+    #     it "gives most frequent bike id starting trips at a specific station" do
+    #       expect(Trip.most_frequent_bike_id(2)).to eq(671)
+    #     end
+    #   end
+    # end
   end
 end

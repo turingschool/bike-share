@@ -81,5 +81,55 @@ RSpec.describe Station do
         expect(Station.oldest_station).to eq("WI")
       end
     end
+
+    context "@station Methods for Station Show Page", :foo => true do
+      before :each do
+        @station = Station.find(9)
+      end
+
+
+      describe ".number_rides_at_start_station" do
+        it "gives number of rides started at a specific station" do
+          expect(@station.number_rides_at_start_station).to eq(2)
+        end
+      end
+
+      describe ".number_rides_at_end_station" do
+        it "gives number of rides ended at a specific station" do
+          expect(@station.number_rides_at_end_station).to eq(2)
+        end
+      end
+
+      describe ".most_frequent_destination_station" do
+        it "gives most frequent destination station for rides that began at this station" do
+          expect(@station.most_frequent_destination_station).to eq("Japantown")
+        end
+      end
+
+      describe ".most_frequent_origination_station" do
+        it "gives most frequent origination station for rides that end at this station" do
+          expect(@station.most_frequent_origination_station).to eq("Japantown")
+        end
+      end
+
+      describe ".date_with_highest_number_trips_started" do
+        it "gives the date with the highest number of trips started at a particular station" do
+          expect(@station.date_with_highest_number_trips_started).to eq("2014-09-01")
+        end
+      end
+
+      describe ".most_frequent_user_zipcode" do
+        it "gives most frequent zipcode for users starting trips at a specific station" do
+          expect(@station.most_frequent_user_zipcode).to eq(95112)
+        end
+      end
+
+      describe ".most_frequent_bike_id" do
+        it "gives most frequent bike id starting trips at a specific station" do
+          expect(@station.most_frequent_bike_id).to eq(56)
+        end
+      end
+
+    end
   end
 end

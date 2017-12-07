@@ -53,7 +53,7 @@ class Trip < ActiveRecord::Base
   end
 
   def self.subscription_breakdown
-    group(:subscription_type).count
+    group(:subscription_type).order(:subscription_type).count
   end
 
   def self.customer_subscription_percentage

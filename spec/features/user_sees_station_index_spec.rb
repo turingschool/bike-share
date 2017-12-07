@@ -35,12 +35,6 @@ describe 'as a user when I visit stations index' do
     expect(page).to have_content("2013-08-06")
   end
 
-  it 'I click the name of a station and be directed to the station show page' do
-    click_link("SF")
-
-    expect(current_path).to eq("/stations/#{@station_1.id}")
-  end
-
   it "I can see a delete button and when I click it, it erases and returns to index" do
     first(".delete").click
 

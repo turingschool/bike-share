@@ -12,7 +12,6 @@ describe 'As a user' do
       @station_4 = Station.create(name: "The Bay", dock_count: 25,
         city: "San Francisco", installation_date: "2013-08-14")
 
-
       @trip_1 = Trip.create(duration: 63, start_date: "2013-08-29", start_station_id: 1,
       start_station_name: "Embarcadero", end_date: "2013-08-30", end_station_id: 2,
       end_station_name: "Market St", bike_id: 520, subscription_type: "Subscriber",
@@ -30,7 +29,12 @@ describe 'As a user' do
       end_station_name: "Red Rocks", bike_id: 550, subscription_type: "Subscriber",
       zip_code: 94105)
 
-      visit '/trips-dashboard'
+      @condition = Condition.create(date: "2014-06-22", max_temperature_f: 70,
+      mean_temperature_f: 60, min_temperature_f: 50, mean_humidity: 20,
+      mean_visibility_miles: 50, mean_wind_speed_mph: 12, precipitation_inches: 4,
+      zip_code: 94127)
+
+      visit '/trips/dashboard'
     end
 
     it 'I see trip data for all trips' do

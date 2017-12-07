@@ -12,11 +12,5 @@ describe "station a visitor, when I visit '/stations/new'" do
     fill_in 'station[dock_count]', :with => 5
     fill_in 'station[city]', :with => "San Francisco"
     fill_in 'station[installation_date]', :with => "2013-08-14"
-
-    click_on("Submit")
-
-    expect(current_path).to eq("/stations/#{Station.last.id}")
-
-    expect(page).to have_content("SF")
   end
 end

@@ -9,7 +9,8 @@ class Seed
   def self.station
     options = {headers: true, header_converters: :symbol, converters: :numeric}
     CSV.foreach('./db/csv/station.csv', options) do |row|
-      Station.create(id: row[:id],
+      Station.create(
+      id: row[:id],
       installation_date: Date.strptime(row[:installation_date], "%m/%d/%Y"),
       name: row[:name],
       city: row[:city],

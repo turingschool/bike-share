@@ -53,17 +53,17 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <div class="w3-light-grey w3-border w3-content w3-round w3-center w3-padding-large">
     <hr>
       <div class="info">
-        <h1>Trip <%= "#{@trips.id}" %></h1>
+        <h1>Trip <%= "#{@trip.id}" %></h1>
 
-        <div class="tripss">
-            <p>Duration: <%= @trips.duration %></p>
-            <p>Start Date: <%= @trips.start_date %></p>
-            <p>Start Station: <%= @trips.start_station.name %></p>
-            <p>End Date: <%= @trips.end_date %></p>
-            <p>End Station Name: <%= @trips.end_station.name %></p>
-            <p>Bike ID: <%= @trips.bike_id %></p>
-            <p>Subscription: <%= @trips.subscription %></p>
-            <p>Zipcode: <%= @trips.zip_code %></p>
+        <div class="trips">
+            <p>Duration: <%= @trip.duration %></p>
+            <p>Start Date: <%= @trip.start_date %></p>
+            <p>Start Station: <%= @trip.start_station.name %></p>
+            <p>End Date: <%= @trip.end_date %></p>
+            <p>End Station Name: <%= @trip.end_station.name %></p>
+            <p>Bike ID: <%= @trip.bike_id %></p>
+            <p>Subscription: <%= @trip.subscription %></p>
+            <p>Zipcode: <%= @trip.zip_code %></p>
             <form action="/trips/<%= @trip.id %>" method="POST">
               <input type="hidden" name="_method" value="DELETE">
               <input type="submit" class="w3-button w3-block w3-pink" value="delete"/>

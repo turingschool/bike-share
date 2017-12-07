@@ -59,8 +59,8 @@ class BikeShareApp < Sinatra::Base
 	end
 
 	post '/trips' do
-		Trip.create(params[:trip])
-		redirect '/trips'
+		trip = Trip.create(params[:trip])
+		redirect "/trips/#{trip.id}"
 	end
 
 	get '/trips/:id' do
@@ -99,8 +99,8 @@ class BikeShareApp < Sinatra::Base
 	end
 
 	post '/conditions' do
-		Condition.create(params[:condition])
-		redirect '/conditions'
+		condition = Condition.create(params[:condition])
+		redirect "/conditions/#{condition.id}"
 	end
 
 	get '/conditions/:id' do

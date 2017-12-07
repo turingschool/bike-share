@@ -19,6 +19,6 @@ describe "when a visitor presses submit on new condition" do
   expect(current_path).to eq("/conditions/#{Condition.last.id}")
 
   expect(page).to have_content("73")
-  expect(page).to have_no_content("Conditions")
+  expect(page).to have_content("Conditions")
   end
 end

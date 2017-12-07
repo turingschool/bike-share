@@ -2,10 +2,10 @@ require 'spec_helper'
 
 RSpec.describe Condition do
   describe "Class Methods" do
-    it "can find a Condition ID when given a date and zipcode" do
+    it "can find a Condition ID when given a date" do
       Condition.create(date: "2013-08-29", max_temperature: 74, mean_temperature: 68, min_temperature: 61, mean_humidity: 75, mean_visibility: 10, mean_wind_speed: 11, precipitation: 0, zip_code: 94127)
 
-      expect(Condition.date_id("29/08/2013", 94127)).to eql(1)
+      expect(Condition.date_id("29/08/2013")).to eql(1)
     end
 
     it "can find most rides given weather conditions" do

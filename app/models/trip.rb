@@ -27,15 +27,15 @@ class Trip < ActiveRecord::Base
   end
 
   def self.popular_starting_place
-    group('start_station_name').order('count(*) desc').limit(1).pluck(:start_station_name).first
+    Station.find(group('start_station_id').order('count(*) desc').limit(1).pluck(:start_station_id).first).name
   end
 
   def self.least_popular_starting_place
-    group('start_station_name').order('count(*) asc').limit(1).pluck(:start_station_name).first
+    Station.find(group('start_station_id').order('count(*) asc').limit(1).pluck(:start_station_id).first).name
   end
 
   def self.popular_ending_place
-    group('end_station_name').order('count(*) desc').limit(1).pluck(:end_station_name).first
+    Station.find(group('end_station_id').order('count(*) desc').limit(1).pluck(:end_station_id).first).name
   end
 
   def self.popular_bike
@@ -92,6 +92,14 @@ class Trip < ActiveRecord::Base
 
   def self.year_subtotals
     group("DATE_TRUNC('year', start_date)").count.to_a.sort
+  end
+
+  def self.weather_on_the_day_with_the_most_rides
+    Condition.find_by(date: (group(:start_date).order('count_id desc').limit(1).count(:id).first[0]))
+  end
+
+  def self.weather_on_the_day_with_the_fewest_rides
+    Condition.find_by(date: (group(:start_date).order('count_id asc').limit(1).count(:id).first[0]))
   end
 
 end

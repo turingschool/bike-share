@@ -36,12 +36,12 @@ th {
   width: 30%;
 }
 
-.dashboard-container {
-  margin: 20px;
+.weather-table {
+  width: 500px;;
 }
 
-.table {
-  padding: 20px;
+.dashboard-container {
+  margin: 20px;
 }
 
 .table-container {

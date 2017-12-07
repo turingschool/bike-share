@@ -40,7 +40,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
     <header id="STATIONS">
       <div class="w3-container w3-center w3-text-grey">
-      <h1><b>Weather</b></h1>
+        <h1><b>Weather</b></h1>
         <div class="w3-section w3-bottombar w3-padding-16">
           <a href="/stations"><button class="w3-button w3-light-grey w3-padding-large w3-hover-grey"><i class="w3-center"></i>Stations</button></a>
           <a href="/trips"><button class="w3-button w3-light-grey w3-padding-large w3-hover-grey"><i class="w3-center"></i>Trips</button></a>
@@ -48,30 +48,34 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         </div>
       </div>
     </header>
-    <div class="info">
-<h1> Create New Conditions </h1>
-
-<form action="/conditions" method="post">
-
-  <p> Date<input type= "date" name="condition[date]" value="Date"/></p>
-  Maximum Temperature <input type= "number" name="condition[max_temperature]"/>
-  <br>
-  Mean Temperature <input type= "number" name="condition[mean_temperature]" value="Mean Temperature"/>
-  <br>
-  Minimum Temperature <input type= "number" name="condition[min_temperature]" value="Minimum Temperature"/>
-  <br>
-  Mean Humidity <input type= "number" name="condition[mean_humidity]" value="Mean Humidity"/>
-  <br>
-  Mean Visibility <input type= "number" name="condition[mean_visibility]" value="Mean Visibility"/>
-    <br>
-  Mean Wind Speed <input type= "number" name="condition[mean_wind_speed]" value="Mean Wind Speed"/>
-  <br>
-  Precipitation <input type= "number" name="condition[precipitation]" value="Precipitation"/>
-  <br>
-  <br>
-  <input type="submit" value="submit" />
-</form>
-<div class="w3-black w3-center w3-padding-24" title="BayCycles" target="_blank" class="w3-hover-opacity">BayCyles</a></div>
+    <div class="w3-light-grey w3-border w3-content w3-round w3-center w3-padding-large">
+      <hr>
+      <div class="info">
+        <h1> Create New Conditions </h1>
+        <form action="/conditions" method="post">
+          Date<br><input type= "date" name="condition[date]" value="Date"/>
+          <br>
+          Maximum Temperature<br><input type= "number" name="condition[max_temperature]"/>
+          <br>
+          Mean Temperature<br><input type= "number" name="condition[mean_temperature]" value="Mean Temperature"/>
+          <br>
+          Minimum Temperature<br><input type= "number" name="condition[min_temperature]" value="Minimum Temperature"/>
+          <br>
+          Mean Humidity<br><input type= "number" name="condition[mean_humidity]" value="Mean Humidity"/>
+          <br>
+          Mean Visibility<br><input type= "number" name="condition[mean_visibility]" value="Mean Visibility"/>
+            <br>
+          Mean Wind Speed<br><input type= "number" name="condition[mean_wind_speed]" value="Mean Wind Speed"/>
+          <br>
+          Precipitation<br><input type= "number" name="condition[precipitation]" value="Precipitation"/>
+          <br>
+          <br>
+          <input type="submit" class="w3-button w3-block w3-pink" value="submit" />
+          <br>
+        </form>
+      </div>
+    </div>
+</body>
 <script>
 function w3_open() {
     document.getElementById("mySidebar").style.display = "block";

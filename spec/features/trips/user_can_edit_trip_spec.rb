@@ -2,9 +2,13 @@ require 'spec_helper'
 
 describe 'As a visitor' do
   describe 'when I visit the "/trips/:id/edit" page' do
-
     before :each do
-      @trip = Trip.create(duration: 63, start_date: "2013-08-29", start_station_id: 4, start_station_name: "Embarcadero", end_date: "2013-08-29", end_station_id: 5, end_station_name: "Market St", bike_id: 520, subscription_type: "Subscriber", zip_code: 95355)
+      @station_1 = Station.create(name: "SF", dock_count: 5,
+      city: "San Francisco", installation_date: "2013-08-23")
+      @station_2 = Station.create(name: "CO", dock_count: 4, city: "Denver",
+      installation_date: "2013-08-14")
+      @trip = Trip.create(duration: 63, start_date: "2013-08-29", start_station_id: @station_1.id, start_station_name: "Embarcadero", end_date: "2013-08-29", end_station_id: @station_2.id, end_station_name: "Market St", bike_id: 520, subscription_type: "Subscriber", zip_code: 95355)
+
 
       visit "/trips/#{@trip.id}/edit"
     end

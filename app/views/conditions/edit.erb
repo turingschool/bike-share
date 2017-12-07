@@ -1,0 +1,41 @@
+<header>
+  <h1> Edit Conditions</h1>
+</header>
+  <form action="/conditions/<%=@condition.id%>" method="POST">
+    <table>
+      <tr>
+        <th class="field-name">Condition:</th>
+        <th><input type="date" name="condition[date]" value="<%=@condition.date%>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">Max Temp</th>
+        <th><input type="number" name="condition[max_temperature_f]" value="<%=@condition.max_temperature_f%>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">Mean Temp:</th>
+        <th><input type="number" name="condition[mean_temperature_f]" value="<%=@condition.mean_temperature_f %>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">Min Temp:</th>
+        <th><input type="number" name="condition[min_temperature_f]" value="<%=@condition.min_temperature_f%>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">Mean Humidity:</th>
+        <th><input type="number" name="condition[mean_humidity]" value="<%=@condition.mean_humidity%>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">Mean Visibility(miles):</th>
+        <th><input type="number" name="condition[mean_visibility_miles]" value="<%=@condition.mean_visibility_miles%>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">Mean Wind Speed(mph):</th>
+        <th><input type="number" name="condition[mean_wind_speed_mph]" value="<%=@condition.mean_wind_speed_mph%>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">Precipitation(inches):</th>
+        <th><input type="number" name="condition[precipitation_inches]" value="<%=@condition.precipitation_inches%>"/></th>
+      </tr>
+    <table>
+    <input type="hidden" name="_method" value="PUT"/>
+    <input id="submit-button" type="submit"/>
+  </form>

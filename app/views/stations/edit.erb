@@ -1,0 +1,48 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="/reset.css">
+  <link rel="stylesheet" type="text/css" href="/edit_station.css">
+</head>
+
+<body>
+
+<div class="container">
+  <header>
+    <h1>Edit Station</h1>
+    <nav>
+      <ul>
+        <li><a href="/stations"> Stations </a></li>
+        <li><a href="/trips"> Trips </a></li>
+        <li><a href="/stations-dashboard"> Station Dashboard </a></li>
+        <li><a href="/trips-dashboard"> Trip Dashboard </a></li>
+        <li><a href="/">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <form action="/stations/<%=@station.id%>" method="POST">
+    <table>
+      <tr>
+        <th class="field-name">Station Name:</th>
+        <th><input type="text" name="station[name]" value="<%=@station.name%>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">Number of Docks:</th>
+        <th><input type="number" name="station[dock_count]" value="<%=@station.dock_count%>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">City:</th>
+        <th><input type="text" name="station[city]" value="<%=@station.city %>"/></th>
+      </tr>
+      <tr>
+        <th class="field-name">Installation Date:</th>
+        <th><input type="date" name="station[installation_date]" value="<%=@station.installation_date%>"/></th>
+      </tr>
+    <table>
+
+    <input type="hidden" name="_method" value="PUT"/>
+    <input id="submit-button" type="submit"/>
+  </form>
+
+</div>
+
+</body>

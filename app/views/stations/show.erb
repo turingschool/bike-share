@@ -1,0 +1,62 @@
+<a href="/stations">Station Index</a>
+
+<h1> <%= @station.name %> </h1>
+<p> City: <%= @station.city %> </p>
+<p> Dock Count: <%= @station.dock_count %> </p>
+<p> Installation Date: <%= @station.installation_date%> </p>
+
+<p> Number of starting rides:
+<% if @station.number_of_starting_rides %>
+   <%= @station.number_of_starting_rides %>
+<% else %>
+   0
+<% end %>
+</p>
+
+<p> Number of ending rides:
+<% if @station.number_of_ending_rides %>
+   <%= @station.number_of_ending_rides %>
+<% else %>
+   0
+<% end %>
+</p>
+
+<p> Most frequent destination station:
+<% if @station.most_frequent_destination_station %>
+   <%= @station.most_frequent_destination_station.last %>
+<% else %>
+   No trips
+<% end %>
+</p>
+
+<p> Most frequent origination station:
+<% if @station.most_frequent_origination_station %>
+   <%= @station.most_frequent_origination_station.last %>
+<% else %>
+   No trips
+<% end %>
+</p>
+
+<p> Date with the most trips started here:
+<% if @station.date_with_most_trips %>
+   <%= @station.date_with_most_trips.last %>
+<% else %>
+   No trips
+<% end %>
+</p>
+
+<p> Most frequent zipcode starting here:
+<% if @station.most_frequent_zipcode_starting_here %>
+   <%= @station.most_frequent_zipcode_starting_here.last %>
+<% else %>
+   No trips
+<% end %>
+</p>
+
+<p> Most frequent bike ID starting here:
+<% if @station.most_frequent_bike_id_starting_here %>
+   <%= @station.most_frequent_bike_id_starting_here.last %>
+<% else %>
+   No trips
+<% end %>
+</p>

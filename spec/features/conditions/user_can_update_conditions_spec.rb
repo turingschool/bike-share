@@ -14,7 +14,6 @@ describe 'As a visitor' do
     it "should give me a form with several form fields to edit with
     the option to submit which will redirect me to conditions index" do
     # require 'pry'; binding.pry
-      fill_in "condition[date]", with: "08/07/2014"
       fill_in "condition[max_temperature_f]", with: 80
       fill_in "condition[mean_temperature_f]", with: 70
       fill_in "condition[min_temperature_f]", with: 60
@@ -26,7 +25,7 @@ describe 'As a visitor' do
 
       click_button("Submit")
 
-      expect(current_path).to eq("/conditions/2013-08-07")
+      expect(current_path).to eq("/conditions/2014-08-20")
     end
   end
 end

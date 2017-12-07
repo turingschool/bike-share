@@ -2,8 +2,8 @@ RSpec.describe Trip do
   context "Validations" do
     it "can't save trip without duration" do
       trip = Trip.create(start_date: "2013-08-29", start_station_id: 4,
-      start_station_name: "Embarcadero", end_date: "2013-08-29", end_station_id: 5,
-      end_station_name: "Market St", bike_id: 520, subscription_type: "Subscriber",
+      end_date: "2013-08-29", end_station_id: 5, bike_id: 520,
+      subscription_type: "Subscriber",
       zip_code: 94127)
 
       expect(trip).to be_invalid
@@ -27,15 +27,6 @@ RSpec.describe Trip do
       expect(trip).to be_invalid
     end
 
-    it "can't save trip without Start Station name" do
-      trip = Trip.create(duration: 63, start_date: "2013-08-29", start_station_id: 4,
-      end_date: "2013-08-29", end_station_id: 5,
-      end_station_name: "Market St", bike_id: 520, subscription_type: "Subscriber",
-      zip_code: 94127)
-
-      expect(trip).to be_invalid
-    end
-
     it "can't save trip without end date" do
       trip = Trip.create(duration: 63, start_date: "2013-08-29", start_station_id: 4,
       start_station_name: "Embarcadero", end_station_id: 5,
@@ -49,15 +40,6 @@ RSpec.describe Trip do
       trip = Trip.create(duration: 63, start_date: "2013-08-29", start_station_id: 4,
       start_station_name: "Embarcadero", end_date: "2013-08-29",
       end_station_name: "Market St", bike_id: 520, subscription_type: "Subscriber",
-      zip_code: 94127)
-
-      expect(trip).to be_invalid
-    end
-
-    it "can't save trip without end station name" do
-      trip = Trip.create(duration: 63, start_date: "2013-08-29", start_station_id: 4,
-      start_station_name: "Embarcadero", end_date: "2013-08-29", end_station_id: 5,
-      bike_id: 520, subscription_type: "Subscriber",
       zip_code: 94127)
 
       expect(trip).to be_invalid

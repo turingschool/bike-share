@@ -36,7 +36,7 @@ describe 'as a user when I visit stations index' do
   end
 
   it 'I click the name of a station and be directed to the station show page' do
-    click_link("SF")
+    first(".station-name").click
 
     expect(current_path).to eq("/stations/#{@station_1.id}")
   end

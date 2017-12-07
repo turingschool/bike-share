@@ -133,8 +133,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/conditions/:id' do |id|
+    # require "pry"; binding.pry
     Condition.update(id, params[:condition])
-
     redirect "/conditions/#{id}"
   end
 

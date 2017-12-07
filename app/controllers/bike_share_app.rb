@@ -1,7 +1,6 @@
 require 'will_paginate'
 require 'will_paginate/active_record'
 
-
 class BikeShareApp < Sinatra::Base
   configure { register WillPaginate::Sinatra }
   set :method_override, true
@@ -133,7 +132,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   put '/conditions/:id' do |id|
-    # require "pry"; binding.pry
     Condition.update(id, params[:condition])
     redirect "/conditions/#{id}"
   end

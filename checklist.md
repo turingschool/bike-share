@@ -93,5 +93,5 @@ On `/weather-dashboard`:
 
 Additional information on the `trip-dashboard`:
 
-* [ ] Weather on the day with the highest rides.
-* [ ] Weather on the day with the lowest rides.
+* [X] Weather on the day with the highest rides.
+* [X] Weather on the day with the lowest rides.

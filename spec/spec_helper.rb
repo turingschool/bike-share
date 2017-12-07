@@ -15,15 +15,15 @@ DatabaseCleaner.strategy = :truncation
 RSpec.configure do |config|
   config.include Capybara::DSL
 
-  config.before(:all) do
+  config.before(:each) do
     DatabaseCleaner.clean
   end
 
-  config.append_after(:all) do
+  config.append_after(:each) do
     DatabaseCleaner.clean
   end
 
-  config.before(:all, :foo => true) do
+  config.before(:each, :foo => true) do
     DatabaseCleaner.clean
     Seed.test
   end

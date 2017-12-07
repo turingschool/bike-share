@@ -36,6 +36,24 @@ class Seed
     ActiveRecord::Base.connection.reset_pk_sequence!("trips")
   end
 
+  def self.trip_fixture
+    options = {headers: true, header_converters: :symbol, converters: :numeric}
+    CSV.foreach('./db/csv/trip_fixture.csv', options) do |row|
+      Trip.create!(
+        duration: row[:duration],
+        start_date: Date.strptime(row[:start_date], "%m/%d/%Y"),
+        start_station_name: row[:start_station_name],
+        start_station_id: row[:start_station_id],
+        end_date: Date.strptime(row[:end_date], "%m/%d/%Y"),
+        end_station_name: row[:end_station_name],
+        end_station_id: row[:end_station_id],
+        bike_id: row[:bike_id],
+        subscription_type: row[:subscription_type],
+        zip_code: (row[:zip_code]).to_s.rjust(5,"0")[0..4].to_i)
+    end
+    ActiveRecord::Base.connection.reset_pk_sequence!("trips")
+  end
+
   def self.condition
     options = {headers: true, header_converters: :symbol, converters: :numeric}
     CSV.foreach('./db/csv/weather.csv', options) do |row|
@@ -58,6 +76,6 @@ end
 Station.destroy_all
 Seed.station
 Trip.destroy_all
-Seed.trip
+Seed.trip_fixture
 Condition.destroy_all
 Seed.condition

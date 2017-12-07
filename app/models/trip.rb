@@ -83,7 +83,6 @@ class Trip < ActiveRecord::Base
   def self.most_frequent_destination_station(id)
     station_id = where(start_station_id: id).group(:end_station_id).order("count_end_station_id desc").count(:end_station_id).first[0]
     Station.find(station_id).name
-    #refactor
   end
 
   def self.most_frequent_origination_station(id)
@@ -112,5 +111,4 @@ class Trip < ActiveRecord::Base
       .order("count_bike_id desc")
       .count(:bike_id).first[0]
   end
-
 end

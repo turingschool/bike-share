@@ -139,16 +139,12 @@ class Condition < ActiveRecord::Base
     end
   end
 
-  def self.all_rides_within_wind_speed
-  end
-
-  def self.all_rides_within_visibility_range
-  end
-
-  def self.all_rides_within_temp_range
-  end
-
   def self.weather_on_day_with_highest_rides
+    select("conditions.*, avg(mean_temperature_f)").joins(:trips).group(:id,:start_date).order("count(date)").last
+  end
+
+  def self.weather_on_day_with_lowest_rides
+    select("conditions.*, avg(mean_temperature_f)").joins(:trips).group(:id,:start_date).order("count(date)").first
   end
 
 end
